@@ -1,0 +1,58 @@
+<h2>Sequence Data</h2>
+<P>
+<B>The bulk of the sequence data is stored in a table called 'Clone_Sequence', which stores the sequence string as well as a binary string of bytes representing associated sequence quality (as determined by 'phred').<P>
+In addition to this, each read has the following information stored in this table:</B>
+<UL>
+<LI><B>Phred_Histogram</B> (another binary field storing a histogram of Phred values over the read)<BR>
+(eg the 5th 2-byte chunk stores the number of basepairs of phred value 5)
+<LI><B>Quality_Histogram</B> (a cumulative histogram of phred values over the read)<BR>
+(eg the 20th 2-byte chunk stores the number of basepairs of phred 20 <B>or better</B>)
+<LI><B>Growth</B> (normally 'OK', but could be set to 'Slow Grow' or 'No Grow')
+<LI><B>Quality_Left</B> (the left index position of the 'high quality' contiguous section of the read as determined by phred)
+<LI><B>Quality_Length</B> (the length of the 'high quality' contiguous section as determined by phred - roughly phred 20)
+<LI><B>Vector_Left</B> - (the index position of discovered vector on the left side of the 'quality' section - (negative if no vector found on the left)
+<LI><B>Vector_Right</B> - (the index position of discovered vector on the right side of the 'quality' section - (negative if no vector found on the right)
+<BR>(Note: if entire 'quality' section is vector, Vector_Right=0 and Vector_Left= length of sequence indicating ALL vector)
+<LI><B>Vector_Quality</B> - (the number of bases within 'Quality_Length' which have been identified as vector)
+<LI><B>Capillary</B> - the capillary number for the associated machine from which the read was generated.
+<LI><B>FK_Note__ID</B> - a reference to a table of applicable notes.<BR>
+<UL>Standard Notes include:
+<span class=small>
+<LI><B>Empty Sequence Read</B> - sequence string of 0 length found
+<LI><B>Trace Data Missing</B>  - no trace data for the given read
+<LI><B>Poor Quality Warning</B> - phred indicates that there is NO contiguous section of 'quality' within the read.
+<LI><B>Index Warning</B> - a strange vector portion found within the 'quality' region.
+	<BR>(Comments indicate details regarding vector found within this region)
+</UL>
+</Span>
+</UL>
+
+<P>
+<B>In addition some information is stored for each separate sequence run such as:
+</B>
+<UL>
+<LI><B>FK_Plate__ID</B> - reference to the plate used for the run
+<LI><B>Sequence_DateTime</B> - date and time that the datafiles were generated
+<LI><B>Sequence_Subdirectory</B> - the name of the subdirectory path at which the trace files can be found (formatted to unambiguously show library, plate number, quadrant and chemistry)
+<LI><B>Run_State</B> - (may be 'Analyzed','In Process','Aborted','Failed' or 'Expired')
+<LI><B>Run_Status</B> - (either 'Production' or 'Test')
+<LI><B>FKPrimer_Solution__ID</B> - reference to the primer used for this run.
+<LI><B>FK_Sequence_Batch__ID</B> - reference to a record for this batch of sequence runs.
+</UL>
+
+<P>
+<B>Some parameters are set for an entire group of runs that may go through at the same time such as:
+</B>
+<UL>
+<LI><B>Sequence_RequestTime</B> - time when the runs were requested (configuration files generated)
+<LI><B>Run_Voltage</B>
+<LI><B>Run_Temperature</B>
+<LI><B>Run_Time</B>
+<LI><B>Injection_Voltage</B>
+<LI><B>Injection_Time</B>
+<LI><B>PMT1</B> - the 1st photomultiplier tube voltage setting.
+<LI><B>PMT2</B> - the 2nd photomultiplier tube voltage setting. 
+<LI><B>Sequence_Batch_Comments</B>
+</UL>
+
+<P>It is also possible to retrieve more information regarding the Sequence runs by following the reference links into the various Libraries, Plates, Solutions etc, but this is covered in more detail in the Lab Monitoring section.

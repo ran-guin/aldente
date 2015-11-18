@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0
+END
+Pipeline_StepRelationship.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/Pipeline_StepRelationship.txt
+END
+update_protocol_tables.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/update_protocol_tables.pat
+END
+GrpLab_Protocol.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/GrpLab_Protocol.txt
+END
+biomaterial_type_GSC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/biomaterial_type_GSC.pat
+END
+change_organization_GSC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/change_organization_GSC.pat
+END
+Protocol_Step.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/Protocol_Step.txt
+END
+Lab_Protocol.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/Lab_Protocol.txt
+END
+upgrade_GSC_2_7.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/upgrade_GSC_2_7.pat
+END
+Pipeline_Step.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/70450/alDente/trunk/custom/GSC/install/patches/3.0/Pipeline_Step.txt
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics
+END
+Feature.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics/Feature.pm
+END
+FeatureFile.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics/FeatureFile.pm
+END
+Util.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics/Util.pm
+END
+Panel.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics/Panel.pm
+END
+Glyph.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Graphics/Glyph.pm
+END

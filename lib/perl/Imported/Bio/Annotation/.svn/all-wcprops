@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation
+END
+SimpleValue.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/SimpleValue.pm
+END
+Collection.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/Collection.pm
+END
+TypeManager.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/TypeManager.pm
+END
+Reference.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/Reference.pm
+END
+Comment.pm
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/Comment.pm
+END
+DBLink.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Annotation/DBLink.pm
+END

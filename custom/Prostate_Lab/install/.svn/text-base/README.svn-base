@@ -1,0 +1,102 @@
+################################################
+README File for Installing Add-on Package: <package>
+Template file
+################################################ 
+
+To install the Add-on LIMS system from scratch, follow the following steps
+
+###############################################
+. Checkout code into directory
+###############################################
+
+Checkout code into the directory reserved for Cancer Genetics on limsdev02
+Commands:
+        ssh aldente@limsdev02
+        [enter password when prompted]
+        cd /opt/aldente/versions/
+        svn co https://svn01/svn/alDente/trunk <code_version>
+
+################################################
+. Build core database named '<DATABASE>'
+################################################
+
+Go to directory <dbhost>:/opt/aldente/versions/<code_version>/install/
+run 'perl setup.pl'
+
+setup configuration settings according to your needs
+
+When configuration settings have been filled, choose to install a custom database
+This package will be listed under (custom|options|plugins);
+Choose to install this package when prompted
+
+################################################
+. Customize the system for <package>
+################################################
+The setup.pl script will run the install.pl script in this directory
+The install.pl script will either perform the following, or instruct the user as to what and how to make appropriate changes:
+
+. Customize the database by running all files in ./sql/
+. Create softlinks to the modules in ./../modules/ (and make any appropriate directories)
+. Change any configuration settings according to what is required by the package
+. Setup any cronjobs to be used for further development
+. Make any hardcode changes needed for the package
+
+==============================================
+References for hardcode changes
+=============================================
+
+Here is a reference for the custom changes, as required by this package <package>
+
+#####################################################
+. Edit configuration file to suit the needs of <package>
+######################################################
+
+In versions/<code_version>/conf/system.conf, the configuration settings should include the following lines:
+	
+  <Options default="" type="web" value="<config_options>" />
+  <Plugins default="" type="web" value="<plugins>" />
+
+
+##########################################################
+. Add specific lines of code to the following files:
+##########################################################
+
+File:
+Change from:
+To:
+Effect:
+
+File2: 
+Change from:
+To:
+Effect:
+
+###########################################################
+. Modules
+###########################################################
+
+############################################################
+. Go to alDente login site
+############################################################
+
+The website to login at is:
+http://<host_server>/SDB_<code_version>/cgi-bin/barcode.pl
+	
+Initial User name: LabUser
+Password: (see tooltips at login page for default password)
+
+
+###########################################
+. In the event of complications or problems
+###########################################
+
+Don't panic.
+
+Contact one of your friendly LIMS team-members, and they will help you with any issues that arise
+
+################################################ 
+  
+
+  
+
+

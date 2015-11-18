@@ -1,0 +1,37 @@
+<h1>Sample Views of Data</H1>
+<h2>Run Results for Recent Runs</h2>
+<P>
+A Searchable Page that defaults to a view of runs that have been processed in the past 24 Hours.  In addition to Quality Information, a colour coded map which indicates the distribution of sequence quality over the plate is supplied for each run which has been analyzed.  Links are available from this page to more detailed information on the Run, Plates or Library.
+<P>
+<A Href = '/SDB/images/help_images/Last_24_Hours.png'>Last 24 Hours</A>
+<HR>
+
+<h2>Preparation Status for a given Library</H2>
+<P>
+A detailed list of what plates have been generated for a given library is available at the top of the 'Prep Summary' page.
+<P>
+<A Href = '/SDB/images/help_images/Prep_Plates.png'>Plates Created</A>
+<P>
+Details also exist depicting the position of the various plates in the pipeline for a given library, allowing administrators to easily determine what has been done, and what is still required.
+<P>
+<A Href = '/SDB/images/help_images/Prep_Summary.png'>Status of Plates in the Pipeline</A>
+<HR>
+
+<h2>Statistics for Project/Library</H2>
+<P>
+Details for various Projects/Libraries are summarized on the Project Summary Page.
+<P>
+<A Href = '/SDB/images/help_images/project_stats.png'>Project/Library Summaries</A>
+<HR>
+
+<h2>Database Summary Views</H2>
+<P>
+An additional suite of visualization tools exist for more detailed information on runs, libraries or projects.
+<P>
+<A Href = '/SDB/images/help_images/lane_image.png'>Extended capillary style view of wells</A>
+<P>
+<A Href = '/SDB/images/help_images/dbsummary_scorecard.png'>ScoreCard</A>
+<HR>
+
+
+

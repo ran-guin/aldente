@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/83428/alDente/trunk/install/patches/Core/3.13
+END
+Invoiced_Yes_No.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/82616/alDente/trunk/install/patches/Core/3.13/Invoiced_Yes_No.pat
+END
+Add_Invoiceable_Work_Item_Comments.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/81908/alDente/trunk/install/patches/Core/3.13/Add_Invoiceable_Work_Item_Comments.pat
+END
+4_Dropping_Columns_Invoiceable_Work_Table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/81952/alDente/trunk/install/patches/Core/3.13/4_Dropping_Columns_Invoiceable_Work_Table.pat
+END
+Invoice_Protocol_Status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/82183/alDente/trunk/install/patches/Core/3.13/Invoice_Protocol_Status.pat
+END
+Dropping_Foreign_Key_IWR.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/81968/alDente/trunk/install/patches/Core/3.13/Dropping_Foreign_Key_IWR.pat
+END
+add_Deviation_No.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/81943/alDente/trunk/install/patches/Core/3.13/add_Deviation_No.pat
+END
+Invoice_Analysis_And_Run_Status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/82183/alDente/trunk/install/patches/Core/3.13/Invoice_Analysis_And_Run_Status.pat
+END
+log_uploads.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/82414/alDente/trunk/install/patches/Core/3.13/log_uploads.pat
+END
+add_Priority.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/83428/alDente/trunk/install/patches/Core/3.13/add_Priority.pat
+END

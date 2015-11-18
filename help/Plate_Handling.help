@@ -1,0 +1,285 @@
+<h1>What is a Plate?</H1>
+A Plate generally consists of 96 or 384 distinct wells, all of which contain samples from a common library.  
+ 
+<h2>What sort of information do we store for a Plate?</H2>
+Typically, each Plate will have a:
+<UL>
+<LI>Format - a brief text name used to identify the type of Plate
+<LI>Size - currently limited to 96-well and 384-well plates
+<LI>Library - a reference to the common Library 
+<LI>Creation Date - when the plate was made
+<LI>Employee - who initially generated the plate
+<LI>Status - Plates may be defined as 'Production' or 'Test' plates
+</UL>
+<BR><A Href=$homelink&Table+Info=Plate>View Plate Fields</A>
+
+<h2>How does a Plate relate to other 'Tables' ?</h2>
+<A Href='$homelink&Tree=1&Table_Name=Plate'>View Relationships</A>
+
+<h2>How do I define a Plate</H2>
+A Plate can be easily defined by first clicking on the 'Plates' icon
+after logging into the main page.  From here, after choosing the library from the list at the right, and 'Original' from the radio buttons to the left, one simply presses the 'Create New Plate' button.  All of the above information will automatically be updated and the New Plate given a sequential 'Number' which is incremented each time a new original plate is generated for the same library.
+
+<h2>How can I view information on a Plate?</H2>
+By simply scanning the plate into the home page, (or by typing in the barcode - 'pla' followed by the plate 'ID'),
+you will be shown basic information on the plate.  For more information, simply click on the hyperlink on the plate name, and you will be shown more details.
+
+<h2>How can I change information on a Plate?</H2>
+After viewing the information as described above for a Plate, there should be a button allowing the user to 'Edit' information on this plate.
+<P>
+<A Href='$homelink&Help_Image=Plate_form.png'>Plate Information Form</A>
+<h2>Generating New Library Plates</H2>
+Assuming the appropriate Library has been added to the database, 
+adding a plate is accomplished by simply clicking on the 'Plates' icon 
+and selecting 'Create New Plate'.
+<P>
+Generally the user will only need to specify the format of the plate, the
+size, and the expected storage conditions.
+<P>
+<Img Src='/Images/NewPlate.png'>
+More than one plate can be created simultaneously by specifying a number
+at the bottom of the form.
+<P>
+<H2>Transferring Plates</H2>
+Plates may be transferred in a variety of ways:
+
+<UL>
+<LI>Direct plate to plate transfer - <BR>
+<UL>
+<LI>scan any number of plates in the 'scan' field
+<LI>choose the target format from the pulldown menu
+<LI>press the 'Transfer Plates To' button.<BR>
+(by selecting 'Test Only', the plates will be flagged as 'Test' Plates.
+</ul>
+
+<LI>Transferring within protocols - <BR>
+Often, within a protocol, while working with numerous plates, it is desired
+to 'Transfer' (in which it is assumed that the original plate is no longer
+active), or 'Aliquot' (in which the original plate is still available for
+further 'Aliquot' steps) DNA to new plates.  In this case, the transfer is
+completed automatically within the protocol handling.  New barcodes for the
+target plates are automatically generated, and a new plate set defined
+(consisting of a list of the new plates generated).  If transferring from 96 to
+384 well format, the plates are automatically transferred such that each
+group of 4 scanned plates is sent to the a,b,c, and d quadrants
+of a new  384-well plate. <BR>
+Note: in this case, the 384 well plate is actually recorded as 4 96-well
+plates co-existing on a single 384 well plate.  This allows the possibility
+of having 4 plates from different libraries existing on one 384 well plate.
+The new plate will then be identified by a 'Multiple Barcode' consisting of a concatenation of 4 plate ids.
+
+<LI>384-well -> 96-well distribution - <BR>
+If the original plate is a 384 well plate, the user may specify the number
+of 96-well quadrants that are available (defaults to 4).  In this case, the
+user may transfer any specified quadrants (a,b,c or d) as desired to a new
+96-well format as chosen from a pulldown menu.  4 target plates will
+automatically be created from each 384 well source plate (assuming all
+quadrants are transferred), and barcodes printed.
+
+</UL>
+<H2>Plate Tracking</H2>
+<P>
+Plate tracking (including the tracking of all laboratory processes applied
+to samples within plates) allows records to be maintained which represent
+essentially a lab history of everything that has happened to a sample in
+preparation for being sequenced.  This is particularly valuable to monitor
+the distribution of large numbers of tasks.  It also provides proves very
+useful in optimizing laboratory procedure by allowing specific processes,
+reagents, or equipment to be correlated with data quality - something that
+can quickly identify troublesome aspects such as contaminated reagents,
+malfunctioning equipment, or ineffective processes.
+<P>
+Plate Tracking as a whole may be broken down into a number of common tasks
+performed on a computer or utilizing a barcode scanner:
+<UL>
+<LI>Creation of Plates<P> 
+<LI>Protocol Specification<P>
+Detailed Protocols may be created and edited directly on the web using the
+Protocol interface which allows lab administrators to specify exactly what
+steps are to be monitored, and what types of information is expected.<BR>
+(eg. if a piece of equipment or a solution is to be scanned during a step)
+<LI>Protocol Tracking<P>
+Once a Protocol has been defined, lab users can then enter the protocol and
+are prompted step-by-step as they work through the protocol, generally
+requiring the user only to scan equipment or solutions used.  Within this
+protocol, users may add notes to plates, fail individual plates (while
+working with a large set to begin with), or skip steps if desired.
+<LI>Viewing Plate Information<P>
+At various times it is valuable for users to be able to view or edit information
+regarding plates that they are working with.  Some examples of this include:
+<UL>
+<LI>Plate History<P>
+Viewing a History of procedures which have been carried
+out on a plate (including those carried out on parent plates)
+<LI>Plate Ancestry<P>
+Viewing the ancestry of plates allows users to see
+all plates related to a given plate ranging from the original plate
+generated from the library to all daughter plates as they are transferred or
+aliquoted out.
+<LI>Tracking No Grows, Slow Grows and Unused Wells<P>
+This allows users to check or to edit particular wells which are noted to be 'No Grows' or 'Slow
+Grows', or to specify certain wells that are unused for some reason.  These
+values will normally be carried on to any daughter plates in the future.
+</UL>
+</UL>
+<H2>Adding comments or notes</h2>
+<p>
+Sometimes plates or sequence runs will be failed or annotated with a
+comment.  This can be done on a group of plates or sequence runs together by
+going to the same page used to delete entries for plates, or to the 'Check
+Runs Already Analyzed' for Sequence Runs which have already been analyzed.
+An option at the bottom of the page is available for annotating (or marking
+as failed), the Plates or Runs selected.
+ <P>
+ <B>Importing Plates:</B> When creating a new
+Plate you are now given the additional option of 'Importing' a plate.  In
+this case, you can create a plate that you expect to import from another
+source, giving it a specific name.  This will create a blank entry in the
+Clone table, indicating to BioInformatics (Yaron) that data for these Clones
+should be collected and fed into the 'Clone' table as required.
+<P>         	         
+<Img src='$Help_Image_dir/Import.png'>
+<HR>
+
+<p>
+<H1>Re-Arraying Plates</H1>
+<P>
+This process is a little complex, so that it should be done carefully until
+users are familiar with the procedure.
+<BR>
+Generally Re-Arraying consists of taking sample from a variety of plates and
+aliquoting it into a single target plate.  In this case the source well and
+plate id needs to be associated with the target plate id and well.
+<P>
+The Re-Arraying procedure may be partially automated by having external code
+create the template for re-arraying, though this is not normally included as
+part of the standard interface distribution.
+
+<P>
+<B>Viewing ReArray Requests:</B>
+<P>
+When ReArray requests are made by other means besides being specified using this interface
+(for example sometimes external developers may decide that a plate needs to be rearrayed, and
+may develop code to insert the rearraying information), 
+this information can be viewed by selecting the
+'View ReArray Requests' button from the Plates home page.  From here, you
+can print out the Well assignments, and/or assign these Requests to an
+actual Plate.<P><B>Note:</B><BR><B>'Requested'</b> ReArrays will be assigned
+to a new plate (and a new barcode generated).<BR><B>'Reserved'</B> ReArrays
+will be assigned to a plate whose barcode has already been reserved.  (A new
+plate will not be generated, but a barcode will be reprinted, and the plate
+status changed from 'Reserved' to 'Active') 
+<P>eg:<P>
+<Img src='$Help_Image_dir/Auto_Assign.png'>
+<HR>
+		       					          
+<P>
+<B>Set Up ReArray Plate:</B> This will allow
+a user to enter any number of plates and wells that are to be re-arrayed
+onto another plate, specifying the primer as well as the target and source
+well positions.  This will create a barcode for the new plate and keep track
+of where each well in the new plate originated
+   	        
+<P>
+<Img src='$Help_Image_dir/ReArrayed.png'>
+
+<h2>Basic Re-Array Types</h2>
+<P>
+<UL><LI><H3>On Order</H3> -
+This is a list of plates that are expected to be rearrayed, but the primers
+are not yet in.
+<P>
+<LI><H3>Reserved</H3> - This is a list of plates that are
+requested (via bioinformatics) for re-arraying.<Br>The primers in these
+cases should be available and ready for re-arraying.<BR>Target plates in
+this case have ALREADY been assigned and also have a 'Reserved' Status which
+will be set to 'Active' once the ReArray is specified as
+complete.<BR>
+<B>Assignment of these ReArrays does NOT create a new plate (it
+is already assigned)</B>
+<P>
+<LI><H3>Requested</H3> - This is a list of plates that are
+requested (via bioinformatics) for re-arraying.<Br>The primers in these
+cases should be available and ready for re-arraying.<BR>Target plates,
+however, are NOT yet defined since they have yet to be
+'Assigned'.<BR>
+<B>Assignment of these ReArrays creates a NEW plate</B>
+<P>
+<LI><H3>Assigned</H3> - This is a list of plates that were
+previously 'Requested', and have now been assigned to a plate.<Br>Target
+plate information should now be available for these.
+<P>
+<LI><H3>Re-Assigned</H3> - This is a list of plates that
+were previously assigned, but have been assigned again.
+<P>
+ <LI><H3>Manually Applied</H3> - This is a list of plates
+that were Re-Arrayed manually.<Br>ie. the plate to plate mapping was
+specified by the user for the entire plate.<BR>
+<B>Assignment of these ReArrays creates a NEW plate</B><BR>
+<P>
+<LI><H3>Completed</H3> - This is a list of plates that were
+Re-Arrayed, and have been processed (data analysis available).
+<P>
+<LI><H3>Aborted</H3> - This is a list of plates that were
+initially specified to be re-arrayed, but which are no longer to be
+completed.<BR>This may be because either the primers did not come in or some
+other reason further down the pipe.
+<P>
+</UL>
+        
+<h2>Re-Arraying instructions</h2>
+<P>
+To Re-Array a plate there are two standard methods:
+   <UL><LI>Manually setting up a re-array from
+another plate
+ <LI>Setting up a re-array based on a specified
+assignment
+</UL>
+
+(more help to be included...)
+<H2>Fixing data when the wrong plate was defined for use in a sequencing run</H2>
+
+Please follow the following steps in order to properly identify plates that
+have been incorrectly specified.
+
+<UL>
+<LI>Find plate which was incorrectly scanned or specified (and note where
+this occurred. (eg 'Pla1' during 'Step A')
+<LI>Find the correct id which should have been scanned or specified. (eg 'Pla2')
+<LI>Scan the incorrectly scanned plate and view its history. (in 'edit' mode)
+<LI>Change the plate id to the correct id ONLY for preparation steps which:
+<UL>
+<LI>
+identify the plate specifically<BR>
+(many will ONLY specify the plate SET - do NOT change these records) 
+<LI>AND ... occur AFTER the mis-naming and BEFORE it is transferred on to
+another plate.<BR>
+(there may not be any if it was transferred right away)
+</UL>
+<LI>Note the Plate SET number associated with the plate directly AFTER mis-labelling.
+<LI>Find any plate sets which include Pla1 (which SHOULD include Pla2 instead).
+<LI>Edit the Plate Set as required.<BR>
+   (Plate Sets which include daughter plates of Pla2 DO NOT have to be edited)
+
+<LI>IF Pla2 is Transferred to daughter plate(s):
+ <UL><LI>Find the target plate (plate it was transferred TO)
+     <LI>Edit the target plate to change the details as necessary.<BR>
+       (The plateID will remain unchanged, but other details will have to be
+changed)<BR>
+       ie FKParent_Plate__ID MUST be changed (to 'Pla2') <BR>
+       - as well as details such as Parent_Quadrant as necessary
+     <LI>(Repeat this process for each subsequent transfer as required).
+ </UL>
+<LI>Find the Sequence run associated with the mis-entered plate.
+<BR>(IF the name of the Sample sheet needs to be changed:)
+<UL><LI>Find the Samplesheet directory for the plate (as it SHOULD be named)
+<LI>Figure out what the name should be (ie. which version it will be)
+<LI>Rename the mis-named samplesheet to the correct name<BR>
+(directory will only need to be changed if the Library is different)
+<LI>Edit the name in the Sequence table to reflect the new samplesheet name.
+<LI>Note that the name has been changed in the Comments field.
+<LI>Find the .ab1 files in the mirror directory.  
+<LI>Rename the files in this directory as required.
+<LI>Re-analyze this run (update_sequence.pl)
+</UL>
+

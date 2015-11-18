@@ -1,0 +1,133 @@
+[database]
+(production)	dbase=sequence	host=lims-dbm	LIMS_user=Guest	LIMS_password=pwd	DB_user=viewer	debug=0
+(beta)	dbase=seqdev	host=lims-dbm	LIMS_user=Guest LIMS_password=pwd	DB_user=viewer	debug=0
+====
+[scope]
+
+#method=get_application_data
+(application)     limit=2	quiet=1
+library=LX002
+
+#method=get_sample_data
+(clone)	limit=2	quiet=1
+sample_id=776065
+
+#method=search_clone_plates
+(clone plate)	limit=2	quiet=1
+format=Glycerol	emp_name=dianap
+
+#method=get_concentration_data
+(concentration)     limit=2	quiet=1
+library=LX002
+
+#method=get_direction
+(direction)	limit=2	quiet=1
+library=MGC01
+
+#method=get_event_data
+(event)     limit=2	quiet=1
+library=LX002
+
+#method=get_extraction_data
+(extraction)     limit=2	quiet=1
+sample_id=4394962
+
+#method=get_Gel_data
+(gel)     limit=2	quiet=1
+library=LX001
+
+#method=get_libraries
+(libraries)	limit=2	quiet=1
+library=LX001
+
+#method=get_library_info
+(library info)     limit=2	quiet=1
+library=LX001
+
+#method=get_library_data
+(library)     limit=2	quiet=1
+library=LX002
+
+#method=get_oligo_data
+(oligo)     limit=4	quiet=1
+library=MGC01		plate_number=22
+
+#method=get_plate_count
+(plate count)     limit=2	quiet=1
+library=MGC01
+
+#method=get_plate_lineage
+(plate lineage)     limit=2	quiet=1
+plate_id=4    generation=2
+
+#method=get_plate_list
+(plate list)     limit=2	quiet=1
+sample_id=5386545
+
+#method=get_plate_reads
+(plate read)     limit=2	quiet=1
+plate_id=4	 well=A02
+
+#method=get_Plate_data
+(plate)	limit=1	quiet=1
+library=LX001 plate_number=1
+
+#method=get_Primer_data
+(primer)     limit=2	quiet=1
+primer=T7
+
+#method=get_read_data
+(read)     limit=2	quiet=1
+library=LX001		plate_number=10
+
+#method=get_read_count
+(read count)     limit=2	quiet=1
+project_id=5
+
+#method=get_Rearray_data
+(rearray)     limit=2	quiet=1
+library=LL005
+
+#method=get_Rearray_locations
+auto	get_Rearray_locations()
+#user: echang
+#module: Sequencing_API
+#method: get_Rearray_locations()
+#date: 2006-01-20
+#time: 1
+          '-rearray_ids' => [
+				291,
+				292
+                             ]
+----
+
+#method=get_run_data
+(run)     limit=2	quiet=1
+study=5	  plate_id=9052	plate_number=1
+library=MGC01		plate_number=22
+
+#method=get_SAGE_data
+(sage)	limit=1	quiet=1
+library=SMEH6
+
+#method=get_sample_data
+(sample)	limit=2	quiet=1
+library=LX001 plate_number=1	well=A07
+
+#method=get_sample_ids
+(sample ids)	limit=2 quiet=1
+library=LX001	plate_number=1
+
+#method=get_source_data
+(source)     limit=2	quiet=1
+project_id=5
+
+#method=get_submission_data
+(submission)     limit=2	quiet=1
+project_id=5
+
+#method=get_trace_files
+(trace files)	limit=2	quiet=1
+library=MGC01	list=1
+
+====

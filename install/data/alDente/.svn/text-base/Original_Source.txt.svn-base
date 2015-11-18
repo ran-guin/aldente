@@ -1,0 +1,2 @@
+Original_Source_ID	Original_Source_Name	Description	FK_Contact__ID	FKCreated_Employee__ID	Defined_Date	Sample_Available	FK_Pathology__ID	Pathology_Type	Pathology_Grade	Pathology_Stage	Invasive	FK_Strain__ID	Pathology_Occurrence
+1	DefOrS	NULL	NULL	NULL	0000-00-00		0	Undetermined	NULL	NULL	NULL	NULL	Unspecified

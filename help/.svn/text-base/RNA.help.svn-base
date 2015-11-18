@@ -1,0 +1,95 @@
+
+
+<h1>Handling RNA Sources and Extractions</h1>
+<h3>Overview</h3>
+<img src="$Help_Image_dir/RNA_Flow_Chart.png">
+<h3>Defining new RNA Source Type
+</h3>
+<ol>
+  <li>Go to 'Gene Expression' department home page.</li>
+  <li>Select 'RNA Source Type' from the 'Create New...' drop-down menu.</li>
+  <li>Complete the '<font>Add RNA_Source_Type Record..' form.<br>
+    </font></li>
+</ol>
+<h3>Receiving new RNA Original Source</h3>
+<ol>
+  <li>Go to 'Gene Expression' department home page.</li>
+  <li>Select 'RNA Original Source' from the 'Create New...' drop-down
+menu.</li>
+  <li>Complete the '<font>Original_Source Record..</font>' form.</li>
+  <li>Complete the '<font>RNA_Original_Source Record..</font>' form.</li>
+</ol>
+After you finished, you will receive a barcode for the RNA Original
+Source that starts with 'ORS' (e.g. ORS00000001).<br>
+<br>
+<h3>Obtaining information regarding RNA Original Source</h3>
+<ol>
+  <li>Scan the RNA original source barcode</li>
+</ol>
+You will end up in the RNA Original Source home page.<br>
+<img src="$Help_Image_dir/RNA_Original_Source_Home.png">
+<h3>Creating new RNA Source from existing RNA Original Source</h3>
+<ul>
+  <li>No existing RNA Source yet:</li>
+  <ol>
+    <li>Scan the RNA Original Source barcode.<br>
+    </li>
+    <li>In the RNA Original Source home page, click 'Create New RNA
+Source'.</li>
+    <li>Complete the '<font>Add Library Record..</font>' form.</li>
+    <li>Complete the '<font>RNA_Source Record..</font>' form.</li>
+    <li>Complete the '<font>Library_Container Record..</font>' form.</li>
+    <li>Complete the '<font>RNA_Tube Record..' form.</font></li>
+  </ol>
+  <li>Clone from an existing RNA Source:</li>
+  <ol>
+    <li>Scan the RNA Source to clone from.</li>
+    <li>Click on the 'Clone RNA Source' link in the home page.</li>
+    <li>Enter the new RNA Source name to clone to and then click
+'Clone'.</li>
+  </ol>
+</ul>
+Either way once you finished, you will receive a barcode for the RNA
+Source that starts with 'SRC' (e.g. SRC00000426). <br>
+<h3>Obtaining information regarding RNA Source</h3>
+There are 2 easy ways to accomplish this:<br>
+<ol>
+  <li>Enter the RNA Source name and press 'Scan'.</li>
+  <li>Scan the RNA Source barcode.<br>
+  </li>
+</ol>
+Either way you will get the home page of the RNA Source:<br>
+<br>
+<img src="$Help_Image_dir/RNA_Source_Home.png">
+<h3>Creating new Original Tubes<br>
+</h3>
+<ul>
+  <li>Create without existing extraction info:</li>
+  <ol>
+    <li>Scan the RNA Source.</li>
+    <li>Click on the 'Create New Original Tube' link in the home page.</li>
+    <li>Complete the '<font>Add Container Record..</font>' form.</li>
+    <li>Complete the '<font>Add Tube Record..</font>' form.</li>
+    <li>You will now receive a barcode for the tube and directed to the
+tube's home page.&nbsp; To add extraction info, click on the 'Add
+Extraction Details' link in the bottom of the page and complete the
+'<font>Add Extraction_Details Record..' form.</font></li>
+  </ol>
+  <li>Create using existing RNA extraction info:</li>
+  <ol>
+    <li>Scan the RNA Source.<br>
+    </li>
+    <li>Click on the 'Create New Original Tube with Info from Latest
+Extraction Sample' link in the home page.</li>
+    <li>Complete the '<font>Add Container Record..</font>' form.</li>
+    <li>Complete the '<font>Add Tube Record..</font>' form.</li>
+    <li>You will now receive a barcode for the tube and directed to the
+tube's home page.&nbsp; Note that extraction info is automatically
+created for you.&nbsp; You can edit the info by clicking on the 'Edit
+Extraction Details' link in the bottom of the page.</li>
+  </ol>
+</ul>
+<ul>
+  <br>
+  <br>
+</ul>

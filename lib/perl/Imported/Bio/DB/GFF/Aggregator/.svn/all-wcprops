@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Aggregator
+END
+transcript.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Aggregator/transcript.pm
+END
+alignment.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Aggregator/alignment.pm
+END
+none.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Aggregator/none.pm
+END
+clone.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Aggregator/clone.pm
+END

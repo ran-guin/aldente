@@ -1,0 +1,170 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Racks<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>Since release 2.1, the concept of rack hierachy is introduced to
+fit Gene Expression's needs.<br>
+  </li>
+</ul>
+<h3>Database Tables<br>
+</h3>
+<ul>
+  <li>Rack</li>
+  <ul>
+    <li>
+      <pre>+-------------------+------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-------------------+------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Rack_ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |      | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Equipment__ID&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; | MUL | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Rack_Conditions&nbsp;&nbsp; | enum('Temporary','Room Temperature','+4 degrees','-20 degrees','-40 degrees','-80 degrees','Garbage','Exported') | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Rack_Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | enum('Shelf','Rack','Box','Slot')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |      | MUL | Shelf&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Rack_Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(80)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; | MUL | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Rack_Alias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(80)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; | MUL | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKParent_Rack__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; | MUL | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-------------------+------------------------------------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+    </li>
+    <ul>
+      <li>Fields:</li>
+      <ul>
+        <li>FK_Equipment__ID - this field references the Equipment_ID
+that the rack belongs to, except in the case where the Rack has a
+Rack_Conditions of 'Room Temperature' and Rack_Type of 'Shelf'.</li>
+        <li>Rack_Type - This denotes the type of rack:</li>
+        <ul>
+          <li>Shelf - A shelf inside a freezer (this is the type of
+Rack we have for Sequencing lab)<br>
+          </li>
+          <li>Rack - The metal rack that sits inside a shelf.<br>
+          </li>
+          <li>Box - The paper-made box that lives inside a metal rack.<br>
+          </li>
+          <li>Slot - The invididual slots/wells inside a paper
+box.&nbsp; Typically a box will have 81 slots (From the slot A1 to I9)</li>
+        </ul>
+        <li>Note that the hierachy for Rack_Type is:</li>
+        <ul>
+          <li>Shelf &gt; Rack &gt; Box &gt; Slot</li>
+        </ul>
+        <ul>
+          <li>This is enforced such that you cannot create a rack type
+that is above the current level of a rack.&nbsp; For instance, you
+cannot create a shelf inside a rack, nor you can create a Rack inside a
+box.</li>
+        </ul>
+        <li>Rack_Name - The naming convention is:</li>
+        <ul>
+          <li>Shelf - the prefix 'S' followed by a number (e.g. S1)<br>
+          </li>
+          <li>Rack - the prefix 'R' followed by a number (e.g. R2)</li>
+          <li>Box - the prefix 'B' followed by a number (e.g. B3)</li>
+          <li>Slot - the actual slot/well number (e.g. a1, d2, i9, etc.)</li>
+        </ul>
+        <li>Rack_Name can either be auto-generated by the system or
+explicitly specified by the user.&nbsp; If auto-generated, the system
+will grab the next available number of the rack type inside that
+particular parent rack.&nbsp;&nbsp; So for instance, if we are creating
+a box inside a rack which already has 3 boxes, the new box will be
+named 'B4'.</li>
+        <li>Rack_Alias - This can be one of the following:</li>
+        <ul>
+          <li>Shelf - This is simply the concatenation of
+Equipment.Equipment_Name, Rack.Rack_Conditions and
+Rack.Rack_Name.&nbsp; e.g. F80-3 (-80 degrees) S1</li>
+          <li>Rack - This is the concatenation of the parent's
+Rack_Alias and its own Rack_Name e.g. <span class="medium">F80-3 (-80
+degrees) S44-R2</span></li>
+          <li><span class="medium">Box - </span><span class="medium">This
+is the concatenation of the parent's Rack_Alias and its own Rack_Name
+e.g. <span class="medium">F80-3 (-80 degrees) S44-R2-B3</span></span></li>
+          <li><span class="medium"><span class="medium">Slot - </span></span><span
+ class="medium"><span class="medium">This is the concatenation of the
+parent's Rack_Alias and its own Rack_Name e.g. <span class="medium">F80-3
+(-80 degrees) S44-R2-B3-d2</span></span></span></li>
+        </ul>
+        <li><span class="medium"><span class="medium"><span
+ class="medium">FKParent_Rack__ID - This is empty for shelves.&nbsp;
+For racks that have Rack_Type of 'Rack', 'Box' and 'Slot', this
+references the Rack_ID of the parent rack.<br>
+          </span></span></span></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h3>Implementation Details</h3>
+<ul>
+  <li>Assigning plate/tube to a rack:</li>
+  <ul>
+    <li>Scan in 'PLA40000RAC145' - a page that with old and new rack
+info will be shown and user is prompted to confirm the move.</li>
+    <li>This way also allows user to assign a tube to a slot.&nbsp; To
+do so, simply scan in the PLA barcode of the tube and the RAC barcode
+of the <span style="font-weight: bold;">box</span> that the slot
+belongs to - the resulting page will allow you to specify which slot
+the tube should go to:</li>
+  </ul>
+</ul>
+<div style="margin-left: 80px;"><img
+ src="$Help_Image_dir/Move_Tube.png" title=""
+ alt="Move_Tube"></div>
+<ul>
+  <ul>
+    <li>Alternatively, a tube can also be assigned to a slot when it is
+created (again, you specify the RAC barcode of the box from the popup
+menu and specify the slot in the text field):</li>
+  </ul>
+</ul>
+<div style="margin-left: 80px;"><img
+ src="$Help_Image_dir/Assign_New_Tube_To_Rack.png"
+ title="" alt="Assign_New_Tube_To_Rack"></div>
+<ul>
+  <li>Batch assign plates/tubes to rack:</li>
+  <ul>
+    <li>Simply scan in multiple PLA barcodes followed by the RAC
+barcode (e.g. PLA40000PLA40001PLA40002RAC145)<br>
+    </li>
+  </ul>
+  <li>View items inside a rack:</li>
+  <ul>
+    <li>Scan in the RAC barcode and click on the 'Show Rack Contents'
+button will reveal what's inside the rack.</li>
+    <li>For racks that are of type box, it will also show the
+individual slots.&nbsp; Items that are associated to the box directly
+will show up on the top, whereas items assigned to the slots will be
+shown inside the corresponding slots:</li>
+  </ul>
+</ul>
+<div style="margin-left: 80px;"><img
+ src="$Help_Image_dir/Show_Rack_Contents.png"
+ title="" alt="Show_Rack_Contents"></div>
+<ul>
+  <li>Printout of slot barcodes:</li>
+  <ul>
+    <li>The barcodes for the slots (i.e. a1 to i9) can be printed on a
+sheet of paper.&nbsp; To do so, simply go to 'Equipment' home page
+-&gt; 'Print Slot Barcodes' button.<br>
+    </li>
+  </ul>
+</ul>
+<span class="medium">
+<h3>Coding</h3>
+<ul>
+  <li>alDente::Rack:</li>
+  <ul>
+    <li>move_Items() - Handles the moving of items from one rack to
+another one.<br>
+    </li>
+  </ul>
+  <ul>
+    <li>Update_Rack_Info() - This method updates the Rack_Alias on any
+rack based on its rack name and the parent rack alias.&nbsp; Upon
+changing of the alias of a rack, the function will also recursively
+find all its children racks and update their aliases as well.<br>
+    </li>
+    <li>Show_Rack_Contents() - Display contents inside a rack<br>
+    </li>
+  </ul>
+</ul>
+<br>
+</span>

@@ -1,0 +1,5 @@
+Grp_ID	Grp_Name	FK_Department__ID	Access	Grp_Type	Grp_Status	FK_DB_Login__ID
+1	LIMS Admin	1	Admin	Lab Admin	Active	14
+2	Internal	3	Lab	Shared	Active	20
+3	External	2	Guest	Public	Active	17
+4	Public	2	Guest	Public	Inactive	17

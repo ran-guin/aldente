@@ -1,0 +1,47 @@
+<h1>What is a Project?</H1>
+A Project generally consists of a Library or Group of DNA Libraries that fall 
+under a single source of Funding, 
+and which may be associated with a particular collaborator.
+
+<h2>What sort of information do we store for a Project?</H2>
+Typically, each Project will have a:
+<UL>
+<LI>Name - a brief text name simply used to identify the Project
+<LI>Description - a more informative description in what constitutes the
+project
+<LI>Path - the directory path under which data for this project will be
+stored<BR>
+ (generally this may be defined as the user wishes - use no spaces in this
+field)
+<LI>Funding - a link to the specific funding source used to pay for this
+project
+<LI>Type - this may be used to group projects together by type (optional)
+<LI>Status - 'Active','Inactive',or 'Completed'
+<LI>Initiation and Completion Dates
+</UL>
+<BR><A Href=$homelink&Table+Info=Project>View Project Fields</A>
+
+<h2>How do I define a Project</H2>
+A Project can be easily defined by first clicking on the 'Libraries' icon
+after logging into the main page.  From here, by clicking on 'Projects' at
+the top of the page, one is given a list of current projects and given the
+option to add a new Project.<BR>
+You are then given a form to fill out which will include the information
+indicated above.  Generally this should be filled in as completely as
+possible.  Though it is sometimes easier to leave information blank at first
+with the intention of filling it in at a later date, this is discouraged as
+this later step is all too often neglected, and the database remains partially
+incomplete.
+<A Href='$homelink&Help_Image=Project_form.png'>New Project Form</A>
+
+<h2>How can I view information on a Project?</H2>
+By simply clicking on the 'Library' icon at the top of the page, you will be
+given a choice to view various items including Projects at the top of the
+page.<BR>Clicking on the 'Projects' hyperlink will display a list of current
+projects.  (You may from here continue to add, edit or delete projects from
+this list).
+
+<h2>How can I change information on a Project?</H2>
+By viewing the projects as indicated above, you will be able to find records
+that you would like to update.  From this page, you may then simply click on
+the 'Edit Project' button to search and edit Project information as required.

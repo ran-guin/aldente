@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/103571/alDente/trunk/install/data/UTM
+END
+Site.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/103571/alDente/trunk/install/data/UTM/Site.sql
+END
+Site_Image.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/103571/alDente/trunk/install/data/UTM/Site_Image.sql
+END
+Tour.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/103571/alDente/trunk/install/data/UTM/Tour.sql
+END
+Tour_Type.sql
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/103571/alDente/trunk/install/data/UTM/Tour_Type.sql
+END

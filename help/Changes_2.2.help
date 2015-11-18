@@ -1,0 +1,106 @@
+<h2>New Changes for Release 2.20
+(Nov / 2004)</h2>
+<ul>
+</ul>
+<h3>General Changes</h3>
+<ul>
+<LI>Solution Handling
+	<UL>
+	<LI>Dispense function added (no barcode generated)
+	<LI>Aliquot units allows for ul,ug etc.
+	<LI>General information displayed on homepage
+	</UL>
+<LI>Plate/Tube Handling
+	<UL>
+	<LI>Separate Transfer / Aliquot options
+	<LI>Allow Export button
+	<LI>Track Aliquot / Transfer volumes (for BOTH Plates and Tubes)
+	<LI>Decant option (remove volume from tube / wells)
+	<LI>Track Current Volume of Contents
+	<LI>Define Sample Alias button
+	<LI>Track Empty, Problematic Wells
+	</UL>
+<LI>Equipment Handling
+	<UL>
+	<LI>Add general Info table on homepage
+	</UL>
+<LI>Chemistry Calculator
+	<UL>
+	<LI>Enable automatic initialization of parameters.
+	<LI>Enable saving copy as new brew
+	</UL>	
+<LI>Protocols
+	<UL>
+	<LI>Tidy up interface for defining protocols
+	<LI>Add transfer volume tracking
+	<LI>Allow multiple solution tracking (eg. apply different solutions to two halves of plate set)
+	</UL>
+<LI>Rearrays
+	<UL>
+	<LI>Enhancement: Created Rearray homepage - moved all rearray functionality to this page
+	<LI>Enhancement: Rebuilt rearray interface for ease of use
+	<LI>Enhancement: Can now select rearray operations on multiple rearrays (using checkboxes)
+	<LI>Enhancement: Allowed the QPIX to do double-dipped, unordered rearrays
+	<LI>Enhancement: Allowed user to abort reserved and on order rearrays (limited capability)	
+	<LI>Enhancement: Speed boost - added missing index.
+	<LI>New feature: remapping primer plates to match rearrays
+	<LI>New feature: multiprobe remapping of primer plates
+	<LI>New feature: search capability for rearrays
+	<LI>New feature: multiprobe rearray capability
+	<LI>New feature: rearray summary page
+	<LI>
+	</UL>
+<LI>Primer Plates
+	<UL>
+	<LI>New primer type: Amplicon
+	<LI>New field: Primer Plate notes
+	<LI>Enhancement: Changed direction field to 'Forward' and 'Reverse' (rather than 5 and 3) for less ambiguity
+	<LI>Enhancement: Enabled mixed-type primer plate orders (amplicons and sequencing oligos on the same plate)
+	<LI>Enhancement: New status - 'To Order'
+	<LI>New feature: remapping primer plates to match rearrays (and creating new solution ids for the remapped plates)
+	<LI>New feature: Created a central viewing area for primer plates, with minor search capability
+	<LI>New feature: Allowed regeneration of primer orders through the LIMS interface
+	<LI>New feature: Users can now view the status of ordered custom primer plates
+	<LI>
+	</UL>
+</UL>
+
+<h2>General Fixes</H2>
+<UL>
+<LI>various barcode Printing issues fixed
+<LI>Box numbering correction
+<LI>Rack alias generation adjusted
+<LI>Ensure Box extraction being tracked properly
+<LI>Ensured that permissions will be checked when sample sheets are created
+<LI>Rebuilt multirow-edit form to make it faster and easier to use
+<LI>
+</UL>
+
+<h2>Extra Requests handled</H2>
+<UL>
+<LI>spatial calibration issue on 3730-6 resolved
+<LI>Trace submissions generated for Bovine BACs
+<LI>4 rearrays from WS999 and all WS888 rearrays backfilled
+<LI>New feature: alpha code for receiving TTR samples
+<LI>
+</UL>
+
+<H2>API updates</H2>
+<UL>
+<LI>New feature: Added get_Rearray_locations function.
+<LI>New feature: Add_Plate function
+<LI>Enhancement: Expanded order_custom_primer_plate function to accomodate amplicon and mixed plates.
+<LI>Enhancement: expanded capabilities of get_sample_ids 
+<LI>Speed up queries using study.  (also allow usage of either study_name or study_id).
+</UL>
+
+
+<h2>Database changes</h2>
+<UL>
+<LI>Revising RNA_Source Library structure to simplify and make more powerful 
+<LI>New feature: Added SDB-level triggers - can use Perl or straight SQL
+<LI>Maintenance: Redesigned pooling.
+<LI>
+</UL>
+
+

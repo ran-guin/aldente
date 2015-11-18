@@ -1,0 +1,139 @@
+alDente
+*****
+
+This package is intended for use within a sequence based research lab, and contains modules used for interacting with a mySQL database.
+
+Subdirectories that should be included with this package include:
+
+bin/ 		- directory of executable commands
+cgi-bin/	- directory of web-pagesa
+root/		- directory of custom programs generally suggested to be set up by local administrator
+help/		- directory of help pages/manual for use of package.
+css/		- directory of custom style sheets.
+js/		- directory of javascript files
+lib/		- directory of library files (modules in lib/perl/)
+
+General Installation Instructions
+*********************************
+
+Before installing, you will need to aquire the following information.
+
+1. Ensure that the following perl modules of the specified versions are installed on the server:
+Benchmark 	 1.06
+Bio::Tools::BPbl2seq 	1.18
+Carp 	1.03
+CGI 	3.05
+CGI::Carp 	1.28
+Cwd 	3.17
+Data::Dumper 	2.121
+Date::Calc 	5.4
+DBI 	1.40
+Exporter 	5.58
+File::Find 	1.07
+File::stat 	1.00
+FindBin 	1.44
+GD 	2.32
+GD::Graph 	1.4307
+GD::Graph::bars 	1.25.2.4
+GD::Graph::points 	1.13
+GD::Graph::lines 	
+GD::Graph::hbars 	
+GD::Graph::linespoints 	
+GD::Graph::area 	
+GD::Graph::mixed 	
+GD::Graph::pie 	
+GD::Graph::xylines 	
+GD::Graph::xypoints 	
+GD::Graph::xylinespoints 	
+Getopt::Long 	2.34
+Image::Magick 	6.0.7
+Imported::Barcode::Code128 	
+Imported::XML::Dumper 	0.71
+Imported::XML::Simple 	2.12
+JSON 	1.07
+MIME::Base32 	1.01
+MIME::Base64 	3.01
+POSIX 	1.08
+Safe 	2.11
+SelfLoader 	1.0904
+SOAP::Lite 	
+Spreadsheet::ParseExcel 	0.2602
+Spreadsheet::ParseExcel::SaveParser 	0.05
+Spreadsheet::WriteExcel 	0.42
+Statistics::Descriptive 	2.6
+Storable 	2.15
+Term::ReadKey 	2.30
+Test::Builder 	0.33
+Test::More 	0.64
+Test::Simple 	0.64
+Time::HiRes qw(gettimeofday tv_interval) 	1.87
+URI::Escape 	3.22
+XML::Simple 	2.12
+YAML 	0.58
+
+2. Ensure that MySQL is installed on the server
+
+3. Ensure that Apache is installed on the server
+
+4. Please determine this information before continuing.
+
+- barcoding option ?
+
+- name of directory in which to store data
+ (this may be in a different location for space considerations, but will remain local unless otherwise specified)
+ (to change this at a future date, see information on 'data_path' under 'Editing Settings' help)
+
+Once the basic package has been downloaded and uncompressed, please follow the following procedures:
+
+1 - login as alDente
+
+2 - run bin/setup.pl
+
+Database Information that should be updated right away.
+*******************************************************
+
+The following information can be added at any time during use of this system,
+but typically much of this information will be available at the outset.
+
+Equipment 
+*********
+
+please enter new equipment (particularly sequencers if they are to be used)
+
+Employee
+********
+
+please enter a list of Employees, using Employee_Name as the 'Alias' field, 
+
+Plate_Format
+************
+
+please add new Plate_Formats for any plates that you will be using.
+
+Vectors
+*******
+
+acquire Vector sequence information for any vectors that you may use.
+- Place a standard fasta file in the HOME_DATA_DIR/VECTOR/ directory for each vector.
+- Add Vector to database (indicating filename used in this directory).
+
+Special information that may be added if desired
+************************************************
+
+Standard Solutions:
+
+please see the 'Standard_Solution' section of information on the Chemistry Calculator.
+
+Machine_Defaults:
+
+if using sequencers, please set default values in Machine_Defaults table for those sequencers in the database.
+set Dye_Chemistry values for standard dye chemistries expected.
+
+
+SQL files of the sequence database
+******************************************
+The sql files are under conf/sql.
+
+The table definitions of the sequence database are stored in a single 'seqinit.sql' file.
+
+The preset data of the sequence database are stored in the "*.txt" files. Each file contains the tab-delimited data for the table specified in the file name. 

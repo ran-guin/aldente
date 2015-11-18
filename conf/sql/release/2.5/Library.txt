@@ -1,0 +1,2 @@
+Library_Source_Name	Library_Type	Library_Obtained_Date	Library_Source	Library_Name	External_Library_Name	Library_Description	FK_Project__ID	Library_Notes	Library_FullName	FKParent_Library__Name	Library_Goals	Library_Status	FK_Contact__ID	FKCreated_Employee__ID	FK_Grp__ID	FK_Original_Source__ID	Library_URL	Starting_Plate_Number	Source_In_House	Requested_Completion_Date	FKConstructed_Contact__ID
+\N	Sequencing	0000-00-00	\N	TEST1		\N	1	\N	Test Library	\N	\N	In Production	1	4	3	1	\N	1	Yes	\N	0

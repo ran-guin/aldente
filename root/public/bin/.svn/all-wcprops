@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin
+END
+beta.conf
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/beta.conf
+END
+install.pl
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/install.pl
+END
+test.conf
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/test.conf
+END
+external.conf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/external.conf
+END
+rsanaie.conf
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/rsanaie.conf
+END
+production.conf
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/root/public/bin/production.conf
+END

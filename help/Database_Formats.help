@@ -1,0 +1,70 @@
+<h1>Formats</h1>
+
+<H2>Table Formats</H2>
+Generally Table names should represent an item 
+(preferably with records that represent a physical item like 'Equipment'),
+or at least a fairly solid concept (like an event).
+Eg:<UL>
+<LI>Plate
+<LI>Employee
+<LI>Organization
+<LI>Preparation
+<LI>Clone
+</UL>
+<P>
+Some table names are used to define commonly referred to details following a standard structure.<BR>
+Eg:<UL>
+<LI>Plate_Format
+<LI>Parameter
+</UL>
+<P>
+Some tables may refer to groups of items reducing the need for comprehensive records to be stored for each of the items in a list.<BR>
+Eg:<UL>
+<LI>Plate_Set
+<LI>Sequence_Batch
+</UL>
+<P>
+Some tables will also exist as a joining table to establish a 'many-to-many' relationship.  These tables (unless an obvious name makes sense) should generally be named like 'Table1Table2', making it obvious to an ignorant administrator (or an automated process) what the table is connecting.<P>
+Eg:<UL>
+<LI>Collaboration (a meaningful name connecting Project with Organization)
+<LI>VectorPrimer
+</UL>
+<P>
+Table names generally take on a singular tense (with exceptions where names are reserved - eg. 'Order')
+<P>
+<H2>Field Names</H2>
+<UL>
+<LI>
+ID fields = TableName_ID (eg. 'Employee_ID' in 'Employee' Table)
+<LI>
+Foreign Keys = FK(optional_string)_TableName__ID <P>
+eg: <BR>
+FKParent_Plate__ID  points to -> Plate.Plate_ID
+</UL>
+This convention allows automated processes to understand table relationships unambiguously.
+<P>
+Fields referencing other databases should be named:<BR> 
+FDK(optional_string)_TableName__ID <P>
+(This is a convention that has not been fully implemented, but this format should allow for easy scalability in the future.  (Note this would be used in conjunction with a more specific definition of the foreign database used defined somewhere in the default parameter code).
+<P>
+Field names should also be consistent in how they are named.
+While popular opinion is divided on whether all of the ID fields should be called 'ID' for simplicity, or whether they should all be more specific (like 'Employee_ID') for specificity, we have opted (for better or for worse) for the latter format.  It does have the advantage of allowing code to be searched for references to specific fields much more easily, making it much easier for developers.  To be consistent, this should be the naming convention used for fields.  (eg. the field 'Date' should be replaced by something more specific like 'Event_Date')
+<P>
+<h2>Sequence_Subdirectory</h2>
+This is a field in the Sequence table that is formatted to provide more specific information:
+<P>
+(LibraryName - 5 characters)(PlateNumber)(Plate Quadrant - optional).(Chemistry_Code)(.version - as required)
+<P>
+eg. 'CN00113a.B7.2' -> 'CN001' Library, Plate 13a, Chemistry Code = 'B7', version '.2'
+<P>
+<h2>Primer Names</H2>
+<P>
+This is a non-standard foreign key.  Names should match IDENTICALLY with the Stock_Name in the stock table.
+<BR>
+This way, Primer information can be tied directly to the appropriately named reagents.
+<P>
+
+
+
+
+

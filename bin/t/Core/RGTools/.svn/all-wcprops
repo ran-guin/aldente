@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/103313/alDente/trunk/bin/t/Core/RGTools
+END
+Unit_Test.t
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Unit_Test.t
+END
+HTML_Parser.t
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/HTML_Parser.t
+END
+RGmath.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/RGmath.t
+END
+Summary.htm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Summary.htm
+END
+Graphs.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Graphs.t
+END
+Process_Monitor.t
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/103313/alDente/trunk/bin/t/Core/RGTools/Process_Monitor.t
+END
+Conversion.t
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/89556/alDente/trunk/bin/t/Core/RGTools/Conversion.t
+END
+FTP.t
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Core/RGTools/FTP.t
+END
+Table_Content_Parser.t
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Table_Content_Parser.t
+END
+Views.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Views.t
+END
+Reads.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Reads.t
+END
+Barcode.t
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/99619/alDente/trunk/bin/t/Core/RGTools/Barcode.t
+END
+RGIO.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/102830/alDente/trunk/bin/t/Core/RGTools/RGIO.t
+END
+Web_Form.t
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Web_Form.t
+END
+Graph.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Graph.t
+END
+Summary1.htm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Summary1.htm
+END
+Directory.t
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Directory.t
+END
+RGWeb.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/RGWeb.t
+END
+Object.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Object.t
+END
+String.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/String.t
+END
+GGraph.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Core/RGTools/GGraph.t
+END
+Code.t
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/87816/alDente/trunk/bin/t/Core/RGTools/Code.t
+END
+Base_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Base_App.t
+END
+HTML_Table.t
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/98670/alDente/trunk/bin/t/Core/RGTools/HTML_Table.t
+END
+Read.t
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Core/RGTools/Read.t
+END

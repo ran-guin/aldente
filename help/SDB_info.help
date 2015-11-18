@@ -1,0 +1,50 @@
+<h1>Automated Laboratory Data Entry 'N Tracking Environment</h1>
+<P>
+This interface is primarily used for the purposes of:
+<UL>
+<LI><h2>Tracking and Monitoring procedures within a lab environment</H2>
+This generally involves monitoring:
+<UL><LI>creation and transferring of sample Plates
+<LI>receipt of Stock (Reagents, Equipment, etc) and monitoring of Stock levels
+<LI>the mixing of reagents into various solutions
+<LI>the application of lab processes to groups of plates<BR>
+	(eg. using equipment and/or applying solutions)
+<LI>Equipment Maintenance Procedures
+<LI>ongoing requesting and monitoring of Sequencing Runs
+</UL>
+In each case, a detailed record is maintained of what procedure was carried out by whom at what time and applied to which samples.
+<P>
+Because all of the steps in the generation of data are also monitored carefully, it is also possible to quickly identify elements in the process which may be tied to poor data for the purpose of trouble-shooting (such as identifying contaminated solutions, or equipment that may be malfunctioning without notice), by correlating the use of various reagents, equipment or procedures with data quality.
+
+<LI><H2>Error Checking</H2>
+By having information on most elements in the laboratory, checks can be made during lab actions that can minimize mistakes taking place in the lab.  Some of the things which may be checked automatically - either preventing users from continuing or delivering 'Warning' messages include:
+<UL>
+<LI>ensuring names of expected solutions match specified format
+<LI>ensuring correct primer has been applied to plates in a given library
+<LI>ensuring correct antibiotics, inducers, and substrates are applied to samples based on their library
+</UL>
+
+<LI><H2>Lab Automation</H2>
+While there is some time required to use scanners within the lab, other time is saved by simplifying commonly used processes such as Sample Sheet Generation.<BR>
+To generate sample sheets, users need only scan the plates to be used and the sequencer.<BR>
+The database determines which primers have been applied to the plates, sending a warning if more than one is found, or if an unexpected primer was used.<BR>
+The default parameters are set and the name of the plates, primers, current matrix and buffer are determined and displayed to the user.
+<BR>By pressing a single button the user can set in motion the code used to generate this configuration file, which will then be transferred to the sequencer and the run details recorded in the database.
+
+<LI><H2>Data Acquisition</H2>
+The bulk of the data that is actually stored in the database is derived from
+Sequence Runs.  By storing this data in a database, it allows the immediate
+viewing of data a variety of forms that allow for sophisticated
+representations of this data to be displayed as reports or for ongoing
+quality monitoring.
+
+<LI><H2>Automated Processes</H2>
+A number of automated processes can be performed regularly which help ensure high throughput of quality data.  Such processes include:
+<UL>
+<LI>Sequence Run Analysis (which runs regularly to perform analysis on any
+pending sequence runs)
+<LI>Diagnostic monitoring (which sends emails warning of elements that are noted to be correlated to poor quality data)
+<LI>Stock monitoring - (which sends emails to warn of low levels of certain items of stock)
+</UL>
+
+</UL>

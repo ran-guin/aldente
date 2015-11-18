@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Plugins
+END
+Qubit
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/80317/alDente/trunk/install/patches/Plugins/Qubit
+END
+Fingerprinting
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Fingerprinting
+END
+Spectrophotometer
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Spectrophotometer
+END
+Help
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Help
+END
+Software_Analysis
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Software_Analysis
+END
+Orders
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Orders
+END
+Sequencing
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Sequencing
+END
+Ion_Torrent
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Ion_Torrent
+END
+Patient
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Patient
+END
+Indexed_Run
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Indexed_Run
+END
+Biology
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Biology
+END
+miRNA
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/miRNA
+END
+Microarray
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Microarray
+END
+LS_454
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/LS_454
+END
+NCBI
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/NCBI
+END
+Bioanalyzer
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Bioanalyzer
+END
+BioSpecimens
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/BioSpecimens
+END
+Experiment
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Experiment
+END
+Alignment_Analysis
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Alignment_Analysis
+END
+Cluster
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Cluster
+END
+Genomic
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Genomic
+END
+Raindance
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/86276/alDente/trunk/install/patches/Plugins/Raindance
+END
+JIRA
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/JIRA
+END
+SRA
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/SRA
+END
+Mapping
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Mapping
+END
+Lab
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Lab
+END
+EDACC
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/EDACC
+END
+Capillary_Sequencing
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Capillary_Sequencing
+END
+Multiwell_Plate
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Multiwell_Plate
+END
+QPCR
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/88036/alDente/trunk/install/patches/Plugins/QPCR
+END
+Gel
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/94618/alDente/trunk/install/patches/Plugins/Gel
+END
+BWA
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/BWA
+END
+CLIPR
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/CLIPR
+END
+Issue_Tracking
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Issue_Tracking
+END
+Illumina
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Illumina
+END
+SOLID
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/SOLID
+END
+Cap_Seq
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Cap_Seq
+END
+Obsolete
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Obsolete
+END
+AATI
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Plugins/AATI
+END
+Taxonomy
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Plugins/Taxonomy
+END

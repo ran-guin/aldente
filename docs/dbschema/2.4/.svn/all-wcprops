@@ -1,0 +1,1367 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4
+END
+sequence.DB_Login.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.DB_Login.structure.sql
+END
+sequence.EmployeeSetting.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.EmployeeSetting.structure.sql
+END
+sequence.Tray.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Tray.structure.sql
+END
+sequence.Parameter.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Parameter.structure.sql
+END
+sequence.WorkPackage_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.WorkPackage_Attribute.structure.sql
+END
+sequence.Maintenance.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Maintenance.structure.sql
+END
+sequence.Message.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Message.structure.sql
+END
+sequence.Library_Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Library_Source.structure.sql
+END
+sequence.WorkLog.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.WorkLog.structure.sql
+END
+sequence.How_To_Object.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.How_To_Object.structure.sql
+END
+sequence.Extraction_Details.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Extraction_Details.structure.sql
+END
+sequence.Plate_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Attribute.structure.sql
+END
+sequence.Library_Plate.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Library_Plate.structure.sql
+END
+sequence.cDNA_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.cDNA_Library.structure.sql
+END
+sequence.Funding.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Funding.structure.sql
+END
+sequence.ReArray_Plate.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ReArray_Plate.structure.sql
+END
+sequence.Plate_Prep.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Prep.structure.sql
+END
+sequence.ViewOutput.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ViewOutput.structure.sql
+END
+sequence.Plate_PrimerPlateWell.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_PrimerPlateWell.structure.sql
+END
+sequence.SequenceRun.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SequenceRun.structure.sql
+END
+sequence.Service_Contract.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Service_Contract.structure.sql
+END
+sequence.Orders.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Orders.structure.sql
+END
+sequence.Child_Ordered_Procedure.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Child_Ordered_Procedure.structure.sql
+END
+sequence.Printer_Group.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Printer_Group.structure.sql
+END
+sequence.Clone_Status_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Status_old.structure.sql
+END
+sequence.Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Attribute.structure.sql
+END
+sequence.Lab_Protocol_Pipeline.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Lab_Protocol_Pipeline.structure.sql
+END
+sequence.Primer_Plate_Well.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer_Plate_Well.structure.sql
+END
+sequence.Project.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Project.structure.sql
+END
+sequence.RunBatch.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.RunBatch.structure.sql
+END
+sequence.Submission_Info.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission_Info.structure.sql
+END
+sequence.Original_Source_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Original_Source_Attribute.structure.sql
+END
+sequence.DB_Form.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.DB_Form.structure.sql
+END
+sequence.Misc_Item.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Misc_Item.structure.sql
+END
+sequence.Clone_Alias.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Alias.structure.sql
+END
+sequence.Sample_Pool.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sample_Pool.structure.sql
+END
+sequence.Setting.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Setting.structure.sql
+END
+sequence.Matched_Funding.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Matched_Funding.structure.sql
+END
+sequence.Lab_Protocol.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Lab_Protocol.structure.sql
+END
+sequence.EST_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.EST_Library.structure.sql
+END
+sequence.Plate_Set.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Set.structure.sql
+END
+sequence.Primer_Plate.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer_Plate.structure.sql
+END
+sequence.Protocol_Tracking.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Protocol_Tracking.structure.sql
+END
+sequence.Original_Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Original_Source.structure.sql
+END
+sequence.Version.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Version.structure.sql
+END
+sequence.Solution_Info.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Solution_Info.structure.sql
+END
+sequence.GrpLab_Protocol.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrpLab_Protocol.structure.sql
+END
+sequence.GrpEmployee.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrpEmployee.structure.sql
+END
+sequence.Collaboration.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Collaboration.structure.sql
+END
+sequence.Clone_Sequence.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Sequence.structure.sql
+END
+sequence.UseCase.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.UseCase.structure.sql
+END
+sequence.LibraryProgress.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryProgress.structure.sql
+END
+sequence.DBField.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.DBField.structure.sql
+END
+sequence.Source_Pool.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Source_Pool.structure.sql
+END
+sequence.Sample_Alias.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sample_Alias.structure.sql
+END
+sequence.Transposon_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Transposon_Library.structure.sql
+END
+sequence.Sequencer_Type.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sequencer_Type.structure.sql
+END
+sequence.Ordered_Procedure.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Ordered_Procedure.structure.sql
+END
+sequence.Account.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Account.structure.sql
+END
+sequence.Standard_Solution.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Standard_Solution.structure.sql
+END
+sequence.GCOS_Config_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GCOS_Config_Attribute.structure.sql
+END
+sequence.Stage.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Stage.structure.sql
+END
+sequence.Vector_Type.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Vector_Type.structure.sql
+END
+sequence.Band.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Band.structure.sql
+END
+sequence.Pipeline.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Pipeline.structure.sql
+END
+sequence.Change_History.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Change_History.structure.sql
+END
+sequence.Prep.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Prep.structure.sql
+END
+sequence.Enzyme.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Enzyme.structure.sql
+END
+sequence.Grp_Relationship.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Grp_Relationship.structure.sql
+END
+sequence.Issue_Detail.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Issue_Detail.structure.sql
+END
+sequence.View.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.View.structure.sql
+END
+sequence.Lane.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Lane.structure.sql
+END
+sequence.GCOS_Config.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GCOS_Config.structure.sql
+END
+sequence.Notice.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Notice.structure.sql
+END
+sequence.Microtiter.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Microtiter.structure.sql
+END
+sequence.Extraction_Sample.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Extraction_Sample.structure.sql
+END
+sequence.LibraryPrimer.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryPrimer.structure.sql
+END
+sequence.Agilent_Assay.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Agilent_Assay.structure.sql
+END
+sequence.Source_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Source_Attribute.structure.sql
+END
+sequence.Stock.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Stock.structure.sql
+END
+sequence.SubmissionVolume.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SubmissionVolume.structure.sql
+END
+sequence.LibraryVector.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryVector.structure.sql
+END
+sequence.Grp.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Grp.structure.sql
+END
+sequence.Primer_Order.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer_Order.structure.sql
+END
+sequence.Branch.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Branch.structure.sql
+END
+sequence.Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Source.structure.sql
+END
+sequence.Organization.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Organization.structure.sql
+END
+sequence.Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Library.structure.sql
+END
+sequence.Gel_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Gel_old.structure.sql
+END
+sequence.Dye_Chemistry.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Dye_Chemistry.structure.sql
+END
+sequence.Vector_TypeAntibiotic.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Vector_TypeAntibiotic.structure.sql
+END
+sequence.SS_Config.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SS_Config.structure.sql
+END
+sequence.Fail.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Fail.structure.sql
+END
+sequence.GelAnalysis.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GelAnalysis.structure.sql
+END
+sequence.PoolSample.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.PoolSample.structure.sql
+END
+sequence.Solution.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Solution.structure.sql
+END
+sequence.Seq_temp.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Seq_temp.structure.sql
+END
+sequence.Organism.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Organism.structure.sql
+END
+sequence.Submission_Table_Link.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission_Table_Link.structure.sql
+END
+sequence.Event.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Event.structure.sql
+END
+sequence.VectorPrimer.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.VectorPrimer.structure.sql
+END
+sequence.Vector_TypePrimer.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Vector_TypePrimer.structure.sql
+END
+sequence.Printer.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Printer.structure.sql
+END
+sequence.Status.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Status.structure.sql
+END
+sequence.Test_Condition.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Test_Condition.structure.sql
+END
+sequence.Xformed_Cells.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Xformed_Cells.structure.sql
+END
+sequence.Run_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Run_Attribute.structure.sql
+END
+sequence.Funding_Distribution.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Funding_Distribution.structure.sql
+END
+sequence.ViewJoin.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ViewJoin.structure.sql
+END
+sequence.Contact.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Contact.structure.sql
+END
+sequence.LibraryStudy.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryStudy.structure.sql
+END
+sequence.DBTable.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.DBTable.structure.sql
+END
+sequence.GrantApplication.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrantApplication.structure.sql
+END
+sequence.ProjectStudy.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ProjectStudy.structure.sql
+END
+sequence.RNA_Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.RNA_Source.structure.sql
+END
+sequence.Trigger.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Trigger.structure.sql
+END
+sequence.Run.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Run.structure.sql
+END
+sequence.Equipment.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Equipment.structure.sql
+END
+sequence.Location.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Location.structure.sql
+END
+sequence.Multiple_Barcode.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Multiple_Barcode.structure.sql
+END
+sequence.Prep_Details.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Prep_Details.structure.sql
+END
+sequence.Printer_Assignment.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Printer_Assignment.structure.sql
+END
+sequence.SequenceAnalysis.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SequenceAnalysis.structure.sql
+END
+sequence.SS_Option.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SS_Option.structure.sql
+END
+sequence.GrpProject.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrpProject.structure.sql
+END
+sequence.Clone_Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Source.structure.sql
+END
+sequence.RunStats_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.RunStats_old.structure.sql
+END
+sequence.Genechip_Experiment.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Genechip_Experiment.structure.sql
+END
+sequence.Goal.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Goal.structure.sql
+END
+sequence.Submission_Volume.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission_Volume.structure.sql
+END
+sequence.Tube_Application.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Tube_Application.structure.sql
+END
+sequence.Sequencing_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sequencing_Library.structure.sql
+END
+sequence.Error_Check.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Error_Check.structure.sql
+END
+sequence.How_To_Step.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.How_To_Step.structure.sql
+END
+sequence.GelRun.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GelRun.structure.sql
+END
+sequence.WorkPackage.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.WorkPackage.structure.sql
+END
+sequence.Transposon_Pool.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Transposon_Pool.structure.sql
+END
+sequence.Contamination.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Contamination.structure.sql
+END
+sequence.MultiPlate_Run.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.MultiPlate_Run.structure.sql
+END
+sequence.Event_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Event_Attribute.structure.sql
+END
+sequence.Clone_Details.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Details.structure.sql
+END
+sequence.ReArray.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ReArray.structure.sql
+END
+sequence.LibraryGoal.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryGoal.structure.sql
+END
+sequence.Sequence_Batch_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sequence_Batch_old.structure.sql
+END
+sequence.Warranty.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Warranty.structure.sql
+END
+sequence.PCR_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.PCR_Library.structure.sql
+END
+sequence.Contaminant.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Contaminant.structure.sql
+END
+sequence.Funding_Segment.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Funding_Segment.structure.sql
+END
+sequence.Plate_Format.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Format.structure.sql
+END
+sequence.ReArray_Request.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ReArray_Request.structure.sql
+END
+sequence.Employee.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Employee.structure.sql
+END
+sequence.Prep_Attribute_Option.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Prep_Attribute_Option.structure.sql
+END
+sequence.Sample.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sample.structure.sql
+END
+sequence.UseCase_Step.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.UseCase_Step.structure.sql
+END
+sequence.Plate_Tube.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Tube.structure.sql
+END
+sequence.Suggestion.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Suggestion.structure.sql
+END
+sequence.Box.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Box.structure.sql
+END
+sequence.Issue_Log.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Issue_Log.structure.sql
+END
+sequence.Prep_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Prep_Attribute.structure.sql
+END
+sequence.RunPlate.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.RunPlate.structure.sql
+END
+sequence.ConcentrationRun.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ConcentrationRun.structure.sql
+END
+sequence.Well_Lookup.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Well_Lookup.structure.sql
+END
+sequence.Mixture.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Mixture.structure.sql
+END
+sequence.Barcode_Label.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Barcode_Label.structure.sql
+END
+sequence.FailureReason.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.FailureReason.structure.sql
+END
+sequence.Service.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Service.structure.sql
+END
+sequence.Chemistry_Code.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Chemistry_Code.structure.sql
+END
+sequence.Cross_Match.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Cross_Match.structure.sql
+END
+sequence.Genomic_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Genomic_Library.structure.sql
+END
+sequence.Plate_Sample.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Sample.structure.sql
+END
+sequence.Machine_Default.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Machine_Default.structure.sql
+END
+sequence.Study.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Study.structure.sql
+END
+sequence.Trace_Submission.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Trace_Submission.structure.sql
+END
+sequence.Order_Notice.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Order_Notice.structure.sql
+END
+sequence.Tissue.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Tissue.structure.sql
+END
+sequence.Lane_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Lane_old.structure.sql
+END
+sequence.Extraction.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Extraction.structure.sql
+END
+sequence.FailReason.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.FailReason.structure.sql
+END
+sequence.Hybrid_Original_Source.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Hybrid_Original_Source.structure.sql
+END
+sequence.Funding_Applicant.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Funding_Applicant.structure.sql
+END
+sequence.Primer_Customization.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer_Customization.structure.sql
+END
+sequence.LibraryApplication.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.LibraryApplication.structure.sql
+END
+sequence.ReArray_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ReArray_Attribute.structure.sql
+END
+sequence.Concentrations.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Concentrations.structure.sql
+END
+sequence.Restriction_Site.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Restriction_Site.structure.sql
+END
+sequence.Optical_Density.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Optical_Density.structure.sql
+END
+sequence.Work_Request.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Work_Request.structure.sql
+END
+sequence.RNA_Collection.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.RNA_Collection.structure.sql
+END
+sequence.Protocol_Step.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Protocol_Step.structure.sql
+END
+sequence.ProcedureTest_Condition.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ProcedureTest_Condition.structure.sql
+END
+sequence.Tube.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Tube.structure.sql
+END
+sequence.DepartmentSetting.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.DepartmentSetting.structure.sql
+END
+sequence.Clone_Sample.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Clone_Sample.structure.sql
+END
+sequence.Maintenance_Protocol.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Maintenance_Protocol.structure.sql
+END
+sequence.SAGE_Library.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.SAGE_Library.structure.sql
+END
+sequence.Plate_Tray.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate_Tray.structure.sql
+END
+sequence.Sample_Attribute.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sample_Attribute.structure.sql
+END
+sequence.Plate.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Plate.structure.sql
+END
+sequence.Note.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Note.structure.sql
+END
+sequence.GrpStandard_Solution.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrpStandard_Solution.structure.sql
+END
+sequence.Lab_Request.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Lab_Request.structure.sql
+END
+sequence.GrpDBTable.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrpDBTable.structure.sql
+END
+sequence.Gel.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Gel.structure.sql
+END
+sequence.GrantDistribution.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.GrantDistribution.structure.sql
+END
+sequence.Submission_Detail.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission_Detail.structure.sql
+END
+sequence.Field_Map.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Field_Map.structure.sql
+END
+sequence.Prep_Detail_Option.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Prep_Detail_Option.structure.sql
+END
+sequence.Rack.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Rack.structure.sql
+END
+sequence.Antibiotic.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Antibiotic.structure.sql
+END
+sequence.Library_Segment.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Library_Segment.structure.sql
+END
+sequence.Issue.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Issue.structure.sql
+END
+sequence.TraceData.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.TraceData.structure.sql
+END
+sequence.ViewInput.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.ViewInput.structure.sql
+END
+sequence.Object_Class.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Object_Class.structure.sql
+END
+sequence.Submission.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission.structure.sql
+END
+sequence.How_To_Topic.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.How_To_Topic.structure.sql
+END
+sequence.Primer.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer.structure.sql
+END
+sequence.Vector.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Vector.structure.sql
+END
+sequence.Department.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Department.structure.sql
+END
+sequence.Submission_Alias.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Submission_Alias.structure.sql
+END
+sequence.Communication.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Communication.structure.sql
+END
+sequence.Gel_OLD.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Gel_OLD.structure.sql
+END
+sequence.Ligation.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Ligation.structure.sql
+END
+sequence.Sequence_old.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Sequence_old.structure.sql
+END
+sequence.Transposon.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Transposon.structure.sql
+END
+sequence.Pool.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Pool.structure.sql
+END
+sequence.Primer_Info.structure.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/docs/dbschema/2.4/sequence.Primer_Info.structure.sql
+END

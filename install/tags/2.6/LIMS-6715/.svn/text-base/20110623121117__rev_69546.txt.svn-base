@@ -1,0 +1,4 @@
+lib/perl/Core/alDente/Info.pm
+lib/perl/Core/alDente/Tray_Views.pm
+bin/t/Core/alDente/Info.t
+bin/t/Core/alDente/Tray_Views.t

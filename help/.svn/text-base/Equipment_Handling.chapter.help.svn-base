@@ -1,0 +1,11 @@
+Equipment_Handling
+<h1>What is Equipment?</H1>
+<H1>Equipment Monitoring</H1>
+<P>
+Various details may be monitored for equipment beyond their original entry into the database.
+<UL>
+<LI>Changing of Matrix and/or Buffer solutions for Sequencing machines.
+<LI>Recording service repairs and adjustments, allowing maintenance history for each machine to be easily viewed.
+<LI>Monitoring the correlation of sequence quality with specific capillaries for the purpose of trouble-shooting.
+<LI>In addition, steps used in plate preparation processes which utilize specific equipment are tracked and correlated against final data quality, allowing subtle problems with equipment to be identified, or facilitating the optimization of the conditions of equipment use where these conditions may affect final data quality.
+</UL>

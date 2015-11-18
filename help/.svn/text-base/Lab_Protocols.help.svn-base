@@ -1,0 +1,112 @@
+<H1>Plate Tracking</H1>
+<h2>Defining the Protocol</H2>
+Before tracking can take place, a detailed protocol is written up and stored in the database which includes details for each step such as:<UL>
+<LI>The name of the step
+<LI>The Step number within the protocol
+<LI>Whether or not users should be prompted for the step.
+<LI>A brief message (to be displayed for each step)
+<LI>Detailed instructions that may be made available for each step.
+<LI>input required (eg. Equipment, Solution, Comments etc)
+<LI>default values (if applicable)
+<LI>formatting restrictions (if applicable)
+</UL>
+<P>The input of this information is handled through the Protocol Administrator page.
+<p>
+<Img Src='$Help_Image_dir/protocol_definition.png'>
+   <h2>Monitoring the Protocol</H2>
+        <P>The protocol may be monitored and edited regularly to
+ensure that it is always up to date.<BR>
+<Img Src='$Help_Image_dir/Protocol_admin.png'>
+    <h2>Using the Scanners to document Protocol steps</h2>
+        <h3>Scanner Home Page</h3>
+	    <P>
+	    At the home page of the scanner, the user is
+given a number of options including:<UL><LI>Scanning any barcoded item to
+get a description of it<LI>Scanning a group of plates to define as a plate
+set<LI>Making up a standard batch of Solution I<LI>Making up a standard
+batch of Solution II<LI>Retrieving a plate set immediately by entering the
+plate set number</UL><P>
+      	      <Img Src='$Help_Image_dir/scanner_home.png'>
+	<h2>Retrieve or Save Plate Set</h2>
+<P>Generally a plates are prepared in groups, with 4, 8 or 16 plates being handled at one time.  To make data storage more efficient, the actions are generally stored for the set as a whole (except when plates within the group are associated with different solutions or equipment).  As such, at the outset, users are asked to either define a plate set (scan any number of plates successively and press the 'Save Plate Set' button), or (if using a previously defined set) scan any plate and recover the plate set associated with that plate.<P> 
+	          <h2>Selecting a Protocol</h2>
+<P>
+The user then selects the Protocol
+they wish to use from a popdown menu.<P>Alternatively the user can Display
+a plate history (showing all preparation done for the current plate or plate
+set)<P>
+<Img Src='$Help_Image_dir/plateset_home.png'>
+	    <h2>Stepping through the Protocol</h2>
+ Through each step of the protocol, the user scans
+appropriate Equipment, Reagent etc. as required.  Fields for input are
+automatically generated based on the protocol step definitions.<P>
+eg: <P>
+	      		    <Img Src='$Help_Image_dir/protocol_step.png'>
+	<h2>Error Checking</h2>
+If formats are required for input, users will get warning messages if trying to enter unexpected values.  This allows possible errors to be detected before they occur.<P>
+<Img Src='$Help_Image_dir/prompt_fail.png'>
+	
+	        <h2>Viewing a plate history</h2>
+				<P>
+A history of what has
+been done for a plate or plate set is available as well to monitor what has
+already been tracked showing<UL><LI>The Plate Set Number<LI>The Plate (if a
+step relates each plate with a unique piece of equipment)<LI>The Protocol
+Name<LI>The Protocol Step Name<LI>The time the procedure was
+performed<LI>The user who performed the procedure</UL>
+		          <P>
+			  <Img Src='$Help_Image_dir/plate_history.png'>
+			  
+			  <P>
+			  
+			  <h3>Formats</H3>
+<P>
+Some of the Protocol Names should be in a specific format so
+that they may be handled automatically, such as:
+<UL>
+<LI>
+<B>Transfer to NUNC</B><P>
+This indicates that plates are to be transferred to another format.<BR>
+The format should exactly match the format name for the new format.<BR>
+eg.  'Transfer to NUNC' or 'Transfer to Robbins - 96ET'<BR>
+(This is ensured by supplying a popdown menu for steps of this type)
+<LI><B>Transfer to *</B><P>
+This indicates that a popup menu should prompt the user for
+the Plate Format type...
+<LI><B>..Antibiotic..</B><P>
+Anything with the string 'Antibiotic' in the Step Name will check for valid
+antibiotic depending upon Vector associated with Plate Libraries.<BR>
+The Solution_Name must contain the Antibiotic Specified.<BR>
+<LI>Note:<P>Naming conventions should be established by lab administrators, particularly fo steps which they are interested in tracking, since step names may be used to monitor at what stage plate preparation is at within the protocols.
+</UL><P>
+                          
+<h3>Database Structure Info</H3>
+<P>
+(This information is only relevant to database administrators who may be looking at the raw data within the database).
+<P>
+The structure of the Protocol Table includes the following specially
+formatted fields:<BR>
+(The values in these fields are <B>colon delimited </B>and should be
+<B>consistent in number & order</B>)
+<UL>
+<LI>Input<P> - input fields available on form (eg.
+'FK_Equipment__ID,FK_Solution__ID,Solution_Quantity')
+<LI>Protocol_Defaults<P> - default values if applicable (eg. '::0.5')<BR>
+(In this case the Equipment, Solution have no defaults, but the
+Solution_Quality defaults to 0.5)
+<LI>Input_Format<P> - validation requirements (eg. 'Hydra:BD:')<BR>
+(In this case the Equipment must be of type 'Hydra' and the Solution_Name
+must contain the string 'BD')
+</UL>
+(These checks are made in the 'Check_Formats' routine in the 'Process.pm'
+module) <P>
+There is also a field 'Scanner' which indicates whether this step is to be
+tracked.<BR>
+(Some steps are part of the protocol, but are not tracked with the
+scanner).<P>
+There is also a table containing a list of protocols ('Protocol_List').<BR>
+It contains a list of all protocol names, the author, as well as the state
+of the protocol (Old, Inactive, or Active), and an optional description.
+Only those set as 'Active' will appear as options.
+
+			  

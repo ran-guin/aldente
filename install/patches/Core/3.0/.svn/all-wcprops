@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0
+END
+Biomaterial_Type_Final.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/Biomaterial_Type_Final.pat
+END
+add_attribute_to_DBField.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/add_attribute_to_DBField.pat
+END
+upgrade_Core_2_7.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/upgrade_Core_2_7.pat
+END
+update_Organization_Type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/update_Organization_Type.pat
+END
+Biomaterial_Type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/Biomaterial_Type.pat
+END
+change_Organization_Type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/change_Organization_Type.pat
+END
+OS_Flip.pat
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/70446/alDente/trunk/install/patches/Core/3.0/OS_Flip.pat
+END

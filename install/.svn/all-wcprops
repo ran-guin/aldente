@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/107992/alDente/trunk/install
+END
+config.pl
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/install/config.pl
+END
+seqdb01.cron
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/install/seqdb01.cron
+END
+sequence_preset_data.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/install/sequence_preset_data.sql
+END
+setup.dat
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/install/setup.dat
+END
+old_setup.pl
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/install/old_setup.pl
+END
+setup.pl
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/68925/alDente/trunk/install/setup.pl
+END
+sequence_table_def.sql
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/install/sequence_table_def.sql
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/68925/alDente/trunk/install/README
+END

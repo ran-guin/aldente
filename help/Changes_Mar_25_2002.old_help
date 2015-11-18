@@ -1,0 +1,68 @@
+<H2>New Changes</H2>
+
+<UL>
+<LI>Editing form<BR>
+While this form is not completely new, it has changed a bit over the past
+few releases.  The new form allows visualization of multiple records at one
+time as well as allowing editing, appending and searching of records within
+a table in the database.<BR>
+An advanced view allows for specification of date ranges and viewable fields
+primarily developed to facilitate the editing of the orders database.
+
+<IMG SRC='$Help_Image_dir/edit_form.png'>
+
+<LI>Database Search<BR>
+You can now search for anything in the database from the home page, by simply
+typing in a text string.<BR>
+For instance if you are looking for something, but are not sure where in the
+database it is (or what exactly it is defined as), you can simply type in a 
+string, and will be shown what entries in the database contain the string
+you entered.<BR>
+<IMG SRC='$Help_Image_dir/searchdb.png'>
+<BR>
+eg. type 'T3', you will be shown that the database contains something with
+this in the name in the: Primer, Stock, Vector, and Equipment Tables.
+<BR>
+<IMG SRC='$Help_Image_dir/searchdb_results.png'>
+<BR>
+You can click on either of these tables to display the entries.
+(The equipment happens to have a serial number of 'T300....')
+
+<LI>Chemistry Calculator<BR>
+The chemistry calculator can now be edited on-line by lab users.
+(though this should be limited to use by lab administrators)
+<BR>
+<IMG SRC='$Help_Image_dir/chem_calc.png'>
+<BR>
+The Formulas exist as a text field in a Standard_Solution table which
+includes the name of the solution to mix, a formula to calculate the
+components, and a possible message that can be calculated based upon various
+parameters.
+<BR>
+<IMG SRC='$Help_Image_dir/std_sol.png'>
+<BR>
+Solutions set as 'Active' will appear automatically in the drop-down menus,
+and Solutions set as 'Development' may be tested easily at the bottom of the
+'Reagents' page.
+<BR>
+In conjunction with this table is another table of Parameters in which
+details can be entered<BR>
+(such as ul/well for 5X buffer, amounts of extra brew etc),<BR>
+ which are used in the calculations in the Standard_Solution table.<BR>
+<BR>
+In this Table you can also adjust the prompts that are to be used for lab
+users, the standard units of the calculations, and any formatting
+requirements for the names of the reagents to be used.
+<BR>
+<IMG SRC='$Help_Image_dir/parameters.png'>
+<BR>
+
+This should provide a powerful tool for specifying quickly and easily new Solutions that are to be used in
+the lab.<BR>
+
+<LI>Last 24 Hours Page<BR>
+ Some of the columns are now clickable to allow the current view to be
+ordered by different fields. <BR>
+(ie click on the Machine column heading to re-order the displayed runs by machine)
+
+</UL>

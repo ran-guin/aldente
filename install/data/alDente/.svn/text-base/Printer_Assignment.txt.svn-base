@@ -1,0 +1,6 @@
+Printer_Assignment_ID	FK_Printer_Group__ID	FK_Printer__ID	FK_Label_Format__ID
+1	1	1	1
+2	1	2	2
+3	1	3	3
+4	1	4	4
+5	1	5	5

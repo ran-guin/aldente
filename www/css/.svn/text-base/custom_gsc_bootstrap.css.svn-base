@@ -1,0 +1,13 @@
+/* account for fixed top header */
+body {
+    padding-top: 160px;  /* 205px; add to account for navbar paddding */
+}
+
+@media (max-width: 979px) {
+    body { 
+        padding-top: 0px; 
+        position: relative; /* force to relative positioning to avoid messy padding due to wrapping on small screen sizes */
+    } 
+}
+
+

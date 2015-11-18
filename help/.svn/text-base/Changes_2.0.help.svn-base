@@ -1,0 +1,39 @@
+<H1>Changes for Version 2.0</H1>
+
+<h2>Last 24 Hours View</H2>
+<Span class=small>
+<P>The standard run summary view has altered slightly with the following changes:
+<UL>
+<LI>New column indicating <B>'Validation'</B> status (Approved / Rejected / Pending)
+<BR>(<B>Billable</B> status indicated in the same column as above (Yes / No)
+<BR>(This column is also colour coded to draw attention to the validation status (Green = Accepted; Yellow = Pending; Red = Rejected)
+<LI><B>Plate Class</B> indicated beside Plate_Number ('(St)' : Standard; '(Re)' : ReArray; '(Ol)' = Oligo)
+<LI><B>Reloaded Plates</B> are indicated beside the Run Map ('R(2/2)' indicates that this is the second of 2 plates of a reloaded plate)<BR>
+	('R+(2/2) indicates that this plate was reloaded as another plate - indicating probably re-prepping)
+<LI>A Checkbox is also added at the left to allow <B>selection of Runs for setting Validation / Billable status, or to select certain runs for re-analysis</B>.
+<BR>(The execution of these options is only available to lab administrators)
+<LI>Above this display there are also new links to allow administrators to <B>re-mirror individual sequencers</B>.
+</UL>
+
+<Img src='$Help_Image_dir/Last_24_Hours.png'>
+
+<H2>Run View Search Options</H2>
+<P>Some additional features have also been added to the searching options, allowing users to specify:
+<UL>
+<LI><B>Run Status</B> (defaults to both Production AND Test)
+<LI><B>Validation</B> (defaults to exclude Rejected runs)
+<LI><B>Analysis</B>   (defaults to exclude Failed runs)
+<LI><B>Plate Class</B> (does not check unless user specifies an option)
+</UL>
+
+<Img src='$Help_Image_dir/Last24HoursSearch.png'>
+
+<h2>Protocol Summary</H2>
+<P>In addition to the 'Prep Summary' which is customized to show pipeline status information for the Sequencing Lab, we have added a <B>'Protocol Summary'</B> link, which displays a summary of Lab Protocols executed (organized by Library and Plate/Tube Number). 
+<P>
+<Img src='$Help_Image_dir/ProtocolSummary1.png'>
+<P>
+Any of the retrieved Protocols may then be clicked on to view the status for <B>each of the steps in the specified protocol</B>.
+<P>
+<Img src='$Help_Image_dir/ProtocolSummary2.png'>
+</Span class=small>

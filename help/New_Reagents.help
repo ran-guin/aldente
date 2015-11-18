@@ -1,0 +1,54 @@
+    <h2>Entering New Reagents into the Database</h2>
+     <h3>Using the scanner</h3>
+      Due to the amount of information that should be
+added, this will not yet be available via the barcode scanners.  Information
+should be added through a standard keyboard.
+
+    <h3>From the web page</h3>
+<ul>
+<span class=smaller>
+<li>Go to the Receiving home page.
+<li>Search for the stock in the current database either by catalog number or stock name: <br> 
+<img src="$Help_Image_dir/Receive_Stock_Search.png"><p>
+Note that catalog number searches will ignore spaces and dashes. If only one match is found, you will be taken to the 'Stock' updating form directly with information preset for you. If more than one matches are found, you can then pick you stock from the list.
+<li>If the stock you are entering is indeed a new stock item, you will then create the stock by using the drop-down menu in the 'Create New...' section of the Receiving home page.
+</ul>
+<P>
+Some information specific to Reagents may be entered at the top of the 'Stock' updating form:
+<P>
+<Img Src = '$Help_Image_dir/Adding_Reagent_Stock.png'>
+<P>
+The rest of the information is common to all types of stock information, and is retrieved using
+the standard stock item form:
+<P>
+<Img Src = '$Help_Image_dir/Adding_Stock.png'>
+<P>
+</span>
+After entering the appropriate information (which will be common for all
+units in the same batch), a record will be saved and for every unit
+indicated as received (The number of bottles in the case of Reagents), an
+individual record will be added to the 'Solutions/Reagents' database as
+well.<P>At this time, the screen will display a link to the Stock batch.  Clicking on this link
+will display to the user information specific to the entire batch of stock added:
+<P>
+(this may be edited if required by clicking on the 'Edit' button below the
+batch information)
+<P>
+<Img Src = '$Help_Image_dir/New_Stock.png'>
+<P>Below this appears a record by record list of each of the resultant Reagents that have
+been added to the database. (ie. if you have indicated that 5 bottles were
+received, there would be 5 records created - one for each bottle.
+<P>
+When created, barcode labels for reagents are printed automatically if the system is set up for barcoding.
+<P>
+At this time, any changes to individual Reagents may be made,
+though normally, there should be no need to make changes. (On this form, for
+instances, specific values may be set for Serial Numbers if applicable, or
+Expiry dates or 'Open/Unopened' status for Solutions/Reagents.
+<P>
+Note that if a reagent has previously been entered as a 'Primer' or 'Matrix' (two special types of reagents),
+or visa versa, a warning will come up indicating that the solution_type is ambiguous.  At this time the user should ensure that all similar reagents/solutions are specified correctly.  (sometimes when a reagent is diluted, it may be called a solution - this is generally ok, but Primers and Matrix reagents SHOULD ALWAYS be identified as such)<P>Their 'solution_type' may be edited easily at this point if entered incorrectly to begin with.
+<P>
+<Img Src = '$Help_Image_dir/edit_New_Reagents.png'>
+<P>From here, you may go to another page by clicking another icon, or scan
+another item in front of the 'Scan' field at the bottom of the page

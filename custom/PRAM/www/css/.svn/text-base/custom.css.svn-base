@@ -1,0 +1,31 @@
+/* account for fixed top header */
+body {
+    padding-top: 120px;  /* 205px; add to account for navbar paddding */
+}
+    
+.logo {
+    max-height: 50px;
+}
+
+@media (max-width: 767px) {
+            .flexbox-row { 
+                        flex-direction: column;
+                            }
+                                .collapsible-header {
+                                            position:relative
+                                                }
+                                                    .primaryHeader {
+                                                                position:relative
+                                                                    }
+}
+
+@media (max-width: 767px) {
+            body {
+                        /* turn off fixed header for narrow screens since any header wrapping affects the required padding */
+                                padding-top: 0px; 
+                                        position: relative; 
+                                            } 
+            .primaryHeader {
+                position: relative;
+            }
+    }

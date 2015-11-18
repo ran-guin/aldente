@@ -1,0 +1,2 @@
+Error_Check_ID	Username	Table_Name	Field_Name	Command_Type	Command_String	Notice_Sent	Notice_Frequency	Comments	Description	Action	Priority
+1	dcheng	Attribute,DBField	Attribute_ID,Attribute_Name,Field_Table,Field_Name	FullSQL	select Attribute_ID,Attribute_Name,Field_Table,Field_Name from Attribute,DBField where Attribute_Name = Field_Name AND (Field_Scope IS NULL OR Field_Scope != 'Attribute');	NULL	7	Duplicate attribute name and field name	Duplicate attribute name and field name	NULL	NULL

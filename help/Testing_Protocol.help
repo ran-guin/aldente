@@ -1,0 +1,1400 @@
+<span class=large>
+<h2>Testing Protocol for the LIMS System</h2>
+<h3>Overview of the Integration and Test phase<br>
+</h3>
+<img src="$Help_Image_dir/integration_test.png">
+<p>
+<table FRAME=BOX CELLSPACING=0 COLS=4 RULES=GROUPS BORDER=1 CLASS='SMALL'>
+	<colgroup><col WIDTH=602></colgroup>
+	<colgroup><col WIDTH=80></colgroup>
+	<colgroup><col WIDTH=80></colgroup>
+
+	<colgroup><col WIDTH=80></colgroup>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=19 ALIGN=LEFT><b><font SIZE=3>LIMS Development Test Plan</font></b></td>
+			<td WIDTH=80 HEIGHT=19 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=19 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=19 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=15 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=15 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=15 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=15 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Login page</b></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Log in to the seqdev database</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>If incorrect password entered, user is asked to login again.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Links to Production Version and Previous Version works.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Reduced version of Login page shows up if login as user 'Auto' and no activity in last 5 mins.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Tab Bar and Department Home Pages</b></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>    Check all department home pages are properly shown.</b></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check all icons to the other pages are working.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check all Quick Links are working.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Identification/Scanning</b></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan employee</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan employee with password -&gt; relogin as a new user</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan equipment</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan rack</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan plate</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan solution/reagent</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan multiple solution/reagents -&gt; mixture page</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan plates/equipment -&gt; sample sheet generator</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan invalid barcode -&gt; 'Unrecognized Barcode' message displayed to the user.</td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Plate Set -&gt; retrieve a plate set</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>If plate set number is valid -&gt; User is redirected to the protocol home page.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>If plate set number is invalid -&gt; 'Invalid Plate Set' message displayed to the user. </td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Print Text Label -&gt; print barcode</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>Error Notification -&gt; the error is submitted to the Issues Tracker and email notification sent to the developer.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Stock Entry</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Search for stock by catalog number or stock name (like search)</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Return all matched stocks</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Choosing a stock will bring the user to the New Stock form with information pre-filled.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new primer to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new primer type to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new buffer to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new matrix to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new reagent to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new box to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new kit to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new equipment to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Mix reagents to form solution (check entry in Mixture table)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Create standard mixture (check parameters printout)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Plate Creation -&gt; create a new plate</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Protocol Tracking</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Scan more than one plate</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Save as a plate set</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Choose a protocol</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Cycle through protocol</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add note to plate during a step</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Fail a plate during a step.  This should:</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>reset plate set to exclude this plate</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>continue with next step</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>annotate plate comments</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Skip a step</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Resume process:</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>exit protocol before finishing</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>scan one of the plates in the latest set</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>recover plate set</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>continue (sends to proper step in protocol)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Test an Aliquot step:</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>new plate set is generated and new barcode printed.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>protocol continues with the new plate set.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Sample Sheet Generation</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Scan multiple plates and a sequencer</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Generate sample sheet. Ensure:</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Primers linked correctly</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Sequence/Sequence_Batch info updated correctly</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check parameters are auto-set</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Warn user if status or primer not chosen.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Warn user if Vector/Primer combination not found in database.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Issues page (Issues Tracker)</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Search issues and display matched issues</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Submit new issue -&gt; issue correctly assigned to developer and email notification sent</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Issues statistics -&gt; make sure statistics for Outstanding Issues are correct.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Last 24 Hours page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Searching for runs (with various combinations of criteria)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check links in the table are working</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check number of wells add up to 96/384 (sum of normal wells, NG wells, SG wells and unused wells)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Runmaps are generated</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Click on the runmap to go to the sequence read info page</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Large plate view and histograms generated</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Click on well on large plate view to show trace data</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Link to scorecard and histogram</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Click on well to show trace data</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Ensure data are showing correctly on the scorecard</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Navigate to capillary view -&gt; Show one lane for each well and click on lane to show trace data</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Ensure users can navigate from the scorecard suite to other parts of alDente web site.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Generate FASTA file</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Sample Sheets page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Sample sheets removal -&gt; Remove Sequence Request</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Reagents page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Mix standard solutions (check Mixture table)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new primer to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new primer type to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new buffer to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new matrix to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new reagent to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new box to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new kit to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Search/edit existing solutions</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Equipment page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Add new equipment to database</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Search/edit existing equipments</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Plates page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>Find plates by different search methods -&gt; Plates grouped by equipment and racks -&gt; Move plates between racks</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Create new plate (original and rearray)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Search/edit existing plates</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Delete or Annotate Recent Plate (check deleting the plates also delete the corresponding plate set)</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>View Ancestry for a plate</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=31 ALIGN=LEFT><b>Summary page - Check whether the stats/diagrams show up in the page. Also compare numbers to those from previous release to see if they are consistent.</b></td>
+
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check summary stats</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check Q20 histograms</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check sequencer stats</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check project stats</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check date range summary</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check reads summary</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check prep summary</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check 'Stock Used' summary</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Libraries page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Update database with new library</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>When users other than the lab administrators/library administrators create a new library, they will go through the Internal  library submission process. </td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>When lab administrators/library administrators create a new library, the information is updated to the database right the way.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Search/edit existing libraries</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>Create new project/update existing libraries - only lab administrators/project administrators are allowed to do this.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Create new vector/update existing vector</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Admin page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Only visible to lab administrators</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Test mirroring and re-analyse runs requests.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Test all operations under the Define/Configure section.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Test view, search/edit, create of libraries and project admin related entities. </td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check library submissions</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>Upon clicking on a submission, the corresponding forms will be pre-filled with information from the submission hash file.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Approving the submission will update the information into the database.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>After approving the submission no further changes can be made to the submission.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>New Changes page</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Check that description of all the new changes/features are included in this page.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>General editing pages check (single-record and multiple-records):</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Adding records</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Editing records</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Deleting records</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Scanner Pages - Make sure pages work properly</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>All new changes/features - test throughoutly (Refer to Issues Tracker)</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT><b>Database upgrade:</b></td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Create a testing database consist of the latest database schema of the production database.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>Run upgrade_DB.pl to make sure upgrade ran without errors and the database schema is properly modified.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=31 ALIGN=LEFT><b>Cron jobs/background processes - these should be monitored on a regular basis after the release is made:</b></td>
+
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+			<td WIDTH=80 HEIGHT=31 ALIGN=LEFT BGCOLOR="#C0C0C0"><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>update_sequence.pl - sequences are analysed and last 24 hours page is updated.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>Try 'Regenerate Analysis for these runs' and 'Re-Mirror all machines' links</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>seqmirror - sample sheets and trace files are mirrored on a regular basis.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>backup_DB.pl - the sequence database is dumped a regular basis and the Clone_Sequence table is dumped during the last dump of the day.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>restore_DB.pl</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>The seqlast and seqtest databases on seqdb01 are restored daily.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>The sequence database on lims-dbm is also restored daily.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>code_sync.pl - code of the production version are synchornized from /opt/sequence to /home/sequence on a regular basis.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=30 ALIGN=LEFT>cat_vectors.pl - the vector file is checked on a regular basis and if new vectors are found then the file will be recreated.</td>
+
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=30 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td WIDTH=602 HEIGHT=16 ALIGN=LEFT>update_library_list.pl - the library_list file is updated on a regular basis.</td>
+
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+			<td WIDTH=80 HEIGHT=16 ALIGN=LEFT><br></td>
+		</tr>
+	</tbody>
+</table>
+</span>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Biblio/IO
+END
+pubmed2ref.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Biblio/IO/pubmed2ref.pm
+END
+medline2ref.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Biblio/IO/medline2ref.pm
+END
+pubmedxml.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Biblio/IO/pubmedxml.pm
+END
+medlinexml.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Biblio/IO/medlinexml.pm
+END

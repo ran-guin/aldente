@@ -1,0 +1,2 @@
+Work_Request_ID	FK_Goal__ID	Goal_Target	Comments	Work_Request_Type	Num_Plates_Submitted	FK_Plate_Format__ID	FK_Work_Request_Type__ID	FK_Library__Name	Goal_Target_Type	FK_Funding__ID	Work_Request_Title	Work_Request_Created
+1	1	0	0	NULL	0	0	0		Original Request	0	1	NULL

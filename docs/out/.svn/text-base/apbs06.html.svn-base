@@ -1,0 +1,77 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>6.&nbsp;Changes for Release 2.41 (May 05/2006)</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="LIMS Help Pages"><link rel="up" href="apb.html" title="Appendix&nbsp;B.&nbsp;Release Changes"><link rel="prev" href="apbs05.html" title="5.&nbsp;Changes for Release 2.40 (Jan 30/2006)"><link rel="next" href="apc.html" title="Appendix&nbsp;C.&nbsp;Glossary"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.&nbsp;Changes for Release 2.41 (May 05/2006)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs05.html">Prev</a>&nbsp;</td><th width="60%" align="center">Appendix&nbsp;B.&nbsp;Release Changes</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="apc.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e18918"></a>6.&nbsp;Changes for Release 2.41 (May 05/2006)</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18921"></a>6.1.&nbsp;Work Packages</h3></div></div></div><div class="screenshot"><div class="mediaobject"><img src="resources/WP2_41.jpg"></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18931"></a>6.2.&nbsp;Generic Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18934"></a>6.2.1.&nbsp;New transfer type called 'Setup' for Protocol tracking</h4></div></div></div><p>This transfer step is similar to Pre-Print step except that it allows users to track events (Preps) for the newly created plates rather than the parent plates.For a detailed example imagine the following Protocol which starts with Glycerol Plates, they get transferred to Beckman plates and then transfered to Whatman plates at the end.</p><table frame="box" rules="all" id="d0e18939"><caption>Table&nbsp;B.1.&nbsp;Detailed example of tracking using Pre-print and Setup steps</caption><thead><tr align="center"><th>Step Name</th><th>Tracked for</th></tr></thead><tbody><tr><td>Thaw</td><td>Current Glycerol Plates</td></tr><tr><td>Setup to Beckman</td><td>Current Glycerol Plates</td></tr><tr><td>Shake</td><td>Recently Printed Beckman Plates</td></tr><tr><td>Transfer to Beckman</td><td>Current Glycerol Plates</td></tr><tr><td>Shake</td><td>Current Plates <span class="emphasis"><em>Current Plates are set to Recently Printed Beckman Plates</em></span></td></tr><tr><td>Dispense Brew</td><td>Current Plates</td></tr><tr><td>Pre-print to Whatman</td><td>Current Plates</td></tr><tr><td>Shake</td><td>Current Plates</td></tr><tr><td>Transfer to Whatman</td><td>Current Plates</td></tr><tr><td>Store Plates</td><td>Current Plates <span class="emphasis"><em>Current Plates are set to Recently Printed Whatman Plates</em></span></td></tr></tbody></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19003"></a>6.2.2.&nbsp;Views</h4></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Views were first designed in 2.40, but have been substantially improved in this release</p></div><p>Views is an alDente LIMS Toolbox which can be setup by LIMS Admins and dynamically configured by end users in order to generate and report any piece of data that is stored in the database. Examples of where Views have been used can be seen under Mapping Gel Run Summary page, Genechip Summary page or Plate/Solution Summaries in Lab Homepages. [ <a href="/docs/training/lims_views.ppt" target="_top">Learn more</a> ]</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19014"></a>6.2.3.&nbsp;Pipeline</h4></div></div></div><p>Pipeline in LIMS is a grouping of objects (eg. Lab Protocols) that have a very strict and defined ordering between its elements. Currently pipelines are used to define what path a container will go through such as Sequencing High Throughput Pipeline (SQ) or Mapping Pipeline (MP).</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19019"></a>6.2.4.&nbsp;Branch</h4></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Branches are the generalized version of Chemistry Codes that had been in place for Sequencing.</p></div><p>Branches are identifiers for containers that get attached to them when a special reagent/solution has been applied. Currently we have two types of Branches: Primers and Enzymes.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19027"></a>6.2.5.&nbsp;JIRA Issue Tracking Plugin</h4></div></div></div><p>By enabling this plug-in, it allows the users on the system to communicate with Developers/Support Staff using JIRA Issue tracking utility.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e19032"></a>6.3.&nbsp;Department Specific Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19035"></a>6.3.1.&nbsp;Mapping</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Implemented the Gel Run Summary page</p></li><li><p>Automated Importing of Gel Images into LIMS and making them available through the interface using the Summary Page as well as through the File System</p></li><li><p>Enabling the functionality to Start Gel Analysis and creating Lanes when a Gel Run has been approved and validated</p></li><li><p>Enabling the functionality to view Gel Lanes, Samples and changing the status of them</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19051"></a>6.3.2.&nbsp;Gene Expression</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>To be filled...</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19058"></a>6.3.3.&nbsp;MGC Closure Changes</h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>To be filled....</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19066"></a>6.3.4.&nbsp;Affymetrix Changes</h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Created new Microarray Stock type to allow the receiving of microarrays/genechips. The barcode prefix is MRY.</p></li><li style="list-style-type: circle"><p>Created new Array type to represent microarrays/genechips that contain samples (analogous to plates/tubes). The barcode prefix is PLA</p></li><li style="list-style-type: circle"><p>Added functionality to transfer/aliquot plate wells to tubes</p></li><li style="list-style-type: circle"><p>Added functionality to transfer/aliquot tubes to plate wells</p></li><li style="list-style-type: circle"><p>Added functionality to create an Array container by applying a microarray (MRY) barcode to a tube</p></li><li style="list-style-type: circle"><p>Added functionality to create a GenechipRun and its samplesheet by scanning a Hyb Oven with an Array container.</p></li><li style="list-style-type: circle"><p>Added support for Expression and Mapping chips, and the uploading of their RPT files.</p></li><li style="list-style-type: circle"><p>Added functionality to create a Spectrophotometer run and to store its result information in LIMS.</p></li><li style="list-style-type: circle"><p>Added functionality to create a Bioanalyzer (Agilent) run and store its result information in LIMS.</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e19098"></a>6.4.&nbsp;API changes</h3></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Added API function to support Genechip runs.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e19106"></a>6.5.&nbsp;Database Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19109"></a>6.5.1.&nbsp;New Tables Created</h4></div></div></div><pre class="programlisting">CREATE TABLE Branch
+CREATE TABLE Genechip
+CREATE TABLE Microarray
+CREATE TABLE Array 
+CREATE TABLE GenechipRun
+CREATE TABLE Genechip_Type
+CREATE TABLE Probe_Set
+CREATE TABLE Probe_Set_Value
+CREATE TABLE GenechipMapAnalysis
+CREATE TABLE GenechipExpAnalysis
+CREATE TABLE GenechipAnalysis
+CREATE TABLE GenechipAnalysis_Attribute
+CREATE TABLE BioanalyzerAnalysis
+CREATE TABLE BioanalyzerRead
+CREATE TABLE BioanalyzerRun
+CREATE TABLE SpectAnalysis
+CREATE TABLE SpectRead
+CREATE TABLE SpectRun</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19114"></a>6.5.2.&nbsp;Altered Tables</h4></div></div></div><pre class="programlisting">ALTER TABLE Ordered_Procedure change Object_Name FK_Object_Class__ID INT(11) NOT NULL default 0;
+
+ALTER TABLE Plate ADD FK_Branch__Code varchar(5) DEFAULT NULL,
+                  ADD FK_Pipeline__ID INT(11) NOT NULL,
+                  CHANGE Plate_Type Plate_Type enum('Library_Plate','Tube','Array') default NULL,
+                  CHANGE Plate_Application Plate_Application enum('Sequencing','PCR','Mapping','Gene Expression','Affymetrix') default NULL;
+ALTER TABLE Plate_Format CHANGE Plate_Format_Style Plate_Format_Style enum('Plate','Tube','Array') DEFAULT NULL;
+
+ALTER TABLE Run 
+    change Run_Type Run_Type ENUM('SequenceRun','GelRun','SpectRun','BioanalyzerRun','GenechipRun') NOT NULL DEFAULT 'SequenceRun',
+    ADD Excluded_Wells TEXT NULL;
+    
+ALTER TABLE GelRun ADD GelRun_Type ENUM( 'Sizing Gel', 'Other' ) ;
+
+ALTER TABLE GelAnalysis
+    ADD FK_Status__ID INT NULL,
+    CHANGE GelAnalysis_DateTime GelAnalysis_DateTime datetime DEFAULT NULL,
+    CHANGE FK_GelRun__ID FK_Run__ID INT(11) DEFAULT NULL,
+    CHANGE Bandleader_Version Bandleader_Version VARCHAR( 15 ) NULL,
+    ADD UNIQUE (FK_Run__ID);
+    
+ALTER TABLE Well_Lookup ADD Lane_Number INT NULL;
+
+ALTER TABLE Lane
+    ADD COLUMN Lane_Growth enum('No Grow','Slow Grow','Unused','Problematic','Empty') default NULL,
+    CHANGE Lane_Status Lane_Status ENUM('Passed','Failed','Marker') DEFAULT NULL;
+
+ALTER TABLE Band ADD Band_Mobility FLOAT( 6, 1 ) AFTER Band_Size;
+
+ALTER TABLE Status CHANGE Status_Type Status_Type ENUM( 'ReArray_Request', 'Maintenance', 'GelAnalysis' ) NULL DEFAULT NULL;
+
+ALTER TABLE Object_Class CHANGE Object_Type Object_Type varchar(40) NULL;
+
+ALTER TABLE Submission ADD column FK_Grp__ID int(11);
+
+ALTER TABLE Source change column Source_Status Source_Status enum('Active','Reserved','Inactive');
+
+ALTER TABLE Barcode_Label change column Barcode_Label_Type Barcode_Label_Type enum('plate','mulplate','solution','equipment','source','employee','microarray');
+
+ALTER TABLE RNA_Source change Storage_Medium Storage_Medium enum('','RNALater','Trizol','Lysis Buffer','Ethanol','DEPC Water','Qiazol','TE 10:0.1');
+
+ALTER TABLE Equipment
+    ADD `Equipment_Condition` ENUM( '-80 degrees', '-40 degrees', '-20 degrees', '+4 degrees', 'Variable', 'Room Temperature', '' ) DEFAULT '' NOT NULL,
+    CHANGE Equipment_Type Equipment_Type enum('','Sequencer','Centrifuge','Thermal Cycler','Freezer','Liquid Dispenser','Platform Shaker','Incubator','Colony Picker','Plate Reader','Storage','Power Supply','Miscellaneous','Genechip Scanner','Gel Comb','Gel Box','Fluorimager','Spectrophotometer','Bioanalyzer','Hyb Oven') NULL;
+
+ALTER TABLE Pipeline
+    ADD Pipeline_Code varchar(2) NOT NULL default '',
+    ADD UNIQUE pipelineCode (Pipeline_Code);
+
+ALTER TABLE Stock
+    CHANGE Stock_Type Stock_Type enum('Solution','Reagent','Kit','Box','Microarray','Equipment','Service Contract','Computer Equip','Misc_Item') default NULL,
+    CHANGE Identifier_Number_Type Identifier_Number_Type  enum('','Component Number');</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e19119"></a>6.5.3.&nbsp;Dropped Tables</h4></div></div></div><pre class="programlisting">DROP TABLE Clone_Status_old;
+DROP TABLE Gel_old;
+DROP TABLE Lane_old;
+DROP TABLE RunStats_old;
+DROP TABLE Sequence_Batch_old;
+DROP TABLE Sequence_old;
+DROP TABLE Gel_OLD;</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs05.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="apc.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.&nbsp;Changes for Release 2.40 (Jan 30/2006)&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Appendix&nbsp;C.&nbsp;Glossary</td></tr></table></div></body></html>

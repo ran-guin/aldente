@@ -1,0 +1,2 @@
+1	ReArray_Request	Waiting for Primers
+2	ReArray_Request	Waiting for Preps

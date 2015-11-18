@@ -1,0 +1,22 @@
+<h2>Change Password</h2>
+[% IF err %]<p class=error><strong>Error:</strong> [% err %][% END %]
+<form action="[% change_url %]" method=post role="form" style="width:200px;">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" id="username" type=text name=username placeholder="Enter username">
+    </div>
+    <div class="control-group">
+        <label for="mypass">Old Password</label>
+        <input type=password class="form-control" id=oldpassword name=oldpassword placeholder="Old password">
+    </div>
+    <div class="form-group">
+        <label for="newpassword">New Password</label>
+        <input class="form-control" id="newpassword" type=password name=newpassword placeholder="Enter new password">
+    </div>
+    <div class="form-group">
+        <label for="newconf">New Password Confirmation</label>
+        <input class="form-control" id="newconf" type=password name=newconf placeholder="Confirm new password">
+    </div>
+    <button type=submit onclick="return validatePwdChange();" class="btn btn-success" value=Change>Change</button>
+  </dl>
+</form>

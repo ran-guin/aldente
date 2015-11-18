@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5
+END
+DepartmentSetting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/DepartmentSetting.txt
+END
+Department.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Department.txt
+END
+Library.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Library.txt
+END
+Pipeline.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Pipeline.txt
+END
+Project.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Project.txt
+END
+Enzyme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Enzyme.txt
+END
+Location.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Location.txt
+END
+DB_Form.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/DB_Form.txt
+END
+Grp_Relationship.txt
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Grp_Relationship.txt
+END
+Tissue.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Tissue.txt
+END
+Setting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Setting.txt
+END
+GrpEmployee.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/GrpEmployee.txt
+END
+DBField.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/DBField.txt
+END
+Contact.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Contact.txt
+END
+Well_Lookup.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Well_Lookup.txt
+END
+DBTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/DBTable.txt
+END
+Barcode_Label.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Barcode_Label.txt
+END
+Vector_Type.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Vector_Type.txt
+END
+Trigger.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Trigger.txt
+END
+Organization.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Organization.txt
+END
+GrpDBTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/GrpDBTable.txt
+END
+Equipment.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Equipment.txt
+END
+Plate_Format.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Plate_Format.txt
+END
+EmployeeSetting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/EmployeeSetting.txt
+END
+Organism.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Organism.txt
+END
+Lab_Protocol.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Lab_Protocol.txt
+END
+Employee.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Employee.txt
+END
+Rack.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Rack.txt
+END
+Status.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Status.txt
+END
+Antibiotic.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Antibiotic.txt
+END
+Grp.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Grp.txt
+END
+Object_Class.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Object_Class.txt
+END
+seqinit.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/seqinit.sql
+END
+Primer.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/conf/sql/release/2.5/Primer.txt
+END

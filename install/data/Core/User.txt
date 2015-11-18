@@ -1,0 +1,3 @@
+User_ID	User_Name	Email_Address	User_Status	Password	FK_Department__ID	User_Access
+1	Admin	rguin@bcgsc.ca	Active	*0C2BDB7971695D03A1E64F702E64C6F83DE0AF76	1	Admin
+2	Guest	guest	Active	*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19	2	Guest

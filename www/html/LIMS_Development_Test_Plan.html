@@ -1,0 +1,5501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE"
+ content="text/html; charset=iso-8859-1">
+  <title></title>
+  <meta name="GENERATOR" content="OpenOffice.org 1.0.2  (Linux)">
+  <meta name="AUTHOR" content="Andy Chan">
+  <meta name="CREATED" content="20030402;15324600">
+  <meta name="CHANGED" content="20040510;10562300">
+  <style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:small }
+		 -->
+	</style>
+</head>
+<body text="#000000">
+<table frame="below" cellspacing="0" cols="4" rules="groups" border="1">
+  <colgroup><col width="642"><col width="86"><col width="86"><col
+ width="86"></colgroup> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="20" align="left"><b><font size="3">LIMS
+Development Test Plan (Release 2.20)</font></b><br>
+      </td>
+      <td width="86" height="20" align="left"><br>
+      <br>
+      </td>
+      <td width="86" height="20" align="left"><br>
+      <br>
+      </td>
+      <td width="86" height="20" align="left"><br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td width="50"><br>
+      </td>
+      <td width="642" height="17" align="left"><br>
+      <br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      <br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      <br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      <br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Login
+page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Log in to the seqdev
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"> If correct password
+entered, user is redirected to the department home page of his/her
+previous login</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If incorrect password
+entered, user is asked to login again.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links to Production
+Version and Previous Version works.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Reduced version of Login
+page shows up if login as user 'Auto' and no activity in last 30 mins.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Change Password
+functionality is working</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If incorrect password
+entered, user is asked to login again.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>General
+Cross-Department Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Tab
+Bar</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Department
+tabs</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Tabs are visible for all
+departments that the user has access to ('Guest' access is good enough)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">The tab for the current
+home page is highlighted</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Login
+info</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Database, host, login
+user and release correctly shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Error
+Notification</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">The error is submitted
+to the Issues Tracker and email notification sent to the developer.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If error does not have a
+description, warning are shown to user for confirmation</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Quick
+Action</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search help</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scanning</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan employee (EMP)
+-&gt; Employee info page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan employee with
+password -&gt; Relogin as a new user</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan equipment (EQU)
+-&gt; Equipment page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan rack (RAC) -&gt;
+Rack page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan plate (PLA/CNT)
+-&gt; Plate page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan solution/reagent
+(SOL) -&gt; Solution page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan sample (SAM) -&gt;
+Sample page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan Source (SRC) -&gt;
+Source page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan multiple
+solution/reagents -&gt; Mixture page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan plates/equipment
+-&gt; Sample sheet generator</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan rack/equipment
+-&gt; Move racks to new equipment</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan plates/rack -&gt;
+Move plates to new rack</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan invalid barcode
+-&gt; 'Unrecognized Barcode' message displayed to the user.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Plate Set -&gt; retrieve
+a plate set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If plate set number is
+valid -&gt; User is redirected to the protocol home page.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If plate set number is
+invalid -&gt; 'Invalid Plate Set' message displayed to the user. </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Print Text Label -&gt;
+Print barcode</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Links</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Refresh Parameters</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add Message</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Message</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Private message shown if
+user login is the user who added the message</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Public message shown if
+any user login</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Navigation
+Icons</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Home -&gt; User is
+redirected to the department home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Issues -&gt; Goes to
+Issues Tracker page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Re-Login -&gt; Goes back
+to the login page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">New Changes Help -&gt;
+Display new changes info</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Issues
+Page (Issues Tracker)</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search issues and
+display matched issues</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Submit new issue -&gt;
+issue correctly assigned to developer and email notification sent</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Issues statistics -&gt;
+make sure statistics for Outstanding Issues are correct.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>New
+Changes page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check that description
+of all the new changes/features are included in this page.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>General
+editing pages check (single-record and multiple-records):</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Adding records</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Editing records</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Deleting records</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>General
+Lab Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Barcode
+Scanning</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Same functionalities as
+under the 'Scanning' section of 'Quick Action'</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Reagents
+page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mix standard solutions
+(check Mixture table)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new primer to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new primer type to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new buffer to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new matrix to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new reagent to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new box to database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new kit to database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search/edit existing
+solutions</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Equipment
+page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new equipment to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search/edit existing
+equipments</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Plates
+page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Find plates by different
+search methods and different groupsings -&gt; Move plates between racks</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new plate
+(original and rearray)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search/edit existing
+plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Delete or Annotate
+Recent Plate (check deleting the plates also delete the corresponding
+plate set)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only lab admins can
+delete original plates, which also delete the corresponding sample
+entries</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Ancestry for a plate</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Protocol
+Tracking</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan more than one plate</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Save as a plate set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">If one or more plates
+have status of 'Failed', 'Thrown Out', 'Exported', then user cannot
+save the set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Choose a protocol</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only protocols for the
+current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Cycle through protocol</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add note to plate during
+a step</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Fail a plate during a
+step. This should:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">reset plate set to
+exclude this plate</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">continue with next step</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">annotate plate comments</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Skip a step</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Resume process:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">exit protocol before
+finishing</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">scan one of the plates
+in the latest set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">recover plate set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">continue (sends to
+proper step in protocol)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Test a Transfer/Aliquot
+step:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Test a Pooling step:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer to Gel</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Make sure that the
+Parent Plate/Tube is thrown away if it is a Transfer Step</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">new plate set is
+generated and new barcode printed.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer quantity
+checked against available quantity and properly tracked</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">protocol continues with
+the new plate set.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Solutions</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mix reagents to form
+solution (check entry in Mixture table)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create standard mixture
+(check parameters printout)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Department Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Guest
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Views
+section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Summaries
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Displaying Run Summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Last 24 Hrs page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Lab
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contains all features
+from Guest Access</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Barcode
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Barcode scanning is
+functioning properly</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search/Edit...
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Single-record search/edit</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Multi-record search/edit</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">List contains:
+Collaboration, Contact, Equipment, Library, Library/Primer, Plate,
+Plate Format, Sequence Info, Solution, Stock, Study, Vector,
+Vector/Primer Direction</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Create
+New... box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new entry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">List contains: Contact,
+Plate, Study</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+General section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Plates
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Plates home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching Rack
+&amp; Plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Delete/Annotate Plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Plate ID/barcode
+and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Plate History</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select No Grows</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select Slow Grows</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select Unused Wells</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Ancestry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">ReArray plates shown in
+ancestry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Type in Plate Set Number
+and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Grab Plate Set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="19" align="left">Recover Plate Set</td>
+      <td width="86" height="19" align="left"><br>
+      </td>
+      <td width="86" height="19" align="left"><br>
+      </td>
+      <td width="86" height="19" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Solutions/Reagents
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to
+Solutions/Reagents home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching
+Bottles &amp; Stock</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mix standard solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only standard solution
+for the current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Solution
+ID/barcode and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Solution Status</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search Solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Equipment
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Equipment home
+page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching
+Equipment &amp; Maintenance</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Equipment
+ID/barcode and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Maintenance</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Maintenance History</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Sequencer Status</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Run
+Requests/Sample Sheets box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Sample Sheet
+home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching Runs
+&amp; Batch</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Annotate Sequence
+Comments</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mark Failed Runs</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Remove Sequence Request</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Views
+section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Run
+Summaries box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Last 24 Hrs Page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search for runs:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">By Run ID</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">By Library, Plate Code</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only libraries for the
+current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#c0c0c0"><b>Rearray
+home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search for rearrays</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select a Reserved
+rearray and apply it by selecting the 'Apply Rearray' rearray action</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select multiple Reserved
+rearrays and apply them by selecting the 'Apply Rearray' rearray action</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Rearray details
+page by clicking the View link</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Rearray Library
+View page by clicking the LibView link</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select a rearray and
+view locations by selecting the 'Locations' rearray action</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Select multiple rearrays
+and view locations by selecting the 'Locations' rearray action</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View DNA multiprobe
+control sheet by selecting the 'Generate DNA Multiprobe' rearray action
+on an oligo rearray</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Custom primer
+multiprobe control sheet by selecting the 'Generate Custom Primer
+Multiprobe' rearray action on an oligo rearray</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">generate a new custom
+primer plate barcode by selecting the 'Create Remapped Custom Primer
+Plate' rearray action on an oligo rearray</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Custom primer
+multiprobe control sheet on a rearray with a remapped primer plate</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Generate QPIX control
+sheet by selecting the 'Regenerate QPIX file' rearray action on a clone
+rearray</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Show QPIX rack by
+selecting the 'Show QPIX rack' rearray action on a clone rearray</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View a QPIX file/rack
+for more than one rearray by selecting multiple rearrays</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Abort a rearray by
+selecting the 'Abort rearray' rearray action</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Manually set up a
+rearray using the 'Manually Set Up Rearray' button</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Upload a yield report</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#c0c0c0"><b>Primer
+Plate Controls</b></td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#c0c0c0"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search for primer plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View details of a single
+primer plate by viewing the search list and clicking on the Primer
+Plate ID list</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Regenerate primer order
+file</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Last
+24 Hours page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Searching for runs (with
+various combinations of criteria)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only libraries for the
+current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check links in the table
+are working</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">Check number of wells
+add up to 96/384 (sum of normal wells, NG wells, SG wells and unused
+wells)</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Runmaps are generated</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Click on the runmap to
+go to the sequence read info page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Large plate view and
+histograms generated</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Click on well on large
+plate view to show trace data</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to scorecard and
+histogram</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Click on well to show
+trace data</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Ensure data are showing
+correctly on the scorecard</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Navigate to capillary
+view -&gt; Show one lane for each well and click on lane to show trace
+data</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Ensure users can
+navigate from the scorecard suite to other parts of alDente web site.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Generate FASTA file</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sample
+Sheets page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Sample sheets removal
+-&gt; Remove Sequence Request</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sample
+Sheet Generation</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan multiple plates and
+a sequencer</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Generate sample sheet.
+Ensure:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Primers linked correctly</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Sequence/Sequence_Batch
+info updated correctly</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check parameters are
+auto-set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Warn user if status or
+primer not chosen.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Warn user if
+Vector/Primer combination not found in database.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Admin
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contains all features
+from Lab Access</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search/Edit...
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">List also contains:
+Employee, Funding, Organization</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Create
+New... box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">List also contains:
+Employee, Funding, Library, Library/Primer, Organization, Plate Format,
+Primer Type, Project, Vector, Vector/Primer Direction</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Views
+section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Preparation
+Summaries box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Summary home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Query by Library, plate
+number, days and do the following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Prep Summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Protocol Summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Admin section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Request mirroring of
+sequencers</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Submissions</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="33" align="left" bgcolor="#cccccc"><b>Summary
+page - Check whether the stats/diagrams show up in the page. Also
+compare numbers to those from previous release to see if they are
+consistent.</b></td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check summary stats</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Q20 histograms</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check sequencer stats</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check project stats</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check date range summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check reads summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check prep summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check protocol summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check 'Stock Used'
+summary</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Libraries
+page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Libraries,
+Library Primers, Vector/Primer box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View, Create,
+Search/Edit the following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Libraries</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Suggested Library Primers</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Valid Primers (by
+Vectors)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new Pool</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only libraries for the
+current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Projects,
+Collaborations, Contacts box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View, Create,
+Search/Edit the following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Collaborations</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contacts</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Projects</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Vectors,
+Primers, Primer Customizations, Chemistry Codes box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View, Create,
+Search/Edit the following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Chemistry Codes</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Primers</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Primer Customizations</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Vectors</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Admin page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Admin
+Operations box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Test mirroring</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Re-Analyze run requests</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Submissions - Test
+the following for both internal &amp; external submissions:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">Upon clicking on a
+submission, the corresponding forms will be pre-filled with information
+from the submission hash file.</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Approving the submission
+will update the information into the database.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">After approving the
+submission no further changes can be made to the submission.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Define/Configure
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create/Edit the
+following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Chemistry Settings</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Sequencer Defaults</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Lab Protocols</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Standard Chemistries</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Sample Sheets</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Protocol Tracking Details</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Functionalities from
+Libraries page also available here</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression Department Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Guest
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">No features yet</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Lab
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contains all features
+from Guest Access</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Barcode
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Barcode scanning is
+functioning properly</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search/Edit...
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Single-record search/edit</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Multi-record search/edit</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">List contains:
+Collaboration, Contact, Equipment,Source, Solution, Stock, Study, Tube,
+Tube Format</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Create
+New... box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new entry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">List contains: Contact,
+Study, Tube</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression General section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Tubes
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Tubes home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching Rack
+&amp; Tubes</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Delete/Annotate Tubes</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Plate ID/barcode
+and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Tube History</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View Ancestry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Extracted tubes shown in
+ancestry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Pooled tubes shown in
+ancestry</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Type in Tube Set Number
+and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Grab Tube Set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Recover Tube Set</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Solutions/Reagents
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to
+Solutions/Reagents home page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching
+Bottles &amp; Stock</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mix standard solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only standard solution
+for the current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Solution
+ID/barcode and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Solution Status</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search Solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Equipment
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Link to Equipment home
+page</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Links for searching
+Equipment &amp; Maintenance</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Scan in Equipment
+ID/barcode and test the following operations:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Maintenance</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Maintenance History</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Original
+Source page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Allow user to create new
+Original Source</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Source
+scan/home page (<a href="SourceTestPlan.html">HowTo</a>)<br>
+      </b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer 2ul of the
+source 5 times</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Aliquot 2ul of the
+source 5 times</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Receive 10ul of the
+source 5 times</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Associate the source
+with a new library</td>
+      <td width="86" height="17" align="left">Add a new library if one
+doesn't exist</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create a new plate/tube
+in the selected library</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Verify that sibling
+sources are displayed in the table</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Verify that associated
+plates/tubes are displayed in the table</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Tube
+scan page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Allow user to add/edit
+extraction details</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Protocol
+Tracking</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Test an extraction step:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer to Plate from
+Tube with new extraction type, create extraction</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">new plate set is
+generated and new barcode printed. New original tube/plate and sample
+generated.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer quantity
+checked against available quantity and properly tracked</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">protocol continues with
+the new plate set.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Test a pooling step:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">new plate set is
+generated and new barcode printed. New original tube and sample
+generated.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">User is able to specify
+pooling quantity for each source tube. Volume is checked and tracked.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">protocol continues with
+the new plate set.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Admin
+Access</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contains all features
+from Lab Access</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search/Edit...
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">List also contains:
+Agilent Assay, Collaboration, Employee, Funding, Organization, Original
+Source,Source, Source Type</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Create
+New... box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">List also contains:
+Agilent Assay, Collaboration, Employee, Funding, Organization, Project,
+Original Source, Source,Source Type, Tube Format</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Projects,
+Collaborations, Contacts box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View, Create,
+Search/Edit the following:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Collaborations</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Contacts</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Projects</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>RNA
+Source scan page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Allow user to clone the
+RNA Source</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gene
+Expression Admin page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Define/Configure
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Lab Protocols</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Standard Chemistries</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Functionalities from RNA
+Extraction page also available here</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Sequencing
+Library Submission</b></td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Submit new sequencing
+library</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Resubmit existing
+sequencing library</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Receiving
+Department Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Receiving
+Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Receive
+New Stock box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search for stock by
+catalog number or stock name (like search)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Return all matched stocks</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Choosing a stock will
+bring the user to the New Stock form with information pre-filled.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new primer to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new buffer to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new matrix to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new reagent to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new box to database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new kit to database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add new equipment to
+database</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search/Edit...
+box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">List contains: Box,
+Buffer, Contact, Equipment, Kit, Matrix, Organization, Primer, Reagent,
+Stock</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Create
+New... box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">List contains: Box,
+Buffer, Contact, Equipment, Kit, Matrix, Organization, Primer, Reagent,
+Stock</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Search
+for Stock box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Type in a stock name and:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check Solution Status</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Soon to Expire</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Recently
+Added Stock box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check recently received
+reagents</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Check my recent solutions</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Stock
+Supply Notification box</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">View/Edit Notification
+Settings</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>LIMS
+Admin Department Functionalities</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Access to all
+departmental homepages and functionalities</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>LIMS
+Admin Home Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>User
+Sessions section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Search user session by:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Day of week and Username</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">String inside the session</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Data
+Configuration section</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Edit, View, Search
+tables from DBTable</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Scanner
+Pages</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Make sure the following
+features are supported for Sequencing &amp; Gene Expression departments:</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Barcode scanning</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Mix standard solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Only standard solutions
+for the current group are shown</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new solution</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Protocol Tracking</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Error Notification</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Protocol
+Admin Page</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new protocol</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Protocol correctly
+associated to designated groups</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer quantity can be
+assigned to transfer/aliquot steps</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transer/aliquot steps
+can be designated as extractions with transfer quantity associated</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Pooling functionality
+present</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Ability to copy an
+existing protocol and save as a new one</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Agar
+Plate Handling:</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer/aliquot from
+Plate to Agar Tube (Scan Plate)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Pick from the wells of
+the Plate to Agar Plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Print Agar Plate barcodes</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Gel
+Plate Handling:</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Transfer/aliquot from
+Plate to Gel (Scan Plate)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Upload a Gel file to add
+Bands (.sizes or specify fields)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Pick from Bands on to a
+Plate (try picking 0 or &gt; number of wells on target plate)</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Display Bands</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Set Gel Status</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Add Lane Comments</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b></b>Original
+Source Home Page</td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create new library from
+Original Source</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Receive a new source</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Display list of
+associated sources and plates</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>All
+new changes/features - test throughoutly (Refer to issues in Issues
+Tracker)</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Track Inherited Sample
+Attributes for Samples</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><b><br>
+      </b></td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left" bgcolor="#cccccc"><b>Database
+upgrade:</b></td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="17" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Create a testing
+database consist of the latest database schema of the production
+database.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">Run upgrade_DB.pl to
+make sure upgrade ran without errors and the database schema is
+properly modified.</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="33" align="left" bgcolor="#cccccc"><b>Cron
+jobs/background processes - these should be monitored on a regular
+basis after the release is made:</b></td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+      <td width="86" height="33" align="left" bgcolor="#cccccc"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">update_sequence.pl -
+sequences are analysed and last 24 hours page is updated.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">Try 'Regenerate Analysis
+for these runs' and 'Re-Mirror all machines' links</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">seqmirror - sample
+sheets and trace files are mirrored on a regular basis.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">backup_DB.pl - the
+sequence database is dumped a regular basis and the Clone_Sequence
+table is dumped during the last dump of the day.</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">restore_DB.pl</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">The seqlast and seqtest
+databases on seqdb01 are restored daily.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">The sequence database on
+athena is also restored daily.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">code_sync.pl - code of
+the production version are synchornized from /opt/sequence to
+/home/sequence on a regular basis.</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="32" align="left">cat_vectors.pl - the
+vector file is checked on a regular basis and if new vectors are found
+then the file will be recreated.</td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+      <td width="86" height="32" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">sys_monitor.pl - warns
+LIMS admin about disk space and other system related issues</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td width="50"><input type="checkbox"></td>
+      <td width="642" height="17" align="left">update_library_list.pl -
+the library_list file is updated on a regular basis.</td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+      <td width="86" height="17" align="left"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- ************************************************************************** -->
+</body>
+</html>

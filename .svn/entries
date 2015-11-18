@@ -1,0 +1,147 @@
+10
+
+dir
+115487
+https://svn01.bcgsc.ca/svn/alDente/trunk
+https://svn01.bcgsc.ca/svn
+
+
+
+2015-10-21T00:38:19.476987Z
+114613
+rguin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad02020f-2a26-4133-947e-1829317c1416
+
+Plugins
+dir
+
+Imported
+dir
+
+root
+dir
+
+www
+dir
+
+conf
+dir
+
+help
+dir
+
+docs
+dir
+
+Options
+dir
+
+README
+file
+
+
+
+
+2015-11-18T22:46:52.000000Z
+64e1f2a90b270dfe10040c2859abb05d
+2015-10-21T00:37:42.444649Z
+114612
+rguin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+942
+
+cron
+dir
+
+rest_api
+dir
+
+lib
+dir
+
+install
+dir
+
+cgi-bin
+dir
+
+bin
+dir
+
+alDente.README
+file
+
+
+
+
+2015-11-18T22:46:52.000000Z
+304e75abfdb5abf2924a0d6f73f0c4a9
+2004-12-10T00:21:57.589580Z
+1524
+jsantos
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+678
+
+data
+dir
+
+custom
+dir
+
+template
+dir
+

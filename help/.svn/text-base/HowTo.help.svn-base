@@ -1,0 +1,50 @@
+<h1>How to ... questions answered</h1>
+<P>Below are indicated the primary 'how to' questions that arise when using 'alDente'.
+
+<h2>Defining a new Object (non-tangible concepts eg. Library):</H2>
+<UL>
+<LI>Original_Source<P>
+<B>Previous requirements</B>: None<BR>
+<B>Permissions</B>: Lab Admin<BR>
+<B>Platform</B>: Workstation<BR>
+<B>Procedure</B>:
+<UL>
+<LI>Choose 'Create New' , 'Original_Source' from main page
+<LI>Fill in form details. 
+<LI>(options exist to prompt user to continue to define new Library at the same time)
+</UL>
+
+<P><B>Alternative Procedure</B> (if similar source exists):
+<UL>
+<LI>go to home page for current 'original_source'.
+<LI>select 'create similar source' link and continue to fill in form.
+</UL>
+
+<LI>Library<P>
+<B>Previous requirements</B>: Original_Source defined (organism, strain etc) (1)<BR>
+<B>Permissions</B>: Lab Admin<BR>
+<B>Platform</B>: Workstation<BR>
+<B>Procedure </B>(if not continuing from Original_Source definition):<P>
+<UL>
+<LI>Choose 'Create New' , 'Library' from main page
+<LI>select appropriate original source and continue to fill in forms.
+</UL>
+</UL>
+<H2>Creating New Lab Objects (a tangible - usually barcoded - item in the lab)</h2>
+
+<UL>
+<LI>Plate or Tube<P>
+<B>Previous requirements</B>: Library defined (1)<BR>
+<B>Permissions</B>: Lab Tech<BR>
+<B>Platform</B>: Workstation<BR>
+<B>Procedure</B>:
+<UL>
+<LI>type in library name in scanable field
+<LI>choose 'Create New Plate' link
+<LI>Fill in form
+<LI>Place barcode on plate
+</UL>
+
+<LI>Equipment
+
+</UL>

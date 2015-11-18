@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6
+END
+install_Healthbank_2_6.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/install_Healthbank_2_6.pat
+END
+Site.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Site.txt
+END
+Organization.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Organization.txt
+END
+Library.txt
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Library.txt
+END
+Equipment_Category.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Equipment_Category.txt
+END
+Pipeline.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Pipeline.txt
+END
+service_centre.pat
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/service_centre.pat
+END
+Equipment.txt
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Equipment.txt
+END
+Location.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Location.txt
+END
+Plate_Format.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Plate_Format.txt
+END
+Stock_Catalog.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Stock_Catalog.txt
+END
+Lab_Protocol.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Lab_Protocol.txt
+END
+Rack.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Rack.txt
+END
+Sample_Type.txt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Sample_Type.txt
+END
+Stock.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Stock.txt
+END
+Original_Source.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Original_Source.txt
+END
+GrpLab_Protocol.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/GrpLab_Protocol.txt
+END
+upgrade_anatomic_site.pat
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/upgrade_anatomic_site.pat
+END
+Protocol_Step.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Protocol_Step.txt
+END
+Ordered_Procedure.txt
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/Ordered_Procedure.txt
+END
+upgrade_shipping.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.6/upgrade_shipping.pat
+END

@@ -1,0 +1,181 @@
+#!/usr/bin/perl -w
+
+################################################################
+# This script runs in the background and examines 
+# and updates library directories
+################################################################
+
+# libmake lib_file
+
+use strict;
+use POSIX qw(strftime);
+use local::PerlHelper;
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+use SDB::CustomSettings;
+use vars qw($URL_cache $project_dir);
+
+# Directory under which the library directories will be created
+my $LIBDIR  = $project_dir;
+# Email to send reports to
+my $EMAIL   = "rguin";
+# List of libraries
+my $liblist = shift || "$URL_cache/library_list";
+
+my $pidfile = "$URL_cache/libmake.pid";
+
+if(! -e $liblist || ! -r _) {
+	die "Can't read the input file $liblist\n";
+}
+
+$SIG{HUP} = \&Finish;
+$SIG{INT} = \&Finish;
+$SIG{KILL} = \&Finish;
+$SIG{STOP} = \&Finish;
+$SIG{QUIT} = \&Finish;
+$SIG{TERM} = \&Finish;
+
+# If the pid file already exists, quit.
+
+if(-e $pidfile) {
+  my $pid = `cat $pidfile`;
+  chop $pid;
+  print "$pidfile exists [$pid]\n";
+  my $proc = `ps aux | grep libmake`;
+  while($proc =~ /(.*)/g) {
+    my $line = $1;
+    if ($line =~ /perl \-w/) {
+      my ($uid,$currpid) = split(/\s+/,$line);
+      if($currpid eq $$) {next}
+      print "Library monitor already running as $uid on PID $currpid\n\n";
+      exit;
+    }
+  }
+  print "Library monitor not running.\n";
+  print "Deleting stale PID file.\n";
+  unlink($pidfile);
+}
+
+my $PID = fork();
+if(! defined $PID) {
+  die "cannot fork";
+}
+
+if($PID) {
+  print "backgrounding libmake daemon...\n";
+  exit;
+}
+
+open(STDIN,"</dev/null");
+open(STDOUT,">/dev/null");
+open(STDERR,">&STDOUT");
+
+my $CHILDPID = $$;
+open(PID,">$pidfile") || die "cannot open $pidfile PID file";
+print "Making PID file.\n";
+print PID "$CHILDPID\n";
+close(PID);
+
+my $timestamp = 0 ;
+my $currtimestamp = 0;
+my $report = "";
+my $newlib = 0;
+
+while(1) {
+  my @stat = stat $liblist;
+  $currtimestamp =  $stat[9];
+  if(!$timestamp) {
+    $timestamp=$currtimestamp;
+    next;
+  }
+  if($currtimestamp > $timestamp) {
+    $timestamp=$currtimestamp;
+    my $date = strftime "%d-%m-20%y %H:%M:%S",localtime;
+    my $hostname = `/bin/hostname -s`;
+    $report .= "library monitor running on $hostname";
+    $report .= "Sequence library list has been updated $date\n";
+    ParseFile();
+    if(!$newlib) {
+      $report .= "No new libraries found. File time stamp changed.\n";
+    } else {
+      # No email sent if no new libraries.
+    PerlHelper::Mail("$EMAIL\@bcgsc.bc.ca","Sequence Library Reporter","Library",$report);
+    }
+    print "Just mailed\n";
+    $newlib = 0;
+    $report="";
+  }
+  sleep 10;
+}
+
+sub ParseFile {
+  open(LIBLIST,$liblist);
+  while(<LIBLIST>){
+    if(/^\s*\#/) {next;}
+    if(/^\s*$/) {next;}
+    my $lib = $_;
+    chop $lib;
+    my ($libname,$sublibname);
+    if($lib =~ /(.*)\/(.*)/) {
+      $libname=$1;
+      $sublibname=$2;
+    }
+    CheckLib($libname,$sublibname);
+  }
+  close(LIBLIST);
+}
+  
+sub CheckLib {
+  
+  my $libname = shift;
+  my $sublibname = shift;
+  my $status = 0;
+  
+  my $dir = "$LIBDIR/$libname";
+  
+  if(! -d $dir) { 
+      $report .= "$dir added\n";
+      system("mkdir $dir");
+      system("chown sequence.sequence $dir");
+      system("chmod 0755 $dir");
+      $newlib = 1;
+  }
+  $dir = "$LIBDIR/$libname/$sublibname";
+  if(! -d $dir) { 
+    $report .= "$dir added\n";
+    system("mkdir $dir");
+    system("chown sequence.sequence $dir");
+    system("chmod 0755 $dir");
+    $newlib = 1;
+    system("chown sequence.sequence $dir");
+    system("chmod 0755 $dir");
+  } 
+  if(! -d "$dir/AnalyzedData") {
+    $report .= "$dir/AnalyzedData added\n";
+    system("mkdir $dir/AnalyzedData");
+    system("chmod 0755 $dir/AnalyzedData");
+    $newlib = 1;
+  }
+  if(! -d "$dir/SampleSheets") {
+    $report .= "$dir/SampleSheets added\n";
+    system("mkdir $dir/SampleSheets");
+    $newlib = 1;
+    # The samplesheets must be writeable by 'nobody' and since
+    # this script does not run as root, set this directory
+    # to 777.
+    #
+    # if you are running as root:
+    # system("chown nobody.sequence $dir/SampleSheets");
+    #
+    # if you are running as sequence:
+    system("chown sequence.sequence $dir/SampleSheets");
+    system("chmod 0777 $dir/SampleSheets");
+}
+  
+}
+
+sub Finish {
+    print "Deleting PID file.\n";
+    unlink($pidfile);
+    exit;
+}

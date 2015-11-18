@@ -1,0 +1,27 @@
+<h2>Stock Notification</H2>
+<P>This tool is used to allow stock administrators to monitor quantities of various stock in supply.  When a new reagent is ordered, administrators are prompted to set stock notification levels if desired.  (ie specify the minimum number of unopened units that should be in stock at all times).  This is tracked using the catalog number.
+<P>
+If the number of unopened units of stock falls below the given amount, an email message will be delivered to a specified target_list of recipients.  Generally this should simply be an indication that a new order should be placed, and the message will repeat (if unaddressed) on a regular basis.  (generally set to weekly).
+<P>
+eg:<BR>
+<Img Src='$Help_Image_dir/Notification_LowLevel.png'>
+<HR>
+<P>
+Sometimes there are slight modifications that should be made to the database instead including:
+<UL>
+<LI>Changed catalog number for standard reagent<P>
+<Img Src='$Help_Image_dir/Notification_DifferentCat.png'><P>
+Note that in this case, it appears that the catalog number has changed for the described reagent.  If correct, this change should also be reflected in the Notification table (so that the supply level of the NEW catalog number is used rather than the old one).<P>
+In this case, users should click on the 'Check Notification Table' link at the top of the Stock Notification message, and edit the displayed info to reflect the new Catalog Number.  (generally this means simply changing the Catalog_Number field, though the message field, target_list, or minimum number of units may also be edited if required here.
+<LI>Different names for the same catalog number <P>
+<Img Src='$Help_Image_dir/Notification_ChangedName.png'><P>
+Note that here the name appears to be incorrect (or at least inconsistent) for the same catalog number.  This inconsistency should be fixed if possible.<P>
+In this case, users should click on either the solution name (bringing up a list of the stock items with this name), or the catalog number (bringing up a list of the stock items with this catalog number) - and edit the table so that the names are consistent.
+<LI>Different catalog numbers for the same stock name <P>
+Sometimes catalog numbers should also be adjusted in case of inserted spaces or dashes etc.  In these cases, edit stock names/catalog numbers as above.
+<LI>Need to change Minimum number of units<P>
+Again, the user should simply click on the 'Check Notification Table' link at the top of the Stock Notification message, and edit the displayed info to reflect the desired settings.
+</UL>
+<HR>
+<P>If you have any further questions, please contact the administrator.
+<P>Adjustments to this tool to make things easier can only be made with regular feedback.

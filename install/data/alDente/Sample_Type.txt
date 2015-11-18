@@ -1,0 +1,5 @@
+Sample_Type_ID	Sample_Type	FKParent_Sample_Type__ID	Sample_Type_Alias
+1	Mixed	NULL	Mixed
+2	Tissue	NULL	Tissue
+3	Cells	NULL	Cells
+4	RBC+WBC	0	RBC+WBC

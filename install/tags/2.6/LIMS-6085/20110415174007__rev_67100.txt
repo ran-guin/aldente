@@ -1,0 +1,3 @@
+parse_qseq.pl
+generate_basecall_summary.pl
+solexa_post_analysis.pl

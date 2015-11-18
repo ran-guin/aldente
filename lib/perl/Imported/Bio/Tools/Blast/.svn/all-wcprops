@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast
+END
+HTML.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast/HTML.pm
+END
+Sbjct.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast/Sbjct.pm
+END
+HSP.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast/HSP.pm
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast/CHANGES
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Blast/README
+END

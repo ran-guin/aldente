@@ -1,0 +1,83 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.&nbsp;Changes for Release 2.40 (Jan 30/2006)</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="LIMS Help Pages"><link rel="up" href="apb.html" title="Appendix&nbsp;B.&nbsp;Release Changes"><link rel="prev" href="apbs04.html" title="4.&nbsp;Changes for Release 2.30"><link rel="next" href="apbs06.html" title="6.&nbsp;Changes for Release 2.41 (May 05/2006)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.&nbsp;Changes for Release 2.40 (Jan 30/2006)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs04.html">Prev</a>&nbsp;</td><th width="60%" align="center">Appendix&nbsp;B.&nbsp;Release Changes</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="apbs06.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e18728"></a>5.&nbsp;Changes for Release 2.40 (Jan 30/2006)</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18731"></a>5.1.&nbsp;Work Packages</h3></div></div></div><div class="screenshot"><div class="mediaobject"><img src="resources/attributes1.png"></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18741"></a>5.2.&nbsp;Database Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18744"></a>5.2.1.&nbsp;New Tables Created</h4></div></div></div><pre class="programlisting">CREATE TABLE `LibraryVector`
+CREATE TABLE `Vector_Type`
+CREATE TABLE `LibraryApplication`
+CREATE TABLE `Object_Class`
+CREATE TABLE `Antibiotic`
+CREATE TABLE `Vector_TypeAntibiotic`
+CREATE TABLE `Vector_TypePrimer`
+CREATE TABLE `Event`
+CREATE TABLE `Field_Map`
+CREATE TABLE `Event_Attribute`
+CREATE TABLE `Library_Segment`
+CREATE TABLE `Source_Attribute` 
+CREATE TABLE `Run_Attribute` 
+CREATE TABLE `View` 
+CREATE TABLE `ViewJoin` 
+CREATE TABLE `ViewInput` 
+CREATE TABLE `ViewOutput` 
+CREATE TABLE `RunBatch` 
+CREATE TABLE `Run` 
+CREATE TABLE `SequenceRun` 
+CREATE TABLE `SequenceAnalysis` 
+CREATE TABLE `GelRun` 
+CREATE TABLE `GelAnalysis` 
+CREATE TABLE `Lane` 
+CREATE TABLE `Fail` 
+CREATE TABLE `FailReason`</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18749"></a>5.2.2.&nbsp;Altered Tables</h4></div></div></div><pre class="programlisting">ALTER TABLE Original_Source_Attribute ADD UNIQUE original_source_attribute (FK_Original_Source__ID,FK_Attribute__ID);
+ALTER TABLE Source MODIFY Source_Type enum('Library_Segment','RNA_Source','ReArray_Plate','Ligation','Microtiter','Xformed_Cells','External');
+ALTER TABLE Prep_Attribute ADD `FK_Employee__ID` int(11) default NULL;
+ALTER TABLE Prep_Attribute ADD `Set_DateTime` datetime NOT NULL default '0000-00-00 00:00:00';
+ALTER TABLE Plate_Attribute ADD `FK_Employee__ID` int(11) default NULL;
+ALTER TABLE Plate_Attribute ADD `Set_DateTime` datetime NOT NULL default '0000-00-00 00:00:00';
+ALTER TABLE Vector add FK_Vector_Type__ID int NOT NULL;
+ALTER TABLE VectorPrimer add FK_Vector__ID int NOT NULL;
+ALTER TABLE Primer change Primer_Type Primer_Type enum('Standard','Custom','Oligo','Amplicon','Adapter') default NULL;
+ALTER TABLE VectorPrimer add FK_Primer__ID int NOT NULL; 
+ALTER TABLE Maintenance add Maintenance_Finished datetime default NULL; 
+ALTER TABLE Maintenance add FKMaintenance_Status__ID int default 0; 
+ALTER TABLE Original_Source ADD Sample_Available enum('Yes','No') default 'Yes' NOT NULL; 
+ALTER TABLE DB_Form ADD Class varchar(40); 
+ALTER TABLE Library change Library_Status Library_Status enum('Submitted','On Hold','In Production','Complete','Cancelled','Contaminated') default 'Submitted'; 
+ALTER TABLE PCR_Library CHANGE Concentration_Per_Well Concentration_Per_Well float(10,3) NOT NULL DEFAULT 0; 
+ALTER TABLE Status modify Status_Type enum('ReArray_Request','Maintenance'); 
+ALTER TABLE Organism ADD Common_Name varchar(255) default NULL; 
+ALTER TABLE Organism CHANGE Sub_species Sub_species varchar(255) default NULL; 
+ALTER TABLE Organism CHANGE Species Species varchar(255) default NULL; 
+ALTER TABLE Stage DROP Thelier_Stage; 
+ALTER TABLE SAGE_Library ADD Starting_RNA_Amnt_ng float(10,3) default null; 
+ALTER TABLE SAGE_Library ADD PCR_Cycles int(11) default null; 
+ALTER TABLE SAGE_Library ADD cDNA_Amnt_Used_ng float(10,3) default null; 
+ALTER TABLE SAGE_Library ADD DiTag_PCR_Cycle int(11) default null; 
+ALTER TABLE SAGE_Library ADD DiTag_Template_Dilution_Factor int(11) default null; 
+ALTER TABLE SAGE_Library ADD Adapter_A varchar(20) default null; 
+ALTER TABLE SAGE_Library ADD Adapter_B varchar(20) default null; 
+ALTER TABLE Prep ADD Attr_temp text; 
+ALTER TABLE MultiPlate_Run CHANGE `FKMaster_Sequence__ID` `FKMaster_Run__ID` INT( 11 ) DEFAULT NULL; 
+ALTER TABLE MultiPlate_Run CHANGE `FK_Sequence__ID` `FK_Run__ID` INT( 11 ) DEFAULT NULL; 
+ALTER TABLE Cross_Match CHANGE `FK_Sequence__ID` `FK_Run__ID` INT( 11 ) DEFAULT NULL; 
+ALTER TABLE Clone_Sequence CHANGE `FK_Sequence__ID` `FK_Run__ID` INT( 11 ) DEFAULT NULL; 
+ALTER TABLE Clone_Sequence ADD `Peak_Area_Ratio` FLOAT( 1, 5 ) NOT NULL ; 
+ALTER TABLE Contaminant CHANGE `FK_Sequence__ID` `FK_Run__ID` INT( 11 ) DEFAULT NULL; 
+ALTER TABLE Clone_Sequence MODIFY Growth enum('OK','Slow Grow','No Grow','Unused','Empty','Problematic'); 
+ALTER TABLE Trace_Submission CHANGE `FK_Sequence__ID` `FK_Run__ID` INT DEFAULT NULL; 
+ALTER TABLE RNA_Source drop FK_Original_Source_Type__ID; 
+ALTER TABLE RNA_Source drop FK_Original_Source_Stage__ID; 
+ALTER TABLE Transposon_Pool CHANGE `FK_Gel__ID` `FK_GelRun__ID` INT( 11 ) NULL DEFAULT NULL; 
+ALTER TABLE Band ADD `Band_Type` ENUM( 'Insert', 'Vector' ) DEFAULT NULL; 
+ALTER TABLE Plate add QC_Status enum('N/A','Pending','Failed','Re-Test', 'Passed') default 'N/A'; 
+ALTER TABLE Solution add QC_Status enum('N/A','Pending','Failed','Re-Test', 'Passed') default 'N/A'; 
+ALTER TABLE Library add Requested_Completion_Date date default NULL; 
+ALTER TABLE Library add FKConstructed_Contact__ID int NOT NULL default 0; 
+ALTER TABLE Vector drop index Vector_Name; 
+ALTER TABLE Work_Request ADD FK_Goal__ID INT; 
+ALTER TABLE Work_Request ADD Goal_Target INT; 
+ALTER TABLE Work_Request ADD Comments TEXT; 
+ALTER TABLE Work_Request ADD FK_Submission__ID INT NOT NULL; 
+ALTER TABLE Work_Request ADD Work_Request_Type enum('End Reads','Custom Reads', 'DNA Preps') default NULL; 
+ALTER TABLE Work_Request ADD Num_Plates_Submitted INT NOT NULL default 0; 
+ALTER TABLE Work_Request ADD FK_Plate_Format__ID INT NOT NULL default 0;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18754"></a>5.2.3.&nbsp;Dropped Tables</h4></div></div></div><pre class="programlisting">DROP TABLE RunStats; CREATE TABLE `RunStats_old`
+DROP TABLE Sequence_Batch; CREATE TABLE `Sequence_Batch_old`
+DROP TABLE Sequence; CREATE TABLE `Sequence_old`
+DROP TABLE Original_Source_Type;</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18759"></a>5.3.&nbsp;Department Specific Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18762"></a>5.3.1.&nbsp;Sequencing Changes</h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Sequence Runs are now being tracked as Runs of type Sequence. This will allow LIMS to track other type of Runs such as Gel Runs or Affy Runs. (Lab User/Admin should not notice anything different.)</p></li><li style="list-style-type: circle"><p>Changed handling of Chemistry Codes on the Last 24 Hours page - codes are now dynamically retrieved from the DB. The ChemistryInfo cache file has been deprecated</p></li><li style="list-style-type: circle"><p>Solution IDs are now assigned when primer plates are ordered (not when they are received)</p></li><li style="list-style-type: circle"><p>Enhancements to help with Sequencing data QA</p></li><li style="list-style-type: circle"><p>Enabled agarose solution to the flagged as passed or failed (or marked to retest). Passed plates will then be identified and located using LIMS.</p></li><li style="list-style-type: circle"><p>API enhancements and monitoring tools added to allow the bioinformatics team to pull information out of LIMS much easier.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18785"></a>5.3.2.&nbsp;Mapping</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Implemented tracking of gels in LIMS. [ <a href="/docs/training/geltracking.ppt" target="_top">Learn more</a> ]</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18795"></a>5.3.3.&nbsp;Gene Expression</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Attribute values get prefilled on the submission form. [ <a href="/docs/training/attribute_enhancement.ppt" target="_top">Learn more</a> ]</p></li><li><p>Current SAGE data is not tracked in LIMS however it needs to be accessed by external collaborators and other databases Discovery Space. In order to provide full data tracibility this data needs to be backfilled into LIMS from the currently used spreadsheet</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18808"></a>5.3.4.&nbsp;MGC Closure Changes</h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Added Primer Plate Summary view to list primer plates that have been used for a set of rearrays</p></li><li style="list-style-type: circle"><p>Added view to count the number of times each source plate has been rearrayed</p></li><li style="list-style-type: circle"><p>Added view to count the number of times each source primer plate has been used in a rearray</p></li><li style="list-style-type: circle"><p>Added Functionality to the scanner protocols.</p></li><li style="list-style-type: circle"><p>Provided the lab with a summary view of source plates and target plates for multiple rearrays. Also provided views and statistics on usage for primer plates applied</p></li><li style="list-style-type: circle"><p>Allow multiple vectors per library. Allow multiple antibiotics to be associated with a given vector. The Admin chooses the suggested antibiotic for a library from a list of valid antibiotics (based on vector)</p></li><li style="list-style-type: circle"><p>Improved the primer ordering process for the lab</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18834"></a>5.4.&nbsp;General Changes</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18837"></a>5.4.1.&nbsp;Inventory Tracker</h4></div></div></div><p>Enables user to audit the contents of racks and freezers within LIMS [ <a href="ch15.html#inventory_tracker_chapter">Learn more</a> ]</p><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Inventory tracking from the scanner or the desktop</p></li><li style="list-style-type: circle"><p>Equipment(Freezer) auditing</p></li><li style="list-style-type: circle"><p>Track time an inventory is started or completed</p></li><li style="list-style-type: circle"><p>Keep statistics on the success rate of the audit</p></li><li style="list-style-type: circle"><p>View past inventories and their statistics</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18861"></a>5.4.2.&nbsp;Site Navigation</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Increase the usability and ease of navigating throughout the site. This is largely encouraged due to the increased scope of functionality within the system. [ <a href="/docs/training/lims_navigation.ppt" target="_top">Learn more</a> ]</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18871"></a>5.4.3.&nbsp;Store plates in non-freezer equipment</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Allow users to store plates in non-freezer equipment - this is to prevent plates from being stored in the temporary rack</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18878"></a>5.4.4.&nbsp;Summary Views</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Provide views and reports generated by input from the user. The user chooses the filtering options and which output fields to be displayed. [ <a href="/docs/training/lims_views.ppt" target="_top">Learn more</a> ]</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e18888"></a>5.4.5.&nbsp;Attributes</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Allow the user to assign attributes to plates, preps on a per plate basis during a protocol. Library information can be pre-filled based on the plate attributes if the library is submitted as a plate. The user can view the information set in the protocols from the appropriate summary page. [ <a href="/docs/training/attribute_enhancement.ppt" target="_top">Learn more</a> ]</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e18898"></a>5.5.&nbsp;API changes</h3></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Added function to modify Primer Plate Notes</p></li><li style="list-style-type: circle"><p>Change_History function</p></li><li style="list-style-type: circle"><p>get_Gel_data() API</p></li><li style="list-style-type: circle"><p>[ <a href="ch25.html" title="Chapter&nbsp;25.&nbsp;LIMS API modules">Learn more</a> ]</p></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs04.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="apbs06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.&nbsp;Changes for Release 2.30&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;6.&nbsp;Changes for Release 2.41 (May 05/2006)</td></tr></table></div></body></html>

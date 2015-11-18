@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature
+END
+PositionProxy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/PositionProxy.pm
+END
+Similarity.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Similarity.pm
+END
+FeaturePair.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/FeaturePair.pm
+END
+Generic.pm
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Generic.pm
+END
+Computation.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Computation.pm
+END
+SimilarityPair.pm
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/SimilarityPair.pm
+END

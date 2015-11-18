@@ -1,0 +1,6 @@
+^XA
+^LT3
+^LH10,10
+^FO6,3^A0N,13^FDfield_1^FS
+^FO6,20^A0N,13^FDfield_2^FS
+^XZ

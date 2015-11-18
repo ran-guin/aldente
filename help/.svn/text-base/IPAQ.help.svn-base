@@ -1,0 +1,69 @@
+<h2>Using the IPAQ Scanners</h2>
+<img src="$Help_Image_dir/IPAQ.png">
+<p>	 </p>
+<h4>To access the barcode website:</h4>
+<ul>
+  <li>Turn on the scanner (red key at bottom left) </li>
+  <li>click on Internet Explorer (drop down menu at top left of screen)
+	 </li>
+  <li>click on the folder ('Favorites')icon at the bottom of the screen
+	 </li>
+  <li>click on the file 'scanner' (while it loads the explorer icon
+should be visible at the top right of the screen) </li>
+  <li>Identify yourself and press the 'Login' button </li>
+</ul>
+<h4>Initializing the Scanner (laser)</h4>
+<ul>
+  <li>Go to 'File Explorer' (from drop-down menu at top left) </li>
+  <li>select 'ScanWedge' from list of files (this should initialize the
+scanner) </li>
+</ul>
+<h4>Warm Re-Booting the Scanner</h4>
+<ul>
+  <li>Press the recessed reset button at the base of the scanner (using
+the plastic pen). </li>
+</ul>
+<h4>Intranet Settings</h4>
+<p>In case the connection to the internet is not working the following
+Settings may be checked: </p>
+<ul>
+  <li>Settings..Connections..Network Connections
+    <p>These should all be set to 'Work Settings' AND... </p>
+  </li>
+  <li>..Modify..
+    <p>If you check the settings by choosing the 'Modify' button, and
+select the 'Proxy Settings' tab, the <b>this network connects to the
+internet</b> checkbox should be ticked. </p>
+  </li>
+  <li>Settings..Connections..Network Adapters..
+    <p> Choose '...Ethernet Driver' and press the 'Properties' button </p>
+    <p>At the 'IP Address' tab, choose 'Use server-assigned IP address'<br>
+    </p>
+    <p>At the 'Name Server' tab, check to make sure that the DNS/WINS entry is blank</b></p>
+  </li>
+  <li>Close all windows on the iPAQ and click on the Status icon at the
+bottom-right corner of the screen (the icon has a network adapater card
+with a green bar behind)</li>
+  <ul>
+    <li>'Mode' tab:&nbsp; Make sure the '802.11 ESSID:' drop-down menu
+says '101'.</li>
+    <li>'IP Config' tab:&nbsp; Make sure 'DHCP' is selected.</li>
+    <li>'Options' tab:&nbsp; Deselect the 'Allow Pocket PC to suspend
+when wireless network is used' checkbox.&nbsp; Leave all other
+checkboxes deselected as well.</li>
+    <li>'Encryption' tab:&nbsp; Choose '40-bit Shared Key' for the
+'Algorithm:' drop-down box.&nbsp; Select the radio button '1', select
+the 'Adapter will use this key' checkbox, and then obtain the
+encryption key from the LIMS administrator and enter the key into the 2
+textfields.</li>
+    <li>'Ping' tab:&nbsp; Enter '10.1.1.1' into the 'IP:' drop-down
+box, press the 'Start Test' button and you should start to see signals.</li>
+    <li>'Signal' tab:&nbsp; Should be able to see signals as well.<br>
+    </li>
+    <li>After making all the settings, you will be required to reset
+the iPAQ (using the reset button) and then you should be able to
+connect to the Internet/Intranet.<br>
+    </li>
+  </ul>
+</ul>
+

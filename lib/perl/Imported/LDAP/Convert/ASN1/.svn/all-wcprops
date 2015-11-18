@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1
+END
+Debug.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1/Debug.pm
+END
+IO.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1/IO.pm
+END
+_encode.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1/_encode.pm
+END
+parser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1/parser.pm
+END
+_decode.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Convert/ASN1/_decode.pm
+END

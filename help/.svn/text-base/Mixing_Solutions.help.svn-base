@@ -1,0 +1,74 @@
+<h2>Mixing Solutions</h2>
+<h3>Using the scanner</h3>
+<h4>From the scanner choose a standard solution or
+select any number of solutions to mix together from the main page</h4>
+   <Img src='$Help_Image_dir/standard_solutions.png'>
+    <P>
+        
+</h3>From the web page</h3>
+<P>
+Another easy way to make solutions from the
+home page is to simply scan the solutions that you wish to mix into the main
+textfield box on the home page.  You will then be directed to a page that
+will prompt you for the respective quantities of each reagent:
+<P>
+<Img src='$Help_Image_dir/Std_Solutions.png'>
+<P>This page will dynamically calculate the total volume of
+the final product, as well as its calculated value.<BR>At the bottom of the
+page you should also indicate the location in which the solution will be
+stored.
+  <P>
+<PA>
+<h2>Database Interactions During Standard Laboratory Procedures</h2>
+    
+<Table><TR>
+<TD>Step</TD>
+<TD>Database Changes</TD>
+
+</TR><TR><TD>
+<B>Recieve new
+Reagent</B><P>
+(Create 'A' and 'B')
+</TD>
+<TD>
+<B>Solution</B> (new)<UL><LI>Name<LI>Recieved
+Date<LI>Quantity<LI>Supplier<Li>Lot Number<LI>Catalog Number<LI>Type (if
+Primer/Buffer/Matrix)<LI>Status = 'Unopened'<LI>Cost<LI>Expiry
+Date<Li>Bottle Number<LI>Quantity Used = 0<LI>Location (Rack)</UL>
+</TD>
+</TR><TR>
+
+<TD>
+<B>Mix Solutions</B><BR>eg. A & B
+</TD>
+<TD>
+<B>Solution</B>
+(new)<UL><LI>(similar to above except:)<LI>Recieved Date = NULL<LI>Start
+Date = (current)<LI>Supplier = 'GSC' (in house)<LI>Cost =
+(calculated)</UL><BR><B>Mixture</B> (new)<UL><LI>Solution Made<LI>Solution
+Used (A)</UL><BR><B>Mixture</B> (new)<UL><LI>Solution Made<LI>Solution Used
+(B)</UL><BR><B>Solution</B> (update A)<UL><LI>Quantity Used += ?<LI>Status =
+'Open' (if not already)</UL><BR><B>Solution</B> (update B)<UL><LI>Quantity
+Used += ?<LI>Status = 'Open' (if not already)</UL><BR>...
+</TD>
+</TR><TR>
+
+<TD>
+<B>Use Solutions</B>
+</TD>
+<TD>
+<B>Preparation</B>
+(new)<UL><LI>Employee<Li>Time<Li>Equipment(if applic)<Li>Solution_ID(if
+applic)<Li>Conditions<Li>Comments</Ul><B>Solution</B>
+(update)<BR><UL><LI>Quantity_Used += ?</UL>
+</TD>
+</TR><TR>
+<TD>
+<B>Empty Solution</B>
+</TD>
+<TD>
+<B>Solution</B>
+(new)<UL><LI>Status = 'Finished'<Li>Finished Date = (current)</UL>
+</TD>
+</TR></Table>
+

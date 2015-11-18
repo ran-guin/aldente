@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/72321/alDente/trunk/install/patches/Core/3.3
+END
+Add_Sample_ID_To_Run_Analysis.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/71702/alDente/trunk/install/patches/Core/3.3/Add_Sample_ID_To_Run_Analysis.pat
+END
+FKOriginal_Source__ID.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/72028/alDente/trunk/install/patches/Core/3.3/FKOriginal_Source__ID.pat
+END
+Parameter_Units.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/72229/alDente/trunk/install/patches/Core/3.3/Parameter_Units.pat
+END
+Sex_Fields.pat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/72228/alDente/trunk/install/patches/Core/3.3/Sex_Fields.pat
+END
+Source_Type_Section.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/71869/alDente/trunk/install/patches/Core/3.3/Source_Type_Section.pat
+END
+Strain_Table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/72321/alDente/trunk/install/patches/Core/3.3/Strain_Table.pat
+END
+Management_Dept.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/72106/alDente/trunk/install/patches/Core/3.3/Management_Dept.pat
+END

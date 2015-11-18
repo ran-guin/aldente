@@ -1,0 +1,21 @@
+<configs>
+  <BACKUP_DATABASE default="" type="database" value="bcg" />
+  <BACKUP_HOST default="" type="database" value="hblims02" />
+  <BETA_DATABASE default="" type="database" value="bcg_beta" />
+  <BETA_HOST default="" type="database" value="hblims05" />
+  <DEV_DATABASE default="" type="database" value="bcg_dev" />
+  <DEV_HOST default="" type="database" value="hblims05" />
+  <Data_home_dir default="" type="directory" value="/hblims/data/bcg" />
+  <Exclude_Table default="" type="web" value="Cross_Match,Band,Contaminant,Clone_Sequence" /> 
+  <Options default="" type="web" value="" />
+  <Plugins default="" type="web" value="JIRA,Patient,Biology,Multiwell_Plate,Experiment,Software_Analysis,Taxonomy" />
+  <PRODUCTION_DATABASE default="" type="database" value="bcg" />
+  <PRODUCTION_HOST default="" type="database" value="hblims05" />
+  <SEC_BACKUP_DATABASE default="" type="database" value="bcg" />
+  <SEC_BACKUP_HOST default="" type="database" value="hblims04" />
+  <TEST_DATABASE default="" type="database" value="bcg_test" />
+  <TEST_HOST default="" type="database" value="hblims05" />
+  <UNIT_TEST_DATABASE default="" type="database" value="bcg_test" />
+  <UNIT_TEST_HOST default="" type="database" value="hblims05" />
+  <mandatory_funding default="" type="database" value="no" />
+</configs>

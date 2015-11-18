@@ -1,0 +1,86 @@
+/* Road Map Navigation CSS */
+
+#formNavigator {
+        margin: 3em 1em 3em 1em !important;
+	background:#DDD !important;
+        border:3px solid #0e70ad !important;
+}
+
+#formPlaceHolder {
+        vertical-align: top;
+        border: 1px solid #3D82AD;
+        padding:10px;
+}
+
+#navRoadMap {
+        vertical-align: top;
+}
+
+#navRoadMap *{
+        font-size: 10px;
+}
+
+
+#navRoadMap ol{
+        padding:10px 10px 10px 0;
+        margin-left: 0px;
+	background:#CCC;
+	border:1px solid #3D82AD;
+        display: block;
+        list-style-type: none;
+}
+
+#navRoadMap li{
+	color:#000;
+        font-size: 12px;
+	display:block; 
+        padding-left: 17px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+}
+
+.navBranch, .navBranch * {
+    color: #30f;
+}
+
+.navBranch {
+        margin: .6em 0 .6em 3em;
+        display: block;
+}
+
+.navBranch select{
+        max-width: 100px;
+}
+
+controls input{
+        margin-right: 10px;
+        margin-top: 20px;
+}
+
+div.navLayerForm {
+        top: 10%;
+        left: 20%;
+        width: auto;
+        height: auto;
+        background-color: #CCC;
+        border:3px double #39F;
+        padding: 5%;
+        overflow: visible;
+}
+
+/* Firefox specific stylesheets */
+
+#navRoadMap a[class=navToggleBranches] {
+        text-decoration: none;
+        margin-top: 20px;
+        text-align: center;
+}
+
+#navRoadMap li:hover {
+        text-decoration: underline;
+}
+
+/* End of Road Map Navigation CSS */
+
+
+

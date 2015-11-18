@@ -1,0 +1,3 @@
+lib/perl/RGTools/Conversion.pm
+bin/svn.pl
+bin/t/RGTools/Conversion.t

@@ -1,0 +1,510 @@
+#!/usr/local/bin/perl
+
+use strict;
+
+use CGI qw(:standard);
+
+use POSIX qw(strftime);
+#require "getopts.pl";
+
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl"; # add the local directory to the lib search path
+use lib $FindBin::RealBin . "/../lib/perl/Core"; # add the local directory to the lib search path
+use lib $FindBin::RealBin . "/../lib/perl/Imported"; # add the local directory to the lib search path
+
+use Digest::MD5;
+use SDB::DBIO;
+
+use alDente::SDB_Defaults qw($mirror_dir $request_dir $archive_dir);    
+use SDB::CustomSettings qw($config_dir %Configs);    
+
+use RGTools::RGIO;
+use RGTools::Process_Monitor;
+use vars qw($request_dir);
+use vars qw($opt_m $opt_f);
+use Data::Dumper;
+
+#&Getopts('mf');
+use Getopt::Long;
+Getopt::Long::Configure("no_ignore_case");
+&GetOptions(
+    'm'         => \$opt_m,
+    'f'         => \$opt_f,
+);
+
+################################################################
+#
+# CVS Revision: $Revision: 1.39 $ 
+# Commit date:  $Date: 2004/12/07 21:32:18 $
+#
+#  15 May 2002
+#
+#  Move to standard directory with other modules.
+#  (main file as well as data files)
+#
+#  8 January 2001
+#
+# Excluded .esd and .scf files from mirroring. These mbace files
+# are not necessary for analysis
+#
+# 23 October 2000
+#
+# rsync servers were too slow. still using smbmount but 
+# with rsync, treating the mounted directory as an nfs'ed 
+# drive rather than remote storage running rsyncd.
+#
+# 30 August 2000
+#
+# Installed rsync servers on all sequencers. Now, there is
+# no need for smbmount!
+# 
+#
+# Release:   Release-2000_08_28
+#
+#            First functional version of seqmirror. 
+#            
+#
+################################################################
+# Sequencer File mirror
+
+################################################################
+# CVS Headers
+my $VERSION = q{ $Revision: 1.39 $ };
+my $CVSTAG = q{ $Name:  $ };
+if($VERSION =~ /\$.*:\s*(.*?)\s*\$/) {
+  $VERSION=$1;
+}
+if($CVSTAG =~ /\$.*:\s*(.*?)\s*\$/) {
+  $CVSTAG=$1;
+}
+################################################################
+
+$| = 1;
+
+my $bin_dir = $FindBin::RealBin; # where file is running from 
+
+# Names of sequencing machines. These must be DNS resolvable
+my $file_hosts  = "$config_dir/hosts.list";
+# Names of directories to include in the mirroring. All other directories
+# will be excluded
+my $file_dirs   = "$config_dir/include.dirs";
+
+my $rsync_dir = "$request_dir/rsync";
+# Mirror status file. This will be written in the root of each mount target
+my $rsync_file = "$rsync_dir/rsync.status";
+# Temporary mirror status file written during the mirror process. This file
+# is copied over to $rsync_file and deleted after mirroring is complete.
+my $rsync_file_tmp = "$rsync_dir/rsync.status.tmp";
+# Request for mirror file
+my $request_file = "$mirror_dir/request";
+my $mirrored_file = "$mirror_dir/mirrored";
+
+#### if mirroring, do one host at a time... ####
+my $mirror = $opt_m || '';
+my $force = $opt_f;   # Force mirroring even if device is busy
+
+print "\nseqmirror : ". &date_time() . "\n****************************************************\n";
+
+my ($script_name) = $0 =~ /\/?([^\/]+)$/; 
+my $cmd = "ps uww -C $script_name";
+my $others_found = '';
+my $current_processes = `$cmd`;
+foreach my $ps (split /\n/, $current_processes) {
+    unless ($ps =~ /$script_name/) {next}
+    else {
+	my ($pid) = $ps =~ /^\w+\s+(\d+)/;
+	unless (int($pid) == int($$)) { # Found other seqmirror processes.  Exit.
+    	     $others_found .= "$ps\n";
+	}
+    }
+}
+
+if ($others_found) {
+    print "** already in process **\n";			
+    print $others_found;
+#    exit;
+}
+
+my $condition = "WHERE FK_Equipment__ID = Equipment_ID AND Equipment_Status = 'In Use' AND Host IS NOT NULL";
+
+my $Connection = SDB::DBIO->new(-host=>$Configs{SQL_HOST},-dbase=>$Configs{DATABASE},-user=>'viewer',-password=>'viewer',-connect=>1,-sessionless=>1);
+my $dbc = $Connection;
+my %Machine_Info = &Table_retrieve($dbc,'Machine_Default,Equipment',
+				     ['Local_Data_Dir','NT_Samplesheet_dir','Host','FK_Equipment__ID as Eid','Mount','Sharename'],
+				     $condition);
+######## Run for each of sequencers (unless one is specified) #############
+my $timestamp = &RGTools::RGIO::timestamp();
+
+my $host;
+
+### Loop through every sequencer and send the sample sheet each time.. ensures that it is called more often
+my $seq_index = 0;
+while (defined $Machine_Info{Host}[$seq_index]) {
+    my $host = $Machine_Info{Host}[$seq_index];
+    my $Eid = $Machine_Info{Eid}[$seq_index];
+    my $ss_path = $Machine_Info{NT_Samplesheet_dir}[$seq_index];
+    my $data_dir = $Machine_Info{Local_Data_Dir}[$seq_index];
+    my $mount = $Machine_Info{Mount}[$seq_index];
+    my $sharename = $Machine_Info{Sharename}[$seq_index];
+    if ($ss_path) {
+	&send_sample_sheets($mount,$Eid,$ss_path,$host,$sharename);
+    }
+    $seq_index++;
+} 
+
+my $index = 0;
+my @childs;
+while (defined $Machine_Info{Host}[$index]) {
+    $host = $Machine_Info{Host}[$index]; 
+    my $Eid = $Machine_Info{Eid}[$index]; 
+    my $ss_path = $Machine_Info{NT_Samplesheet_dir}[$index];
+    my $data_dir = $Machine_Info{Local_Data_Dir}[$index];
+    my $mount = $Machine_Info{Mount}[$index];
+    my $sharename = $Machine_Info{Sharename}[$index];
+
+    $index++; 
+
+    my $pid = fork();
+    if ($pid) { # parent
+	push(@childs, $pid);
+    } 
+    elsif ($pid == 0) { # child
+	if ($host =~/qpix/i) {
+	    mirror_qpix(-address=>"$host",-directory=>"$data_dir");
+	}
+	unless ($ss_path) {exit(0);}
+	
+	if ($mirror) { &mirror_files($data_dir,$mount,$host,$sharename); }
+	exit(0);
+    } 
+    else {
+	die "couldn’t fork: $!\n";
+    }
+}
+
+foreach (@childs) {
+    waitpid($_, 0);
+}
+
+my $Report = Process_Monitor->new();
+$Report->set_Message("Ran");
+$Report->completed();
+$Report->DESTROY();
+
+print "\n";
+exit;
+
+########################
+sub mirror_files {
+########################
+    my $data_dir = shift;   #### data directory
+    my $mount = shift;
+    my $hostname = shift;
+    my $sharename = shift;
+
+    my ($type,$id,$dir,$data_subdir) = split "/", $data_dir;
+
+    #### check for mirror lock ####
+    if (-e "$request_dir/mirror.$type.$id.lock") { 
+	print "$request_dir/mirror.$type.$id.lock detected\n";
+	my $time = 240;
+	my @files = try_system_command("find $request_dir/mirror.$type.$id.lock -mmin +$time");
+	if (grep /\w/, @files) {
+	    my $Mirror_Report = Process_Monitor->new(-testing=>0, -variation=>"$type.$id");
+	    $Mirror_Report->set_Error("Mirror Lock longer than $time minutes detected for $type-$id ($request_dir/mirror.$type.$id.lock)");
+	    $Mirror_Report->completed();
+	}
+	return 0; 
+    }
+
+    if(! -e "$request_file.$type.$id.$dir") {
+	print "(no requests file for $data_dir: $request_file.$type.$id.$dir)\n";
+	return 0;
+    } 
+  
+    print "** Mirroring $data_dir ($type.$id.$dir) - $data_subdir *** ...\n";
+    print " -> $mirror_dir/$data_dir\n";
+
+    # smbmount obviated by rsync servers on the NT boxes
+    # Umount (just in case) and mount the NT share. Consult the /etc/fstab file
+    # for the mount-point to NT service equivalene.
+    # Ok...forget it, the rsync servers are very very slow. We're back to using
+    # samba.
+
+    system("touch $request_dir/mirror.$type.$id.lock");
+
+    #if (Unmount($mount) > 0) { return 0; }       ### problem unmounting... 
+    #if (Mount($mount)) { return 0; }         ### problem mounting...
+
+    my @dir_array = split "\n",try_system_command("ls $mount/$data_subdir");
+    my $exclude_existing = "";
+    foreach my $mount_file_dir (@dir_array) {
+	# check if the directory is there
+	if (-e "$archive_dir/$type/$id/$dir/$data_subdir/$mount_file_dir") {
+	    my @mount_file_array = glob "$mount/$data_subdir/$mount_file_dir/*";
+	    my @archive_file_array = glob "$archive_dir/$type/$id/$dir/$data_subdir/$mount_file_dir/*";
+	    # check if there isn't the same number of files
+	    # ASSUMPTION: filenames are the same - may not be ok
+	    if (scalar(@mount_file_array) != scalar(@archive_file_array)) {
+	        print "File count inconsistent: ".scalar(@mount_file_array)." != ".scalar(@archive_file_array)." for $mount_file_dir\n";
+		next;
+	    }
+	    else {
+		# hash check may not be necessary - if it succeeds with the filecount check, it may be enough
+		#my $md5archive = Digest::MD5->new;
+		#my $md5mount = Digest::MD5->new;
+		# do checksum check on all files in the directory
+		#foreach my $md5file (@archive_file_array) {
+		#    my $FILECHECK;
+		#    open ($FILECHECK,$md5file);
+		#    binmode $FILECHECK;
+		#    $md5archive->addfile($FILECHECK);
+		#    close ($FILECHECK);
+		#}
+		# do checksum check on all files in the directory
+		#foreach my $md5file (@mount_file_array) {
+		#    my $FILECHECK;
+		#    open ($FILECHECK,$md5file);
+		#    binmode $FILECHECK;
+		#    $md5mount->addfile($FILECHECK);
+		#    close ($FILECHECK);
+		#}
+		# extract the md5 hash
+		#my $archive_hash = $md5archive->hexdigest();
+		#my $mount_hash = $md5mount->hexdigest();
+		#if ($archive_hash ne $mount_hash) {
+		    # if the hashes are not the same, mirror
+		#    next;
+		#}
+		#else {
+		    # if all files passed checksum, then skip mirror
+		$exclude_existing .= qq{--exclude="$data_subdir/$mount_file_dir/*" };
+		#}
+	    }
+	}
+    } 
+    
+    my $dir_mask .= qq{--include="$data_subdir" --include="$data_subdir/**" };
+    chdir "$mirror_dir/$type/$id/$dir" or die "cannot find directory $mirror_dir/$type/$id/$dir\n";
+
+    my $sync_command = qq{rsync -avW --log-format="%t %l %o %f" --times --exclude="pagefile.sys" $exclude_existing --exclude="*.esd" --exclude="*.scf" $dir_mask --exclude="*" "$hostname\:\:$sharename" . };
+
+
+
+    print "SYNC ",$sync_command,"\my";
+    my @sync_output = split "\n", try_system_command("$sync_command");
+    open(RSYNC,">$rsync_file_tmp.$type.$id");
+    my $line;
+    my $n_copiedfiles=0;
+    print "\n";
+    foreach (@sync_output) {
+	chop;
+	$line = $_;
+	print RSYNC "$line\n";
+	# check for lines which signify that files are being sent
+	if($line =~ /(.*) (.*) (\d+) send (.*)/) {
+	    $n_copiedfiles++;
+	}
+	# check for failed lines
+	if ($line =~ /failed/) {
+	    print "FAIL MESSAGE: $line\n";
+	}
+    }
+    close(RSYNC);
+    print "sync complete\n";
+    #system("\\cp $rsync_file_tmp $rsync_file");
+    my $date = strftime "%Y%m%d%H%M%S", localtime;
+    system("\\cp $rsync_file_tmp.$type.$id $rsync_file.$type.$id.$date");
+    unlink("$rsync_file_tmp.$type.$id");
+
+    #minus 30 days from current time and unlink old log file
+    &RGTools::RGIO::unlink_old_file(-dir=>$rsync_dir,-days=>30);
+
+
+# If there were files that were copied, save the log file to a file
+# $rsync_file_DATE
+#    if ($n_copiedfiles) {
+unlink("$request_file.$type.$id.$dir"); 
+my $msg = "Copied $n_copiedfiles from $mount\n(see $rsync_file.$type.$id.$date)";
+print "$msg\n";
+#	&try_system_command( qq{echo '$msg' > $mirrored_file.$type.$id.$dir} );
+try_system_command(qq{echo "$msg" > $mirror_dir/mirrored.$host});
+#    } else { print "No files found \n"; }
+
+unlink("$request_file.$type.$id.$dir");  # clear request fiule... 
+
+# Carry out Ran's script to analyze the data that was copied (if any);
+#    my $analysis = "/home/rguin/public/update_sequence.pl -A all -M $host";    
+#    system("touch analysis.lock");
+#    system($analysis);
+#    unlink("analysis.lock");
+unlink("$request_dir/mirror.$type.$id.lock");
+#Unmount($mount);
+
+}
+
+################################################################
+# smbfs (un)mounting routines
+#
+# Running with sudo. This script is meant to be executed by the user 'sequence'
+#
+
+##############
+sub Mount {
+##############
+#
+# Unmount point 
+#
+# - return 0 if successful
+# - return message if problem... 
+#  
+    my $fs = shift;
+    my $error = try_system_command("sudo mount $fs");
+
+    print "MSG1: $error";
+
+    if ($error) { print "Error mounting ?\n$error\n"; }
+    else { print "Mounting $fs\n";}
+    return $error;
+}
+
+##################
+sub Unmount {
+##################
+#
+# Unmount point 
+#
+# - return 0 if successful
+# - return -1 if not mounted
+# - return message if problem... 
+#
+  my $fs = shift;
+  my $error = try_system_command("sudo umount $fs");
+  
+  print "MSG2: $error";
+
+  if ($error=~/not mounted/) {
+      return -1;            ## not mounted...
+  } elsif ($error =~ /device is busy/) {
+      print "** Error: Problem Unmounting ?\n$error(Force mirroring = $opt_f)\n"; 
+      return $force ? 0 : 1;         ## If force then still try to do mirroring   
+  } elsif ($error) {
+      print "** Error: Problem Unmounting ?\n$error"; 
+      return 1;         
+  } else { return 0; } ### success 
+}
+
+##############################
+sub send_sample_sheets {
+##############################
+#
+# requires: 
+#     $request_dir (global)
+# Input: 
+#     $mount      - mount name
+#     $Eid        - Sequencer ID
+#
+    my $mount = shift;
+    my $Eid = shift;
+    my $ss_path = shift;
+    my $hostname = shift;
+    my $sharename = shift;
+
+    unless (-e "$request_dir/Request.$Eid") { return 0; }   ### skip if no requests for this machine
+    
+    print "check Samplesheet Requests for $mount \n";
+    print "_______________________________________\n";
+    my @files = split "\n", try_system_command("cat $request_dir/Request.$Eid");
+    
+    system("touch $request_dir/mirror.lock");
+    
+    #if (Unmount($mount) > 0) { return 0; }
+    
+    #f (Mount($mount)) { return 0; }
+    
+    `mv $request_dir/Request.$Eid $request_dir/Copied.$Eid.$timestamp`;
+    my $copied = 0;
+    foreach my $file (@files) {
+	my $fback;
+	if ($sharename) {
+	    $fback = `rsync -aW --log-format="%t %l %o %f" --times "$file" "$hostname\:\:$sharename/$ss_path"`;
+	}
+	else {
+	    $fback = `rsync -aW --log-format="%t %l %o %f" --times "$file" "$ss_path"`;
+	}
+
+	if ($fback) {  ## if there is a problem log the feedback..  
+	    print "$fback\n"; 
+	    `echo "$fback" >> $request_dir/Request.$Eid.$timestamp.rsync.log`;
+	}
+	else { print "$file\n"; $copied++; }
+    }
+    
+    unlink("$request_dir/mirror.lock");
+    #Unmount($mount);
+
+    #minus 30 days from current time and unlink old log file
+    &RGTools::RGIO::unlink_old_file(-dir=>$request_dir,-days=>30);
+
+    print "Copied $copied files.\n";
+    return $copied;
+}
+
+sub mirror_qpix {
+    my %args = @_;
+    my $address = $args{-address};
+    my $directory = $args{-directory};
+    if (check_machine(-address=>$address)) { 
+#        my $cmd = "cd $directory;";
+#        my $feed = try_system_command(-command=>$cmd);
+        my $rsync_cmd = "rsync -vaWrq --delete --timeout 300 $address" . "::logs" . " $directory";
+        my $feed1 = try_system_command(-command=>$rsync_cmd);
+        my $permission_cmd = "find $directory -type f -print0 | xargs -0 chmod 644; find $directory -type d -print0 | xargs -0 chmod 755";
+        my $feed2 = try_system_command(-command=>$permission_cmd);
+
+	if ($feed1 || $feed2) {
+	    my $date = strftime "%Y%m%d%H%M%S", localtime;
+	    open(RSYNC,">$rsync_file.$address.$date");
+	    print RSYNC "rsync_cmd: $feed1\npermission_cmd: $feed2\n";
+	    close(RSYNC);
+	}
+    }
+    else { 
+        print "Could not connect to QPIX ($address), not turned on?\n";
+    }
+}
+
+
+sub check_machine {
+    my %args = @_;
+    my $address = $args{-address};
+    
+    my $PING_TRIALS = 3;
+    my $cmd = "ping -c $PING_TRIALS $address";
+    my $feedback = try_system_command(-command=>$cmd);
+
+    my @feedback = split '\n', $feedback;
+    my $detail;
+    foreach my $line (@feedback) {
+
+        if ($line =~ /Destination Host Unreachable/) {
+            $detail .= " (Host Unreachable)";
+        }
+        elsif ($line =~ /unknown host/) {
+            $detail .= " (Unknown Host)";
+        }
+        elsif ($line =~ /,\s+100%\s+packet loss/) {
+
+            $detail .= " (packet loss)";
+        }
+        else {
+            ## OK On this pass
+        }
+    }
+    if ($detail) {
+        return 0;
+    }
+    return 1;
+}
+
+

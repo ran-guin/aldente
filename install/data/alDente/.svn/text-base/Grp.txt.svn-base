@@ -1,0 +1,7 @@
+Grp_ID	Grp_Name	FK_Department__ID	Access	Grp_Type	Grp_Status
+1	LIMS Admin	1	Admin	Technical Support	Active
+2	Public	2	Guest	Public	Active
+3	Lab	3	Lab	Lab	Active
+4	Lab Admin	3	Admin	Lab Admin	Active
+5	Receiving	4	Admin	Purchasing	Active
+6	Management	6	Admin	Research	Active

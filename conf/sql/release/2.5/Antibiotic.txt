@@ -1,0 +1,5 @@
+Antibiotic_ID	Antibiotic_Name
+1	Ampicillin
+2	Chloramphenicol
+4	Kanamycin
+3	Zeocin

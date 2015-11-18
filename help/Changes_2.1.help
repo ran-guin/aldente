@@ -1,0 +1,165 @@
+<h2>New Changes for Release 2.10
+(May 05 / 2004)</h2>
+<ul>
+</ul>
+<h3>General Changes</h3>
+<ul>
+  <li>Stock/Receiving:</li>
+  <ul>
+    <li><span class="medium">Allow batch retrieval of items from boxes
+(much quicker for extracting multiple standard items). </span><span
+ class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=588">588</a>)</span></li>
+<img src="$Help_Image_dir/Batch_Open_Box.png"><p>
+    <li><span class="medium">Allow tracking of component number of
+kits/reagents</span><span class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=668">668</a>).</span></li>
+<img src="$Help_Image_dir/Stock_Identifier_Number.png"><p>
+  </ul>
+  <li>Plates/Tubes:</li>
+  <ul>
+    <li><span class="medium">Increase functionality of Find Plates function to search by format </span><span
+ class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=644">644</a>).</span></li>
+<p>New criteria form in Plates home page allows more flexible searching and grouping of results:<br>
+<img src="$Help_Image_dir/Find_Plates_Form.png"><p>
+<p>New results layout allows better visualization of storage locations and summaries:<br>
+<img src="$Help_Image_dir/Find_Plates_Results.png"><p>
+  </ul>
+</ul>
+<ul>
+  <li>Protocol:</li>
+  <ul>
+    <li><span class="medium">Implement safety guard to prevent
+plates/tubes marked as Failed to go through protocols</span><span
+ class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=679">679</a>).</span></li>
+<p>User encounters an error when trying to save plates that are either Failed, Throw Out or Exported into a plate set:
+<img src="$Help_Image_dir/No_Failed_Plate_In_Set.png"><p>
+  </ul>
+</ul>
+<ul>
+  <li>Form:</li>
+  <ul>
+    <li><span class="medium">Add Search/New functionality for fields in
+DB_Form (just like the stock forms)</span><span class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=685">685</a>).</span></li>
+<img src="$Help_Image_dir/DB_Form_Searchable_Field.png"><p>
+  </ul>
+</ul>
+<h3>Sequencing Changes</h3>
+<ul>
+  <li>ReArray:</li>
+  <ul>
+    <li><span class="medium">View rearray using a plate view (with a
+colour legend for indicating library) showing source plate/well in each
+cell (Issue #<a href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=554">554</a>).</span></li>
+<img src="$Help_Image_dir/ReArray_LibView.png"><p>
+    <li><span class="medium">Send email notification to person who
+defined rearray if yield report disagrees with assignment</span><span
+ class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=625">625</a>).</span></li>
+    <li><span class="medium">Add tooltip for rearray options to clarify
+defnitions (and display options in chronological order) </span><span
+ class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=626">626</a>).</span></li>
+    <li><span class="medium">Allow traceback of primers through custom
+primer plates applied as a solution </span><span class="medium"> (Issue
+#<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=628">628</a>).</span></li>
+    <li><span class="medium">Allow inheritance of no grows and slow
+grows from rearray source plates</span><span class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=691">691</a>).</span></li>
+  </ul>
+</ul>
+<ul>
+  <li>Plate:</li>
+  <ul>
+    <li><span class="medium">Allow user to input a list of wells and
+convert to 96 wells/384 wells </span><span class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=608">608</a>).</span></li>
+<p>The form for entering wells to be converted:<br>
+<img src="$Help_Image_dir/Well_Conversion_Tool_Form.png"><p>
+Results shown after clicking on 'Convert Wells':<br>
+<img src="$Help_Image_dir/Well_Conversion_Tool_Results.png"><p>
+    <li><span class="medium">NGs/SGs/Unused Wells page - Need to remove
+current plate from the list of plates under Future Generations </span><span
+ class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=656">656</a>).</span></li>
+  </ul>
+</ul>
+<ul>
+  <li>Library:</li>
+  <ul>
+    <li><span class="medium">Create ReArray_Plate table for
+Sequencing_Library types of ReArrayed</span><span class="medium"> (Issue
+#<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=688">688</a>).</span></li>
+    <li><span class="medium">Libraries are now tracked with Library
+Container barcodes</span><span class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=690">690</a>).</span></li>
+  </ul>
+</ul>
+<h3>Gene Expression Changes</h3>
+<ul>
+  <li>Handling of RNA Original Source and RNA Source:</li>
+  <ul>
+    <li><span class="medium">Enable storage of all relevant information
+for RNA sources and RNA extraction samples </span><span class="medium">(Issue
+#<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=590">590</a>):
+      [<a href="$homelink&amp;Quick+Help=RNA">Help
+Page</a>]</span></li>
+    <li><span class="medium">Create barcodes for Original Source (ORS)
+and Library Container (SRC)</span><span class="medium"> (Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=690">690</a>).</span></li>
+  </ul>
+</ul>
+<ul>
+  <li>Protocol and Sample Handling:</li>
+  <ul>
+    <li><span class="medium">Support pooling of tubes within one RNA
+Source </span><span class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=569">569</a>). [<a href="$homelink&amp;Quick+Help=Sample_Pooling">Help
+Page</a>]</span></li>
+<p>Setup of pooling step:<br>
+<img src="$Help_Image_dir/Pooling_Step_Setup.png"><p>
+A pooling step when cycling through a protocol:<br>
+<img src="$Help_Image_dir/Pooling_Step_Usage.png"><p>
+The ancestry shown for a tube that has sample pooled to another tube:<br>
+<img src="$Help_Image_dir/Pooling_To_Ancestry.png"><p>
+The ancestry shown for a pooled tube:<br>
+<img src="$Help_Image_dir/Pooling_From_Ancestry.png"><p>
+    <li><span class="medium">Support extraction of DNA, RNA, Protein samples: </span><span class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=590">590</a>). [<a href="$homelink&amp;Quick+Help=Sample_Extraction">Help
+Page</a>]</span></li>
+<p>Setup of extraction step (e.g. DNA extraction):<br>
+<img src="$Help_Image_dir/Extraction_Step_Setup.png"><p>
+<p>An extraction step when cycling through a protocol:<br>
+<img src="$Help_Image_dir/Extraction_Step_Usage.png"><p>
+<p>The ancestry shown for a tube that has sample extracted to another tube:<br>
+<img src="$Help_Image_dir/Extraction_To_Ancestry.png"><p>
+<p>The ancestry shown for a:<br>
+<img src="$Help_Image_dir/Extraction_From_Ancestry.png"><p>
+
+    <li><span class="medium">Support volume tracking for tube transfers
+(and include in protocol options) </span><span class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=570">570</a>).</span></li>
+<p>Setup of a transfer/aliquot step with volume tracked:<br>
+<img src="$Help_Image_dir/Transfer_Amount_Setup.png"><p>
+A transfer step with volume tracked:<br>
+<img src="$Help_Image_dir/Transfer_Amount_Usage.png"><p>
+    <li><span class="medium">Tube Solution barcodes </span><span
+ class="medium">(Issue #<a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Edit_Issue=1&amp;Issue_ID=602">602</a>).</span></li>
+  </ul>
+</ul>
+<ul>
+</ul>
+<p>
+<h3>For a list of issues requested by you and addressed in this
+release, please click <a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Search_Issues=1&amp;Issue.Assigned_Release=2.10&amp;Issue.Status=Closed&amp;Issue.FKSubmitted_Employee__ID=$user_id">here</a>.<br>
+</h3>
+<h3> For a list of all issues addressed in this release, please click <a
+ href="$homelink?User=Auto&amp;Issues_Home=1&amps;Search_Issues=1&amp;Issue.Assigned_Release=2.10&amp;Issue.Status=Closed">here</a>.</h3>

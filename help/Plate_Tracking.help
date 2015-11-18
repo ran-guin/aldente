@@ -1,0 +1,45 @@
+<H2>Plate Tracking</H2>
+<P>
+Plate tracking (including the tracking of all laboratory processes applied
+to samples within plates) allows records to be maintained which represent
+essentially a lab history of everything that has happened to a sample in
+preparation for being sequenced.  This is particularly valuable to monitor
+the distribution of large numbers of tasks.  It also provides proves very
+useful in optimizing laboratory procedure by allowing specific processes,
+reagents, or equipment to be correlated with data quality - something that
+can quickly identify troublesome aspects such as contaminated reagents,
+malfunctioning equipment, or ineffective processes.
+<P>
+Plate Tracking as a whole may be broken down into a number of common tasks
+performed on a computer or utilizing a barcode scanner:
+<UL>
+<LI>Creation of Plates<P> 
+<LI>Protocol Specification<P>
+Detailed Protocols may be created and edited directly on the web using the
+Protocol interface which allows lab administrators to specify exactly what
+steps are to be monitored, and what types of information is expected.<BR>
+(eg. if a piece of equipment or a solution is to be scanned during a step)
+<LI>Protocol Tracking<P>
+Once a Protocol has been defined, lab users can then enter the protocol and
+are prompted step-by-step as they work through the protocol, generally
+requiring the user only to scan equipment or solutions used.  Within this
+protocol, users may add notes to plates, fail individual plates (while
+working with a large set to begin with), or skip steps if desired.
+<LI>Viewing Plate Information<P>
+At various times it is valuable for users to be able to view or edit information
+regarding plates that they are working with.  Some examples of this include:
+<UL>
+<LI>Plate History<P>
+Viewing a History of procedures which have been carried
+out on a plate (including those carried out on parent plates)
+<LI>Plate Ancestry<P>
+Viewing the ancestry of plates allows users to see
+all plates related to a given plate ranging from the original plate
+generated from the library to all daughter plates as they are transferred or
+aliquoted out.
+<LI>Tracking No Grows, Slow Grows and Unused Wells<P>
+This allows users to check or to edit particular wells which are noted to be 'No Grows' or 'Slow
+Grows', or to specify certain wells that are unused for some reason.  These
+values will normally be carried on to any daughter plates in the future.
+</UL>
+</UL>

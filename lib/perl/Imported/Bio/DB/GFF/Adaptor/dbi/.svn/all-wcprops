@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Adaptor/dbi
+END
+mysql.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Adaptor/dbi/mysql.pm
+END
+caching_handle.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Adaptor/dbi/caching_handle.pm
+END
+mysqlopt.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Adaptor/dbi/mysqlopt.pm
+END
+iterator.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF/Adaptor/dbi/iterator.pm
+END

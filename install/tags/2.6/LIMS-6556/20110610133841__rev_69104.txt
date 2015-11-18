@@ -1,0 +1,4 @@
+lib/perl/Core/alDente/Barcoding.pm
+lib/perl/Core/SDB/Session.pm
+bin/t/Core/alDente/Barcoding.t
+bin/t/Core/SDB/Session.t

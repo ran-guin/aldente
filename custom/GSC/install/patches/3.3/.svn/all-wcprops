@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/72250/alDente/trunk/custom/GSC/install/patches/3.3
+END
+Standardize_Attributes.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/72215/alDente/trunk/custom/GSC/install/patches/3.3/Standardize_Attributes.pat
+END
+Library_Strategy.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/72250/alDente/trunk/custom/GSC/install/patches/3.3/Library_Strategy.pat
+END
+MyISAM_to_Innodb.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/70947/alDente/trunk/custom/GSC/install/patches/3.3/MyISAM_to_Innodb.pat
+END

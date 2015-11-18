@@ -1,0 +1,422 @@
+#!/usr/local/bin/perl56 
+
+################################################################
+# $Id: debugconsole,v 1.2 2003/02/04 23:09:42 rguin Exp $
+################################################################
+#
+# CVS Revision: $Revision: 1.2 $
+# Commit date:  $Date: 2003/02/04 23:09:42 $
+#         Tag:  $Name:  $
+#      Author:  $Author: rguin $
+#
+#  (revisions made by rguin)
+#
+# Copies the debug console logs from the sequencers
+#
+# Logs are rotated daily by triton (/etc/logrotate.conf)
+#
+################################################################
+
+use Cwd;
+use Data::Dumper;
+use File::Copy;
+use Digest::SHA1 qw(sha1_base64);
+use strict;
+use POSIX qw(strftime);
+use Getopt::Long;
+
+my $debug=1;
+
+my $VERSION = q{ $Revision: 1.2 $ };
+my $CVSTAG = q{ $Name:  $ };
+if($VERSION =~ /\$.*:\s*(.*?)\s*\$/) {
+  $VERSION=$1;
+}
+if($CVSTAG =~ /\$.*:\s*(.*?)\s*\$/) {
+  $CVSTAG=$1;
+}
+
+my $LOCKFILEPREFIX="smblock.";
+
+my @machines = ("d3700-1","d3700-2","d3700-3","d3700-4","d3700-5","d3700-6");
+my $ntshare  = "program";
+my $filepath = "/Perkin-Elmer/Abi/3700/DataCollection";
+my $altfilepath = "/Firmware"; # Alternate location for the logs
+my $file     = "DebugConsole.log";
+my $machine;
+my $lockfile;
+foreach $machine (@machines) {
+  # preprocessing: lower case on host and share names
+  # Find the mount point for this request
+  my $mntdir;
+  my $error=0;
+  if(! ($mntdir = GetMountPoint($machine,$ntshare))) {
+    Debug("Could not find the share $ntshare");
+    $error=1;
+    goto NEXT;
+  } else {
+    #Debug("Mount point $mntdir for share //$machine/$ntshare found");
+  }
+  # Mount the request's share
+  if(! MountShare($machine,$ntshare)) {
+    Debug("Could not mount the share $ntshare");
+    $error=1;
+    goto NEXT;
+  } else {
+    #Debug("Share //$machine/$ntshare mounted");
+  }
+  # Lock the request's share so that it can't be unmounted by another
+  # process (all processes must respect $LOCKFILEPREFIX* files)!!!
+  if(! LockShare($mntdir)) {
+    # Could not create the lock file. Unmount and move on
+    Debug("Could not create the lockfile //$machine/$ntshare");
+    $error=1;
+    UnmountShare($machine,$ntshare,$mntdir);
+    goto NEXT;
+  } else {
+    #Debug("Share //$machine/$ntshare locked.");
+  }
+  ################################################################
+  # grab the console log file
+  if(! GrabFile("$mntdir/$filepath/$file",$machine)) {
+    Debug("Could not snapshot $filepath/$file");
+    # Try the alternate path
+    my $mask = "*Work*Log*txt";
+    my @files = glob "$mntdir/$altfilepath/$mask";
+    if(@files) {
+      foreach my $file (@files) {
+	# Grab the file, but keep the same name for the file.
+	if(! GrabFile($file,$machine,1)) {
+	  Debug("Could not grab file $file [same name]");
+	  $error=1;
+	} else {
+#	  Debug("Snapshot of $file OK");
+	}
+      }
+    } else {
+      Debug("Could not snapshot alternate path $altfilepath/$mask");
+      $error=1;
+    }
+  } else {
+#    Debug("Snapshot of $filepath/$file OK");
+  }
+  if(! UnlockShare($mntdir)) {
+    Debug("Share //$machine/$ntshare unlockable");
+    $error=1;
+  } else {
+    #Debug("Share //$machine/$ntshare unlocked");
+  }
+  if(! UnmountShare($machine,$ntshare,$mntdir)) {
+    # Could not umount the share. It is locked by another
+    # process
+    $error=1;
+    goto NEXT;
+  } else {
+    #Debug("Share //$machine/$ntshare unmounted from $mntdir");
+  }
+ NEXT:
+  my $date = strftime "%Y%m%d %H%M%S",localtime;
+  my $prefix = "$date v$VERSION [$CVSTAG] 000";
+  if($error) {
+    $prefix =~ s|...|XXX|;
+  }
+  if(! $error) {
+    Debug("$prefix: //$machine/$ntshare console log grabbed");
+  } else {
+    Debug("$prefix: //$machine/$ntshare ERROR");
+  }
+}
+exit; 
+
+################################################################
+# Complete the request by moving the request file to a 
+# 'done' request file (add a .done extension)
+
+sub MoveRequestFile {
+  my $request   = shift;
+  my $extension = shift || "done";
+  copy("$request->{requestfile}","$request->{requestfile}.$extension");
+  unlink("$request->{requestfile}");
+}
+
+################################################################
+# Get the share mount directory from fstab
+# verify that this share exists, too!
+
+sub GetMountPoint {
+  my $machine = shift;
+  my $ntshare = shift;
+  open(FSTAB,"/etc/fstab");
+  my $mntdir;
+  my $found=0;
+  while(<FSTAB>) {
+    if(m|//$machine/$ntshare|) {
+      my @line = split(/\s+/,$_);
+      $mntdir = $line[1];
+      $found=1;
+      last;
+    }
+  }
+  close(FSTAB);
+  if(! $found) {
+    return 0;
+  }
+  return $mntdir;
+}
+################################################################
+
+################################################################
+# unlock the share
+sub UnlockShare {
+  my $mntdir  = shift;
+  # first, unlink the lock file for this request
+  unlink("$mntdir/$lockfile") || do {
+    return 0;
+  };
+  return 1;
+}
+# 
+################################################################
+
+################################################################
+# Locks the share so that it cannot be unmounted by another
+# process!
+sub LockShare {
+  my $mntdir  = shift;
+  # Generate a random base64 digest. This is based on 
+  # three random numbers. The possibility of duplication is 1 in 1e18.
+  # If 100 requests are written every second, it will take 3 billion years
+  # to get a lock of the same name (i.e. good enough)
+  my $lockid = GetLockID();
+  $lockfile = "$LOCKFILEPREFIX$lockid";
+  # Now write the lock file.
+  open(LOCKFILE,">$mntdir/$lockfile") ||
+      do {
+	return 0;
+      };
+  close(LOCKFILE);
+  return 1;
+}
+
+################################################################
+# mount the share
+# or quit if not possible
+sub MountShare {
+  my $machine = shift;
+  my $share   = shift;
+  my $mountedok=0;
+  # Check if the share is already mounted
+  open(MTAB,"/etc/mtab");
+  while(<MTAB>) {
+    if(m|//$machine/$share|) {
+      $mountedok=1;
+      last;
+    }
+  }
+  close (MTAB);
+  if(! $mountedok) {
+    # If the share is not yet mounted, try to mount it and check
+    # if it was successfully mounted
+    Mount("//$machine/$share");
+    open(MTAB,"/etc/mtab");
+    $mountedok=0;
+    while(<MTAB>) {
+      if(m|//$machine/$share|) {
+	$mountedok=1;
+	last;
+      }
+    }
+    close(MTAB);
+  } else {
+    Debug("Share $share.");
+  }
+  if(! $mountedok) {
+    return 0;
+  }
+  return 1;
+}
+################################################################
+
+################################################################
+# check whether the nt directory exists
+# or unmount and quit if not possible
+sub CheckNTDir {
+  my $request = shift;
+  if(! -d "$request->{mntdir}/$request->{ntdirname}") {
+    print "\n";
+    print "ERROR: Cannot change to directory $request->{mntdir}/$request->{ntdirname}.\n";
+    print "This happened because the specified NT directory does not exist on the mounted system.\n\n";
+    Unmount("//$request->{nthostname}/$request->{ntsharename}");
+    return 0;
+  }
+  return 1;
+}
+
+################################################################
+
+################################################################
+# copy the file
+sub GrabFile {
+  my $sourcefile = shift;
+  my $machine    = shift;
+  my $samename   = shift || 0;
+  my ($machinetype,$machineid);
+  if($machine =~ /(\d+)\-(\d+)/) {
+    $machinetype=$1;
+    $machineid=$2;
+  } else {
+    return 0;
+  }
+  if(! -e $sourcefile) {
+    return 0;
+  }
+  my $targetdir = "/home/sequence/mirror/$machinetype/$machineid/debugconsole";
+  if(! -e $targetdir) {
+    Debug("$targetdir not found");
+    return 0;
+  }
+  my $now = strftime "%Y%m%d%H%M",localtime;
+  if($samename) {
+    my $targetfile = $sourcefile;
+    $targetfile =~ s/(.*)\/(.*)/$2/g;
+    if(-s "$targetdir/$targetfile" == -s $sourcefile) {
+#      Debug("$targetfile exists with same size.");
+    }
+    copy($sourcefile,"$targetdir/$targetfile");
+  } else {
+    copy($sourcefile,"$targetdir/console.log") || return 0;
+  }
+  # Make sure that all files have read permission. This was messed up by the
+  # logrotate script. Now logrotate.conf includes the line
+  # create 0644 sequence users
+  # system('chmod a+r $targetdir/*');
+  return 1;
+}
+
+################################################################
+
+################################################################
+# unmount the share
+sub UnmountShare {
+  my $machine = shift;
+  my $share   = shift;
+  my $mntdir  = shift;
+  # check for any other lock files that are owned
+  # by other request. By this time, this request's lock file
+  # has been removed.
+  my $locked=0;
+  if(opendir (MNTDIR,$mntdir)) {
+    my $file;
+    while($file=readdir (MNTDIR)) {
+      if($file =~ /$LOCKFILEPREFIX/) {
+	# There is a lock file in here. We cannot unmount.
+	$locked=1;
+	last;
+      }
+    }
+  }
+  closedir (MNTDIR);
+  if(! $locked) {
+    # Try to mount it and check if it got unmounted
+    Unmount("//$machine/$share");
+    my $mountedok=0;
+    open(MTAB,"/etc/mtab");
+    while(<MTAB>) {
+      if(m|//$machine/$share|) {
+	$mountedok=1;
+	last;
+      }
+    }
+    close (MTAB);
+    if($mountedok) {
+      Debug("Share $share not umounted.");
+      return 0;
+    }
+    return 1;
+  } else {
+    Debug("Could not unmount the share $share");
+    return 0;
+  }
+}
+################################################################
+
+################################################################
+# usage directions
+sub usage {
+
+my $usage = <<"END";
+
+ERROR: You did not specify all the parameters. 
+
+You can use this script in two modes: to copy files one at a time by specifying
+the source and target file attributes or to copy files in batches by specifying
+a directory containing request files which specify the file attributes. The 
+two modes of usage are exclusive, but can take some common parameters. 
+Processed request files can be removed if the -remove flag is passed.
+
+e.g. copytont [options]
+
+where [options] is a list of one or more parameters passed on the format
+
+     copytont -param1=value1 -param2=value2 ... -paramN=valueN
+
+SINGLE COPY parameters:
+ 
+  -host         the NT host to which the file is copied to (single copy)
+  -share        the NT share on which to put the file (single copy)
+  -dir          the NT directory in which to put the file (single copy)
+  -ntfilename   the target filename on the NT system (single copy)
+                  ***do not specify the full patch for ntfilename***
+  -networkfile  the source file on the linux network (single copy)
+                  ***specify the full patch for networkfile***
+
+BATCH COPY parameters:
+
+  -autodir      the directory holding request files (batch copy)
+                  The files are expected to be named request.X for some
+                  integer values X. Each file contains the single copy parameters
+		  and their values separated by a space, each on a separate line.
+  -remove=1|0   remove the request files after a successful copy (default=0)
+  -move=1|0     move the request file to a new name (+ .done) (default=1)
+  
+GLOBAL parameters:
+
+  -filetype     register the files to be copied to be of a certain type. Currently
+                only -filetype=samplesheet is supported. These files must have
+                either a .plt or .pld extension (both source and target files)
+
+  -trial=1|0      process but do not actually copy or remove request files
+                   (default 0)
+  -debug=1|0      print debugging information (default 0)
+  -overwrite=1|0  allow files to be overwritten on the target system (default 0)  
+END
+    print $usage;
+}
+################################################################
+	    
+sub Mount {
+  my $fs = shift;
+  my $command = "sudo mount $fs";
+  system($command);
+}
+sub Unmount {
+  my $fs = shift;
+  my $command = "sudo umount $fs";
+  system($command);
+}
+sub GetLockID {
+  my $lockid  = sha1_base64(int(rand(1000000)+1)).
+                sha1_base64(int(rand(1000000)+1)).
+	        sha1_base64(int(rand(1000000)+1));
+  $lockid = sha1_base64($lockid);  
+  # get rid of characters that are not allowed in filenames
+  $lockid =~ s/\//Q/g;
+  $lockid =~ s/\+/R/g;
+  return $lockid;
+}
+sub Debug {
+  my $text = shift;
+  if($debug) {
+    print "   ",$text,"\n";
+  }
+}

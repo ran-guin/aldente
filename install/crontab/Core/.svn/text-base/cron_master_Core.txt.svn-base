@@ -1,0 +1,187 @@
+<FILE_HEADER>
+#**************************************************************************************
+#
+# ALL .LOG AND .ERR FILES SHOULD BE WRITTEN TO THE DIRECTORY: <Data_home_dir>/private/logs/
+#
+# finish each command with:
+#    1><Data_home_dir>/private/logs/<script>.log 2> <Data_home_dir>/private/logs/<script>.err
+#*************************************************************************************************************************
+
+## ENVIRONMENT VARIABLES ##
+
+## PATH Below should normally point to production code - may point to beta shortly prior to release to test integrity of cron scripts ##
+# PATH=/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:<Home_dir>/versions/beta/:<Home_dir>/versions/production/bin
+##  Note:  This path should be used ONLY for DB monitoring scripts and other scripts not affecting production operation - otherwise fully qualify path
+
+## Turn off standard mailing functionality ##
+# MAILTO = ''
+</FILE_HEADER>
+
+<SECTION= Store cronjobs for  <PRODUCTION_HOST> >
+0 0 * * * crontab -l > <Data_home_dir>/private/crontabs/<PRODUCTION_HOST>.aldente.cron
+</SECTION>
+
+<HEADER>
+
+###########################################################
+## FREQUENTLY RUNNING CRON JOBS (More than once per day) ##
+###########################################################
+</HEADER>
+
+<SECTION= Refresh Parameters>
+### Refresh the parameters for alDente 
+*/10 8-18 * * * refresh_parameters.pl  1> <Data_home_dir>/private/logs/refresh_parameters.log  2>><Data_home_dir>/private/logs/refresh_paramters.err
+
+</SECTION>
+<SECTION= Update Beta Code>
+### Update Beta Version (fix correct version of svn first before uncommenting this (client too old problem))
+*/10 8-20 * * 1-5 <Home_dir>/versions/beta/bin/update_from_SVN.pl -version beta 1><Data_home_dir>/private/logs/update_from_SVN.log 2>> <Data_home_dir>/private/logs/update_from_SVN.err
+
+</SECTION>
+<SECTION= Production code sync>
+*/20 8-19 * * 1-5 echo '' 1>> <Web_home_dir>/dynamic/logs/code_sync.log 2>> <Web_home_dir>/dynamic/logs/code_sync.err; date >> <Web_home_dir>/dynamic/logs/code_sync.log; rsync -avz --exclude="system.conf" <Home_dir>/versions/production/ /home/sequence/alDente/WebVersions/Production/ 1>> <Web_home_dir>/dynamic/logs/code_sync.log 2>><Web_home_dir>/dynamic/logs/code_sync.err; date >> <Web_home_dir>/dynamic/logs/code_sync.log
+
+</SECTION>
+<SECTION= Beta code sync>
+*/20 8-19 * * 1-5 echo '' > <Web_home_dir>/dynamic/logs/code_sync.log; date >> <Web_home_dir>/dynamic/logs/code_sync.log; rsync -avz --exclude="system.conf" <Home_dir>/versions/beta/ /home/sequence/alDente/WebVersions/Beta/ 1>> <Web_home_dir>/dynamic/logs/code_sync.log 2>><Web_home_dir>/dynamic/logs/code_sync.err; date >> <Web_home_dir>/dynamic/logs/code_sync.log
+
+</SECTION>
+<SECTION= Bulk email Notification>
+### Generate bulk email notification messages ###
+*/10 6-19 * * * <Home_dir>/versions/beta/bin/bulk_email_notification.pl 1> /dev/null 2> <Data_home_dir>/private/logs/bulk_email_notification.log
+
+</SECTION>
+<SECTION= Mirroring>
+## mirroring script ##
+*/5 * * * * export LD_ASSUME_KERNEL=2.4.1 && /home/sequence/alDente/WebVersions/Production/root/seqmirror -m 1>> <Data_home_dir>/private/logs/seqmirror.log 2>> <Data_home_dir>/private/logs/seqmirror.err
+
+</SECTION>
+<SECTION= QC Templates>
+### QC templates - copy the files from the temp directory to the QC Template directory LIMS-2348 ##
+*/10 8-18 * * * <Home_dir>/versions/test/bin/copy_QC_template.pl
+#*/10 8-18 * * 22* cp -u <Web_home_dir>/dynamic/tmp/QC*.xls /home/sequence/Scans_on_Filer01/PrepQC/'Source wells' 
+
+</SECTION>
+<HEADER>
+######################################
+### DB Monitoring Scripts (Hourly) ###
+######################################
+
+</HEADER>
+<SECTION= General Unit Tests >
+10 8-18/2 * * * <Home_dir>/versions/test/bin/run_unit_tests.pl -v production_no_selenium -no_selenium 1 1><Data_home_dir>/private/logs/run_unit_tests.production_no_selenium.log 2><Data_home_dir>/private/logs/run_unit_tests.production_no_selenium.err
+09 8-18/2 * * * <Home_dir>/versions/test/bin/run_unit_tests.pl -v production_selenium_only -no_email -test OS_S_Library 1><Data_home_dir>/private/logs/run_unit_tests.production_selenium_only.log  2><Data_home_dir>/private/logs/run_unit_tests.production_selenium_only.err 
+
+</SECTION>
+<HEADER>
+#####################################
+### DB Monitoring Scripts (Daily) ###
+#####################################
+
+</HEADER>
+<SECTION= Cleanup www/dynamic directors>
+### cleanup www/dynamic directories and reorganize sessions
+#43 18 * * * <Home_dir>/versions/beta/bin/cleanup_web.pl -S 6 1><Data_home_dir>/private/logs/cleanup_web.log 2><Data_home_dir>/private/logs/cleanup_web.err
+43 18 * * * <Home_dir>/versions/beta/bin/cleanup_web.pl -S 6 1><Data_home_dir>/private/logs/cleanup_web.log 2><Data_home_dir>/private/logs/cleanup_web.err
+
+</SECTION>
+<SECTION = NO NAME YET>
+#17 21 * * * <Home_dir>/versions/beta/bin/check_run_links.pl -f -s -F 1>/dev/null 2><Data_home_dir>/private/logs/check_run_links.err
+
+</SECTION>
+<SECTION= Data integrity checks>
+
+#0 18 * * * cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE> -u cron -p norc -t all -o fk_only 1><Data_home_dir>/private/logs/DBIntegrity_fk.log 2><Data_home_dir>/private/logs/DBIntegrity_fk.err
+#0 18 * * * cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE> -u cron -p norc -t all -o fk_only -e index,enum,fk,qty,custom 1><Data_home_dir>/private/logs/DBIntegrity.log 2><Data_home_dir>/private/logs/DBIntegrity.err
+0 18 * * * <Home_dir>/versions/beta/cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE>  -u cron -p norc -t all -o fk_only -e index,enum,fk,qty,custom 1><Data_home_dir>/private/logs/DBIntegrity.log 2><Data_home_dir>/private/logs/DBIntegrity.err
+
+### Run enum field integrity checks
+# 30 19 * * * cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE> -u cron -p norc -t all -N 1>><Data_home_dir>/private/logs/DBIntegrity_enum.log 2>><Data_home_dir>/private/logs/DBIntegrity_enum.err
+
+### Run unit test field integrity checks
+# 00 20 * * * cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE> -u cron -p norc -t all -Q 1>><Data_home_dir>/private/logs/DBIntegrity_units.log 2>><Data_home_dir>/private/logs/DBIntegrity_units.err
+
+### Run data integrity checks
+# 30 20 * * * cgi-bin/DBIntegrity.pl -d <PRODUCTION_DATABASE> -u super_cron -p repus -e all 1>><Data_home_dir>/private/logs/DBIntegrity.log 2>><Data_home_dir>/private/logs/DBIntegrity.err
+
+
+</SECTION>
+<SECTION= Log <PRODUCTION_DATABASE> database growth>
+41 21 * * * <Home_dir>/versions/beta/bin/DB_monitor.pl -host <PRODUCTION_HOST> -dbase <PRODUCTION_DATABASE> -user super_cron -p repus -records 1><Data_home_dir>/private/logs/DB_monitor.log 2><Data_home_dir>/private/logs/DB_monitor.err
+01 22 * * * <Home_dir>/versions/beta/bin/DB_monitor.pl -host <PRODUCTION_HOST> -space 1><Data_home_dir>/private/logs/DB_monitor.log 2><Data_home_dir>/private/logs/DB_monitor.err
+
+</SECTION>
+<SECTION= Performance_monitoring (parsing slow_page logs)>
+15 22 * * * <Home_dir>/versions/beta/bin/performance_monitor.pl 1> <Data_home_dir>/private/logs/performance_monitor.log 2> <Data_home_dir>/private/logs/peformance_monitor.err
+
+</SECTION>
+<SECTION= Ensure vector file includes all vector sequences
+32 22 * * * <Home_dir>/versions/beta/bin/cat_vectors.pl 1>> <Data_home_dir>/private/logs/cat_vectors.log 2>> <Data_home_dir>/private/logs/cat_vectors.err
+
+40 22 * * * <Home_dir>/versions/beta/bin/check_sequenced_wells.pl 1>/dev/null 2>/dev/null
+
+</SECTION>
+<SECTION= Cron Summary>
+00 6 * * * <Home_dir>/versions/beta/bin/Cron_Summary.pl -offset -1d 1> <Data_home_dir>/private/logs/Cron_Summary.log 2> <Data_home_dir>/private/logs/Cron_Summary.err
+
+</SECTION>
+<HEADER>
+#######################
+### Cleanup Scripts ###
+#######################
+</HEADER>
+
+<SECTION= delete images for APPROVED/REJECTED runs over 1 week old>
+#11 23 * * * <Home_dir>/versions/beta/bin/cleanup_slx_space.pl -pwd repus -dbase <PRODUCTION_DATABASE> -check_space 1> <Data_home_dir>/private/logs/cleanup_slx_space.log 2> <Data_home_dir>/private/logs/cleanup_slx_space.err
+
+</SECTION>
+<SECTION= Cleanup of <BACKUP_HOST>:<PRODUCTION_DATABASE> (replication) dumps that are older than 5 days>
+20 23 * * * <Home_dir>/versions/beta/bin/cleanup.pl -S 5 -b -D <PRODUCTION_DATABASE> -H <BACKUP_HOST> -A 1> <Data_home_dir>/private/logs/cleanup.log 2> <Data_home_dir>/private/logs/cleanup.err
+
+</SECTION>
+<SECTION= Cleanup of <PRODUCTION_HOST>:<PRODUCTION_DATABASE> (full) dumps that are older than 7 days, and archive the first of every month>
+30 23 * * * <Home_dir>/versions/beta/bin/cleanup.pl -S 7 -b -D <PRODUCTION_DATABASE> -H <PRODUCTION_HOST> 1>> <Data_home_dir>/private/logs/cleanup.log 2>> <Data_home_dir>/private/logs/cleanup.err
+
+</SECTION>
+<SECTION= cleanup of temporary plates>
+50 23 * * 1-5 <Home_dir>/versions/production/bin/cleanup_DB.pl -throwaway -host <PRODUCTION_HOST> -dbase <PRODUCTION_DATABASE> -u super_cron -p repus 1> <Data_home_dir>/private/logs/cleanup_DB.log 2> <Data_home_dir>/private/logs/cleanup_DB.err
+55 23 * * 1 <Home_dir>/versions/beta/bin/cleanup_DB.pl -expire -host <PRODUCTION_HOST> -dbase <PRODUCTION_DATABASE> -u super_cron -p repus 1>> <Data_home_dir>/private/logs/cleanup_DB.log 2>> <Data_home_dir>/private/logs/cleanup_DB.err
+
+</SECTION>
+<SECTION= Remove the log file daily>
+0 5 * * * rm <Data_home_dir>/private/logs/hourly_backup.log <Data_home_dir>/private/logs/hourly_backup.err
+
+</SECTION>
+<HEADER>
+################
+### MIDNIGHT ###
+################
+
+</HEADER>
+<SECTION= Update Stats>
+21 19 * * * update_Stats.pl -A -Q 1>><Data_home_dir>/private/logs/update_Stats.log 2>> <Data_home_dir>/private/logs/update_Stats.err
+
+</SECTION>
+<SECTION= Email notices for supplies>
+
+### Send Email notification for out of stock supplies etc (Stock, Expiry, Integrity, 2day old runs) - daily
+56 4 * * * Notification.pl -S -I -X 2 1> <Data_home_dir>/private/logs/Notification.log 2> <Data_home_dir>/private/logs/Notification.err
+
+</SECTION>
+<SECTION= Create mirroring requests>
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.1.data1 2> /home/sequence/mirror/request.3730.1.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.2.data1 2> /home/sequence/mirror/request.3730.2.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.3.data1 2> /home/sequence/mirror/request.3730.3.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.4.data1 2> /home/sequence/mirror/request.3730.4.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.5.data1 2> /home/sequence/mirror/request.3730.5.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.6.data1 2> /home/sequence/mirror/request.3730.6.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.7.data1 2> /home/sequence/mirror/request.3730.7.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3730.8.data1 2> /home/sequence/mirror/request.3730.8.data1.err
+41 4 * * * echo 'cron' 1> /home/sequence/mirror/request.3100.1.data1 2> /home/sequence/mirror/request.3100.1.data1.err
+
+</SECTION>
+
+<SECTION= Report generator (derived from Report table)>
+23 5 * * 2 Report_generator.pl 1>> <Data_home_dir>/private/logs/Report_generator.log 2>> <Data_home_dir>/private/logs/Report_generator.err
+
+</SECTION>

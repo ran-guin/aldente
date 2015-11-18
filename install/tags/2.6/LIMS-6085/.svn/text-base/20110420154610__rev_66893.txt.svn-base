@@ -1,0 +1,14 @@
+Analysis.t
+Flowcell.t
+Illumina_API.t
+Illumina_Quality.t
+Run_App.t
+Run.t
+Run_Views.t
+Solexa_Analysis.t
+Solexa_API.t
+SolexaRun_Summary.t
+Solexa_Summary_App.t
+Statistics_App.t
+Statistics.t
+Statistics_Views.t

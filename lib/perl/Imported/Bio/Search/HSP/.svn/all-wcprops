@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Search/HSP
+END
+GenericHSP.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Search/HSP/GenericHSP.pm
+END
+BlastHSP.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Search/HSP/BlastHSP.pm
+END
+HSPI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Search/HSP/HSPI.pm
+END

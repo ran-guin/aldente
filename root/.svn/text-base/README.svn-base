@@ -1,0 +1,21 @@
+These files were originally set up by root to handle routines that may need higher permissions.
+
+They should be customized for local requirements, and edited by local systems personnel.
+
+Programs:
+
+#############
+
+libmake - checks libraries in database, and generates formatted directory structure for new libraries
+	(this routine is run once, and loops continuously to ensure updates are made virtually instantly)
+
+checkmirror - this runs regularly to see if a mirror request has been generated
+seqmirror	- this runs daily to request updating of mirror directory whether requested or not
+
+DB_setup.pl	- this is used to set up the alDente application on installation
+
+copytont	- this copies files onto external NTs where sequencers reside
+
+debugconsole	-
+
+

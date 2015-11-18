@@ -1,0 +1,46 @@
+<h2>Hardware Requirements</h2>
+<P>The following hardware is recommended for running the alDente LIMS:
+<UL class=small>
+<LI>CPU : 
+<LI>RAM : 
+<LI>Static disk storage space : 
+<UL>
+<LI>System Installation - 
+<LI>Web Server:
+<LI>Core Laboratory Data -
+	<UL>
+	<LI>Projects directory: 20k / read
+	<LI>Archive: 300k / read
+	<LI>Database: 4K / read
+	<LI>Backups: 
+	<LI>Cache:
+	</UL>
+</UL>
+<LI>Barcode Printer & Labels (sticky 1000 recommended for low temperature applications -> -80 degrees). 
+	<UL>
+	<LI> <B> Zebra Z4Mplus (300dpi) - recommended</B>
+	<LI> Zebra S600 (200dpi)
+	<LI> Brady MVP (300dpi)
+	</UL>
+<LI>Wireless Barcode Scanners - not mandatory, but recommended for effective lab tracking.
+	<UL>
+	<LI> <B> HP hx2750 (PocketPC SYS-H-FA301) and Socket Hand Scan Card (1D POS-SCN-S-5006) combination - recommended </B>
+	<LI> Compaq 3850 IPAQ (1D scanner) - discontinued
+	<LI> CodeCorp CodeReader2.0 (1D/2D scanner) - for connecting to a desktop (portable scanner only)
+	<LI> Symbol PPT2800 PocketPC (1D scanner)
+	<LI> Symbol PDT8100 PocketPC (1D/2D scanner)
+	</UL>
+<LI>Wireless Hubs (at least 2 are recommended to provide redundancy)
+</UL>
+
+<UL>
+<font class='small'>
+<P>Change log:
+<LI>2000: Symbol.
+<LI>2002: changed to Compaq 3850 for standard scanner of choice (in colour, faster response)
+<LI>2003: Compaq 3850 discontinued
+<LI>2003: Symbol PPT2800 (PPT2846-TRBZ0YUS) adopted as 1D scanner of choice (now in colour and faster; also more sturdy than compaq). Also, Compaq 3850s are unavailable.
+<LI>2004: Symbol PDT8100 (PDT8146) adopted as 2D scanner of choice. However, it would be beneficial to switch to a version w/o a keypad.
+<LI>2005: HP hx2750 Pocket PC (SYS-H-FA301) adopted as standard handheld, with a SocketScan SDIO card for scanning (POS-SCN-S-5006).
+</font>
+</UL>

@@ -1,0 +1,5 @@
+Equipment_ID	Equipment_Name	Equipment_Comments	Serial_Number	Equipment_Number	Equipment_Number_in_Batch	FK_Stock__ID	Equipment_Status	FK_Location__ID	Old_Equipment_Name
+1	TBD			0	1	1	In Use	1	TBD
+2	Shelf	NULL	NULL	NULL	NULL	1	In Use	3	NULL
+3	Site-0	NULL	NULL	0	NULL	2	In Use	1	NULL
+4	Site-1	NULL	NULL	1	NULL	2	In Use	2	NULL

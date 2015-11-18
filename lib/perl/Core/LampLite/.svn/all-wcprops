@@ -1,0 +1,293 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/109574/alDente/trunk/lib/perl/Core/LampLite
+END
+HTML.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108165/alDente/trunk/lib/perl/Core/LampLite/HTML.pm
+END
+DB_Access.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107105/alDente/trunk/lib/perl/Core/LampLite/DB_Access.pm
+END
+Login_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106945/alDente/trunk/lib/perl/Core/LampLite/Login_App.pm
+END
+Custom.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/108711/alDente/trunk/lib/perl/Core/LampLite/Custom.pm
+END
+DB_Object.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107160/alDente/trunk/lib/perl/Core/LampLite/DB_Object.pm
+END
+Template_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/108714/alDente/trunk/lib/perl/Core/LampLite/Template_App.pm
+END
+Build_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/106189/alDente/trunk/lib/perl/Core/LampLite/Build_Views.pm
+END
+Bootstrap.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/108790/alDente/trunk/lib/perl/Core/LampLite/Bootstrap.pm
+END
+User.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/109222/alDente/trunk/lib/perl/Core/LampLite/User.pm
+END
+JQuery.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/106215/alDente/trunk/lib/perl/Core/LampLite/JQuery.pm
+END
+File.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108242/alDente/trunk/lib/perl/Core/LampLite/File.pm
+END
+Form_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/109574/alDente/trunk/lib/perl/Core/LampLite/Form_Views.pm
+END
+App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/107564/alDente/trunk/lib/perl/Core/LampLite/App.pm
+END
+Data_Validation.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/99798/alDente/trunk/lib/perl/Core/LampLite/Data_Validation.pm
+END
+Session.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/107164/alDente/trunk/lib/perl/Core/LampLite/Session.pm
+END
+DB.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/109222/alDente/trunk/lib/perl/Core/LampLite/DB.pm
+END
+Login_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/109222/alDente/trunk/lib/perl/Core/LampLite/Login_Views.pm
+END
+Transaction.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/101104/alDente/trunk/lib/perl/Core/LampLite/Transaction.pm
+END
+MVC_exceptions.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/108715/alDente/trunk/lib/perl/Core/LampLite/MVC_exceptions.pm
+END
+Notification.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/106746/alDente/trunk/lib/perl/Core/LampLite/Notification.pm
+END
+Help_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/107295/alDente/trunk/lib/perl/Core/LampLite/Help_App.pm
+END
+Grp.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/108838/alDente/trunk/lib/perl/Core/LampLite/Grp.pm
+END
+Template_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/108714/alDente/trunk/lib/perl/Core/LampLite/Template_Views.pm
+END
+Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/103458/alDente/trunk/lib/perl/Core/LampLite/Views.pm
+END
+Build.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106685/alDente/trunk/lib/perl/Core/LampLite/Build.pm
+END
+CGI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/102109/alDente/trunk/lib/perl/Core/LampLite/CGI.pm
+END
+Form.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108296/alDente/trunk/lib/perl/Core/LampLite/Form.pm
+END
+Attribute_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/108714/alDente/trunk/lib/perl/Core/LampLite/Attribute_App.pm
+END
+Menu.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108240/alDente/trunk/lib/perl/Core/LampLite/Menu.pm
+END
+Help_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/107295/alDente/trunk/lib/perl/Core/LampLite/Help_Views.pm
+END
+Config.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/109514/alDente/trunk/lib/perl/Core/LampLite/Config.pm
+END
+DB_Access_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/107106/alDente/trunk/lib/perl/Core/LampLite/DB_Access_App.pm
+END
+Login.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106947/alDente/trunk/lib/perl/Core/LampLite/Login.pm
+END
+DB_Object_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/108855/alDente/trunk/lib/perl/Core/LampLite/DB_Object_App.pm
+END
+Template.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/108711/alDente/trunk/lib/perl/Core/LampLite/Template.pm
+END
+Attribute_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/108714/alDente/trunk/lib/perl/Core/LampLite/Attribute_Views.pm
+END
+DB_Access_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/109222/alDente/trunk/lib/perl/Core/LampLite/DB_Access_Views.pm
+END
+Session_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/102130/alDente/trunk/lib/perl/Core/LampLite/Session_App.pm
+END
+DB_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/108246/alDente/trunk/lib/perl/Core/LampLite/DB_App.pm
+END
+MVC.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/109222/alDente/trunk/lib/perl/Core/LampLite/MVC.pm
+END
+Help.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/107295/alDente/trunk/lib/perl/Core/LampLite/Help.pm
+END
+DB_Object_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/101099/alDente/trunk/lib/perl/Core/LampLite/DB_Object_Views.pm
+END
+Barcode.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/108239/alDente/trunk/lib/perl/Core/LampLite/Barcode.pm
+END
+Build_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/102387/alDente/trunk/lib/perl/Core/LampLite/Build_App.pm
+END
+Session_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/102114/alDente/trunk/lib/perl/Core/LampLite/Session_Views.pm
+END
+DB_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/109199/alDente/trunk/lib/perl/Core/LampLite/DB_Views.pm
+END
+Form_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/106682/alDente/trunk/lib/perl/Core/LampLite/Form_App.pm
+END
+Attribute.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/108711/alDente/trunk/lib/perl/Core/LampLite/Attribute.pm
+END

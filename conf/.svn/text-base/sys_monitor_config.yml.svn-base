@@ -1,0 +1,165 @@
+---
+# all servers listed in SHOW_DIR should be put under hosts_to_check_for_volumes
+# if you nothing beside 'server' or you put 'default' it will check volume for all servers listed in
+#   hosts_to_check_for_volumes
+# you can leave 'df' or 'du' row empty if you don't wanna do it
+# if you left 'threshold', 'warning_percent', 'error_percent' empty it will take the default ones t the end of this file
+# if you left 'du_warning_threshold' empty then you will not get any warning related to that
+hosts_to_check_for_printers:
+ - lims08
+ - limsdev02
+hosts_to_check_for_hubs:
+ - limsdev02
+hosts_to_check_for_volumes:
+ - limsdev02
+ - lims09
+ - lims03
+ - lims08
+ - limsdev04
+ - lims07
+hosts_to_check_for_directories:
+ - 
+SHOW_DIR:
+#in /home/aldente/private/dumps/
+ - archive/lims_dumps:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 500G
+    df: "df -h"
+    du:
+    du_warning_threshold: 
+    server: lims09
+ - home/aldente/public:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - home/sequence:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 1T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+#in /home/aldente/private/Projects
+ - home/sequence/Projects/:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 1T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - home/aldente/private:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - home/aldente/mirror:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - opt/alDente/www/dynamic/tmp:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: "du -sch"
+    du_warning_threshold:
+    server: limsdev02,lims03,lims08,lims09
+ - opt/alDente/www/dynamic/sessions:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df:
+    du: "du -sch"
+    du_warning_threshold:
+    server: limsdev02,lims03,lims08,lims09
+ - opt/alDente/www/dynamic:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: limsdev02,lims03,lims08,lims09
+ - var:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 50G
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server:
+ - projects/seqarchive/archive:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+#/home/aldente/private/Cluster_Jobs
+ - projects/sbs_pipeline02:
+    warning_percent: 90
+    error_percent: 95
+    threshold: 2T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+#in /home/aldente/private/labinstruments
+ - projects/labinstruments:
+    warning_percent: 85
+    error_percent: 90
+    threshold: 1T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - projects/sbs_primary/hs*:
+    warning_percent: 85
+    error_percent: 90
+    threshold: 15T
+    df: "df -h"
+    du: none
+    du_warning_threshold:
+    server: lims09
+ - projects/prod_scratch/lims:
+    warning_percent: 85
+    error_percent: 90
+    threshold: 15T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+ - projects/sbs_archive:
+    warning_percent: 75
+    error_percent: 90
+    threshold: 250T
+    df: "df -h"
+    du: 
+    du_warning_threshold:
+    server: lims09
+QUOTA:
+ - command: "ssh -n lims05 quota aldente"
+ - warning_percent: 90
+ - error_percent: 95
+v: main
+log: 1
+debug: 0
+check: server, printer, volume
+threshold: 4T
+warning_percent: 85
+error_percent: 90

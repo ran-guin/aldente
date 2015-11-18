@@ -1,0 +1,34 @@
+## Standard Configuration Settings for the Healthbank LIMS ##
+login_type : Employee
+## Exclude Tables from standard backups ##
+Exclude_Table : 
+Options :
+    - Plugins
+Plugins :
+    - Plugins 
+    - Obsolete
+    - Cluster
+    - Multiwell_Plate
+    - Issue_Tracking
+    - Help
+    - Genomic
+    - JIRA
+    - Lab
+    - Biology
+    - Software_Analysis
+    - Experiment
+    - Taxonomy
+    - Patient
+    - BioSpecimens
+## Prefix assigned to Lab objects (eg Emp123 barcode interpretted as Employee with ID=123)
+Barcode_Prefix :
+    Plate : BCG
+    Solution : Sln
+    Equipment : Eqp
+    Employee : Emp
+    Rack : Loc
+    Source : Src
+    Tray : Try
+    Run : Run
+    Box : Box
+    ReArray_Request : Rry

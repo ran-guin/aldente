@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene
+END
+Poly_A_site.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/Poly_A_site.pm
+END
+Promoter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/Promoter.pm
+END
+GeneStructureI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/GeneStructureI.pm
+END
+Exon.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/Exon.pm
+END
+Intron.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/Intron.pm
+END
+Transcript.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/Transcript.pm
+END
+UTR.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/UTR.pm
+END
+NC_Feature.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/NC_Feature.pm
+END
+GeneStructure.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/GeneStructure.pm
+END
+ExonI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/ExonI.pm
+END
+TranscriptI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqFeature/Gene/TranscriptI.pm
+END

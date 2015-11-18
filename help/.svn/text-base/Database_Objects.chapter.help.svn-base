@@ -1,0 +1,621 @@
+Database Objects
+<H2>Static Class methods</H2>
+<P>
+<B>The list below is INCOMPLETE and is under construction...</B>
+<span class=small>
+<UL>
+<LI>Lab Objects:
+
+<h3>Plate</h3>
+	Attributes:
+	<UL>
+	<LI>Name       - label for plate
+	<LI>Type       - type of Container (Library_Plate, Tube, Agar_Plate, Gel, Chip)
+	<LI>Number     - number of plate from given source (eg. 'plate number 3' from the CC001 Library)
+	<LI>Size       - number of samples (wells)
+	<LI>Rack       - location 
+	<LI>SubSection - label for subsection (if split off from larger plate)
+	<LI>Comments   - comments applied
+	<LI>Ancestors - list of plates in ancestry (+ self)
+	<LI>Progeny   - list of plates spawned
+	<LI>Family    - all plates in Progeny + Ancestry
+	<LI>AppliedReagents - list of reagents/solutions applied to ancestors 
+	<LI>PrepsCompleted  - list of preparation ids completed on ancestors
+	<LI>AppliedEquipment - list of equipment applied to ancestors
+	<LI>CompletedProtocols - list of completed protocols
+	<LI>TrackedSteps       - list of steps (defined in Protocol_Tracking table) completed by ancestors
+	<LI>Unused_Wells
+	<LI>Status             - test / production
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>create
+	<LI>get_parents
+	<LI>get_children
+	<LI>get_family
+	<LI>get_reagents
+	<LI>get_equipment
+	<LI>get_preps
+	<LI>get_tracked_steps
+	<LI>set_wells - define Unused_Wells
+	<LI>throw_away
+	</UL>
+
+<h3>Library_Plates</h3>
+These plates are specific to the Sequencing plug in and have all of the attributes of a standard plate in addition to the following:<P>
+	Attributes:
+	<UL>
+	<LI>Library
+	<LI>Unused_Wells
+	<LI>Slow_Grows
+	<LI>No_Grows
+	<LI>Format
+	<LI>Application ('Sequencing','PCR','Mapping')
+	<LI>AvailableQuadrants
+	<LI>FamilyRuns
+	<LI>BrewMix
+	<LI>BrewMixQty
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>get_runs - list of run ids for all plates in family
+	<LI>get_BrewMix    - list of applied Brew Mix
+	</UL>
+<h3>Tube</h3>
+These plates are specific to the Sequencing plug in and have all of the attributes of a standard plate in addition to the following:<P>
+	Attributes:
+	<UL>
+	<LI>Name 
+	<LI>Volume
+	<LI>Sample
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>dispense
+	<LI>throw_away
+	</UL>
+<h3>Reagents/Solutions</h3>
+	<P>Attributes:	
+	<UL>
+	<LI>Name
+	<LI>Original_Quantity
+	<LI>Expiration_Date
+	<LI>Type (eg. 'Primer', 'Buffer','Matrix')
+	<LI>Reagents
+	<LI>Components
+	<LI>Plates
+	<LI>Preps
+	<LI>Solutions
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>get_reagents	- get list of original reagents required to make this solution
+	<LI>get_components	- get list of reagents making up this solution
+	<LI>get_plates          - get list of plates applied to 
+	<LI>get_preps		- get list of preparation ids using reagent(s)
+	<LI>get_solutions
+	</UL>
+
+<h3>Equipment</h3>
+
+<h3>Box</h3>
+
+<h3>Employee</h3>
+	<UL>
+	<LI>Permissions
+	<LI>Password
+	<LI>Department
+	<LI>Email_Address 
+	</UL>
+<h3>Contact</h3>
+	<UL>
+	<LI>Organization
+	<LI>Position
+	<LI>Phone
+	<LI>Email Address 
+	</UL>
+<h3>Organization</h3>
+	<UL>
+	<LI>Address
+	<LI>Web Site
+	</UL>
+</UL>
+<LI>Descriptive Entities:
+
+<h3>Project</h3>
+	<UL>
+	<LI>Path
+	<LI>Initiated
+	<LI>Completed
+	</UL>
+<h3>Library</h3>
+<h3>Vector</h3>
+<h3>Primer</h3>
+<h3>Tissue</h3>
+<h3>Clone</h3>
+
+<LI>Procedural Entities:<P>
+<h3>Preparation</h3>
+	Attributes:
+<UL>
+<LI>dbh           - database handle
+<LI>protocol_name - name of protocol
+<LI>protocol_id  - id of protocol 
+<LI>input[]      - array of step input requirements
+<LI>format[]     - array of step formats expected
+<LI>default[]    - array of step defaults
+<LI>step[]       - array of step names
+<LI>tracksteps   - number of steps to track 
+<LI>totalsteps   - total number of steps in protocol
+<LI>thisstep     - current step number
+<LI>set          - sample set id
+<LI>sample_ids   - list of samples being prepared
+<LI>records      - number of records 
+<LI>fields       - fields to store to table
+<LI>values       - values to store
+</UL><P>
+Methods:
+<UL>
+<LI>load_Step     - load step information
+<LI>load_Plates   - load Plates (including history)
+<LI>get_next_Step - get next step in protocol
+</UL>
+
+</UL>
+</span>
+
+
+<h1>Standard Database Structure</h1>
+<P>
+The Data itself is maintained in a mySQL database.<BR>
+The Automated Laboratory Data Entry 'N Tracking Environment consists of a comprehensive interface with this database which enables people to interact with the database in real time for the purposes of updating information in the database, or viewing existing information.
+<P>
+<H2>Input to the Database</H2>
+<P>
+The Data which is input into the database may be entered in a variety of forms.
+<UL>
+<LI>Using a desktop computer<P>
+Via a standard web page, users can enter data into the database through a web-site designed to enable standard procedures to be carried out easily.
+<P>
+Data that is typically entered this way includes all information related to:
+<UL>
+<LI>Defining New Projects/Libraries/Vectors/Grants etc.
+<LI>Creating New Plates/Tubes etc.
+<LI>Receiving New Equipment/Reagents etc. 
+<LI>Editing of various records within the database
+</UL>
+<P>
+
+<LI>Using a handheld wireless barcode scanner<P>
+During standard lab processes, it is often more convenient to simply scan particular items to indicate their usage rather than record the details pedantically at some other time.  This provides real time updating of the database, and can be used to ensure that mistakes are not made during actual lab routine by allowing real-time error-checking and input validation procedures. <P>
+Data entered using scanners in the lab typically includes:
+<UL>
+<LI>Mixing of Reagents/Solutions
+<LI>Changing Matrix/Buffer solutions for Sequencers
+<LI>Performing detailed Lab Protocols <P>
+eg:
+<UL>
+ <LI>Transferring Plates
+ <LI>Applying solutions to Plates
+ <LI>Using equipment on Plates (eg. Centrifuges, shakers etc)
+ <LI>Adding comments to lab preparation steps
+ <LI>Marking individual or groups of plates as failing during lab protocol.
+</UL>
+<LI>Moving Plates/Reagents/Tubes within the lab<BR>
+(Tracking their location)
+<LI>Generating configuration files for Sequencers.
+</UL>
+
+<P>
+<LI>Automatically running processes<P>
+Some data is entered into the database by scripts which run periodically including:
+<UL>
+<LI>Sequence Information<BR>
+Data from Sequence runs is parsed and stored in the database 
+</UL>
+</UL>
+<H2>What is Stored</H2>
+<P>
+The database itself consists of a number of tables which store information in a structured form.
+The table themselves generally correspond to actual objects or entities in the lab such as:
+<UL>
+<LI>Projects
+<LI>Libraries
+<LI>Vectors
+<LI>Plates
+<LI>Solutions or Reagents
+<LI>Equipment
+<LI>Employees
+<LI>Runs
+<LI>Organizations
+<LI>Clones
+<LI>Reads
+</UL>
+<P>
+In Addition some other tables record details of procedures that have been carried out within the lab such as:
+<UL>
+<LI>Preparation steps (applied to groups of plates)
+<LI>Maintenance procedures (carried out on various equipment)
+</UL>
+
+<P>In many cases, this information is further distributed between 'Tables' to maximize efficiency in storing information.  Users themselves, however, rarely need to deal with the tables themselves, as the code is designed to interpret the information within them automatically.  Information is typically tied through hyperlinks between associated entities, all of which is handled by an underlying script which drives the web-page used to interact with the database.
+
+<H2>What does the code accessing the database look like ?</H2>
+<P>
+The interface to the database is written in perl and includes over 100,000 lines of code which interprets information in the database, providing users with a means to navigate within it.
+<P>
+Also within the code there are numerous integrity checking procedures, error checking procedures, and functions which facilitate the administration of standard laboratory procedures.  
+<P>
+In addition, a whole suite of visualization tools which are able to effectively summarize various information from the database in a form that is easy to use and provides a quick way of monitoring numerous aspects of the data and the lab processes that are going on during the production of the data.
+
+
+
+
+
+
+<h1>Database Interactions During Standard Laboratory Procedures</h1>
+ 
+<P>The following illustrates the steps required in generating an initial sequence read.<P>
+Note that making a Project and making a Library are only required when they are at first defined.
+<P>
+   
+<h2>Data Flow</h2>
+<Table><TH>Action</TH><TH>Fields Updated</TH><TR>
+<TD bgcolor=lightgrey>
+<B>make Project</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Project</B>
+(new)<UL><LI>Name<LI>Description<LI>Initiated <LI>Source<LI>Type
+<LI>Obtained Date<LI>Host
+Cells<LI>Vector<LI>Organism<LI>Sex<LI>Tissue<LI>Strain<LI>Notes<LI>5,3 Prime
+Cloning Sites<LI>Comments</ul>
+</TD>
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>make Library</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Library</B>
+(new)<UL><LI>Name (5 characters)<LI>Full
+Name<LI>Description<LI>Project<LI>Source<LI>Type <LI>Obtained Date<LI>Host
+Cells<LI>Vector<LI>Organism<LI>Sex<LI>Tissue<LI>Strain<LI>Notes<LI>5,3 Prime
+Cloning Sites<LI>Comments</ul>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>make Plate</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Plate</B>
+(new)<UL><LI>Size<LI>Format<LI>Creation
+Date<LI>Employee<LI>Number<LI>Quadrant<LI>Parent Plate (if applic)<LI>Status
+= 'Active'<LI>Comments</ul>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>record No/Slow Grows</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Plate</B>
+(update)<UL><LI>No_Grows<LI>Slow_Grows<LI>Unused_Wells</UL>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>Full Mech Prep /<BR>Sequencing
+Reaction<BR>...<BR>(for each step)</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Preparation</B>
+(new)<UL><LI>Employee<Li>Time<Li>Equipment(if applic)<LI>Solution_ID(if
+applic)<LI>Conditions<LI>Comments</Ul><HR><B>Solution</B>
+(update)<UL><LI>Quantity_Used</UL>
+</TD>
+</TR><TR>
+
+<TD bgcolor=lightyellow>
+<B>Sequence</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Sequence</B>
+(new)<UL><LI>Plate<LI>Employee<LI>Equipment<LI>Time = (time of
+request)<Li>Chemistry<li></UL>
+<B>Sequence_Batch</B><UL>
+<LI>Employee<LI>Equipment<LI>Time
+<LI>Matrix<Li>Buffer<Li>Primer<Li>Configuration
+Parameters eg:<UL><LI>Foil Piercing<Li>Run Voltage<LI>Injection
+Voltage<LI>...</UL><LI>Run State = 'In Process'<LI>Comments</UL>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>Auto-analysis</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Clone Sequence</B> (~96
+new)<UL><LI>Run ID<LI>Well<LI>Sequence<LI>Sequence Scores
+(packed)<Li>Sequence Length<LI>Quality Length<LI>Vector Portion<LI>Phred
+Histogram (packed)<LI>Quality Histogram (packed)<LI>Growth
+Status<Li>Notes</UL><B>Sequence</B> (update)<UL><LI>Run_State =
+'Analyzed'<LI>Time = (timestamp on datafiles)</UL>
+</TD>
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>Throw Away Plate</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Plate</B>
+(update)<UL><LI>Plate_Status<LI>Plate_Location</UL>
+</TD>
+</TR></Table>
+
+<h2>Flowchart showing Data flow...</H2>
+<P>
+<Img Src = '$Help_Image_dir/data_flow.png'>
+<P>Notes:<UL>
+<LI>
+Entities in white indicate tables that are frequently updated by lab procedures.
+<LI>
+Entities in grey represent tables that are less frequently updated.
+<LI> 
+Numbers at the base or tip of an arrow show common N values for N:1 relationships.
+<LI>
+(o) tags on arrows indicate an optional reference to another table.
+<LI>
+The 'Parent' references from Plates & Tubes is a recursive ref. to the same table.
+</UL><h1>What is a Project?</H1>
+A Project generally consists of a Library or Group of DNA Libraries that fall 
+under a single source of Funding, 
+and which may be associated with a particular collaborator.
+
+<h2>What sort of information do we store for a Project?</H2>
+Typically, each Project will have a:
+<UL>
+<LI>Name - a brief text name simply used to identify the Project
+<LI>Description - a more informative description in what constitutes the
+project
+<LI>Path - the directory path under which data for this project will be
+stored<BR>
+ (generally this may be defined as the user wishes - use no spaces in this
+field)
+<LI>Funding - a link to the specific funding source used to pay for this
+project
+<LI>Type - this may be used to group projects together by type (optional)
+<LI>Status - 'Active','Inactive',or 'Completed'
+<LI>Initiation and Completion Dates
+</UL>
+<BR><A Href=$homelink&Table+Info=Project>View Project Fields</A>
+
+<h2>How do I define a Project</H2>
+A Project can be easily defined by first clicking on the 'Libraries' icon
+after logging into the main page.  From here, by clicking on 'Projects' at
+the top of the page, one is given a list of current projects and given the
+option to add a new Project.<BR>
+You are then given a form to fill out which will include the information
+indicated above.  Generally this should be filled in as completely as
+possible.  Though it is sometimes easier to leave information blank at first
+with the intention of filling it in at a later date, this is discouraged as
+this later step is all too often neglected, and the database remains partially
+incomplete.
+<A Href='$homelink&Help_Image=Project_form.png'>New Project Form</A>
+
+<h2>How can I view information on a Project?</H2>
+By simply clicking on the 'Library' icon at the top of the page, you will be
+given a choice to view various items including Projects at the top of the
+page.<BR>Clicking on the 'Projects' hyperlink will display a list of current
+projects.  (You may from here continue to add, edit or delete projects from
+this list).
+
+<h2>How can I change information on a Project?</H2>
+By viewing the projects as indicated above, you will be able to find records
+that you would like to update.  From this page, you may then simply click on
+the 'Edit Project' button to search and edit Project information as required.
+<h1>What is a Library ?</H1>
+A Library is a source of DNA that comes from a common batch (usually
+glycerol stock) that may have been generated internally or supplied by an
+outside collaborator.  <BR>From each library a number of plates will
+typically be made up each of which should be associated with ONE and ONLY
+ONE Library.
+
+<h2>What sort of information do we keep on Libraries</H2>
+There is quite a bit of information that we would like to store for each
+library, so it would be helpful if you were able to acquire this information
+before attempting to create it.  This will remove the necessity of returning
+at a later date and adding the information (which can quite easily be
+neglected).  In a pinch however, it is possible to create a library with a
+minimum of information, if there is a need to generate Plates/Sample Sheets
+before further information is available.
+<P>
+<p>The following information is generally required for the library <Font
+color=red>(Mandatory Fields shown in red)</Font>: 
+<p>
+    <Ul><LI><B><Font color=red>Name</Font></B> - This MUST be 5
+alpha-numeric characters.  Though it is nice to keep this name somewhat
+meaningful, this is an Identification field, and is not meant to act as a
+human-readable reference to a library.  In theory, this could be simply a 5
+digit number which, though meaningless to a user, provides the database with
+an index to this particular library.  Often the format will be simply two
+letters followed by an incrementing number.  (such as 'CN001','CN002' for
+the first two Cryptococus Neoformans libraries), though if it is useful, the
+positions of numbers and letters is flexible (ie. spgpW or P2001)
+    <LI><B><Font color=red>FullName</Font></B> -This is usually set to a
+brief, but more meaningful name for the library
+    <LI><B><Font color=red>Type</Font></B> -This is usually set to indicate
+whether the library is an EST,cDNA or SAGE Library
+    <LI><B><Font color=red>Vector</Font></B> - This indicates the vector
+that is used.  If this vector is already in the database, no further info is
+required.  However, there is information that is also required for the
+Vector if it a new one.  If no Vector exists for a given library, use the
+Vector Name: 'Test'
+    <LI><B>Organism</B> - This indicates the organism from which the library
+is created
+    <LI><B>Source</B> - This indicates where the library originated (eg Jim
+Kronstad, UBC)
+    <LI><B>Source Name</B> - This is the name given the library by the
+original source listed above
+    <LI><B>5Prime_Restriction_Site</B> - This indicates the name of the
+Restriction Enzyme if appropriate
+    <LI><B>3Prime_Restriction_Site</B> - This indicates the name of the
+Restriction Enzyme if appropriate in the 3' direction
+    <LI><B>Host</B> - This indicates the Host Cells (eg. SOLR or DH20B)
+    <LI><B>Sex</B>
+<LI><B>Strain</B>
+      <LI><B>Tissue</B>
+    <LI><B>Description</B> - a more lengthy description of
+what the library is composed of
+</UL>
+    <HR>
+    
+<BR><A Href=$homelink&Table+Info=Library>Library Fields</A>
+
+<h2>How do I define a Library</H2>
+A Library can be easily defined by first clicking on the 'Libraries' icon
+after logging into the main page.  From here, by clicking on 'Libraries' at
+the top of the page, one is given a list of current libraries and given the
+option to add a new Library.<BR>
+You are then given a form to fill out which will include the information
+indicated above.  Generally this should be filled in as completely as
+possible.  Though it is sometimes easier to leave information blank at first
+with the intention of filling it in at a later date, this is discouraged as
+this later step is all too often neglected, and the database remains in part
+incomplete.
+<Img Src='/Help_Image_dir/Library_form.png'>
+
+<h2>How can I view information on a Library?</H2>
+By simply clicking on the 'Library' icon at the top of the page, you will be
+given a choice to view various items including Libraries at the top of the
+page.<BR>Clicking on the 'Libraries' hyperlink will display a list of current
+libraries.  (You may from here continue to add, edit or delete projects from
+this list).
+
+<h2>How can I change information on a Library?</H2>
+By viewing the libraries as indicated above, you will be able to find records
+that you would like to update.  From this page, you may then simply click on
+the 'Edit Library' button to search and edit Library information as required.
+
+<H1>What is a Vector ?</H1>
+A Vector is a defined nucleotide sequence that is associated with a
+library.  It is typically screened out of any resultant sequence data
+since it is not part of the sequenced insert that is of interest.
+
+<H2>What sort of information do we store for Vectors ?</H2>
+For Vectors we will store various details including:
+<UL>
+<LI>Manufacturer
+<LI>Catalog Number
+<LI>Sequence File (the name of a file containing sequence information
+- see below)
+<LI>Source (where it came from)
+<LI>Antibiotic Marker
+<LI>Inducer
+<LI>Substrate
+</UL>
+
+<H2>What does the Vector Sequence File look like?</H2>
+The name specified for the Sequence File (eg. 'pOTB7.seq') 
+should refer to a file located in the vector directory (/home/sequence/VECTOR/)
+In this directory, all of the vector files are located, and a
+concatenated version created on a daily basis.  <P>
+The concatenated file is screened against sequence using
+'cross_match',
+and the resulting screened matches found stored in the 'Cross_Match'
+table.<P>
+The standard format of the *.seq file is similar to the standard fasta
+format. eg.
+
+Name_of_vector (any appropriate comments)
+agggggttc.....
+
+
+
+
+<H1>Defining New Primer Type</H1>
+<ul>
+<li>Go to the Sequencing Admin page.
+<li>In the "Vectors, Primers, Primer Customizations, Chemistry Codes" section, select "Primer" from the "Create New" drop-down menu. You will then be directed to the 'New Primer' form:
+<Img Src = '$Help_Image_dir/New_Primer_Type_Form.png'>
+<li>After pressing 'Continue', you will be presented with the 'New Primer Customization' form. A primer customization is a property of the primer that is defined by the lab rather than by the manufacturer. If you wish to define value(s), fill in this form and press 'Continue'; otherwise press 'Skip' to skip this form:
+<Img Src = '$Help_Image_dir/New_Primer_Customization_Form.png'>
+<li>Next you will need to specify details for the Big Dye chemistry code and ET chemistry code respectively:
+<Img Src = '$Help_Image_dir/New_Chemistry_Code_B_Form.png'><p>
+<Img Src = '$Help_Image_dir/New_Chemistry_Code_ET_Form.png'>
+<li>Press 'Finish' in the last form will complete the process.
+</ul>
+
+
+
+
+
+<h1>Formats</h1>
+
+<H2>Table Formats</H2>
+Generally Table names should represent an item 
+(preferably with records that represent a physical item like 'Equipment'),
+or at least a fairly solid concept (like an event).
+Eg:<UL>
+<LI>Plate
+<LI>Employee
+<LI>Organization
+<LI>Preparation
+<LI>Clone
+</UL>
+<P>
+Some table names are used to define commonly referred to details following a standard structure.<BR>
+Eg:<UL>
+<LI>Plate_Format
+<LI>Parameter
+</UL>
+<P>
+Some tables may refer to groups of items reducing the need for comprehensive records to be stored for each of the items in a list.<BR>
+Eg:<UL>
+<LI>Plate_Set
+<LI>Sequence_Batch
+</UL>
+<P>
+Some tables will also exist as a joining table to establish a 'many-to-many' relationship.  These tables (unless an obvious name makes sense) should generally be named like 'Table1Table2', making it obvious to an ignorant administrator (or an automated process) what the table is connecting.<P>
+Eg:<UL>
+<LI>Collaboration (a meaningful name connecting Project with Organization)
+<LI>VectorPrimer
+</UL>
+<P>
+Table names generally take on a singular tense (with exceptions where names are reserved - eg. 'Order')
+<P>
+<H2>Field Names</H2>
+<UL>
+<LI>
+ID fields = TableName_ID (eg. 'Employee_ID' in 'Employee' Table)
+<LI>
+Foreign Keys = FK(optional_string)_TableName__ID <P>
+eg: <BR>
+FKParent_Plate__ID  points to -> Plate.Plate_ID
+</UL>
+This convention allows automated processes to understand table relationships unambiguously.
+<P>
+Fields referencing other databases should be named:<BR> 
+FDK(optional_string)_TableName__ID <P>
+(This is a convention that has not been fully implemented, but this format should allow for easy scalability in the future.  (Note this would be used in conjunction with a more specific definition of the foreign database used defined somewhere in the default parameter code).
+<P>
+Field names should also be consistent in how they are named.
+While popular opinion is divided on whether all of the ID fields should be called 'ID' for simplicity, or whether they should all be more specific (like 'Employee_ID') for specificity, we have opted (for better or for worse) for the latter format.  It does have the advantage of allowing code to be searched for references to specific fields much more easily, making it much easier for developers.  To be consistent, this should be the naming convention used for fields.  (eg. the field 'Date' should be replaced by something more specific like 'Event_Date')
+<P>
+<h2>Sequence_Subdirectory</h2>
+This is a field in the Sequence table that is formatted to provide more specific information:
+<P>
+(LibraryName - 5 characters)(PlateNumber)(Plate Quadrant - optional).(Chemistry_Code)(.version - as required)
+<P>
+eg. 'CN00113a.B7.2' -> 'CN001' Library, Plate 13a, Chemistry Code = 'B7', version '.2'
+<P>
+<h2>Primer Names</H2>
+<P>
+This is a non-standard foreign key.  Names should match IDENTICALLY with the Stock_Name in the stock table.
+<BR>
+This way, Primer information can be tied directly to the appropriately named reagents.
+<P>
+
+
+
+
+

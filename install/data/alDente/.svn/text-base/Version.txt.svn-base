@@ -1,0 +1,31 @@
+Version_ID	Version_Name	Version_Description	Release_Date	Last_Modified_Date	Version_Status
+1	1.3	alDente - Revise primary navigation interface	2003-08-25	2003-10-15	Not in use
+2	2.0	alDente - Enable multiple Departments (Gene Expression), Separate Clone,Plate,Library objects	2004-01-24	2004-02-20	Not in use
+3	2.1	alDente - Increased functionality for Gene Expression	2004-06-09	2004-06-09	Not in use
+4	2.2	NULL	2004-11-29	2004-11-29	Not in use
+5	2.3	NULL	2005-07-20	2005-07-20	Not in use
+6	2.4	QA upgrades, mgc closure needs, normalizing Organism/Tissue info, sample submission automation	2006-01-27	2006-01-27	Not in use
+7	2.41	Mapping and Affy support + items deferred from 2.4	2006-04-14	0000-00-00	Not in use
+8	2.5		2011-08-23	2011-08-23	Not in use
+10	2.6		2011-08-23	2011-08-23	Not in use
+12	3.0	NULL	2011-08-23	2011-08-23	Not in use
+13	3.1	NULL	2011-08-23	2011-08-23	Not in use
+14	3.2	NULL	2012-01-16	2012-01-16	Not in use
+15	3.3	NULL	2012-01-16	2012-01-16	Not in use
+16	3.4	NULL	2012-01-16	2012-01-16	Not in use
+17	3.5	NULL	2012-01-16	2012-01-16	Not in use
+18	3.6	NULL	2012-01-16	2012-01-16	Not in use
+19	3.7	NULL	2012-01-16	2012-01-16	In use
+20	3.8	NULL	0000-00-00	0000-00-00	Not in use
+21	3.9		0000-00-00	0000-00-00	Not in use
+22	3.10		0000-00-00	0000-00-00	Not in use
+23	3.11		0000-00-00	0000-00-00	Not in use
+24	3.12		0000-00-00	0000-00-00	Not in use
+25	3.13		0000-00-00	0000-00-00	Not in use
+26	3.14		0000-00-00	0000-00-00	Not in use
+27	3.15		0000-00-00	0000-00-00	Not in use
+28	3.16		0000-00-00	0000-00-00	Not in use
+29	3.17		0000-00-00	0000-00-00	Not in use
+30	3.18		0000-00-00	0000-00-00	Not in use
+31	3.19		0000-00-00	0000-00-00	Not in use
+32	3.20		0000-00-00	0000-00-00	Not in use

@@ -1,0 +1,8 @@
+<H2>Sequencing Modules</H2>
+<P>
+
+<span class=small><UL>
+
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Sequencing_API.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Sequencing_API.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Sequencing_API</A> : This module handles custom data access functions for the sequencing plug-in
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Lab_View.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Lab_View.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Lab_View</A> : This modules provides various views of Laboratory Status 
+</UL></span>

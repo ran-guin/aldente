@@ -1,0 +1,30 @@
+## Configuration settings that are customized for specific installations ##
+custom_version_name: Social
+DATABASE: socio
+SQL_HOST: limsdev04
+default_mode: PRODUCTION
+PRODUCTION_DATABASE : socio
+PRODUCTION_HOST : limsdev04
+PRODUCTION_WEBHOST : limsdev02
+TEST_DATABASE : socio_test
+TEST_HOST : limsdemo01.dmz
+UNIT_TEST_DATABASE : socio_test
+UNIT_TEST_HOST : limsdemo01.dmz
+BACKUP_DATABASE : socio 
+BACKUP_HOST : limsdemo01.dmz
+BETA_DATABASE : socio_beta
+BETA_HOST : limsdemo01.dmz
+socio_HOST : limsdemo01.dmz
+socio_DATABASE : socio
+DEV_HOST : limsdemo01.dmz
+DEV_DATABASE : socio_dev
+default_email_domain: bcgsc.ca
+URL_domain: http://limsdev02.bcgsc.ca
+admin_email : rguin@bcgsc.ca
+jira_project : ALDENTE
+jira_proxy_user : aldente_proxy_user
+jira_password : jiraforaldente
+web_root: /opt/alDente
+data_root: /home/aldente
+url_root: SDB
+session_expiry: 2d

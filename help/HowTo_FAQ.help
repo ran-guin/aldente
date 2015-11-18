@@ -1,0 +1,516 @@
+<span class=large>
+<h1>How-To/FAQ Document (As of release 2.00)</h1>
+<ul>
+  <li><a href="#General">General</a><br>
+  </li>
+  <li><a href="#Barcode_Scanning_and_Printing">Barcode Scanning and
+Printing</a><br>
+  </li>
+  <li><a href="#Issues">Issues</a><br>
+  </li>
+  <li><a href="#Stock">Stock</a><br>
+  </li>
+  <li><a href="#Primers">Primers</a><br>
+  </li>
+  <li><a href="#Plates">Plates</a></li>
+  <li>Equipments<br>
+  </li>
+  <li>Libraries<br>
+  </li>
+  <li>Sequence Runs<br>
+  </li>
+  <li><a href="#Admin_Tasks">Admin Tasks</a></li>
+  <li><a href="#Replication">Replication</a></li>
+  <li><a href="#Troubleshooting">Troubleshooting</a><br>
+  </li>
+  <li><a href="#About_alDente_LIMS_System">About alDente LIMS System</a><br>
+  </li>
+</ul>
+<h3><a name="General"></a>General<br>
+</h3>
+<ul>
+  <li>How to find out which version of alDente I am using?</li>
+  <ul>
+    <li>If you are in the login page, look for the words 'Welcome to
+alDente (X.XX)' right above the 'Log In' button. &nbsp;'X.XX' corresponds
+to the release version such as release 1.10.</li>
+    <li>If you have already login and are currently in some other
+pages, the release version is displayed in the info bar which is right
+underneath the icons bar.</li>
+    <li>If you interested in knowing whether you are using the
+production version, last version or test version, look at the URL
+address and look for the word 'SDB':</li>
+    <ul>
+      <li>If you only see 'SDB' as in 'http://seqdb01/<span
+ style="font-weight: bold;">SDB</span>/cgi-bin/barcode.pl', then you
+are using the production version.</li>
+      <li>If you see 'SDB_last' as in 'http://seqdb01/<span
+ style="font-weight: bold;">SDB</span><span style="font-weight: bold;">_last</span>/cgi-bin/barcode.pl',
+then you are using the last version.</li>
+      <li>If you see 'SDB_test' as in 'http://seqdb01/<span
+ style="font-weight: bold;">SDB</span><span style="font-weight: bold;">_test</span>/cgi-bin/barcode.pl',
+then you are using the test version.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>What is my default login password and how do I change it?</li>
+  <ul>
+    <li>The default login password is 'pwd' and is automatically
+entered in the password field of the login page.</li>
+    <li>To change your password, first login and then click on the
+'Home' icon of the icons bar. &nbsp;Look for the 'Change Password' link
+in the middle section of the page</li>
+  </ul>
+</ul>
+<h3><a name="Barcode_Scanning_and_Printing"></a>Barcode Scanning and
+Printing</h3>
+<ul>
+  <li>If 'scanning' in barcodes from a workstation, how do I specify a
+range of IDs rather than having to type in the individual barcodes?<br>
+  </li>
+  <ul>
+    <li>Type in 'pla2000-pla2003,pla2006,pla2008,pla2010-pla2013' for
+Plate IDs of 2000-2003,2006,2008,2010-2013.<br>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint an employee barcode? (e.g. employee ID 50)</li>
+  <ul>
+    <li>Type in 'emp50' and press the scan button.</li>
+    <li>Press the 'Re-Print Employee Label' button.<br>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint an employee barcode with password? (use for quick
+login when using the scanners)</li>
+  <ul>
+    <li>Same as reprinting a regular employee barcode, except only the
+'Admin' user can do this. &nbsp;(i.e. you will need to talk to the LIMS
+admins for this)</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint an equipment barcode? (e.g. equipment ID 246)</li>
+  <ul>
+    <li>Type in 'equ246' and press the scan button.</li>
+    <li>Press the 'Re-Print Equipment Barcode' button.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint a plate barcode? (e.g. plate ID 3000)</li>
+  <ul>
+    <li>Type in 'pla3000' and press the scan button.</li>
+    <li>Press the 'Re-Print Plate Barcode' button.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint a plate multiple barcode? (e.g. Multiple_Plate ID
+200)</li>
+  <ul>
+    <li>Type in 'mul200' and press the scan button.</li>
+    <li>Press the 'Re-Print Multiple Barcode' button.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint a solution barcode? (e.g. Solution ID 68)</li>
+  <ul>
+    <li>Type in 'sol68' and press the scan button.</li>
+    <li>Press the 'Re-Print Barcode Sol68 (Potassium Chloride)' button.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to reprint a rack barcode? (e.g. Rack ID 56)</li>
+  <ul>
+    <li>Type in 'rac56' and press the scan button.</li>
+    <li>Press the 'Re-Print Rack Barcode' button.</li>
+  </ul>
+</ul>
+<h3><a name="Issues"></a>Issues</h3>
+<ul>
+  <li>How to report an error/problem?</li>
+  <ul>
+    <li>There are 2 ways of doing this:</li>
+    <ul>
+      <li>Quick and easy way: Type in your error description and press
+the 'Error Notification' button. &nbsp;</li>
+      <li>Slower but more detailed way: Click on the 'Bugs' icon of the
+icons bar and then click on the 'Submit New Issue' link. &nbsp;This way
+you can specify the various properties of the issue, add a detail
+description/message for the problem and even attach a screenshot/file
+that would help illustrating the problem.</li>
+    </ul>
+    <li>Either way an email will be sent to the LIMS admins right the
+way and an issue will be automatically created in the issues queue.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to submit a feature request?</li>
+  <ul>
+    <li>Click on the 'Bugs' icon of the icons bar and then click on the
+'Submit New Issue' link. &nbsp;Just be sure to change the issue type
+from 'Defect' to 'Enhancement'.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to submit a system maintenance request?</li>
+  <ul>
+    <li>Click on the 'Bugs' icon of the icons bar and then click on the
+'Submit New Issue' link. &nbsp;Just be sure to change the issue type
+from 'Defect' to 'Maintenance'.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to check the current status of the issue I have submitted?</li>
+  <ul>
+    <li>Click on the 'Bugs' icon of the icons bar and then use the
+'Search Issues' form to search for your issue.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Will I get notified if the issue I submitted have been closed?</li>
+  <ul>
+    <li>Yes, when an issue is closed, an email will be sent to you.</li>
+  </ul>
+</ul>
+<h3><a name="Stock"></a>Stock</h3>
+<ul>
+  <li>I am confused. How are the various terms Stock, Solution,
+Reagent, Primer, Buffer, Matrix, Kit, Box, Equipment related to each
+other?</li>
+  <ul>
+    <li>Stock is at the top of the hierachy, and thus all solutions,
+reagents, primers, buffers, matrices, kits, boxes and equipments are
+stocks and will have a corresponding entry in the Stock table.</li>
+    <li>Solution, Reagent, Kit, Box and Equipment are various types of
+stocks.</li>
+    <li>Box and Kit are related to each other, in which a kit is just a
+special type of box.<br>
+    </li>
+    <li>For the Solution and Reagent stock types, they are further
+subdivided into various solution types:</li>
+    <ul>
+      <li>Solution stock type: &nbsp;These items will have a solution
+type of Solution.</li>
+      <li>Reagent stock type: &nbsp;These items will have a solution
+type of either Reagent, Primer, Buffer or Matrix.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>What are the ways of creating a new stock?</li>
+  <ul>
+    <li>They are several ways available:</li>
+    <ul>
+      <li>From the individual homepages:</li>
+      <ul>
+        <li>Reagents homepage: &nbsp;'New Reagent', 'New Kit', 'New
+Box' buttons.</li>
+        <li>Equipments homepage: &nbsp;'New Equipment' button.</li>
+      </ul>
+      <li>Using the corresponding links in the Quick Links section.</li>
+      <li>Scanning in the barcode of an existing stock item and then
+create a new item of the same type from the info page.<br>
+      </li>
+      <li>Entering an existing catalog in the Quick Links section:
+&nbsp;In this case, say you are receiving another item of an existing
+stock. &nbsp;All you have to do is enter the catalog number of the
+stock and then the Stock form will have most of the information
+pre-filled for you.</li>
+    </ul>
+    <li>The exception to this is the creation of mixtures. &nbsp;In
+order to create a new mixture, you scan in the barcodes of the
+individual solutions. &nbsp;For instance, say you want to dilute BD
+Brew (solution ID 7696) with distilled water (solution ID 1108); in
+this case, scan in 'sol7696sol1108) and enter the appropiate amounts of
+each solution to create the mixture.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to create a new primer type?</li>
+  <ul>
+    <li>Use the 'Define new Type' link besides 'Primer' in the Quick
+Links section.<br>
+    </li>
+  </ul>
+</ul>
+
+<h3><a name="Primers"></a>Primers</h3>
+<ul>
+  <li>How do I create a new Primer and link it to a Library?<br>
+  </li>
+  <ul>
+    <li>1. Go to the Sequencing Admin page and use the 'Create New...' Primer on the popup menu on the Primers box (lower right corner).
+	This will prompt you for Primer and Chemistry Code information.<br>
+    </li>
+    <li>2. Go to the Sequencing Admin page and use the 'Create New...' Suggested Library Primer on the popup menu on the Libraries
+	& LibraryPrimers box (lower left corner). Then, add suggested primers for the Library or add a valid Primer for a specific vector.<br>
+  </ul>
+</ul>
+
+<h3><a name="Plates"></a>Plates</h3>
+<ul>
+  <li>How to create a new plate?</li>
+  <ul>
+    <li>Click the 'New Plate' button on the Plates homepage,OR</li>
+  </ul>
+  <ul>
+    <li>Click the 'New Plate' link in the Quick Links section, OR</li>
+  </ul>
+  <ul>
+    <li>Scanning in the barcode of an plate and then create a new plate
+from the info page.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to create a new plate type (plasticware)?</li>
+  <ul>
+    <li>Click the 'Define new Type' link besides 'New Plate' in the
+Quick Links section, OR</li>
+    <li>Click the 'New Plate_Format' button on the Plates homepage.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to delete plates that I have created?</li>
+  <ul>
+    <li>Click the 'Delete or Annotate Recent Plate' button on the
+Plates homepage.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to search for/list plates from a given location, project,
+library, or condition?</li>
+  <ul>
+    <li>Use the 'Find Plates' form on the Plates homepage.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to move plates from one rack location to another?</li>
+  <ul>
+    <li>Moving a large number of plates:<br>
+    </li>
+  </ul>
+  <ul>
+    <ul>
+      <li>Use the 'Find Plates' form on the Plates homepage and limit
+your search to the current rack location.</li>
+    </ul>
+    <ul>
+      <li>On the results page, select all plates that belong to the
+current rack. &nbsp;Then select the destination rack location from the
+drop-down menu underneath the 'Move selected plates to' button and then
+press the button.</li>
+    </ul>
+  </ul>
+  <ul>
+    <li>Moving a small number of plates:</li>
+    <ul>
+      <li>In this case it is actually easier to scan in the plate
+barcodes and the destination rack barcode. &nbsp;For instance, to move
+plate ID 3000-3003 from rack ID 4 to rack ID 12, type in
+'pla3000-pla3003rac12' and press the 'Scan button' and then confirm the
+move.</li>
+    </ul>
+  </ul>
+</ul>
+<h3><a name="Admin_Tasks"></a>Admin Tasks</h3>
+<ul>
+  <li>How to edit an existing protocol?</li>
+  <ul>
+    <li>In the Admin homepage, from the Lab Protocols section, choose
+the protocol you want to edit.</li>
+    <li>Login to the Protocol Admin page and press 'View Protocol'.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to add a new protocol?</li>
+  <ul>
+    <li>In the Admin homepage, from the Lab Protocols section, choose
+any protocol.</li>
+    <li>Login to the Protocol Admin page and press 'Create New
+Protocol'.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to add a new project?</li>
+  <ul>
+    <li>In the Admin homepage, click on the 'Add New Project' link, OR</li>
+    <li>In the Libraries homepage, press the 'New Project' button.</li>
+  </ul>
+</ul>
+<ul>
+  <li>How to request mirroring for sequencer(s)?</li>
+  <ul>
+    <li>For individual sequencers:<br>
+    </li>
+  </ul>
+  <ul>
+    <ul>
+      <li>In the Admin homepage under the Mirroring section, click on
+the sequencer you are interested in.</li>
+    </ul>
+    <ul>
+      <li>Login to the mirror page and the mirror request will be
+automatically generated.</li>
+    </ul>
+    <li>For all sequencers:</li>
+    <ul>
+      <li>In the Last 24 Hours page click on the 'Re-Mirror all
+machines' link.<br>
+      </li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>How to regenerate analysis for sequence runs?</li>
+  <ul>
+    <li>The easier but less flexible way:</li>
+    <ul>
+      <li>In the Last 24 Hours page click on the 'Regenerate Analysis
+for these runs' link.</li>
+    </ul>
+    <li>The harder but more powerful way:&nbsp;</li>
+    <ul>
+      <li>Log in to the web server (seqdb01) through SSH and issue the
+following commands: (say you want to reanalyse run ID 15000-15010)</li>
+      <ul>
+        <li>su sequence</li>
+        <li>update_sequence.pl -A all -S 15000-15010</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>How to create a new employee?</li>
+  <ul>
+    <li>Scan in your employee barcode.</li>
+    <li>Press the 'New Employee' button to get to the 'Add Employee
+Record' form.</li>
+    <li>Pay special attention with permissions. &nbsp;The following is
+what each letter stand for:</li>
+    <ul>
+      <li>R: &nbsp;Database read permissions.</li>
+      <li>W: Database write permissions.</li>
+      <li>U: &nbsp;Database update permissions.</li>
+      <li>D: &nbsp;Database delete permissions.</li>
+      <li>S: &nbsp; Permissions to generate sample sheets.</li>
+      <li>P: &nbsp; Permissions to create new plates.</li>
+      <li>A: &nbsp;Lab administrator permissions.<br>
+      </li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>How to add a new sequencer? (known type)</li>
+  <ul>
+    <li>Receive the sequencer in the Receiving department</li>
+    <ul>
+	<li> Click the receiving tab </li>
+	<li> Select 'Equipment' from the Create New... popup menu </li>
+	<li> Fill out the form. The standard name for ABI sequencers is D<type number>-<count in lab> (ie D3730-6) </li>
+	<li> Click 'Save Original Stock'</li>
+    </ul>
+    <li>Ask a LIMS admin to add the sequencer to the cron jobs and Machine_Default with the correct settings
+    <ul>
+	<li> Copy the settings for a previous similar sequencer
+	<li> Change NT_data_dir,FK_Equipment__ID,Local_Samplesheet_Dir,Host,Local_Data_dir, and Mount fields.
+	<li> Update other fields as necessary.
+	<li> Add the sequencer to the sequence@seqdb01 crontab so a mirroring request will be done every night.
+    </ul>
+  </ul>
+</ul>
+
+<h3><a name="Troubleshooting"></a>Troubleshooting</h3>
+<ul>
+   <li> Why is the cluster backup script not working? (cluster_backup_job.sh)
+     <ul>
+	<li> cluster_backup_job.sh requires the SUN Grid Engine (qsub). Check if your cluster uses SGE.
+	<li> Check if the cluster is up and working. (The GSC cluster is oscar)
+	<li> Make sure that the cluster backup log file is accessible from the cluster
+	<li> Make sure that the backup_DB.pl script is accessible from the cluster
+	<li> Make sure the Project for
+	<li> Older versions of mysqldump require you to 'fool' it into thinking you are running an older version of Linux. Add "export LD_ASSUME_KERNEL=2.4.1 &&" to the script call in cluster_backup_job.sh
+	<li> The SUN Grid Engine needs the environment variable SGE_ROOT defined. If you are using cluster_backup_job.sh on a cron job, you may need to add "export SGE_ROOT=/opt/sge &&" to the line that calls qsub in the crontab (where '/opt/sge' is the install dir for SGE).
+     </ul>
+</ul>
+
+
+<h3><a name="Replication"></a>Replication</h3>
+<ul>
+  <li> How do I check if the replication is running correctly? </li>
+    <ul> 
+       <li> run the check_replication.pl script in the bin directory with : <BR> check_replication.pl -M seqdb01:sequence -S lims-dbm:sequence -u viewer -p viewer </li>
+       <li> use 'show slave status' on the slave and 'show master status' on the master. The position value should be the same for both.
+    </ul>
+  <li> How do fix an inconsistent replication database? </li>
+    <ul> 
+       <li> 1. stop the slave threads by using 'stop slave' on the slave. </li>
+       <li> 2. If possible, lock the master database using 'lock tables' or 'flush tables with read lock'. </li>	
+       <li> 3. Restore the inconsistent tables found by check_replication.pl using either restore_DB.pl or manually dumping the tables and restoring them using mysqldump and 'LOAD DATA INFILE'.</li>
+       <li> 4. reset the master thread by using 'reset master'. </li>
+       <li> 5. reset the slave thread by using 'reset slave'. </li>
+       <li> 6. restart the slave thread by using 'start slave'. </li>
+       <li> 7. unlock the master database. </li>
+       <li> It is also possible to use 'LOAD DATA FROM MASTER' instead. This will create a read lock on all tables on the master for the duration. However, this takes a full snapshot (which may take a long time). </li>
+    </ul>
+</ul>
+
+<h3><a name="Unusual_Problems"></a>Unusual Problems</h3>
+<ul>
+  <li> The database is complaining about: <br>
+      <i>Host 'host_name' is blocked because of many connection errors.
+	Unblock with 'mysqladmin flush-hosts'</i>
+    <ul>
+      <li>This is caused by repeated failed attempts to connect with the database in a short period of time. This may indicate a Denial-of-Service attack, but is more commonly caused by a slowdown of the LIMS system. In this case, the host that is blocked may be the LIMS Apache server itself (seqdb01 or lims01). </li>
+      <li>This may be due to large/multiple processes competing for CPU time or memory. Simply log into the LIMS system (from another host and execute the command <i>FLUSH HOSTS</i></li>
+      <li> This is the <a href="http://dev.mysql.com/doc/mysql/en/blocked-host.html">MySQL entry</a> for this problem: <br>
+	
+	<h4>A.2.5. Host 'host_name' is blocked</h4>
+<ul>
+<li>If you get the following error, it means that mysqld has received many connect requests from the host 'host_name' that have been interrupted in the middle:
+
+<li>Host 'host_name' is blocked because of many connection errors.
+<li>Unblock with 'mysqladmin flush-hosts'
+
+<li>The number of interrupted connect requests allowed is determined by the value of the max_connect_errors system variable. After max_connect_errors failed requests, mysqld assumes that something is wrong (for example, that someone is trying to break in), and blocks the host from further connections until you execute a mysqladmin flush-hosts command or issue a FLUSH HOSTS statement.
+
+<li>By default, mysqld blocks a host after 10 connection errors. You can adjust the value by starting the server like this:
+
+<li><i>shell&gt mysqld_safe --max_connect_errors=10000 & </i>
+
+<li>If you get this error message for a given host, you should first verify that there isn't anything wrong with TCP/IP connections from that host. If you are having network problems, it does you no good to increase the value of the max_connect_errors variable.
+</ul>
+  </ul>
+</ul>  
+
+<h3><a name="About_alDente_LIMS_System"></a>About alDente LIMS System</h3>
+<ul>
+  <li>What does the LIMS system consist of?</li>
+  <ul>
+    <li>alDente codebase: &nbsp;Most of the codebase is written in
+CGI/Perl with a few JavaScripts and Java applets. &nbsp;These code make
+up our LIMS web interface plus a lot of scripts that are running in the
+background as cron jobs.</li>
+    <li>Server software: &nbsp;We are currently using MySQL as our
+database server and Apache as our web server. &nbsp;</li>
+    <li>Other third-party software such as phred, phrap, cross_match,
+etc.<br>
+    </li>
+    <li>Workstations and hand-held scanners: &nbsp;These allow our
+users to access the LIMS web interface.</li>
+    <li>Other hardware that interact with the LIMS such as the
+sequencers and the barcode printers.<br>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <li>How often is a new release made available?</li>
+  <ul>
+    <li>We are currently aiming at releasing once every month.</li>
+  </ul>
+</ul>
+<br>
+<br>
+</span>

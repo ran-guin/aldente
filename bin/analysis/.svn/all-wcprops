@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis
+END
+run_analysis.pl
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/run_analysis.pl
+END
+backfill_solexa_analysis_mode.pl
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/backfill_solexa_analysis_mode.pl
+END
+run_analysis_external.pl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/run_analysis_external.pl
+END
+run_primary_analysis.pl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/run_primary_analysis.pl
+END
+concat_fastq_run_analysis.pl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/concat_fastq_run_analysis.pl
+END
+run_post_analysis.pl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/run_post_analysis.pl
+END
+Solexa_analysis_test.pl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/Solexa_analysis_test.pl
+END
+Solexa_analysis.pl
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/Solexa_analysis.pl
+END
+solexa_analysis_automation.pl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/solexa_analysis_automation.pl
+END
+run_analysis_Rhabdoid.pl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/run_analysis_Rhabdoid.pl
+END
+backfill_analysis_software.pl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/107552/alDente/trunk/bin/analysis/backfill_analysis_software.pl
+END

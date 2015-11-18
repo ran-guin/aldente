@@ -1,0 +1,55 @@
+<h1>Why?</H1>
+
+<h2>WHY does anyone need an integrated database for storing laboratory data ?</H2>
+<h2>or WHAT does it do ?</h2> 
+
+Much of the value of the system can be summed up by FAME:
+<UL>
+<LI>F - Facilitating lab processes
+<LI>A - Automating analytical or pedantic tasks
+<LI>M - Monitoring of various aspects of laboratory function
+<LI>E - Error checking
+</UL>
+
+<P>And remember:<P>
+<It>"To many fame comes too late"</It> - Louis de Camoens (14th century Portugese poet)
+<P>But beware:<P>
+<It>"Fame is a constant effort"</It>   - Jules Renard (17th century French writer)
+
+<h2>Facilitating Lab Processes</h2>
+<UL>
+<LI>auto-generating sequencer 'sample sheets'
+<LI>directing lab users to follow laboratory protocols
+<LI>providing easy access to data for lab administrators
+<LI>providing a simple interface for Data Entry.
+</UL>
+
+<h2>Automating analytical or pedantic tasks</h2>
+<UL>
+<LI>calculating volumes of reagents to be used based on pre-determined formulas
+<LI>extracting information quickly about various laboratory items
+<LI>analyzing raw data and generating and presenting it in an easily viewed format
+<LI>generating detailed reports outlining data results
+<LI>generating information for cost reporting
+<LI>notifying users/administrators of possible problems
+</UL>
+
+<h2>Monitoring</h2>
+<UL>
+<LI>tracking plates through laboratory preparation stages
+<LI>tracking reagents as they are mixed into solutions and applied to samples
+<LI>monitoring stock levels
+<LI>monitoring equipment servicing
+<LI>monitoring quality levels of resultant data
+</UL>
+
+<h2>Error checking</h2>
+<UL>
+<LI>ensuring correct reagents are used for standard solutions
+<LI>ensuring expected primers are applied to library plates
+<LI>correlating poor quality data with various aspects of lab
+<LI>ensuring data is entered within predefined ways to avoid ambiguity and maintain structure
+<LI>generating error messages or warnings for lab administrators in cases where data does not appear as expected.	
+</UL>
+
+

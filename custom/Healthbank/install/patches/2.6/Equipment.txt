@@ -1,0 +1,10 @@
+Equipment_ID	Equipment_Name	Equipment_Comments	Serial_Number	Equipment_Number	Equipment_Number_in_Batch	FK_Stock__ID	Equipment_Status	FK_Location__ID	Old_Equipment_Name
+1	Shelf	NULL		0	0	0	In Use	1	0
+2	F80-1	NULL	08040478	NULL	NULL	1	In Use	5	NULL
+3	F80-2	NULL	08020198	NULL	NULL	1	In Use	5	NULL
+4	F80-3	NULL	08020199	NULL	NULL	1	In Use	5	NULL
+5	F4-1	NULL	0807003878	NULL	NULL	2	In Use	3	NULL
+6	F20-1	NULL	66208	NULL	NULL	3	In Use	4	NULL
+7	Prnt-1	NULL	NULL	NULL	NULL	6	In Use	4	NULL
+8	Prnt-2	NULL	NULL	NULL	NULL	6	In Use	4	NULL
+9	F80-4	Freezer shared with Research groups at the CRC.\n\nWarning - freezer may be tracked in GSC LIMS as well.\nBeware barcode conflicts (ie ensure barcodes being used are for the applicable LIMS!)	NULL	NULL	NULL	7	In Use	3	NULL

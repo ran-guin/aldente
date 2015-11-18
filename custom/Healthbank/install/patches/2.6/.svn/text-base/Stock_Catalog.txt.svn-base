@@ -1,0 +1,5 @@
+Stock_Catalog_ID	Stock_Catalog_Name	Stock_Catalog_Description	Stock_Catalog_Number	Stock_Type	Stock_Source	Stock_Status	Stock_Size	Stock_Size_Units	FK_Organization__ID	FKVendor_Organization__ID	Model	FK_Equipment_Category__ID
+1	-20 Freezer	NULL	MF-183	Equipment	Order	Active	1	pcs	3	6	MF-183	13
+2	-80 Freezer	NULL	MDF-U73V	Equipment	Order	Active	1	pcs	2	7	MDF-U73V	14
+3	Fridge	NULL	FR465	Equipment	Order	Active	1	pcs	4	5	FR465	15
+4	zebra	NULL	zebra	Equipment	Order	Active	1	pcs	3	7	Zebra	7

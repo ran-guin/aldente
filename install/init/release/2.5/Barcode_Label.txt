@@ -1,0 +1,28 @@
+1	seqnightcult	0.75	2.25	15	25	15	1	1D Large Plate Labels	plate	1	Active
+2	seqnightcult_s	0.25	2.25	5	15	15	3	1D Small Plate Labels	plate	3	Active
+3	seqnightcult_smult	0.25	2.25	5	15	15	3	1D Small MUL Plate Labels	mulplate	3	Active
+5	seqnightcult_mult	0.75	2.25	15	25	15	1	1D Large MUL Plate Labels	mulplate	1	Active
+6	ge_tube_barcode_2D	0.6	1.7	25	25	15	4	2D Tube Labels	plate	4	Active
+7	tube_solution_2D	0.6	1.7	25	25	15	1	2D Tube Solution Labels	solution	1	Active
+8	solution	0.75	2.25	15	25	15	1	1D Large Solution/Box/Kit Labels	solution	1	Active
+9	solution_small	0.25	2.25	5	15	15	3	1D Small Solution Labels	solution	3	Active
+10	equip_label	0.75	2.25	15	25	15	1	1D Equipment Labels	equipment	1	Active
+15	agar_plate	0.75	2.25	15	25	15	1	1D Large Agar Labels	plate	1	Active
+16	chemistry_calc	1	2.25	15	15	15	2	1D Chemistry Label		2	Active
+17	src_plate	0.25	2.25	5	15	15	3	1D Source Label	source	3	Active
+18	src_tube	0.6	1.7	25	25	15	4	2D Source Label	source	4	Active
+19	agar_plate_s	0.25	2.25	5	15	15	3	1D Small Agar Label	plate	3	Active
+20	proc_med	0.75	2.25	5	15	15	1	Large Procedure Label		1	Active
+21	label1	0.75	2.25	25	25	15	1	Simple Large Label		1	Active
+22	label2	0.25	2.25	25	25	15	3	Simple Small Label		3	Active
+23	employee	0.75	2.25	15	25	15	1	Employee Barcode	employee	1	Active
+24	barcode2	0.75	2.25	15	15	15	1	1D Large Plain Label		1	Active
+25	laser	11.5	8	0	0	0	0	Plain Paper Label		0	Active
+26	plain_tube	0.6	1.7	10	0	45	4	Simple Tube Label		4	Active
+27	custom_large	0.75	2.25	25	25	15	1	Large Custom Label		1	Active
+28	equip_small	0.25	2.25	15	15	15	3	1D Small Equipment Labels	equipment	3	Active
+29	gelpour_barcode_1D	0.75	2.25	0	0	0	1	Gel Run Barcode Label		1	Active
+30	run_barcode_1D	0.75	2.25	0	0	0	1	Run Barcode Label		1	Active
+31	src_no_barcode	0	0	0	0	0	0	No Barcode	source	0	Active
+32	microarray	0.75	2.25	10	10	10	1	1D Large Microarray Label	microarray	1	Active
+33	custom_2D_tube	0.75	1.7	25	25	15	4	2D simple tube labels	plate	4	Active

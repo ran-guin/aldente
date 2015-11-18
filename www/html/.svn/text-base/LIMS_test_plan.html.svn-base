@@ -1,0 +1,4124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>LIMS_test_plan</title>
+</head>
+<body>
+<doctype transitional//en="" 4.01="" html="" -//w3c//dtd="" public=""> <br>
+</doctype>
+<table class="SMALL" style="width: 1187px; height: 4811px;" border="1">
+  <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);"><b>LIMS
+Development Test Plan</b></td>
+      <td style="width: 50px; background-color: rgb(204, 204, 204);"><b>Tested</b></td>
+      <td style="width: 100px; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold;">Date</span><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold;">Inputs <br>
+      </span></td>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204); width: 80px;"><span
+ style="font-weight: bold;">Outputs</span><br>
+      </td>
+      <td style="background-color: rgb(204, 204, 204);"><b>P/F</b></td>
+      <td style="width: 450px; background-color: rgb(204, 204, 204);"><b>Notes</b></td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(192, 192, 192);" rowspan="1"><b>Login
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Log in to the seqdev database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>If incorrect password entered, user is
+asked to
+login again.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Links to Production Version and Previous
+Version
+works.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Reduced version of Login page shows up if
+login
+as user 'Auto' and no activity in last 5 mins.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Tab
+Bar
+and Department Home Pages</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Check
+all department home pages are properly
+shown.</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check all icons to the other pages are
+working.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check all Quick Links are working.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Identification/Scanning</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan employee</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan employee with password -&gt; relogin
+as a
+new user</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan equipment</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan rack</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan solution/reagent</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan multiple solution/reagents -&gt;
+mixture
+page</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan plates/equipment -&gt; sample sheet
+generator</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan invalid barcode -&gt; 'Unrecognized
+Barcode' message displayed to the user.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Plate
+Set -&gt; retrieve a plate set</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>If plate set number is valid -&gt; User
+is
+redirected to the protocol home page.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>If plate set number is invalid -&gt;
+'Invalid
+Plate Set' message displayed to the user. </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Print Text Label -&gt; print barcode</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Error Notification -&gt; the error is
+submitted
+to the Issues Tracker and email notification sent to the developer.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Stock
+Entry</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Search
+for stock by catalog number or stock
+name (like search)</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Return all matched stocks</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Choosing a stock will bring the user to
+the New
+Stock form with information pre-filled.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new primer to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new primer type to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new buffer to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new matrix to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new reagent to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new box to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new kit to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new equipment to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Mix reagents to form solution (check
+entry in
+Mixture table)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Create standard mixture (check parameters
+printout)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Plate Creation -&gt; create a new plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Protocol
+Tracking</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Scan more than one plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Save as a plate set</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Choose a protocol</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Cycle through protocol</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add note to plate during a step</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Fail a plate during a step. This should:</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>reset plate set to exclude this plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>continue with next step</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>annotate plate comments</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Skip a step</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Resume process:</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>exit protocol before finishing</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>scan one of the plates in the latest set</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>recover plate set</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>continue (sends to proper step in
+protocol)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Test an Aliquot step:</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>new plate set is generated and new
+barcode
+printed.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>protocol continues with the new plate set.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold;">Change history/tracking</span><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>From any record details
+table click the Edit link<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Change one of the tracked
+fiels eq. any date field and save changes<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Go back to the Edit table
+and click on the field name that you changed<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>You should see a field
+info summary and a record of your change.<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Non-editable fields
+should be greyed out to the user.<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold;">Source pooling</span><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Scan in multiple Sources<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Pool specific amounts as
+well as the entire amount of each Source<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Verify that newly created
+Source is a Hybrid and has links to parent Sources<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold;">Source<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Create a new Library/RNA
+collection<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Associate Source with a
+Library/RNA collection<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Transfer with and without
+repeat function<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Aliquot with and without
+repeat function</td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Receive more with and
+without repeat function</td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Create a new plate / tube
+for an associated library<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Go to Original_Source
+homepage by clicking on the OS name in summary table<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold;">Original_Source</span><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Create a new Library/RNA
+collection</td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Receive a new Source<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Issues
+page
+(Issues Tracker)</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Search issues and display matched issues</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Submit new issue -&gt; issue correctly
+assigned
+to developer and email notification sent</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Issues statistics -&gt; make sure
+statistics for
+Outstanding Issues are correct.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Last
+24 Hours
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Searching for runs (with various
+combinations of
+criteria)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check links in the table are working</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check number of wells add up to 96/384
+(sum of
+normal wells, NG wells, SG wells and unused wells)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Runmaps are generated</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Click on the runmap to go to the sequence
+read
+info page</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Large plate view and histograms generated</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Click on well on large plate view to show
+trace
+data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Link to scorecard and histogram</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Click on well to show trace data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure data are showing correctly on the
+scorecard</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Navigate to capillary view -&gt; Show one
+lane
+for each well and click on lane to show trace data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure users can navigate from the
+scorecard
+suite to other parts of alDente web site.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Generate FASTA file</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Reagents
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Mix standard solutions (check Mixture
+table)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new primer to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new primer type to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new buffer to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new matrix to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new reagent to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new box to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new kit to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Search/edit existing solutions</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Equipment
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Add new equipment to database</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Search/edit existing equipments</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Plates
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Find plates by different search methods
+-&gt;
+Plates grouped by equipment and racks -&gt; Move plates between racks</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Create new plate (original and rearray)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Search/edit existing plates</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Delete or Annotate Recent Plate (check
+deleting
+the plates also delete the corresponding plate set)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>View Ancestry for a plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View a rearray by entering a rearray id<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View the rearray home page<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Fail a Plate with a
+reason and a note &amp; Confirm appropriate Plate_Prep and Prep entries
+are entered into the database, as well as Plate_Status</td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Only Fail reasons related
+to the current group should be displayed + General Reason<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fail and Throw out a
+plate at the same time</td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Summary
+page - Check whether the stats/diagrams show up in the page. Also
+compare numbers to those from previous release to see if they are
+consistent.</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check summary stats</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check Q20 histograms</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check sequencer stats</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check project stats</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check date range summary</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check reads summary</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check prep summary</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check 'Stock Used' summary</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Libraries
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Update
+database with new library</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>When
+users other than the lab administrators/library administrators create a
+new library, they will go through the Internal library submission
+process. </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>When lab administrators/library
+administrators
+create a new library, the information is updated to the database right
+the way.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Search/edit existing libraries</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Create new project/update existing
+libraries -
+only lab administrators/project administrators are allowed to do this.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Create new vector/update existing vector</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Admin
+page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Only visible to lab administrators</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Test mirroring and re-analyse runs
+requests.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Test all operations under the
+Define/Configure
+section.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Test view, search/edit, create of
+libraries and
+project admin related entities. </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check library submissions</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Upon clicking on a submission, the
+corresponding
+forms will be pre-filled with information from the submission hash file.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Approving the submission will update the
+information into the database.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>After approving the submission no further
+changes can be made to the submission.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Pipeline
+Page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Pipeline summary shows graphical displays
+of
+available pipelines for the group</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure the list of protocols in the
+pipeline is
+in the correct order</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure that user can pick from scrolling
+lists
+to filter pipelines by Projects or Libraries</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Clicking on an image of a lab protocol on
+the
+pipeline will display the procedure summary for that protocol</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure the pipeline in the procedure
+summary is
+displayed and highlighted for the selected protocol</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>The procedure summary displays a list of
+plates
+based on the conditions specified grouped by Library/Plate Number</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Conditions/Actions Definitions is created
+and
+displays description and available actions</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Test Save Plate Set, Find Plates, Fail
+Plates
+actions by clicking on checkboxes to select plates</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure the link of the displayed plates
+displays
+Plate History or Scans in the plate</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Ensure that the list of plates "ready for
+the
+next protocol" is the same as the list of plates "ready" on the next
+protocol</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>Rearray
+Home
+Page</b><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Search for rearrays<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by date<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by library<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by status<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by type<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by plate id<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by plate number<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by requester<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by rearray request id<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>manually set up a rearray (96 and 384-well size)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>upload a yield report<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>view the rearray summary:<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> include libraries<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> exclude libraries<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Search for primer plates<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by order date<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by status<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by type<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td> by notes<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Rearray
+List
+page</b><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View source/target mappings of a rearray (click view
+link)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View all the libraries in a rearray (click LibView
+link)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View locations of source plates for one rearray (Locations
+rearray
+action)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">View locations of source plates
+for multiple rearrays (Locations rearray action)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View source/target mappings for multiple rearrays
+(View
+Rearrays rearray action)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">View primer plate summary for a
+reaction rearray<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">View primer plate count for a
+reaction rearray<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">View source plate count<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Regenerate a QPIX file for a clone rearray<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View the QPIX rack view for a clone rearray<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Generate a multiprobe file for a reaction rearray<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Reassign a rearray (creates a new rearray with the
+same
+source/target mapping)<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Change the rearray status to completed<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Search for the prep plates of a reaction rearray, and
+assign
+the source plates<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Primer
+plate
+page</b><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>regenerate primer order file<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>mark a 'to order' plate as Ordered<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>New
+Changes page</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Check that description of all the new
+changes/features are included in this page.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>General
+editing pages check
+(single-record
+and multiple-records):</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Adding records</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Editing records</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Deleting records</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(255, 255, 255);">Scanner
+Pages -
+Make sure pages
+work
+properly&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(192, 192, 192);"><span
+ style="font-weight: bold;">External collaborator page</span><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Log in with LDAP/Plone
+password<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div style="margin-left: 40px;">Existing contacts will be
+taken to the home page<br>
+      </div>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <div style="margin-left: 40px;">Logins without a contact
+entry will be prompted<br>
+      </div>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View existing submissions
+(if any)<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Add an attachment to a
+submission<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View published documents
+for a project<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>View published documents
+for a library<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Submit a library<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Resubmit a library (new
+source)<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Submit a work request and
+check that it is associated with a library<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Check if administrators
+can view submissions<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Approve submissions via
+admin page<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" rowspan="1"><b>All
+new
+changes/features - test throughoutly
+(Refer to Issues Tracker)</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Database
+upgrade:</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Create a testing database consist of the
+latest
+database schema of the production database.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Run upgrade_DB.pl to make sure upgrade
+ran
+without errors and the database schema is properly modified.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Cron
+jobs/background processes -
+these
+should
+be monitored on a regular basis after the release is made:</b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>update_sequence.pl - sequences are
+analysed and
+last 24 hours page is updated.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp; <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp; <br>
+      </td>
+      <td><br>
+&nbsp; </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Try 'Regenerate Analysis for these runs'
+and
+'Re-Mirror all machines' links</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>seqmirror - sample sheets and trace files
+are
+mirrored on a regular basis.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>backup_DB.pl
+- the sequence database is dumped a regular basis and the
+Clone_Sequence table is dumped during the last dump of the day.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>restore_DB.pl</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>The seqlast and seqtest databases on
+seqdb01 are
+restored daily.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>The sequence database on lims-dbm is also
+restored daily.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>code_sync.pl - code of the production
+version
+are synchornized from /opt/sequence to /home/sequence on a regular
+basis.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>cat_vectors.pl - the vector file is
+checked on a
+regular basis and if new vectors are found then the file will be
+recreated.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>update_library_list.pl - the library_list
+file
+is updated on a regular basis.</td>
+      <td><br>
+&nbsp; </td>
+      <td><br>
+&nbsp; </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+&nbsp; </td>
+      <td><br>
+&nbsp; </td>
+    </tr>
+    <tr>
+      <td>backup_RDB - verify that
+binary logs are backed up successful<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>cleanup.pl - verify that
+old binary logs are archived<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td rowspan="1" style="background-color: rgb(204, 204, 204);"><b>Attributes
+      </b>&nbsp;&nbsp;&nbsp;<br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody> <tbody>
+    <tr>
+      <td>Admins should be able to define new attributes for objects in
+the database from the object's homepage eg. Plates</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>Users should be able to add predefined attributes to objects
+in the database from the object's homepage eg. Plates</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>Users should be able view object's attributes on the object's
+homepage</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>Users should be able to search for objects based on the
+attribute values</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>User should be able to associate Plate/Prep attributes with
+specific protocol steps</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>Users should be prompted for Prep/Plate attributes during
+protocols</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+  </tbody><tbody>
+    <tr>
+      <td>Attribute details should be displayed in the protocol
+history/summary table for Plates</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);"><b>SequenceRun
+Experiment</b></td>
+    </tr>
+    <tr>
+      <td>Scan 4x96well / 2x384well / 1 Tray Plate and a sequencer to
+generate sample sheets for them</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Try to generate sample sheets with Plates that do not have a
+Primer applied or use Sequencers that do not have a Matrix or a Buffer.
+This should warn the user and stop the process</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Try to generate sample sheets for a plate where Vector/Primer
+combination is not found in the database. This should warn the user and
+stop the process</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure the batch comments entered are recorded as
+SequenceBatch_Comments</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure the Run_Test_Status is set correctly for each
+individual Run</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Try generating a sample sheet for a given version by
+specifying the version. Make sure the new Sample Sheet has replaced the
+old one.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure that the file extension for the Sample Sheets is
+correct given a Sequencer</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure that if the sample sheet generation fails along the
+way, the database and filesystem are left unaffected</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure Primers linked correctly</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure RunBatch/Run/SequenceRun are linked correctly</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Check the Run_Attribute table for recorded attributes if any</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure parameters are auto-set</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+      <ol>
+        <li>Goto Test Database, make sure directory structure
+/home/sequence/alDente/test/Project, mirror, archived is correct.</li>
+        <li>Find a previously sequenced Plate</li>
+        <li>Append an '_' to the end of it's Run_Directory
+(Run_Directory has unique key)</li>
+        <li>Create Sample Sheet for that Plate and Equipment</li>
+        <li>Copy raw files (Run_* directorys) from where the symlink to
+/home/sequence/alDente/test/mirror/[sequencer]/[#]/data1/Data/ </li>
+        <li>Run ./update_sequence -h testserver:testdb -s <run #=""> -f</run></li>
+        <li>Make sure the sleep code is uncommented in
+alDente::Post::run_crossmatch() in order to allow time to overwrite the
+phredscores.screen file in the phd_dir directory. (This is because
+cross_match does not create the .screen file when executed on
+/home/sequence/alDente/test/...)</li>
+        <li>Let the update_sequence finish. Compare results such as Run
+Maps and Statistics</li>
+      </ol>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);"><b>SequenceRun
+Experiment Deletions</b></td>
+    </tr>
+    <tr>
+      <td>Check the functionality of Sample sheets removal -&gt; Remove
+SequenceRun Request</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);"><b>Last 24
+Hours page</b></td>
+    </tr>
+    <tr>
+      <td>Searching for runs (with various combinations of criteria)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Check links in the table are working</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Check number of wells add up to 96/384 (sum of normal wells,
+NG wells, SG wells and unused wells)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Change the billable status of runs</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Change the validation status of runs (For Rejected a comment
+is mandatory)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Fail Runs (Comment and fail reason are mandatory for failing
+runs)</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Runmaps are generated</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on the runmap to go to the sequence read info page</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Large plate view and histograms generated</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on well on large plate view to show trace data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Link to scorecard and histogram</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on well to show trace data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure data are showing correctly on the scorecard</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Navigate to capillary view -&gt; Show one lane for each well
+and click on lane to show trace data</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Ensure users can navigate from the scorecard suite to other
+parts of alDente web site.</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Generate FASTA file</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; width: 80px;"><br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);"><b>View Search
+Page</b></td>
+    </tr>
+    <tr>
+      <td>Go to department home page</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on the Monitoring tab</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;Summary&nbsp; Views is displayed<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on the Sequencing Run link under Summary Views</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;View_Home=1&amp;ID=2<br>
+      </td>
+      <td style="width: 80px;">&nbsp;Run View is displayed<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Fill in Filtering Options, pick Library Name "HGL01", Plate
+Number: "1"</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;FK_Library__Name&nbsp; Choice = 'HGL01',<br>
+Plate_Number=1<br>
+      </td>
+      <td style="width: 80px;">&nbsp;Library and Plate Number is chosen<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on Configure Output Options to open the folder</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;Folder opens<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click Select All under Available Fields</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;All Values Under Available Fields
+chosen<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on the right arrow to move the fields under the Picked
+Fields heading</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;Fields are moved under Picked
+Fields column<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on one of the fields under the Picked Fields heading
+and click on the up or down button to change the order</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;Order of the fields is changed<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Click on Generate View to view the summary of the results</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="width: 80px;">&nbsp;Summary of Run information<br>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+<!-- Template for new Test Protocols
+
+    <tr>
+      <td style="background-color: #CCC;"><b>SAMPLE HEADER</b></td>
+    </tr>
+    <tr>
+	<td>SAMPLE TASK</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+        <td>&nbsp;</td>
+	<td>&nbsp;</td>
+    </tr>
+
+-->
+  </tbody>
+</table>
+</body>
+</html>

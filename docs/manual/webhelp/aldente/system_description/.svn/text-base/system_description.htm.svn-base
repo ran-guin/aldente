@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>System_Description</title>
+
+ <meta name="generator" content="Adobe RoboHelp 9" />
+ <meta name="Originator" content="ImportMif" />
+ <meta name="OriginalFile" content="C:\LIMSDocs\manual\System_Description.fm" />
+ <link rel="stylesheet" href="system_description.css" type="text/css" />
+
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="../../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../whtopic.js"></script>
+
+</head>
+
+<body><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("Chapter 1");
+addTocInfo("System Description");
+addTocInfo("System Description\nContext");
+addTocInfo("System Description\nFlowcharts");
+addTocInfo("System Description\nFeatures");
+addTocInfo("System Description\nFeatures\nData tracking for the Sequencing Application");
+addTocInfo("System Description\nFeatures\nPlate Tracking");
+addTocInfo("System Description\nFeatures\nLocation Tracking");
+addTocInfo("System Description\nFeatures\nReceiving and Purchasing");
+addTocInfo("System Description\nFeatures\nProtocol Tracking");
+addTocInfo("System Description\nPlugins");
+addTocInfo("System Description\nPlugins\nIssue Tracking");
+addTocInfo("System Description\nPlugins\nDNA Sequencing");
+addTocInfo("System Description\nPlugins\nSAGE Library Construction");
+addTocInfo("System Description\nPlugins\nDNA Fingerprinting and Sizing");
+addTocInfo("System Description\nArchitecture and Technologies");
+addTocInfo("System Description\nArchitecture and Technologies\nArchitecture view of the alDente LIMS system");
+addTocInfo("System Description\nUsers");
+addTocInfo("System Description\nUsers\nLab users");
+addTocInfo("System Description\nUsers\nLab administrators");
+addTocInfo("System Description\nUsers\nAdministrators");
+addTocInfo("System Description\nUsers\nProgrammers");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	if(bc == 21)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Usersbc-17\">Users<\/a> > Programmers<\/p>");
+}
+else if(bc == 20)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Usersbc-17\">Users<\/a> > Administrators<\/p>");
+}
+else if(bc == 19)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Usersbc-17\">Users<\/a> > Lab administrators<\/p>");
+}
+else if(bc == 18)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Usersbc-17\">Users<\/a> > Lab users<\/p>");
+}
+else if(bc == 17)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Users<\/p>");
+}
+else if(bc == 16)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Architecture_andbc-15\">Architecture and Technologies<\/a> > Architecture view of the alDente LIMS system<\/p>");
+}
+else if(bc == 15)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Architecture and Technologies<\/p>");
+}
+else if(bc == 14)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Pluginsbc-10\">Plugins<\/a> > DNA Fingerprinting and Sizing<\/p>");
+}
+else if(bc == 13)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Pluginsbc-10\">Plugins<\/a> > SAGE Library Construction<\/p>");
+}
+else if(bc == 12)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Pluginsbc-10\">Plugins<\/a> > DNA Sequencing<\/p>");
+}
+else if(bc == 11)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Pluginsbc-10\">Plugins<\/a> > Issue Tracking<\/p>");
+}
+else if(bc == 10)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Plugins<\/p>");
+}
+else if(bc == 9)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Featuresbc-4\">Features<\/a> > Protocol Tracking<\/p>");
+}
+else if(bc == 8)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Featuresbc-4\">Features<\/a> > Receiving and Purchasing<\/p>");
+}
+else if(bc == 7)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Featuresbc-4\">Features<\/a> > Location Tracking<\/p>");
+}
+else if(bc == 6)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Featuresbc-4\">Features<\/a> > Plate Tracking<\/p>");
+}
+else if(bc == 5)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > <a href=\"system_description.htm#TOC_Featuresbc-4\">Features<\/a> > Data tracking for the Sequencing Application<\/p>");
+}
+else if(bc == 4)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Features<\/p>");
+}
+else if(bc == 3)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Flowcharts<\/p>");
+}
+else if(bc == 2)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("<a href=\"system_description.htm#TOC_System_Descriptionbc-1\">System Description<\/a> > Context<\/p>");
+}
+else if(bc == 1)
+{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("System Description<\/p>");
+}
+else{
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../index.htm", "", ">", "Home", "system_description.htm");
+document.write("Chapter 1<\/p>");
+}
+
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../../index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+
+ <p class="FM_Chapternumber"><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span> Chapter 1<a name="XREF_28071_Chapter_1"></a></p>
+ <p class="FM_Chaptername"><a name="TOC_System_Descriptionbc-1"></a><a name="TOC_System_Description"></a><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><span style="font-size: small;"><font size="3" style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span> <a name="XREF_25827_A_Sample_Chapter"></a>System Description</p>
+ <p class="FM_Head1"><a name="TOC_Contextbc-2"></a><a name="TOC_Context"></a>Context</p>
+ <p class="FM_Body">The context of LIMS system within a laboratory</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="LIMScontext.png" style="width : 397.501pt; height : 327.751pt; " id="image0" src="limscontext.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">More detailed view of alDente within the LIMS context</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="LIMScontext2.png" style="width : 399.001pt; height : 454.501pt; " id="image1" src="limscontext2.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">Context diagram of alDente LIMS</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="alDenteContext.png" style="width : 380.251pt; height : 486.001pt; " id="image2" src="aldentecontext.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">Context of laboratory function within alDente LIMS</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="LaboratoryContext.png" style="width : 416.251pt; height : 481.501pt; " id="image3" src="laboratorycontext.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Head1"><a name="TOC_Flowchartsbc-3"></a><a name="TOC_Flowcharts"></a>Flowcharts</p>
+ <p class="FM_Body">Run flowchart</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="Run_Flowchart.png" style="width : 333.751pt; height : 486.752pt; " id="image4" src="run_flowchart.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">Scan flowchart</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="Scan_Flowchart.png" style="width : 394.501pt; height : 501.751pt; " id="image5" src="scan_flowchart.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Head1"><a name="TOC_Featuresbc-4"></a><a name="TOC_Features"></a>Features</p>
+ <p class="FM_Head2"><a name="TOC_Data_tracking_for_thebc-5"></a><a name="TOC_Data_tracking_for_the"></a>Data tracking for the Sequencing Application </p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="SequencingContext.png" style="width : 408.001pt; height : 463.501pt; " id="image6" src="sequencingcontext.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">alDente LIMS has a number of data tracking processes such as plate tracking, location tracking, protocol tracking, receiving and purchasing. </p>
+ <p class="FM_Body">The following sections explain some of them in more detail. </p>
+ <p class="FM_Head2"><a name="TOC_Plate_Trackingbc-6"></a><a name="TOC_Plate_Tracking"></a><a name="IX_Plate_Tracking"></a>Plate Tracking</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">Plate tracking (including the tracking of all laboratory processes applied to samples within plates) allows records to be maintained which represent essentially a lab history of everything that has happened to a sample. This is particularly valuable to monitor the distribution of large numbers of tasks. It also proves very useful in optimizing laboratory procedure by allowing specific processes, reagents, or equipment to be correlated with data quality - something that can quickly identify troublesome aspects such as contaminated reagents, malfunctioning equipment, or ineffective processes. See the schema diagram below.</p>
+ <p class="FM_Body">Refer to the diagram of context of laboratory function within alDente LIMS.</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Head2"><a name="TOC_Location_Trackingbc-7"></a><a name="TOC_Location_Tracking"></a>Location Tracking</p>
+ <p class="FM_Body"><a name="IX_Rack"></a><a name="IX_location"></a>A location is referred to in the database as a 'Rack', and is bar-coded with the prefix 'Rac'. A rack has to be assigned to a single piece of equipment (usually a freezer), and can contain plates, sources, or stock objects (solutions, kits, or boxes). Racks themselves may also contain other racks that are of a type lower on the hierarchical chain.</p>
+ <p class="FM_Body">The following schema diagram illustrates the object relationship in the context of location tracking.</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="Location_Tracking.png" style="width : 375.751pt; height : 330.001pt; " id="image7" src="location_tracking.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_HeadRunin">&nbsp;</p>
+ <p class="FM_HeadRunin">&nbsp;</p>
+ <p class="FM_HeadRunin">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Head2"><a name="TOC_Receiving_and_Purchasingbc-8"></a><a name="TOC_Receiving_and_Purchasing"></a><a name="IX_Receiving_and_Purchasing"></a>Receiving and Purchasing</p>
+ <p class="FM_Body">Schema diagram for receiving and purchasing.</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="Receiving_Purchasing.png" style="width : 402.001pt; height : 373.501pt; " id="image8" src="receiving_purchasing.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Head2"><a name="TOC_Protocol_Trackingbc-9"></a><a name="TOC_Protocol_Tracking"></a><a name="IX_Protocol_Tracking"></a>Protocol Tracking </p>
+ <p class="FM_Head2">&nbsp;</p>
+ <p class="FM_Body"><a name="IX_protocol"></a>A protocol is a series of pre-defined series of steps that the user follows during sample handling within the lab.</p>
+ <p class="FM_Body">Before tracking can take place, a detailed protocol is written up and stored in the database which includes details for each step such as: </p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>The name of the step</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>The Step number within the protocol</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Whether or not users should be prompted for the step.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>A brief message (to be displayed for each step)</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Detailed instructions that may be made available for each step.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Input required (eg. Equipment, Solution, Comments etc)</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Default values (if applicable)</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Formatting restrictions (if applicable)</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">The input of this information is handled through the Protocol Administrator page. Steps of the protocol may be monitored and edited regularly to ensure that it is always up to date. </p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="Protocal_Tracking.png" style="width : 400.501pt; height : 357.001pt; " id="image9" src="protocal_tracking.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Head1"><a name="TOC_Pluginsbc-10"></a><a name="TOC_Plugins"></a>Plugins</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">alDente LIMS also offers a number of optional plug-ins in addition to the core features. They include:</p>
+ <p class="FM_Head2"><a name="TOC_Issue_Trackingbc-11"></a><a name="TOC_Issue_Tracking"></a>Issue Tracking</p>
+ <p class="FM_Body">Tracking issues is crucial for the maintenance of the LIMS in general, both to monitor possible bugs in the system (whether due to inherent code bugs, or due to data entry bugs). It also allows users an easy method of communication problems or suggestions to the on-site LIMS administrators or to request help.</p>
+ <p class="FM_Body">alDente allows issue tracking either by interfacing with a JIRA issue tracking which may exist on-site, or by using its built in issue-tracker. The JIRA system is a highly configurable and powerful issue tracker that can be used company wide.</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Head2"><a name="TOC_DNA_Sequencingbc-12"></a><a name="TOC_DNA_Sequencing"></a>DNA Sequencing</p>
+ <p class="FM_Body">alDente was originally designed for a DNA Sequencing lab and has a number of tools that are suited particularly well not only for lab tracking but for DNA Sequencing analysis and data monitoring including:</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Colour coded run maps which enable users to quickly and easily identify the general quality of a given run across the entire plate.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Colour coded run maps which enable users to quickly and easily identify the general quality of a given run across the entire plate.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Tools to quickly and easily generate fasta files for single runs or batches of runs.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Tools to view alternative representations of run results including views that clearly identifies sections of each read that are identified as vector.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Automated run analysis using phred, and storage of sequence scores associated with each called base pair.</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Built in checks for inserts containing: repeating sequence only, yeast or e-coli contamination, poor quality reads.</p>
+ <p class="FM_Head2"><a name="TOC_SAGE_Library_Constructionbc-13"></a><a name="TOC_SAGE_Library_Construction"></a>SAGE Library Construction</p>
+ <p class="FM_Body">For labs in which SAGE libraries are constructed on-site, alDente allows extensive tracking of samples during the construction of the 'SAGE Library'. Downstream sample data may later be tracked all the way back to the original starting material.</p>
+ <p class="FM_Head2"><a name="TOC_DNA_Fingerprinting_andbc-14"></a><a name="TOC_DNA_Fingerprinting_and"></a>DNA Fingerprinting and Sizing</p>
+ <p class="FM_Body">Functionality specific to DNA fingerprinting is also supported within the alDente system, including automatic generation of thumbnails of TIFF images of gel runs. Advanced functionality is also available to perform special tasks such as picking out individual bands from gels and defining them as new samples.</p>
+ <p class="FM_Head1"><a name="TOC_Architecture_andbc-15"></a><a name="TOC_Architecture_and"></a>Architecture and Technologies</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">The alDente LIMS has a client-server architecture that requires essentially three elements: web browser, Perl code, and MySQL database. </p>
+ <p class="FM_Body">A more detailed list of technologies that the system uses is as follows:</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>HTML</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Javascript</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Linux</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Apache</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>MySQL</p>
+ <p class="FM_Bulleted"><span class="FM_Bulletsymbol">•<span style='word-spacing:normal; font:6.0pt "Times New Roman"'><font size="1" style="font-size:6pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></span>Perl code with CGI libraries</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">The system can be accessed through either a web browser or a services API. The web API supports both standard HTTP and secured HTTPS protocols.</p>
+ <p class="FM_Body">Data is stored in a few different places including both the MySQL database, and in various locations on the local file system. </p>
+ <p class="FM_Body">An architecture view of the alDente LIMS system is illustrated in the following diagram.</p>
+ <p class="FM_Head2"><a name="TOC_Architecture_view_of_thebc-16"></a><a name="TOC_Architecture_view_of_the"></a>Architecture view of the alDente LIMS system </p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Illo"></p>
+ <div align="center"><img alt="ArchitectureDiagram.png" style="width : 385.501pt; height : 428.251pt; " id="image10" src="architecturediagram.png" />
+ </div>
+ <p class="FM_Illo">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Head1"><a name="TOC_Usersbc-17"></a><a name="TOC_Users"></a>Users</p>
+ <p class="FM_Body">A number of people stand to benefit including: </p>
+ <p class="FM_Head2"><a name="TOC_Lab_usersbc-18"></a><a name="TOC_Lab_users"></a><a name="XREF_d0e372"></a>Lab users</p>
+ <p class="FM_Body">This system can make their lives hell ...or a lot easier.</p>
+ <p class="FM_Body">(though usually a subtle combination of both).</p>
+ <p class="FM_Body">To ensure that the edge is given to the 'make their lives easier' camp, it is crucial that constant feedback is supplied to database administrator's, who in turn must appreciate the effect of the system's smooth functionality upon those constantly using the system. With a continuous cycle of feedback and a concerted effort on the developers part to address concerns, lab users stand to gain much more than the cost of having to use barcode scanners or to enter data onto the computer.</p>
+ <p class="FM_Head2"><a name="TOC_Lab_administratorsbc-19"></a><a name="TOC_Lab_administrators"></a><a name="XREF_d0e381"></a>Lab administrators</p>
+ <p class="FM_Body">Lab administrators, generally stand to gain much more, since they stand to benefit much more from the potential tools at their disposal such as data viewing pages, report pages, and validation settings which can prevent mistakes before they occur. Similarly, however, to maximize their ability to make use of the system, they should be in close communication with the database administrator to ensure that they both understand how to make best use of it, and to enable them to provide valuable feedback to make the system more effective.</p>
+ <p class="FM_Head2"><a name="TOC_Administratorsbc-20"></a><a name="TOC_Administrators"></a><a name="XREF_d0e386"></a>Administrators</p>
+ <p class="FM_Body">Administrators can benefit from the potential of the system to generate detailed cost reports or data summaries that may be used in broader reports. It may allow them to more clearly understand and monitor how projects are proceeding and pass on results directly to collaborators.</p>
+ <p class="FM_Body">Once again, this may be made most effective by communicating with database administrators to ensure needs are met, and to learn how best to retrieve information desired.</p>
+ <p class="FM_Head2"><a name="TOC_Programmersbc-21"></a><a name="TOC_Programmers"></a>Programmers</p>
+ <p class="FM_Body">There are various aspects of the system which can also be utilized by programmers for use with other parallel database systems. The 'SDB' module is designed to be used generically with any 'SQL' database. While its use outside of alDente has currently been limited, there are valuable tools that may simplify the design of interfaces to other databases. Included are modules which simplify the generating of HTML tables, the generation of forms for adding records, and the navigation between related records via hyperlinks on foreign keys. Also included are the filters used to maintain data integrity during the updating, appending, or deleting of records in the database.</p>
+ <p class="FM_Body">&nbsp;</p>
+ <p class="FM_Body">&nbsp;</p>
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+
+</html>
+

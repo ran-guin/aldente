@@ -1,0 +1,180 @@
+10
+
+dir
+115487
+https://svn01.bcgsc.ca/svn/alDente/trunk/www/js/jquery-ui-1.10.3.custom/development-bundle/demos
+https://svn01.bcgsc.ca/svn
+
+
+
+2013-12-05T00:51:56.623663Z
+96399
+jhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad02020f-2a26-4133-947e-1829317c1416
+
+resizable
+dir
+
+show
+dir
+
+toggle
+dir
+
+slider
+dir
+
+removeClass
+dir
+
+widget
+dir
+
+switchClass
+dir
+
+progressbar
+dir
+
+tabs
+dir
+
+tooltip
+dir
+
+effect
+dir
+
+demos.css
+file
+
+
+
+
+2015-11-18T22:44:32.000000Z
+c7fc917de57fba6b610ad6191fc1a28a
+2013-12-05T00:51:56.623663Z
+96399
+jhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+287
+
+dialog
+dir
+
+autocomplete
+dir
+
+accordion
+dir
+
+selectable
+dir
+
+position
+dir
+
+menu
+dir
+
+images
+dir
+
+toggleClass
+dir
+
+droppable
+dir
+
+draggable
+dir
+
+hide
+dir
+
+index.html
+file
+
+
+
+
+2015-11-18T22:44:32.000000Z
+ea28419d5769b2115f79bfd4243bc83e
+2013-12-05T00:51:56.623663Z
+96399
+jhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1287
+
+datepicker
+dir
+
+button
+dir
+
+sortable
+dir
+
+animate
+dir
+
+addClass
+dir
+
+spinner
+dir
+

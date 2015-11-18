@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/85989/alDente/trunk/custom/GSC/install/patches/3.15
+END
+Run_QC_Alert.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/85989/alDente/trunk/custom/GSC/install/patches/3.15/Run_QC_Alert.pat
+END
+Invoice_Protocol_Name_Update.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/85198/alDente/trunk/custom/GSC/install/patches/3.15/Invoice_Protocol_Name_Update.pat
+END

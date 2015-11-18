@@ -1,0 +1,461 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - LIMS Security System<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The LIMS has a security system that controls user access to
+various resources of the system based on the groups that the users are
+assigned to.&nbsp; Access control is done at 2 levels:</li>
+  <ul>
+    <li>User Interface level - Which features the user is able to
+see/access from the LIMS web site<br>
+    </li>
+    <li>Database level - Which database tables the user is able to
+select, insert, update, delete</li>
+  </ul>
+  <li>A group belongs to one and only one department.&nbsp; One group
+can have many users and one user can belong to many groups.&nbsp; In
+addition, there is a hierachy/inheritance system setup for groups, in
+which one group can inherits access privileges from one or more groups
+(see below for details).<br>
+  </li>
+</ul>
+<h3>Database tables</h3>
+<ul>
+  <li>Grp</li>
+  <ul>
+    <li>
+      <pre>+-------------------+-------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-------------------+-------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Grp_ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| Grp_Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(80)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_Department__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Access&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | enum('Lab','Admin','Guest','Report','Bioinformatics') |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | Guest&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-------------------+-------------------------------------------------------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>Each group belongs to one and only one department.<br>
+    </li>
+    <li>The access field controls access at the User Interface
+level.&nbsp; The various types of access are:</li>
+    <ul>
+      <li>Lab - Access required by lab users/technogists.&nbsp;
+Typically this includes ability to create plates, mix solutions,
+generate sample sheets and go through lab protocols. <br>
+      </li>
+      <li>Admin - Access required by departmental lab admins.&nbsp;
+Users having this access are able to perform all admin functionalities
+for that department.<br>
+      </li>
+      <li>Guest - Mostly read access to certain types of summaries
+(e.g. Last 24 hours page)<br>
+      </li>
+      <li>Report - Access required by project administrators.&nbsp;
+This typically includes ability to view various kind of summaries for
+that department.<br>
+      </li>
+      <li>Bioinformatics - Access required by bioinformatics
+users.&nbsp; Typically this will grant user more power than Guest
+access but less power than Lab access.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>GrpDBTable</li>
+  <ul>
+    <li>
+      <pre>+----------------+--------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+----------------+--------------------------+------+-----+---------+----------------+</pre>
+      <pre>| GrpDBTable_ID&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Grp__ID&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_DBTable__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Permissions&nbsp;&nbsp;&nbsp; | set('R','W','U','D','O') |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+----------------+--------------------------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>For each table in the database, specifies what permissions a
+given group has on that table.&nbsp; This table controls access at the
+Database level.</li>
+    <li>The various types of permissions are:</li>
+    <ul>
+      <li>R (Read) - Allows SELECT operation<br>
+      </li>
+      <li>W (Write) - Allows INSERT operation</li>
+      <li>U (Update) - Allows UPDATE operation</li>
+      <li>D (Delete) - Allows DELETE operation</li>
+      <li>O (Owner) - This is only applicable for tables that have a
+FK_Employee__ID (e.g. Plate, Sequence_Batch).&nbsp; For these tables,
+if there is FK_Employee__ID specified for a given record, then either
+the user of this Employee ID or user that belongs to an Admin group can
+perform UPDATE/DELETE operation on this record.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>GrpEmployee</li>
+  <ul>
+    <li>
+      <pre>+-----------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-----------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| GrpEmployee_ID&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Grp__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_Employee__ID | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+-----------------+---------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>When an employee is created, he/she will be tied to one to many
+groups.</li>
+  </ul>
+</ul>
+<ul>
+  <li>GrpLab_Protocol</li>
+  <ul>
+    <li>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| GrpLab_Protocol_ID&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Grp__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_Lab_Protocol__ID | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>When a lab protocol is created, it will be tied to one to many
+groups.</li>
+    <li>User Interface level access control.</li>
+  </ul>
+</ul>
+<ul>
+  <li>GrpStandard_Solution</li>
+  <ul>
+    <li>
+      <pre>+--------------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| GrpStandard_Solution_ID&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Grp__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_Standard_Solution__ID | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+---------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>When a standard solution is created, it will be tied to one to
+many groups.</li>
+    <li>User Interface level access control.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Grp_Relationship</li>
+  <ul>
+    <li>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+      <pre>| Grp_Relationship_ID | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FKBase_Grp__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKDerived_Grp__ID&nbsp;&nbsp; | int(11) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+---------------------+---------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>A many-to-many relationship table that stores the hierachy
+structure of groups.&nbsp; For instance, let's say the Sequencing Admin
+group (group ID 7) inherits all the access privileges from the
+Sequencing Lab group (group ID 3), the Sequencing Production group
+(group ID 4) and the Sequencing Project Admin group (group ID 6), then
+the following 3 entries will appear in this table:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">+---------------------+----------------+-------------------+</pre>
+<pre style="margin-left: 80px;">| Grp_Relationship_ID | FKBase_Grp__ID | FKDerived_Grp__ID |</pre>
+<pre style="margin-left: 80px;">+---------------------+----------------+-------------------+</pre>
+<pre style="margin-left: 80px;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 |</pre>
+<pre style="margin-left: 80px;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 |</pre>
+<pre style="margin-left: 80px;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 |</pre>
+<pre style="margin-left: 80px;">+---------------------+----------------+-------------------+</pre>
+<ul>
+  <li>In addition, the Stock, Library, Protocol_Tracking, Message
+tables all have a FK_Grp__ID field, meaning that entries in these
+tables are tied to one and only one group.&nbsp; This is also
+considered User Interface level access control.<br>
+  </li>
+</ul>
+<h3>Implementation Details</h3>
+<ul>
+  <li>Creation of a new group</li>
+  <ul>
+    <li>Create a new entry in the Grp table (through MySQL client or
+LIMS Admin page)<br>
+    </li>
+    <li>Create new entries in the Grp_Relationship table if inheritance
+of access privileges is required (through MySQL client or LIMS Admin
+page)</li>
+  </ul>
+</ul>
+<ul>
+  <li>Assigning user to groups</li>
+  <ul>
+    <li>When a new employee is created from the 'Create New... -&gt;
+Employee' popup menu in the departmental home pages, the multipage form
+process will allow the user to specify one or more groups to associate
+the employee with.</li>
+    <li>Assignment of groups at any other time can be done through
+MySQL client or LIMS Admin page.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Access control at User Interface level (based on the Access field
+of the Grp table)<br>
+  </li>
+  <ul>
+    <li>Controlling which departmental home page a given user is able
+to access.&nbsp; For instance:</li>
+    <ul>
+      <li>A user belonging only to 'Gene Expression Lab' group will be
+able to access Gene Expression department homepage only</li>
+      <li>A user belonging to both 'Gene Expression Lab' and
+'Sequencing Lab' groups will be able to access both Gene Expression and
+Sequencing deparment homepages</li>
+    </ul>
+    <li>Within a given department homepage, controls which
+features/pages a given user is able to access.&nbsp; For instance:</li>
+    <ul>
+      <li>A user belonging to the 'Sequencing Admin' group will be able
+to access the Sequencing Admin page, whereas a user belonging only to
+the 'Sequencing Lab' group won't be able to.</li>
+      <li>A 'Sequencing Lab' group user will be able to mix standard
+solutions in the Sequencing department homepage, whereas a 'Sequencing
+Bioinformatics' group user won't be able to.</li>
+    </ul>
+    <li>For a given feature, controls which items the user is able to
+access</li>
+    <ul>
+      <li>After saving the plate set, the user will be able to choose a
+protocol to proceed with from the popup menu.&nbsp; A 'Gene Expression
+Affy' group user will only see protocols that are assigned to the 'Gene
+Expression Affy' group (i.e. via GrpLab_Protocol), whereas a 'Gene
+Expression SAGE' group user will only see protocols that are assigned
+to the 'Gene Expression SAGE' group.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Access control at Database level (based on the Permissions field
+of the GrpDBTable table)<br>
+  </li>
+  <ul>
+    <li>Whenever a user performs INSERT, UPDATE, DELETE operations via
+the GSDB functions, his/her permission for performing the operation on
+the given table will be checked.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Inheritance</li>
+  <ul>
+    <li>Given the following hierachy stucture (this is a subset of our
+current hierachy):</li>
+    <br>
+    <img src="$Help_Image_dir/Grp_Hierachy.png">
+    <p>
+    <table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;"><small><span
+ style="font-weight: bold;">Group</span><br>
+          </small></td>
+          <td style="vertical-align: top;"><small><span
+ style="font-weight: bold;">Able to perform tasks of group(s)</span><br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing Base<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing Lab<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing Project
+Admin<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing
+Bioinformatics<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing Production<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Lab,
+Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing TechD<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing Lab,
+Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Sequencing Admin<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Sequencing
+Production,
+Sequencing TechD, Sequencing Lab, Sequencing Project Admin, Sequencing
+Bioinformatics, Sequencing Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression Base<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression Lab<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression
+Project
+Admin<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression SAGE<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression Lab,
+Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression
+Affymetrix<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression Lab,
+Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>Gene Expression Admin<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>Gene Expression SAGE,
+Gene Expression Affymetrix, Gene Expression Lab, Gene Expression
+Project Admin, Gene Expression Base<br>
+          </small></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><small>LIMS Admin<br>
+          </small></td>
+          <td style="vertical-align: top;"><small>All of the above<br>
+          </small></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    </p>
+  </ul>
+</ul>
+<h3>Coding</h3>
+<ul>
+  <li>The core of the security system code resides in the
+alDente::Security object - it is instantiated as a global $Security
+object.&nbsp; This object provides the following
+methods/functionalities:</li>
+  <ul>
+    <li>login_info() - Returns various information of the current user
+login, such as user_id, database, host, list of groups and list of
+departments user belonged to, etc.</li>
+    <li>departments() - Returns the departments the current user
+belonged to.</li>
+    <li>LIMS_admin() - Returns whether the current user belongs to the
+'LIMS Admin' group or not.</li>
+    <li>check() - Returns whether the current user has permission on a
+given feature based on rules defined in a hash (an example can be found
+in the %Checks hash in alDente::Department)<br>
+    </li>
+    <li>department_access() - Returns what access (i.e. Lab, Admin,
+Guest, Bioinformatics, Report) the current user has for a given
+department.</li>
+    <li>get_accessible_items() - Returns items that are accessible by
+the current user (e.g. which lab protocols and standard solutions are
+accessible)</li>
+    <li>get_groups() - Returns groups that are associated to a given
+department.</li>
+    <li>get_table_permissions() - Returns the permissions (i.e. R, W,
+U, D, O) the current user has on a given table.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Access control at User Interface level:</li>
+  <ul>
+    <li>Controlling which departmental home page a given user is able
+to access:</li>
+    <ul>
+      <li>alDente::Sequencing::Tab_Bar() - controls which department
+tabs are visible</li>
+      <li>alDente::Sequencing::_&lt;DEPARTMENT&gt;_Home() [e.g.
+_Sequencing_Home(), _Receiving_Home()] - safety check on whether the
+current user can actually access this department.<br>
+      </li>
+    </ul>
+    <li>Within a given department homepage, controls which
+features/pages a given user is able to access:</li>
+    <ul>
+      <li>alDente::Sequencing::page_icons() - controls which pages are
+accessible</li>
+      <li>alDente::Department::_&lt;DEPARTMENT&gt;_Home() [e.g.
+_Sequencing_Home(), _Receiving_Home()] - controls which features in the
+department homepage are accessible</li>
+      <li>alDente::Admin::Admin_page() - safety check on whether the
+current user can access a departmental admin page; also controls which
+features are accessible in the admin page.</li>
+    </ul>
+    <li>For a given feature, controls which items the user is able to
+access:</li>
+    <ul>
+      <li>This is scattered around the code base.&nbsp; These can be
+found when the code is using the get_accessible_items() method to get a
+list of items to be displayed in a popup menu.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Access control at Database level:</li>
+  <ul>
+    <li>SDB::GSDB::check_permissions() - Returns whether the user is
+granted permission for the requested operation (i.e. INSERT, UPDATE,
+DELETE) for a given table (or a given record in the case for the 'O'
+permission).</li>
+    <li>Functions/methods in SDB::GSDB and SDB::DBIO that does INSERT,
+UPDATE, DELETE operations rely on check_permissions() to decide whether
+the operation should be proceeded.</li>
+    <li>To setup the permission for tables (i.e. the GrpDBTable
+entries), one can do it via the bin/upgrade_DB.pl script:</li>
+    <ul>
+      <li>In the _set_permissions() private function, there is a
+%custom_perm hash that defines what permissions should be apply to a
+given association of group and table.&nbsp; When new tables are added
+to the database, you should come here and add the corresponding entries.</li>
+      <li>If&nbsp; permission is not specified for a given association
+of group and table, permission will be defaulted to 'R'.</li>
+      <li>To apply the permission settings to the database, run
+bin/upgrade_DB.pl with the '-A perm' switch.&nbsp; Note that if a given
+association of group and table is found in the GrpDBTable, it will be
+updated; otherwise it will be inserted.<br>
+      </li>
+    </ul>
+  </ul>
+</ul>
+</span>

@@ -1,0 +1,67 @@
+body { 
+    background: #FFFFFF; 
+}
+
+h1, h2, h3, h4, h5 { 
+    color: #800000; 
+    font-family: sans-serif; 
+}
+
+span.term { 
+    font-weight: bold; 
+}
+
+div.sidebar { 
+    background: #F0F0F0; 
+    border: 1px solid gray; 
+    padding: 5px; 
+    margin: 20px; 
+}
+
+pre.programlisting { 
+    background: #F0F0F0; 
+    border: 1px solid gray; 
+    padding: 2px; 
+    font-size: 10pt;
+    white-space: pre;
+}
+
+div.figure {
+    text-align: center;
+    border: 1px solid gray;
+    padding: 5px; 
+    margin: 2% 15% 2% 15%;
+}
+
+
+.tip {
+	font-style:italic;
+	border: solid 1px #000000;
+	margin: 2% 15% 2% 15%;
+
+}
+
+.note {
+	font-style:italic;
+	border: solid 1px #000000;
+	margin: 2% 15% 2% 15%;
+}
+
+.caution {
+	font-style:italic;
+	border: ridge 2px #ffff00;
+	margin: 2% 15% 2% 15%;
+}
+
+.important {
+	font-style:italic;
+	border: solid 2px #ff0000;
+	margin: 2% 15% 2% 15%;
+}
+
+.warning {
+	font-style:italic;
+	font-style:bold;
+	border: ridge 4px #ff0000;
+	margin: 2% 15% 2% 15%;
+}

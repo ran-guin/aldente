@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/install/crontab/Core
+END
+cron_slave_Core.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/install/crontab/Core/cron_slave_Core.txt
+END
+cron_master_Core.txt
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/install/crontab/Core/cron_master_Core.txt
+END
+cron_development_Core.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/install/crontab/Core/cron_development_Core.txt
+END

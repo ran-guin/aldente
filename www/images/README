@@ -1,0 +1,12 @@
+The following directories contain images,
+most of which are accessed at some point by the web pages.
+
+To organize some images they are contained in specific subdirectories.
+
+The following directories contain certain types of images:
+
+help_images	- images used in generating online help (usually screen captures)
+colours		- colours used for generating colour legends/maps
+wells		- images used to represent wells (matching colours with colours in colours directories)
+icons		- various icons used by the system
+png		- general images

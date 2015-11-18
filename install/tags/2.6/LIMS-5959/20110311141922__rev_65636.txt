@@ -1,0 +1,1 @@
+install/patches/Core/2.6/auto_increment_trigger_id.pat

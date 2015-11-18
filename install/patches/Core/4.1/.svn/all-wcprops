@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1
+END
+Run_Analysis_Md5_2.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/Run_Analysis_Md5_2.pat
+END
+add_Goal_Nucleic_Acid_QC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Core/4.1/add_Goal_Nucleic_Acid_QC.pat
+END
+add_Solexa_Work_Request_DB_Trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/add_Solexa_Work_Request_DB_Trigger.pat
+END
+modify_Pipeline_Code_Length.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Core/4.1/modify_Pipeline_Code_Length.pat
+END
+add_Employee_Submission_Subscription_Event.pat
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Core/4.1/add_Employee_Submission_Subscription_Event.pat
+END
+create_GrpPipeline_table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/100486/alDente/trunk/install/patches/Core/4.1/create_GrpPipeline_table.pat
+END
+update_Plate_Status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/update_Plate_Status.pat
+END
+add_Invoiceable_Analysis_Tracking.pat
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/add_Invoiceable_Analysis_Tracking.pat
+END
+add_Fail_Status_to_Plate.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/add_Fail_Status_to_Plate.pat
+END
+update_Invoice_Pipeline.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/update_Invoice_Pipeline.pat
+END
+Solution_FB.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/Solution_FB.pat
+END
+add_Invoice_Protocol_Type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Core/4.1/add_Invoice_Protocol_Type.pat
+END
+add_Invoice_Protocol_Priority.pat
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/106287/alDente/trunk/install/patches/Core/4.1/add_Invoice_Protocol_Priority.pat
+END
+update_Goal_Invoiceable_Analysis.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/update_Goal_Invoiceable_Analysis.pat
+END
+Run_Analysis_Dissemination_Date.pat
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/106467/alDente/trunk/install/patches/Core/4.1/Run_Analysis_Dissemination_Date.pat
+END

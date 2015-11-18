@@ -1,0 +1,7 @@
+Lab_Protocol_Name	FK_Employee__ID	Lab_Protocol_Status	Lab_Protocol_Description	Lab_Protocol_ID	Lab_Protocol_VersionDate	Max_Tracking_Size	Repeatable
+Standard	1	Active	NULL	1	NULL	384	Yes
+LIMS_Lab_Protocol	4	Active	Selenium Test Create Protocol	2	NULL	384	Yes
+ACD Tube SOP	4	Active	Protocol for handling ACD Blood Collection Tubes	3	0000-00-00	384	No
+SST Tube SOP	4	Active	Protocol for handling SST Blood Collection Tubes	4	0000-00-00	384	No
+EDTA Tube SOP	4	Active	Protocol for handling EDTA Blood Collection Tubes	5	0000-00-00	384	No
+Urine SOP	4	Active	Protocol for handling collected Urine samples	6	0000-00-00	384	No

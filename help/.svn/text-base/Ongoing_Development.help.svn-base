@@ -1,0 +1,88 @@
+<h2>Ongoing Development</h2>
+<P>
+Since the system has largely been developed during the acquisition of large quantities of high throughput sequencing data, the priority has been on ensuring that elements of the system in constant use are functioning correctly.  In many cases, improvements to the general look and feel of the system as well as its level of sophistication are constantly undergoing development.  Feedback from users is not only encouraged in this regard, but of fundamental importance.  Please feel free to communicate ideas or suggestions as they may arise.
+<P>
+Send Suggestions/Inquiries to: Ran Guin <rguin@bcgsc.bc.ca>
+<P>
+
+Some specific areas in which ongoing development is crucial include:
+
+<UL>
+<LI><B>General Usability</B>
+<UL>
+<LI>Improving the general layout of the pages.
+<LI>Implementing JAVA for some pages.
+<LI>Optimizing the cacheing of data accessible from statistics pages.
+<LI>Optimizing the code/storage structure to enhance speed of page generation.
+<LI>Implementing XML code for standardized viewing of data.
+<LI>Expanding the level of on-line and hard copy documentation.
+<LI>Push for more detailed feedback from lab administrators (or others regularly accessing web page).
+</UL>
+
+<LI><B>Database Administration</B>
+<UL>
+<LI>Optimizing storage structure
+<LI>Monitor data integrity
+<LI>Monitor usage & scalability issues
+<LI>set up modules for access by external applications (ODBC)
+<LI>Optimization of indexing
+<LI>Ensure regular Up-to-date documentation of structure & formatting
+<LI>Regular benchmarking of database & review of justification for mySQL (vs. alternative database systems).
+<LI>Regular monitoring of backup protocols and testing of disaster recovery procedure.
+</UL>
+
+<LI><B>Robustness</B>
+<UL>
+<LI>Improving the handling of 'atomic' data entry (ie locking and pseudo 'rollback')
+<LI>Providing robust mechanisms for redundancy of data processing and storage.<BR>
+(to allow virtually seamless continuation of system in case of system crashes/shutdowns)
+<LI>Include more levels of error checking within standard laboratory protocols.
+<LI>Expand number of integrity monitoring scripts to ensure validity of existing data. 
+<LI>Development of a specific protocol for testing new releases of code.
+<LI>Implementing more comprehensive security measures.
+</UL>
+
+<LI><B>Report Generating Tools</B> - A sophisticated data viewing tool
+<UL>
+<LI>Increase level of online help & documentation
+<LI>Increase portability of this aspect of script.
+<LI>Improve method of data cacheing to prevent slow queries during production hours.
+<LI>Add pages for specifically formatted reports 
+</UL>
+
+<LI><B>Lab Interface Development</B>
+<UL>
+<LI>Optimize screen output to fit scanner screen more cleanly.
+<LI>Adjust generated messages to make them as helpful as possible.
+<LI>Provide online help for extensive applications of web interface
+<LI>Optimize ergonomic use of scanners during standard laboratory protocols.
+<LI>Push for more detailed feedback from regular users.
+</UL>
+
+<LI><B>Administrative Functions</B>
+<UL>
+<LI>Integrating Lab database with orders database
+<LI>Establishing standard tools for retrieving administrative information from database
+<LI>Implement locally accessible/updatable database in case of network shutdown
+<LI>Regular communication with administrators to ensure optimum operation of above
+</UL>
+
+<LI><B>Expanding Functionality</B>
+<UL>
+<LI>Examining areas of expanding functionality (eg. monitoring service contracts/warranties etc.)
+<LI>Implementing tools for new functionality
+<LI>Comprehensive testing of expanded function.
+<LI>Updating (and backdating) database as required to ensure completeness.
+</UL>
+
+<LI><B>Code Development</B>
+<UL>
+<LI>Ensuring up-to-date, detailed documentation of code
+<LI>Optimization of code for speed and modularity.
+<LI>Generalization of code to eliminate (or minimize) site-specific code.
+<LI>Develop documented instructions & protocol for setting of local default settings 
+(dependant upon local installations or user preference)
+<LI>Extensive testing of above to ensure portability
+</UL>
+
+</UL>

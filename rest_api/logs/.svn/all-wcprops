@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/103088/alDente/trunk/rest_api/logs
+END
+deployment.log
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/103088/alDente/trunk/rest_api/logs/deployment.log
+END
+lims.log
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/103088/alDente/trunk/rest_api/logs/lims.log
+END

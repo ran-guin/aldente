@@ -1,0 +1,9 @@
+<h1>Sequencing Plug-in Classes</H1>
+<UL>
+<LI><h3>Run</h3><P>
+	A Run object. 
+<LI><h3>Read</h3><P>
+	An individual sequencing read.
+<LI><h3>Sequencer</h3><P>
+	An individual sequencer.	
+</UL></span>

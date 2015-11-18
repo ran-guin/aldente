@@ -1,0 +1,19 @@
+The following subdirectories are found in the primary alDente directory:
+
+bin		- binary files that can be run from the command line
+cgi-bin		- perl scripts that can be run from a web browser
+lib/perl	- location of perl modules
+root		- scripts normally run as root, and NOT supported remotely (eg. script used for mirroring sequencers)
+
+
+help		- contains help pages that are accessed via the web
+www		- contains images, style sheets, javascript and other files that need to be accessed by the web browser, and are UNCHANGING
+conf		- configuration files (these should have limited read permissions)
+install		- files used to instruct on or carry out initial installation of alDente
+
+** to activate a particular customization module: 
+> bin/activate <module>   (eg bin/activate Healthbank)
+
+<URL>/<module> ... (eg hblims.bcgsc.ca/SDB_trunk/cgi-bin/Healthbank)
+
+cp login file to conf/mysql.login (ln -s /home/alDente/mysql.login conf/mysql.login)

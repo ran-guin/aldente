@@ -1,0 +1,422 @@
+<span class=large>
+<h1>Issues Tracker</h1>
+<p> </p>
+<ul>
+  <li>A new Issues Tracker has been added to better keeps track of bugs
+and feature requests. &nbsp;The Issues Tracker home page can be accessed
+by clicking on the Bugs icon.</li>
+  <li>Terminologies used in the Issues Tracker:</li>
+  <ul>
+    <li>Issue <span style="font-weight: bold;">Type</span><span
+ style="font-weight: bold;">:</span> Can be either a Defect, Enhancement
+or Maintenance.</li>
+    <ul>
+      <li><span style="font-weight: bold;">Defect</span><span
+ style="font-weight: bold;">:</span> A bug in the source code.</li>
+    </ul>
+    <ul>
+      <li><span style="font-weight: bold;">Enhancement:</span> Feature
+request/improvement suggestion.</li>
+      <li><span style="font-weight: bold;">Maintenance: </span>System
+administration/maintenance request.<br>
+      </li>
+    </ul>
+    <li><span style="font-weight: bold;">Priority:</span> How soon and
+important the issue has to be resolved.</li>
+    <ul>
+      <li>For defects:<br>
+      </li>
+    </ul>
+    <ul>
+      <ul>
+        <li><span style="font-weight: bold;">Critical:</span> The defect
+has no workarounds and the lab cannot operate without the defect being
+resolved. Usually the defect will have system-wide impact. Must be
+resolved immediately in the current production release. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>alDente homepage cannot be loaded.<br>
+          </li>
+        </ul>
+        <ul>
+          <li>Sample sheets cannot be generated when the lab is about
+to start a sequence run.</li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">High:</span> The defect has
+no workarounds but the lab can still operate for a period of time while
+waiting the defect to be resolved. Usually the defect will only affect a
+small number of users. Should be resolved ASAP in the current production
+release. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Last 24 Hours page not working; however no one is
+desperately waiting for the analysis results.</li>
+        </ul>
+        <ul>
+          <li>Error message showing up during the protocol steps
+preventing an individual lab user from continuing his/her experiment.<br>
+          </li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">Medium:</span> &nbsp;The
+defect has workarounds and the lab can still operate without the defect
+being resolved. &nbsp;However, the defect reduces the ease to use the
+system and thus affects users work productivity in major ways. Should be
+resolved in the next production release. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Lab administrators cannot create new employees - they
+have to come to the developers in order to fulfill the task.</li>
+        </ul>
+        <ul>
+          <li>Plates cannot be deleted from the "Delete or Annote
+Recent Plates" button from the homepage; however, users can still scan
+in the plates and delete them from the multi-record edit page.<br>
+          </li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">Low:</span> &nbsp;The
+defect has workarounds and the lab can still operate without the defect
+being resolved. &nbsp;At most, the defect should only affect the users
+work productivity in minor ways. May be resolved in any future product
+releases as time permits. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Users cannot scan their employee barcode (with password)
+to quickly relogin. &nbsp;Instead, they have to go back to the Re-Login
+page and login from there.</li>
+        </ul>
+        <ul>
+          <li>JavaScript text searching for libaries are not working;
+instead the users need to scroll down the popup menu to find the library
+they want.</li>
+        </ul>
+      </ul>
+      <li>For enhancements:</li>
+      <ul>
+        <li><span style="font-weight: bold;">Critical: </span>The
+enhancement is critical to the operation of the lab and will be
+implemented in the next production release which needs to be available
+to the lab ASAP. (i.e. the release date will be earlier than the
+original scheduled/anticipated release date). &nbsp;Note that this
+should almost never happened as this introduces sigificant risk into the
+system; instead, the developers should always be given advanced notice
+about any new features that needed to be implemented.&nbsp;For example:</li>
+        <ul>
+          <li>Need to be able to generate sample sheets for the new
+sequencer and the lab needs to be able to use this sequencer in a few
+days.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">High:</span> The
+enhancement is very important to the operation of the lab and will be
+implemented in the next production release.&nbsp;For example:</li>
+        <ul>
+          <li>A new library submission process for users to submit new
+libraries.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Medium:</span> The
+enhancement is somewhat important to the operation of the lab and
+preferrably be implemented in the next production release if
+possible.&nbsp;For example:</li>
+        <ul>
+          <li>Catalog number searching when receiving stock - allowing
+most information to be pre-filled.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Low:</span> The enhancement
+is the 'nice-to-have' type which can be implemented in any future
+production releases if time permits.&nbsp;For example:</li>
+        <ul>
+          <li>Adding a button to the multi-record edit page allowing
+batch selecting of records.<br>
+          </li>
+        </ul>
+      </ul>
+      <li>For maintenance:</li>
+      <ul>
+        <li><span style="font-weight: bold;">Critical:</span> Diaster
+time! The lab is not operating and the maintenance must be performed
+immediately.&nbsp;For example:</li>
+        <ul>
+          <li>MySQL data folder is full and no more queries can be
+issued against the database.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">High:</span> The
+maintenance should be addresses ASAP or else it will soon jeopardize
+the normal operation of the lab.&nbsp;For example:</li>
+        <ul>
+          <li>/home/sequence directory has exceed 90% disk usage.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Medium: </span>The
+maintenance is relatively important to the operation of the lab and
+should be addressed in the near future.&nbsp;For example:</li>
+        <ul>
+          <li>Generate a list of missing trace files in /home/sequence
+and see if they can be recoved from system backups.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Low:</span> The maintenance
+is not important to the operation of the lab and could be addressed
+when time permits.&nbsp;For example:</li>
+        <ul>
+          <li>Clean up unused tables in the sequence database.<br>
+          </li>
+        </ul>
+      </ul>
+    </ul>
+    <li><span style="font-weight: bold;">Severity:</span> How severe the
+issue is and to what degree the system is affected by the issue.</li>
+    <ul>
+      <li>For defects:<br>
+      </li>
+    </ul>
+    <ul>
+      <ul>
+        <li><span style="font-weight: bold;">Fatal:</span> The defect
+causes the system to crash and not operate at all. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>An infinite loop in the code causing the web page forever
+to load.</li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">Major:</span> The defect
+impacts the operation/functionality of the system in major ways. For
+example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>An error in the SQL INSERT query causing Lab
+administrators cannot create new libraries.<br>
+          </li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">Minor:</span>&nbsp;The
+defect impacts the operation/functionality of the system in minor ways.
+For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>A bug in the JavaScript code causing the radio buttons in
+the No Grows/Slow Grows page not able to batch select/deselect
+checkboxes.</li>
+        </ul>
+        <ul>
+          <li>After scanning in a stock catalog number, the New Stock
+form does not have information pre-filled.<br>
+          </li>
+        </ul>
+      </ul>
+      <ul>
+        <li><span style="font-weight: bold;">Cosmetic:</span> The defect
+does not impact the operation/functionality of the system in any ways.
+It is merely a cosmetic/user-interface problem. For example:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Spelling mistakes.</li>
+        </ul>
+        <ul>
+          <li>The layout on the webpage is skewed-up, even though all
+the functionalities/features can still be accessed.</li>
+        </ul>
+      </ul>
+      <li>For enhancements:</li>
+      <ul>
+        <li><span style="font-weight: bold;">Fatal:</span> The
+enhancement have a system-wide effect or requires a significant amount
+of code to be rewritten. In general the risk will be high; the
+enhancement will require a fair amount of work and extremely vigourous
+testing, and failure to do so will likely have a fatal effect on the
+system if the enhancement is made into the production release. An
+extensive design/code review with another developer is required. For
+example:</li>
+        <ul>
+          <li>Implements MySQL transactions.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Major:</span> The
+enhancement affects a relatively large portion of the system. In general
+there will be a fair amount of risks involved; the enhancement will
+require a fair amount of work and very throughout testing. There should
+be at least brief design/code review with another developer.&nbsp;For
+example:</li>
+        <ul>
+          <li>Implements the new generate_form() routine for generating
+HTML forms.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Minor:</span> The
+enhancement affects a small portion of the system. In general there will
+be little risks involved; the enhancement should be relatively easy to
+be implemented and relatively throughout testing will be required.&nbsp;For
+example:</li>
+        <ul>
+          <li>Adding the ability in the Plates home page to find plates
+by rack.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Cosmetic:</span> The
+enhancement just affects the visual appearance of the system. &nbsp;In
+general there should be almost no risk involved; the enhancement should
+be extremely easy to be implemented and minimal testing will be
+required. For example:</li>
+        <ul>
+          <li>Change the toggling colour in the HTML forms to improve
+the forms apperance.</li>
+        </ul>
+      </ul>
+      <li>For maintenance:</li>
+      <ul>
+        <li><span style="font-weight: bold;">Fatal:</span> The
+maintenance will cause the lab not to be able to operate for a period
+of time and there is no other way around this. These type of
+maintenance must be planned carefully ahead of time to minimize the
+systems down-time. For example:</li>
+        <ul>
+          <li>Migrating the alDente system from web03/athena to seqdb01.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Major:</span> The
+maintenance will have major impacts on the operation of the lab,
+although the lab should still be fully functional. These type of
+maintenance is somewhat risky as well. For example:</li>
+        <ul>
+          <li>Altering the indexing of the Clone_Sequence table.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Minor:</span> The
+maintenace will have minor impacts on the operation of the lab. For
+example:</li>
+        <ul>
+          <li>Moving trace files from mirror folder into the archive
+folder.<br>
+          </li>
+        </ul>
+        <li><span style="font-weight: bold;">Cosmetic:</span> The
+maintenance should have no effects on the operation of the lab.</li>
+        <ul>
+          <li>Cleanup up the temp files in /home/sequence/ to save some
+space.</li>
+        </ul>
+      </ul>
+    </ul>
+    <li><span style="font-weight: bold;">Status: </span>The current
+status of the issue.</li>
+    <ul>
+      <li><span style="font-weight: bold;">Reported:</span> The issue
+has been submitted but the developers haven't looked into the issue yet.</li>
+      <li><span style="font-weight: bold;">Open:</span> The developers
+are aware of the issue and is currently addressing it. Note that an
+issue will be in this state as long as the developers are still working
+on a resolution.</li>
+      <ul>
+        <li>For defects, the issue is expected to be resolved in the
+current production release.</li>
+        <li>For enhancements, the issue is expected to be resolved in
+the next production release.<br>
+        </li>
+      </ul>
+      <li><span style="font-weight: bold;">Deferred: </span>The
+developers are aware of the issue. Note that issues that are deffered
+cannot have a priority of 'Critical' or 'High'. (see above)</li>
+      <ul>
+        <li>For defects, the issue will be addressed in the next
+production release or any future production releases. </li>
+        <li>For enhancements, the issue will be addressed in any future
+production releases (i.e. not the next production release).<br>
+        </li>
+      </ul>
+      <li><span style="font-weight: bold;">Resolved: </span>The issue
+has been resolved/implemented but is either under testing or pending
+code review/validation from another developer.</li>
+      <li><span style="font-weight: bold;">Closed:</span> The issue has
+been resolved/implemented and tested - no further work will be done on
+this issue.</li>
+    </ul>
+    <li><span style="font-weight: bold;">Resolution:</span> How the
+issue was resolved/implemented.</li>
+    <ul>
+      <li><span style="font-weight: bold;">By Design:</span> The issue
+is indeed a design of the system. Only applicable to defects.</li>
+      <li><span style="font-weight: bold;">Cannot Reproduce:</span> The
+developers cannot reproduce the issue. Only applicable to defects.<br>
+        <span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">Code Fix: </span>Changes
+are made in the source code level. Note that changes to database schema
+belongs to this category as well.</li>
+      <li><span style="font-weight: bold;">Data Fix:</span> Changes are
+made to the data in the database. Do not confuse this with a change to
+the database schema. (see above)<br>
+      </li>
+      <li><span style="font-weight: bold;">Do Not Fix:</span> The
+developers have agreed the issue is valid but have decided not to make
+any changes.</li>
+      <li><span style="font-weight: bold;">Duplicate Issue:</span> The
+issue represents the same problem as a previously reported issue.
+&nbsp;Note that an issue of this type should be resolved and set to
+'Duplicate Issue' only after the previously reported issue has been
+resolved.</li>
+      <li><span style="font-weight: bold;">False Submission:</span> The
+issue was submitted by mistake/accident.</li>
+      <li><span style="font-weight: bold;">System Fix:</span> Changes
+are made in the system level.</li>
+      <li><span style="font-weight: bold;">User Error:</span> The issue
+was a result of the user error or misuse. Only applicable to defects.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Note that although Critical/High issues tend to be Fatal/Major
+while Medium/Low issues tend to be Minor/Cosmetic, there can be
+exceptions. For example:</li>
+  <ul>
+    <li>A High and Cosmetic defect: A collaborator is looking at the
+Summary page and realizes the Q20 histogram outrageously big.
+&nbsp;Although this is strictly cosmetic, it can ruin the collaborator's
+impression on GSC and so the defect can be deemed High or even Critical.</li>
+    <li>A Low and Major defect: Orders cannot be entered through the
+Orders page. &nbsp;Although this affects the functionality of the
+software in a major way, if the purchasing department is not using this
+page at all then this defect is just a low priority one.</li>
+  </ul>
+  <li>In the Issues Tracker home page, user can search for existing
+issues and viewing them, submit new issues, or look at various issues
+statistics:</li>
+  <br>
+  <img src="$Help_Image_dir/issues_home.png"> <li>The Issues Tracker
+interface for submitting new issue and updating new issue allows users
+to view existing messages and add new messages as well:</li>
+  <br>
+  <img src="$Help_Image_dir/issues_update.png"> <li>An email
+notification will be sent to a developer whenever a new issue is
+assigned to him/her or an existing issue is re-assigned to him/her.<br>
+  </li>
+  <li>There are now 2 ways to submit a defect:</li>
+  <ul>
+    <li>Through the Issues Tracker interface (i.e. the Submit New
+Issues link).</li>
+    <li>Through the existing Email Notification button.<br>
+    </li>
+  </ul>
+  <li>Note that all defects reported through the Issue Tracker
+interface or the Error Notification button are defaulted to be High and
+Major. &nbsp;Once assigned to the developers, the defect will be triaged
+and its priority/severity may be changed as needed.</li>
+</ul>
+</span>

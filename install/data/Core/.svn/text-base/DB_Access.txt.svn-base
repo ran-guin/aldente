@@ -1,0 +1,11 @@
+DB_Access_ID	DB_Access_Title	Read_Access	Write_Access	Delete_Access	Restriction_Type	DB_Access_Description
+1	No Access	N	N	N	N/A	No Access to database
+2	Restricted Access	Y	N	N	Specified Inclusions	Highly restricted read access to specified list of tables
+3	Limited Read Access	Y	N	N	Specified Exclusions	Limited read access excluding specified list of tables
+4	Unlimited Read Access	Y	N	N	N/A	Unrestricted Read-Only Access
+5	Restricted R/W Access	Y	Y	N	Specified Inclusions	Highly restricted read / write access to specified list of tables
+6	Restricted Write Access	Y	Y	N	Specified Inclusions	Restricted write access to specified list of tables
+7	Limited Write Access	Y	Y	Y	Specified Exclusions	Limited write access excluding specified list of tables
+8	Expanded Write Access	Y	Y	Y	Specified Exclusions	Expanded write access excluding specified list of tables
+9	LIMS Staff Write Access	Y	Y	Y	Specified Exclusions	LIMS staff write access (may exclude certain tables)
+10	Root Access	Y	Y	Y	N/A	Unrestricted Access

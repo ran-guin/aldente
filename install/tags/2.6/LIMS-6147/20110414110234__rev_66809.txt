@@ -1,0 +1,6 @@
+bin/
+cgi-bin/
+custom/
+install/
+lib/
+Plugins/

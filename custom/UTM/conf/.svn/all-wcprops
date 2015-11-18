@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/106744/alDente/trunk/custom/UTM/conf
+END
+system.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/103497/alDente/trunk/custom/UTM/conf/system.cfg
+END
+default_users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/103250/alDente/trunk/custom/UTM/conf/default_users.yml
+END
+custom.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/106744/alDente/trunk/custom/UTM/conf/custom.cfg
+END

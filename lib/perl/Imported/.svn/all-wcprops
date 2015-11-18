@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/94434/alDente/trunk/lib/perl/Imported
+END
+MySQL_Tools.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_Tools.pm
+END
+MySQL_Field.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_Field.pm
+END
+MySQL_Search.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_Search.pm
+END
+Template.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template.pm
+END
+MySQLdb.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQLdb.pm
+END
+gdchart.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/gdchart.pm
+END
+MySQL_Table.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_Table.pm
+END
+MySQL_GSC.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_GSC.pm
+END
+PerlHelper.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/PerlHelper.pm
+END
+MySQL_Record.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/MySQL_Record.pm
+END

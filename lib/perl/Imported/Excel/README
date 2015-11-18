@@ -1,0 +1,1 @@
+This directory is for CPAN modules that enable reading and writing Excel files programmatically. The only module that is directly used by programs is SpreadSheet::ParseExcel::SaveParser - everything else are modules that Spreadsheet::ParseExcel depends on.

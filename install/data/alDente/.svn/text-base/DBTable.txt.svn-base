@@ -1,0 +1,184 @@
+DBTable_ID	DBTable_Name	DBTable_Description	DBTable_Status	Status_Last_Updated	DBTable_Type	DBTable_Title	Scope	Package_Name	Records	FK_Package__ID
+1	Account	Accounts used for purchasing/ordering	Missing values from the Account Type column - perhaps changed to enum	2002-11-20 15:09:00	General	Account	Core	NULL	22	24
+2	Barcode_Label	Barcode formats used for the scanners	OK	2002-11-20 15:09:00	General	Barcode_Label	Core	NULL	32	24
+3	Box	Boxes received in the lab	Some boxes have no data at all (box 9 and 10); Some boxes do not have a corresponding box type even only Kit and Supplies are the only enums; also dates for Box_Opened are questionable	2002-11-20 15:09:00	Lab Object	Box	Plugin	NULL	7775	25
+5	Solution	Individual solutions used in the lab	There are solutions with Quantity_Used filled in but without Solution_Quantity;  Also there are solutions that have no solution type; when linked with the Stock table, there are a solutions that belongs to different solution_type for the same stock_name - currently Jeff/George are taking a look at the list to see how it can be cleaned up.;Also whether there should be Solution that does not belong to any Stock.	2002-11-20 15:09:00	Lab Object	Solution	Plugin	NULL	98787	25
+6	Solution_Info	Extra information for solutions used in the lab	The idea of this table is many Solution can share the same Solution_Info.  However, there are a lot of records in the Solution_Info table that have the exact same nMoles, ODs and micrograms, causing redundant information.  The combination of these 3 fields should be unique	2002-11-20 15:09:00	Object Detail	Solution_Info	Plugin	NULL	10561	25
+7	Stock	Stock item in the lab	There are a lot of entries having NO Stock_Catalog_Number even though their Stock_Source is not Made In House;Also currently there are a lot of entries with the same Stock_Catalog_Number but having different Stock_Name;Lots of entries have slightly different Stock_Name which can be propably be amalgamated - Jeff/George are currently going over the list.	2002-11-20 15:09:00	Lab Object	Stock	Core	NULL	54316	24
+11	Pool	A pool of clones	Contains both FK_Transposon__Name and FK_Transposon__ID fields - this is redundant. All we need is the FK_Transponson__ID which can link us to the Transposon table via Transposon.Transposon_ID	2002-11-20 16:13:44	Lab Process	Pool	Plugin	NULL	691	25
+17	Collaboration	GSC collaborations	Currently only 1 record. Need to fill in the missing data	2002-11-20 17:32:15	Join	Collaboration	Core	NULL	183	24
+18	Communication	Communications/messages between GSC staff and another contact	Only few records now - whether table is really used at all	2002-11-20 17:36:06	General	Communication	Core	NULL	4	24
+24	Contact	Contacts for GSC	There are records that contain no Contact_Name - perhaps this is because the organization itself is the contact - still maybe better to make the Contact_Name field non-nullable; Also there is a contact called nobody - what is this for; There are multiple records that contain the same contact name and if fact they are the same person - the difference is they belong to a different organzation - this could cause data inconsistency and duplicate data - It will be better to create a new table called Person that actually stores the personal info like name, personal phone, personal email, personal address, etc and hence link the Contact table to the Person table via a FK_Person__ID - this will also help to remove various other personal related fields from the Contact table; There are also various fields related to the workplae info like Work_Address, Work_City etc - perhaps this can be removed as well since we already have a link to the Organization table via FK_Organization__ID;	2002-11-21 11:52:40	General	Contact	Core	NULL	600	24
+28	DBTable	Descriptions and status of all tables in the current database	OK	2002-11-21 13:39:27	DB Management	DBTable	Core	NULL	285	24
+29	Dye_Chemistry	Various information of dyes used for sequencing	This table will probably be removed after the new addition of the sample sheet tables like SS_Config and SS_Option	2002-11-21 13:44:24	Lookup	Dye_Chemistry	Plugin	NULL	4	25
+30	Employee	GSC employees - users of the alDente system	Other than some info like positions are outdated/inaccurate, in general the table is fine	2002-11-21 13:55:52	General	Employee	Core	NULL	243	24
+31	Equipment	Equipments in the lab	There are equipments that have the same Serial_Number but have different Equipment_Name - in some cases this is because of having different equipment number but this info is already in the Equipment_Number field and so should not appear in Equipment_Name - worth to look into; Also there are equipments that have no FK_Stock__ID - ok or not	2002-11-21 14:11:18	General	Equipment	Core	NULL	2132	24
+32	Error_Check	Error checking criteria for database fields	Not understand how this table is used;There are records in the table that are not even referencing a table from the database or are some testing data;Also most records are for the seqtest database - wonder whether this is an obsolete table	2002-11-21 14:22:20	DB Management	Error_Check	Core	NULL	57	24
+36	Funding	Fundings for GSC	Seems like the data is not up-to-date/a lot of funding missing	2002-11-21 14:41:28	General	Funding	Option	NULL	244	25
+39	Lab_Protocol	Protocols created by lab administrators to be used in the lab	There are few protocols that links to FK_Employee__ID of zero - since there is no such employees this should be fixed	2002-11-21 15:53:37	Lab Process	Lab_Protocol	Plugin	NULL	362	25
+40	Library	Information about a proposed collection/library.	There are libraries that do not have Library_Source_Name - whether it is a good idea to make this a required field; Also no records has a FK_Vector__ID - they all link to the Vector table via FK_Vector__Name - hence probably can remove the FK_Vector__ID field	2002-11-21 16:25:34	General	Collection	Core	NULL	5517	24
+42	LibraryProgress	Progess/status of libraries	Looks like this table is not updated often - in fact the only progress in the table is Created;Need to determine whether this table will be continued to be used and if so probably so frequently track the progress - perhaps should create a new field that is a enum of different progresses and use the existing LibraryProgress_Comments field to store extra detail info	2002-11-21 16:39:23	General	LibraryProgress	Plugin	NULL	43	25
+44	Maintenance	Historical record for maintenance performed on machines	There are records with no Maintenance_Process - probably this should be a required field and perhaps even worth to make this an enum field	2002-11-21 17:01:06	Lab Process	Maintenance	Plugin	NULL	7558	25
+45	Maintenance_Protocol	Detail steps for regular machine maintenance/services from the Service table	There are currently no records in this table, and in fact there are only 2 records in the Service table - Need to determine whether these tables are obsolete and if not then need to encourage users to use them	2002-11-21 17:19:57	Lab Process	Maintenance_Protocol	Plugin	NULL	0	25
+46	Message	Messages	Seems like an obsolete table that no one is using anymore	2002-11-21 17:35:25	Lookup	Message	Core	NULL	961	24
+47	Misc_Item	Miscellaneous lab items	Contains no data	2002-11-21 17:42:51	Lab Object	Misc_Item	Core	NULL	0	24
+48	Mixture	Mixtures made from solutions	The older records do not have data for Units_Used - should backfill these data and make the Units_Used field not nullable	2002-11-21 17:47:36	General	Mixture	Plugin	NULL	121795	25
+50	Multiple_Barcode	Correlates a MUL barcode to the individual PLAs	There are some MULs that only contains a single PLA	2002-11-22 09:32:53	General	Multiple_Barcode	Core	NULL	0	24
+51	Note	Notes from sequence runs	Probably better to make the field Note_Type to be enum; Probably the table will be dropped	2002-11-22 09:37:04	General	Note	Core	NULL	7	24
+52	Notice	Notice sent to users during sequence runs	Target_List has missing and inconsistent data; also no new data in a while	2002-11-22 09:41:21	General	Notice	Core	NULL	1509	24
+54	Order_Notice	Notice sent to users when supply is low and may need to order	No new data for a while	2002-11-22 09:53:29	General	Order_Notice	Core	NULL	8	24
+56	Organization	Organizations that GSC deals with	In the process of removing redundant/outdated organizations	2002-11-27 10:10:34	General	Organization	Core	NULL	650	24
+57	Parameter	Parameters for the standard solution chemistry calculator	There are a few records that are missing Standard_Solution_ID and/or Parameter_Type - look into it	2002-11-22 10:27:47	Settings	Parameter	Core	NULL	1105	24
+58	Standard_Solution	Contains the formula for the chemistry calulator for those solutions that are used often in the lab	OK	2002-11-22 10:29:10	General	Standard_Solution	Plugin	NULL	222	25
+59	Plate	Plates	There are plates that have no FK_Rack__ID - need to clean these up	2002-11-22 10:38:47	Lab Object	Container	Plugin	NULL	266314	24
+60	Plate_Format	Various plate formats of the plates	OK	2002-11-22 10:40:34	Object Detail	Plate_Format	Plugin	NULL	63	25
+61	Plate_Set	Correlates a plate set number to its individual plates	OK	2002-11-22 10:45:26	Lab Object	Plate_Set	Plugin	NULL	409871	25
+66	Project	GSC projects	Project 20 has no Project_Type; Also a lot of projects are missing FK_Funding__ID	2002-11-22 11:36:06	General	Project	Core	NULL	347	24
+67	Protocol_Step	Individual steps of lab protocols	OK	2002-11-22 11:41:15	General	Protocol_Step	Plugin	NULL	2614	25
+68	Protocol_Tracking	Lab protocol steps to be tracked when performed	OK	2002-11-22 11:50:42	General	Protocol_Tracking	Plugin	NULL	5	25
+69	Rack	Racks for storing plates	OK	2002-11-22 11:53:08	Lab Object	Rack	Plugin	NULL	39904	25
+70	ReArray	Information about rearrays, including source and target plates/wells and other info	OK	2002-11-22 12:00:07	Lab Process	ReArray	Plugin	NULL	1521402	25
+75	Service	Regular maintenance/service for the lab equipments	Currently only 2 records in the table	2002-11-22 12:49:32	General	Service	Core	NULL	2	24
+76	Service_Contract	Service contracts for lab equipments	Currently contains no records	2002-11-22 12:51:23	General	Service_Contract	Core	NULL	0	24
+78	Suggestion	Suggestions for improving the alDente system	Not sure how FK_Employee__ID and FK_Person__ID works	2002-11-22 13:16:15	Lookup	Suggestion	Core	NULL	13	24
+79	Tube	Tubes containing DNA/RNA/Tissue, DNA ligation tubes or agar plates prior to colony picking, etc	Currently contains no records	2002-11-22 13:21:43	Lab Object	Tube	Plugin	NULL	35464	25
+83	Warranty	Warranties for the equipments	Currently contains no records	2002-11-22 13:36:07	General	Warranty	Core	NULL	1	24
+99	Setting	NULL	NULL	0000-00-00 00:00:00	Lookup	Setting	Core	NULL	8	24
+100	EmployeeSetting	NULL	NULL	0000-00-00 00:00:00	Join	EmployeeSetting	Core	NULL	18	24
+107	DBField	NULL	NULL	0000-00-00 00:00:00	DB Management	DBField	Core	NULL	2263	24
+108	DB_Form	NULL	NULL	0000-00-00 00:00:00	DB Management	DB_Form	Core	NULL	55	24
+109	Department	NULL	NULL	0000-00-00 00:00:00	General	Department	Core	NULL	12	24
+117	Grp	NULL	NULL	0000-00-00 00:00:00	DB Management	Grp	Core	NULL	43	24
+118	GrpDBTable	Join table between Table and Grps (indicating permissions)	NULL	0000-00-00 00:00:00	DB Management	GrpDBTable	Core	NULL	12830	24
+119	GrpEmployee	Join table, Grp-Employee	NULL	0000-00-00 00:00:00	Join	Employee Groups	Core	NULL	539	24
+120	GrpLab_Protocol	Join table, Grp-Lab_Protocol	NULL	0000-00-00 00:00:00	General	GrpLab_Protocol	Plugin	NULL	430	25
+121	GrpStandard_Solution	Join table, Grp-Standard_Solution	NULL	0000-00-00 00:00:00	General	GrpStandard_Solution	Plugin	NULL	211	25
+122	Grp_Relationship	Join table, Grp-Grp	NULL	0000-00-00 00:00:00	DB Management	Grp_Relationship	Core	NULL	33	24
+125	LibraryStudy	NULL	NULL	0000-00-00 00:00:00	General	LibraryStudy	Core	NULL	4	24
+128	Plate_Prep	NULL	NULL	0000-00-00 00:00:00	General	Plate_Prep	Plugin	NULL	2405324	25
+130	Plate_Sample	NULL	NULL	0000-00-00 00:00:00	General	Plate_Sample	Plugin	NULL	14434851	25
+131	PoolSample	NULL	NULL	0000-00-00 00:00:00	Join	PoolSample	Plugin	NULL	21554	25
+132	Prep	NULL	NULL	0000-00-00 00:00:00	Lab Process	Prep	Plugin	NULL	631240	25
+136	ProjectStudy	NULL	NULL	0000-00-00 00:00:00	Join	ProjectStudy	Core	NULL	17	24
+140	ReArray_Request	NULL	NULL	0000-00-00 00:00:00	General	ReArray_Request	Plugin	NULL	7967	25
+142	Sample	NULL	NULL	0000-00-00 00:00:00	Lab Object	Sample	Plugin	NULL	13781838	25
+144	Study	NULL	NULL	0000-00-00 00:00:00	General	Study	Core	NULL	14	24
+147	Version	NULL	NULL	0000-00-00 00:00:00	DB Management	Version	Core	NULL	11	24
+152	DepartmentSetting	NULL	NULL	0000-00-00 00:00:00	Join	DepartmentSetting	Core	NULL	20	24
+157	Sample_Pool	NULL	NULL	0000-00-00 00:00:00	Lab Object	Sample_Pool	Plugin	NULL	157	25
+158	ReArray_Plate	NULL	NULL	0000-00-00 00:00:00	General	ReArray Plate	Plugin	NULL	28	25
+161	DB_Login	NULL	NULL	0000-00-00 00:00:00	DB Management	DB_Login	Core	NULL	9	24
+162	Extraction	NULL	NULL	0000-00-00 00:00:00	General	Extraction	Plugin	NULL	196	25
+164	Extraction_Sample	NULL	NULL	0000-00-00 00:00:00	General	Extraction_Sample	Plugin	NULL	71371	25
+165	Original_Source	Generic information about the source of a sample	NULL	0000-00-00 00:00:00	General	Sample Origin	Plugin	NULL	4574	25
+169	Sample_Alias	NULL	NULL	0000-00-00 00:00:00	Object Detail	Sample_Alias	Plugin	NULL	5026016	25
+171	Printer	NULL	NULL	0000-00-00 00:00:00	General	Printer	Core	NULL	19	24
+172	Attribute	NULL	NULL	0000-00-00 00:00:00	Lookup	Attribute	Core	NULL	230	24
+177	Hybrid_Original_Source	NULL	NULL	0000-00-00 00:00:00	General	Hybrid_Original_Source	Plugin	NULL	361	25
+180	Lab_Request	NULL	NULL	0000-00-00 00:00:00	General	Lab_Request	Plugin	NULL	2378	25
+182	Library_Source	NULL	NULL	0000-00-00 00:00:00	General	Library/Source Link	Plugin	NULL	6948	25
+184	Original_Source_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Original_Source_Attribute	Plugin	NULL	1989	25
+187	Pipeline	NULL	NULL	0000-00-00 00:00:00	General	Pipeline	Core	NULL	179	24
+189	Prep_Detail_Option	NULL	NULL	0000-00-00 00:00:00	Object Detail	Prep_Detail_Option	Plugin	NULL	0	25
+190	Prep_Details	NULL	NULL	0000-00-00 00:00:00	Object Detail	Prep_Details	Plugin	NULL	0	25
+193	Sample_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Sample_Attribute	Plugin	NULL	1360034	25
+194	Source	Information about the sample being sent to the GSC.	NULL	0000-00-00 00:00:00	Lab Object	Starting Material	Plugin	NULL	6792	25
+200	Plate_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Plate_Attribute	Plugin	NULL	72679	25
+203	Printer_Assignment	NULL	NULL	0000-00-00 00:00:00	General	Printer_Assignment	Core	NULL	28	24
+204	Printer_Group	NULL	NULL	0000-00-00 00:00:00	Join	Printer_Group	Core	NULL	10	24
+208	Change_History	NULL	NULL	0000-00-00 00:00:00	General	Change_History	Core	NULL	373455	24
+209	Child_Ordered_Procedure	NULL	NULL	0000-00-00 00:00:00	Lab Process	Child_Ordered_Procedure	Plugin	NULL	94	25
+212	FailureReason	NULL	NULL	0000-00-00 00:00:00	General	FailureReason	Plugin	NULL	7	25
+215	GrpProject	NULL	NULL	0000-00-00 00:00:00	General	GrpProject	Core	NULL	0	24
+216	Location	NULL	NULL	0000-00-00 00:00:00	Lookup	Location	Core	NULL	20	24
+217	Ordered_Procedure	NULL	NULL	0000-00-00 00:00:00	Lab Process	Ordered_Procedure	Plugin	NULL	108	25
+219	Plate_Tray	NULL	NULL	0000-00-00 00:00:00	General	Plate_Tray	Plugin	NULL	73401	25
+220	ProcedureTest_Condition	NULL	NULL	0000-00-00 00:00:00	Join	ProcedureTest_Condition	Plugin	NULL	292	25
+221	ReArray_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	ReArray_Attribute	Plugin	NULL	24248	25
+222	Source_Pool	NULL	NULL	0000-00-00 00:00:00	General	Source_Pool	Plugin	NULL	297	25
+223	Status	NULL	NULL	0000-00-00 00:00:00	Lookup	Status	Core	NULL	27	24
+225	Test_Condition	NULL	NULL	0000-00-00 00:00:00	General	Test_Condition	Plugin	NULL	13	25
+226	Tray	NULL	NULL	0000-00-00 00:00:00	General	Tray	Plugin	NULL	19286	25
+230	Prep_Attribute_Option	NULL	NULL	0000-00-00 00:00:00	Object Detail	Prep_Attribute_Option	Plugin	NULL	0	25
+231	Prep_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Prep_Attribute	Plugin	NULL	522	25
+234	Work_Request	NULL	NULL	0000-00-00 00:00:00	DB Management	Work_Request	Core	NULL	7173	24
+235	Antibiotic	NULL	NULL	0000-00-00 00:00:00	Lookup	Antibiotic	Plugin	NULL	5	25
+236	Event	NULL	NULL	0000-00-00 00:00:00	General	Event	Core	NULL	0	24
+237	Event_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Event_Attribute	Core	NULL	0	24
+238	Fail	NULL	NULL	0000-00-00 00:00:00	General	Fail	Plugin	NULL	127522	25
+239	FailReason	NULL	NULL	0000-00-00 00:00:00	Lookup	FailReason	Plugin	NULL	72	25
+240	Field_Map	NULL	NULL	0000-00-00 00:00:00	DB Management	Field_Map	Core	NULL	10	24
+244	Goal	NULL	NULL	0000-00-00 00:00:00	General	Goal	Core	NULL	12	24
+246	LibraryApplication	NULL	NULL	0000-00-00 00:00:00	General	Association	Plugin	NULL	5018	25
+247	LibraryGoal	NULL	NULL	0000-00-00 00:00:00	General	Target Goals	Plugin	NULL	5295	25
+250	Object_Class	NULL	NULL	0000-00-00 00:00:00	Lookup	Object_Class	Core	NULL	8	24
+259	Source_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Source_Attribute	Plugin	NULL	2877	25
+263	View	NULL	NULL	0000-00-00 00:00:00	DB Management	View	Core	NULL	0	24
+264	ViewInput	NULL	NULL	0000-00-00 00:00:00	DB Management	ViewInput	Core	NULL	0	24
+265	ViewJoin	NULL	NULL	0000-00-00 00:00:00	General	ViewJoin	Core	NULL	0	24
+266	ViewOutput	NULL	NULL	0000-00-00 00:00:00	DB Management	ViewOutput	Core	NULL	0	24
+271	Branch	NULL	NULL	0000-00-00 00:00:00	General	Branch	Plugin	NULL	234	25
+286	Tissue_Source	NULL	NULL	0000-00-00 00:00:00	General	Tissue_Source	Plugin	NULL	7	25
+292	Branch_Condition	NULL	NULL	0000-00-00 00:00:00	General	Branch_Condition	Plugin	NULL	244	25
+293	Defined_Plate_Set	NULL	NULL	0000-00-00 00:00:00	Lab Object	Defined_Plate_Set	Plugin	NULL	42145	25
+295	Label_Format	NULL	NULL	0000-00-00 00:00:00	Lookup	Label_Format	Core	NULL	5	24
+296	Maintenance_Process_Type	NULL	NULL	0000-00-00 00:00:00	General	Maintenance_Process_Type	Plugin	NULL	12	25
+297	Pipeline_Step	NULL	NULL	0000-00-00 00:00:00	General	Pipeline_Step	Plugin	NULL	233	25
+298	Pipeline_StepRelationship	NULL	NULL	0000-00-00 00:00:00	Manual Join	Pipeline_StepRelationship	Plugin	NULL	164	25
+302	Work_Request_Type	NULL	NULL	0000-00-00 00:00:00	DB Management	Work_Request_Type	Core	NULL	20	24
+303	Pipeline_Group	NULL	NULL	0000-00-00 00:00:00	Join	Pipeline_Group	Plugin	NULL	2	25
+307	Library_Attribute	NULL	NULL	0000-00-00 00:00:00	Object Detail	Library_Attribute	Plugin	NULL	2754	25
+308	Maintenance_Schedule	Choose either Equipment_ID OR Equipment_Type (not both)	NULL	0000-00-00 00:00:00	General	Maintenance_Schedule	Plugin	NULL	18	25
+309	Plate_Schedule	NULL	NULL	0000-00-00 00:00:00	General	Add Additional Plate Schedule	Plugin	NULL	65834	25
+310	Report	NULL	NULL	0000-00-00 00:00:00	General	Report	Core	NULL	1	24
+318	Equipment_Category	NULL	NULL	0000-00-00 00:00:00	Lookup	Equipment_Category	Core	NULL	128	24
+319	Patch	NULL	NULL	0000-00-00 00:00:00	NULL	DB_Patch	Core	NULL	20	24
+320	Package	NULL	NULL	0000-00-00 00:00:00	NULL	Addon_Package	Core	NULL	29	24
+324	Contamination	NULL	NULL	0000-00-00 00:00:00	NULL	Contamination	Plugin	NULL	1	25
+331	Sample_Type	NULL	NULL	0000-00-00 00:00:00	NULL	Sample_Type	Core	NULL	16	24
+332	Site	NULL	NULL	0000-00-00 00:00:00	NULL	Site	Core	NULL	4	24
+333	Stock_Catalog	NULL	NULL	0000-00-00 00:00:00	NULL	Stock_Catalog	Core	NULL	3538	24
+334	Table_Type	NULL	NULL	0000-00-00 00:00:00	NULL	Table_Type	Core	NULL	259	24
+348	Subscriber	NULL	NULL	0000-00-00 00:00:00	NULL	Subscriber	NULL	NULL	0	24
+349	Subscription	NULL	NULL	0000-00-00 00:00:00	NULL	Subscription	NULL	NULL	0	24
+350	Subscription_Event	NULL	NULL	0000-00-00 00:00:00	NULL	Subscription_Event	NULL	NULL	0	24
+351	Material_Transfer	NULL	NULL	0000-00-00 00:00:00	NULL	Material_Transfer	NULL	NULL	0	24
+352	Sample_Format	NULL	NULL	0000-00-00 00:00:00	NULL	Sample_Format	NULL	NULL	0	24
+353	Submission	NULL	NULL	0000-00-00 00:00:00	NULL	Submission	NULL	NULL	0	24
+354	SubmissionVolume	NULL	NULL	0000-00-00 00:00:00	NULL	SubmissionVolume	NULL	NULL	0	24
+355	Submission_Alias	NULL	NULL	0000-00-00 00:00:00	NULL	Submission_Alias	NULL	NULL	0	24
+356	Submission_Detail	NULL	NULL	0000-00-00 00:00:00	NULL	Submission_Detail	NULL	NULL	0	24
+357	Submission_Table_Link	NULL	NULL	0000-00-00 00:00:00	NULL	Submission_Table_Link	NULL	NULL	0	24
+358	Submission_Volume	NULL	NULL	0000-00-00 00:00:00	NULL	Submission_Volume	NULL	NULL	0	24
+359	Template	NULL	NULL	0000-00-00 00:00:00	NULL	Template	NULL	NULL	0	24
+360	Template_Assignment	NULL	NULL	0000-00-00 00:00:00	NULL	Template_Assignment	NULL	NULL	0	24
+361	Template_Field	NULL	NULL	0000-00-00 00:00:00	NULL	Template_Field	NULL	NULL	0	24
+362	Trace_Submission	NULL	NULL	0000-00-00 00:00:00	NULL	Trace_Submission	NULL	NULL	0	24
+363	Funding_Applicant	NULL	NULL	0000-00-00 00:00:00	NULL	Funding_Applicant	NULL	NULL	0	24
+364	Funding_Distribution	NULL	NULL	0000-00-00 00:00:00	NULL	Funding_Distribution	NULL	NULL	0	24
+365	Funding_Segment	NULL	NULL	0000-00-00 00:00:00	NULL	Funding_Segment	NULL	NULL	0	24
+366	GrantApplication	NULL	NULL	0000-00-00 00:00:00	NULL	GrantApplication	NULL	NULL	0	24
+367	GrantDistribution	NULL	NULL	0000-00-00 00:00:00	NULL	GrantDistribution	NULL	NULL	0	24
+368	Matched_Funding	NULL	NULL	0000-00-00 00:00:00	NULL	Matched_Funding	NULL	NULL	0	24
+369	Queue	NULL	NULL	0000-00-00 00:00:00	NULL	Queue	NULL	NULL	0	24
+370	Equipment_Attribute	NULL	NULL	0000-00-00 00:00:00	NULL	Equipment_Attribute	NULL	NULL	0	24
+371	Study_Attribute	NULL	NULL	0000-00-00 00:00:00	NULL	Study_Attribute	NULL	NULL	0	24
+372	QC_Batch	NULL	NULL	0000-00-00 00:00:00	NULL	QC_Batch	NULL	NULL	0	24
+373	QC_Batch_Member	NULL	NULL	0000-00-00 00:00:00	NULL	QC_Batch_Member	NULL	NULL	0	24
+374	Shipment	NULL	NULL	0000-00-00 00:00:00	NULL	Shipment	NULL	NULL	0	24
+375	Funding_Attribute	NULL	NULL	0000-00-00 00:00:00	NULL	Funding_Attribute	NULL	NULL	0	24
+376	Shipped_Object	NULL	NULL	0000-00-00 00:00:00	NULL	Shipped_Object	NULL	NULL	0	24
+377	DB_Trigger	NULL	NULL	0000-00-00 00:00:00	NULL	DB_Trigger	NULL	NULL	0	24
+378	Replacement_Source_Reason	NULL	NULL	0000-00-00 00:00:00	NULL	Replacement_Source_Reason	NULL	NULL	0	24
+379	Replacement_Source_Request	NULL	NULL	0000-00-00 00:00:00	NULL	Replacement_Source_Request	NULL	NULL	0	24
+380	Storage_Medium	NULL	NULL	0000-00-00 00:00:00	NULL	Storage_Medium	NULL	NULL	0	24
+381	Process_Deviation	NULL	NULL	0000-00-00 00:00:00	NULL	Process_Deviation	NULL	NULL	0	24
+382	Strain	NULL	NULL	0000-00-00 00:00:00	NULL	Strain	NULL	NULL	0	24
+383	RNA_Strategy	NULL	NULL	0000-00-00 00:00:00	NULL	RNA_Strategy	NULL	NULL	0	24
+384	Invoice	NULL	NULL	0000-00-00 00:00:00	NULL	Invoice	NULL	NULL	0	24
+387	Invoice_Analysis_Step	NULL	NULL	0000-00-00 00:00:00	NULL	Invoice_Analysis_Step	NULL	NULL	0	24
+388	Invoice_Protocol	NULL	NULL	0000-00-00 00:00:00	NULL	Invoice_Protocol	NULL	NULL	0	24
+389	Invoice_Run_Type	NULL	NULL	0000-00-00 00:00:00	NULL	Invoice_Run_Type	NULL	NULL	0	24
+390	Invoiceable_Analysis	NULL	NULL	0000-00-00 00:00:00	NULL	Invoiceable_Analysis	NULL	NULL	0	24
+391	Invoiceable_Prep	NULL	NULL	0000-00-00 00:00:00	NULL	Invoiceable_Prep	NULL	NULL	0	24
+392	Invoiceable_Run	NULL	NULL	0000-00-00 00:00:00	NULL	Invoiceable_Run	NULL	NULL	0	24

@@ -1,0 +1,30 @@
+<h1>What is a Plate?</H1>
+A Plate generally consists of 96 or 384 distinct wells, all of which contain samples from a common library.  
+ 
+<h2>What sort of information do we store for a Plate?</H2>
+Typically, each Plate will have a:
+<UL>
+<LI>Format - a brief text name used to identify the type of Plate
+<LI>Size - currently limited to 96-well and 384-well plates
+<LI>Library - a reference to the common Library 
+<LI>Creation Date - when the plate was made
+<LI>Employee - who initially generated the plate
+<LI>Status - Plates may be defined as 'Production' or 'Test' plates
+</UL>
+<BR><A Href=$homelink&Table+Info=Plate>View Plate Fields</A>
+
+<h2>How does a Plate relate to other 'Tables' ?</h2>
+<A Href='$homelink&Tree=1&Table_Name=Plate'>View Relationships</A>
+
+<h2>How do I define a Plate</H2>
+A Plate can be easily defined by first clicking on the 'Plates' icon
+after logging into the main page.  From here, after choosing the library from the list at the right, and 'Original' from the radio buttons to the left, one simply presses the 'Create New Plate' button.  All of the above information will automatically be updated and the New Plate given a sequential 'Number' which is incremented each time a new original plate is generated for the same library.
+
+<h2>How can I view information on a Plate?</H2>
+By simply scanning the plate into the home page, (or by typing in the barcode - 'pla' followed by the plate 'ID'),
+you will be shown basic information on the plate.  For more information, simply click on the hyperlink on the plate name, and you will be shown more details.
+
+<h2>How can I change information on a Plate?</H2>
+After viewing the information as described above for a Plate, there should be a button allowing the user to 'Edit' information on this plate.
+<P>
+<A Href='$homelink&Help_Image=Plate_form.png'>Plate Information Form</A>

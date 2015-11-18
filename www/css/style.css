@@ -1,0 +1,339 @@
+/* 
+ 
+   file: /site-style/gsc/xstyle.css
+    rev: 23 Oct 99
+  owner: M Krzywinski
+
+   desc: Genome Sequence Center Style Sheet 
+	 for Mac/X based browsers
+
+	 This is the site-wide style for the GSC for browsers used 
+	 from PCs. The style sheet for Mac and X browsers is xstyle.css. 
+	 The difference between these are the font sizes. Typically, 
+ 	 sizes need to be 2-3 points larger for Macs and X browsers.
+
+*/
+
+/* Default text properties */
+
+div,img,body,td,th,ul,li {
+	font-family      : "Trebuchet MS",Lucida,Arial,Helvetica;
+	font-size        : 13px;
+	font-style       : normal;
+	font-weight      : normal;
+}
+
+img.icon {
+	height: 36px;
+	width: 36px
+}
+
+body,p {
+	font-family      : "Trebuchet MS",Lucida,Arial,Helvetica;
+	font-size        : 13px;
+	font-style       : normal;
+	font-weight      : normal;
+	background-color : #fff;
+	color            : #000;
+        padding: 0;
+        margin: 0, auto;
+	margin-left: 25px;
+}
+
+pre {
+	font-size	: 13px;
+}
+
+.headtable {
+	font-family      : "Trebuchet MS",Arial,Lucida,Helvetica;
+	font-size        : 13px;
+	font-style       : normal;
+	font-weight      : normal;
+	color            : #000;
+}
+
+/* Common text markups */
+
+b   { font-weight : bold;    }
+i   { font-family : Times ; font-style  : italic;  }
+pre { font-family : Courier; } /* for computer commands and variables  */
+/* tt  {       color : #f66;    } useful for comment text inside <pre> */
+
+/* Form elements */
+
+select {	
+	font-size : 10px;
+	background-color : white;
+	color       : #000;
+}
+
+input {
+	font-size : 12px;
+	background-color : white;
+	color       : #000;
+}
+
+/* Classes */
+
+.comp {
+
+	font-family : Courier;
+	font-size   : 12px;
+	font-style  : normal;
+	font-weight : normal;
+	color       : #000;
+
+}
+
+.indent { margin-left : 0.5in; }
+.indentmed { margin-left : 0.2in; }
+.indentsmall { margin-left : 0.1in; }
+
+.tablabel {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 5px;
+}
+
+/* Headings */
+
+h1 {
+	font-family : "Trebuchet MS",Lucida,Arial,Clean,Helvetica,sans-serif;
+	font-size   : 17px;
+	font-style  : normal;
+	font-weight : normal;	
+	color       : #a33;
+}
+
+h2 {
+	font-family : "Trebuchet MS",Lucida,Arial,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 15px;
+	font-style  : normal;
+	font-weight : bold;	
+	color       : #339;
+}
+
+h3 {
+	font-family : "Trebuchet MS",Lucida,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 13px;
+	font-style  : normal;
+	font-weight : bold;
+	margin-left : 0.1in;
+	color       : #339;
+}
+
+h4 {
+	font-family : "Trebuchet MS",Lucida,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 12px;
+	font-style  : normal;
+	font-weight : normal;	
+	margin-left : 0.2in;
+	color       : #339;
+}
+
+/* Absolute sizing */
+
+.vlarge  {  font-size   : 17px;  }
+.large   {  font-size   : 15px;  }
+.small   {  font-size   : 11px;  }
+.vsmall  {  font-size   : 9px;   }
+
+/* Relative sizing */
+
+.vlarger  {  font-size   : 140%;  }
+.larger   {  font-size   : 120%;  }
+.smaller  {  font-size   :  80%;  }
+.vsmaller {  font-size   :  60%;  }
+
+
+a.dlink {
+      z-index:24;
+//      position: relative;  /* removed line to avoid layer titles appearing through dropdown menus */
+       cursor: pointer; 
+}
+
+a.dlink:hover {
+      z-index:25;
+      text-decoration: underline;
+}
+
+a.light:link {
+    color           : #fff;
+}
+
+a.light:visited {
+    color           : #ccf;
+}
+
+
+a:link {
+    color           : #03f;
+}
+
+a:visited:link {
+        color           : #039;
+}
+
+@media screen {  /* hide from IE3 */
+       a:hover { color: #F00}
+}
+
+span.normal {
+  position:relative;
+}
+
+.trigger {
+      position:relative;
+      cursor:pointer; 
+/*      cursor:hand;  */
+}
+
+span.trigger:hover {
+      font-weight:bold;
+}
+
+.branch{
+      display: none;
+      margin-left: 16px;
+      z-index:50;
+}
+
+
+input.Action { background-color: #FF7F7F;}
+input.Action:hover { background-color: #F00;}
+
+input.Std { background-color: #A0FFA1;}
+input.Std:hover { background-color: #6AFF6C;}
+
+input.Search { background-color: #F7FF66;}
+input.Search:hover { background-color: #FFF306;}
+
+
+input.MiniButton {
+	width: 20px;
+	height:20px;
+	font-size:10;
+	padding-left:0.5;
+	padding-top:0.5;
+}
+
+
+/* Tabbed browsing */
+
+#tablist li{
+display: list-item;
+cursor: pointer;
+padding: .6px 1em;
+margin-right: 10px;
+font-size: medium;
+color: blue;
+background: #ccccff;
+}
+
+#tablist li.current{
+background: darkblue;
+text-decoration: underline;
+color: white;
+}
+
+.tabcontent{
+display:none;
+}
+
+.pagecontent{
+display:none;
+}
+
+/* End of Tab browsing css */
+
+
+span.HiddenData{
+    display: none;
+    visibility: hidden;
+}
+
+validator , span.HiddenData{
+    display: none;
+    visibility: hidden;
+}
+
+ul.tip {
+    list-style-type: none;
+    padding: 5;
+    font-size: 10px;
+}
+
+.navtext {
+   font-size:8pt;
+   border-width:1px;
+   border-style:solid;
+   border-color:#000;
+   padding: .5em;
+   background-color:#FFC;
+   color:black;
+   visibility:hidden;
+   position:absolute;
+   top:0px;
+   left:-400px;
+   z-index:100;
+}
+
+div.autocomplete {
+  position:absolute;
+  width:250px;
+  background-color:white;
+  border:1px solid #888;
+  margin:0px;
+  padding:0px;
+}
+div.autocomplete ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+}
+div.autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  height:32px;
+  cursor:pointer;
+}
+div.autocomplete ul li.selected {
+    background-color: #ffb;
+}
+
+/* Start view table with scrollable body*/
+.view_scroll_outer{
+padding-right: 10px;
+}
+.view_scroll_inner tbody td{ 
+border-right: 1px solid white;
+}
+
+.view_scroll_outer thead th, .view_scroll_outer .scrollTableHeader th{ 
+border-right: 1px solid #99ccff;
+}
+
+.view_scroll_outer tfoot td, .view_scroll_outer .scrollTableFooter td{ 
+border-right: 1px solid #f99;
+}
+
+/* End table with scrollable body*/
+
+.main p{
+ margin: 20px;
+}
+.main .left{
+ width: 50%;
+ float: left;
+}
+
+.main .right{
+ width: 50%;
+ float: right;
+}
+
+.main .clear{
+ clear: both;
+}
+

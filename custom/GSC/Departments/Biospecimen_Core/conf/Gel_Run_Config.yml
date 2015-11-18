@@ -1,0 +1,6 @@
+---
+attribute_copy_over:
+  Submit Analysis Data:
+    - Lane_Quality
+sample_attribute:
+  Lane_Quality: DNA_Quality_Check

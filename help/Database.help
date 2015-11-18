@@ -1,0 +1,88 @@
+<h1>Standard Database Structure</h1>
+<P>
+The Data itself is maintained in a mySQL database.<BR>
+The Automated Laboratory Data Entry 'N Tracking Environment consists of a comprehensive interface with this database which enables people to interact with the database in real time for the purposes of updating information in the database, or viewing existing information.
+<P>
+<H2>Input to the Database</H2>
+<P>
+The Data which is input into the database may be entered in a variety of forms.
+<UL>
+<LI>Using a desktop computer<P>
+Via a standard web page, users can enter data into the database through a web-site designed to enable standard procedures to be carried out easily.
+<P>
+Data that is typically entered this way includes all information related to:
+<UL>
+<LI>Defining New Projects/Libraries/Vectors/Grants etc.
+<LI>Creating New Plates/Tubes etc.
+<LI>Receiving New Equipment/Reagents etc. 
+<LI>Editing of various records within the database
+</UL>
+<P>
+
+<LI>Using a handheld wireless barcode scanner<P>
+During standard lab processes, it is often more convenient to simply scan particular items to indicate their usage rather than record the details pedantically at some other time.  This provides real time updating of the database, and can be used to ensure that mistakes are not made during actual lab routine by allowing real-time error-checking and input validation procedures. <P>
+Data entered using scanners in the lab typically includes:
+<UL>
+<LI>Mixing of Reagents/Solutions
+<LI>Changing Matrix/Buffer solutions for Sequencers
+<LI>Performing detailed Lab Protocols <P>
+eg:
+<UL>
+ <LI>Transferring Plates
+ <LI>Applying solutions to Plates
+ <LI>Using equipment on Plates (eg. Centrifuges, shakers etc)
+ <LI>Adding comments to lab preparation steps
+ <LI>Marking individual or groups of plates as failing during lab protocol.
+</UL>
+<LI>Moving Plates/Reagents/Tubes within the lab<BR>
+(Tracking their location)
+<LI>Generating configuration files for Sequencers.
+</UL>
+
+<P>
+<LI>Automatically running processes<P>
+Some data is entered into the database by scripts which run periodically including:
+<UL>
+<LI>Sequence Information<BR>
+Data from Sequence runs is parsed and stored in the database 
+</UL>
+</UL>
+<H2>What is Stored</H2>
+<P>
+The database itself consists of a number of tables which store information in a structured form.
+The table themselves generally correspond to actual objects or entities in the lab such as:
+<UL>
+<LI>Projects
+<LI>Libraries
+<LI>Vectors
+<LI>Plates
+<LI>Solutions or Reagents
+<LI>Equipment
+<LI>Employees
+<LI>Runs
+<LI>Organizations
+<LI>Clones
+<LI>Reads
+</UL>
+<P>
+In Addition some other tables record details of procedures that have been carried out within the lab such as:
+<UL>
+<LI>Preparation steps (applied to groups of plates)
+<LI>Maintenance procedures (carried out on various equipment)
+</UL>
+
+<P>In many cases, this information is further distributed between 'Tables' to maximize efficiency in storing information.  Users themselves, however, rarely need to deal with the tables themselves, as the code is designed to interpret the information within them automatically.  Information is typically tied through hyperlinks between associated entities, all of which is handled by an underlying script which drives the web-page used to interact with the database.
+
+<H2>What does the code accessing the database look like ?</H2>
+<P>
+The interface to the database is written in perl and includes over 100,000 lines of code which interprets information in the database, providing users with a means to navigate within it.
+<P>
+Also within the code there are numerous integrity checking procedures, error checking procedures, and functions which facilitate the administration of standard laboratory procedures.  
+<P>
+In addition, a whole suite of visualization tools which are able to effectively summarize various information from the database in a form that is easy to use and provides a quick way of monitoring numerous aspects of the data and the lab processes that are going on during the production of the data.
+
+
+
+
+
+

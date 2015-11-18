@@ -1,0 +1,83 @@
+<h1>What is a Library ?</H1>
+A Library is a source of DNA that comes from a common batch (usually
+glycerol stock) that may have been generated internally or supplied by an
+outside collaborator.  <BR>From each library a number of plates will
+typically be made up each of which should be associated with ONE and ONLY
+ONE Library.
+
+<h2>What sort of information do we keep on Libraries</H2>
+There is quite a bit of information that we would like to store for each
+library, so it would be helpful if you were able to acquire this information
+before attempting to create it.  This will remove the necessity of returning
+at a later date and adding the information (which can quite easily be
+neglected).  In a pinch however, it is possible to create a library with a
+minimum of information, if there is a need to generate Plates/Sample Sheets
+before further information is available.
+<P>
+<p>The following information is generally required for the library <Font
+color=red>(Mandatory Fields shown in red)</Font>: 
+<p>
+    <Ul><LI><B><Font color=red>Name</Font></B> - This MUST be 5
+alpha-numeric characters.  Though it is nice to keep this name somewhat
+meaningful, this is an Identification field, and is not meant to act as a
+human-readable reference to a library.  In theory, this could be simply a 5
+digit number which, though meaningless to a user, provides the database with
+an index to this particular library.  Often the format will be simply two
+letters followed by an incrementing number.  (such as 'CN001','CN002' for
+the first two Cryptococus Neoformans libraries), though if it is useful, the
+positions of numbers and letters is flexible (ie. spgpW or P2001)
+    <LI><B><Font color=red>FullName</Font></B> -This is usually set to a
+brief, but more meaningful name for the library
+    <LI><B><Font color=red>Type</Font></B> -This is usually set to indicate
+whether the library is an EST,cDNA or SAGE Library
+    <LI><B><Font color=red>Vector</Font></B> - This indicates the vector
+that is used.  If this vector is already in the database, no further info is
+required.  However, there is information that is also required for the
+Vector if it a new one.  If no Vector exists for a given library, use the
+Vector Name: 'Test'
+    <LI><B>Organism</B> - This indicates the organism from which the library
+is created
+    <LI><B>Source</B> - This indicates where the library originated (eg Jim
+Kronstad, UBC)
+    <LI><B>Source Name</B> - This is the name given the library by the
+original source listed above
+    <LI><B>5Prime_Restriction_Site</B> - This indicates the name of the
+Restriction Enzyme if appropriate
+    <LI><B>3Prime_Restriction_Site</B> - This indicates the name of the
+Restriction Enzyme if appropriate in the 3' direction
+    <LI><B>Host</B> - This indicates the Host Cells (eg. SOLR or DH20B)
+    <LI><B>Sex</B>
+<LI><B>Strain</B>
+      <LI><B>Tissue</B>
+    <LI><B>Description</B> - a more lengthy description of
+what the library is composed of
+</UL>
+    <HR>
+    
+<BR><A Href=$homelink&Table+Info=Library>Library Fields</A>
+
+<h2>How do I define a Library</H2>
+A Library can be easily defined by first clicking on the 'Libraries' icon
+after logging into the main page.  From here, by clicking on 'Libraries' at
+the top of the page, one is given a list of current libraries and given the
+option to add a new Library.<BR>
+You are then given a form to fill out which will include the information
+indicated above.  Generally this should be filled in as completely as
+possible.  Though it is sometimes easier to leave information blank at first
+with the intention of filling it in at a later date, this is discouraged as
+this later step is all too often neglected, and the database remains in part
+incomplete.
+<Img Src='/Help_Image_dir/Library_form.png'>
+
+<h2>How can I view information on a Library?</H2>
+By simply clicking on the 'Library' icon at the top of the page, you will be
+given a choice to view various items including Libraries at the top of the
+page.<BR>Clicking on the 'Libraries' hyperlink will display a list of current
+libraries.  (You may from here continue to add, edit or delete projects from
+this list).
+
+<h2>How can I change information on a Library?</H2>
+By viewing the libraries as indicated above, you will be able to find records
+that you would like to update.  From this page, you may then simply click on
+the 'Edit Library' button to search and edit Library information as required.
+

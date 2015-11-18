@@ -1,0 +1,124 @@
+<h1>Navigating</H1>
+<h2>Icons at the top of the page</H2>
+The Icons provide quick links to common pages such as:<p>
+   
+      <Table cellpadding = 10><TR><TD width=50>
+         <A Href=$homelink><Img src='$Help_Image_dir/Home.png' alt = 'Home'
+align = top border=0 height=32 width=32></A><img src='$Image_dir/Space.png'
+width=10 height=1>
+   </TD><TD><B>Home</B></TD><TD>This returns the user to the Home page
+   
+      </TD></TR><TR><TD>
+         <A Href='$homelink&Bugs=1'><Img src='$Help_Image_dir/bugs.png' alt =
+'Bugs/Suggestions' align = top border=0 height=32 width=32></A><img
+src='$Image_dir/Space.png' width=10 height=1>
+   </TD><TD>
+      <B>Bugs/Suggestions</b></TD><TD>This takes the user to a page where
+they can enter suggestions or bug comments.  Please Use!!!
+
+   </TD></TR><TR><TD>
+      <A Href=$homelink&Change+User=1><Img
+src='$Help_Image_dir/enter2.png' alt = 'Re-Login' align=top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+   </TD><TD><B>Re-Login</B></TD><TD>Returns user to login page where they
+can redefine the User/Database/Project or turn off/on the top & bottom
+banners (freeing up at the same time some space on the sides of the screen)
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Last+24+Hours=1><Img
+src='$Help_Image_dir/Hourglass.png' alt = 'Last 24 Hours' align = top
+border=0 height=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Last 24 Hours</B></TD><TD>This displays the current status
+(including Avg Read Length, Phred 20 values, Good Wells, # of Mirrored
+Files, Machine) for Sequences Requested (or Run) in the last 24 hours.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Sample+Sheets=1><Img
+src='$Help_Image_dir/Ssheet.png' alt = 'Sample Sheets' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Sample Sheets</B></TD><TD>This directs the user to the
+Sample Sheet main page where they can generate a sample sheet, or delete a
+recently made sample sheet
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Solution=1><Img
+src='$Help_Image_dir/bottle.png' alt = 'Reagents/Chemicals/Solutions' align =
+top border=0 height=32 width=32></A><img src='$Image_dir/Space.png' width=10
+height=1>
+    </TD><TD><B>Reagents/Chemicals/Solutions</B></TD><TD>This sends the
+user to the Reagent/Chemical/Solution home page where they can
+Create/List/Edit/Delete Reagents (including Primers or 'Vector/Primer'
+direction information)
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Equipment=1><Img
+src='$Help_Image_dir/equipment.png' alt = 'Equipment' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Equipment</B></TD><TD>This sends the user to the Equipment
+home page where they can List/Edit/Add Equipment or Maintenance procedures
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Plate=1><Img
+src='$Help_Image_dir/Plate.png' alt = 'Plates' align = top border=0
+height=32 width=45></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Plates</B></TD><TD>This sends the user to the Plates home
+page where they can Create/Edit/Delete Plates (& New Libraries if needed).
+In addition, they can find plates by different search conditions and batch
+move the plates to another rack if needed. Re-Arrayed Plates can also be 
+set up or viewed from this page.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Sequencing+Status=1><Img
+src='$Help_Image_dir/data.png' alt = 'Sequencing Summary' align = top
+border=0 height=32 width=32></A><img src='$Image_dir/Space.png' width=10
+height=1>
+    </TD><TD><B>Summary</B></TD><TD>This sends user to the Summary Page
+which can list Read Summaries or Prep Status for Libraries or Projects
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Library=1><Img
+src='$Help_Image_dir/Library.png' alt = 'Libraries' align = top border=0
+height=36 width=36></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Libraries</B></TD><TD>This directs the user to the Library
+home page where they can Create/Edit/View Libraries
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Contact=1><Img
+src='$Help_Image_dir/contacts.gif' alt = 'Contacts' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Contacts</B></TD><TD>This sends the user to the Contacts
+home page where they can View/Edit/Add Contact or Organization information
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Admin+Page=1><Img
+src='$Help_Image_dir/admin.png' alt = 'Admin' align = top border=0
+height=50 width=50></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Admin</B></TD><TD>This sends lab administrators to the 'Admin' page,
+where they can adjust defaults, add new Projects, edit Standard Solution chemistries etc.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Page+Name=Main+Orders&Last+Page=Orders><Img
+src='$Help_Image_dir/box.png' alt = 'Orders' align = top border=0
+height=40 width=40></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Orders</B></TD><TD>This sends the user to the Orders database
+if this application is being used.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Help=1><Img
+src='$Help_Image_dir/Help-button.png' alt = 'Help' align = top
+border=0></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Help</B></TD><TD>This allows users to access on-line help
+for the barcode page
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Help=1&Revisions=1><Img src='$Help_Image_dir/new.png' 
+alt = 'New Changes' align = top border=0
+height=32 width=70></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>New Changes</B></TD><TD>This describes briefly the latest
+changes that have been made to the barcode pages as new versions are
+released.  An archive is also available at the bottom of the page linking to
+a history of changes made to each release.
+    </TD></TR></Table>
+    
+        <HR>
+	

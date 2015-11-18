@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/98943/alDente/trunk/install/patches/Core/4.0
+END
+Error_Check_Email.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/Error_Check_Email.pat
+END
+GSC_to_Model.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/96683/alDente/trunk/install/patches/Core/4.0/GSC_to_Model.pat
+END
+protocol_update_date.pat
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/protocol_update_date.pat
+END
+Analysis_Software_Version.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/97643/alDente/trunk/install/patches/Core/4.0/Analysis_Software_Version.pat
+END
+primer_plate_canceled_status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/primer_plate_canceled_status.pat
+END
+Create_Delete_Modify_Invoice_Analysis_Related_Tables.pat
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/95440/alDente/trunk/install/patches/Core/4.0/Create_Delete_Modify_Invoice_Analysis_Related_Tables.pat
+END
+db_access.pat
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/93849/alDente/trunk/install/patches/Core/4.0/db_access.pat
+END
+add_attribute_tag.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/add_attribute_tag.pat
+END
+General_3_17.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/General_3_17.pat
+END
+goal_unique_name.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/98943/alDente/trunk/install/patches/Core/4.0/goal_unique_name.pat
+END
+Data_File_Status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/95769/alDente/trunk/install/patches/Core/4.0/Data_File_Status.pat
+END
+factory_barcode_3_17.pat
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/factory_barcode_3_17.pat
+END
+add_IWR_FKApplicable_Funding__ID_DB_Trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/add_IWR_FKApplicable_Funding__ID_DB_Trigger.pat
+END
+add_patch_installer.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/add_patch_installer.pat
+END
+submission_tracking_improvements.pat
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/94293/alDente/trunk/install/patches/Core/4.0/submission_tracking_improvements.pat
+END
+move_FKApplicable_Funding__ID_field.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/93834/alDente/trunk/install/patches/Core/4.0/move_FKApplicable_Funding__ID_field.pat
+END

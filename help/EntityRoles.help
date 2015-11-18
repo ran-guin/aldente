@@ -1,0 +1,65 @@
+<H2>Role of Entities within alDente</H2>
+<P>
+<UL>
+
+<h2>Users</H2>
+
+<LI>Lab Technician:
+<P>The Lab Technician is the primary user of the system.  They regularly interface with the system via a wireless barcode scanner in which they record all of the actions performed in the lab including:
+<UL class=small>
+<LI>Following standard Laboratory Protocols for groups of Plates
+<LI>Generating configuration files (eg. 'Samplesheets for Sequencers')
+<LI>Mixing Solutions  
+<LI>Moving / Throwing away Reagents or Plates
+</UL>
+<P>
+<LI>Lab Administrators:
+<P>Lab Administrators interact at a more detailed level with the system, usually using a workstation to retrieve various information from the database including: 
+<UL class=small>
+<LI>Monitoring day-to-day data and data quality
+<LI>Monitoring scheduling information (status of various samples in the pipeline)
+<LI>Defining new Projects
+<LI>Accepting submissions for new Libraries and entering them into the database
+<LI>Troubleshooting system for problems / poor quality data etc.
+<LI>Defining Standard Protocols
+<LI>Defining Standard Solution formulas
+</UL>
+<P>
+<LI>Receiving:
+<P>The Receiving Department is primarily responsible for maintaining stock.  They initially enter stock into the database when it is received, and may monitor stock levels on a day-to-day basis. 
+
+<LI>Administration:
+<P>General administrative access to the database requires access to various report and summary information.
+<P>
+<h2>Software</h2>
+
+<LI>mySQL backup database:
+<P>A backup database is maintained to enable external users (collaborators and/or other bioinformatics staff) to access current data while remaining isolated from the production database for reasons of security and performance.
+
+<LI>Mirrored Data:
+<P>Originally mirrored data will be stored temporarily in a directory where it will be examined periodically and moved to an appropriate archive directory once it is identified.
+
+<LI>Archived Data:
+<P>When data is identified it will be moved into an appropriate archive directory where formatted links will be created to specific subdirectories to enable easier identification and access.  (for example, a data directory named : 'Run_D3700_2_345/' may be linked to by a directory named 'CN0011a.B7', allowing faster & easier access to all 'CN001' Library data).
+<P>
+<h2>Hardware</H2>
+
+<LI>Barcode Printer:
+<P>The barcode printer is used to generate barcode labels for various objects in the lab (such as Plates, Reagents, Equipment).  It may also be used periodically to print out a summary of standard solution mixtures used.
+
+<LI>Web Server:
+<P>There is a dedicated web server to handle the interface with the alDente system via various CGI files.  This is provides the primary interface to the data.
+
+<LI>Hub:
+<P>There is a wireless hub within the lab that facilitates the use of wireless barcode scanners in the laboratory.  There should be more than one hub within the lab to maintain redundancy if a single hub is down at any given time.
+
+<LI>Barcode Scanner:
+<P>The barcode scanner is a small hand-held device that runs a web browser on a small screen.  It is internet connected and set up to convert standard barcodes into text when the cursor is on a form textfield.
+
+<LI>Workstation:
+<P>Aside from the lab technicians, most users will interact with the system using a standard workstation.  This enables a much larger screen on which to provide visuals, and enables easier input via a keyboard.
+ 
+<LI>Data Acquisition Equipment:
+<P>This equipment is generally controlled by a local computer, but will contain data that is to be used by the system for downstream analysis.  Generally this data will be mirrored onto the network.
+
+ </UL>

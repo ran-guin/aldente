@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/108238/alDente/trunk/lib/perl/Core/RGTools
+END
+Directory.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/102360/alDente/trunk/lib/perl/Core/RGTools/Directory.pm
+END
+Object.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/98084/alDente/trunk/lib/perl/Core/RGTools/Object.pm
+END
+RGWeb.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108231/alDente/trunk/lib/perl/Core/RGTools/RGWeb.pm
+END
+String.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/87254/alDente/trunk/lib/perl/Core/RGTools/String.pm
+END
+GGraph.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/77214/alDente/trunk/lib/perl/Core/RGTools/GGraph.pm
+END
+Code.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/85926/alDente/trunk/lib/perl/Core/RGTools/Code.pm
+END
+Base_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/108232/alDente/trunk/lib/perl/Core/RGTools/Base_App.pm
+END
+HTML_Table.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107550/alDente/trunk/lib/perl/Core/RGTools/HTML_Table.pm
+END
+Read.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Core/RGTools/Read.pm
+END
+Unit_Test.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/85915/alDente/trunk/lib/perl/Core/RGTools/Unit_Test.pm
+END
+HTML_Parser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/108234/alDente/trunk/lib/perl/Core/RGTools/HTML_Parser.pm
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Core/RGTools/README
+END
+RGmath.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/99769/alDente/trunk/lib/perl/Core/RGTools/RGmath.pm
+END
+Graphs.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Core/RGTools/Graphs.pm
+END
+Conversion.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107549/alDente/trunk/lib/perl/Core/RGTools/Conversion.pm
+END
+Process_Monitor.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/108238/alDente/trunk/lib/perl/Core/RGTools/Process_Monitor.pm
+END
+FTP.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/108233/alDente/trunk/lib/perl/Core/RGTools/FTP.pm
+END
+Table_Content_Parser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Core/RGTools/Table_Content_Parser.pm
+END
+Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/103556/alDente/trunk/lib/perl/Core/RGTools/Views.pm
+END
+Reads.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Core/RGTools/Reads.pm
+END
+Barcode.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/108237/alDente/trunk/lib/perl/Core/RGTools/Barcode.pm
+END
+RGIO.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/108236/alDente/trunk/lib/perl/Core/RGTools/RGIO.pm
+END
+Web_Form.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/80470/alDente/trunk/lib/perl/Core/RGTools/Web_Form.pm
+END
+Graph.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108235/alDente/trunk/lib/perl/Core/RGTools/Graph.pm
+END

@@ -1,0 +1,9 @@
+This directory includes modules specifically designed for use by the alDente LIMS.
+
+Modules within this directory also require those in the 'SDB' directory (also included in the package),
+and modules in the 'RGTools' directory (also included in the alDente package).
+
+Additional standard modules required include:
+
+GD::Graph
+

@@ -1,0 +1,2 @@
+Funding_ID	Funding_Status	Funding_Name	Funding_Conditions	Funding_Code	Funding_Description	Funding_Source	ApplicationDate	FKContact_Employee__ID	FKSource_Organization__ID	AppliedFor	Duration	Funding_Type	Currency	ExchangeRate	FK_Queue__ID
+1	Received	Default Funding		NULL		Internal	NULL	NULL	NULL	NULL	NULL	NULL	NULL	0	1

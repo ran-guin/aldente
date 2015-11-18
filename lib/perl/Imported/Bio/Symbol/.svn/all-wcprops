@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol
+END
+Symbol.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/Symbol.pm
+END
+AlphabetI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/AlphabetI.pm
+END
+SymbolI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/SymbolI.pm
+END
+Alphabet.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/Alphabet.pm
+END
+ProteinAlphabet.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/ProteinAlphabet.pm
+END
+DNAAlphabet.pm
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Symbol/DNAAlphabet.pm
+END

@@ -1,0 +1,117 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Transaction<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>With all tables in the LIMS (except Clone_Sequence, Cross_Match,
+Contaminant) converted from MyISAM to InnoDB, transaction is
+implemented starting in LIMS release 2.2.</li>
+  <li>The core of the transaction logic is implemented in the
+SDB::Transaction object, with transaction support also added to the
+following:</li>
+  <ul>
+    <li>SDB::DBIO object</li>
+    <li>SDB::DB_Object object<br>
+    </li>
+    <li>Functions that perform inserts, updates and deletes in
+SDB::GSDB module</li>
+    <li>Multipage Form (see <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_MultipageForm">Developer's
+Manual - Multipage Form</a> for more info)<br>
+    </li>
+  </ul>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>Core transaction logic - SDB::Transaction object:</li>
+  <ul>
+    <li>Constructor accepts a connected database handle.</li>
+    <li>When a transaction is started, it turns off AutoCommit,
+PrintError and turns on RaiseError.</li>
+    <li>When a transaction is finished, it either performs a commit()
+or rollback() of the transaction based on whether an error has occured
+during the transaction.&nbsp; Finally, it restores the original values
+of AutoCommit, PrintError and RaiseError.</li>
+    <li>User also has the ability to explicitly commit or rollback a
+transaction.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Transaction support for SDB::DBIO object:</li>
+  <ul>
+    <li>SDB::Transaction is a sub-object inside the DBIO object.&nbsp;
+Wrapped methods for methods of the Transaction object are implemented
+in DBIO itself, increasing the ease for users to work with transactions
+with DBIO.<br>
+    </li>
+  </ul>
+  <ul>
+    <li>All operations in DBIO can now be wrapped inside a single
+transaction by specifying the "-start_trans=&gt;1" parameter when
+calling the new() constructor or the connect() method, or calling the
+DBIO::start_trans() method explicitly.</li>
+    <li>The following methods, which either batch insert, update and
+delete records, are now automatically under transaction support.&nbsp;
+If a transaction was not started when the method is called, then the
+transaction will be finished at the end of the method.&nbsp; If a
+transaction was already started when the method is called, then the
+method will NOT finish the transaction - this basically allows
+operations inside the method to be combined with other database
+operations (whether those be inside or outside DBIO) in a single
+transaction.</li>
+    <ul>
+      <li>smart_append()</li>
+      <li>DB_delete()</li>
+    </ul>
+    <li>Example usage:&nbsp; The operations in the following 2
+smart_appends are done in a transaction.&nbsp; If any operations in any
+1 of the 2 smart_appends failed, then nothing will be updated to the
+database:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">my $Connection = DBIO-&gt;new();<br>$Connection-&gt;connect(-host=&gt;'lims-dbm',-dbase=&gt;'seqachan',-user=&gt;'username',-password=&gt;'password',<span
+ style="color: rgb(255, 0, 0);">-start_trans=&gt;1</span>);</pre>
+<pre style="margin-left: 80px;">my @fields = ('Plate.FK_Library__Name','Plate.Plate_Type','Library_Plate.Plate_Class');<br>my %values;<br>$values{1} = ['CN099','Library_Plate','Standard'];<br>$Connection-&gt;smart_append(-tables=&gt;'Plate,Library_Plate',-fields=&gt;\@fields,-values=&gt;\%values,-autoquote=&gt;1);</pre>
+<pre style="margin-left: 80px;">@fields = ('Sample.Sample_Name','Sample.Sample_Type','Clone_Sample.FK_Library__Name');<br>$values{1} = ['CN0991-A01','Clone','CN099'];<br>$values{2} = ['CN0991-A02','Clone','CN099'];<br>.<br>.<br>.<br>$values{96} = ['CN0991-H12','Clone','CN099'];<br>$Connection-&gt;smart_append(-tables=&gt;'Plate,Library_Plate',-fields=&gt;\@fields,-values=&gt;\%values,-autoquote=&gt;1);<br><br><span
+ style="color: rgb(255, 0, 0);">$Connection-&gt;finish_trans();</span><br>$Connection-&gt;disconnect();</pre>
+<ul>
+  <li>Transaction support for SDB::DB_Object object:</li>
+  <ul>
+    <li>Since DB_Object utilizes DBIO for its database operations, the
+insert(), update() and delete() methods are all under transaction
+support.&nbsp; Again, if a transaction also exists when these methods
+are called, then the methods will NOT finish the transaction.&nbsp; On
+the other hand, if no transaction exists when these methods are called,
+then at the end of the methods the transaction will be finished.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Transaction support for functions that perform inserts, updates
+and deletes in the SDB::GSDB module:</li>
+  <ul>
+    <li>The following methods are now under transaction support.&nbsp;
+To utilize transaction, simply pass in a SDB::Transaction object as
+either '-transaction=&gt;$transaction' or '-trans=&gt;$transaction"
+parameter:</li>
+    <ul>
+      <li>delete_records()</li>
+      <li>delete_record()</li>
+      <li>Table_append()</li>
+      <li>Table_append_array()</li>
+      <li>Table_update()</li>
+      <li>Table_update_array()</li>
+    </ul>
+    <li>Example usage:&nbsp; The following operations are wrapped in a
+single transaction:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">my $dbh = $Connection-&gt;connect(-host=&gt;'lims-dbm',-dbase=&gt;'seqachan',-user=&gt;'username',-password=&gt;'password');<br><span
+ style="color: rgb(255, 0, 0);">my $transaction = Transaction-&gt;new(-dbh=&gt;$dbh);<br>$transaction-&gt;start();</span><br><br>Table_append($dbh,'Enzyme','Enzyme_Name','A',-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br>Table_update($dbh,'Enzyme','Enzyme_Sequence','A2',"WHERE Enzyme_Name='A'",-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br>Table_append_array($dbh,'Enzyme',['Enzyme_Name'],['B'],-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br>Table_update_array($dbh,'Enzyme',['Enzyme_Sequence'],['B2'],"WHERE Enzyme_Name='B'",-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br>delete_record($dbh,'Enzyme','Enzyme_Name','A',-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br>delete_record($dbh,'Enzyme','Enzyme_name','B',-autoquote=&gt;1,<span
+ style="color: rgb(255, 0, 0);">-trans=&gt;$transaction</span>);<br><br
+ style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">$transaction-&gt;finish();</span><br>$Connection-&gt;disconnect();</pre>
+</span>

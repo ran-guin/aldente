@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO
+END
+ScalarArray.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/ScalarArray.pm
+END
+Scalar.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/Scalar.pm
+END
+Scalar.pm.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/Scalar.pm.html
+END
+Wrap.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/Wrap.pm
+END
+Lines.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/Lines.pm
+END
+InnerFile.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/InnerFile.pm
+END
+WrapTie.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/WrapTie.pm
+END
+AtomicFile.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/AtomicFile.pm
+END
+Stringy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/IO/Stringy.pm
+END

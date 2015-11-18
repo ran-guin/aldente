@@ -1,0 +1,7 @@
+Plugins/Illumina/t/Flowcell.t
+Plugins/Illumina/modules/Flowcell.pm
+lib/perl/Sequencing/Flowcell.pm
+lib/perl/Core/alDente/Scanner.pm
+lib/perl/Core/alDente/Info.pm
+bin/t/Core/alDente/Scanner.t
+bin/t/Core/alDente/Info.t

@@ -1,0 +1,27 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Inspecting Perl Warnings<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>Perl warnings are shown if the Perl interpreter is run with the
+-w switch.</li>
+  <li>Since other bioinformatics users are replying on the LIMS
+modules, it is good if we can get rid of most if not all Perl warnings
+from our code.</li>
+  <li>The bin/get_warnings.pl script will report Perl warnings
+generated from our modules with suggested fixes.<br>
+  </li>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>By default the script reports warnings from all our modules.<br>
+  </li>
+  <li>Different versions of Perl interpreter generates different
+warnings.&nbsp; User can specify a particular Perl interpreter to be
+used by the -i switch.</li>
+  <li>User can specify a specific list of modules to inspect by the -m
+switch.</li>
+  <li>Use the -h switch to get help information.<br>
+  </li>
+</ul>
+</span>

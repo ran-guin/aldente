@@ -1,0 +1,7 @@
+K 13
+svn:mergeinfo
+V 188
+/LIMS/branches/lims_4_1-branch/custom/GSC/modules:104987-106196
+/LIMS/trunk/custom/GSC/modules:99992-100217,100971-104986
+/LIMS/trunk/lib/perl/Core/LampLite/custom/GSC/modules:99992-100217
+END

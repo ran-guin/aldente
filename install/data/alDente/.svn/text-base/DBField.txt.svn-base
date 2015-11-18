@@ -1,0 +1,1232 @@
+DBField_ID	Field_Description	Field_Table	Prompt	Field_Alias	Field_Options	Field_Reference	Field_Order	Field_Name	Field_Type	Field_Index	NULL_ok	Field_Default	Field_Size	Field_Format	FK_DBTable__ID	Foreign_Key	DBField_Notes	Editable	Tracked	Field_Scope	FK_Package__ID	List_Condition	FKParent_DBField__ID	Parent_Value
+620		Account	Account ID	ID	Primary	concat(Account_ID, ' (',Account_Name,')')	1	Account_ID	int(11)	PRI	NO	0	20		1		NULL	yes	no	NULL	24	NULL	NULL	NULL
+621		Account	Description	Description			2	Account_Description	text		YES		20		1		NULL	yes	no	NULL	24	NULL	NULL	NULL
+622		Account	Type	Type			3	Account_Type	text		YES		20		1		NULL	yes	no	NULL	24	NULL	NULL	NULL
+623		Account	Name	Name			4	Account_Name	text		YES		20		1		NULL	yes	no	NULL	24	NULL	NULL	NULL
+624		Account	Dept	Dept			5	Account_Dept	enum('Orders','Admin')		YES		20		1		NULL	yes	no	NULL	24	NULL	NULL	NULL
+625		Barcode_Label	Barcode Label ID	ID	Primary	Label_Descriptive_Name	1	Barcode_Label_ID	int(11)	PRI	NO		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+626		Barcode_Label	Name	Name			2	Barcode_Label_Name	char(40)		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+627		Barcode_Label	Label Height	Label_Height			3	Label_Height	float		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+628		Barcode_Label	Label Width	Label_Width			4	Label_Width	float		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+629		Barcode_Label	Zero X	Zero_X			5	Zero_X	int(11)		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+630		Barcode_Label	Zero Y	Zero_Y			6	Zero_Y	int(11)		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+631		Barcode_Label	Top	Top			7	Top	int(11)		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+632		Box	Number	Number			1	Box_Number	int(11)		YES		20		3		NULL	no	yes	Core	25	NULL	NULL	NULL
+633		Box	Number in Batch	Number_in_Batch			2	Box_Number_in_Batch	int(11)		YES		20		3		NULL	no	yes	Core	25	NULL	NULL	NULL
+634		Box	Stock	Stock__ID	Mandatory	Stock_ID	3	FK_Stock__ID	int(11)	MUL	YES		20		3	Stock.Stock_ID	NULL	no	yes	Core	25	NULL	NULL	NULL
+635		Box	Parent Box	Parent_Box__ID		Box_ID	4	FKParent_Box__ID	int(11)	MUL	YES		20		3	Box.Box_ID	NULL	yes	yes	Core	25	NULL	NULL	NULL
+636	Rack ID and an optional slot name	Box	Rack	Rack__ID	Mandatory,Searchable	Rack_ID	5	FK_Rack__ID	int(11)	MUL	YES	<DEFAULT_LOCATION>	20		3	Rack.Rack_ID	NULL	yes	no	Core	25	NULL	NULL	NULL
+637		Box	Serial Number	Serial_Number			6	Box_Serial_Number	text		YES		20		3		NULL	yes	no	Core	25	NULL	NULL	NULL
+638		Box	Box ID	ID	Primary	concat('Box',Box_ID,': ',Box_Number,'/',Box_Number_in_Batch)	7	Box_ID	int(11)	PRI	NO		20		3		NULL	no	yes	Core	25	NULL	NULL	NULL
+639		Box	Opened	Opened	Hidden		8	Box_Opened	date		YES		20		3		NULL	yes	no	Core	25	NULL	NULL	NULL
+640		Box	Type	Type	Hidden		9	Box_Type	enum('Box','Kit','Supplies')		NO	Box	20		3		NULL	yes	no	Core	25	NULL	NULL	NULL
+689		DBTable	DBTable ID	ID	Primary	DBTable_Name	1	DBTable_ID	int(11)	PRI	NO		20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+690		DBTable	Name	Name			2	DBTable_Name	varchar(80)	UNI	NO		20	^.{0,80}$	28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+691		DBTable	Description	Description			3	DBTable_Description	text		YES		20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+692		DBTable	Status	Status			4	DBTable_Status	text		YES		20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+693		DBTable	Status Last Updated	Status_Last_Updated			5	Status_Last_Updated	datetime		NO	0000-00-00 00:00:00	20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+694		Employee	Password	Password	Hidden		11	Password	varchar(80)		YES	78a302dd267f6044	20	^.{0,80}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+699		Plate_Format	Max Row	Max_Row	Mandatory		6	Max_Row	char(2)		YES		20	[A-Z]	60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+700		Plate_Format	Max Col	Max_Col	Mandatory		7	Max_Col	tinyint(4)		YES		20	[0-9]+	60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+754		Collaboration	Project	Project__ID	Mandatory	Project_ID	2	FK_Project__ID	int(11)	MUL	YES		20		17	Project.Project_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+755		Communication	Employee	Employee__ID	Mandatory	Employee_ID	1	FK_Employee__ID	int(11)	MUL	YES		20		18	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+756		Communication	Contact	Contact__ID	Mandatory,NewLink	Contact_ID	2	FK_Contact__ID	int(11)	MUL	YES		20		18	Contact.Contact_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+757		Communication	Organization	Organization__ID	Mandatory,Searchable	Organization_ID	3	FK_Organization__ID	int(11)	MUL	YES		20		18	Organization.Organization_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+762	Organization assciated with this person	Contact	Organization	Organization__ID	Mandatory,NewLink,Searchable	Organization_ID	1	FK_Organization__ID	int(11)	MUL	YES		20		24	Organization.Organization_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+763		Contact	Position	Position			3	Position	text		YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+786		Dye_Chemistry	Chemistry Version	Chemistry_Version			3	Chemistry_Version	int(11)		YES		20		29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+787		Dye_Chemistry	Mobility Version	Mobility_Version			4	Mobility_Version	int(11)		YES		20		29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+788		Equipment	Stock	Stock__ID	Mandatory	Stock_ID	8	FK_Stock__ID	int(11)	MUL	YES		20		31	Stock.Stock_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+789		Error_Check	Field Name	Field_Name			3	Field_Name	mediumtext		NO		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+790		Error_Check	Comments	Comments			7	Comments	text		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+810		Lab_Protocol	Employee	Employee__ID		Employee_ID	2	FK_Employee__ID	int(11)	MUL	YES		20		39	Employee.Employee_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+814		LibraryProgress	Library	Library__Name	Searchable	Library_Name	3	FK_Library__Name	varchar(5)	MUL	YES		20		42	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+826		Maintenance	Equipment	Equipment__ID	ViewLink	Equipment_ID	3	FK_Equipment__ID	int(11)	MUL	YES		20		44	Equipment.Equipment_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+827		Maintenance	Solution used	Solution__ID		Solution_ID	4	FK_Solution__ID	int(11)	MUL	YES		20		44	Solution.Solution_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+828		Maintenance	Employee	Employee__ID	Mandatory	Employee_ID	6	FK_Employee__ID	int(11)	MUL	YES		20		44	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+829		Maintenance_Protocol	Employee	Employee__ID		Employee_ID	6	FK_Employee__ID	int(11)	MUL	YES		20		45	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+831		Message	Employee	Employee__ID		Employee_ID	2	FK_Employee__ID	int(11)	MUL	YES		20		46	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+832		Misc_Item	Stock	Stock__ID	Mandatory	Stock_ID	5	FK_Stock__ID	int(11)	MUL	YES		20		47	Stock.Stock_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+833		Mixture	Quantity Used	Quantity_Used			4	Quantity_Used	float		YES		20		48		NULL	yes	no	NULL	25	NULL	NULL	NULL
+834		Notice	Target List	Target_List			5	Target_List	text		YES		20		52		NULL	yes	no	NULL	24	NULL	NULL	NULL
+836		Plate	Library	Library__Name	Mandatory,Searchable	Library_Name	2	FK_Library__Name	varchar(40)	MUL	YES		20		59	Library.Library_Name	NULL	no	yes	NULL	24	NULL	NULL	NULL
+837		Plate	Employee	Employee__ID	Mandatory	Employee_ID	8	FK_Employee__ID	int(11)	MUL	YES		20		59	Employee.Employee_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+838	Rack ID and an optional slot name	Plate	Rack	Rack__ID	Searchable	Rack_ID	16	FK_Rack__ID	int(11)	MUL	YES	<DEFAULT_LOCATION>	20		59	Rack.Rack_ID	The default rack was set as a temporary fix	no	no	NULL	24	NULL	NULL	NULL
+839		Plate_Set	Plate	Plate__ID	Mandatory	Plate_ID	2	FK_Plate__ID	int(11)	MUL	YES		20		61	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+843		Pool	Employee	Employee__ID		Employee_ID	5	FK_Employee__ID	int(11)	MUL	YES		20		11	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+855		Protocol_Step	Employee	Employee__ID	Mandatory	Employee_ID	9	FK_Employee__ID	int(11)	MUL	YES		20		67	Employee.Employee_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+856	Mandatory EXCEPT for Lab shelves (set conditions to Room Temperature)	Rack	Equipment	Equipment__ID	Mandatory,ViewLink	Equipment_ID	2	FK_Equipment__ID	int(11)	MUL	YES		20		69	Equipment.Equipment_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+882		Service	Equipment	Equipment__ID	ViewLink	Equipment_ID	1	FK_Equipment__ID	int(11)	UNI	YES		20		75	Equipment.Equipment_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+883		Service_Contract	Organization	Organization__ID	Searchable	Organization_ID	3	FK_Organization__ID	int(11)	MUL	YES		20		76	Organization.Organization_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+884		Service_Contract	Equipment	Equipment__ID	ViewLink	Equipment_ID	4	FK_Equipment__ID	int(11)	MUL	YES		20		76	Equipment.Equipment_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+887	Rack ID and an optional slot name	Solution	Rack	Rack__ID	Mandatory,Searchable	Rack_ID	3	FK_Rack__ID	int(11)	MUL	YES	<DEFAULT_LOCATION>	20		5	Rack.Rack_ID	NULL	yes	no	Core	25	NULL	NULL	NULL
+890		Stock	Employee	Employee__ID	Mandatory	Employee_ID	6	FK_Employee__ID	int(11)	MUL	YES		20		7	Employee.Employee_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+892		Suggestion	Employee	Employee__ID	Mandatory	Employee_ID	3	FK_Employee__ID	int(11)	MUL	YES		20		78	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+938		Collaboration	Collaboration ID	ID	Primary		3	Collaboration_ID	int(11)	PRI	NO		20		17		NULL	yes	no	NULL	24	NULL	NULL	NULL
+939		Communication	Date	Date			4	Communication_Date	date		YES	<TODAY>	20		18		NULL	yes	no	NULL	24	NULL	NULL	NULL
+940		Communication	Description	Description			5	Communication_Description	text		YES		20		18		NULL	yes	no	NULL	24	NULL	NULL	NULL
+941		Communication	Communication ID	ID	Primary		6	Communication_ID	int(11)	PRI	NO		20		18		NULL	yes	no	NULL	24	NULL	NULL	NULL
+949		Contact	Name	Name	Mandatory		2	Contact_Name	varchar(80)	UNI	YES		20	^.{0,80}$	24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+950		Contact	Type	Type			4	Contact_Type	enum('Collaborator','Maintenance','Technical Support','Sales','Academic')	MUL	YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+951		Contact	Phone	Phone			5	Contact_Phone	text		YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+952		Contact	Fax	Fax			6	Contact_Fax	text		YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+953		Contact	Email	Email	Mandatory		7	Contact_Email	text		YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+954		Contact	Status	Status			8	contact_status	enum('Current','Old','Basic','Active')		YES	Active	20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+955		Contact	Notes	Notes			9	Contact_Notes	text		YES		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+956		Contact	Contact ID	ID	Primary	Contact_Name	10	Contact_ID	int(11)	PRI	NO		20		24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+999		Dye_Chemistry	Dye Chemistry ID	ID	Primary		1	Dye_Chemistry_ID	int(11)	PRI	NO		20		29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1000		Dye_Chemistry	Terminator	Terminator			2	Terminator	varchar(20)		YES		20	^.{0,20}$	29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1001		Dye_Chemistry	Mob File	Mob_File			5	Mob_File	varchar(255)		YES		20	^.{0,255}$	29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1002		Dye_Chemistry	Dye Set	Dye_Set			6	Dye_Set	varchar(5)		YES		20	^.{0,5}$	29		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1003	brief Name / Alias	Employee	Name	Name			1	Employee_Name	varchar(80)	UNI	YES		20	^.{0,80}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1004		Employee	Initials	Initials			2	Initials	varchar(4)	UNI	YES		20	^.{0,4}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1005	Full Name	Employee	FullName	FullName			3	Employee_FullName	varchar(80)	MUL	YES		20	^.{0,80}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1006		Employee	Position	Position			4	Position	text		YES		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1007	Email address (do not need to include the domain (@bcgsc.ca) if internal)	Employee	Email Address	Email_Address			5	Email_Address	varchar(80)	MUL	YES		20	^.{0,80}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1008		Employee	Status	Status			6	Employee_Status	enum('Active','Inactive','Old')		YES		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1009		Employee	IP Address	IP_Address	Hidden		7	IP_Address	text		YES		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1010		Employee	Permissions	Permissions	Hidden		8	Permissions	set('R','W','U','D','S','P','A')		YES		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1011		Employee	Employee ID	ID	Primary	Employee_Name	9	Employee_ID	int(4)	PRI	NO		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1012		Employee	Start Date	Start_Date	Hidden		10	Employee_Start_Date	date		YES		20		30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1015		Equipment	Equipment Name	Name	Mandatory		4	Equipment_Name	varchar(40)	UNI	YES		20	^.{0,40}$	31		NULL	no	yes	Core	24	NULL	NULL	NULL
+1018		Equipment	Serial Number	Serial_Number			7	Serial_Number	varchar(80)	MUL	YES		5	^.{0,80}$	31		NULL	yes	yes	Core	24	NULL	NULL	NULL
+1020		Equipment	Equipment	ID	Primary	concat(Equipment_Name,' - EQU',Equipment_ID)	1	Equipment_ID	int(4)	PRI	NO		20		31		NULL	no	yes	Core	24	NULL	NULL	NULL
+1021		Equipment	Comments	Comments			20	Equipment_Comments	text		YES		20		31		NULL	yes	no	Core	24	NULL	NULL	NULL
+1023		Equipment	Number	Number	Hidden		12	Equipment_Number	int(11)		YES		20		31		NULL	yes	yes	Core	24	NULL	NULL	NULL
+1024		Equipment	Number in Batch	Number_in_Batch	Hidden		13	Equipment_Number_in_Batch	int(11)		YES		20		31		NULL	yes	no	Core	24	NULL	NULL	NULL
+1026		Error_Check	Error Check ID	ID	Primary		1	Error_Check_ID	int(11)	PRI	NO		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1027		Error_Check	Table Name	Table_Name			2	Table_Name	mediumtext		NO		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1029		Error_Check	Username	Username			5	Username	varchar(20)		NO		20	^.{0,20}$	32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1030		Error_Check	Command String	Command_String			6	Command_String	mediumtext		NO		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1036	Brief Readable name for this funding source / SOW	Funding	Name	Name	Mandatory		1	Funding_Name	varchar(80)	UNI	NO		80	^.{0,80}$	36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1037	Unambiguous identifier (eg Account code or SOW#)	Funding	Code	Code	Mandatory	concat(Funding_Code,': ',Funding_Name)	2	Funding_Code	varchar(20)	UNI	YES		20	^.{0,20}$	36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1038		Funding	Description	Description			3	Funding_Description	text		NO		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1039		Funding	Status	Status			4	Funding_Status	enum('Applied for','Pending','Received','Terminated')		YES	Received	20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1040		Funding	Conditions	Conditions			5	Funding_Conditions	text		NO		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1041		Funding	Funding ID	ID	Primary	CASE WHEN (Funding_Code=Funding_Name OR Funding_Code is NULL) THEN Funding_Name ELSE CONCAT(Funding_Name,': ',Funding_Code) END	6	Funding_ID	int(11)	PRI	NO		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1054		Lab_Protocol	Name	Name	Mandatory		1	Lab_Protocol_Name	varchar(40)	UNI	YES		20	^.{0,40}$	39		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1055		Lab_Protocol	Status	Status			3	Lab_Protocol_Status	enum('Active','Old','Inactive')		YES		20		39		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1056		Lab_Protocol	Description	Description			4	Lab_Protocol_Description	text		YES		20		39		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1057		Lab_Protocol	Lab Protocol ID	ID	Primary	Lab_Protocol_Name	5	Lab_Protocol_ID	int(11)	PRI	NO		20		39		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1058		Lab_Protocol	VersionDate	VersionDate			6	Lab_Protocol_VersionDate	date		YES	<TODAY>	20		39		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1059		Library	Project	Project__ID	Mandatory	Project_ID	1	FK_Project__ID	int(11)	MUL	YES		20		40	Project.Project_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+1060	A GSC specific ID name consisting of alphanumeric characters (5 characters for Sequencing Library and 6 characters for RNA Source).	Library	Name	Name	Mandatory,Primary	CASE WHEN LENGTH(Library_FullName) = 0 THEN Library_Name WHEN Library_FullName=Library_Name THEN Library_Name ELSE concat(Library_Name,':',Library_FullName) END	2	Library_Name	varchar(40)	PRI	NO		20	^'?[a-zA-Z0-9]{5,6}'?$	40		NULL	no	no	NULL	24	NULL	NULL	NULL
+1061	A Concise name for referencing the library (may contain spaces)	Library	FullName	FullName	Mandatory		3	Library_FullName	varchar(80)		YES		20	\\S+	40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1062	Objectives to be met for the library	Library	Goals	Goals	Hidden		7	Library_Goals	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1063	Status of the Library (eg Pending, In Production)	Library	Status	Status			12	Library_Status	enum('Submitted','On Hold','In Production','Complete','Cancelled','Contaminated','Failed')		YES	Submitted	20		40		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1069		Library	Type	Type	Mandatory		1	Library_Type	enum('Vector_Based','RNA/DNA','PCR_Product')		YES		20		40		NULL	no	no	NULL	24	NULL	NULL	NULL
+1070	A full prose description of the library	Library	Description	Description			8	Library_Description	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1073	Who supplied the original library?	Library	Source	Source	Hidden		5	Library_Source	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1074	How is the Library referenced by those who supplied it ?	Library	Source Name	Source_Name	Hidden		6	Library_Source_Name	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1075	Date when library was obtained	Library	Obtained Date	Obtained_Date	Mandatory		4	Library_Obtained_Date	date		NO	0000-00-00	20		40		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1078	Optional notes about this library	Library	Notes	Notes			25	Library_Notes	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1081		Library	Parent Library	Parent_Library__Name	Hidden	Library_Name	31	FKParent_Library__Name	varchar(40)	MUL	YES		20		40	Library.Library_Name	NULL	no	no	NULL	24	NULL	NULL	NULL
+1084		LibraryProgress	LibraryProgress ID	ID	Primary		1	LibraryProgress_ID	int(11)	PRI	NO		20		42		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1085		LibraryProgress	Date	Date			2	LibraryProgress_Date	date		YES	<TODAY>	20		42		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1086		LibraryProgress	Comments	Comments			4	LibraryProgress_Comments	text		YES		20		42		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1098		Maintenance	Description	Description			2	Maintenance_Description	text		NO		20		44		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1099		Maintenance	DateTime	DateTime	Mandatory		5	Maintenance_DateTime	datetime		YES	<NOW>	20		44		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1100		Maintenance	Who performed work (if external)	Contact__ID	NewLink	Contact_ID	7	FK_Contact__ID	int(11)	MUL	YES		20		44	Contact.Contact_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1101		Maintenance	Maintenance ID	ID	Primary		8	Maintenance_ID	int(11)	PRI	NO		20		44		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1102		Maintenance	Cost	Cost	Hidden		9	Maintenance_Cost	float		YES		20		44		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1103		Maintenance_Protocol	Maintenance Protocol ID	ID	Primary	Maintenance_Protocol_Name	1	Maintenance_Protocol_ID	int(11)	PRI	NO		20		45		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1104		Maintenance_Protocol	Service	Service__Name	Mandatory	Service_Name	2	FK_Service__Name	varchar(40)	MUL	YES		20		45	Service.Service_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1105		Maintenance_Protocol	Step	Step	Mandatory		3	Step	int(11)		YES		20		45		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1106		Maintenance_Protocol	Maintenance Step Name	Maintenance_Step_Name			4	Maintenance_Step_Name	varchar(40)		YES		20	^.{0,40}$	45		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1107		Maintenance_Protocol	Maintenance Instructions	Maintenance_Instructions			5	Maintenance_Instructions	text		YES		20		45		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1108		Maintenance_Protocol	Protocol Date	Protocol_Date			7	Protocol_Date	date		YES	0000-00-00	20		45		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1109		Maintenance_Protocol	Name	Name			8	Maintenance_Protocol_Name	text		YES		20		45		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1110		Message	Text	Text			1	Message_Text	text		YES		20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1111		Message	Link	Link			3	Message_Link	text		YES		20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1112		Message	Date	Date			4	Message_Date	datetime		YES	<NOW>	20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1113		Message	Status	Status			5	Message_Status	enum('Urgent','Active','Old')		YES	Active	20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1114		Message	Type	Type			6	Message_Type	enum('Public','Private','Admin','Group')		YES	Private	20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1115		Message	Message ID	ID	Primary		7	Message_ID	int(11)	PRI	NO		20		46		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1116		Misc_Item	Misc Item ID	ID	Primary		1	Misc_Item_ID	int(11)	PRI	NO		20		47		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1117		Misc_Item	Serial Number	Serial_Number			2	Misc_Item_Serial_Number	text		YES		20		47		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1118		Misc_Item	Number	Number			3	Misc_Item_Number	int(11)		NO	0	20		47		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1119		Misc_Item	Number in Batch	Number_in_Batch			4	Misc_Item_Number_in_Batch	int(11)		YES		20		47		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1121		Mixture	Mixture ID	ID	Primary		1	Mixture_ID	int(8)	PRI	NO		20		48		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1122		Mixture	Made Solution	Made_Solution__ID	Mandatory	Solution_ID	2	FKMade_Solution__ID	int(11)	MUL	YES		20		48	Solution.Solution_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1123		Mixture	Used Solution	Used_Solution__ID		Solution_ID	3	FKUsed_Solution__ID	int(11)	MUL	YES		20		48	Solution.Solution_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1124		Mixture	Comments	Comments			5	Mixture_Comments	text		YES		20		48		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1125		Mixture	Units Used	Units_Used			6	Units_Used	varchar(10)		YES		20	^.{0,10}$	48		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1130		Multiple_Barcode	Multiple Barcode ID	ID	Primary		1	Multiple_Barcode_ID	int(11)	PRI	NO		20		50		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1131		Multiple_Barcode	Multiple Text	Multiple_Text			2	Multiple_Text	varchar(100)	UNI	YES		20	^.{0,100}$	50		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1132		Note	Note ID	ID	Primary	concat(Note_ID,': ',Note_Text)	1	Note_ID	int(11)	PRI	NO		20		51		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1133		Note	Text	Text			2	Note_Text	varchar(40)		YES		20	^.{0,40}$	51		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1134		Note	Type	Type			3	Note_Type	varchar(40)		YES		20	^.{0,40}$	51		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1135		Note	Description	Description			4	Note_Description	text		YES		20		51		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1136		Notice	Notice ID	ID	Primary		1	Notice_ID	int(11)	PRI	NO		20		52		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1137		Notice	Text	Text			2	Notice_Text	text		YES		20		52		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1138		Notice	Subject	Subject			3	Notice_Subject	text		YES		20		52		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1139		Notice	Date	Date			4	Notice_Date	date		YES	<TODAY>	20		52		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1147	Notification message (sent via email)	Order_Notice	Order Text	Order_Text			1	Order_Text	text		YES		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1148		Order_Notice	Catalog Number	Catalog_Number			2	Catalog_Number	varchar(40)		NO		20	^.{0,40}$	54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1149	List of who should be notified (domain not required if internal)	Order_Notice	Target List	Target_List			3	Target_List	text		YES		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1150	Minimum acceptable number of units which should remain Unopened	Order_Notice	Minimum Units	Minimum_Units			4	Minimum_Units	int(11)		YES		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1151	Maximum acceptable number of units which should remain Unopened	Order_Notice	Maximum Units	Maximum_Units			5	Maximum_Units	int(11)		YES	0	20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1152	Date of most recent notification	Order_Notice	Notice Sent	Notice_Sent			6	Notice_Sent	date		YES		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1153	Days between repeat notices (set to 0 to turn off)	Order_Notice	Notice Frequency	Notice_Frequency			7	Notice_Frequency	int(11)		YES		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1154		Order_Notice	Order Notice ID	ID	Primary		8	Order_Notice_ID	int(11)	PRI	NO		20		54		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1195	Brief Name used to refer to company (eg. ABI)	Organization	Name	Name	Mandatory		1	Organization_Name	varchar(80)	UNI	YES		20	^.{0,80}$	56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1196	Full Name used to refer to company (eg. Applied Biosystems)	Organization	FullName	FullName			2	Organization_FullName	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1197	Type of Relationship this organization has with us	Organization	Type	Type	Mandatory		3	Organization_Type	set('Manufacturer','Collaborator','Vendor','Funding Source','Local','Sample Supplier','Data Repository')		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1198		Organization	Address	Address			4	Address	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1199		Organization	City	City			5	City	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1200		Organization	State	State			6	State	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1201		Organization	Phone	Phone			7	Phone	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1202		Organization	Fax	Fax			8	Fax	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1203		Organization	Email	Email			9	Email	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1204		Organization	Zip	Zip	Hidden		10	Zip	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1205		Organization	Country	Country			11	Country	text		YES	Canada	20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1206		Organization	Notes	Notes	Hidden		12	Notes	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1207		Organization	Organization ID	ID	Primary	Organization_Name	13	Organization_ID	int(11)	PRI	NO		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1208		Organization	Website	Website			14	Website	text		YES		20		56		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1209		Parameter	Standard Solution	Standard_Solution__ID		Standard_Solution_ID	1	FK_Standard_Solution__ID	int(11)	MUL	YES		20		57	Standard_Solution.Standard_Solution_ID	NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1210	(as per formula) - multiple variable names are appended with an index (eg. v1, v2, v3 - where v is a variable in the formula)	Parameter	Name	Name			2	Parameter_Name	varchar(40)		YES		20	^.{0,40}$	57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1211	(The name of the individual reagents or the variable)	Parameter	Description	Description			3	Parameter_Description	text		YES		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1212		Parameter	Value	Value			4	Parameter_Value	varchar(40)		YES		20	^.{0,40}$	57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1213	(Multiple parameters vary for each reagent.  Names for these parameters should consist of the name used in the formula followed by an integer (eg v1,v2,v3 - where v is a variable in the formula)	Parameter	Type	Type			5	Parameter_Type	enum('Static','Multiple','User_Define','Hidden')		YES		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1214		Parameter	Parameter ID	ID	Primary	Parameter_Name	6	Parameter_ID	int(11)	PRI	NO		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1215	for Multiple types ONLY - Format requirement for reagent name (eg. Water|H20 for multiple possibilities)	Parameter	Format	Format			7	Parameter_Format	text		YES		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1216	for Multiple types ONLY - (only relevant for multiple types if used)	Parameter	Units	Units			8	Parameter_Units	enum('ml','ul','ng','mg','ug','g','l','ng/uL','umoles','nmoles','pmoles')		YES		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1217	for Multiple types ONLY - Type of Reagent / Solution required (generally used to require Primer/Buffer types)	Parameter	SType	SType			9	Parameter_SType	enum('Reagent','Solution','Primer','Buffer','Matrix')		YES		20		57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1218		Plate	Plate ID	ID	Primary	concat(FK_Library__Name,'-',Plate_Number,Parent_Quadrant,'.',FK_Branch__Code)	1	Plate_ID	int(11)	PRI	NO		20		59		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1219		Plate	Number	Number			3	Plate_Number	int(4)	MUL	NO	0	20		59		NULL	no	yes	NULL	24	NULL	NULL	NULL
+1222		Plate	Created	Created			7	Plate_Created	datetime	MUL	YES	0000-00-00 00:00:00	20		59		NULL	no	no	NULL	24	NULL	NULL	NULL
+1223		Plate	Container Format	Format__ID	Mandatory	Plate_Format_ID	9	FK_Plate_Format__ID	int(11)	MUL	YES		20		59	Plate_Format.Plate_Format_ID	NULL	no	yes	NULL	24	NULL	NULL	NULL
+1224		Plate	Size	Size			10	Plate_Size	enum('1-well','8-well','16-well','32-well','48-well','64-well','80-well','96-well','384-well','1.5 ml','50 ml','15 ml','5 ml','2 ml','0.5 ml','0.2 ml')		YES		20		59		NULL	no	yes	NULL	24	NULL	NULL	NULL
+1225		Plate	Parent Plate	Parent_Plate__ID		Plate_ID	13	FKParent_Plate__ID	int(11)	MUL	YES		20		59	Plate.Plate_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+1229		Plate	Status	Status	Mandatory		15	Plate_Status	enum('Active','Pre-Printed','Reserved','Temporary','Failed','Thrown Out','Exported','Archived','On Hold')	MUL	YES	Active	20		59		NULL	no	no	NULL	24	NULL	NULL	NULL
+1230		Plate	Comments	Comments			24	Plate_Comments	text		NO		20		59		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1231		Plate	Test Status	Test_Status			18	Plate_Test_Status	enum('Test','Production')		YES	Production	20		59		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1233		Plate_Format	Plate Format ID	ID	Primary	CASE WHEN Wells = 1 THEN CASE WHEN Well_Capacity_mL > 0 THEN concat(Well_Capacity_mL,' ',Capacity_Units,' ',Plate_Format_Type) ELSE Plate_Format_Type END ELSE concat(Wells,'-well ',Plate_Format_Type) END 	1	Plate_Format_ID	int(11)	PRI	NO		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1234		Plate_Format	Type	Type	Mandatory		2	Plate_Format_Type	char(40)	UNI	YES		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1236		Plate_Format	Status	Status	Mandatory		4	Plate_Format_Status	enum('Active','Inactive')		YES		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1237		Plate_Format	Barcode Label	Barcode_Label__ID	Mandatory,ViewLink	Barcode_Label_ID	5	FK_Barcode_Label__ID	int(11)	MUL	YES		20		60	Barcode_Label.Barcode_Label_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1238		Plate_Set	Plate Set ID	ID	Primary		1	Plate_Set_ID	int(4)	PRI	NO		20		61		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1239		Plate_Set	Number	Number		Plate_Set_Number	3	Plate_Set_Number	int(11)	MUL	YES		20		61		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1241		Pool	Pool ID	ID	Primary		1	Pool_ID	int(11)	PRI	NO		20		11		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1243		Pool	Description	Description			3	Pool_Description	text		NO		20		11		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1244		Pool	Date	Date			6	Pool_Date	date		NO	0000-00-00	20		11		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1245		Pool	Comments	Comments			7	Pool_Comments	text		YES		20		11		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1276		Project	Project Name	Name	Mandatory		1	Project_Name	varchar(40)	UNI	NO		20	^.{1,40}$	66		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1277		Project	Description	Description			2	Project_Description	text		YES		20		66		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1280	This is the name of the subdirectory within the Projects directory.<BR>It is where the data will be stored.\n(It must be unique with no spaces)<BR><B>You may simply use the project name itself, but remember to replace spaces with underscores</B>	Project	Path	Path	Mandatory		5	Project_Path	varchar(80)	UNI	YES		20	^\\w{3,80}$	66		NULL	no	yes	NULL	24	NULL	NULL	NULL
+1281		Project	Initiated	Initiated			6	Project_Initiated	date		NO	0000-00-00	20		66		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1282		Project	Completed	Completed			7	Project_Completed	date		YES	0000-00-00	20		66		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1283		Project	Status	Status	Mandatory		8	Project_Status	enum('Active','Inactive','Completed')		YES	Active	20		66		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1284		Project	Project ID	ID	Primary	Project_Name	9	Project_ID	int(11)	PRI	NO		20		66		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1285		Protocol_Step	Number	Number	Mandatory		1	Protocol_Step_Number	int(11)		YES		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1286		Protocol_Step	Name	Name	Mandatory		2	Protocol_Step_Name	varchar(80)	MUL	NO		20	^.{0,80}$	67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1287		Protocol_Step	Instructions	Instructions			3	Protocol_Step_Instructions	text		YES		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1288		Protocol_Step	Protocol Step ID	ID	Primary	concat(Protocol_Step_ID,': ',Protocol_Step_Number,'-',Protocol_Step_Name	4	Protocol_Step_ID	int(11)	PRI	NO		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1289		Protocol_Step	Defaults	Defaults			5	Protocol_Step_Defaults	text		YES		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1290		Protocol_Step	Input	Input			6	Input	text		YES		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1291		Protocol_Step	Scanner	Scanner			7	Scanner	tinyint(3) unsigned		YES	1	20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1292		Protocol_Step	Message	Message			8	Protocol_Step_Message	varchar(40)		YES		20	^.{0,40}$	67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1293		Protocol_Step	Changed	Changed			10	Protocol_Step_Changed	date		YES	<TODAY>	20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1294		Protocol_Step	Input Format	Input_Format			11	Input_Format	text		NO		20		67		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1295	Reference to Protocol from which Step is derived	Protocol_Step	Lab Protocol	Lab_Protocol__ID	Mandatory	Lab_Protocol_ID	12	FK_Lab_Protocol__ID	int(11)	MUL	YES		20		67	Lab_Protocol.Lab_Protocol_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1296		Protocol_Tracking	Protocol Tracking ID	ID	Primary		1	Protocol_Tracking_ID	int(11)	PRI	NO		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1297		Protocol_Tracking	Title	Title			2	Protocol_Tracking_Title	char(20)		YES		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1298		Protocol_Tracking	Step Name	Step_Name			3	Protocol_Tracking_Step_Name	char(40)		YES		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1299		Protocol_Tracking	Tracking Order	Tracking_Order			4	Protocol_Tracking_Order	int(11)		YES		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1300		Protocol_Tracking	Type	Type			5	Protocol_Tracking_Type	enum('Step','Plasticware')		YES		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1301		Protocol_Tracking	Status	Status			6	Protocol_Tracking_Status	enum('Active','InActive')		YES		20		68		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1302		Rack	Rack ID	ID	Primary	Rack_Alias	1	Rack_ID	int(4)	PRI	NO		20		69		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1305		ReArray	Source Plate	Source_Plate__ID	Mandatory	Plate_ID	2	FKSource_Plate__ID	int(11)	MUL	NO	0	20		70	Plate.Plate_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1306		ReArray	Source Well	Source_Well	Mandatory		3	Source_Well	char(3)		NO		20		70		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1308		ReArray	Target Well	Target_Well	Mandatory		5	Target_Well	char(3)	MUL	NO		20		70		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1313		ReArray	ReArray ID	ID	Primary		10	ReArray_ID	int(11)	PRI	NO		20		70		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1376		Service	Service Interval	Service_Interval			3	Service_Interval	tinyint(4)		YES		20		75		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1377		Service	Interval Frequency	Interval_Frequency			4	Interval_Frequency	enum('Year','Month','Week','Day')		YES		20		75		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1378		Service	Name	Name			5	Service_Name	text		YES		20		75		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1379		Service	Service ID	ID	Primary	Service_Name	6	Service_ID	int(11)	PRI	NO		20		75		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1380		Service_Contract	BeginDate	BeginDate			1	Service_Contract_BeginDate	date		YES		20		76		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1381		Service_Contract	ExpiryDate	ExpiryDate			2	Service_Contract_ExpiryDate	date		YES		20		76		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+1382		Service_Contract	Number	Number			6	Service_Contract_Number	int(11)		YES		20		76		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1383		Service_Contract	Number in Batch	Number_in_Batch			7	Service_Contract_Number_in_Batch	int(11)		YES		20		76		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1384		Service_Contract	Service Contract ID	ID	Primary		8	Service_Contract_ID	int(11)	PRI	NO		20		76		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1391		Solution	Type	Type	Mandatory		2	Solution_Type	enum('Reagent','Solution','Primer','Buffer','Matrix')		YES		20		5		NULL	no	yes	Core	25	NULL	NULL	NULL
+1392		Solution	Quantity Used	Quantity_Used			6	Quantity_Used	float		YES	0	20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1393		Solution	Started	Started			9	Solution_Started	datetime		YES		20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1394		Solution	Finished	Finished			10	Solution_Finished	date		YES		20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1395		Solution	Number	Number	Mandatory		11	Solution_Number	int(11)		YES		20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1396		Solution	Status	Status	Mandatory		14	Solution_Status	enum('Unopened','Open','Finished','Temporary','Expired')		YES	Unopened	20		5		NULL	yes	yes	Core	25	NULL	NULL	NULL
+1397		Solution	Stock	Stock__ID	Mandatory	Stock_ID	4	FK_Stock__ID	int(11)	MUL	YES		20		5	Stock.Stock_ID	NULL	no	yes	Core	25	NULL	NULL	NULL
+1398		Solution	Notes	Notes			16	Solution_Notes	text		YES		20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1399	Expiry date tracked for individual reagents	Solution	Expiry	Expiry			8	Solution_Expiry	date		YES		20		5		NULL	yes	yes	Core	25	NULL	NULL	NULL
+1400		Solution	Info	Info__ID		Solution_Info_ID	5	FK_Solution_Info__ID	int(11)	MUL	YES		20		5	Solution_Info.Solution_Info_ID	NULL	no	yes	Core	25	NULL	NULL	NULL
+1401		Solution	Solution	ID	Primary	concat('Sol',Solution_ID,': ',Stock_Catalog_Name,' (',Solution_Number,'/',Solution_Number_in_Batch,')')	1	Solution_ID	int(11)	PRI	NO		20		5		NULL	no	no	Core	25	NULL	NULL	NULL
+1402		Solution	Quantity	Quantity			7	Solution_Quantity	float		YES		20		5		NULL	yes	no	Core	25	NULL	NULL	NULL
+1404		Solution	Number in Batch	Number_in_Batch			12	Solution_Number_in_Batch	int(11)		YES		20		5		NULL	yes	yes	Core	25	NULL	NULL	NULL
+1405		Solution_Info	Solution Info ID	ID	Primary	concat(Solution_Info_ID,': ',ODs,'ODs ',nMoles,'nM ',micrograms,'ug')	1	Solution_Info_ID	int(11)	PRI	NO		20		6		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1406		Solution_Info	nMoles	nMoles			2	nMoles	float		YES		20		6		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1407		Solution_Info	ODs	ODs			3	ODs	float		YES		20		6		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1408		Solution_Info	micrograms	micrograms			4	micrograms	float		YES		20		6		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1409	Name for Resulting solution	Standard_Solution	Name	Name	Mandatory		1	Standard_Solution_Name	varchar(40)	UNI	YES		20	^.{0,40}$	58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1410	Formula to be calculated for each of parameters indicated ('wells' will be replaced by the number of samples/wells) eg: V*wells + Extra*wells + DV	Standard_Solution	Formula	Formula			2	Standard_Solution_Formula	text		YES		20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1411	Number of different reagents to be prompted for	Standard_Solution	Parameters	Parameters			3	Standard_Solution_Parameters	int(11)		YES		20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1412	Message seen by users (everything to the right of the = sign will be evaluated)	Standard_Solution	Message	Message			4	Standard_Solution_Message	text		YES		20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1413		Standard_Solution	Status	Status			5	Standard_Solution_Status	enum('Active','Inactive','Development')		YES		20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1414		Standard_Solution	Standard Solution ID	ID	Primary	Standard_Solution_Name	6	Standard_Solution_ID	int(11)	PRI	NO		20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1421	Lot Number - should be identical for ALL items in this batch	Stock	Lot Number	Lot_Number			9	Stock_Lot_Number	varchar(80)	MUL	YES		20	^.{0,80}$	7		NULL	yes	no	Core	24	NULL	NULL	NULL
+1422		Stock	Received	Received	Mandatory		5	Stock_Received	date		YES	<TODAY>	20		7		NULL	no	yes	Core	24	NULL	NULL	NULL
+1424	Number of Items Received = NUMBER OF BARCODES that will be made	Stock	Number in Batch	Number_in_Batch	Mandatory		3	Stock_Number_in_Batch	int(11)		YES		20	[1-9]+	7		NULL	no	yes	Core	24	NULL	NULL	NULL
+1425		Stock	Box	Box__ID		Box_ID	15	FK_Box__ID	int(11)	MUL	YES		20		7	Box.Box_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+1426		Stock	Stock ID	ID	Primary	Concat(Stock_Catalog_Name,'(',Stock_Size,' ',Stock_Size_Units,')')	1	Stock_ID	int(11)	PRI	NO		20		7		NULL	no	yes	Core	24	NULL	NULL	NULL
+1428		Stock	Cost	Cost			8	Stock_Cost	float		YES		20		7		NULL	yes	yes	Core	24	NULL	NULL	NULL
+1429		Suggestion	Text	Text			1	Suggestion_Text	text		YES		20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1430		Suggestion	Date	Date			2	Suggestion_Date	date		YES	<TODAY>	20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1431		Suggestion	Response Text	Response_Text			4	Response_Text	text		YES		20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1432		Suggestion	Implementation Date	Implementation_Date			5	Implementation_Date	date		YES		20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1433		Suggestion	Priority	Priority			6	Priority	enum('Urgent','Useful','Wish')		NO	Urgent	20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1434		Suggestion	Suggestion ID	ID	Primary		7	Suggestion_ID	int(11)	PRI	NO		20		78		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1444		Tube	Quantity	Quantity	Hidden		4	Tube_Quantity	float		YES		20		79		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1452		Tube	Tube ID	ID	Primary		12	Tube_ID	int(11)	PRI	NO		20		79		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1470		Warranty	BeginDate	BeginDate			1	Warranty_BeginDate	date		YES		20		83		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1471		Warranty	ExpiryDate	ExpiryDate			2	Warranty_ExpiryDate	date		YES		20		83		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1472		Warranty	Organization	Organization__ID	Mandatory,Searchable	Organization_ID	3	FK_Organization__ID	int(11)	MUL	YES		20		83	Organization.Organization_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1473		Warranty	Equipment	Equipment__ID	Mandatory,ViewLink	Equipment_ID	4	FK_Equipment__ID	int(11)	MUL	YES		20		83	Equipment.Equipment_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1474		Warranty	Conditions	Conditions			5	Warranty_Conditions	text		YES		20		83		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1475		Warranty	Warranty ID	ID	Primary		6	Warranty_ID	int(11)	PRI	NO		20		83		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1573		Funding	Source	Source	Mandatory		7	Funding_Source	enum('Internal','External')		NO	Internal	0		36			yes	yes	NULL	25	NULL	NULL	NULL
+1640		Setting	Setting ID	ID	Primary	Setting_Name	1	Setting_ID	int(11)	PRI	NO		20		99		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1641		Setting	Name	Name			2	Setting_Name	varchar(40)		YES		20	^.{0,40}$	99		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1642		Setting	Default Setting	Default_Setting			3	Setting_Default	varchar(40)		YES		20	^.{0,40}$	99		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1643		Setting	Description	Description			4	Setting_Description	text		YES		20		99		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1644		EmployeeSetting	EmployeeSetting ID	ID	Primary		1	EmployeeSetting_ID	int(11)	PRI	NO		20		100		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1645		EmployeeSetting	Setting	Setting__ID	Mandatory	Setting_ID	2	FK_Setting__ID	int(11)	MUL	YES		20		100	Setting.Setting_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1646		EmployeeSetting	Employee	Employee__ID	Mandatory	Employee_ID	3	FK_Employee__ID	int(11)	MUL	YES		20		100	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1647		EmployeeSetting	Setting Value	Setting_Value			4	Setting_Value	char(40)		YES		20		100		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1705		DBField	DBField ID	ID	Primary	Field_Name	1	DBField_ID	int(11)	PRI	NO		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1706		DBField	Field Description	Field_Description			2	Field_Description	text		NO		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1707		DBField	Field Table	Field_Table			3	Field_Table	text		NO		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1708		DBField	Prompt	Prompt			4	Prompt	varchar(255)		NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1709		DBField	Field Alias	Field_Alias			5	Field_Alias	varchar(255)		NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1710		DBField	Field Options	Field_Options			6	Field_Options	set('Hidden','Mandatory','Primary','Unique','NewLink','ViewLink','ListLink','Searchable','Obsolete','ReadOnly','Required','Removed')		YES		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1711		DBField	Field Reference	Field_Reference			7	Field_Reference	varchar(255)		NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1712		DBField	Field Order	Field_Order			8	Field_Order	int(11)		NO		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1713		DBField	Field Name	Field_Name			9	Field_Name	varchar(255)	MUL	NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1714		DBField	Field Type	Field_Type			10	Field_Type	text		NO		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1715		DBField	Field Index	Field_Index			11	Field_Index	varchar(255)		NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1716		DBField	NULL ok	NULL_ok			12	NULL_ok	enum('NO','YES')		NO	YES	20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1717		DBField	Field Default	Field_Default			13	Field_Default	varchar(255)		NO		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1718		DBField	Field Size	Field_Size			14	Field_Size	tinyint(4)		YES	20	20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1719		DBField	Field Format	Field_Format			15	Field_Format	varchar(80)		YES		20	^.{0,80}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1720		DBField	DBTable	DBTable__ID	Mandatory	DBTable_ID	16	FK_DBTable__ID	int(11)	MUL	YES		20		107	DBTable.DBTable_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1721		DBField	Foreign Key	Foreign_Key			17	Foreign_Key	varchar(255)		YES		20	^.{0,255}$	107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1722		DBField	Notes	Notes			18	DBField_Notes	text		YES		20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1723		DBTable	Type	Type			6	DBTable_Type	enum('General','Lab Object','Lab Process','Object Detail','Settings','Dynamic','DB Management','Application Specific','Class','Subclass','Lookup','Join','Imported','Manual Join')		YES		20	^.{0,20}$	28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1724		DBTable	Title	Title			7	DBTable_Title	varchar(80)		NO		20	^.{0,80}$	28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1725		DB_Form	DB Form ID	ID	Primary	concat(DB_Form_ID,': ',Form_Table)	1	DB_Form_ID	int(11)	PRI	NO		20		108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1726		DB_Form	Form Table	Form_Table			2	Form_Table	varchar(80)		NO		20	^.{0,80}$	108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1727		DB_Form	Min Records	Min_Records			3	Min_Records	int(2)		NO	1	20		108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1728		DB_Form	Max Records	Max_Records			4	Max_Records	int(2)		NO	1	20		108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1729		DB_Form	Parent DB Form	Parent_DB_Form__ID		DB_Form_ID	5	FKParent_DB_Form__ID	int(11)	MUL	YES		20		108	DB_Form.DB_Form_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1730		DB_Form	Parent Field	Parent_Field			6	Parent_Field	varchar(80)		YES		20	^.{0,80}$	108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1731		DB_Form	Parent Value	Parent_Value			7	Parent_Value	varchar(200)		YES		20	^.{0,200}$	108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1732		Department	Department ID	ID	Primary	Department_Name	1	Department_ID	int(11)	PRI	NO		20		109		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1733		Department	Name	Name			2	Department_Name	char(40)		YES		20		109		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1734		Department	Status	Status			3	Department_Status	enum('Active','Inactive')		YES		20		109		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1735		Employee	Machine Name	Machine_Name			12	Machine_Name	varchar(20)		YES		20	^.{0,20}$	30		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1737		Employee	Department	Department__ID		Department_ID	14	FK_Department__ID	int(11)	MUL	YES		20		30	Department.Department_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1741		Equipment	Status	Status	Mandatory		15	Equipment_Status	enum('In Use','Inactive - Removed','Inactive - In Repair','Inactive - Hold','Sold','Unknown','Returned to Vendor (RTV)','In Transit')		YES	In Use	20		31		NULL	yes	yes	Core	24	NULL	NULL	NULL
+1742		Error_Check	Command Type	Command_Type			5	Command_Type	enum('SQL','RegExp','FullSQL','Perl')		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1743		Error_Check	Notice Sent	Notice_Sent			7	Notice_Sent	date		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1744		Error_Check	Notice Frequency	Notice_Frequency			8	Notice_Frequency	int(11)		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1745		Funding	ApplicationDate	ApplicationDate			8	ApplicationDate	date		YES		20		36		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1746		Funding	Contact Employee	Contact_Employee__ID		Employee_ID	9	FKContact_Employee__ID	int(11)	MUL	YES		20		36	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1747		Funding	Source Organization	Source_Organization__ID	Searchable	Organization_ID	10	FKSource_Organization__ID	int(11)	MUL	YES		20		36	Organization.Organization_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1749		Funding	AppliedFor	AppliedFor			12	AppliedFor	int(11)		YES		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1750		Funding	Duration	Duration			13	Duration	text		YES		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1751		Funding	Type	Type	Mandatory		14	Funding_Type	enum('New','Renewal')		YES		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1752		Funding	Currency	Currency			15	Currency	enum('US','Canadian')		YES	Canadian	20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1753		Funding	ExchangeRate	ExchangeRate			16	ExchangeRate	float		YES		20		36		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1797		Grp	Grp ID	ID	Primary	Grp_Name	1	Grp_ID	int(11)	PRI	NO		20		117		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1798		Grp	Name	Name	Mandatory		2	Grp_Name	varchar(80)		NO		20	^.{0,80}$	117		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1799		Grp	Department	Department__ID	Mandatory	Department_ID	3	FK_Department__ID	int(11)	MUL	NO		20		117	Department.Department_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1800		Grp	Access	Access	Mandatory		4	Access	enum('Lab','Admin','Guest','Report','Bioinformatics','TechD')		YES	Guest	20		117		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1801		GrpDBTable	GrpDBTable ID	ID	Primary		1	GrpDBTable_ID	int(11)	PRI	NO		20		118		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1802		GrpDBTable	Grp	Grp__ID	Mandatory	Grp_ID	2	FK_Grp__ID	int(11)	MUL	NO		20		118	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1803		GrpDBTable	DBTable	DBTable__ID	Mandatory	DBTable_ID	3	FK_DBTable__ID	int(11)	MUL	NO		20		118	DBTable.DBTable_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1804		GrpDBTable	Permissions	Permissions	Mandatory		4	Permissions	set('R','W','U','D','O')		NO	R	20		118		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1805		GrpEmployee	GrpEmployee ID	ID	Primary		1	GrpEmployee_ID	int(11)	PRI	NO		20		119		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1806		GrpEmployee	Grp	Grp__ID	Mandatory	Grp_ID	2	FK_Grp__ID	int(11)	MUL	NO		20		119	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1807		GrpEmployee	Employee	Employee__ID	Mandatory	Employee_ID	3	FK_Employee__ID	int(11)	MUL	NO		20		119	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1808		GrpLab_Protocol	GrpLab Protocol ID	ID	Primary		1	GrpLab_Protocol_ID	int(11)	PRI	NO		20		120		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1809		GrpLab_Protocol	Grp	Grp__ID	Mandatory	Grp_ID	2	FK_Grp__ID	int(11)	MUL	NO		20		120	Grp.Grp_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1810		GrpLab_Protocol	Lab Protocol	Lab_Protocol__ID	Mandatory	Lab_Protocol_ID	3	FK_Lab_Protocol__ID	int(11)	MUL	NO		20		120	Lab_Protocol.Lab_Protocol_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1811		GrpStandard_Solution	GrpStandard Solution ID	ID	Primary		1	GrpStandard_Solution_ID	int(11)	PRI	NO		20		121		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1812		GrpStandard_Solution	Grp	Grp__ID	Mandatory	Grp_ID	2	FK_Grp__ID	int(11)	MUL	NO		20		121	Grp.Grp_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1813		GrpStandard_Solution	Standard Solution	Standard_Solution__ID	Mandatory	Standard_Solution_ID	3	FK_Standard_Solution__ID	int(11)	MUL	NO		20		121	Standard_Solution.Standard_Solution_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1814		Grp_Relationship	Grp Relationship ID	ID	Primary		1	Grp_Relationship_ID	int(11)	PRI	NO		20		122		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1815		Grp_Relationship	Base Grp	Base_Grp__ID	Mandatory	Grp_ID	2	FKBase_Grp__ID	int(11)	MUL	NO		20		122	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1816		Grp_Relationship	Derived Grp	Derived_Grp__ID	Mandatory	Grp_ID	3	FKDerived_Grp__ID	int(11)	MUL	NO		20		122	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1834	Reference contact responsible for this information	Library	Internal Contact	Contact__ID	Mandatory,NewLink	Contact_ID	13	FK_Contact__ID	int(11)	MUL	YES		20		40	Contact.Contact_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1835		Library	Grp	Grp__ID	Mandatory	Grp_ID	14	FK_Grp__ID	int(11)	MUL	NO		20		40	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1836		LibraryStudy	LibraryStudy ID	ID	Primary		1	LibraryStudy_ID	int(11)	PRI	NO		20		125		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1837		LibraryStudy	Library	Library__Name	Mandatory,Searchable	Library_Name	2	FK_Library__Name	varchar(40)	MUL	YES		20		125	Library.Library_Name	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1838		LibraryStudy	Study	Study__ID	Mandatory	Study_ID	3	FK_Study__ID	int(11)	MUL	YES		20		125	Study.Study_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1850		Maintenance_Protocol	Contact	Contact__ID	NewLink	Contact_ID	9	FK_Contact__ID	int(11)	MUL	YES		20		45	Contact.Contact_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1854	Rack ID and an optional slot name	Misc_Item	Rack	Rack__ID	Mandatory,Searchable	Rack_ID	6	FK_Rack__ID	int(11)	MUL	YES	<DEFAULT_LOCATION>	20		47	Rack.Rack_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1855		Misc_Item	Type	Type			7	Misc_Item_Type	text		YES		20		47		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1859		Plate	Type	Type	Mandatory		22	Plate_Type	enum('Library_Plate','Tube','Array')		YES		20		59		NULL	no	no	NULL	24	NULL	NULL	NULL
+1860		Plate	Original Plate	Original_Plate__ID		Plate_ID	23	FKOriginal_Plate__ID	int(10) unsigned	MUL	YES		20		59	Plate.Plate_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+1861		Plate_Format	Style	Style			8	Plate_Format_Style	enum('Plate','Tube','Array','Gel')		YES		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1864		Plate_Prep	Plate Prep ID	ID	Primary		1	Plate_Prep_ID	int(11)	PRI	NO		20		128		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1865		Plate_Prep	Plate	Plate__ID	Mandatory	Plate_ID	2	FK_Plate__ID	int(11)	MUL	YES		20		128	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1866		Plate_Prep	Prep	Prep__ID	Mandatory	Prep_ID	3	FK_Prep__ID	int(11)	MUL	YES		20		128	Prep.Prep_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1867		Plate_Prep	Plate Set	Plate_Set__Number		Plate_Set_Number	4	FK_Plate_Set__Number	int(11)	MUL	YES		20		128	Plate_Set.Plate_Set_Number	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1872		Plate_Sample	Plate Sample ID	ID	Primary		1	Plate_Sample_ID	int(11)	PRI	NO		20		130		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1873		Plate_Sample	Original Plate	Original_Plate__ID	Mandatory	Plate_ID	2	FKOriginal_Plate__ID	int(11)	MUL	NO		20		130	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1874		Plate_Sample	Sample	Sample__ID	Mandatory	Sample_ID	3	FK_Sample__ID	int(11)	MUL	NO		20		130	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1875		Plate_Sample	Well	Well			4	Well	char(3)		YES		20		130		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1877		Pool	Type	Type	Mandatory		11	Pool_Type	enum('Library','Sample','Transposon')		YES	Library	20		11		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1878		PoolSample	PoolSample ID	ID	Primary		1	PoolSample_ID	int(11)	PRI	NO		20		131		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1879		PoolSample	Pool	Pool__ID	Mandatory	Pool_ID	2	FK_Pool__ID	int(11)	MUL	NO		20		131	Pool.Pool_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1880		PoolSample	Plate	Plate__ID	Mandatory	Plate_ID	3	FK_Plate__ID	int(11)	MUL	NO		20		131	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1881		PoolSample	Well	Well			4	Well	char(3)		YES		20		131		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1883		PoolSample	Sample	Sample__ID	Mandatory	Sample_ID	6	FK_Sample__ID	int(11)	MUL	YES		20		131	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1884	Name of the action / event performed on the plate(s)	Prep	Name	Name			1	Prep_Name	varchar(80)		YES		20	^.{0,80}$	132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1885		Prep	Employee	Employee__ID		Employee_ID	2	FK_Employee__ID	int(11)	MUL	YES		20		132	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1886		Prep	DateTime	DateTime			3	Prep_DateTime	datetime	MUL	NO	0000-00-00 00:00:00	20		132		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1887		Prep	Time	Time			4	Prep_Time	text		YES		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1888		Prep	Conditions	Conditions			5	Prep_Conditions	text		YES		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1889		Prep	Comments	Comments			6	Prep_Comments	text		YES		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1893		Prep	Failure Date	Failure_Date			10	Prep_Failure_Date	datetime		NO	0000-00-00 00:00:00	20		132		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1894		Prep	Action	Action			11	Prep_Action	enum('Completed','Failed','Skipped')		YES		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1895		Prep	Lab Protocol	Lab_Protocol__ID		Lab_Protocol_ID	12	FK_Lab_Protocol__ID	int(11)	MUL	YES		20		132	Lab_Protocol.Lab_Protocol_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1896		Prep	Prep ID	ID	Primary	concat(Prep_Name,': ',Prep_DateTime)	13	Prep_ID	int(11)	PRI	NO		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1913		ProjectStudy	ProjectStudy ID	ID	Primary		1	ProjectStudy_ID	int(11)	PRI	NO		20		136		NULL	yes	no	NULL	24	NULL	NULL	NULL
+1914		ProjectStudy	Project	Project__ID	Mandatory	Project_ID	2	FK_Project__ID	int(11)	MUL	YES		20		136	Project.Project_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1915		ProjectStudy	Study	Study__ID	Mandatory	Study_ID	3	FK_Study__ID	int(11)	MUL	YES		20		136	Study.Study_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+1916		Protocol_Tracking	Grp	Grp__ID	Mandatory	Grp_ID	7	FK_Grp__ID	int(11)	MUL	YES		20		68	Grp.Grp_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1943	Hierarchy must be maintained (Shelves contain Racks contain Boxes contain Slots)	Rack	Type	Type	Mandatory		4	Rack_Type	enum('Shelf','Rack','Box','Slot')	MUL	NO	Shelf	20		69		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1944	Name of Rack (eg. R1) - used to generate Alias (eg. S1-R1).  Must be unique for lab shelves.	Rack	Name	Name	Mandatory		5	Rack_Name	varchar(80)	MUL	YES		20	^.{0,80}$	69		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1945	Automatically set based upon name / equipment / parent name	Rack	Alias	Alias	Hidden		6	Rack_Alias	varchar(80)	UNI	YES		20	^.{0,80}$	69		NULL	no	yes	NULL	25	NULL	NULL	NULL
+1946	(Only required if this is located on/in another rack)	Rack	Parent Rack	Parent_Rack__ID	Hidden	Rack_ID	7	FKParent_Rack__ID	int(11)	MUL	YES		20		69	Rack.Rack_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1948		ReArray	Request	Request__ID	Mandatory	ReArray_Request_ID	6	FK_ReArray_Request__ID	int(11)	MUL	NO		20		70	ReArray_Request.ReArray_Request_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1949		ReArray_Request	ReArray Notify	ReArray_Notify			1	ReArray_Notify	text		YES		20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1950		ReArray_Request	ReArray Format Size	ReArray_Format_Size	Mandatory		2	ReArray_Format_Size	enum('1-well','96-well','384-well')		NO	96-well	20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1951		ReArray_Request	ReArray Type	ReArray_Type	Mandatory		3	ReArray_Type	enum('Clone Rearray','Manual Rearray','Reaction Rearray','Extraction Rearray','Pool Rearray')		YES	Standard	20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1952		ReArray_Request	Employee	Employee__ID	Mandatory	Employee_ID	4	FK_Employee__ID	int(11)	MUL	YES		20		140	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1953		ReArray_Request	Request DateTime	Request_DateTime			5	Request_DateTime	datetime	MUL	YES	<NOW>	20		140		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+1954		ReArray_Request	Target Plate	Target_Plate__ID	Mandatory	Plate_ID	6	FKTarget_Plate__ID	int(11)	MUL	YES		20		140	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+1955		ReArray_Request	ReArray Comments	ReArray_Comments			7	ReArray_Comments	text		YES		20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1956		ReArray_Request	ReArray Request	ReArray_Request			8	ReArray_Request	text		YES		20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1958		ReArray_Request	ReArray Request ID	ID	Primary		10	ReArray_Request_ID	int(11)	PRI	NO		20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1969		Sample	Sample ID	ID	Primary	Sample_Name	1	Sample_ID	int(11)	PRI	NO		20		142		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1970		Sample	Name	Name			2	Sample_Name	varchar(40)	MUL	YES		20	^.{0,40}$	142		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1971		Sample	Type	Type			3	Sample_Type	enum('Clone','Extraction')	MUL	YES		20		142		NULL	yes	no	NULL	25	NULL	NULL	NULL
+1972		Sample	Comments	Comments			4	Sample_Comments	text		YES		20		142		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2011		Stock	Grp	Grp__ID	Mandatory	Grp_ID	4	FK_Grp__ID	int(11)	MUL	NO		20		7	Grp.Grp_ID	NULL	yes	yes	Core	24	NULL	NULL	NULL
+2012		Study	Study ID	ID	Primary	Study_Name	1	Study_ID	int(11)	PRI	NO		20		144		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2013		Study	Name	Name	Mandatory		2	Study_Name	varchar(40)	UNI	NO		20	^.{0,40}$	144		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2014		Study	Description	Description			3	Study_Description	text		YES		20		144		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2015		Study	Initiated	Initiated			4	Study_Initiated	date		YES	<TODAY>	20		144		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2033		Tube	Plate	Plate__ID	Mandatory	Plate_ID	2	FK_Plate__ID	int(11)	MUL	YES		20		79	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2034		Tube	Quantity Units	Quantity_Units	Hidden		4	Tube_Quantity_Units	enum('ml','ul','mg','ug','ng','pg')		YES		20		79		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2038		Version	Version ID	ID	Primary	Version_Name	1	Version_ID	int(11)	PRI	NO		20		147		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2039		Version	Name	Name			2	Version_Name	varchar(8)		YES		20	^.{0,8}$	147		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2040		Version	Description	Description			3	Version_Description	text		YES		20		147		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2041		Version	Release Date	Release_Date			4	Release_Date	date		NO	0000-00-00	20		147		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2042		Version	Last Modified Date	Last_Modified_Date			5	Last_Modified_Date	date		NO	0000-00-00	20		147		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2043		Warranty	time	time			7	time	datetime		YES		20		83		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2062		Barcode_Label	Setting	Setting__ID		Setting_ID	8	FK_Setting__ID	int(11)	MUL	NO		20		2	Setting.Setting_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2075		DepartmentSetting	DepartmentSetting ID	ID	Primary		1	DepartmentSetting_ID	int(11)	PRI	NO		20		152		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2076		DepartmentSetting	Setting	Setting__ID	Mandatory	Setting_ID	2	FK_Setting__ID	int(11)	MUL	YES		20		152	Setting.Setting_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2077		DepartmentSetting	Department	Department__ID	Mandatory	Department_ID	3	FK_Department__ID	int(11)	MUL	YES		20		152	Department.Department_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2078		DepartmentSetting	Setting Value	Setting_Value			4	Setting_Value	char(40)		YES		20		152		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2095		PoolSample	Sample Quantity Units	Sample_Quantity_Units			8	Sample_Quantity_Units	enum('ml','ul','mg','ug','ng','pg')		YES		20		131		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2096		PoolSample	Sample Quantity	Sample_Quantity			9	Sample_Quantity	float		YES		20		131		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2103		Barcode_Label	Label Descriptive Name	Label_Descriptive_Name			9	Label_Descriptive_Name	char(40)		NO		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2111		Sample_Pool	Sample Pool ID	ID	Primary		1	Sample_Pool_ID	int(11)	PRI	NO		20		157		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2112		Sample_Pool	Pool	Pool__ID	Mandatory	Pool_ID	2	FK_Pool__ID	int(11)	UNI	NO		20		157	Pool.Pool_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2113		Sample_Pool	Target Plate	Target_Plate__ID	Mandatory	Plate_ID	3	FKTarget_Plate__ID	int(11)	UNI	NO		20		157	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2120		ReArray_Plate	ReArray Plate ID	ID	Primary		1	ReArray_Plate_ID	int(11)	PRI	NO		20		158		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2138		Stock	Barcode Label	Barcode_Label__ID	Mandatory	Barcode_Label_ID	7	FK_Barcode_Label__ID	int(11)	MUL	YES		20		7	Barcode_Label.Barcode_Label_ID	NULL	yes	yes	Core	24	NULL	NULL	NULL
+2139	Custom Identifier ID (optional)	Stock	Identifier Number	Identifier_Number			10	Identifier_Number	varchar(80)	MUL	YES		20	^.{0,80}$	7		NULL	yes	no	Core	24	NULL	NULL	NULL
+2140	Type of Identifier ID (if used)	Stock	Identifier Number Type	Identifier_Number_Type			11	Identifier_Number_Type	enum('Component Number','Reference ID')	MUL	YES		20		7		NULL	yes	no	Core	24	NULL	NULL	NULL
+2143		DB_Form	Form Order	Form_Order			3	Form_Order	int(2)		YES	1	20		108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2144		DB_Login	DB Login ID	ID	Primary		1	DB_Login_ID	int(11)	PRI	NO		20		161		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2145		DB_Login	Employee	Employee__ID	Mandatory	Employee_ID	2	FK_Employee__ID	int(11)	MUL	NO		20		161	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2146		DB_Login	DB User	DB_User			3	DB_User	char(40)		NO		20		161		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2147		Error_Check	Description	Description			10	Description	text		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2148		Error_Check	Action	Action			11	Action	text		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2149		Error_Check	Priority	Priority			12	Priority	mediumtext		YES		20		32		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2150		Extraction	Extraction ID	ID	Primary		1	Extraction_ID	int(11)	PRI	NO		20		162		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2151		Extraction	Source Plate	Source_Plate__ID	Mandatory	Plate_ID	2	FKSource_Plate__ID	int(11)	MUL	NO		20		162	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2152		Extraction	Target Plate	Target_Plate__ID	Mandatory	Plate_ID	3	FKTarget_Plate__ID	int(11)	MUL	NO		20		162	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2169		Extraction_Sample	Extraction Sample ID	ID	Primary		1	Extraction_Sample_ID	int(11)	PRI	NO		20		164		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2170		Extraction_Sample	Sample	Sample__ID	Mandatory	Sample_ID	2	FK_Sample__ID	int(11)	MUL	NO		20		164	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2171		Extraction_Sample	Library	Library__Name	Searchable	Library_Name	3	FK_Library__Name	char(6)	MUL	YES		20		164	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2173		Extraction_Sample	Volume	Volume			5	Volume	int(11)		YES		20		164		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2174		Extraction_Sample	Original Plate	Original_Plate__ID	Mandatory	Plate_ID	6	FKOriginal_Plate__ID	int(11)	MUL	YES		20		164	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2175		Extraction_Sample	Type	Type			7	Extraction_Sample_Type	enum('DNA','RNA','Protein','Mixed','Amplicon','Clone','mRNA','Tissue','Cells','RNA - DNase Treated','cDNA','1st strand cDNA','Amplified cDNA','Ditag','Concatemer - Insert','Concatemer - Cloned','undefined')		YES	Mixed	20		164		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2176		Library	Created Employee	Created_Employee__ID	Mandatory	Employee_ID	14	FKCreated_Employee__ID	int(11)	MUL	YES		20		40	Employee.Employee_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+2177		Message	Grp	Grp__ID		Grp_ID	8	FK_Grp__ID	int(11)	MUL	YES		20		46	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2178		Original_Source	Original Source ID	ID	Primary	concat(Original_Source_ID,': ', Original_Source_Name)	1	Original_Source_ID	int(11)	PRI	NO		20		165		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2193		Sample_Alias	Sample Alias ID	ID	Primary		1	Sample_Alias_ID	int(11)	PRI	NO		20		169		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2194		Sample_Alias	Sample	Sample__ID	Mandatory	Sample_ID	2	FK_Sample__ID	int(11)	MUL	NO		20		169	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2195		Sample_Alias	Source Organization	Source_Organization__ID	Searchable	Organization_ID	3	FKSource_Organization__ID	int(11)	MUL	NO		20		169	Organization.Organization_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2196		Sample_Alias	Alias	Alias			4	Alias	varchar(40)	MUL	YES		20	^.{0,40}$	169		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2197		Sample_Alias	Alias Type	Alias_Type			5	Alias_Type	varchar(40)	MUL	YES		20	^.{0,40}$	169		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2202	The culmulative amount of sample withdrawn from this tube. This field is automatically populated by the LIMS based on amounts specified on transfer/aliquot steps. It should not be manually edited unless manual override is required.	Tube	Quantity Used	Quantity_Used	Hidden		5	Quantity_Used	float		YES		20		79		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2203		Tube	Quantity Used Units	Quantity_Used_Units	Hidden		6	Quantity_Used_Units	enum('ml','ul','mg','ug','ng','pg')		YES		20		79		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2204		Barcode_Label	Type	Type			10	Barcode_Label_Type	enum('plate','mulplate','solution','equipment','source','employee','microarray','box','Misc_Item','rack')		YES		20		2		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2205		Printer	Printer ID	ID	Primary	Printer_Name	1	Printer_ID	int(11)	PRI	NO		20		171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2206		Printer	Name	Name			2	Printer_Name	varchar(40)	MUL	YES		20	^.{0,40}$	171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2207		Printer	DPI	DPI			3	Printer_DPI	int(11)		NO		20		171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2208		Printer	Location	Location			4	Printer_Location	varchar(40)		YES		20	^.{0,40}$	171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2211		Extraction_Sample	Plate Number	Plate_Number			4	Plate_Number	int(11)		YES		20		164		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2212		Extraction_Sample	Original Well	Original_Well			8	Original_Well	char(3)		YES		20		164		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2214		Sample	Parent Sample	Parent_Sample__ID		Sample_ID	5	FKParent_Sample__ID	int(11)	MUL	YES		20		142	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2217		Attribute	Attribute ID	ID	Primary	Attribute_Name	1	Attribute_ID	int(11)	PRI	NO		20		172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2218		Attribute	Name	Name			2	Attribute_Name	varchar(40)	MUL	YES		20	^\\w{0,40}$	172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2219		Attribute	Format	Format			3	Attribute_Format	text		YES		20		172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2220		Attribute	Type	Type			4	Attribute_Type	varchar(255)		YES		20	^.{0,255}$	172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2221		Attribute	Grp	Grp__ID		Grp_ID	5	FK_Grp__ID	int(11)	MUL	NO		20		172	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2222		Attribute	Inherited	Inherited			6	Inherited	enum('Yes','No')		NO	No	20		172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2223		Attribute	Class	Class			7	Attribute_Class	varchar(40)		YES		20	^.{0,40}$	172		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2231		DB_Form	Finish	Finish			9	Finish	int(11)		YES		20		108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2252		Hybrid_Original_Source	Hybrid Original Source ID	ID	Primary		1	Hybrid_Original_Source_ID	int(11)	PRI	NO		20		177		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2254		Hybrid_Original_Source	Child Original Source	Child_Original_Source__ID	Mandatory	Original_Source_ID	3	FKChild_Original_Source__ID	int(11)	MUL	YES		20		177	Original_Source.Original_Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2263		Lab_Request	Lab Request ID	ID	Primary		1	Lab_Request_ID	int(11)	PRI	NO		20		180		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2264		Lab_Request	Employee	Employee__ID	Mandatory	Employee_ID	2	FK_Employee__ID	int(11)	MUL	NO		20		180	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2265		Lab_Request	Request Date	Request_Date			3	Request_Date	date		NO	0000-00-00	20		180		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2273		Library	Original Source	Original_Source__ID	Mandatory	Original_Source_ID	16	FK_Original_Source__ID	int(11)	MUL	NO		20		40	Original_Source.Original_Source_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+2276		Library_Source	Library Source ID	ID	Primary		1	Library_Source_ID	int(11)	PRI	NO		20		182		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2277		Library_Source	Source	Source__ID	Mandatory	Source_ID	2	FK_Source__ID	int(11)	MUL	NO		20		182	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2278		Library_Source	Library	Library__Name	Mandatory	Library_Name	3	FK_Library__Name	varchar(40)	MUL	NO		20		182	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2281	Concise reference name for this tissue/organism information	Original_Source	Original Source Name	Name	Mandatory		3	Original_Source_Name	varchar(40)	UNI	NO		20	^.{1,40}$	165		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2287	Additional information (if applicable)	Original_Source	Description	Description			20	Description	text		YES		20		165		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2288	Person supplying this information (collaborator or internal contact)	Original_Source	Contact	Contact__ID	Mandatory,NewLink	Contact_ID	12	FK_Contact__ID	int(11)	MUL	YES		20		165	Contact.Contact_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2289	Employee uploading this information	Original_Source	Created Employee	Created_Employee__ID	Mandatory,Searchable	Employee_ID	13	FKCreated_Employee__ID	int(11)	MUL	YES		20		165	Employee.Employee_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2290	When the original source information is first entered	Original_Source	Defined Date	Defined_Date			14	Defined_Date	date		NO	0000-00-00	20		165		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2297		Original_Source_Attribute	Original Source	Original_Source__ID	Mandatory	Original_Source_ID	1	FK_Original_Source__ID	int(11)	MUL	NO		20		184	Original_Source.Original_Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2298		Original_Source_Attribute	Attribute	Attribute__ID	Mandatory	Attribute_ID	2	FK_Attribute__ID	int(11)	MUL	NO		20		184	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2299		Original_Source_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		184		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2300		Original_Source_Attribute	Original Source Attribute ID	ID	Primary		4	Original_Source_Attribute_ID	int(11)	PRI	NO		20		184		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2305		Pipeline	Pipeline ID	ID	Primary	concat(Pipeline_Code,' : ', Pipeline_Name)	1	Pipeline_ID	int(11)	PRI	NO		20		187		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2306		Pipeline	Name	Name			2	Pipeline_Name	varchar(40)		YES		20	^.{0,40}$	187		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2307		Pipeline	Grp	Grp__ID	Mandatory	Grp_ID	3	FK_Grp__ID	int(11)	MUL	NO		20		187	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2308		Plate	Current Volume	Current_Volume			17	Current_Volume	float		YES		20		59		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2309		Plate	Current Volume Units	Current_Volume_Units			18	Current_Volume_Units	enum('pl','nl','ul','ml','l','g','mg','ug','ng','pg','n/a')		NO	ul	20		59		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2311		Plate	Parent Quadrant	Parent_Quadrant			20	Parent_Quadrant	enum('','a','b','c','d')		NO		20		59		NULL	no	no	NULL	24	NULL	NULL	NULL
+2312		Plate	Parent Well	Parent_Well			21	Plate_Parent_Well	char(3)		NO		20		59		NULL	no	no	NULL	24	NULL	NULL	NULL
+2313		Plate_Format	Wells	Wells	Mandatory		11	Wells	smallint(6)		NO	1	20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2318		Prep_Detail_Option	Prep Detail Option ID	ID	Primary		1	Prep_Detail_Option_ID	int(11)	PRI	NO		20		189		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2319		Prep_Detail_Option	Protocol Step	Protocol_Step__ID		Protocol_Step_ID	2	FK_Protocol_Step__ID	int(11)	MUL	NO		20		189	Protocol_Step.Protocol_Step_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2320		Prep_Detail_Option	Option Description	Option_Description			3	Option_Description	text		YES		20		189		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2321		Prep_Detail_Option	Attribute	Attribute__ID		Attribute_ID	4	FK_Attribute__ID	int(11)	MUL	NO		20		189	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2322		Prep_Details	Prep Details ID	ID	Primary		1	Prep_Details_ID	int(11)	PRI	NO		20		190		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2323		Prep_Details	Prep	Prep__ID		Prep_ID	2	FK_Prep__ID	int(11)	MUL	NO		20		190	Prep.Prep_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2324		Prep_Details	Attribute	Attribute__ID		Attribute_ID	3	FK_Attribute__ID	int(11)	MUL	NO		20		190	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2325		Prep_Details	Value	Value			4	Prep_Details_Value	text		YES		20		190		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2348		ReArray	Sample	Sample__ID		Sample_ID	6	FK_Sample__ID	int(11)	MUL	YES	-1	20		70	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2349		ReArray_Plate	Source	Source__ID	Mandatory	Source_ID	4	FK_Source__ID	int(11)	MUL	NO		20		158	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2350		ReArray_Request	Lab Request	Lab_Request__ID		Lab_Request_ID	11	FK_Lab_Request__ID	int(11)	MUL	YES		20		140	Lab_Request.Lab_Request_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2351		Sample	Source	Source__ID	Mandatory	Source_ID	6	FK_Source__ID	int(11)	MUL	NO		20		142	Source.Source_ID	NULL	no	no	NULL	25	NULL	NULL	NULL
+2352		Sample_Attribute	Sample	Sample__ID	Mandatory	Sample_ID	1	FK_Sample__ID	int(11)	MUL	NO		20		193	Sample.Sample_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2353		Sample_Attribute	Attribute	Attribute__ID	Mandatory	Attribute_ID	2	FK_Attribute__ID	int(11)	MUL	NO		20		193	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2354		Sample_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		193		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2355		Sample_Attribute	Sample Attribute ID	ID	Primary		4	Sample_Attribute_ID	int(11)	PRI	NO		20		193		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2356		Source	Source ID	ID	Primary	concat(Source_Type,'-',Source_Number,' ',Source_Label)	1	Source_ID	int(11)	PRI	NO		20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2357	(only applicable if this is an aliquot from another tracked source)	Source	Parent Source	Parent_Source__ID		Source_ID	19	FKParent_Source__ID	int(11)	MUL	YES		20		194	Source.Source_ID	NULL	no	yes	NULL	25	NULL	NULL	NULL
+2358	Name provided by external source/collaborator	Source	External Identifier	External_Identifier			3	External_Identifier	varchar(40)	MUL	NO		20	^.{0,40}$	194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2360		Source	Status	Status	Mandatory		16	Source_Status	enum('Active','Reserved','On Hold','Inactive','Thrown Out','Exported','Failed','Cancelled','Archived')		YES	Active	20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2362	Reference to sample origin information	Source	Original Source	Original_Source__ID	Mandatory	Original_Source_ID	2	FK_Original_Source__ID	int(11)	MUL	YES		20		194	Original_Source.Original_Source_ID	NULL	no	yes	NULL	25	NULL	NULL	NULL
+2363		Source	Received Date	Received_Date	Mandatory		8	Received_Date	date		NO	0000-00-00	20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2364	Amount of source currently in stock	Source	Current Amount	Current_Amount			9	Current_Amount	float		YES		20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2365	Amount of source when received	Source	Original Amount	Original_Amount			10	Original_Amount	float		YES		20		194		NULL	no	yes	NULL	25	NULL	NULL	NULL
+2366		Source	Amount Units	Amount_Units			11	Amount_Units	enum('','ul','ml','ul/well','mg','ug','ng','pg','Cells','Embryos','Litters','Organs','Animals','Million Cells','Sections')		YES		20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2367		Source	Received Employee	Received_Employee__ID	Mandatory	Employee_ID	14	FKReceived_Employee__ID	int(11)	MUL	YES		20		194	Employee.Employee_ID	NULL	no	yes	NULL	25	NULL	NULL	NULL
+2368	Rack ID and an optional slot name	Source	Rack	Rack__ID	Mandatory,Searchable	Rack_ID	15	FK_Rack__ID	int(11)	MUL	NO	<DEFAULT_LOCATION>	20		194	Rack.Rack_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2369	indexed number (for each type of sample)	Source	Number	Number			5	Source_Number	varchar(40)	MUL	YES	1	20	^.{0,40}$	194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2370	type of barcode label	Source	Barcode Label	Barcode_Label__ID	Mandatory	Barcode_Label_ID	17	FK_Barcode_Label__ID	int(11)	MUL	NO		20		194	Barcode_Label.Barcode_Label_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2371	additional information (if applicable) specific to this actual sample	Source	Notes	Notes			18	Notes	text		YES		20		194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2372	The variable in the formula which refers to the individual reagents (eg if formula = R*wells + DeadVolume; R is the reagent Parameter)	Standard_Solution	Reagent Parameter	Reagent_Parameter	Mandatory		7	Reagent_Parameter	varchar(40)		YES		20	^.{0,40}$	58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2411		Parameter	Prompt	Prompt			10	Parameter_Prompt	varchar(30)		NO		20	^.{0,30}$	57		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+2412		Plate_Attribute	Plate	Plate__ID	Mandatory	Plate_ID	1	FK_Plate__ID	int(11)	MUL	NO		20		200	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2413		Plate_Attribute	Attribute	Attribute__ID	Mandatory	Attribute_ID	2	FK_Attribute__ID	int(11)	MUL	NO		20		200	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2414		Plate_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		200		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2415		Plate_Attribute	Plate Attribute ID	ID	Primary		4	Plate_Attribute_ID	int(11)	PRI	NO		20		200		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2424		Contact	Canonical Name	Canonical_Name			40	Canonical_Name	varchar(40)		NO		20	^.{0,40}$	24		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2434		Printer_Assignment	Printer Assignment ID	ID	Primary		1	Printer_Assignment_ID	int(11)	PRI	NO		20		203		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2435		Printer_Assignment	Printer Group	Printer_Group__ID	Mandatory	Printer_Group_ID	2	FK_Printer_Group__ID	int(11)	MUL	NO		20		203	Printer_Group.Printer_Group_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2436		Printer_Assignment	Printer	Printer__ID	Mandatory	Printer_ID	3	FK_Printer__ID	int(11)	MUL	NO		20		203	Printer.Printer_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2437		Printer_Group	Printer Group ID	ID	Primary	Printer_Group_Name	1	Printer_Group_ID	int(11)	PRI	NO		20		204		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2438		Printer_Group	Name	Name			2	Printer_Group_Name	varchar(40)		NO		20	^.{0,40}$	204		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2487		Box	Expiry	Expiry			10	Box_Expiry	date		YES		20		3		NULL	yes	no	Core	25	NULL	NULL	NULL
+2488		Change_History	Change History ID	ID	Primary		1	Change_History_ID	int(11)	PRI	NO		20		208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2489		Change_History	DBField	DBField__ID	Mandatory	DBField_ID	2	FK_DBField__ID	int(11)	MUL	NO		20		208	DBField.DBField_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2490		Change_History	Old Value	Old_Value			3	Old_Value	varchar(255)		YES		20		208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2491		Change_History	New Value	New_Value			4	New_Value	varchar(255)		YES		20		208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2492		Change_History	Employee	Employee__ID		Employee_ID	5	FK_Employee__ID	int(11)	MUL	NO		20		208	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2493		Change_History	Modified Date	Modified_Date			6	Modified_Date	datetime		NO	0000-00-00 00:00:00	20		208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2494		Change_History	Record ID	Record_ID			7	Record_ID	varchar(40)		NO		20	^.{0,40}$	208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2495		Change_History	Comment	Comment			8	Comment	text		YES		20		208		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2496		Child_Ordered_Procedure	Child Ordered Procedure ID	ID	Primary		1	Child_Ordered_Procedure_ID	int(11)	PRI	NO		20		209		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2497		Child_Ordered_Procedure	Parent Ordered Procedure	Parent_Ordered_Procedure__ID	Mandatory	Ordered_Procedure_ID	2	FKParent_Ordered_Procedure__ID	int(11)	MUL	NO		20		209	Ordered_Procedure.Ordered_Procedure_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2498		Child_Ordered_Procedure	 ID	_ID	Mandatory	Ordered_Procedure_ID	3	FKChild_Ordered_Procedure__ID	int(11)	MUL	NO		20		209	Ordered_Procedure.Ordered_Procedure_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2541		Collaboration	Contact	Contact__ID	Mandatory,NewLink	Contact_ID	3	FK_Contact__ID	int(11)	MUL	NO		20		17	Contact.Contact_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2542		DBField	Editable	Editable			19	Editable	enum('yes','no')		YES	yes	20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2543		DBField	Tracked	Tracked			20	Tracked	enum('yes','no')		YES	no	20		107		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2544		Equipment	Location	Location__ID		Location_ID	5	FK_Location__ID	int(11)	MUL	NO		20		31	Location.Location_ID	NULL	yes	no	Core	24	NULL	NULL	NULL
+2545		FailureReason	FailureReason ID	ID	Primary	FailureReason_Name	1	FailureReason_ID	int(11)	PRI	NO		20		212		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2546		FailureReason	Grp	Grp__ID	Mandatory	Grp_ID	2	FK_Grp__ID	int(11)	MUL	NO		20		212	Grp.Grp_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2547		FailureReason	Name	Name			3	FailureReason_Name	varchar(40)	UNI	YES		20	^.{0,40}$	212		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2548		FailureReason	Failure Description	Failure_Description			4	Failure_Description	text		YES		20		212		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2573		GrpProject	GrpProject ID	ID	Primary		1	GrpProject_ID	int(11)	PRI	NO		20		215		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2574		GrpProject	Project	Project__ID		Project_ID	2	FK_Project__ID	int(11)	MUL	NO		20		215	Project.Project_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2575		GrpProject	Grp	Grp__ID		Grp_ID	3	FK_Grp__ID	int(11)	MUL	NO		20		215	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2576		Hybrid_Original_Source	Parent Original Source	Parent_Original_Source__ID	Mandatory	Original_Source_ID	2	FKParent_Original_Source__ID	int(11)	MUL	YES		20		177	Original_Source.Original_Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2578	Non-GSC name. How is the Library referenced by those who supplied it? 	Library	External Library Name	External_Library_Name			6	External_Library_Name	text		NO		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2579	Optional URL that refers to this library	Library	URL	URL	Hidden		18	Library_URL	text		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2580	Optional - only set if you wish to set the first plate created to something greater than 1	Library	Starting Plate Number	Starting_Plate_Number	Mandatory		19	Starting_Plate_Number	smallint(6)		NO	1	20	[1-9]	40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2581	Track details for the incoming source	Library	Source In House	Source_In_House	Mandatory		20	Source_In_House	enum('Yes','No')		NO	Yes	20		40		NULL	no	no	NULL	24	NULL	NULL	NULL
+2583		Location	Location ID	ID	Primary	Location_Name	1	Location_ID	int(11)	PRI	NO		20		216		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2584		Location	Name	Name			2	Location_Name	char(40)		YES		20		216		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2585		Ordered_Procedure	Ordered Procedure ID	ID	Primary		1	Ordered_Procedure_ID	int(11)	PRI	NO		20		217		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2587		Ordered_Procedure	Object ID	Object_ID	Mandatory		3	Object_ID	int(11)	MUL	NO		20		217		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2588		Ordered_Procedure	Procedure Order	Procedure_Order			4	Procedure_Order	tinyint(4)		NO		20		217		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2589		Ordered_Procedure	Pipeline	Pipeline__ID	Mandatory	Pipeline_ID	5	FK_Pipeline__ID	int(11)	MUL	NO		20		217	Pipeline.Pipeline_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2599		Pipeline	Description	Description			4	Pipeline_Description	text		YES		20		187		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2600		Plate_Prep	Equipment	Equipment__ID		Equipment_ID	5	FK_Equipment__ID	int(11)	MUL	YES		20		128	Equipment.Equipment_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2601		Plate_Prep	Solution	Solution__ID		Solution_ID	6	FK_Solution__ID	int(11)	MUL	YES		20		128	Solution.Solution_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2602		Plate_Prep	Solution Quantity	Solution_Quantity			7	Solution_Quantity	float		YES		20		128		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2603		Plate_Prep	Transfer Quantity	Transfer_Quantity			8	Transfer_Quantity	float		YES		20		128		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2604		Plate_Prep	Transfer Quantity Units	Transfer_Quantity_Units			9	Transfer_Quantity_Units	enum('pl','nl','ul','ml','l','g','mg','ug','ng','pg')		YES		20		128		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2605		Plate_Set	Parent Plate Set	Parent_Plate_Set__Number		Plate_Set_Number	4	FKParent_Plate_Set__Number	int(11)	MUL	YES		20		61	Plate_Set.Plate_Set_Number	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2606		Plate_Tray	Plate Tray ID	ID	Primary		1	Plate_Tray_ID	int(11)	PRI	NO		20		219		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2607		Plate_Tray	Plate	Plate__ID	Mandatory	Plate_ID	2	FK_Plate__ID	int(11)	UNI	NO		20		219	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2608		Plate_Tray	Tray	Tray__ID	Mandatory	Tray_ID	3	FK_Tray__ID	int(11)	MUL	NO		20		219	Tray.Tray_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2609		Plate_Tray	Plate Position	Plate_Position			4	Plate_Position	char(3)		NO	N/A	20		219		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2610		Prep	FailureReason	FailureReason__ID		FailureReason_ID	16	FK_FailureReason__ID	int(11)	MUL	YES		20		132	FailureReason.FailureReason_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2611		Printer	Type	Type			5	Printer_Type	varchar(40)		NO		20	^.{0,40}$	171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2612		Printer	Address	Address			6	Printer_Address	varchar(80)		NO		20	^.{0,80}$	171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2613		Printer	Output	Output			7	Printer_Output	enum('text','ZPL','latex','OFF')		NO	ZPL	20		171		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2614		ProcedureTest_Condition	ProcedureTest Condition ID	ID	Primary		1	ProcedureTest_Condition_ID	int(11)	PRI	NO		20		220		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2615		ProcedureTest_Condition	Ordered Procedure	Ordered_Procedure__ID	Mandatory	Ordered_Procedure_ID	2	FK_Ordered_Procedure__ID	int(11)	MUL	NO		20		220	Ordered_Procedure.Ordered_Procedure_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2616		ProcedureTest_Condition	Test Condition	Test_Condition__ID	Mandatory	Test_Condition_ID	3	FK_Test_Condition__ID	int(11)	MUL	NO		20		220	Test_Condition.Test_Condition_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2617		ProcedureTest_Condition	Test Condition Number	Test_Condition_Number			4	Test_Condition_Number	tinyint(11)		NO		20		220		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2618		ReArray_Attribute	ReArray Attribute ID	ID	Primary		1	ReArray_Attribute_ID	int(11)	PRI	NO		20		221		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2619		ReArray_Attribute	Attribute	Attribute__ID	Mandatory	Attribute_ID	2	FK_Attribute__ID	int(11)	MUL	NO		20		221	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2620		ReArray_Attribute	ReArray	ReArray__ID	Mandatory	ReArray_ID	3	FK_ReArray__ID	int(11)	MUL	NO		20		221	ReArray.ReArray_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2621		ReArray_Attribute	Attribute Value	Attribute_Value			4	Attribute_Value	text		YES		20		221		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2622		ReArray_Request	Status	Status__ID	Mandatory	Status_ID	11	FK_Status__ID	int(11)	MUL	NO		20		140	Status.Status_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2623		ReArray_Request	ReArray Purpose	ReArray_Purpose			12	ReArray_Purpose	enum('Not applicable','96-well oligo prep','96-well EST prep','384-well oligo prep','384-well EST prep','384-well hardstop prep')	MUL	YES	Not applicable	20		140		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2628	plate/tube from which this material came (only applicable when transferring from a previous sample collection)	Source	Plate	Plate__ID		Plate_ID	19	FKSource_Plate__ID	int(11)	MUL	YES		20		194	Plate.Plate_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2629		Source_Pool	Source Pool ID	ID	Primary		1	Source_Pool_ID	int(11)	PRI	NO		20		222		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2630		Source_Pool	Parent Source	Parent_Source__ID	Mandatory	Source_ID	2	FKParent_Source__ID	int(11)	MUL	YES		20		222	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2631		Source_Pool	Child Source	Child_Source__ID		Source_ID	3	FKChild_Source__ID	int(11)	MUL	YES		20		222	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2634		Standard_Solution	Label Type	Label_Type			8	Label_Type	enum('Laser','ZPL')		YES	ZPL	20		58		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2635		Standard_Solution	Barcode Label	Barcode_Label__ID		Barcode_Label_ID	9	FK_Barcode_Label__ID	int(11)	MUL	NO		20		58	Barcode_Label.Barcode_Label_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2636		Status	Status ID	ID	Primary	Status_Name	1	Status_ID	int(11)	PRI	NO		20		223		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2637		Status	Type	Type			2	Status_Type	enum('ReArray_Request','Maintenance','GelAnalysis')		YES		20		223		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2638		Status	Name	Name			3	Status_Name	char(40)	MUL	YES		20		223		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2646		Test_Condition	Test Condition ID	ID	Primary		1	Test_Condition_ID	int(11)	PRI	NO		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2647		Test_Condition	Condition Name	Condition_Name			2	Condition_Name	varchar(40)		YES		20	^.{0,40}$	225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2648		Test_Condition	Condition Tables	Condition_Tables			3	Condition_Tables	text		YES		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2649		Test_Condition	Condition Field	Condition_Field			4	Condition_Field	text		YES		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2650		Test_Condition	Condition String	Condition_String			5	Condition_String	text		YES		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2651		Test_Condition	Condition Type	Condition_Type			6	Condition_Type	enum('Ready','In Process','Completed','Transferred within Protocol','Ready For Next Protocol','Custom')		YES	Custom	20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2652		Test_Condition	Procedure Link	Procedure_Link			7	Procedure_Link	varchar(80)		YES		20	^.{0,80}$	225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2653		Test_Condition	Condition Description	Condition_Description			8	Condition_Description	text		YES		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2654		Test_Condition	Condition Key	Condition_Key			9	Condition_Key	varchar(40)		YES		20	^.{0,40}$	225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2655		Test_Condition	Extra Clause	Extra_Clause			10	Extra_Clause	text		YES		20		225		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2663		Tray	Tray ID	ID	Primary	concat('tra',Tray_ID, ' ', Tray_Label)	1	Tray_ID	int(11)	PRI	NO		20		226		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2694		Prep_Attribute_Option	Prep Attribute Option ID	ID	Primary		1	Prep_Attribute_Option_ID	int(11)	PRI	NO		20		230		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2695		Prep_Attribute_Option	Protocol Step	Protocol_Step__ID			2	FK_Protocol_Step__ID	int(11)	MUL	NO		20		230	Protocol_Step.Protocol_Step_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2696		Prep_Attribute_Option	Option Description	Option_Description			3	Option_Description	text		YES		20		230		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2697		Prep_Attribute_Option	Attribute	Attribute__ID			4	FK_Attribute__ID	int(11)	MUL	NO		20		230	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2698		Prep_Attribute	Prep	Prep__ID	Mandatory		1	FK_Prep__ID	int(11)	MUL	NO		20		231	Prep.Prep_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2699		Prep_Attribute	Attribute	Attribute__ID	Mandatory		2	FK_Attribute__ID	int(11)	MUL	NO		20		231	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2700		Prep_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		231		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2701		Prep_Attribute	Prep Attribute ID	ID	Primary		4	Prep_Attribute_ID	int(11)	PRI	NO		20		231		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2715		Work_Request	Work Request ID	ID	Primary	CASE WHEN LENGTH(Work_Request_Title) > 0 THEN CONCAT(Work_Request_ID,': ',Work_Request_Title) ELSE CONCAT(Work_Request_ID,': ', Goal_Name, ' for ', Funding_Name,' - ',Work_Request.FK_Library__Name, ' - ', Goal_Target_Type) END	1	Work_Request_ID	int(11)	PRI	NO		20		234		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2721		Rack	Movable	Movable			6	Movable	enum('Y','N')		NO	Y	20		69		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2723	Starting Material Tracked	Original_Source	Starting Material supplied to the Lab?	Sample_Available	Mandatory		1	Sample_Available	enum('Yes','No','Later')		YES		5		165		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2724		Antibiotic	Antibiotic ID	ID	Primary	Antibiotic_Name	1	Antibiotic_ID	int(10) unsigned	PRI	NO		20		235		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2725		Antibiotic	Name	Name			2	Antibiotic_Name	varchar(40)	UNI	YES		20	^.{0,40}$	235		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2729		DB_Form	Class	Class			10	Class	varchar(40)		YES		20	^.{0,40}$	108		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2730		Event	Event ID	ID	Primary		1	Event_ID	int(10) unsigned	PRI	NO		20		236		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2731		Event	Employee	Employee__ID			2	FK_Employee__ID	int(11)	MUL	NO		20		236	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2732		Event	Type	Type			3	Event_Type	enum('Inventory')		YES		20		236		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2733		Event	Start	Start			4	Event_Start	datetime		NO	0000-00-00 00:00:00	20		236		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2734		Event	Finish	Finish			5	Event_Finish	datetime		NO	0000-00-00 00:00:00	20		236		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2735		Event	Status	Status__ID			6	FKEvent_Status__ID	int(11)	MUL	NO		20		236	Status.Status_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2736		Event_Attribute	Event Attribute ID	ID	Primary		1	Event_Attribute_ID	int(11)	PRI	NO		20		237		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2737		Event_Attribute	Event	Event__ID			2	FK_Event__ID	int(11)	MUL	NO		20		237	Event.Event_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2738		Event_Attribute	Attribute	Attribute__ID			3	FK_Attribute__ID	int(11)	MUL	NO		20		237	Attribute.Attribute_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2739		Event_Attribute	Attribute Value	Attribute_Value			4	Attribute_Value	text		NO		20		237		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2740		Event_Attribute	Employee	Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		237	Employee.Employee_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2741		Event_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		237		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2742		Fail	Fail ID	ID	Primary		1	Fail_ID	int(11)	PRI	NO		20		238		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2743		Fail	Object ID	Object_ID	Mandatory		2	Object_ID	int(11)	MUL	NO		20		238		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2744		Fail	Employee	Employee__ID	Mandatory		3	FK_Employee__ID	int(11)	MUL	NO		20		238	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2745		Fail	FailReason	FailReason__ID	Mandatory		4	FK_FailReason__ID	int(11)	MUL	NO		20		238	FailReason.FailReason_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2746		Fail	DateTime	DateTime			5	DateTime	datetime		NO	0000-00-00 00:00:00	20		238		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2747		Fail	Comments	Comments			6	Comments	text		YES		20		238		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2748		FailReason	FailReason ID	ID	Primary	FailReason_Name	1	FailReason_ID	int(11)	PRI	NO		20		239		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2749		FailReason	Grp	Grp__ID	Mandatory		2	FK_Grp__ID	int(11)	MUL	NO		20		239	Grp.Grp_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2750		FailReason	Name	Name			3	FailReason_Name	varchar(100)	MUL	YES		100	^.{0,100}$	239		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2751		FailReason	Description	Description			4	FailReason_Description	text		YES		20		239		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2752		FailReason	Object Class	Object_Class__ID	Mandatory		5	FK_Object_Class__ID	int(11)	MUL	NO		20		239	Object_Class.Object_Class_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2753		Field_Map	Field Map ID	ID	Primary		1	Field_Map_ID	int(11)	PRI	NO		20		240		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2754		Field_Map	Attribute	Attribute__ID	Mandatory		2	FK_Attribute__ID	int(11)	MUL	YES		20		240	Attribute.Attribute_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2755		Field_Map	Source DBField	Source_DBField__ID			3	FKSource_DBField__ID	int(11)	MUL	YES		20		240	DBField.DBField_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2756		Field_Map	Target DBField	Target_DBField__ID	Mandatory		4	FKTarget_DBField__ID	int(11)	MUL	NO		20		240	DBField.DBField_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2778		Goal	Goal ID	ID	Primary	Goal_Name	1	Goal_ID	int(11)	PRI	NO		20		244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2779		Goal	Name	Name			2	Goal_Name	varchar(255)		YES		20	^.{0,255}$	244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2780		Goal	Description	Description			3	Goal_Description	text		YES		20		244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2781		Goal	Query	Query			4	Goal_Query	text		YES		20		244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2782		Goal	Tables	Tables			5	Goal_Tables	varchar(255)		YES		20	^.{0,255}$	244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2783		Goal	Count	Count			6	Goal_Count	varchar(255)		YES		20	^.{0,255}$	244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2784		Goal	Goal Condition	Goal_Condition			7	Goal_Condition	varchar(255)		YES		20	^.{0,255}$	244		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2796		Library	Requested Completion Date	Requested_Completion_Date			21	Requested_Completion_Date	date		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2797	Reference to contact responsible for constructing this library/collection	Library	Constructed By	Constructed_Contact__ID			22	FKConstructed_Contact__ID	int(11)	MUL	YES		20		40	Contact.Contact_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+2798		LibraryApplication	LibraryApplication ID	ID	Primary		1	LibraryApplication_ID	int(11)	PRI	NO		20		246		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2799		LibraryApplication	Library	Library__Name	Searchable		2	FK_Library__Name	varchar(40)	MUL	NO		20		246	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2800		LibraryApplication	Object ID	Object_ID	Mandatory		3	Object_ID	varchar(40)	MUL	NO		20	^.{0,40}$	246		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2801		LibraryApplication	Object Class	Object_Class__ID	Mandatory		4	FK_Object_Class__ID	int(11)	MUL	NO		20		246	Object_Class.Object_Class_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2802	Only applicable for Primers	LibraryApplication	Direction	Direction			5	Direction	enum('3prime','5prime','N/A','Unknown')		YES	N/A	20		246		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2803		LibraryGoal	LibraryGoal ID	ID	Primary		1	LibraryGoal_ID	int(11)	PRI	NO		20		247		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2804		LibraryGoal	Library	Library__Name	Searchable		2	FK_Library__Name	varchar(6)	MUL	YES		20		247	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2805	Select the furthest stage to process samples to	LibraryGoal	Goal Type	Goal_Type	Mandatory		3	FK_Goal__ID	int(11)	MUL	NO		20		247	Goal.Goal_ID	NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2806		LibraryGoal	Goal Target	Goal_Target	Mandatory		4	Goal_Target	int(11)		NO		20	\\d+	247		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+2820		Maintenance	Finished	Finished			10	Maintenance_Finished	datetime		YES		20		44		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2821		Maintenance	Status	Status__ID	Mandatory		11	FKMaintenance_Status__ID	int(11)	MUL	YES		20		44	Status.Status_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2824		Object_Class	Object Class ID	ID	Primary	Object_Class	1	Object_Class_ID	int(11)	PRI	NO		20		250		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2825		Object_Class	Object Class	Object_Class			2	Object_Class	varchar(40)	MUL	NO		20	^.{0,40}$	250		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2826	Object type is used to group together object classes that have the same applications, ie. Enzymes,Antibiotics and Primers are all solutions and validation treats these in the same way	Object_Class	Object Type	Object_Type			3	Object_Type	varchar(40)	MUL	YES		20	^.{0,40}$	250		NULL	yes	no	NULL	24	NULL	NULL	NULL
+2829		Plate	QC Status	QC_Status			22	QC_Status	enum('N/A','Pending','Failed','Re-Test','Passed')		YES	N/A	20		59		NULL	no	yes	NULL	24	NULL	NULL	NULL
+2830		Plate_Attribute	Employee	Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		200	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2831		Plate_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		200		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2832		Prep	Attr temp	Attr_temp			17	Attr_temp	text		YES		20		132		NULL	yes	no	NULL	25	NULL	NULL	NULL
+2833		Prep_Attribute	Employee	Employee__ID	Mandatory		5	FK_Employee__ID	int(11)	MUL	YES		20		231	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+2834		Prep_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		231		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3006		Solution	QC Status	QC_Status			13	QC_Status	enum('N/A','Pending','Failed','Re-Test','Passed')		YES	N/A	20		5		NULL	yes	yes	Core	25	NULL	NULL	NULL
+3007		Source_Attribute	Source Attribute ID	ID	Primary		1	Source_Attribute_ID	int(11)	PRI	NO		20		259		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3008		Source_Attribute	Source	Source__ID			2	FK_Source__ID	int(11)	MUL	NO		20		259	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3009		Source_Attribute	Attribute	Attribute__ID	Mandatory		3	FK_Attribute__ID	int(11)	MUL	NO		20		259	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3010		Source_Attribute	Attribute Value	Attribute_Value			4	Attribute_Value	text		NO		20		259		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3011		Source_Attribute	Employee	Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		259	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3012		Source_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		259		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3029		View	View ID	ID	Primary	View_Name	1	View_ID	int(10) unsigned	PRI	NO		20		263		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3030		View	Name	Name			2	View_Name	varchar(40)		YES		20	^.{0,40}$	263		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3031		View	Description	Description			3	View_Description	text		YES		20		263		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3032		View	Tables	Tables			4	View_Tables	text		YES		20		263		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3033		View	Grp	Grp__ID			5	FK_Grp__ID	int(11)	MUL	NO		20		263	Grp.Grp_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3034		ViewInput	ViewInput ID	ID	Primary		1	ViewInput_ID	int(10) unsigned	PRI	NO		20		264		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3035		ViewInput	View	View__ID			2	FK_View__ID	int(11)	MUL	NO		20		264	View.View_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3036		ViewInput	Input Field	Input_Field			3	Input_Field	varchar(80)		YES		20	^.{0,80}$	264		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3037		ViewJoin	ViewJoin ID	ID	Primary		1	ViewJoin_ID	int(10) unsigned	PRI	NO		20		265		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3038		ViewJoin	View	View__ID			2	FK_View__ID	int(11)	MUL	NO		20		265	View.View_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3039		ViewJoin	Join Condition	Join_Condition			3	Join_Condition	text		YES		20		265		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3040		ViewJoin	Join Type	Join_Type			4	Join_Type	enum('LEFT','INNER')		YES	INNER	20		265		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3041		ViewOutput	ViewOutput ID	ID	Primary		1	ViewOutput_ID	int(10) unsigned	PRI	NO		20		266		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3042		ViewOutput	View	View__ID			2	FK_View__ID	int(11)	MUL	NO		20		266	View.View_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3043		ViewOutput	Output Field	Output_Field			3	Output_Field	varchar(80)		YES		20	^.{0,80}$	266		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3044	Select the furthest stage to process plates to	Work_Request	Goal	Goal__ID	Mandatory		5	FK_Goal__ID	int(11)	MUL	YES		20		234	Goal.Goal_ID	NULL	yes	yes	NULL	24	NULL	NULL	NULL
+3045		Work_Request	Goal Target	Goal_Target	Mandatory		6	Goal_Target	int(11)		YES		20		234		NULL	yes	yes	NULL	24	NULL	NULL	NULL
+3046		Work_Request	Comments	Comments			7	Comments	text		YES		20		234		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3048		Work_Request	Type	Type	Hidden		9	Work_Request_Type	enum('1/16 End Reads','1/24 End Reads','1/256 End Reads','1/16 Custom Reads','1/24 Custom Reads','1/256 Custom Reads','DNA Preps','Bac End Reads','1/256 Submission QC','1/256 Transposon','1/256 Single Prep End Reads','1/16 Glycerol Rearray Custom Reads','Primer Plates Ready','1/48 End Reads','1/48 Custom Reads')		YES		20		234		NULL	no	no	NULL	24	NULL	NULL	NULL
+3049		Work_Request	Num Plates Submitted	Num_Plates_Submitted			10	Num_Plates_Submitted	int(11)		NO		20		234		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3050		Work_Request	Container Format	Plate_Format__ID			11	FK_Plate_Format__ID	int(11)	MUL	NO		20		234	Plate_Format.Plate_Format_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3057		Original_Source_Attribute	Employee	Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		184	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3058		Original_Source_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		184		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3082	Branch Code for Samples after indicated reagent has been applied (optional)	Branch	Code	Code	Mandatory,Primary	concat(Branch_Code,' : ', Branch_Description)	1	Branch_Code	varchar(5)	PRI	NO		20	^\\w{1,4}$	271		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3083	How is this branch defined	Branch	Description	Description	Mandatory		2	Branch_Description	text		NO		20		271		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3228		Ordered_Procedure	Object Class	Object_Class__ID	Mandatory		2	FK_Object_Class__ID	int(11)	MUL	NO		20		217	Object_Class.Object_Class_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3229		Pipeline	Code	Code			5	Pipeline_Code	char(3)	UNI	NO		20	\\w{1,3}	187		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3230		Plate	Branch	Branch__Code			23	FK_Branch__Code	varchar(5)	MUL	NO		20		59	Branch.Branch_Code	NULL	no	yes	NULL	24	NULL	NULL	NULL
+3231		Plate	Pipeline	Pipeline__ID	Mandatory	concat(Pipeline_Code,' : ', Pipeline_Name)	5	FK_Pipeline__ID	int(11)	MUL	NO		20		59	Pipeline.Pipeline_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3284		Source	Container Format	Plate_Format__ID			12	FK_Plate_Format__ID	int(11)	MUL	YES	20	20		194	Plate_Format.Plate_Format_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3287		Tissue_Source	ID	ID	Primary		1	Tissue_Source_ID	int(11)	PRI	NO		20		286		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3288		Tissue_Source	Source	Source__ID	Mandatory		2	FK_Source__ID	int(11)	MUL	YES		20		286	Source.Source_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3289		Tissue_Source	Type	Type			3	Tissue_Source_Type	varchar(40)		YES		20	^.{0,40}$	286		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3290		Tissue_Source	Source Condition	Source_Condition			4	Tissue_Source_Condition	enum('Fresh','Frozen')		YES		20		286		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3291		Pipeline	Parent Pipeline	Parent_Pipeline__ID			6	FKParent_Pipeline__ID	int(11)	MUL	YES		20		187	Pipeline.Pipeline_ID	This field indicates whether current entry is a subset of another pipeline	yes	no	NULL	24	NULL	NULL	NULL
+3321		Barcode_Label	FK_Label_Format__ID	FK_Label_Format__ID			11	FK_Label_Format__ID	int(11)	MUL	NO		20		2	Label_Format.Label_Format_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3326		Box	Box Status	Box_Status			11	Box_Status	enum('Unopened','Open','Expired','Inactive')		YES	Unopened	20		3		NULL	yes	no	Core	25	NULL	NULL	NULL
+3327		Branch_Condition	Branch Condition ID	Branch_Condition_ID	Primary		1	Branch_Condition_ID	int(11)	PRI	NO		20		292		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3328		Branch_Condition	Branch	FK_Branch__Code			2	FK_Branch__Code	varchar(5)	MUL	NO		20		292	Branch.Branch_Code	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3329		Branch_Condition	Object_Class	FK_Object_Class__ID	Mandatory		3	FK_Object_Class__ID	int(11)	MUL	NO		20		292	Object_Class.Object_Class_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3330		Branch_Condition	Object ID	Object_ID	Mandatory,Searchable		4	Object_ID	int(11)	MUL	NO		20		292		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3331		Branch_Condition	Pipeline	FK_Pipeline__ID			5	FK_Pipeline__ID	int(11)	MUL	YES		20		292	Pipeline.Pipeline_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3332		Branch_Condition	Parent Branch	FKParent_Branch__Code			6	FKParent_Branch__Code	varchar(5)	MUL	YES		20		292	Branch.Branch_Code	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3333		Branch_Condition	Branch Condition Status	Branch_Condition_Status	Mandatory		7	Branch_Condition_Status	enum('Active','Inactive')		YES		20		292		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3334		Defined_Plate_Set	Defined Plate Set ID	Defined_Plate_Set_ID	Primary		1	Defined_Plate_Set_ID	int(11)	PRI	NO		20		293		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3335		Defined_Plate_Set	Plate Set Defined	Plate_Set_Defined			2	Plate_Set_Defined	datetime		YES		20		293		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3336		Defined_Plate_Set	Employee	FK_Employee__ID	Mandatory		3	FK_Employee__ID	int(11)	MUL	YES		20		293	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3366		Label_Format	Label Format ID	Label_Format_ID	Primary	Label_Format_Name	1	Label_Format_ID	int(11)	PRI	NO		20		295		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3367		Label_Format	Label Format Name	Label_Format_Name			2	Label_Format_Name	varchar(20)		NO		20	^.{0,20}$	295		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3368		Label_Format	Label Description	Label_Description			3	Label_Description	text		NO		20		295		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3369		Maintenance	Maintenance Type	FK_Maintenance_Process_Type__ID	Mandatory		1	FK_Maintenance_Process_Type__ID	int(11)	MUL	NO		20		44	Maintenance_Process_Type.Maintenance_Process_Type_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3370		Maintenance_Process_Type	Maintenance Process Type ID	Maintenance_Process_Type_ID	Primary	Process_Type_Name	1	Maintenance_Process_Type_ID	int(11)	PRI	NO		20		296		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3371		Maintenance_Process_Type	Process Type Description	Process_Type_Description			2	Process_Type_Description	text		YES		20		296		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3372		Maintenance_Process_Type	Process Type Name	Process_Type_Name			3	Process_Type_Name	varchar(100)		NO		20	^.{0,100}$	296		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3373		Pipeline_Step	Pipeline Step ID	Pipeline_Step_ID	Primary		1	Pipeline_Step_ID	int(11)	PRI	NO		20		297		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3374		Pipeline_Step	Object_Class	FK_Object_Class__ID	Mandatory		2	FK_Object_Class__ID	int(11)	MUL	NO		20		297	Object_Class.Object_Class_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3375		Pipeline_Step	Object ID	Object_ID			3	Object_ID	int(11)	MUL	NO		20		297		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3376		Pipeline_Step	Pipeline Step Order	Pipeline_Step_Order			4	Pipeline_Step_Order	tinyint(4)		NO		20		297		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3377		Pipeline_Step	Pipeline	FK_Pipeline__ID	Mandatory		5	FK_Pipeline__ID	int(11)	MUL	NO		20		297	Pipeline.Pipeline_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3378		Pipeline_StepRelationship	Pipeline StepRelationship ID	Pipeline_StepRelationship_ID	Primary		1	Pipeline_StepRelationship_ID	int(11)	PRI	NO		20		298		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3379		Pipeline_StepRelationship	Pipeline_Step	FKParent_Pipeline_Step__ID	Mandatory		2	FKParent_Pipeline_Step__ID	int(11)	MUL	NO		20		298	Pipeline_Step.Pipeline_Step_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3380		Pipeline_StepRelationship	Pipeline_Step	FKChild_Pipeline_Step__ID	Mandatory		3	FKChild_Pipeline_Step__ID	int(11)	MUL	NO		20		298	Pipeline_Step.Pipeline_Step_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3381		Plate	Plate Label	Plate_Label			24	Plate_Label	varchar(40)	MUL	YES		20	^.{0,40}$	59		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3383		Plate_Format	Capacity Units	Capacity_Units			10	Capacity_Units	char(4)		YES		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3384		Plate_Format	Well Lookup Key	Well_Lookup_Key			12	Well_Lookup_Key	enum('Plate_384','Plate_96','Gel_121_Standard','Gel_121_Custom','Tube')		YES		20		60		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3385		Printer	Equipment	FK_Equipment__ID			8	FK_Equipment__ID	int(11)	MUL	NO		20		171	Equipment.Equipment_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3386		Printer	Label_Format	FK_Label_Format__ID			9	FK_Label_Format__ID	int(11)	MUL	NO		20		171	Label_Format.Label_Format_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3387		Printer_Assignment	Label_Format	FK_Label_Format__ID	Mandatory		4	FK_Label_Format__ID	int(11)	MUL	NO		20		203	Label_Format.Label_Format_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3389		Protocol_Step	Attribute	FKQC_Attribute__ID			13	FKQC_Attribute__ID	int(11)	MUL	YES		20		67	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3390		Protocol_Step	QC Condition	QC_Condition			14	QC_Condition	varchar(40)		YES		20	^.{0,40}$	67		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3391		Protocol_Step	Validate	Validate			15	Validate	enum('Primer','Enzyme','Antibiotic')		YES		20		67		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3418		Service_Contract	Service Contract Status	Service_Contract_Status			9	Service_Contract_Status	enum('Pending','Current','Expired','Invalid')		YES	Pending	20		76		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3428	Please contact Admins if the list of work request type doesn't fit your need	Work_Request	Type	FK_Work_Request_Type__ID	Mandatory		8	FK_Work_Request_Type__ID	int(11)	MUL	YES		20		234	Work_Request_Type.Work_Request_Type_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3429		Work_Request	Collection	FK_Library__Name	Searchable		13	FK_Library__Name	varchar(40)	MUL	NO		20		234	Library.Library_Name	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3430		Work_Request_Type	Work Request Type ID	Work_Request_Type_ID	Primary	Work_Request_Type_Name	1	Work_Request_Type_ID	int(11)	PRI	NO		20		302		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3431		Work_Request_Type	Work Request Type Name	Work_Request_Type_Name			2	Work_Request_Type_Name	varchar(100)		NO		20	^.{0,100}$	302		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3432		Work_Request_Type	Work Request Type Description	Work_Request_Type_Description			3	Work_Request_Type_Description	text		YES		20		302		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3433		Location	Location Status	Location_Status			3	Location_Status	enum('active','inactive')		NO	active	20		216		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3434		Plate	Last Prep	FKLast_Prep__ID			25	FKLast_Prep__ID	int(11)	MUL	YES		20		59	Prep.Prep_ID	NULL	no	no	NULL	24	NULL	NULL	NULL
+3435		Pipeline	FK_Pipeline_Group__ID	FK_Pipeline_Group__ID			7	FK_Pipeline_Group__ID	int(11)	MUL	YES		20		187	Pipeline_Group.Pipeline_Group_ID	NULL	yes	no	NULL	24	NULL	NULL	NULL
+3436		Pipeline_Group	Pipeline Group ID	Pipeline_Group_ID	Primary	Pipeline_Group_Name	1	Pipeline_Group_ID	int(11)	PRI	NO		20		303		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3437		Pipeline_Group	Pipeline Group Name	Pipeline_Group_Name			2	Pipeline_Group_Name	varchar(40)		YES		20	^.{0,40}$	303		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3439	Grp monitoring this stock	Order_Notice	Monitoring Grp	Monitoring_Grp	Mandatory		2	FK_Grp__ID	int(11)	MUL	YES		20		54	Grp.Grp_ID		yes	yes	NULL	24	NULL	NULL	NULL
+3457		Library_Attribute	Library Attribute ID	Library_Attribute_ID	Primary		1	Library_Attribute_ID	int(11)	PRI	NO		20		307		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3458		Library_Attribute	Collection	FK_Library__Name	Searchable		2	FK_Library__Name	varchar(6)	MUL	YES		20		307	Library.Library_Name	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3459		Library_Attribute	Attribute	FK_Attribute__ID	Mandatory		3	FK_Attribute__ID	int(11)	MUL	NO		20		307	Attribute.Attribute_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3460		Library_Attribute	Attribute Value	Attribute_Value			4	Attribute_Value	text		NO		20		307		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3461		Library_Attribute	Employee	FK_Employee__ID	Mandatory		5	FK_Employee__ID	int(11)	MUL	YES		20		307	Employee.Employee_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3462		Library_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		307		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3463	Force units displayed for users	Standard_Solution	Prompt_Units	Prompt_Units			6	Prompt_Units	enum('','pl','ul','ml','l')		YES		4		58			yes	no	NULL	25	NULL	NULL	NULL
+3467		Pipeline	Pipeline Status	Pipeline_Status			8	Pipeline_Status	enum('Active','Inactive')		YES	Active	20		187		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3468		Maintenance_Schedule	Maintenance Schedule ID	Maintenance_Schedule_ID	Primary		1	Maintenance_Schedule_ID	int(11)	PRI	NO		20		308		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3469	Scheduled Maintenance Process	Maintenance_Schedule	Maintenance_Process_Type	FK_Maintenance_Process_Type__ID	Mandatory		2	FK_Maintenance_Process_Type__ID	int(11)	MUL	NO		20		308	Maintenance_Process_Type.Maintenance_Process_Type_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3470	Specific equipment (unnecessary if setting Equipment_Type)	Maintenance_Schedule	Equipment	FK_Equipment__ID	Mandatory		3	FK_Equipment__ID	int(11)	MUL	YES		20		308	Equipment.Equipment_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3471	Indicate equipment_type (unnecessary if setting specific equipment_id)	Maintenance_Schedule	Scheduled Equipment Type	Scheduled_Equipment_Type			4	Scheduled_Equipment_Type	char(20)		YES		20		308		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3472	Frequency required for this maintenance process (in days)	Maintenance_Schedule	Scheduled Frequency	Scheduled_Frequency	Mandatory		5	Scheduled_Frequency	int(11)		YES		20		308		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3473		Plate_Schedule	Plate Schedule ID	Plate_Schedule_ID	Primary		1	Plate_Schedule_ID	int(11)	PRI	NO		20		309		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3474		Plate_Schedule	Container	FK_Plate__ID	Mandatory		2	FK_Plate__ID	int(11)	MUL	NO		20		309	Plate.Plate_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3475		Plate_Schedule	Pipeline	FK_Pipeline__ID	Mandatory		3	FK_Pipeline__ID	int(11)	MUL	NO		20		309	Pipeline.Pipeline_ID	NULL	yes	no	NULL	25	NULL	NULL	NULL
+3476		Plate_Schedule	Plate Schedule Priority	Plate_Schedule_Priority	Hidden		4	Plate_Schedule_Priority	tinyint(4)		NO		20		309		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3477		Report	Report ID	Report_ID	Primary		1	Report_ID	int(11)	PRI	NO		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3478		Report	Parameter String	Parameter_String			2	Parameter_String	text		YES		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3479		Report	Target	Target			3	Target	text		YES		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3480		Report	Extract File	Extract_File			4	Extract_File	text		YES		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3481		Report	Report Frequency	Report_Frequency			5	Report_Frequency	int(11)		YES		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3482		Report	Report Sent	Report_Sent			6	Report_Sent	datetime		YES		20		310		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3506		Maintenance_Schedule	Notice Frequency	Notice_Frequency			6	Notice_Frequency	int(11)		YES	7	20		308		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3507		Maintenance_Schedule	Notice Sent	Notice_Sent			7	Notice_Sent	date		YES		20		308		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3522		Tray	Tray Label	Tray_Label			2	Tray_Label	varchar(10)		YES		20	^.{0,10}$	226		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3532	Indicate whether these targets are already included in previously defined goals, or are to be added to existing goals	Work_Request	New or Additional ?	Goal_Target_Type			14	Goal_Target_Type	enum('Original Request','Add to Original Target','Included in Original Target')		YES		20		234		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3533		Library	Library Completion Date	Library_Completion_Date			23	Library_Completion_Date	date		YES		20		40		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3534		Plate_Prep	Solution Quantity Units	Solution_Quantity_Units			8	Solution_Quantity_Units	enum('pl','nl','ul','ml','l')		YES		20		128		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3537		DBTable	Scope	Scope			8	Scope	enum('Core','Lab','Plugin','Option','Custom')		YES		20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3538		DBTable	Package Name	Package_Name			9	Package_Name	varchar(40)		YES		20	^.{0,40}$	28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3539		DBTable	Records	Records			10	Records	int(11)		NO		20		28		NULL	yes	no	NULL	24	NULL	NULL	NULL
+3542	Toggle switch for barcode labels to be available for printing	Barcode_Label	Barcode Label Status	Barcode_Label_Status			0	Barcode_Label_Status	enum('Inactive','Active')		NO	Active	20		2		NULL	yes	no	Core	24	NULL	NULL	NULL
+3550		Equipment_Category	Equipment Category	Equipment_Category_ID	Primary	concat(Category,' - ',Sub_Category)	1	Equipment_Category_ID	int(11)	PRI	NO		20		318		NULL	no	yes	Core	24	NULL	NULL	NULL
+3551		Equipment_Category	Prefix	Prefix	Mandatory		2	Prefix	varchar(10)		NO		20	^.{0,10}$	318		NULL	no	yes	Core	24	NULL	NULL	NULL
+3552		Equipment_Category	Sub Category	Sub_Category	Mandatory		3	Sub_Category	varchar(40)	MUL	YES	N/A	20	^.{0,40}$	318		NULL	no	yes	Core	24	NULL	NULL	NULL
+3553		Equipment_Category	Category	Category	Mandatory		4	Category	varchar(40)	MUL	NO		20	^.{0,40}$	318		NULL	no	yes	Core	24	NULL	NULL	NULL
+3555		Patch	Patch ID	Patch_ID	Primary	Patch_Name	1	Patch_ID	int(11)	PRI	NO		20		319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3556		Patch	FK_Package__ID	FK_Package__ID	Mandatory		2	FK_Package__ID	int(11)	MUL	NO		20		319	Package.Package_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3557		Patch	Patch Type	Patch_Type			3	Patch_Type	enum('bug fix','installation')		NO	installation	20		319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3558	Filename of patch	Patch	Patch Name	Patch_Name	Mandatory		4	Patch_Name	varchar(60)	UNI	NO		20	^.{0,60}$	319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3559		Patch	Install Status	Install_Status	Mandatory		5	Install_Status	enum('Installed','Marked for install','Not installed','Installed with errors','Installation aborted','Installing')		YES	Not installed	20		319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3562		Package	Package ID	Package_ID	Primary	CONCAT(Package_ID,': ',Package_Name)	1	Package_ID	int(11)	PRI	NO		20		320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3563		Package	Package Scope	Package_Scope	Mandatory		2	Package_Scope	enum('Plugins','custom','Options','Core')		YES	Plugins	20		320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3564		Package	Package Active	Package_Active	Mandatory		3	Package_Active	enum('y','n')		NO	n	20		320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3565		Package	Package Name	Package_Name	Mandatory		4	Package_Name	varchar(30)	UNI	NO		20	^.{0,30}$	320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3566		Package	Package Install Status	Package_Install_Status	Mandatory		5	Package_Install_Status	enum('Installed','Not installed','Marked for install')		NO	Not installed	20		320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3567		Package	Package Description	Package_Description			6	Package_Description	text		YES		20		320		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3604		Contamination	Contamination ID	Contamination_ID	Primary	Contamination_Alias	1	Contamination_ID	int(11)	PRI	NO		20		324		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3605		Contamination	Contamination Name	Contamination_Name			2	Contamination_Name	text		YES		20		324		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3606		Contamination	Contamination Description	Contamination_Description			3	Contamination_Description	text		YES		20		324		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3607		Contamination	Contamination Alias	Contamination_Alias			4	Contamination_Alias	text		YES		20		324		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3608		DBField	Field Scope	Field_Scope			21	Field_Scope	enum('Core','Optional','Custom')		YES	Custom	20		107		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3609		DBTable	Package	FK_Package__ID			11	FK_Package__ID	int(11)	MUL	NO		20		28	Package.Package_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3613		Equipment	Old Equipment Name	Old_Equipment_Name	Hidden		21	Old_Equipment_Name	varchar(40)		YES		20	^.{0,40}$	31		NULL	yes	no	Core	24	NULL	NULL	NULL
+3614		Equipment_Category	Category Description	Category_Description			5	Category_Description	text		YES		20		318		NULL	no	yes	Core	24	NULL	NULL	NULL
+3618		Fail	Object_Class	FK_Object_Class__ID			7	FK_Object_Class__ID	int(11)	MUL	NO		20		238	Object_Class.Object_Class_ID	NULL	yes	no	Custom	25	NULL	NULL	NULL
+3629		Grp	Grp Type	Grp_Type			5	Grp_Type	enum('Public','Lab','Lab Admin','Project Admin','TechD','Production','Research','Technical Support','Informatics','QC','Purchasing','Shared')		YES		20		117		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3630		Grp	Grp Status	Grp_Status			6	Grp_Status	enum('Active','Inactive')		YES	Active	20		117		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3631		Lab_Protocol	Max Tracking Size	Max_Tracking_Size			7	Max_Tracking_Size	enum('384','96','1')		YES	384	20		39		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3632		Lab_Protocol	Repeatable	Repeatable			8	Repeatable	enum('Yes','No')		NO	Yes	20		39		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3633		Location	FK_Site__ID	FK_Site__ID			4	FK_Site__ID	int(11)	MUL	NO		20		216	Site.Site_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3634		Location	Location Type	Location_Type			5	Location_Type	enum('External','Internal')		NO	External	20		216		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3645		Plate	Sample Type	FK_Sample_Type__ID	Mandatory		26	FK_Sample_Type__ID	int(11)	MUL	NO		20		59	Sample_Type.Sample_Type_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3646		Plate	Work_Request	FK_Work_Request__ID			27	FK_Work_Request__ID	int(11)	MUL	YES		20		59	Work_Request.Work_Request_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3647		Plate_Format	Well Capacity mL	Well_Capacity_mL			9	Well_Capacity_mL	float		YES		20		60		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3649		Sample	Container	FKOriginal_Plate__ID			7	FKOriginal_Plate__ID	int(11)	MUL	NO		20		142	Plate.Plate_ID	NULL	yes	no	Custom	25	NULL	NULL	NULL
+3650		Sample	Original Well	Original_Well			8	Original_Well	char(3)		YES		20		142		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3651		Sample	Collection	FK_Library__Name			9	FK_Library__Name	varchar(8)	MUL	YES		20		142	Library.Library_Name	NULL	yes	no	Custom	25	NULL	NULL	NULL
+3652		Sample	Plate Number	Plate_Number			10	Plate_Number	int(11)		YES		20		142		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3653		Sample	FK_Sample_Type__ID	FK_Sample_Type__ID			11	FK_Sample_Type__ID	int(11)	MUL	NO		20		142	Sample_Type.Sample_Type_ID	NULL	yes	no	Custom	25	NULL	NULL	NULL
+3654		Sample	Sample Source	Sample_Source			12	Sample_Source	enum('Original','Extraction','Clone')		YES		20		142		NULL	yes	no	NULL	25	NULL	NULL	NULL
+3657		Sample_Type	Sample Type ID	Sample_Type_ID	Primary	Sample_Type_Alias	1	Sample_Type_ID	int(11)	PRI	NO		20		331		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3658		Sample_Type	Sample Type	Sample_Type			2	Sample_Type	varchar(40)	UNI	YES		20	^.{0,40}$	331		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3661		Service	Equipment_Category	FK_Equipment_Category__ID			6	FK_Equipment_Category__ID	int(11)	MUL	YES		20		75	Equipment_Category.Equipment_Category_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3662		Site	Site	Site_ID	Primary	Site_Name	1	Site_ID	int(11)	PRI	NO		20		332		NULL	no	yes	Core	24	NULL	NULL	NULL
+3663		Site	Site Name	Site_Name			2	Site_Name	varchar(40)		YES		20	^.{0,40}$	332		NULL	no	yes	Core	24	NULL	NULL	NULL
+3665	Additional label to appear on barcode, besides name (Optional)	Solution	Solution Label	Solution_Label			15	Solution_Label	varchar(40)	MUL	YES		20	^.{0,40}$	5		NULL	yes	no	Core	25	NULL	NULL	NULL
+3666	Label attached to the sample container	Source	Source Label	Source_Label			6	Source_Label	varchar(40)	MUL	NO		20	^.{0,40}$	194		NULL	yes	yes	NULL	25	NULL	NULL	NULL
+3667		Stock	Catalog	FK_Stock_Catalog__ID	Mandatory	Stock_Catalog_ID	2	FK_Stock_Catalog__ID	int(11)	MUL	NO		20		7	Stock_Catalog.Stock_Catalog_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+3668		Stock	Stock Notes	Stock_Notes			14	Stock_Notes	text		YES		20		7		NULL	yes	no	Core	24	NULL	NULL	NULL
+3669		Stock	Purchase Order Number	PO_Number			12	PO_Number	varchar(20)		YES		5	^.{0,20}$	7		NULL	yes	yes	Core	24	NULL	NULL	NULL
+3670		Stock	Requisition Number	Requisition_Number			13	Requisition_Number	varchar(20)		YES		5	^.{0,20}$	7		NULL	yes	yes	Core	24	NULL	NULL	NULL
+3671		Stock_Catalog	Stock Catalog ID	Stock_Catalog_ID	Primary	CASE WHEN (Stock_Size_Units = 'n/a') THEN Stock_Catalog_Name ELSE concat(Stock_Catalog_Name,' (' , Stock_Size,' ',Stock_Size_Units,')') END	1	Stock_Catalog_ID	int(11)	PRI	NO		20		333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3672		Stock_Catalog	Catalog Name	Stock_Catalog_Name	Mandatory		2	Stock_Catalog_Name	varchar(80)	MUL	NO		20	^.{0,80}$	333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3673		Stock_Catalog	Stock Catalog Description	Stock_Catalog_Description			3	Stock_Catalog_Description	text		YES		20		333		NULL	yes	no	Core	24	NULL	NULL	NULL
+3674	The number in vendors catalog for the item	Stock_Catalog	Stock Catalog Number	Stock_Catalog_Number			4	Stock_Catalog_Number	varchar(80)	MUL	YES		20	^.{0,80}$	333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3675		Stock_Catalog	Stock Type	Stock_Type	Mandatory		5	Stock_Type	enum('Box','Buffer','Equipment','Kit','Matrix','Microarray','Primer','Reagent','Solution','Service_Contract','Computer_Equip','Misc_Item','Untracked')	MUL	YES		20		333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3676	Select made in house for anything made in GSC, Order if it is bought from another organization, or box if it was part of a box	Stock_Catalog	Stock Source	Stock_Source	Mandatory		6	Stock_Source	enum('Box','Order','Sample','Made in House')	MUL	YES		20		333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3677		Stock_Catalog	Stock Status	Stock_Status	Mandatory		7	Stock_Status	enum('Active','Inactive')		YES	Active	20		333		NULL	yes	yes	Core	24	NULL	NULL	NULL
+3678		Stock_Catalog	Size	Stock_Size			8	Stock_Size	float	MUL	YES		20		333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3679		Stock_Catalog	Size Units	Stock_Size_Units	Mandatory		9	Stock_Size_Units	enum('mL','uL','litres','mg','grams','kg','pcs','boxes','tubes','rxns','nmoles','nL','n/a')		YES		20		333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3680	This is the organization that produces the product (Should be GSC for any item made in house)	Stock_Catalog	Manufacturer	FK_Organization__ID	Mandatory	Organization_ID	10	FK_Organization__ID	int(11)	MUL	YES		20		333	Organization.Organization_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+3681	This is the organization that we purchase the product from	Stock_Catalog	Vendor	FKVendor_Organization__ID	Mandatory	Organization_ID	11	FKVendor_Organization__ID	int(11)	MUL	YES		20		333	Organization.Organization_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+3682	Applies to equipment	Stock_Catalog	Model	Model			12	Model	varchar(20)		YES		20	^.{0,20}$	333		NULL	no	yes	Core	24	NULL	NULL	NULL
+3683	Applies to equipment ONLY	Stock_Catalog	Category (Equipment Only)	FK_Equipment_Category__ID		Equipment_Category_ID	13	FK_Equipment_Category__ID	int(11)	MUL	YES		20		333	Equipment_Category.Equipment_Category_ID	NULL	no	yes	Core	24	NULL	NULL	NULL
+3685		Table_Type	Table Type ID	Table_Type_ID	Primary		1	Table_Type_ID	int(11)	PRI	NO		20		334		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3686		Table_Type	Table Scope	Table_Scope			2	Table_Scope	enum('Core','Plugin','Custom')		YES		20		334		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3687		Table_Type	Table Type	Table_Type			3	Table_Type	enum('Object','Detail','Data','Join','Subclass','Lookup')		YES		20		334		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3688		Table_Type	DBTable	FK_DBTable__ID			4	FK_DBTable__ID	int(11)	MUL	NO		20		334	DBTable.DBTable_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3689		Table_Type	Table Type Comment	Table_Type_Comment			5	Table_Type_Comment	text		YES		20		334		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3735		Tube	Original Concentration	Original_Concentration			7	Original_Concentration	float		YES		20		79		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3736		Tube	Original Concentration Units	Original_Concentration_Units			8	Original_Concentration_Units	enum('cfu','ng/ul','ug/ul','nM','pM')		YES		20		79		NULL	yes	no	Custom	25	NULL	NULL	NULL
+3750		Work_Request	Funding	FK_Funding__ID			15	FK_Funding__ID	int(11)	MUL	YES		20		234	Funding.Funding_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3751		Work_Request	Work Request Title	Work_Request_Title			16	Work_Request_Title	varchar(255)		YES		20	^.{0,255}$	234		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3752		Work_Request_Type	Work Request Type Status	Work_Request_Type_Status			4	Work_Request_Type_Status	enum('Active','Inactive')		YES	Active	20		302		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3753		Work_Request_Type	Grp	FK_Grp__ID			5	FK_Grp__ID	int(11)	MUL	NO		20		302	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3754		Work_Request_Type	Work Request Label	Work_Request_Label			6	Work_Request_Label	varchar(40)		YES		20	^.{0,40}$	302		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3762		Package	Addon_Package	FKParent_Package__ID			7	FKParent_Package__ID	int(11)	MUL	YES		20		320	Package.Package_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3763		Patch	Installation Date	Installation_Date			7	Installation_Date	date		NO	0000-00-00	20		319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3764		Patch	Version	FKRelease_Version__ID			8	FKRelease_Version__ID	int(11)	MUL	NO		20		319	Version.Version_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3765		Patch	Patch Version	Patch_Version			9	Patch_Version	varchar(40)	UNI	NO		20	^.{0,40}$	319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3766		Patch	Patch Description	Patch_Description			10	Patch_Description	text		YES		20		319		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3777		Funding	Queue	FK_Queue__ID			16	FK_Queue__ID	int(11)	MUL	YES	1	20		36	Queue.Queue_ID	NULL	yes	no	Custom	25	NULL	NULL	NULL
+3778		DBField	Addon_Package	FK_Package__ID			22	FK_Package__ID	int(11)	MUL	YES		20		107	Package.Package_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3779		Version	Version Status	Version_Status			6	Version_Status	enum('In use','Not in use')		YES	Not in use	20		147		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3780		Subscriber	Subscriber ID	Subscriber_ID	Primary		1	Subscriber_ID	int(11)	PRI	NO		20		348		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3781		Subscriber	FK_Subscription__ID	FK_Subscription__ID	Mandatory		2	FK_Subscription__ID	int(11)	MUL	NO		20		348	Subscription.Subscription_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3782		Subscriber	Subscriber Type	Subscriber_Type	Mandatory		3	Subscriber_Type	enum('Employee','Grp','Contact','ExternalEmail')		NO	Employee	20		348		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3783		Subscriber	Employee	FK_Employee__ID			4	FK_Employee__ID	int(11)	MUL	YES		20		348	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3784		Subscriber	Grp	FK_Grp__ID			5	FK_Grp__ID	int(11)	MUL	YES		20		348	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3785		Subscriber	Contact	FK_Contact__ID			6	FK_Contact__ID	int(11)	MUL	YES		20		348	Contact.Contact_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3786		Subscriber	External Email	External_Email			7	External_Email	varchar(255)		YES		20	^.{0,255}$	348		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3787		Subscription	Subscription ID	Subscription_ID	Primary	Subscription_Name	1	Subscription_ID	int(11)	PRI	NO		20		349		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3788		Subscription	FK_Subscription_Event__ID	FK_Subscription_Event__ID	Mandatory		2	FK_Subscription_Event__ID	int(11)	MUL	NO		20		349	Subscription_Event.Subscription_Event_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3789		Subscription	Equipment	FK_Equipment__ID			3	FK_Equipment__ID	int(11)	MUL	YES		20		349	Equipment.Equipment_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3790		Subscription	Collection	FK_Library__Name	Searchable		4	FK_Library__Name	varchar(255)	MUL	YES		20		349	Library.Library_Name	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3791		Subscription	Project	FK_Project__ID			5	FK_Project__ID	int(11)	MUL	YES		20		349	Project.Project_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3792		Subscription	Grp	FK_Grp__ID			6	FK_Grp__ID	int(11)	MUL	YES		20		349	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3793		Subscription	Subscription Name	Subscription_Name			7	Subscription_Name	varchar(255)		YES		20	^.{0,255}$	349		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3794		Subscription_Event	Subscription Event ID	Subscription_Event_ID	Primary	Subscription_Event_Name	1	Subscription_Event_ID	int(11)	PRI	NO		20		350		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3795		Subscription_Event	Subscription Event Name	Subscription_Event_Name	Mandatory		2	Subscription_Event_Name	varchar(50)		NO		20	^.{0,50}$	350		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3796		Subscription_Event	Subscription Event Type	Subscription_Event_Type			3	Subscription_Event_Type	varchar(50)		NO		20	^.{0,50}$	350		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3797		Subscription_Event	Subscription Event Details	Subscription_Event_Details			4	Subscription_Event_Details	varchar(255)		NO		20	^.{0,255}$	350		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3798		Material_Transfer	Material Transfer ID	Material_Transfer_ID	Primary		1	Material_Transfer_ID	int(11)	PRI	NO		20		351		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3799		Material_Transfer	Transfer Direction	Transfer_Direction	Hidden		2	Transfer_Direction	enum('Submit','Return')		YES	Return	20		351		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3800	If no materials need to be returned, please eneter 0.<BR>If multiple types of materials need to be returned, please add another record.	Material_Transfer	Number To Return	Number_to_Transfer	Mandatory		3	Number_to_Transfer	int(11)		YES		20		351		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3801	If no materials need to be returned, please choose none.<BR>If multiple types of materials need to be returned, please add another record.	Material_Transfer	Sample_Format	FK_Sample_Format__ID	Mandatory		4	FK_Sample_Format__ID	int(11)	MUL	NO		20		351	Sample_Format.Sample_Format_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3802		Material_Transfer	FK_Sample_Type__ID	FK_Sample_Type__ID	Hidden		5	FK_Sample_Type__ID	int(11)	MUL	NO		20		351	Sample_Type.Sample_Type_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3803		Material_Transfer	Work_Request	FK_Work_Request__ID	Mandatory		6	FK_Work_Request__ID	int(11)	MUL	NO		20		351	Work_Request.Work_Request_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3804		Sample_Format	Sample Format ID	Sample_Format_ID	Primary	Sample_Format	1	Sample_Format_ID	int(11)	PRI	NO		20		352		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3805		Sample_Format	Sample Format	Sample_Format			2	Sample_Format	varchar(40)	UNI	YES		20	^.{0,40}$	352		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3806		Submission	Submission ID	Submission_ID	Primary		1	Submission_ID	int(11)	PRI	NO		20		353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3807		Submission	DateTime	Submission_DateTime			2	Submission_DateTime	datetime		YES		20		353		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3808		Submission	Source	Submission_Source			3	Submission_Source	enum('External','Internal')		YES		20		353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3809		Submission	Status	Submission_Status			3	Submission_Status	enum('Draft','Submitted','Approved','Completed','Cancelled','Rejected')		YES		20		353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3810		Submission	Contact	FK_Contact__ID	NewLink	Contact_ID	4	FK_Contact__ID	int(11)	MUL	YES		20		353	Contact.Contact_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3811		Submission	Submitted Employee	FKSubmitted_Employee__ID		Employee_ID	6	FKSubmitted_Employee__ID	int(11)	MUL	YES		20		353	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3812		Submission	Additional Comments	Submission_Comments			7	Submission_Comments	text		YES		20		353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3813		Submission	Approved Employee	FKApproved_Employee__ID		Employee_ID	8	FKApproved_Employee__ID	int(11)	MUL	YES		20		353	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3814		Submission	Approved DateTime	Approved_DateTime			9	Approved_DateTime	datetime		YES		20		353		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3815		Submission	To Group	FKTo_Grp__ID	Mandatory		10	FKTo_Grp__ID	int(11)	MUL	YES		20		353	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3816		Submission	From Group	FKFrom_Grp__ID	Mandatory		11	FKFrom_Grp__ID	int(11)	MUL	YES		20		353	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3817		Submission	Table Name	Table_Name			12	Table_Name	varchar(40)		YES		20	^.{0,40}$	353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3818		Submission	Key Value	Key_Value			13	Key_Value	varchar(40)		YES		20	^.{0,40}$	353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3819		SubmissionVolume	SubmissionVolume ID	SubmissionVolume_ID	Primary		1	SubmissionVolume_ID	int(11)	PRI	NO		20		354		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3820		SubmissionVolume	Volume Name	Volume_Name			2	Volume_Name	varchar(40)		YES		20	^.{0,40}$	354		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3821		SubmissionVolume	Contact Employee	FKContact_Employee__ID		Employee_ID	3	FKContact_Employee__ID	int(11)	MUL	NO		20		354	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3822		SubmissionVolume	Submission Status	Submission_Status			4	Submission_Status	enum('Sent','In Process','Pending','Accepted','Rejected')		YES		20		354		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3823		SubmissionVolume	Submission DateTime	Submission_DateTime			5	Submission_DateTime	date		YES		20		354		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3824		SubmissionVolume	Volume Description	Volume_Description			6	Volume_Description	text		YES		20		354		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3825		Submission_Alias	Submission Alias ID	Submission_Alias_ID	Primary		1	Submission_Alias_ID	int(11)	PRI	NO		20		355		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3826		Submission_Alias	Trace Submission	FK_Trace_Submission__ID	Mandatory	Trace_Submission_ID	2	FK_Trace_Submission__ID	int(11)	MUL	NO		20		355	Trace_Submission.Trace_Submission_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3827		Submission_Alias	Submission Reference	Submission_Reference			3	Submission_Reference	char(40)		YES		20		355		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3828		Submission_Alias	Submission Reference Type	Submission_Reference_Type			4	Submission_Reference_Type	enum('Genbank_ID','Accession_ID')	MUL	YES		20		355		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3829		Submission_Detail	Submission Detail ID	Submission_Detail_ID	Primary		1	Submission_Detail_ID	int(11)	PRI	NO		20		356		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3830		Submission_Detail	Submission	FK_Submission__ID	Mandatory	Submission_ID	2	FK_Submission__ID	int(11)	MUL	NO		20		356	Submission.Submission_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3831		Submission_Detail	Submission DBTable	FKSubmission_DBTable__ID	Mandatory	DBTable_ID	3	FKSubmission_DBTable__ID	int(11)	MUL	NO		20		356	DBTable.DBTable_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3832		Submission_Detail	Reference	Reference			4	Reference	varchar(40)		NO		20	^.{0,40}$	356		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3833		Submission_Table_Link	Submission Table Link ID	Submission_Table_Link_ID	Primary		1	Submission_Table_Link_ID	int(11)	PRI	NO		20		357		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3834		Submission_Table_Link	Submission	FK_Submission__ID			2	FK_Submission__ID	int(11)	MUL	NO		20		357	Submission.Submission_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3835		Submission_Table_Link	Table Name	Table_Name			3	Table_Name	char(40)		NO		20		357		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3836		Submission_Table_Link	Key Value	Key_Value			4	Key_Value	char(40)		YES		20		357		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3837		Submission_Volume	Submission Volume ID	Submission_Volume_ID	Primary		1	Submission_Volume_ID	int(11)	PRI	NO		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3838		Submission_Volume	Submission Target	Submission_Target			2	Submission_Target	text		YES		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3839		Submission_Volume	Volume Name	Volume_Name			3	Volume_Name	varchar(40)	UNI	NO		20	^.{0,40}$	358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3840		Submission_Volume	Submission Date	Submission_Date			4	Submission_Date	date		YES		20		358		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3841		Submission_Volume	Submitter Employee	FKSubmitter_Employee__ID	Mandatory	Employee_ID	5	FKSubmitter_Employee__ID	int(11)	MUL	YES		20		358	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3842		Submission_Volume	Volume Status	Volume_Status			6	Volume_Status	enum('In Process','Bundled','Submitted','Accepted','Rejected')		YES		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3843		Submission_Volume	Volume Comments	Volume_Comments			7	Volume_Comments	text		YES		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3844		Submission_Volume	Records	Records			8	Records	int(11)		NO		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3845		Submission_Volume	Approved Date	Approved_Date			9	Approved_Date	date		YES		20		358		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3846	Submission ID (returned from submitter) - eg accession_id	Submission_Volume	SID	SID			4	SID	varchar(40)		YES		20	^.{0,40}$	358		NULL	no	no	Custom	24	NULL	NULL	NULL
+3847		Template	Template ID	Template_ID	Primary	Template_Name	1	Template_ID	int(11)	PRI	NO		20		359		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3848		Template	Template Name	Template_Name			2	Template_Name	varchar(34)	UNI	NO		20	^.{0,34}$	359		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3849		Template	Template Type	Template_Type			3	Template_Type	enum('Submission','Master')		NO	Submission	20		359		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3850		Template	Template Description	Template_Description			4	Template_Description	text		YES		20		359		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3851		Template_Assignment	Template Assignment ID	Template_Assignment_ID	Primary		1	Template_Assignment_ID	int(11)	PRI	NO		20		360		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3852		Template_Assignment	Template	FK_Template__ID			2	FK_Template__ID	int(11)	MUL	NO		20		360	Template.Template_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3853		Template_Assignment	Grp	FK_Grp__ID			3	FK_Grp__ID	int(11)	MUL	NO		20		360	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3854		Template_Field	Template Field ID	Template_Field_ID	Primary	Template_Field_Name	1	Template_Field_ID	int(11)	PRI	NO		20		361		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3855		Template_Field	Template Field Name	Template_Field_Name			2	Template_Field_Name	varchar(80)		NO		20	^.{0,80}$	361		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3856		Template_Field	DBField	FK_DBField__ID			3	FK_DBField__ID	int(11)	MUL	NO		20		361	DBField.DBField_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3857		Template_Field	Attribute	FK_Attribute__ID			4	FK_Attribute__ID	int(11)	MUL	NO		20		361	Attribute.Attribute_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3858		Template_Field	Template Field Option	Template_Field_Option			5	Template_Field_Option	set('Mandatory','Unique')		YES		20		361		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3859		Template_Field	Template Field Format	Template_Field_Format			6	Template_Field_Format	varchar(80)		YES		20	^.{0,80}$	361		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3860		Template_Field	Template	FK_Template__ID			7	FK_Template__ID	int(11)	MUL	NO		20		361	Template.Template_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3861		Trace_Submission	Trace Submission ID	Trace_Submission_ID	Primary		1	Trace_Submission_ID	int(11)	PRI	NO		20		362		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3862		Trace_Submission	Run	FK_Run__ID	Mandatory		2	FK_Run__ID	int(11)	MUL	YES		20		362	Run.Run_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3863		Trace_Submission	Well	Well			3	Well	char(4)		NO		20		362		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3864		Trace_Submission	Submission Status	Submission_Status			4	Submission_Status	enum('Bundled','In Process','Accepted','Rejected')		YES		20		362		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3865		Trace_Submission	Sample	FK_Sample__ID	Mandatory	Sample_ID	5	FK_Sample__ID	int(11)	MUL	NO		20		362	Sample.Sample_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3866		Trace_Submission	Submitted Length	Submitted_Length			6	Submitted_Length	int(11)	MUL	NO		20		362		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3867		Trace_Submission	Submission Volume	FK_Submission_Volume__ID	Mandatory	Submission_Volume_ID	7	FK_Submission_Volume__ID	int(11)	MUL	NO		20		362	Submission_Volume.Submission_Volume_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3868		Funding_Applicant	Funding Applicant ID	Funding_Applicant_ID	Primary		1	Funding_Applicant_ID	int(11)	PRI	NO		20		363		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3869		Funding_Applicant	Funding	FK_Funding__ID		Funding_ID	2	FK_Funding__ID	int(11)	MUL	YES		20		363	Funding.Funding_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3870		Funding_Applicant	Employee	FK_Employee__ID		Employee_ID	3	FK_Employee__ID	int(11)	MUL	YES		20		363	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3871		Funding_Applicant	Contact	FK_Contact__ID	NewLink	Contact_ID	4	FK_Contact__ID	int(11)	MUL	YES		20		363	Contact.Contact_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3872		Funding_Applicant	Applicant Type	Applicant_Type			5	Applicant_Type	enum('Primary','Collaborator')		YES		20		363		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3873		Funding_Distribution	Funding Distribution ID	Funding_Distribution_ID	Primary		1	Funding_Distribution_ID	int(11)	PRI	NO		20		364		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3874		Funding_Distribution	Funding Segment	FK_Funding_Segment__ID		Funding_Segment_ID	2	FK_Funding_Segment__ID	int(11)	MUL	YES		20		364	Funding_Segment.Funding_Segment_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3875		Funding_Distribution	Funding Start	Funding_Start			3	Funding_Start	date		YES		20		364		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3876		Funding_Distribution	Funding End	Funding_End			4	Funding_End	date		YES		20		364		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3877		Funding_Segment	Funding Segment ID	Funding_Segment_ID	Primary		1	Funding_Segment_ID	int(11)	PRI	NO		20		365		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3878		Funding_Segment	Funding	FK_Funding__ID		Funding_ID	2	FK_Funding__ID	int(11)	MUL	YES		20		365	Funding.Funding_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3879		Funding_Segment	Amount	Amount			3	Amount	int(11)		YES		20		365		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3880		Funding_Segment	Currency	Currency			4	Currency	enum('US','Canadian')		YES		20		365		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3881		Funding_Segment	Notes	Funding_Segment_Notes			5	Funding_Segment_Notes	text		YES		20		365		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3882		GrantApplication	GrantApplication ID	GrantApplication_ID	Primary		1	GrantApplication_ID	int(11)	PRI	NO		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3883		GrantApplication	Title	Title			2	Title	char(80)		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3884		GrantApplication	Contact Employee	FKContact_Employee__ID		Employee_ID	3	FKContact_Employee__ID	int(11)	MUL	YES		20		366	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3885		GrantApplication	AppliedFor	AppliedFor			4	AppliedFor	float		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3886		GrantApplication	Duration	Duration			5	Duration	int(11)		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3887		GrantApplication	Duration Units	Duration_Units			6	Duration_Units	enum('days','months','years')		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3888		GrantApplication	Grant Type	Grant_Type			7	Grant_Type	char(40)		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3889		GrantApplication	ApplicationStatus	ApplicationStatus			8	ApplicationStatus	enum('Awarded','Declined','Applied')		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3890		GrantApplication	Award	Award			9	Award	float		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3891		GrantApplication	Currency	Currency			10	Currency	enum('US','Canadian')		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3892		GrantApplication	Application Date	Application_Date			11	Application_Date	date		YES		20		366		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3893		GrantApplication	Application Number	Application_Number			12	Application_Number	int(11)		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3894		GrantApplication	Funding Frequency	Funding_Frequency			13	Funding_Frequency	char(40)		YES		20		366		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3895		GrantDistribution	GrantDistribution ID	GrantDistribution_ID	Primary		1	GrantDistribution_ID	int(11)	PRI	NO		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3896		GrantDistribution	GrantApplication	FK_GrantApplication__ID		GrantApplication_ID	2	FK_GrantApplication__ID	int(11)	MUL	YES		20		367	GrantApplication.GrantApplication_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3897		GrantDistribution	StartDate	StartDate			3	StartDate	date		YES		20		367		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3898		GrantDistribution	EndDate	EndDate			4	EndDate	date		YES		20		367		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3899		GrantDistribution	Amount	Amount			5	Amount	float		YES		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3900		GrantDistribution	Currency	Currency			6	Currency	enum('Canadian','US')		YES		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3901		GrantDistribution	AwardStatus	AwardStatus			7	AwardStatus	enum('Spent','Received','Awarded','Declined','Pending','TBD')		YES		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3902		GrantDistribution	Spent	Spent			8	Spent	float		YES		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3903		GrantDistribution	SpentAsOf	SpentAsOf			9	SpentAsOf	date		YES		20		367		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3904		Matched_Funding	Matched Funding ID	Matched_Funding_ID	Primary		1	Matched_Funding_ID	int(11)	PRI	NO		20		368		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3905		Matched_Funding	Number	Matched_Funding_Number			2	Matched_Funding_Number	int(11)		YES		20		368		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3906		Matched_Funding	Funding	FK_Funding__ID		Funding_ID	3	FK_Funding__ID	int(11)	MUL	YES		20		368	Funding.Funding_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3907		Queue	Queue ID	Queue_ID	Primary	Queue_Name	1	Queue_ID	int(11)	PRI	NO		20		369		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3908		Queue	Queue Name	Queue_Name			2	Queue_Name	varchar(40)		YES		20	^.{0,40}$	369		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3909		Queue	Queue Priority	Queue_Priority			3	Queue_Priority	enum('High','Normal','Low')		YES	Normal	20		369		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3910		Queue	Queue Description	Queue_Description			4	Queue_Description	text		YES		20		369		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3911		Equipment_Attribute	Equipment	FK_Equipment__ID			1	FK_Equipment__ID	int(11)	MUL	NO		20		370	Equipment.Equipment_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3912		Equipment_Attribute	Attribute	FK_Attribute__ID			2	FK_Attribute__ID	int(11)	MUL	NO		20		370	Attribute.Attribute_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3913		Equipment_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		370		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3914		Equipment_Attribute	Equipment Attribute ID	Equipment_Attribute_ID	Primary		4	Equipment_Attribute_ID	int(11)	PRI	NO		20		370		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3915		Equipment_Attribute	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		370	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3916		Equipment_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		370		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3917		Study_Attribute	Study	FK_Study__ID			1	FK_Study__ID	int(11)	MUL	NO		20		371	Study.Study_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3918		Study_Attribute	Attribute	FK_Attribute__ID			2	FK_Attribute__ID	int(11)	MUL	NO		20		371	Attribute.Attribute_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3919		Study_Attribute	Attribute Value	Attribute_Value			3	Attribute_Value	text		NO		20		371		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3920		Study_Attribute	Study Attribute ID	Study_Attribute_ID	Primary		4	Study_Attribute_ID	int(11)	PRI	NO		20		371		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3921		Study_Attribute	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		371	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3922		Study_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		371		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3923		QC_Batch	QC Batch ID	QC_Batch_ID	Primary	QC_Batch_Name	1	QC_Batch_ID	int(11)	PRI	NO		20		372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3924		QC_Batch	QC Batch Name	QC_Batch_Name	Mandatory		2	QC_Batch_Name	varchar(40)		NO		20	^.{0,40}$	372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3925		QC_Batch	Batch Count	Batch_Count			3	Batch_Count	int(11)		NO		20		372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3926		QC_Batch	QC Batch Number	QC_Batch_Number			4	QC_Batch_Number	int(11)		NO		20		372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3927		QC_Batch	Solution	FK_Solution__ID			5	FK_Solution__ID	int(11)	MUL	YES		20		372	Solution.Solution_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3928		QC_Batch	Stock_Catalog	FK_Stock_Catalog__ID			6	FK_Stock_Catalog__ID	int(11)	MUL	YES		20		372	Stock_Catalog.Stock_Catalog_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3929		QC_Batch	QC Batch Initiated	QC_Batch_Initiated			7	QC_Batch_Initiated	datetime		NO	0000-00-00 00:00:00	20		372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3930		QC_Batch	Employee	FK_Employee__ID			8	FK_Employee__ID	int(11)	MUL	NO		20		372	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3931		QC_Batch	QC Batch Status	QC_Batch_Status			9	QC_Batch_Status	enum('N/A','Pending','Failed','Re-Test','Passed')		YES		20		372		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3932		QC_Batch	QC Batch Notes	QC_Batch_Notes			10	QC_Batch_Notes	text		YES		20		372		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3933		QC_Batch_Member	QC Batch Member ID	QC_Batch_Member_ID	Primary		1	QC_Batch_Member_ID	int(11)	PRI	NO		20		373		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3934		QC_Batch_Member	QC_Batch	FK_QC_Batch__ID			2	FK_QC_Batch__ID	int(11)	MUL	NO		20		373	QC_Batch.QC_Batch_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3935		QC_Batch_Member	Object_Class	FK_Object_Class__ID			3	FK_Object_Class__ID	int(11)	MUL	NO		20		373	Object_Class.Object_Class_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3936		QC_Batch_Member	Object ID	Object_ID			4	Object_ID	int(11)		NO		20		373		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3937		QC_Batch_Member	QC Batch Member Type	QC_Batch_Member_Type			5	QC_Batch_Member_Type	enum('Tested','Implied')		YES		20		373		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3938		QC_Batch_Member	QC Member Status	QC_Member_Status			6	QC_Member_Status	enum('Quarantined','Released','Rejected')		YES		20		373		NULL	yes	yes	Custom	24	NULL	NULL	NULL
+3939		Shipment	Shipment ID	Shipment_ID	Primary		1	Shipment_ID	int(11)	PRI	NO		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3940		Shipment	Shipment Sent	Shipment_Sent			2	Shipment_Sent	datetime		NO	0000-00-00 00:00:00	20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3941		Shipment	Shipment Received	Shipment_Received			3	Shipment_Received	datetime		NO	0000-00-00 00:00:00	20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3942		Shipment	Supplier Organization	FKSupplier_Organization__ID	Mandatory,NewLink		4	FKSupplier_Organization__ID	int(11)	MUL	NO		20		374	Organization.Organization_ID	NULL	yes	no	Custom	24	Organization_Type = 'Sample Supplier'	NULL	NULL
+3943		Shipment	Shipping Container	Shipping_Container	Mandatory		5	Shipping_Container	enum('Bag','Cryoport','Styrofoam Box')		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3944		Shipment	Recipient Employee	FKRecipient_Employee__ID			6	FKRecipient_Employee__ID	int(11)	MUL	NO	<USER>	20		374	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3945		Shipment	Waybill Number	Waybill_Number			7	Waybill_Number	varchar(255)		YES		20	^.{0,255}$	374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3946		Shipment	Shipping Conditions	Shipping_Conditions	Mandatory		8	Shipping_Conditions	enum('Ambient Temperature','Cooled','Frozen')		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3947		Shipment	Package Conditions	Package_Conditions			9	Package_Conditions	enum('refrigerated - on ice','refrigerated - wet ice','refrigerated - cold water','refrigerated - warm water','room temp - cool','room temp - ok','room temp - warm','frozen - sufficient dry ice','frozen - cryoport temp ok','frozen - little dry ice','frozen - no dry ice')		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3948		Shipment	Shipment Comments	Shipment_Comments			10	Shipment_Comments	text		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3949	Enter Temperature in Celsius	Shipment	Sent at Temp	Sent_at_Temp			11	Sent_at_Temp	int(11)		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3950	Enter Temperature in Celsius	Shipment	Received at Temp	Received_at_Temp			12	Received_at_Temp	int(11)		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3951		Shipment	Container Status	Container_Status			13	Container_Status	enum('Locked','Unlocked')		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3952		Shipment	Shipment Reference	Shipment_Reference			14	Shipment_Reference	varchar(255)		NO		20	^.{0,255}$	374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3953		Shipment	Shipment Status	Shipment_Status			15	Shipment_Status	enum('Sent','Received','Lost','Exported')		YES		20		374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3954		Shipment	Shipment Type	Shipment_Type			16	Shipment_Type	enum('Internal','Import','Export','Roundtrip')		YES		20		374		NULL	no	no	Custom	24	NULL	NULL	NULL
+3955		Shipment	From Grp	FKFrom_Grp__ID			17	FKFrom_Grp__ID	int(11)	MUL	YES		20		374	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3956		Shipment	Target Grp	FKTarget_Grp__ID			18	FKTarget_Grp__ID	int(11)	MUL	YES		20		374	Grp.Grp_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3957		Shipment	Sender Employee	FKSender_Employee__ID			19	FKSender_Employee__ID	int(11)	MUL	YES		20		374	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3958		Shipment	Contact	FK_Contact__ID			20	FK_Contact__ID	int(11)	MUL	YES		20		374	Contact.Contact_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3959		Shipment	Transport Rack	FKTransport_Rack__ID			21	FKTransport_Rack__ID	int(11)	MUL	YES		20		374	Rack.Rack_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3960		Shipment	From Site	FKFrom_Site__ID			22	FKFrom_Site__ID	int(11)	MUL	YES		20		374	Site.Site_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3961		Shipment	Target Site	FKTarget_Site__ID			23	FKTarget_Site__ID	int(11)	MUL	YES		20		374	Site.Site_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3962		Shipment	Addressee	Addressee			24	Addressee	varchar(255)		YES		20	^.{0,255}$	374		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3963		Funding_Attribute	Funding Attribute ID	Funding_Attribute_ID	Primary		1	Funding_Attribute_ID	int(11)	PRI	NO		20		375		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3964		Funding_Attribute	Funding	FK_Funding__ID			2	FK_Funding__ID	int(11)	MUL	NO		20		375	Funding.Funding_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3965		Funding_Attribute	Attribute	FK_Attribute__ID			3	FK_Attribute__ID	int(11)	MUL	NO		20		375	Attribute.Attribute_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3966		Funding_Attribute	Attribute Value	Attribute_Value			4	Attribute_Value	text		NO		20		375		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3967		Funding_Attribute	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20		375	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3968		Funding_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20		375		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3969		Shipped_Object	Shipped Object ID	Shipped_Object_ID	Primary		1	Shipped_Object_ID	int(11)	PRI	NO		20		376		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3970		Shipped_Object	Shipment	FK_Shipment__ID			2	FK_Shipment__ID	int(11)	MUL	NO		20		376	Shipment.Shipment_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3971		Shipped_Object	Object_Class	FK_Object_Class__ID			3	FK_Object_Class__ID	int(11)	MUL	NO		20		376	Object_Class.Object_Class_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3972		Shipped_Object	Object ID	Object_ID			4	Object_ID	int(11)		NO		20		376		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3973		DB_Trigger	DB Trigger ID	DB_Trigger_ID	Primary		1	DB_Trigger_ID	int(11)	PRI	NO		20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3974		DB_Trigger	Table Name	Table_Name			2	Table_Name	varchar(40)		NO		20	^.{0,40}$	377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3975		DB_Trigger	DB Trigger Type	DB_Trigger_Type			3	DB_Trigger_Type	enum('SQL','Perl','Form','Method','Shell')		YES		20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3976		DB_Trigger	Value	Value			4	Value	text		YES		20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3977		DB_Trigger	Trigger On	Trigger_On			5	Trigger_On	enum('update','insert','delete')		YES		20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3978		DB_Trigger	Status	Status			6	Status	enum('Active','Inactive')		NO	Active	20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3979		DB_Trigger	Trigger Description	Trigger_Description			7	Trigger_Description	text		YES		20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3980		DB_Trigger	Fatal	Fatal			8	Fatal	enum('Yes','No')		YES	Yes	20		377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3981		DB_Trigger	Field Name	Field_Name			9	Field_Name	varchar(255)		YES		20	^.{0,255}$	377		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3982		Replacement_Source_Reason	Replacement Source Reason ID	Replacement_Source_Reason_ID	Primary	Concat(Replacement_Source_Context,' - ', Replacement_Source_Reason)	1	Replacement_Source_Reason_ID	int(11)	PRI	NO		20		378		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3983		Replacement_Source_Reason	Replacement Source Reason	Replacement_Source_Reason			2	Replacement_Source_Reason	varchar(255)		YES		20	^.{0,255}$	378		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3984		Replacement_Source_Reason	Replacement Source Context	Replacement_Source_Context			3	Replacement_Source_Context	enum('Internal','External')		YES		20		378		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3985		Replacement_Source_Request	Replacement Source Request ID	Replacement_Source_Request_ID	Primary		1	Replacement_Source_Request_ID	int(11)	PRI	NO		20		379		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3986		Replacement_Source_Request	Replacement Source Requested	Replacement_Source_Requested	Mandatory		2	Replacement_Source_Requested	date		NO	0000-00-00	20		379		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3987		Replacement_Source_Request	Replacement Source Received	Replacement_Source_Received			3	Replacement_Source_Received	date		YES		20		379		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3988		Replacement_Source_Request	Replacement Source Status	Replacement_Source_Status			4	Replacement_Source_Status	enum('Requested','Received','Re-requested','Not Available')		YES		20		379		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3989		Replacement_Source_Request	Starting Material	FK_Source__ID	Mandatory		5	FK_Source__ID	int(11)	MUL	NO		20		379	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3990		Replacement_Source_Request	Replacement Starting Material	FKReplacement_Source__ID			6	FKReplacement_Source__ID	int(11)	MUL	YES		20		379	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3991		Replacement_Source_Request	Replacement_Source_Reason	FK_Replacement_Source_Reason__ID	Mandatory		7	FK_Replacement_Source_Reason__ID	int(11)	MUL	NO		20		379	Replacement_Source_Reason.Replacement_Source_Reason_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3992		Replacement_Source_Request	Replacement Source Request Comments	Replacement_Source_Request_Comments			8	Replacement_Source_Request_Comments	text		YES		20		379		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3993		Work_Request	Work Request Created	Work_Request_Created			0	Work_Request_Created	datetime		YES	<NOW>	20		234		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3994		Attribute	Attribute Access	Attribute_Access			8	Attribute_Access	enum('Editable','NonEditable','ReadOnly')		YES	Editable	20	NULL	172		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3995		DBField	List Condition	List_Condition			23	List_Condition	varchar(255)		YES		20	^.{0,255}$	107		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3996		Pipeline	Applicable Plate_Format	FKApplicable_Plate_Format__ID			9	FKApplicable_Plate_Format__ID	int(11)	MUL	YES		20	NULL	187	Plate_Format.Plate_Format_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3997		Plate	Plate Class	Plate_Class			26	Plate_Class	enum('Standard','Extraction','ReArray','Oligo')		YES	Standard	20	NULL	59		NULL	yes	no	Custom	24	NULL	NULL	NULL
+3998		Printer_Group	Site	FK_Site__ID			3	FK_Site__ID	int(11)	MUL	NO		20	NULL	204	Site.Site_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+3999		Printer_Group	Printer Group Status	Printer_Group_Status			4	Printer_Group_Status	enum('Active','Inactive')		YES	Active	20	NULL	204		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4000		ReArray_Attribute	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20	NULL	221	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4001		ReArray_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20	NULL	221		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4002		Sample_Attribute	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	YES		20	NULL	193	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4003		Sample_Attribute	Set DateTime	Set_DateTime			6	Set_DateTime	datetime		NO	0000-00-00 00:00:00	20	NULL	193		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4004		Service_Contract	FK_Orders__ID	FK_Orders__ID			5	FK_Orders__ID	int(11)	MUL	YES		20	NULL	76	Orders.Orders_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4005		Site	Site Address	Site_Address			3	Site_Address	varchar(80)		YES		20	^.{0,80}$	332		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4006		Site	Site City	Site_City			4	Site_City	varchar(40)		YES		20	^.{0,40}$	332		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4007		Site	Site State	Site_State			5	Site_State	varchar(20)		YES		20	^.{0,20}$	332		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4008		Site	Site Zip	Site_Zip			6	Site_Zip	varchar(10)		YES		20	^.{0,10}$	332		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4009		Site	Site Country	Site_Country			7	Site_Country	varchar(40)		YES		20	^.{0,40}$	332		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4010		Source	Shipment	FK_Shipment__ID			19	FK_Shipment__ID	int(11)	MUL	YES		20	NULL	194	Shipment.Shipment_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4011		Source	Reference Project	FKReference_Project__ID			20	FKReference_Project__ID	int(11)	MUL	NO		20	NULL	194	Project.Project_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4012		Stock	FK_Orders__ID	FK_Orders__ID			5	FK_Orders__ID	int(11)	MUL	YES		20	NULL	7	Orders.Orders_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4013		Submission	Reference Code	Reference_Code			14	Reference_Code	varchar(40)		YES		20	^.{0,40}$	353		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4014		Submission_Volume	Requester Employee	FKRequester_Employee__ID			11	FKRequester_Employee__ID	int(11)	MUL	YES		20	NULL	358	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4015		Storage_Medium	Storage Medium ID	Storage_Medium_ID	Primary	Storage_Medium_Name	1	Storage_Medium_ID	int(11)	PRI	NO		20	NULL	380		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4016		Storage_Medium	Storage Medium Name	Storage_Medium_Name			2	Storage_Medium_Name	varchar(40)		NO		20	^.{0,40}$	380		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4017		DBField	Parent DBField	FKParent_DBField__ID			24	FKParent_DBField__ID	int(11)	MUL	YES		20	NULL	107	DBField.DBField_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4018		DBField	Parent Value	Parent_Value			25	Parent_Value	varchar(255)		YES		20	^.{0,255}$	107		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4019		Original_Source	FK_Pathology__ID	FK_Pathology__ID			8	FK_Pathology__ID	int(11)	MUL	NO		20	NULL	165	Pathology.Pathology_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4020		Original_Source	Pathology Type	Pathology_Type			9	Pathology_Type	enum('Benign','Pre-malignant','Malignant','Non-neoplastic','Undetermined','Hyperplasia','Metaplasia','Dysplasia')		YES	Undetermined	20	NULL	165		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4021		Original_Source	Pathology Grade	Pathology_Grade			10	Pathology_Grade	set('G1','G2','G3','G4')		YES		20	NULL	165		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4022		Original_Source	Pathology Stage	Pathology_Stage			11	Pathology_Stage	enum('0','I','I-A','I-B','I-C','II','II-A','II-B','II-C','III','III-A','III-B','III-C','IV','>=pT2')		YES		20	NULL	165		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4023		Original_Source	Invasive	Invasive			12	Invasive	enum('Invasive','Noninvasive')		YES		20	NULL	165		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4025		Protocol_Step	Repeatable	Repeatable			16	Repeatable	enum('Yes','No','')		YES		20	NULL	67		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4026		Sample_Type	Parent Sample_Type	FKParent_Sample_Type__ID			3	FKParent_Sample_Type__ID	int(11)	MUL	YES		20	NULL	331	Sample_Type.Sample_Type_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4027		Sample_Type	Sample Type Alias	Sample_Type_Alias			4	Sample_Type_Alias	varchar(255)		NO		20	^.{0,255}$	331		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4028		Source	Storage_Medium	FK_Storage_Medium__ID			20	FK_Storage_Medium__ID	int(11)	MUL	YES		20	NULL	194	Storage_Medium.Storage_Medium_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4029		Source	Storage Medium Quantity Units	Storage_Medium_Quantity_Units			21	Storage_Medium_Quantity_Units	enum('','ml','ul')		YES		20	NULL	194		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4030		Source	Storage Medium Quantity	Storage_Medium_Quantity			22	Storage_Medium_Quantity	double(8,4)		YES		20	NULL	194		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4032		Source	Sample_Type	FK_Sample_Type__ID			24	FK_Sample_Type__ID	int(11)	MUL	NO		20	NULL	194	Sample_Type.Sample_Type_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4033		Process_Deviation	Process Deviation ID	Process_Deviation_ID	Primary	Process_Deviation_Name	1	Process_Deviation_ID	int(11)	PRI	NO		20	NULL	381		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4034		Process_Deviation	Process Deviation Name	Process_Deviation_Name	Mandatory		2	Process_Deviation_Name	varchar(80)	UNI	NO		20	^.{0,80}$	381		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4035		Process_Deviation	Process Deviation Description	Process_Deviation_Description			3	Process_Deviation_Description	text		YES		20	NULL	381		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4036		Strain	Strain ID	Strain_ID	Primary	Strain_Name	1	Strain_ID	int(11)	PRI	NO		20	NULL	382		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4037		Strain	Strain Name	Strain_Name			2	Strain_Name	varchar(40)	UNI	NO		20	^.{0,40}$	382		NULL	no	no	Custom	24	NULL	NULL	NULL
+4038		Original_Source	Strain	FK_Strain__ID			14	FK_Strain__ID	int(11)	MUL	YES		20	NULL	165	Strain.Strain_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4039		Source	Original Starting Material	FKOriginal_Source__ID			25	FKOriginal_Source__ID	int(11)	MUL	YES		20	NULL	194	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4040		Original_Source	Pathology Occurrence	Pathology_Occurrence			14	Pathology_Occurrence	enum('Primary','Reccurent-Relapse','Metastatic','Remission','Undetermined','Unspecified')		NO	Unspecified	20	NULL	165		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4041		RNA_Strategy	RNA Strategy ID	RNA_Strategy_ID	Primary	RNA_Strategy_Name	1	RNA_Strategy_ID	int(11)	PRI	NO		20	NULL	383		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4042		RNA_Strategy	RNA Strategy Name	RNA_Strategy_Name			2	RNA_Strategy_Name	varchar(40)	UNI	NO		20	^.{0,40}$	383		NULL	no	no	Custom	24	NULL	NULL	NULL
+4043		Source	Sample Collection Time	Sample_Collection_Time			23	Sample_Collection_Time	datetime		NO	0000-00-00 00:00:00	20	NULL	194		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4044		Invoice	Invoice ID	Invoice_ID	Primary		1	Invoice_ID	int(11)	PRI	NO		20	NULL	384		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4045		Invoice	Invoice Sent Date	Invoice_Sent_Date			2	Invoice_Sent_Date	date		NO		20	NULL	384		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4046		Invoice	Invoice Total Amount	Invoice_Total_Amount			3	Invoice_Total_Amount	decimal(10,2)		YES		20	NULL	384		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4047		Invoice	Invoice Received Amount	Invoice_Received_Amount			4	Invoice_Received_Amount	decimal(10,2)		YES		20	NULL	384		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4048		Invoice	Employee	FK_Employee__ID			5	FK_Employee__ID	int(11)	MUL	NO		20	NULL	384	Employee.Employee_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4049		Invoice	Contact	FK_Contact__ID			6	FK_Contact__ID	int(11)	MUL	NO		20	NULL	384	Contact.Contact_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4067		Invoice_Analysis_Step	Invoice Analysis Step ID	Invoice_Analysis_Step_ID	Primary	Invoice_Analysis_Step_Name	1	Invoice_Analysis_Step_ID	int(11)	PRI	NO		20	NULL	387		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4068		Invoice_Analysis_Step	Invoice Analysis Step Name	Invoice_Analysis_Step_Name			2	Invoice_Analysis_Step_Name	varchar(40)		NO		20	^.{0,40}$	387		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4069		Invoice_Analysis_Step	Pipeline_Step	FK_Pipeline_Step__ID			3	FK_Pipeline_Step__ID	int(11)	MUL	NO		20	NULL	387	Pipeline_Step.Pipeline_Step_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4070		Invoice_Protocol	Invoice Protocol ID	Invoice_Protocol_ID	Primary	Invoice_Protocol_Name	1	Invoice_Protocol_ID	int(11)	PRI	NO		20	NULL	388		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4071		Invoice_Protocol	Invoice Protocol Name	Invoice_Protocol_Name			2	Invoice_Protocol_Name	varchar(40)		NO		20	^.{0,40}$	388		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4072		Invoice_Protocol	Invoice Protocol Type	Invoice_Protocol_Type			3	Invoice_Protocol_Type	enum('Upstream_Library_Construction','Library_Construction')		NO		20	NULL	388		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4073		Invoice_Protocol	Lab_Protocol	FK_Lab_Protocol__ID			4	FK_Lab_Protocol__ID	int(11)	MUL	NO		20	NULL	388	Lab_Protocol.Lab_Protocol_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4074		Invoice_Run_Type	Invoice Run Type ID	Invoice_Run_Type_ID	Primary	Invoice_Run_Type_Name	1	Invoice_Run_Type_ID	int(11)	PRI	NO		20	NULL	389		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4075		Invoice_Run_Type	Invoice Run Type Name	Invoice_Run_Type_Name			2	Invoice_Run_Type_Name	varchar(40)		NO		20	^.{0,40}$	389		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4076		Invoiceable_Analysis	Invoiceable Analysis ID	Invoiceable_Analysis_ID	Primary	CASE WHEN Indexed > 0 THEN CONCAT(Invoice_Analysis_Step_Name,' - (1/',Indexed,')') ELSE Invoice_Analysis_Step.Invoice_Analysis_Step_Name END	1	Invoiceable_Analysis_ID	int(11)	PRI	NO		20	NULL	390		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4077		Invoiceable_Analysis	Starting Material	FK_Source__ID			2	FK_Source__ID	int(11)	MUL	NO		20	NULL	390	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4078		Invoiceable_Analysis	Container	FK_Plate__ID			3	FK_Plate__ID	int(11)	MUL	NO		20	NULL	390	Plate.Plate_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4079		Invoiceable_Analysis	Tray	FK_Tray__ID			4	FK_Tray__ID	int(11)	MUL	YES		20	NULL	390	Tray.Tray_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4080		Invoiceable_Analysis	FK_Run__ID	FK_Run__ID			5	FK_Run__ID	int(11)	MUL	NO		20	NULL	390	Run.Run_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4081		Invoiceable_Analysis	FK_Analysis_Step__ID	FK_Analysis_Step__ID			6	FK_Analysis_Step__ID	int(11)	MUL	NO		20	NULL	390	Analysis_Step.Analysis_Step_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4082		Invoiceable_Analysis	Invoice_Analysis_Step	FK_Invoice_Analysis_Step__ID			7	FK_Invoice_Analysis_Step__ID	int(11)	MUL	NO		20	NULL	390	Invoice_Analysis_Step.Invoice_Analysis_Step_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4083		Invoiceable_Analysis	Invoice	FK_Invoice__ID			8	FK_Invoice__ID	int(11)	MUL	YES		20	NULL	390	Invoice.Invoice_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4084		Invoiceable_Analysis	Work_Request	FK_Work_Request__ID			9	FK_Work_Request__ID	int(11)	MUL	YES		20	NULL	390	Work_Request.Work_Request_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4085		Invoiceable_Analysis	Parent 	FKParent_Invoiceable_Analysis__ID			10	FKParent_Invoiceable_Analysis__ID	int(11)	MUL	YES		20	NULL	390	Invoiceable_Analysis.Invoiceable_Analysis_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4086		Invoiceable_Analysis	Indexed	Indexed			11	Indexed	int(11)		YES		20	NULL	390		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4087		Invoiceable_Analysis	Invoiceable Analysis Comments	Invoiceable_Analysis_Comments			12	Invoiceable_Analysis_Comments	text		YES		20	NULL	390		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4088		Invoiceable_Analysis	Billable	Billable			13	Billable	enum('Yes','No')		NO	Yes	20	NULL	390		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4089		Invoiceable_Prep	Invoiceable Prep ID	Invoiceable_Prep_ID	Primary	CASE WHEN Indexed > 0 THEN CONCAT(Invoice_Protocol_Name,' - (1/',Indexed,')') ELSE Invoice_Protocol.Invoice_Protocol_Name END	1	Invoiceable_Prep_ID	int(11)	PRI	NO		20	NULL	391		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4090		Invoiceable_Prep	Starting Material	FK_Source__ID			2	FK_Source__ID	int(11)	MUL	NO		20	NULL	391	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4091		Invoiceable_Prep	Container	FK_Plate__ID			3	FK_Plate__ID	int(11)	MUL	NO		20	NULL	391	Plate.Plate_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4092		Invoiceable_Prep	Tray	FK_Tray__ID			4	FK_Tray__ID	int(11)	MUL	YES		20	NULL	391	Tray.Tray_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4093		Invoiceable_Prep	Prep	FK_Prep__ID			5	FK_Prep__ID	int(11)	MUL	NO		20	NULL	391	Prep.Prep_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4094		Invoiceable_Prep	Invoice_Protocol	FK_Invoice_Protocol__ID			6	FK_Invoice_Protocol__ID	int(11)	MUL	NO		20	NULL	391	Invoice_Protocol.Invoice_Protocol_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4095		Invoiceable_Prep	Invoice	FK_Invoice__ID			7	FK_Invoice__ID	int(11)	MUL	YES		20	NULL	391	Invoice.Invoice_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4096		Invoiceable_Prep	Work_Request	FK_Work_Request__ID			8	FK_Work_Request__ID	int(11)	MUL	YES		20	NULL	391	Work_Request.Work_Request_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4097		Invoiceable_Prep	Parent 	FKParent_Invoiceable_Prep__ID			9	FKParent_Invoiceable_Prep__ID	int(11)	MUL	YES		20	NULL	391	Invoiceable_Prep.Invoiceable_Prep_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4098		Invoiceable_Prep	Indexed	Indexed			10	Indexed	int(11)		YES		20	NULL	391		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4099		Invoiceable_Prep	Invoiceable Prep Comments	Invoiceable_Prep_Comments			11	Invoiceable_Prep_Comments	text		YES		20	NULL	391		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4100		Invoiceable_Prep	Billable	Billable			12	Billable	enum('Yes','No')		NO	Yes	20	NULL	391		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4101		Invoiceable_Run	Invoiceable Run ID	Invoiceable_Run_ID	Primary	CASE WHEN Indexed > 0 THEN CONCAT(Invoice_Run_Type_Name,' - (1/',Indexed,')') ELSE Invoice_Run_Type.Invoice_Run_Type_Name END	1	Invoiceable_Run_ID	int(11)	PRI	NO		20	NULL	392		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4102		Invoiceable_Run	Starting Material	FK_Source__ID			2	FK_Source__ID	int(11)	MUL	NO		20	NULL	392	Source.Source_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4103		Invoiceable_Run	Container	FK_Plate__ID			3	FK_Plate__ID	int(11)	MUL	NO		20	NULL	392	Plate.Plate_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4104		Invoiceable_Run	Tray	FK_Tray__ID			4	FK_Tray__ID	int(11)	MUL	YES		20	NULL	392	Tray.Tray_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4105		Invoiceable_Run	FK_Run__ID	FK_Run__ID			5	FK_Run__ID	int(11)	MUL	NO		20	NULL	392	Run.Run_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4106		Invoiceable_Run	Invoice_Run_Type	FK_Invoice_Run_Type__ID			6	FK_Invoice_Run_Type__ID	int(11)	MUL	NO		20	NULL	392	Invoice_Run_Type.Invoice_Run_Type_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4107		Invoiceable_Run	Invoice	FK_Invoice__ID			7	FK_Invoice__ID	int(11)	MUL	YES		20	NULL	392	Invoice.Invoice_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4108		Invoiceable_Run	Work_Request	FK_Work_Request__ID			8	FK_Work_Request__ID	int(11)	MUL	YES		20	NULL	392	Work_Request.Work_Request_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4109		Invoiceable_Run	Parent 	FKParent_Invoiceable_Run__ID			9	FKParent_Invoiceable_Run__ID	int(11)	MUL	YES		20	NULL	392	Invoiceable_Run.Invoiceable_Run_ID	NULL	yes	no	Custom	24	NULL	NULL	NULL
+4110		Invoiceable_Run	Indexed	Indexed			10	Indexed	int(11)		YES		20	NULL	392		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4111		Invoiceable_Run	Invoiceable Run Comments	Invoiceable_Run_Comments			11	Invoiceable_Run_Comments	text		YES		20	NULL	392		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4112		Invoiceable_Run	Billable	Billable			12	Billable	enum('Yes','No')		NO	Yes	20	NULL	392		NULL	yes	no	Custom	24	NULL	NULL	NULL
+4113		Invoice	Invoice Comments	Invoice_Comments			5	Invoice_Comments	text		YES		20	NULL	384		NULL	yes	no	Custom	NULL	NULL	NULL	NULL

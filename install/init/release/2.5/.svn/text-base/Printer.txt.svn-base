@@ -1,0 +1,5 @@
+1	default_large_label_printer	300	Lab	LARGE_LABEL_PRINTER		OFF	0	1
+2	default_chemistry_printer	300	Lab	CHEMISTRY_PRINTER		OFF	0	2
+3	default_small_label_printer	300	Lab	SMALL_LABEL_PRINTER		OFF	0	3
+4	default_2d_barcode_printer	300	Lab	2D_BARCODE_PRINTER		OFF	0	4
+5	default_laser_printer	300	Lab	LASER_PRINTER		OFF	0	5

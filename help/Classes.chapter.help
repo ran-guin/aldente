@@ -1,0 +1,85 @@
+Classes
+<h1>Generic Classes</H2>
+<h2>GUI Classes</H2>
+<UL>
+<LI><h3>HTML_Table</h3><P>
+	A Table object that allows simpler control of generated html tables
+<LI><h3>Histogram</h3><P>
+	An object that enables easy drawing of histograms based on array data.
+</UL><h1>SQL Database Specific Classes</h1>
+<span class=small>
+<UL>
+<LI><h3>Form</h3><P>
+	A single Database record input form
+<LI><h3>Records</h3><P>
+	A collection of database records available for viewing/editing
+<LI><h3>View</h3><P>
+	A view of database records in the database
+</UL>
+
+<H1>Primary Class Definitions for alDente</H1>
+<span class=small>
+<P><UL>
+
+<h2>Laboratory Object Classes</h2>
+
+<LI><h3>Sample -  (eg Plate)</h3><P>
+	A specific type of laboratory sample object - associated with various actions
+	<UL>
+	<LI>Transfer
+	<LI>Move
+	<LI>Set Unused Wells
+	<LI>Set No Grows
+	<LI>Fail
+	<LI>Throw Away
+	</UL>
+	
+	<P>Information extracted from this object may include:
+	<UL>
+	<LI>View Preparation History
+	<LI>Show Applied Solutions
+	<LI>View Ancestry
+	</UL>
+
+<LI><h3>Solution</h3><P>
+	A reagent or solution in stock, associated with various actions:
+	<UL>
+	<LI>Mix
+	<LI>Open
+	<LI>Use (specified quantity)
+	<LI>Throw Away
+	</UL>
+	<P>Data extracted from this object may include:
+	<UL>
+	<LI>Original reagents : list of original reagents (& quantities) used to make solutions.
+	<LI>Used              : list of instances when used (& quantities)
+	</UL>
+
+<LI><h3>Equipment</h3><P>
+	A piece of equipment in stock, associated with various actions:
+	<UL>
+	<LI>Apply Maintenance Process
+	<LI>De-commission
+	</UL>
+	<P>Data extracted from this object may include:
+	<UL>
+	<LI>Maintenance History
+	<LI>Warranty summary
+	<LI>Service History
+	<LI>Used              : list of instances when used
+	</UL>
+
+<h2>Laboratory Process Classes</H2>
+<LI><h3>Preparation</h3><P>
+	An object that enables loading of protocol steps and storing of Preparation steps
+<LI><h3>Protocol</h3><P>
+	An object that enables definition and extraction of customized Lab_Protocols.
+</UL><h1>Sequencing Plug-in Classes</H1>
+<UL>
+<LI><h3>Run</h3><P>
+	A Run object. 
+<LI><h3>Read</h3><P>
+	An individual sequencing read.
+<LI><h3>Sequencer</h3><P>
+	An individual sequencer.	
+</UL></span>

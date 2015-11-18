@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/81667/alDente/trunk/custom/GSC/install/patches/3.11
+END
+Unique_Invoice_Draft_Names.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/81641/alDente/trunk/custom/GSC/install/patches/3.11/Unique_Invoice_Draft_Names.pat
+END
+Backfill_Sample_QC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/81667/alDente/trunk/custom/GSC/install/patches/3.11/Backfill_Sample_QC.pat
+END
+virtual_eq.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/80222/alDente/trunk/custom/GSC/install/patches/3.11/virtual_eq.pat
+END

@@ -1,0 +1,8 @@
+lib/perl/Core/alDente/Tray.pm
+lib/perl/Core/alDente/Tray_Views.pm
+lib/perl/Core/alDente/Container_Views.pm
+lib/perl/Core/alDente/ReArray_Views.pm
+bin/t/Core/alDente/Tray.t
+bin/t/Core/alDente/Tray_Views.t
+bin/t/Core/alDente/Container_Views.t
+bin/t/Core/alDente/ReArray_Views.t

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/70483/alDente/trunk/custom/GSC/install/patches/2.6
+END
+biospec_lib_ship.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/biospec_lib_ship.pat
+END
+add_BCR.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/add_BCR.pat
+END
+redaction_alert.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/redaction_alert.pat
+END
+BioSpecimen_init.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/BioSpecimen_init.pat
+END
+RNA_DNA_Source_Nature.pat
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/RNA_DNA_Source_Nature.pat
+END
+Tissue_Reorganization_Data.pat
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/69617/alDente/trunk/custom/GSC/install/patches/2.6/Tissue_Reorganization_Data.pat
+END
+Correct_Attribute_Name.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/Correct_Attribute_Name.pat
+END
+install_GSC_2_6.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/install_GSC_2_6.pat
+END
+upgrade_GSC_2_6.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/upgrade_GSC_2_6.pat
+END
+Drop_Plate_Foramt_Size_Data_Fix.pat
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/70483/alDente/trunk/custom/GSC/install/patches/2.6/Drop_Plate_Foramt_Size_Data_Fix.pat
+END
+add_queued_funding.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.6/add_queued_funding.pat
+END

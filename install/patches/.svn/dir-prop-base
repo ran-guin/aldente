@@ -1,0 +1,7 @@
+K 13
+svn:mergeinfo
+V 180
+/LIMS/branches/lims_4_1-branch/install/patches:104987-106196
+/LIMS/trunk/install/patches:100218-100476,103006-104986
+/LIMS/trunk/lib/perl/Core/LampLite/install/patches:99992-100217
+END

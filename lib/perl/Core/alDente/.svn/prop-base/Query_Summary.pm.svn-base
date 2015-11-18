@@ -1,0 +1,8 @@
+K 13
+svn:mergeinfo
+V 284
+/LIMS/trunk/lib/perl/Core/alDente/Query_Summary.pm:99711-100970,101460,103006-106196
+/alDente/branches/2_7_source_type/lib/perl/Core/alDente/Query_Summary.pm:68926-69075
+/alDente/branches/dev_3_2/lib/perl/Core/alDente/Query_Summary.pm:70505-70757
+/alDente/trunk/Query_Summary.pm:70512
+END

@@ -1,0 +1,3 @@
+Equipment_ID	Equipment_Name	Equipment_Type	Equipment_Comments	Model	Serial_Number	Acquired	Equipment_Cost	Equipment_Number	Equipment_Number_in_Batch	FK_Stock__ID	Equipment_Alias	Equipment_Description	Equipment_Location	Equipment_Status	FK_Location__ID	Equipment_Condition
+1	Freezer	Storage	\N			\N	0	\N	\N	0	\N	\N		In Use	1	
+2	TBD	Storage	\N			\N	0	\N	\N	0	\N	\N		In Use	1	

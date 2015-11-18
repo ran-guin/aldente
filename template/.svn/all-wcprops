@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/103324/alDente/trunk/template
+END
+Template_View.pm
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/100954/alDente/trunk/template/Template_View.pm
+END
+Module.pm
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/103324/alDente/trunk/template/Module.pm
+END
+dbc_template.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/100953/alDente/trunk/template/dbc_template.txt
+END
+template_system.conf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/template/template_system.conf
+END
+Template.pm
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/template/Template.pm
+END
+patch_db.pat
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/68925/alDente/trunk/template/patch_db.pat
+END
+test_template.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/86191/alDente/trunk/template/test_template.txt
+END
+Template_Controller.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/template/Template_Controller.pm
+END
+chart01.bin
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/template/chart01.bin
+END
+chart02.bin
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/template/chart02.bin
+END
+chart03.bin
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/template/chart03.bin
+END
+CGI_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/73656/alDente/trunk/template/CGI_App.pm
+END
+Script.pl
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/68925/alDente/trunk/template/Script.pl
+END

@@ -1,0 +1,6 @@
+Site_ID	Site_Name
+1	Lab
+2	External
+3	CRC
+4	DHCC
+5	Freezer Farm

@@ -1,0 +1,102 @@
+DBField_ID	Field_Description	Field_Table	Prompt	Field_Alias	Field_Options	Field_Reference	Field_Order	Field_Name	Field_Type	Field_Index	NULL_ok	Field_Default	Field_Size	Field_Format	FK_DBTable__ID	Foreign_Key	DBField_Notes	Editable	Tracked	Field_Scope	FK_Package__ID	List_Condition	FKParent_DBField__ID	Parent_Value
+689		DBTable	DBTable ID	ID	Primary	DBTable_Name	1	DBTable_ID	int(11)	PRI	NO		20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+690		DBTable	Name	Name			5	DBTable_Name	varchar(80)	UNI	NO		20	^.{0,80}$	487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+691		DBTable	Description	Description			6	DBTable_Description	text		YES		20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+692		DBTable	Status	Status			7	DBTable_Status	text		YES		20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+693		DBTable	Status Last Updated	Status_Last_Updated			8	Status_Last_Updated	datetime		NO	0000-00-00 00:00:00	20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+1723		DBTable	Type	Type			12	DBTable_Type	enum('General','Lab Object','Lab Process','Object Detail','Settings','Dynamic','DB Management','Application Specific','Class','Subclass','Lookup','Join','Imported','Manual Join','Recursive Lookup')		YES		20	^.{0,20}$	487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+1724		DBTable	Title	Title			13	DBTable_Title	varchar(80)		NO		20	^.{0,80}$	487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+3537		DBTable	Scope	Scope			14	Scope	enum('Core','Lab','Plugin','Option','Custom')		YES		20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+3538		DBTable	Package Name	Package_Name			15	Package_Name	varchar(40)		YES		20	^.{0,40}$	487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+3539		DBTable	Records	Records			16	Records	int(11)		NO		20		487		NULL	no	yes	NULL	24	NULL	NULL	NULL
+3609		DBTable	Package	FK_Package__ID			17	FK_Package__ID	int(11)	MUL	NO		20		487	Package.Package_ID	NULL	no	yes	Custom	24	NULL	NULL	NULL
+4803		DBField	DBField ID	DBField_ID	Primary	Field_Name	1	DBField_ID	int(11)	PRI	NO		20	NULL	0		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4804		DBField	DBField ID	DBField_ID	Primary	Field_Name	1	DBField_ID	int(11)	PRI	NO		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4805		DBField	Field Description	Field_Description			5	Field_Description	text		NO		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4806		DBField	Field Table	Field_Table			6	Field_Table	text		NO		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4807		DBField	Prompt	Prompt			7	Prompt	varchar(255)		NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4808		DBField	Field Alias	Field_Alias			8	Field_Alias	varchar(255)		NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4809		DBField	Field Options	Field_Options			12	Field_Options	set('Hidden','Mandatory','Primary','Unique','NewLink','ViewLink','ListLink','Searchable','Obsolete','ReadOnly','Required','Removed')		YES		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4810		DBField	Field Reference	Field_Reference			13	Field_Reference	varchar(255)		NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4811		DBField	Field Order	Field_Order			14	Field_Order	int(11)		NO		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4812		DBField	Field Name	Field_Name			15	Field_Name	varchar(255)	MUL	NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4813		DBField	Field Type	Field_Type			16	Field_Type	text		NO		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4814		DBField	Field Index	Field_Index			17	Field_Index	varchar(255)		NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4815		DBField	NULL ok	NULL_ok			18	NULL_ok	enum('NO','YES')		NO	YES	20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4816		DBField	Field Default	Field_Default			19	Field_Default	varchar(255)		NO		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4817		DBField	Field Size	Field_Size			20	Field_Size	tinyint(4)		YES	20	20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4818		DBField	Field Format	Field_Format			21	Field_Format	varchar(80)		YES		20	^.{0,80}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4819		DBField	FK_DBTable__ID	FK_DBTable__ID			22	FK_DBTable__ID	int(11)	MUL	YES		20	NULL	486	DBTable.DBTable_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4820		DBField	Foreign Key	Foreign_Key			23	Foreign_Key	varchar(255)		YES		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4821		DBField	DBField Notes	DBField_Notes			24	DBField_Notes	text		YES		20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4822		DBField	Editable	Editable			25	Editable	enum('yes','admin','no')		YES	yes	20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4823		DBField	Tracked	Tracked			26	Tracked	enum('yes','no')		YES	no	20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4824		DBField	Field Scope	Field_Scope			27	Field_Scope	enum('Core','Optional','Custom')		YES	Custom	20	NULL	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4825		DBField	FK_Package__ID	FK_Package__ID			28	FK_Package__ID	int(11)	MUL	YES		20	NULL	486	Package.Package_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4826		DBField	List Condition	List_Condition			29	List_Condition	varchar(255)		YES		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4827		DBField	Parent	FKParent_DBField__ID			30	FKParent_DBField__ID	int(11)	MUL	YES		20	NULL	486	DBField.DBField_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4828		DBField	Parent Value	Parent_Value			31	Parent_Value	varchar(255)		YES		20	^.{0,255}$	486		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4829		Change_History	Change History ID	Change_History_ID	Primary		1	Change_History_ID	int(11)	PRI	NO		20	NULL	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4830		Change_History	FK_DBField__ID	FK_DBField__ID			5	FK_DBField__ID	int(11)	MUL	NO		20	NULL	488	DBField.DBField_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4831		Change_History	Old Value	Old_Value			6	Old_Value	varchar(255)		YES		20	NULL	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4832		Change_History	New Value	New_Value			7	New_Value	varchar(255)		YES		20	NULL	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4833		Change_History	FK_Employee__ID	FK_Employee__ID			8	FK_Employee__ID	int(11)	MUL	NO		20	NULL	488	Employee.Employee_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4834		Change_History	Modified Date	Modified_Date			12	Modified_Date	datetime	MUL	NO	0000-00-00 00:00:00	20	NULL	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4835		Change_History	Record ID	Record_ID			13	Record_ID	varchar(40)	MUL	NO		20	^.{0,40}$	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4836		Change_History	Comment	Comment			14	Comment	text		YES		20	NULL	488		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4837		DB_Form	DB Form ID	DB_Form_ID	Primary	concat(DB_Form_ID,': ',Form_Table)	1	DB_Form_ID	int(11)	PRI	NO		20	NULL	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4838		DB_Form	Form Table	Form_Table			5	Form_Table	varchar(80)		NO		20	^.{0,80}$	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4839		DB_Form	Form Order	Form_Order			6	Form_Order	int(2)		YES	1	20	NULL	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4840		DB_Form	Min Records	Min_Records			7	Min_Records	int(2)		NO	1	20	NULL	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4841		DB_Form	Max Records	Max_Records			8	Max_Records	int(2)		NO	1	20	NULL	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4842		DB_Form	Parent	FKParent_DB_Form__ID			12	FKParent_DB_Form__ID	int(11)	MUL	YES		20	NULL	489	DB_Form.DB_Form_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4843		DB_Form	Parent Field	Parent_Field			13	Parent_Field	varchar(80)		YES		20	^.{0,80}$	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4844		DB_Form	Parent Value	Parent_Value			14	Parent_Value	varchar(200)		YES		20	^.{0,200}$	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4845		DB_Form	Finish	Finish			15	Finish	int(11)		YES		20	NULL	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4846		DB_Form	Class	Class			16	Class	varchar(40)		YES		20	^.{0,40}$	489		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4868		User	User ID	User_ID	Primary	User_Name	1	User_ID	int(11)	PRI	NO		20	NULL	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4869		User	User Name	User_Name			5	User_Name	varchar(63)		NO		20	^.{0,63}$	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4870		User	Email Address	Email_Address			6	Email_Address	varchar(255)		NO		20	^.{0,255}$	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4871		User	User Status	User_Status			7	User_Status	enum('Active','Inactive','Old')		NO	Active	20	NULL	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4872		User	Password	Password			8	Password	varchar(255)		NO		20	^.{0,255}$	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4874		DB_Access	DB Access ID	DB_Access_ID	Primary		1	DB_Access_ID	tinyint(4)	PRI	NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4875		DB_Access	DB Access Title	DB_Access_Title			2	DB_Access_Title	varchar(255)		NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4876		DB_Access	Read Access	Read_Access			3	Read_Access	enum('Y','N')		NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4877		DB_Access	Write Access	Write_Access			4	Write_Access	enum('Y','N')		NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4878		DB_Access	Delete Access	Delete_Access			5	Delete_Access	enum('Y','N')		NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4879		DB_Access	Restriction Type	Restriction_Type			6	Restriction_Type	enum('N/A','Specified Inclusions','Specified Exclusions')		NO		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4880		DB_Access	DB Access Description	DB_Access_Description			7	DB_Access_Description	text		YES		20	NULL	494		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4881		DB_Login	DB Login ID	DB_Login_ID	Primary		1	DB_Login_ID	int(11)	PRI	NO		20	NULL	495		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4882		DB_Login	FK_Employee__ID	FK_Employee__ID			2	FK_Employee__ID	int(11)		NO		20	NULL	495	Employee.Employee_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4883		DB_Login	DB User	DB_User			3	DB_User	char(40)		NO		20	NULL	495		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4884		DB_Login	DB Access Level	DB_Access_Level			4	DB_Access_Level	enum('0','1','2','3','4','5')		YES		20	NULL	495		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4885		DB_Login	DB Login Description	DB_Login_Description			5	DB_Login_Description	text		YES		20	NULL	495		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4886		DB_Login	Production DB_Access	FKProduction_DB_Access__ID			6	FKProduction_DB_Access__ID	int(11)		NO		20	NULL	495	DB_Access.DB_Access_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4887		DB_Login	nonProduction DB_Access	FKnonProduction_DB_Access__ID			7	FKnonProduction_DB_Access__ID	int(11)		NO		20	NULL	495	DB_Access.DB_Access_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4888		Department	Department ID	Department_ID	Primary	Department_Name	1	Department_ID	int(11)	PRI	NO		20	NULL	496		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4889		Department	Department Name	Department_Name			2	Department_Name	char(40)		YES		20	NULL	496		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4890		Department	Department Status	Department_Status			3	Department_Status	enum('Active','Inactive')		YES		20	NULL	496		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4891		DepartmentSetting	DepartmentSetting ID	DepartmentSetting_ID	Primary		1	DepartmentSetting_ID	int(11)	PRI	NO		20	NULL	497		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4892		DepartmentSetting	FK_Setting__ID	FK_Setting__ID			2	FK_Setting__ID	int(11)		YES		20	NULL	497	Setting.Setting_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4893		DepartmentSetting	Department	FK_Department__ID			3	FK_Department__ID	int(11)		YES		20	NULL	497	Department.Department_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4894		DepartmentSetting	Setting Value	Setting_Value			4	Setting_Value	char(40)		YES		20	NULL	497		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4895		Grp	Grp ID	Grp_ID	Primary	Grp_Name	1	Grp_ID	int(11)	PRI	NO		20	NULL	498		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4896		Grp	Grp Name	Grp_Name	Mandatory		2	Grp_Name	varchar(80)		NO		20	NULL	498		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4897		Grp	Department	FK_Department__ID	Mandatory		3	FK_Department__ID	int(11)		NO		20	NULL	498	Department.Department_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4898		Grp	Access	Access	Mandatory		4	Access	enum('Lab','Admin','Guest','Report','Bioinformatics')		YES		20	NULL	498		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4899		Grp	Grp Type	Grp_Type			5	Grp_Type	enum('Public','Lab','Lab Admin','Project Admin','TechD','Production','Research','Technical Support','Informatics','QC','Purchasing','Shared')		YES		20	NULL	498		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4900		Grp	Grp Status	Grp_Status			6	Grp_Status	enum('Active','Inactive')		YES		20	NULL	498		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4901		Grp	DB_Login	FK_DB_Login__ID			7	FK_DB_Login__ID	int(11)		YES		20	NULL	498	DB_Login.DB_Login_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4902		Setting	Setting ID	Setting_ID	Primary		1	Setting_ID	int(11)	PRI	NO		20	NULL	499		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4903		Setting	Setting Name	Setting_Name			2	Setting_Name	varchar(40)		YES		20	NULL	499		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4904		Setting	Setting Default	Setting_Default			3	Setting_Default	varchar(40)		YES		20	NULL	499		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4905		Setting	Setting Description	Setting_Description			4	Setting_Description	text		YES		20	NULL	499		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4920		User	Department	FK_Department__ID			6	FK_Department__ID	int(11)		YES		20	NULL	493	Department.Department_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4921		User	User Access	User_Access			7	User_Access	enum('Admin','Host','Guest')		YES		20	NULL	493		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4922		UserSetting	UserSetting ID	UserSetting_ID	Primary		1	UserSetting_ID	int(11)	PRI	NO		20	NULL	502		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4923		UserSetting	Setting	FK_Setting__ID			2	FK_Setting__ID	int(11)		YES		20	NULL	502	Setting.Setting_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4924		UserSetting	User	FK_User__ID			3	FK_User__ID	int(11)		YES		20	NULL	502	User.User_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4925		UserSetting	Setting Value	Setting_Value			4	Setting_Value	char(40)		YES		20	NULL	502		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4926		User_Grp	User Grp ID	User_Grp_ID	Primary		1	User_Grp_ID	int(11)	PRI	NO		20	NULL	503		NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4927		User_Grp	Grp	FK_Grp__ID			2	FK_Grp__ID	int(11)		NO		20	NULL	503	Grp.Grp_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL
+4928		User_Grp	User	FK_User__ID			3	FK_User__ID	int(11)		NO		20	NULL	503	User.User_ID	NULL	yes	no	Custom	NULL	NULL	NULL	NULL

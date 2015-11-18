@@ -1,0 +1,120 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;ReArray API Manual: Sequencing</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="LIMS Help Pages"><link rel="up" href="ch25.html" title="Chapter&nbsp;25.&nbsp;LIMS API modules"><link rel="prev" href="ch25s03.html" title="3.&nbsp;Standard APIs"><link rel="next" href="ch25s05.html" title="5.&nbsp;Using the Run API for alDente"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;ReArray API Manual: Sequencing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch25s03.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;25.&nbsp;LIMS API modules</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch25s05.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e17428"></a>4.&nbsp;ReArray API Manual: Sequencing</h2></div></div></div><p>The ReArray API provides a way for people to submit rearray requests to the lab. All the information is entered into the database, and both the lab administrators and the person requesting the rearray can check the status of a request through the alDente LIMS system. Periodically, the alDente LIMS will inform the requester of status changes on the rearray plate, such as the rearray being approved and applied onto a plate.</p><p>To use the ReArray API for Sequencing, use the module "Sequencing_API.pm" from the Sequencing directory. This API is the same API used for extracting run and read data from the database.</p><p>There are three basic types of rearrays that can be done through the API: <span class="emphasis"><em>Clone rearrays, Reaction rearrays, and Reprep rearrays</em></span> (which are a subset of clone rearrays). Primer rearrays are typically used for sequence reactions (primarily for oligo primers). Clone rearrays are rearrays that are picked from glycerol plates (usually by Q-PIX pickers) and placed into another 384-well glycerol plate. Reprep rearrays are similar to clone rearrays in that they are picked from 384-well glycerol plates, but they are placed in a 96-well plate.</p><p>There is also functionality available to create an arbitrary rearray of any type.</p><p>The user is provided with two high-level functions that can order primers and do rearrays in one step. These are create_clone_rearray() and create_oligo_rearray(). create_reprep_rearray() is also a high-level function, but it does not order primers. These three functions make calls to lower level functions which are masked from the user. create_rearray() is a lower-level function provided to allow the user to create any rearray he/she wants, at the expense of user-friendliness. There is also less error-checking, so it is much easier to create an invalid rearray (or one that doesn't make sense).</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e17444"></a>4.1.&nbsp;Information functions</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e17447"></a>4.1.1.&nbsp;Rearray information - get_rearray_data()</h4></div></div></div><p>The purpose of this function is to provide a programmatical gateway for accessing rearray information. Basic information about target plates, source plates, and samples can be obtained, as well as detailed information about primers and the rearrays. The function returns a hash reference, with the field name as the key to an array of values in the order that they are retrieved.</p><p>The user does not actually know the field names when specifying fields and conditions. Instead, the user provides aliases that are more meaningful than database field names.</p><h5><a name="d0e17454"></a>List of possible aliases:</h5><div class="itemizedlist"><ul type="disc"><li><p>source_plate_id</p></li><li><p>source_library</p></li><li><p>source_plate_number</p></li><li><p>source_plate_quadrant</p></li><li><p>target_plate_id</p></li><li><p>target_library</p></li><li><p>target_plate_number</p></li><li><p>primer_name</p></li><li><p>source_well</p></li><li><p>target_well</p></li><li><p>oligo_direction</p></li><li><p>rearray_request_id</p></li><li><p>primer_sequence</p></li><li><p>rearray_type</p></li><li><p>rearray_status</p></li><li><p>primer_well</p></li><li><p>solution_id</p></li><li><p>primer_plate_name</p></li><li><p>primer_order_date</p></li><li><p>primer_arrival_date</p></li><li><p>sample_id</p></li><li><p>sample_name</p></li><li><p>rearray_date</p></li><li><p>employee_name</p></li><li><p>employee_id</p></li></ul></div><h5><a name="d0e17532"></a>Allowed input arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p>-source_plate_id</p></li><li><p>-source_library</p></li><li><p>-source_plate_number</p></li><li><p>-source_plate_quadrant</p></li><li><p>-target_plate_id</p></li><li><p>-target_library</p></li><li><p>-target_plate_number</p></li><li><p>-primer_name</p></li><li><p>-source_well</p></li><li><p>-target_well</p></li><li><p>-rearray_request_id</p></li><li><p>-rearray_type</p></li><li><p>-rearray_status</p></li><li><p>-solution_id</p></li><li><p>-primer_plate_name</p></li><li><p>-sample_id</p></li><li><p>-sample_name</p></li></ul></div><h5><a name="d0e17586"></a>optional arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p>-conditions (additional SQL conditions that may be necessary)</p></li><li><p>-quiet (suppresses information and debugging messages)</p></li><li><p>-fields (arrayref of fields to be retrieved)</p></li><li><p>-add_fields (arrayref of fields to be added onto the default field list)</p></li><li><p>-order (field to order by)</p></li><li><p>-group (field to group by)</p></li><li><p>-limit (maximum number of records to retrieve)</p></li><li><p>-list_fields (lists the valid set of output fields)</p></li></ul></div><div class="example"><a name="d0e17613"></a><p class="title"><b>Example&nbsp;25.1.&nbsp;Example:</b></p><pre class="programlisting">my $result = $API-&gt;get_rearray_data(-fields=&gt;['rearray_datetime','rearray_request_id','target_plate_id','rearray_status'],-target_library=&gt;'HGL01',-target_plate_number=&gt;'775',-quiet=&gt;1);</pre></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e17618"></a>4.2.&nbsp;High Level Functions</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e17621"></a>4.2.1.&nbsp;Clone rearrays - create_clone_rearray()</h4></div></div></div><p>The function create_clone_rearray() reads a clone file, creates a clone rearray, reserves the necessary plates, and optionally reserves 96-well plates for primer rearrays derived from the clone rearray and orders primers and oligo rearrays for these plates.</p><p>The required clone file input is a plain text field with the clone name, primer sequence, and melting temperature, in this format:</p><pre class="programlisting">RHA1111G05,gggatgtcctctatgcc,53.5423532
+RHA1157A18,ctcgcgacactcagc,52
+RS0015dA05,tgccgcagtggtagg,56
+RHA1171dC11,ccaaaccacctactgga,52
+RHA1132L13,cgctgatgtatagccg,52
+RHA1161H23,tgcacaaccctgtga,50
+RHA1136N06,gcgcggtcaggtagg,57</pre><p>The create_clone_rearray() function also allows the user to directly transfer the 384-well rearray plate created to 4 96-well oligo rearray plates, with the primer information derived from the clone file. This is done by transferring the 384-well clone rearray plate to 4 96-well plates, and then creating a primer rearray for each of those plates. Take note that each 96-well reaction plate will correspond to the quadrants of the 384-well clone rearray plate. Since it is not possible for the rearray to anticipate the plate id of the transfers from the 384-well clone rearray, the source plates for the primer rearray will be initially set to 0 (NULL) and will need to be filled in by the user at a later date when the transfer plates are known.</p><p>It is possible to override the plate choosing algorithm (which typically picks the original plate with the defined Plate Number). If a barcode id is added to the end of a line, it will pick that plate for the source plate for every instance of that Library.Plate_Number combination. For example:</p><pre class="programlisting">RHA1157A18,ctcgcgacactcagc,52</pre><p>will pick pla44514 if the -original flag is specified (which it should be). To override this and pick plate pla44536 for RHA1157, use:</p><pre class="programlisting">RHA1157A18,ctcgcgacactcagc,52,pla44536</pre><p>This will assign pla44536 to ALL instances of RHA1157. This is done for special cases only, and should typically never be done.</p><h5><a name="d0e17642"></a>Required arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>-emp_name</em></span> =&gt; takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.</p></li><li><p><span class="emphasis"><em>-data</em></span> =&gt; a scalar string of data for the qpix rearray. Contains the same information as the clone file, with each line delimited by newlines. Takes priority over -clonefile.</p></li><li><p><span class="emphasis"><em>-clonefile</em></span> =&gt; path and filename of the clone file. The path should be fully qualified (eg /home/jsantos/csv/clonefile.txt). Overriden by -data.</p></li><li><p><span class="emphasis"><em>-target_library </em></span>=&gt; a string that identifies the library that the new plates will be part of. This is needed because new plates are created for this rearra</p></li><li><p><span class="emphasis"><em>-plate_application </em></span>=&gt; a string that identifies the application that the new plates will be used for. One of Sequencing, PCR, or Mapping.</p></li><li><p><span class="emphasis"><em>-create_96_transfer </em></span>=&gt; flag that determines whether or not to create 4 96-well pre-rearrays for the qpix rearray (in the form of Reserved reaction plates). Primers will also be ordered and assigned to the pre-rearray.</p></li><li><p><span class="emphasis"><em>-oligo_direction</em></span> =&gt; a number representing the oligo direction. Required -create_96_transfer is true. One of 5 or 3.</p></li><li><p><span class="emphasis"><em>-notify_list_primer_order</em></span> =&gt; a comma-delimited string of emails who will be notified when the external order number is applied.</p></li><li><p><span class="emphasis"><em>-format</em></span> =&gt; determines which plate format to search for, and picks the latest plate with that format. For example, -format=&gt;'Glycerol' will grab the latest glycerol plate with that Library_Name.Plate_Number combination.</p></li><li><p><span class="emphasis"><em>-original </em></span>=&gt; flag that determines whether or not to grab the earliest ORIGINAL plates. This should be the typical behaviour.</p></li><li><p><span class="emphasis"><em>-supplies_tag </em></span>=&gt; A hash reference that contains information that needs to be filled in the order. Currently, the user needs to fill in the COMMENTS field.</p></li></ul></div><div class="example"><a name="d0e17700"></a><p class="title"><b>Example&nbsp;25.2.&nbsp;Example:</b></p><pre class="programlisting">use lib "/usr/local/ulib/prod/alDente/perl";
+use Sequencing::Sequencing_API;
+
+my %supplies_tag;
+$supplies_tag{COMMENTS} = "test comments";
+
+my $rearray_ids = $API-&gt;create_clone_rearray(
+   -target_library=&gt;'10790',
+   -emp_name=&gt;'jsantos',
+   -plate_application=&gt;'Sequencing',
+   -clonefile=&gt;"/home/jsantos/source/cgi-bin/rob2.csv",
+   -create_96_transfer=&gt;1,
+   -oligo_direction=&gt;5,
+   -original=&gt;1,
+   -supplies_tag=&gt;\%supplies_tag
+   );
+
+if ($rearray_ids eq "") {
+ print "No rearrays done... errored out";
+}
+else {
+ print "New rearray ids are $rearray_ids";
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e17705"></a>4.2.2.&nbsp;Reaction Rearrays - create_oligo_rearray()</h4></div></div></div><p>The function create_oligo_rearray() reads a comma-delimited file that contains source plate, source well, target well, primer name, primer sequence, and working temperatures. This orders primers and does rearrays for all wells defined in the file, split into individual 96-well plates.</p><p>The required file input is a plain text field with the source plate, source well, target well, primer name, primer sequence, and optionally a melting temperature, in this forma</p><pre class="programlisting">648423,A01,A01,LLO05-1764-1,GATGGGTTTAACCC,56.58</pre><p>If a melting temperature is not provided, it will be calculated automatically using the MGC Standard temperature formula (see below).</p><h5><a name="d0e17716"></a>Required arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>-connection </em></span>=&gt; Database connection object.</p></li><li><p><span class="emphasis"><em>-emp_name</em></span> =&gt; takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.</p></li><li><p><span class="emphasis"><em>-files </em></span>=&gt; takes a comma-delimited string giving the fully-qualified filenames of the source files.</p></li><li><p><span class="emphasis"><em>-direction </em></span>=&gt; The direction of the primers. One of 5 or 3.</p></li><li><p><span class="emphasis"><em>-target_library</em></span> =&gt; The library of the plates to be created.</p></li></ul></div><h5><a name="d0e17744"></a>Optional arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>-omit_primer_order </em></span>=&gt; flag that tells the function not to write primers to the primer table. This will assume that the Order Numbers are already in the database, so the Rearray will be set to "Waiting for Preps" or "Ready for Application" instead of "Waiting for Primers".</p></li><li><p><span class="emphasis"><em>-notify_list </em></span>=&gt; a comma-delimited string of emails who will be informed when the primer plate has been provided with an external order number.</p></li><li><p><span class="emphasis"><em>-data </em></span>=&gt; An input string with information formatted exactly like the input file. Overrides the -files tag.</p></li><li><p><span class="emphasis"><em>-type </em></span>=&gt; The type of the rearray. One of Standard, Oligo, or Resequence ESTs.</p></li></ul></div><div class="example"><a name="d0e17767"></a><p class="title"><b>Example&nbsp;25.3.&nbsp;Example</b></p><pre class="programlisting">use lib "/usr/local/ulib/prod/alDente/perl";
+use Sequencing::Sequencing_API;
+
+my %supplies_tag;
+$supplies_tag{COMMENTS} = "";
+my $rearray_ids = $API-&gt;create_oligo_rearray(
+   -target_library=&gt;'RZ888',
+   -emp_name=&gt;'rwarren',
+   -files=&gt;"rwarren_oligo.txt",
+   -direction=&gt;5,
+   -omit_primer_order=&gt;1,
+   );</pre></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e17772"></a>4.3.&nbsp;Low Level Functions</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e17775"></a>4.3.1.&nbsp;Creating rearrays - create_rearray()</h4></div></div></div><p>The function create_rearray allows the user to create any rearray that is needed, subject to some constraints. First, create_rearray() takes in array reference arguments, not a flat CSV file. It does not order primers or add to the Primer table in the database. It does not split apart a rearray into 384 or 96-well chunks - what information you feed is a single rearray. However, this function allows the user to set up rearrays that may not conform to the provided high-level functions (for example, a direct rearray from glycerol plates to a 96-well plate).</p><p>This API call requires several array references that has to be of equal length - source plates, source wells, and target wells. For rearrays that need to have primers (Standard, Oligo, or Resequence ESTs), you also need to provide primer names, primer directions, and primer types. The data has to be structured such that the first element of each of the arrays have to correspond to each other - for example, @source_plates=(4000), @source_wells('A01'), @target_wells('A02') indicates that well A01 of pla4000 is going to be rearrayed to well A02 of the target plate.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Take note that this function does not automatically message the lab when a rearray has been made</p></div><h5><a name="d0e17785"></a>Required Arguments:</h5><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>-emp_name </em></span>=&gt; takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.</p></li><li><p><span class="emphasis"><em>-connection </em></span>=&gt; Database connection object.</p></li><li><p><span class="emphasis"><em>-source_plates </em></span>=&gt; (Array Reference) Source plates for source wells in format (1,2,1,1,1,1,2.....). This must correspond to source wells. Not required if -status is "Pre-Rearray"</p></li><li><p><span class="emphasis"><em>-source_wells </em></span>=&gt; (Array Reference) source wells for ReArray in format (A01,B01,B02,B03.....). This must correspond to target wells and source plates.</p></li><li><p><span class="emphasis"><em>-target_wells </em></span>=&gt; (Array Reference) target wells for ReArray in format (A01,B02,B01,E03.....). This must correspond to source wells.</p></li><li><p><span class="emphasis"><em>-type </em></span>=&gt; Rearray type. One of 'Clone Rearray', 'Reaction Rearray', 'Extraction Rearray', 'Manual Rearray', or 'Pool Rearray'</p></li><li><p><span class="emphasis"><em>-status </em></span>=&gt; Status of the rearray, one of 'Waiting for Primers', 'Waiting for Preps', 'Ready for Application', 'Barcoded', or 'Completed'</p></li><li><p><span class="emphasis"><em>-target_size </em></span>=&gt; Size of target plate. Should be 96 or 384</p></li></ul></div><h5><a name="d0e17828"></a>Required Arguments for rearrays that use primers/oligos:</h5><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The primer names should already exist in the database. Rearrays that need primer ordering should be done through the create_oligo_rearray() function.</p></div><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>-primer_names </em></span>=&gt; names of each of the primers.</p></li><li><p><span class="emphasis"><em>-primer_directions </em></span>=&gt; directions of each of the primers</p></li><li><p><span class="emphasis"><em>-primer_types </em></span>=&gt; the type of each of the primers. One of Standard or Oligo</p></li></ul></div><div class="example"><a name="d0e17849"></a><p class="title"><b>Example&nbsp;25.4.&nbsp;Example:</b></p><pre class="programlisting">use lib "/usr/local/ulib/prod/alDente/perl";
+use Sequencing::Sequencing_API;
+
+require "getopts.pl";
+&amp;Getopts('t:f:');
+use vars qw($opt_t $opt_f);
+
+open(INF,$opt_f);
+my @source_plates = ();
+my @source_wells = ();
+my @target_wells = ();
+my @primer_names = ();
+my @primer_types = ();
+my @primer_directions = ();
+
+while () {
+    $_ = chomp_edge_whitespace($_);
+    my ($sourceplate,$sourcewell,$targetplate,$targetwell,$primername,$tm) = split ',';
+    push (@source_plates,$sourceplate);
+    push (@source_wells, $sourcewell);
+    push (@target_wells, $targetwell);
+    push (@primer_names, $primername);
+    push (@primer_tms, $tm);
+    push (@primer_types, 'Oligo');
+    push (@primer_directions, '5');
+    if ($targetplate ne $opt_t) {
+       print "ERROR: Inconsistent target plate $targetplate != $opt_t";
+       return;
+    }
+}
+close(INF);
+
+my $rearray_id = $API-&gt;create_rearray(
+    -source_plates=&gt;\@source_plates,
+    -source_wells=&gt;\@source_wells,
+    -target_wells=&gt;\@target_wells,
+    -primer_names=&gt;\@primer_names,
+    -primer_directions=&gt;\@primer_directions,
+    -primer_types=&gt;\@primer_types,
+    -target_plate=&gt;$opt_t,
+    -emp_name=&gt;"rwarren",
+    -type=&gt;"Oligo",
+    -status=&gt;"Completed",
+    -target_size=&gt;96
+    );</pre></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e17854"></a>4.4.&nbsp;The MGC Standard Melting Temperature algorithm</h3></div></div></div><pre class="programlisting">############################################################
+# Subroutine: takes a string that represents a primer sequence and calculates the temperature
+# RETURN: 0 if unsuccessful, or the working temperature of the primer otherwise.
+############################################################
+sub _calc_temp_MGC_Standard {
+    my $self = shift;
+    my %args = @_;
+    my $sequence = $args{-sequence};
+    # do temperature calculation
+    # MGC Standard - provided by Anca Petrescu
+    my @sequence_array=split(//,$sequence);
+    my $sequence_length = scalar(@sequence_array);
+    unless ($sequence_length &gt; 0) {
+    $self-&gt;error("ERROR: Invalid argument: Zero length sequence");
+    $self-&gt;success(0);
+    return 0;
+    }
+    my $num_G = 0;
+    my $num_C = 0;
+    foreach my $base (@sequence_array){
+        if ($base eq 'G' || $base eq 'g'){
+            $num_G++;
+        }
+        elsif ($base eq 'C' || $base eq 'c'){
+            $num_C++;
+        }
+    }
+    my $Na = 0.1;          
+    my $GC = ($num_G/$sequence_length + $num_C/$sequence_length);
+    my $Tm=81.5+41*($GC)-500/$sequence_length + 16.6*log10($Na);       
+    $Tm = $Tm - 7;
+
+    $self-&gt;success(1);
+    return $Tm;
+}</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch25s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch25.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch25s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Standard APIs&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Using the Run API for alDente</td></tr></table></div></body></html>

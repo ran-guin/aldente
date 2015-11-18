@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/108229/alDente/trunk/custom/GSC/modules
+END
+Menu.pm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108228/alDente/trunk/custom/GSC/modules/Menu.pm
+END
+Config.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/108229/alDente/trunk/custom/GSC/modules/Config.pm
+END
+Login_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/modules/Login_App.pm
+END
+Login.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/102703/alDente/trunk/custom/GSC/modules/Login.pm
+END
+Customization.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/96796/alDente/trunk/custom/GSC/modules/Customization.pm
+END
+API.pm
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/98348/alDente/trunk/custom/GSC/modules/API.pm
+END
+Employee.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/102703/alDente/trunk/custom/GSC/modules/Employee.pm
+END
+Department_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/102703/alDente/trunk/custom/GSC/modules/Department_Views.pm
+END
+App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/96797/alDente/trunk/custom/GSC/modules/App.pm
+END
+Session.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/102703/alDente/trunk/custom/GSC/modules/Session.pm
+END
+Login_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/modules/Login_Views.pm
+END
+DB.pm
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/modules/DB.pm
+END
+Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/modules/Views.pm
+END
+Model.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/modules/Model.pm
+END
+Source.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/modules/Source.pm
+END
+DB_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/102707/alDente/trunk/custom/GSC/modules/DB_Views.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/102703/alDente/trunk/custom/GSC/modules/Department_App.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/103315/alDente/trunk/custom/GSC/modules/Department.pm
+END

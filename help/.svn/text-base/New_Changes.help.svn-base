@@ -1,0 +1,170 @@
+<h2>New Changes for Release 2.40
+(Dec / 2005)</h2>
+
+<h3>Sequencing Changes</h3>
+<ul>
+  <li>Changed handling of Chemistry Codes on the Last 24 Hours page - codes are now dynamically retrieved from the DB. The ChemistryInfo cache file has been deprecated</li>
+</ul>
+
+<h2>New Changes for Release 2.30</h2>
+<ul>
+</ul>
+<h3>Core Changes</h3>
+<ul>
+  <li>Automate Trace Submission Process
+    <ul>
+      <li>Submit data to ncbi via automated process<br>
+      </li>
+      <li>This includes retrieval of information from the LIMS, but needs upgrading where information is not currently being stored (eg NCBI clone id, insert sizes + std_dev)<br>
+      </li>
+      <li> Automated retrieval of submission status and timestamps for approval should be included<br>
+      </li>
+    </ul>
+  </li>  
+  <li>Generic Pipeline functionality for alDente
+    <ul>
+      <li>Develop a pipeline module that can mirror the processes in the lab<br>
+      </li>
+      <li>The flow of information is now process driven instead of object-driven<br>
+      </li>
+      <li>Create an ordered pipeline of lab protocols and show where all the applicable plates are in the pipeline<br>
+      </li>
+    </ul>
+  </li>
+  <li>Department Homepage Cleanup
+    <ul>
+      <li>Update the menu system for the department homepages <br>
+      </li>      
+    </ul>
+  </li>
+  <li>Protocols
+    <ul>
+      <li>Solutions and equipment are tracked on a per plate basis instead of applying it to the prep<br>
+      </li>
+    </ul>
+  </li>  
+  <li>Chemistry Calculator 
+    <ul>
+      <li>Enable chemistries to be printed out on normal printers<br>
+      </li>
+    </ul>
+  </li>
+  <li>Rearrays
+    <ul>
+      <li>ReArray status and type name changes as per meetings with Sequencing/Bioinformatics. This list will replace the old status/types.
+      </li>
+      <li> New status names:
+      </li>
+      <ul>
+     	 <li>Waiting for Primers</li>
+         <li>Waiting for Preps</li>
+         <li>Ready for Application</li>
+         <li>Barcoded</li>
+         <li>Aborted</li>
+         <li>Completed</li>
+      </ul>
+      <li> New Type names: </li>
+      <ul>
+         <li>Reaction Rearray</li>
+         <li>Clone Rearray</li>
+         <li>Manual Rearray</li>
+         <li>Extraction Rearray</li>
+         <li>Pool Rearray</li>
+      </ul>
+      <li>Add UI to select/scan in possible source plates for Clone rearrays<br>
+      </li>
+      <li>Added rearray id barcode to rearray printout page</li>
+      <li>Scanner mode enhancement: scan in a rearray id and source plate barcodes to check if they are the correct barcodes</li>
+    </ul>
+    <li>Changed layout of home page for ease of use</li>
+    <li>Removed one-second pause per barcode printed. This should speed up printing by a significant amount</li>
+    <li>Added Help icon</li>
+    <li>Public Page for Collaborators
+      <ul>
+        <li>Create a public page for collaborators to add/edit/view submission information replacing the current external submission page</li>
+      </ul>
+    </li>
+  </li>
+</ul>
+<h3>Gene Expression Changes</h3>
+<ul>
+
+</ul>
+<h3>Mapping Changes</h3>
+<ul>
+  <li>Store details and a history about failed plates
+    <ul>
+      <li>Add ability to create a fail history for a plate<br>
+      </li>
+      <li>Add ability to view the fail history<br>
+      </li>
+      <li>UI to enter fail history information<br>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3>MGC Closure Changes</h3>
+<ul>
+  <li>Gel Views Work Package
+    <ul>
+      <li>Add ability to preview gel extraction to a target plate<br>
+      </li>
+      <li>View the scanned gel image<br>
+      </li>
+    </ul>
+  </li>
+  <li>Gel Extraction Work Package
+    <ul>
+      <li>Add ability to extract bands onto a partially filled plate<br>
+      </li>
+    </ul>
+  </li>
+  <li>Added option to split multiprobe files by number of source plates</li>
+</ul>
+<h3>Sequencing Changes</h3>
+<ul>
+  <li>Reorganized primer ordering UI</li>
+  <ul>
+    <li>Allowed uploading of IDT Yield Reports</li>
+    <li>Allowed generation of IDT order files from UI</li>
+    <li>Allowed generation of Illumina order files from UI</li>
+    <li>Process change: Primer order files created on demand, not when a primer order is ordered</li>
+  </ul>
+  <li>Added more options for QPIX file generation</li>
+  <ul>
+    <li>Allowed creation of old-style QPIX files</li>
+    <li>Added option to choose between old-style and new-stype QPIX files</li>
+    <li>Added programmatic hooks to split QPIX files by quadrant</li>
+  </ul>  
+</ul>
+<h2>General Fixes</h2>
+<ul>
+  <li>Find plates does not work for garbage plates.  Added ability to search based on date range for created dates and plate status</li>
+  <li>Remove open button ( textfield) on solution home page if already open. (no options at all if already finished - just info)</li>
+  <li>Make sample info columns orderable</li>
+  <li>Scanning 3 plates (different libraries with differnet primers) combines all 3 on the same sample sheet and LIMS tried to validate one of the primers onto all 3 libraries instead of each primers individual plate</li>
+  <li>Corrected incorrect protocols with misused pre-prints and updated the history information for the affected plates</li>
+  <li>Transfer/aliquot does not copy comments to new plate<br>
+  </li>
+</ul>
+<h2>Extra Requests handled</h2>
+<ul>
+  <li>Incorporate plain label printing - now available in the Equipment page</li>
+</ul>
+<h2>API updates</h2>
+<ul>
+
+</ul>
+<h2>Database changes</h2>
+<ul>
+  <li>Pipeline table structures</li>
+  <li>Associate projects with group</li>
+  <li>Submission details changes</li>
+  <li>Change tracking and uneditable fields in database</li>
+  <li>Fail History table structures<br>
+  </li>
+</ul>
+<h2>Admin UI changes</h2>
+<ul>
+  <li>Added area to easily edit/add user departments in LIMS Admin page</li>
+</ul>

@@ -1,0 +1,332 @@
+<h2>Pool API</h2>
+The Pool API allows users to create a pool library from multiple
+plates, tubes, etc.&nbsp; The API consists of 2 modules:<br>
+<ul>
+  <li>Pool.pm</li>
+  <li>Transposon_Pool.pm</li>
+</ul>
+<font size="+1">Creation of Transposon Pool</font><br>
+<br>
+To create a transposon pool, use the Transposon_Pool.pm module, which
+has the following methods:<br>
+<ul>
+  <li>new() - Constructor of the object.&nbsp; Arguments:</li>
+</ul>
+<div style="margin-left: 40px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Arguments<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Description<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">Type</span><br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">Default</span><br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Constrains<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-dbh<br>
+      </td>
+      <td style="vertical-align: top;">Database handle<br>
+      </td>
+      <td style="vertical-align: top;">Object reference<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Mandatory<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+<ul>
+  <li>create() - Method to create a transposon pool.&nbsp; Arguments:</li>
+</ul>
+<div style="margin-left: 40px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Arguments<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Description<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Type<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">Default</span><br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Constrains<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-pool_library</td>
+      <td style="vertical-align: top;">The name of the library to pool
+to.&nbsp; Note that the library will need to be created prior to the
+pooling.</td>
+      <td style="vertical-align: top;">String<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Mandatory; Unique<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-description</td>
+      <td style="vertical-align: top;">A description of the pool.<br>
+      </td>
+      <td style="vertical-align: top;">String<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-employee_id</td>
+      <td style="vertical-align: top;">The employee ID of the user who
+creates the pool.<br>
+      </td>
+      <td style="vertical-align: top;">Int<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-date</td>
+      <td style="vertical-align: top;">When the pool is created.<br>
+      </td>
+      <td style="vertical-align: top;">Date<br>
+      </td>
+      <td style="vertical-align: top;">Today<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-comments</td>
+      <td style="vertical-align: top;">Additional comments for the pool.<br>
+      </td>
+      <td style="vertical-align: top;">String<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-name </td>
+      <td style="vertical-align: top;">Name of the pool.<br>
+      </td>
+      <td style="vertical-align: top;">String<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-test_status</td>
+      <td style="vertical-align: top;">Whether the pool is for
+Production or Test.<br>
+      </td>
+      <td style="vertical-align: top;">Enum(Test', 'Production')</td>
+      <td style="vertical-align: top;">Production<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-status</td>
+      <td style="vertical-align: top;">Current status of the pool<br>
+      </td>
+      <td style="vertical-align: top;">Enum('Data Pending',
+'Dilutions', 'Ready For Pooling', 'In Progress', 'Complete',
+'Failed-Redo')<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-type</td>
+      <td style="vertical-align: top;">Type of the pool.<br>
+      </td>
+      <td style="vertical-align: top;">Enum('Standard', 'Transposon')<br>
+      </td>
+      <td style="vertical-align: top;">Standard<br>
+      </td>
+      <td style="vertical-align: top;">Mandatory<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-sources</td>
+      <td style="vertical-align: top;">Source plates and wells in a
+hash format:<br>
+      <ul>
+        <li>Key =&gt;&nbsp; source plate ID (Int)<br>
+        </li>
+        <li>Value =&gt; source plate wells for this plate (Arrayref)<br>
+        </li>
+      </ul>
+      </td>
+      <td style="vertical-align: top;">Hashref<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Mandatory<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-transposon</td>
+      <td style="vertical-align: top;">Name of the transposon.<br>
+      </td>
+      <td style="vertical-align: top;">String<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-OD_id</td>
+      <td style="vertical-align: top;">ID of the Optical_Density table.<br>
+      </td>
+      <td style="vertical-align: top;">Int<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-gel_id</td>
+      <td style="vertical-align: top;">ID of the Gel table.<br>
+      </td>
+      <td style="vertical-align: top;">Int<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-reads_required</td>
+      <td style="vertical-align: top;">Number of reads required.<br>
+      </td>
+      <td style="vertical-align: top;">Int<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">-pipeline</td>
+      <td style="vertical-align: top;">Pipeline of the transposon pool.<br>
+      </td>
+      <td style="vertical-align: top;">Enum('Standard', 'Gateway',
+'PCR/Gateway (pGATE)')<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Returns the number of
+records created in the corresponding tables (Hashref):<br>
+<ul>
+  <ul>
+    <li>Key =&gt; Name of the database table (String)<br>
+    </li>
+    <li>Value =&gt; Number of records created for this table (Int)
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </li>
+  </ul>
+</ul>
+<ul>
+  <li>newids() - Return the primary keys of the new records created
+(Hashref):</li>
+  <ul>
+    <li>Key =&gt; Name of the database table (String)</li>
+    <li>Value =&gt; Primary keys of records created for this table
+(Arrayref) </li>
+  </ul>
+</ul>
+<br>
+Example of the usage:<br>
+<br>
+<pre>use alDente::Transposon_Pool;<br><br>my %sources;                             <br>%sources-&gt;{'40000'} = ['A01','A02','A03'];   			# Pooling from wells A01,A02,A03 of plate ID 40000<br>%sources-&gt;{'41000'} = ['B03','B04'];         			# Pooling from wells B03,B04 of plate ID 41000<br><br>my $pool = Transposon_Pool-&gt;new(-dbh=&gt;$dbh); 			# Instantiate a transposon pool object<br><br>my $created = $pool-&gt;create(-pool_library=&gt;'CG001',		# Create the transposon pool<br>			-description=&gt;'Pooling CG111',<br>			-employee_id=&gt;152,<br>			-comments=&gt;"Great pooling of $lib",<br>			-type=&gt;'Transposon',<br>			-test_status=&gt;'Test',<br>			-status=&gt;'In Progress',<br>			-sources=&gt;\%sources,<br>			-transposon=&gt;'Entransposon(M1-Kan)',<br>			-OD_id=&gt;254,-gel_id=&gt;50,<br>			-reads_required=&gt;100,<br>			-pipeline=&gt;'Standard');<br><br>my $newids = $pool-&gt;newids();<br><br></pre>
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Statement<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Output<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">print Dumper $created;<br>
+      </td>
+      <td style="vertical-align: top;">$VAR1 = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'PoolSample' =&gt; 5,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Pool' =&gt; 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Transposon_Pool' =&gt; 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+};</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">print Dumper $newids;<br>
+      </td>
+      <td style="vertical-align: top;">$VAR1 = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'PoolSample' =&gt; [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'76',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'77',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'78',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'79',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'80'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Pool' =&gt; [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'329'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Transposon_Pool' =&gt; [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'305'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+};<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+&nbsp;<br>
+<br>

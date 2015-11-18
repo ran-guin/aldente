@@ -1,0 +1,4 @@
+These directories should be accessible from the main URL domain address.
+
+The 'RunMaps' directory should point to the appropriate directory on the web server
+The 'Temp' directory should point to the appropriate directory on the web server

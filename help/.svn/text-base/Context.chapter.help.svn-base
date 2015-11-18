@@ -1,0 +1,17 @@
+Context
+<h2>Context of the LIMS system within a Laboratory</H2>
+<P>
+<Img Src = '$Help_Image_dir/LIMScontext.png'>
+<P>
+<h2>More detailed view of alDente within the LIMS context</H2>
+<P>
+<Img Src = '$Help_Image_dir/LIMScontext2.png'>
+<h2>Context diagram of alDente LIMS</H2>
+<P>
+<Img Src = '$Help_Image_dir/alDenteContext.png'>
+<h1>Context of Laboratory function within the alDente LIMS:</H1>
+<P>
+<Img Src = '$Help_Image_dir/LaboratoryContext.png'>
+<h1>Data Tracking for the Sequencing application within the alDente LIMS:</H1>
+<P>
+<Img Src = '$Help_Image_dir/SequencingContext.png'>

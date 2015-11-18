@@ -1,0 +1,9 @@
+K 13
+svn:mergeinfo
+V 298
+/LIMS/branches/lims_4_1-branch/lib/perl/Core/SDB/HTML.pm:104987-106196
+/LIMS/trunk/lib/perl/Core/SDB/HTML.pm:99711-99989,99992-104986
+/alDente/branches/2_7_source_type/lib/perl/Core/SDB/HTML.pm:68926-69075
+/alDente/branches/dev_3_2/lib/perl/Core/SDB/HTML.pm:70505-70757
+/alDente/trunk/HTML.pm:70512
+END

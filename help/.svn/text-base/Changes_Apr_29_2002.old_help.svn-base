@@ -1,0 +1,65 @@
+<H1>New Changes</H1>
+
+<UL>
+<Img Src='/SDB/images/png/admin.png'><BR>
+<LI><H2><B>Admin Page</B></H2>
+This page allows lab administrators direct access to a variety of tasks:
+<UL>
+<LI>Chemistry Calculator
+<LI>Protocol Editing
+<LI>Machine Default specifications (NEW)
+<LI>Dye Chemistry default settings (NEW)
+<LI>Add New Project
+<LI>Re-Analyze Runs - this will provide the command required to re-run
+analysis that can be cut an pasted onto a terminal screen (run as 'sequence')
+</UL>
+
+<LI><H2><B>Tube Handling</B></H2>
+We can now track Library Tubes through various stages including:
+<UL>
+<LI>Dilution
+<LI>Electro-poration
+<LI>Plating to Agar
+<LI>Picking (this part has yet to be fully implemented)
+</UL>
+ <P>
+Short cuts allow users to simply scan a tube and solutions, checking for:
+<UL>
+<LI>SOC media, cells (if Tube has NOT been Electro-porated)
+<LI>Water (if Tube is to be Diluted)
+<LI>appropriate Antibiotic, Inducer, Substrate if Plate has been Electro-porated
+but not yet 'Plated' to Agar
+</UL>
+
+<LI><H2><B>Extended Rack Location monitoring</B></H2>
+Users should now be scanning more specific locations (racks) rather than
+simply selecting '-80 degrees' (for example).  <P>
+Users may now move objects by simply scanning any number of plates and/or
+solutions along with a rack.<P>
+Racks themselves may be moved by scanning them along with a new Freezer.
+<P>
+To generate new rack barcodes, simply scan the appropriate Equipment
+(Freezer), and specify the number of new Rack barcodes to be created.<BR>
+Barcodes will come in pairs - one including Equipment location, condition
+info, and another in large type that is more easily visible.<BR>
+BOTH barcodes should be placed on a rack, and the condition barcode
+reprinted when a Rack is moved.
+
+<LI><H2><B>More Sequencing information</B></H2>
+<P>
+We are now storing information on vectors that were found using cross match,
+(screened against the sequence during the original analysis).  This information has been back updated for all runs in the database.<P>
+There is also another table that keeps track of contamination found as a result of blasting ecoli against the sequence.  This has also been back-updated to show ecoli findings in all previous runs.<P>
+In the future, we can set up something to notify lab administrators of instances of these findings which may warrant further investigation.
+
+<LI><H2><B>Minor Adjustments:</B></H2>
+<P>
+<UL>
+<LI>Hyperlinks from 'Current Plates' and 'Plate Set' lists at top of page
+<LI>Ensure 'Current Plate Set' order is as defined originally in plate set
+<LI>Allow Test Status & No Grows to be set for plate simultaneously
+<LI>Allow identical plates to be used for NEW plate set when re-processing
+same original plates (for re-performing a protocol using the same original plates)
+</UL>
+
+</UL>

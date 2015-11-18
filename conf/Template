@@ -1,0 +1,75 @@
+#!/usr/local/bin/perl56
+###################################################################################################################################
+# Template(.pl/.pm)
+#
+# Brief description
+#
+# $Id$
+###################################################################################################################################
+package Template;       
+
+### Inheritance
+@ISA = qw(Object);            
+
+### Reference to standard Perl modules
+use strict;
+use CGI qw(:standard);
+use DBI;
+use Data::Dumper;
+use Storable;
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl/"; 
+
+### Reference to alDente modules
+use alDente::SDB_Defaults;
+use SDB::CustomSettings;
+use RGTools::RGIO;
+use RGTools::Object;
+
+### Global variables
+use vars qw($User);
+
+### Modular variables
+my $DateTime; 
+
+### Constants
+my $FONT_COLOUR = 'BLUE'; 
+
+###########################
+# Constructor of the object
+###########################
+sub new {
+    my $this  = shift;
+    my $class  = ref($this) || $this;
+
+    my %args = @_;
+    my $dbh = $args{-dbh};
+    my $frozen = $args{-frozen};
+    my $encoded = $args{-encoded};
+
+    my $self = $this->DB_Object::new(-dbh=>$dbh,-table=>'table',-frozen=>$frozen,-encoded=>$encoded);
+           
+    if ($frozen) {
+	$self->{dbh} = $dbh;
+	return $self;
+    }
+
+    return $self;
+}
+
+############################################################
+# Converts the data from array format to hash format.
+# RETURN: Reference to a hash
+############################################################
+sub Convert {
+    my %args = @_;
+
+    my $array_ref = $args{-array};   # The array to be converted [ArrayRef]
+    my $format = $args{-format};     # The format to be used [String]
+
+    my %ret;
+
+    return \%ret;
+}
+
+return 1;

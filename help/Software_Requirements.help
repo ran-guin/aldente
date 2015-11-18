@@ -1,0 +1,23 @@
+<h2>Software Requirements</h2>
+<P>The following software is recommended for usage, and should be available to maximize the seamlessness of an installation:
+<UL class=small>
+<LI>OS: Linux (Red Hat)
+<LI>Web Browser: (Mozilla 1.40)
+<LI>Perl: (version 5.6)
+<LI>Perl Libraries (Standard - available from CPAN):
+<UL class=small>
+<LI>Storable
+<LI>GD
+<LI>CGI
+<LI>DBI
+<LI>File
+<LI>FindBin
+<LI>Date
+<LI>Benchmark
+<LI>Cwd
+<LI>POSIX
+<LI>Term
+<LI>MIME
+<LI>URI
+</UL>
+</UL>

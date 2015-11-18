@@ -1,0 +1,9 @@
+# Please follow the following steps in setting up the system locally on your system.
+
+1 - include local custom style sheet paths, image paths, and javascript paths if desired by adding the following lines to your http.conf file:
+
+	Alias /site-images/ "/usr/local/web/apache/site-images/"
+        Alias /site-style/ "/usr/local/web/apache/site-style/"
+        Alias /site-js/ "/usr/local/web/apache/site-js/"
+
+

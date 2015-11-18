@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP
+END
+SOM.pod
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/SOM.pod
+END
+Trace.pod
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Trace.pod
+END
+Schema.pod
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Schema.pod
+END
+Utils.pod
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Utils.pod
+END
+Server.pod
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Server.pod
+END
+Constants.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Constants.pm
+END
+Packager.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Packager.pm
+END
+Serializer.pod
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Serializer.pod
+END
+Data.pod
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Data.pod
+END
+Test.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Test.pm
+END
+Fault.pod
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Fault.pod
+END
+Client.pod
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Client.pod
+END
+Deserializer.pod
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Deserializer.pod
+END
+Lite.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Lite.pm
+END
+Header.pod
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Header.pod
+END
+Transport.pod
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/SOAP/Transport.pod
+END

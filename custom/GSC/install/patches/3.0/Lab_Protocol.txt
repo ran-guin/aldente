@@ -1,0 +1,494 @@
+Rxns_ET384_0.5X_10ulRxn_3.0ulDNA	137	Inactive	\N	1	\N	384	Yes
+Rxns_ET384_0.25X_5ulRxn_2.0ulDNA	137	Inactive	\N	2	\N	384	Yes
+Full Mech Prep	0	Active	\N	3	\N	384	Yes
+Pptn_75%IPA_BDBAC384_8uLRxn	5	Inactive	\N	4	\N	384	Yes
+Pptn_75%IPA_BDBAC96_8ulRxn	137	Inactive	\N	5	\N	384	Yes
+Rxns_BDBAC384_8ulRxn_4.0ulDNA	5	Active	\N	6	\N	384	Yes
+Standard	0	Inactive	\N	7	\N	384	Yes
+Rxns_BDBAC96_8.0ulRxn_4ulDNA	5	Active	\N	8	\N	384	Yes
+Rxns_BD384_0.5X_10ulRxn_1.5ulDNA	0	Inactive	\N	9	\N	384	Yes
+Overnight setup 96 - old	137	Inactive	\N	10	\N	384	Yes
+Pptn_EtOH/NH4OAc_ET96_20ulRxn	137	Inactive	\N	11	\N	384	Yes
+Pptn_IPA_BD384_10ulRxn	137	Inactive	\N	12	\N	384	Yes
+Pptn_IPA_BD96_10ulRxn	137	Inactive	\N	13	\N	384	Yes
+Pptn_IPA_BD384_4ulRxn	137	Inactive	\N	14	\N	384	Yes
+Rxns_BD384_0.25X_4ulRxn_2.0ulDNA	5	Inactive	\N	15	\N	384	Yes
+Rxns_BD96_0.5X_10ulRxn_1.5ulDNA	137	Inactive	\N	16	\N	384	Yes
+Rxns_ET96_0.5X_10ulRxn_1.5ulDNA	137	Inactive	\N	17	\N	384	Yes
+Overnight setup 384 - old	137	Inactive	\N	18	\N	384	Yes
+Rxns_BD96_CustomOligo_10ulRxn	137	Inactive	\N	19	\N	384	Yes
+Rxns_ET96_1.0X_20ulRxn_6.0ulDNA	137	Inactive	\N	20	\N	384	Yes
+Rxns_BD384_Templify_4ul	5	Inactive	\N	31	\N	384	Yes
+Apply_Primer	5	Active	\N	32	\N	384	Yes
+384-Well Prep	5	Active	\N	33	\N	384	Yes
+Rxns_BD384_5uLrxn_3uLDNA	137	Active	\N	34	\N	384	Yes
+Rxns_BD384_4uLrxn_2uLDNA	5	Old		35	0000-00-00	384	Yes
+Rxns_BD96_10uLrxn_Custom_Oligo	137	Active		36	0000-00-00	384	Yes
+Rxns_BDBAC/FOSMID384_8uLrxn_5uLDNA	5	Active		37	0000-00-00	384	Yes
+Rxns_BD96_10uLrxn_1.5uLDNA	137	Inactive		38	0000-00-00	384	Yes
+Pptn_BD384_100%IPA_4uLrxn_hydra	137	Inactive		39	0000-00-00	384	Yes
+Pptn_BD384_100%IPA_5uLrxn_hydra	137	Inactive	0	40	0000-00-00	384	Yes
+Pptn_BD96_100%IPA_10uLrxn_hydra	137	Inactive		41	0000-00-00	384	Yes
+Pptn_BDBAC/FOSMID384_75%IPA_8uLrxn_hydra	5	Inactive		42	0000-00-00	384	Yes
+Pptn_BD384_EtOH/EDTA_5uL_biomek	137	Inactive	\N	43	\N	384	Yes
+Pptn_BD384_100%IPA_5uLrxn_biomek	137	Inactive	\N	44	\N	384	Yes
+Pptn_BDBAC/FOSMID384_75%IPA_8uLrxn_biome	137	Active	\N	45	\N	384	Yes
+SAGE day 1	113	Inactive	\N	46	\N	384	Yes
+SAGE day 2	4	Inactive	\N	47	\N	384	Yes
+SAGE day 3	4	Inactive	\N	48	\N	384	Yes
+SAGE day 4	113	Inactive	\N	49	\N	384	Yes
+SAGE day 5	113	Inactive	\N	50	\N	384	Yes
+SAGE day 6	113	Inactive	\N	51	\N	384	Yes
+SAGE day 7	113	Inactive	\N	52	\N	384	Yes
+SAGE day 9	113	Inactive	\N	54	\N	384	Yes
+aCGH-Restriction Digest	5	Active	\N	55	\N	384	Yes
+aCGH-Ligation of Primers	5	Active	\N	56	\N	384	Yes
+aCGH-1st Round PCR	5	Active	\N	58	\N	384	Yes
+aCGH- 2nd Round PCR	5	Active	\N	59	\N	384	Yes
+aCGH- Pptn of LMPCR Samples	5	Active	\N	60	\N	384	Yes
+SAGE day 10 - Precipitating Concatemer	113	Inactive	\N	61	\N	384	Yes
+CGH MseI Digests	3	Active	\N	65	\N	384	Yes
+CGH 1st Round PCR	3	Active	\N	66	\N	384	Yes
+CGH 2nd Round PCR	3	Active	\N	67	\N	384	Yes
+CGH Ligations	3	Active	\N	68	\N	384	Yes
+CGH Precipitation	3	Active	\N	69	\N	384	Yes
+CGH Resuspend DNA	3	Active	\N	70	\N	384	Yes
+CGH Dilute Spotting Solution	3	Active	\N	71	\N	384	Yes
+CGH Quant Final Product	3	Active	\N	72	\N	384	Yes
+CGH Dilute MseI Digests	3	Active	\N	73	\N	384	Yes
+CGH Quant Digests	3	Active	\N	74	\N	384	Yes
+5-8ug Total RNA in 10ul DEPC-H2O	143	Inactive	\N	76	\N	384	Yes
+5-8ug RNA_cDNA synthesis_SuperScript Sys	143	Inactive	\N	77	\N	384	Yes
+AFFY-cDNA Clean-Up_CleanUp Module	143	Old	\N	78	\N	384	Yes
+CGH Load Digest Gel	3	Active	\N	80	\N	384	Yes
+CGH Load 1st Round PCR Gel	3	Active	\N	81	\N	384	Yes
+CGH Load 2nd Round PCR Gel	3	Active	\N	82	\N	384	Yes
+CGH 1/800 Dilution	3	Active	\N	83	\N	384	Yes
+MGC dT Prime & 1st Strand Synth	3	Active	\N	84	\N	384	Yes
+MGC 2nd Strand Synthesis	164	Active	\N	85	\N	384	Yes
+MGC cDNA Purification	164	Active	\N	86	\N	384	Yes
+MGC cDNA precipitation	164	Active	\N	87	\N	384	Yes
+MGC cDNA Quality Check	164	Active	\N	88	\N	384	Yes
+MGC PCR	164	Active	\N	89	\N	384	Yes
+MGC Checking PCR Product	164	Active		90	0000-00-00	384	Yes
+Nano Assay - Agilent Analysis of RNA	104	Old	\N	91	\N	384	Yes
+cDNA CleanUp (Module)	143	Active	\N	92	\N	384	Yes
+cRNA CleanUp (Module)	143	Active	\N	93	\N	384	Yes
+Diluting RNA Samples for Agilent	143	Active	\N	94	\N	384	Yes
+MGC Gel Extraction	164	Inactive	\N	95	\N	384	Yes
+Hybridization of Expression GeneChips	143	Active	\N	96	\N	384	Yes
+Washing_Staining_Scanning Expressn Chips	143	Inactive	\N	97	\N	384	Yes
+MGC Taq Extension	164	Active	\N	98	\N	384	Yes
+MGC blunt cloning	164	Active	\N	102	\N	384	Yes
+Rxns_BD384_1/24_4uLrxn_2uLDNA	3	Active	\N	103	\N	384	Yes
+Rxns_BD384_Custom_Pr	137	Inactive		104	0000-00-00	384	Yes
+MGCC_Rxns_BD384_Custom_Oligo	137	Active		105	0000-00-00	384	Yes
+Expression Hybridization Cocktail	191	Inactive		106	0000-00-00	384	Yes
+Concentrating RNA with SpeedVAC	143	Active	\N	107	\N	384	Yes
+GeneChip 3-IVT Reaction	104	Inactive	\N	108	\N	384	Yes
+GeneChip Two-Cycle cDNA Syn_1st Cycle	104	Old	\N	109	\N	384	Yes
+GeneChip Two-Cycle cDNA Syn_2nd Cycle	143	Active	\N	110	\N	384	Yes
+Pico Assay - Agilent Analysis of RNA	104	Old	\N	111	\N	384	Yes
+Fragmentation of cRNA	104	Active	\N	112	\N	384	Yes
+Pptn_BAC/FOSMID384_75%IPA_8ulRxn_Biomek	137	Inactive		113	0000-00-00	384	Yes
+Walking Primer Dilution	164	Active	\N	114	\N	384	Yes
+MGC TA cloning	164	Active		115	0000-00-00	384	Yes
+MGC RACE cDNA	164	Active	\N	116	\N	384	Yes
+MGC_mRNA_extraction	164	Active	\N	117	\N	384	Yes
+overnight setup 384 TN - old	137	Inactive		118	0000-00-00	384	Yes
+overnight setup 96 TN - old	137	Inactive		119	0000-00-00	384	Yes
+SAGE day 8	113	Inactive		121	0000-00-00	384	Yes
+AFFY - Trizol RNA Extraction	191	Active		129	0000-00-00	384	Yes
+MGC_QPix	164	Active	Protocol for tracking the agar plates used for the run	130	\N	384	Yes
+MGC 2nd Strand Synthesis -backup 041210	164	Inactive		131	0000-00-00	384	Yes
+MGC blunt cloning -backup 041210	164	Inactive		132	0000-00-00	384	Yes
+MGC cDNA precipitation -backup 041210	164	Inactive		133	0000-00-00	384	Yes
+MGC cDNA Purification -backup 041210	164	Inactive		134	0000-00-00	384	Yes
+MGC cDNA Quality Check -backup 041210	164	Inactive		135	0000-00-00	384	Yes
+MGC Checking PCR Product -backup 041210	164	Inactive		136	0000-00-00	384	Yes
+MGC Gel Extraction -backup 041210	164	Inactive		137	0000-00-00	384	Yes
+100K_XbaI_Digest	104	Inactive		138	\N	384	Yes
+100K_XbaI_Ligation	104	Active		139	\N	384	Yes
+100K_XbaI_PCR	104	Active		140	\N	384	Yes
+100K_PCR purification	104	Inactive		141	\N	384	Yes
+SAGELite day 3	113	Inactive		145	\N	384	Yes
+SAGE Ambion DNAfree	113	Active		146	0000-00-00	384	Yes
+MGC RACE cDNA -backup 041213	164	Inactive		147	0000-00-00	384	Yes
+FG Trizol RNA Extraction	191	Active		148	0000-00-00	384	Yes
+MGC_mRNA_extraction -backup 041213	164	Inactive		149	0000-00-00	384	Yes
+SAGELite day 2 Agilent quantitation	113	Inactive		150	\N	384	Yes
+SAGE day 10 - Cloning and Purification	113	Inactive		152	0000-00-00	384	Yes
+SAGE day 10 - Transformations	113	Inactive		153	0000-00-00	384	Yes
+SAGE pZErO-1 Sph I Vector Prep	113	Inactive		155	0000-00-00	384	Yes
+SAGE day 11 - Colony PCR	113	Inactive		156	0000-00-00	384	Yes
+Rxns_BD384_1/256_400nLrxn_driedDNA	3	Inactive		157	0000-00-00	384	Yes
+SAGELite day 1 - cDNA Synthesis	144	Inactive		158	0000-00-00	384	Yes
+SAGELite day 1 - QIAquick Purification	113	Inactive		160	0000-00-00	384	Yes
+SAGELite day 2 digest cDNA with NlaIII	113	Inactive		161	0000-00-00	384	Yes
+MGC-Plate Set Discard	0	Active		162	0000-00-00	384	Yes
+MGC_96-well Prep	0	Active		163	0000-00-00	384	Yes
+MGC TOPO XL Cloning	164	Active		164	0000-00-00	384	Yes
+MGC SSIII cDNA synthesis	3	Active		165	0000-00-00	384	Yes
+Rxns_BD384_1/1024_200nLrxn_driedDNA	3	Inactive		166	0000-00-00	384	Yes
+Rxns_BD384_1/512_200nLrxn_driedDNA	3	Inactive		167	0000-00-00	384	Yes
+Rxns_BD384_1/2560_100nLrxn_driedDNA	3	Inactive		168	0000-00-00	384	Yes
+Dilute 384-well prep	3	Inactive	Dilute 384-well plasmid prep 1/10 using a Titertek MAPC-2 to dispense 135uL Ultrapure water into 15uL plasmid DNA	169	\N	384	Yes
+MP Overnight 96-well	222	Active	Overnight protocol for Mapping	170	\N	384	Yes
+MP Digest 96-well	222	Active	Digest Protocol for Mapping	171	\N	384	Yes
+MP Prep 96-well	222	Active	Prep Protocol for Mapping	173	\N	384	Yes
+CGH PCR1 Aliquots	3	Active		175	0000-00-00	384	Yes
+MGC Colony PCR	164	Active		176	0000-00-00	384	Yes
+Test_Protocol_1	141	Active	Protocol tests Split, Aliquot, Pool	177	\N	384	Yes
+rxns_BD384_1/256_400nl	3	Inactive		178	0000-00-00	384	Yes
+MGC_Plate_Antibiotics	164	Active	The procotol will associate the antibiotics used for a plate.  This tracking is needed especially for the HGL01 glycerol plates to differentiate between XL clones, non-XL clones and pool clones of the two type which have different antibiotic requirements.	179	\N	384	Yes
+MGC_iScript_cDNA_synthesis	164	Active		180	0000-00-00	384	Yes
+MGC_nested_PCR	164	Active		181	0000-00-00	384	Yes
+Pptn_BD384_1/256_400nl	137	Active		182	0000-00-00	384	Yes
+SAGE Day 9-A	113	Inactive		183	0000-00-00	384	Yes
+Pptn_BD96/384_EtOH/EDTA	137	Active		184	0000-00-00	384	Yes
+SAGE Day 9B	113	Inactive		185	0000-00-00	384	Yes
+FG Invitrogen Dnase I Treatment	191	Active		186	\N	384	Yes
+SAGE Day 11 updating library information	191	Inactive		187	\N	384	Yes
+SAGE Day 12 updating library information	191	Active		188	\N	384	Yes
+SAGE Day 11 Spreading onto Large Plates	191	Inactive		189	\N	384	Yes
+SAGE Day 12 Updating Library Titer	191	Inactive		190	0000-00-00	384	Yes
+FG Qiagen Micro Kit & On-column DNase	191	Active		191	\N	384	Yes
+SAGE Qiagen Micro Kit Column Cleanup	191	Active		192	0000-00-00	384	Yes
+Agilent 1 (RNA)	191	Active		194	\N	384	Yes
+MGC Gel Extraction Vacuum Manifold	164	Active		196	0000-00-00	384	Yes
+MGC Gel Extraction MinElute	164	Active		197	0000-00-00	384	Yes
+Rxns_1/256_FRDBrew_400nl	3	Active		199	0000-00-00	384	Yes
+MGC_1in256_End_Reads	137	Active		200	0000-00-00	384	Yes
+MGC_1in256_Custom-Reads	137	Active		201	0000-00-00	384	Yes
+Rxns_Dilute_Aliquot_1/256	3	Active		202	0000-00-00	384	Yes
+ChargeSwitch Bead Cleanup	150	Active	This protocol is to be applied to plates being put through the ChargeSwitch Bead Cleanup procedure.  Plates are loaded onto Biomek, where beads and purification buffer are added, followed by two subsequent rounds of shaking, magnet and washing with Wash buffer.  Elution buffer is then added, shake, magnet and the remaining solution (containing desired DNA)is transfered into a greiner96conePP plate.  	203	\N	384	Yes
+MGC Restriction Digest	164	Active	This scanner will track sizing digests of clones.  It will generate daughter barcodes for the digest plates.  A digest brew will be made via Standard Chemistry.	204	\N	384	Yes
+Aliquot_BAC_DNA	3	Active	Transfer 2uL undiluted BAC DNA from 96-well Axygen plates into ABgene 384-well plates using FX-1 or Tango, then dry down DNA in 95C drying oven	205	\N	384	Yes
+Ambion mirVana miRNA Isolation	191	Active		206	0000-00-00	384	Yes
+MGC Glycerol Plate Thawing	164	Active	To keep track of how many times a glycerol plate has been thawed.	207	\N	384	Yes
+Full Mech Prep - whatman	0	Inactive		208	0000-00-00	384	Yes
+Full Mech Prep - Abgene	0	Inactive		209	0000-00-00	384	Yes
+MGC Sequencing Rxns BD384	137	Active		210	0000-00-00	384	Yes
+500K PCR Purification	221	Active	500K PCR purification and aliquots for gel analysis	214	\N	384	Yes
+PCR Quantification	221	Active	Quantification of PCR products for fragmentation	215	\N	384	Yes
+500K Fragmentation	221	Active	500K Fragmentation of 90ug of DNA	216	\N	384	Yes
+500K Labeling	221	Active	500K Labeling of Fragmented DNA	217	\N	384	Yes
+500K Hybridization	221	Active	500K Hybridization of Labeled DNA	218	\N	384	Yes
+500K Staining	221	Active	500K Staining of Hybridized Array	219	\N	384	Yes
+500K Scanning	221	Inactive	500K Scanning of arrays	220	\N	384	Yes
+One Cycle cDNA Synthesis	143	Active		222	0000-00-00	384	Yes
+cRNA Assessment - Nano Smear Assay	104	Inactive		223	0000-00-00	384	Yes
+Agilent Assessment	104	Active		224	0000-00-00	384	Yes
+EXP Hyb Cocktail Preparation	191	Active		225	0000-00-00	384	Yes
+Washing and Staining GeneChips	143	Inactive		226	0000-00-00	384	Yes
+EXP IVT Labeling	104	Active		227	0000-00-00	384	Yes
+500K gDNA Quantification	104	Active	Quantify gDNA using PowerWaveX spectrophotomer and 384-well spec plates.	228	\N	384	Yes
+500K gDNA 50ng/ul Stock Preparation	104	Active	Prepare a sufficient volume of 50ng/ul stock using TE (10:0.1).  Use chemistry calculator.	230	\N	384	Yes
+500K gDNA Quality Assessment	104	Active	Running gDNA 50ng/ul stocks onto 0.7& TAE gels.	231	\N	384	Yes
+500K gDNA Digestion	104	Active		232	0000-00-00	384	Yes
+Adaptor Ligation	221	Active	Nsp or Sty Adaptor Ligation	234	0000-00-00	384	Yes
+500K Adaptor Ligation	104	Active		235	0000-00-00	384	Yes
+500K PCR Amplification	104	Active		236	0000-00-00	384	Yes
+MGC Transposon Reaction	164	Active		237	\N	384	Yes
+500K Hyb Cocktail Preparation	191	Active		238	0000-00-00	384	Yes
+500K PCR Gel Assessment	221	Active	This protocol uses an analytical 2% TBE gel to look at the intensity, consistency and quality of the 500K PCR samples. 	239	\N	384	Yes
+500K Fragmentation Gel Assessment	221	Active	4% TBE gel qualification of Fragmentation Reaction run with 10bp ladder and Sigma Wide Range.	240	\N	384	Yes
+Clean-up of First Cycle cRNA	143	Active		241	0000-00-00	384	Yes
+Total RNA Assessment (Agilent)	104	Active		243	0000-00-00	384	Yes
+cRNA Assessment (Agilent)	104	Active		244	0000-00-00	384	Yes
+Frag. cRNA Assessment (Agilent)	104	Active		245	0000-00-00	384	Yes
+MGC_qPCR	164	Active		246	\N	384	Yes
+500K Diluting Ligations	104	Active	Adding 90 ul of molecular biology grade water to adaptor ligated samples.	247	\N	384	Yes
+Track Control Plate	150	Active	Protocol for adding control plate info as an attribute	248	\N	384	Yes
+Rxns_96_Custom_5ul	137	Active		249	0000-00-00	384	Yes
+HLA Transformations	164	Active	track the solution IDs of cells used for transformation	250	\N	384	Yes
+500K Quantification of Purified PCR	104	Active		251	\N	384	Yes
+500K Sample Hyb Cocktail Preparation	221	Inactive	500K Hybridization of Labeled DNA	252	0000-00-00	384	Yes
+5uL Aliquot for Processing	104	Inactive	Aliquot 5ul of 50ng/ul stock for processing using Affymetrix's 10K/100K/500K Mapping Assay	253	\N	384	Yes
+MGCC_Rxns_BD384_Custom_Oligo_BACKUP_0610	137	Inactive		254	0000-00-00	384	Yes
+MGCC_Rxns_BD384_Custom_Oligo_edited_0610	137	Inactive		255	0000-00-00	384	Yes
+LIMS_Test_Transfers	141	Active	Test series of transfers	256	\N	384	Yes
+LIMS_Test_Transfers_Plates	141	Active	Test transfers with plates	257	\N	384	Yes
+LIMS_Test_Pool_Extractions_Aliquots	141	Active	Protocol tests Split, Aliquot, Pool	258	0000-00-00	384	Yes
+Aliquot Diluted Ligations for PCR Amplif	104	Inactive	Completing the protocol will generate new tube IDs for carrying forward.	259	\N	384	Yes
+Overnight setup 96	137	Active		260	0000-00-00	384	Yes
+overnight setup 96 TN	137	Active		261	0000-00-00	384	Yes
+Overnight setup 384	137	Active		262	0000-00-00	384	Yes
+overnight setup 384 TN	137	Active		263	0000-00-00	384	Yes
+MP Overnight 384-well	222	Active	Overnight protocol for Mapping	264	0000-00-00	96	Yes
+MP Prep 384-well	222	Active	Prep Protocol for Mapping	265	0000-00-00	384	Yes
+MP Digest 384-well	222	Active	Digest Protocol for Mapping	266	0000-00-00	384	Yes
+Solexa DNA Amplification	164	Active	This protocol will track the steps involved in the hybridization and amplification of template in the flowcell for cluster generation.	267	\N	384	Yes
+Solexa linearization and blocking	164	Inactive	This protocol will track the linearization and blocking steps in cluster generation for the sequencing flowcell.	268	\N	384	Yes
+Solexa Primer Hyb	164	Active	This protocol will track the primer hybrization step of the clusters in the flowcell.	269	\N	384	Yes
+SLX-SAGE Day 1	144	Active		270	\N	384	Yes
+SLX-SAGE Day 2	144	Active		271	\N	384	Yes
+SLX-SAGE Day 3	144	Active		272	\N	384	Yes
+SLX-SAGE Day 4	144	Active		273	\N	384	Yes
+SLX gDNA TS	144	Inactive		274	\N	384	Yes
+SLX gDNA size selection	144	Active		275	\N	384	Yes
+EXP Washing_Staining_Scanning	143	Active		276	0000-00-00	384	Yes
+Solexa linearization to primer hyb	164	Active	This protocol will track the linearization and blocking steps in cluster generation for the sequencing flowcell.	277	0000-00-00	384	Yes
+WTS rRNA Reduction of Total RNA	104	Active		278	\N	384	Yes
+WTS Concentration of rRNA Reduced Total	143	Active		279	0000-00-00	384	Yes
+WTS First Cycle cDNA Synthesis	104	Active		280	\N	384	Yes
+WTS First Cycle cRNA Synthesis	104	Active		281	\N	384	Yes
+WTS Quantifying cRNA with NanoDrop	104	Active		282	\N	384	Yes
+WTS Second Cycle ssDNA Synthesis	104	Active		283	\N	384	Yes
+WTS Cleanup of Single Stranded DNA	143	Active		284	0000-00-00	384	Yes
+WTS Quantifying ssDNA with NanoDrop	104	Active		285	\N	384	Yes
+WTS Fragmentation of ssDNA	104	Active		286	\N	384	Yes
+WTS Labeling of Fragmented ssDNA	104	Active		287	\N	384	Yes
+WTS Hybridization Cocktail Preparation	104	Active		288	\N	384	Yes
+WTS Agilent Assessment of Frag ssDNA	104	Active		289	0000-00-00	384	Yes
+WTS Agilent Assessment of rRNA Reduction	104	Active		290	0000-00-00	384	Yes
+WTS First Cycle cRNA Cleanup	143	Active		291	0000-00-00	384	Yes
+WTS Hybridization	143	Active		292	0000-00-00	384	Yes
+WTS Washing_Staining_Scanning	143	Active		293	0000-00-00	384	Yes
+EXP Washing_Staining_Scanning_2	143	Active		294	0000-00-00	384	Yes
+SLX-miRNA Day 1	144	Active	Day 1 MicroRNA protocol 	295	\N	384	Yes
+SLX-miRNA Day 2	144	Active	SLX Micro RNA day 2 protocol	296	\N	384	Yes
+SLX-miRNA Day 3	144	Active	SLX Micro RNA day 3 protocol	297	\N	384	Yes
+SLX-miRNA Day 4	144	Active	solexa micro RNA day 4 protocol	298	\N	384	Yes
+SLX-miRNA Day 5	144	Active	solexa micro RNA day 5 protocol	299	\N	384	Yes
+SLX-miRNA Day 6	144	Active	solexa micro RNA day 6 protocol	300	\N	384	Yes
+SLX-miRNA Day 7	144	Active	solexa micro RNA day 7 protocol	301	\N	384	Yes
+FG Ambion Mouse RiboPure Blood RNA Extra	144	Active	Extraction of RNA from mouse blood	302	\N	384	Yes
+SLX-SAGE Streptavidin Day 1	144	Inactive		307	0000-00-00	384	Yes
+SLX-SAGE Streptavidin Day 2	144	Inactive		308	0000-00-00	384	Yes
+SLX-SAGE Streptavidin Day 3	144	Inactive		309	0000-00-00	384	Yes
+SLX-SAGE Streptavidin Day 4	144	Inactive		310	0000-00-00	384	Yes
+Agilent 2 (RNA/DNAse I)	191	Active		311	0000-00-00	384	Yes
+PCR setup 384well	164	Active		312	0000-00-00	384	Yes
+MP Digest 384-well Manual	111	Active	To be used when loading with Hamilton Loader.	313	\N	384	Yes
+MP Digest 384-well Ferro	111	Active	To be used when loading with Ferro loader	314	\N	384	Yes
+Off Site Constructed Samples	117	Active	For barcoding	315	\N	384	Yes
+BAC 384 Well Overnights	137	Inactive		316	0000-00-00	384	Yes
+BAC 384 Well Spindowns	211	Inactive		317	\N	384	Yes
+BAC 384 Well Prep	5	Old		319	0000-00-00	384	Yes
+WDS rRNA Reduction of Total RNA	104	Active		320	0000-00-00	384	Yes
+WDS Agilent Assessment of rRNA Reduction	104	Active		321	0000-00-00	384	Yes
+WDS Concentration of rRNA Reduced Total	143	Active		322	0000-00-00	384	Yes
+WDS First Cycle cDNA Synthesis	104	Active		323	0000-00-00	384	Yes
+WDS First Cycle cRNA Synthesis	104	Active		324	0000-00-00	384	Yes
+WDS First Cycle cRNA Cleanup	143	Active		325	0000-00-00	384	Yes
+WDS Second Cycle DS cDNA Synthesis	104	Active		326	0000-00-00	384	Yes
+WDS Cleanup of Double Stranded cDNA	143	Active		327	0000-00-00	384	Yes
+WDS Quantification of dsDNA with NanoDro	104	Active		328	0000-00-00	384	Yes
+WDS Quantification of cRNA with NanoDrop	104	Active		329	0000-00-00	384	Yes
+WDS Fragmentation of dsDNA	104	Active		330	0000-00-00	384	Yes
+WDS Agilent Assessment of Frag dsDNA	104	Active		331	0000-00-00	384	Yes
+WDS Labeling of Fragmented dsDNA	104	Active		332	0000-00-00	384	Yes
+WDS Hyb Cocktail Preparation	104	Active		333	0000-00-00	384	Yes
+WDS Hybridization	143	Active		334	0000-00-00	384	Yes
+WDS Washing_Staining_Scanning	143	Active		335	0000-00-00	384	Yes
+Resuspension of Sequencing Reaction Prod	211	Active	Resuspension of Sequencing Reaction Product for 384-well and 96-well plates using the BiomekFX.	339	\N	384	Yes
+SLX-ChIP	233	Active	Protocol for the Solexa ChIP pipeline	340	\N	384	Yes
+Rxns_BD384_1/48_4uLrxn_2uLDNA	3	Active		341	0000-00-00	384	Yes
+Initiated Run	198	Active	Automatically records when a run is initialized	342	\N	384	Yes
+PCR purification 96 well	211	Active	Ampure Bead Cleanup for 96 well PCR reactions	343	\N	384	Yes
+PCR purification 384 well	211	Active	Ampure Bead Cleanup for 96 well PCR reactions	344	0000-00-00	384	Yes
+SLX-SageLite Day 1	144	Active		345	0000-00-00	384	Yes
+SLX-SageLite Day 2	113	Active		346	0000-00-00	384	Yes
+SLX-SageLite Day 3	144	Active		347	0000-00-00	384	Yes
+SLX-SageLite Day 4	144	Active		348	0000-00-00	384	Yes
+SLX-SageLite Day 5	144	Active		349	0000-00-00	384	Yes
+Run Analysis	0	Inactive	\N	350	\N	384	Yes
+E2C 2 First Cycle cDNA Synthesis	104	Active		352	0000-00-00	384	Yes
+E2C 3 First Cycle cRNA Synthesis using M	104	Active		353	0000-00-00	384	Yes
+E2C 4 First Cycle cRNA Clean-up	143	Active		354	0000-00-00	384	Yes
+E2C 5 First Cycle cRNA Agilent Assessmen	104	Active		356	0000-00-00	384	Yes
+E2C 6 Second Cycle cDNA Synthesis	104	Active		357	0000-00-00	384	Yes
+E2C 7 Second Cycle cDNA Clean-up	143	Active		358	0000-00-00	384	Yes
+E2C 8 Second Cycle cRNA Synthesis using	104	Active		359	0000-00-00	384	Yes
+E2C 9 Second Cycle cRNA Clean-Up	143	Active		360	0000-00-00	384	Yes
+E2C 10 Second Cycle cRNA Agilent Assessm	104	Active		361	0000-00-00	384	Yes
+E2C 12 cRNA Fragmentation Agilent Assess	104	Active		362	0000-00-00	384	Yes
+E2C 11 cRNA Fragmentation	104	Active		363	0000-00-00	384	Yes
+E2C 1 Preparation of total RNA working s	104	Active	Preparation of 25ng/ul working total RNA stock, if sample concentration is greater than 110ng/ul.  	364	0000-00-00	384	Yes
+SLX-Transcriptome	117	Active	SOP to generate cDNA from purified mRNA.	365	\N	384	Yes
+Illumina Concentration Checked	117	Active	to check the 10nM dilution before submitting the sample for sequencing	366	\N	384	Yes
+SLX-PET size selection	144	Inactive		367	0000-00-00	384	Yes
+SLX-PET	144	Inactive		368	0000-00-00	384	Yes
+BAC Custom Sequencing Reactions	137	Active		369	0000-00-00	384	Yes
+Rxns_BD384_1/16_Custom_Oligo	137	Active		370	0000-00-00	384	Yes
+Solexa Amplification to blocking	164	Active	This protocol will track the steps involved in the hybridization and amplification of template in the flowcell for cluster generation.	371	0000-00-00	384	Yes
+MP Prep - 96well_Dried DNA	222	Active	Prep Protocol for Mapping	372	0000-00-00	384	Yes
+MP Overnight - Rearray 96-well	222	Active	Overnight protocol for Mapping	373	0000-00-00	384	Yes
+Solexa PhiX activation	164	Active	This protocol activates the phiX tube to be visible in the 'Libraries ready for sequencing' summary view.	375	0000-00-00	384	Yes
+S6 NSP gDNA Digestion	104	Active		376	0000-00-00	384	Yes
+S6 STY gDNA Digestion	104	Active		377	0000-00-00	384	Yes
+S6 PCR Amplification	104	Active		378	0000-00-00	384	Yes
+S6 PCR Gel Assessment	221	Active	This protocol uses an analytical 2% TBE gel to look at the intensity, consistency and quality of the 500K PCR samples. 	379	0000-00-00	384	Yes
+S6 PCR Tube Purification	221	Active	500K PCR purification and aliquots for gel analysis	380	0000-00-00	384	Yes
+S6 Quantification of Purified PCR	104	Active		381	0000-00-00	384	Yes
+S6 Fragmentation	221	Active	500K Fragmentation of 90ug of DNA	382	0000-00-00	384	Yes
+S6 Fragmentation Gel Assessment	221	Active	4% TBE gel qualification of Fragmentation Reaction run with 10bp ladder and Sigma Wide Range.	383	0000-00-00	384	Yes
+S6 Labeling	221	Active	500K Labeling of Fragmented DNA	384	0000-00-00	384	Yes
+S6 Hyb Cocktail Preparation	191	Active		385	0000-00-00	384	Yes
+S6 Staining	221	Active	500K Staining of Hybridized Array	386	0000-00-00	384	Yes
+BAC/Fosmid 384 well spindowns	211	Active		387	0000-00-00	384	Yes
+MP Loading	198	Active	MP Loading Protocol	388	\N	384	Yes
+PCR Setup 96 well	164	Active		389	0000-00-00	384	Yes
+MP Prep - 384well_Dried DNA	222	Active	Prep Protocol for Mapping	390	0000-00-00	384	Yes
+BAC/Fosmid 384 well prep	5	Active		391	0000-00-00	384	Yes
+BAC/Fosmid 384 well overnights	137	Active		392	0000-00-00	384	Yes
+Rxns_BD384_1/24_4uL_Custom	3	Active		393	0000-00-00	384	Yes
+Rxns_BD_384_Custom_Oligo_96w_PCR_DNA	137	Inactive		394	0000-00-00	384	Yes
+Rxns_BD_384_1/16_Custom_Oligo_96wPCR	137	Active		395	0000-00-00	384	Yes
+SLX Post PCR Purification	233	Inactive		396	\N	384	Yes
+Amplicon Pooling PCR	164	Active		397	0000-00-00	384	Yes
+SLX MPET	233	Active	Illumina Mate Paired End Tags Library Construction	398	\N	384	Yes
+FG Plasmid TA Cloning	233	Active	TA Cloning protocol for plasmid library	399	\N	384	Yes
+SOLID small RNA library contruction	164	Active		400	\N	384	Yes
+SLX-Bisulfite	164	Active		401	\N	384	Yes
+SOLID Bead Deposition	164	Inactive	This tracks bead deposition of the libraries onto the slides.	402	\N	384	Yes
+SOLID Control Activation	164	Active	Used to activate a new tube of SOLID control library.	403	\N	384	Yes
+SOLID Fragment Library	164	Active		404	\N	384	Yes
+SLX IPET	233	Active	Illumina Mate Paired End Tags Library Construction	406	0000-00-00	384	Yes
+SOLID Mate Paired Library	164	Active		407	0000-00-00	384	Yes
+SOLID Library Titration	164	Active	This protocol records the best template concentration to be use for the full sequencing run.  Running of this protocol activates the library sample to be viewable in the "SOLID -Libraries Ready for Sequencing" view.	408	\N	384	Yes
+SOLID ePCR	164	Active		409	\N	384	Yes
+IVT RNA Amplification	117	Active	SOP to generate cDNA from purified mRNA.	410	0000-00-00	384	Yes
+Consolidation 96->384	150	Active	Consolidating 96 well plates onto 384	411	\N	384	Yes
+SLX miRNA2	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	412	\N	384	Yes
+LibCon_Shear_DNA	3	Active	Shear DNA in Covaris	414	\N	384	Yes
+	3	Active	AMPure Bead clean DNA samples using Biomek FX-2	415	\N	384	Yes
+Index_Cleanup_ER	3	Active	Index Library Bead Cleanup End Repaired DNA	422	\N	384	Yes
+Index_End_Repair	3	Active	End Repair Sheared or PCR amplified DNA	423	\N	384	Yes
+Index_Add_A-Base_To_ER_DNA	3	Active	Combine 40uL End Repaired-Phosphorylated DNA and 10uL dATP-Klenow exo- Brew Mix using Biomek FX-2. Incubate plates 15min at RT. Store plates at 4C or -20C. Scan RAC barcode	424	\N	384	Yes
+Index_Cleanup_A-Base	3	Active	Bead cleanup DNA after A-Base addition	426	\N	384	Yes
+Index_Adapter_Ligation	3	Active	Ligate Index Adapters to DNA	427	\N	384	Yes
+Index_Cleanup_Adapter_Ligation	3	Active	Biomek FX AMPure Bead Cleanup Index Adapter Ligations	428	\N	384	Yes
+Index_PCR_Indexing	3	Active	Phusion PCR Index DNA. 2 PE primers in PCR premix. Index primers added separately.	429	\N	384	Yes
+Index_Cleanup_PCR_Indexing_Rxn	3	Active	AMPure Bead Cleanup PCR Indexing Reactions on Biomek FX	430	\N	384	Yes
+Index_QC_Agilent_PCR	3	Inactive	QC by Agilent and QBit the bead cleaned PCR Indexed DNA	431	\N	384	Yes
+Index_Size_Select_Indexed_DNA	3	Active	Acrylamide gel size select Pooled Indexed DNA	433	\N	384	Yes
+Index_Gel_Extraction	3	Active	Extract Pooled Indexed DNA size fraction from acrylamide gel in 0.5mL tubes	434	\N	384	Yes
+Index_QC_Gel_Purified_DNA	3	Active	Agilent and QBit QC gel purified Pooled Indexed DNA	435	\N	384	Yes
+Index_Final_DNA_Dilution_to_5uM	3	Active	Dilute DNA to 5uM	436	\N	384	Yes
+Index_QC_Qubit_8nM_Final_Product	3	Active	Qbit quantify final 5uM diluted product. Write actual conc. on tube.	437	\N	384	Yes
+Index_Pool_Indexed_DNA	3	Inactive	Pool Indexed DNA	438	\N	384	Yes
+96Well_Covaris_Shear_DNA	3	Active	Shear BAC or gDNA to ~300bp by Covaris sonication in single tube or 96-well format.	439	\N	384	Yes
+96Well_Cleanup_DNA	3	Active	AMPure Bead Cleanup Covaris Sonicated DNA prior to End Repair 	440	\N	384	Yes
+Indexing_Dilute_DNA	3	Active	Transfer an aliquot of DNA to daughter plates containing dH2O	441	\N	384	Yes
+HLA extension and ligation	164	Active		442	0000-00-00	384	Yes
+HLA TA extension	164	Inactive		443	0000-00-00	384	Yes
+Indexing_Amplicon_PCR_rxns	3	Active	PCR generate 300-400bp amplicons from gDNA samples - first step in AMP pipeline	444	\N	384	Yes
+Indexing_Cleanup_PCR_Amplicons	3	Active	AMPure Bead cleanup 300-400bp PCR products from 1st Amplicon PCR Reactions - AMP pipeline	445	\N	384	Yes
+HLA pool	150	Active	Consolidating 96 well plates onto 384	446	0000-00-00	384	Yes
+Indexing_Dilute_Final_PAGE_IDX_DNA	3	Active	Dilute final PAGE pure Indexed DNA ready for cluster station	447	\N	384	Yes
+Indexing_Concentration_Checked	117	Inactive	to check the 10nM dilution before submitting the sample for sequencing	448	0000-00-00	384	Yes
+RNeasy Yeast RNA Extraction	231	Active	Isolation of total RNA from liquid yeast culture	449	\N	384	Yes
+Bait Library Construction	231	Active	The MPY2H Bait Library is constructed by cDNA synthesis, cloning into one or more MPY2H bait vectors, transformation into one of the two yeast mating strains and plating onto Trp- plates, followed by replating and selection on FOA-containing Trp- plates.	450	\N	384	Yes
+Prey Library Construction	231	Active	Prey Library construction includes cDNA synthesis from DNase-treated mRNA, cloning a size fraction into one or more mpY2H Prey vectors, transformation and plating of the library in E. coli, followed by large-scale plasmid isolation and transformation into one of the yeast mating type strains.	451	\N	384	Yes
+MPY2H library construction	231	Active	MPY2H library construction includes the mating of a bait and prey library aliquot, followed by overnight growth in selective media, then plasmid isolation from the ON culture, followed by PCR amplification specific for the recombinant plasmid templates.	452	\N	384	Yes
+MPET	231	Active	Illumina library construction for Paired-End sequencing based on Illumina's Mate Pair protocol	453	\N	384	Yes
+MACS mRNA Purification	231	Active	Purification of mRNA from Total RNA using a MACS olgo(dT) column	454	\N	384	Yes
+HLA DNA aliquot (1 plate)	150	Active	Consolidating 96 well plates onto 384	455	0000-00-00	384	Yes
+HLA DNA aliquot (2 plates)	150	Active	Consolidating 96 well plates onto 384	456	0000-00-00	384	Yes
+HLA 96 PCR	164	Active		457	0000-00-00	384	Yes
+Methyl Miner	233	Active	Protocol for the Solexa ChIP pipeline	458	0000-00-00	384	Yes
+WGA	233	Active	Protocol for the Solexa ChIP pipeline	459	0000-00-00	384	Yes
+Ribominus	117	Active	SOP to generate cDNA from purified mRNA.	460	0000-00-00	384	Yes
+Exon Capture PET	144	Inactive		461	0000-00-00	384	Yes
+SLX 96-well miRNA2	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	462	0000-00-00	384	Yes
+SLX 96well miRNA2 Brews	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	463	0000-00-00	384	Yes
+96Well_PicoGreen_Quant	3	Active		464	\N	384	Yes
+smallRNA96_3primeAdapter_Lig	3	Active	Ligate 3'miRNA2 Adapter to Total RNA	465	\N	384	Yes
+smallRNA96_Indexed_5primeAdapters	3	Old	Ligate Indexed 5'miRNA Adapter(s) to 3'miRNA2 Adaptered Total RNA template	466	\N	384	Yes
+smallRNA96_1st_Strand_Synthesis	3	Active	1st strand cDNA synthesis with Reverse Transcriptase	467	\N	384	Yes
+smallRNA96_Phusion_PCR	3	Active	Phusion PCR amplify small RNA with ligated adapters using primers miRNA P1 and miRNA P2	468	\N	384	Yes
+smallRNA96_5prime_IndexedAdapter_Lig	3	Active	Add 0.5uL T4 RNA Ligase I and 0.5uL 10mM ATP to 3'miRNA2 Adaptered Total RNA	469	\N	384	Yes
+96Well_PlasmidSafe_Treatment	164	Active		470	\N	384	Yes
+Rxns_BD384_1/8_4uLrxn_2uLDNA	3	Inactive		471	0000-00-00	384	Yes
+Illumina amplification to primer hyb	164	Active	This protocol will track the steps involved in the hybridization and amplification of template in the flowcell for cluster generation.	472	0000-00-00	384	Yes
+Plate based mRNA purification	233	Active		473	\N	384	Yes
+Plate based cDNA synthesis	233	Active		474	\N	384	Yes
+SOLID Indexed Fragment Library	164	Active		475	0000-00-00	384	Yes
+Export Samples	1	Inactive	Export sample to another site	476	0000-00-00		Yes
+Receive Samples	1	Inactive	Receive samples exported from another site	477	0000-00-00		Yes
+Amplification	331	Active	Protocol to select Amplification Method	478	\N	384	Yes
+miRNA3_5prime_AdapterLig	3	Inactive	Ligate Indexed 5'miRNA Adapter(s) to 3'miRNA2 Adaptered Total RNA template	479	0000-00-00	384	Yes
+miRNA3_3prime_AdapterLig	3	Inactive	Ligate 3'miRNA2 Adapter to Total RNA	480	0000-00-00	384	Yes
+miRNA3_First_Strand_Synthesis	3	Inactive	1st strand cDNA synthesis with Reverse Transcriptase	481	0000-00-00	384	Yes
+miRNA3_Indexed_Phusion_PCR	3	Inactive	Phusion PCR amplify small RNA with ligated adapters using primers miRNA P1 and miRNA P2	482	0000-00-00	384	Yes
+SLX 96well miRNA3 Brews	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	483	0000-00-00	384	Yes
+Amplicon PCR -Tube Template	164	Active		484	0000-00-00	384	Yes
+Amplicon PCR -Plate Template	164	Active		485	0000-00-00	384	Yes
+Dilution	111	Active		486	\N	384	Yes
+SOLID sequencing read 1	181	Active	Record the sol # for the first SOLID read - BC, F5-P2, or F3.	487	\N	384	Yes
+PCR - aliquot to SequalPrep	150	Active	Consolidating 96 well plates onto 384	488	0000-00-00	384	Yes
+PCR - SequalPrep Purification	211	Active	Ampure Bead Cleanup for 96 well PCR reactions	489	0000-00-00	384	Yes
+SOLID sequencing read 2	181	Active	Record the sol # for the first SOLID read - BC, F5-P2, or F3.	490	0000-00-00	384	Yes
+Genomic DNA Extraction	233	Active	Extraction of gDNA from tissue / cells	491	\N	384	Yes
+96well Size Selection	144	Active	The Barracuda is used for size selection of samples 	492	\N	384	Yes
+SOLID Library Concentration Check	181	Active		493	\N	384	Yes
+MRE	233	Active		494	\N	384	Yes
+SOLID QPCR quantitation	181	Active		495	\N	384	Yes
+Agilent 3 (Flow Through)	191	Active		496	0000-00-00	384	Yes
+MeDIP-Seq	233	Active		497	\N	384	Yes
+Start of Library Construction	233	Active		498	\N	384	Yes
+Secondary Dilution	111	Active		499	0000-00-00	384	Yes
+SOLiD 96well miRNA3 Brews	233	Inactive	SLX miRNA protocol using the alternative v1.5 Protocol	500	0000-00-00	384	Yes
+Index_QC_Caliper_PCR	3	Inactive	QC by Agilent and QBit the bead cleaned PCR Indexed DNA	501	0000-00-00	384	Yes
+MultiMACs 96 well separation	144	Active	this protocol separates the mRNA from the total RNA (flow through)	502	\N	384	Yes
+Plate based flow through purification	144	Active	ethanol ppt of RNA flow through separated by the multiMACs	503	\N	384	Yes
+Custom Capture PET	144	Active		505	0000-00-00	384	Yes
+miRNA3 tube	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	506	0000-00-00	384	Yes
+Index_Uracil_N_Glycosylase_Digestion	3	Active	End Repair Sheared or PCR amplified DNA	507	0000-00-00	384	Yes
+Index_Cleanup_UN_Glycosylase_Rxn	3	Active	AMPure Bead Cleanup PCR Indexing Reactions on Biomek FX	508	0000-00-00	384	Yes
+Custom Probe Construction	144	Active		509	0000-00-00	384	Yes
+miRNA3_ppgp	144	Active	The Barracuda is used for size selection of samples 	510	0000-00-00	384	Yes
+SLX 96well WTSS Single Dir	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	511	0000-00-00	384	Yes
+SOLiD 96well WTSS Single Dir	233	Inactive	SLX miRNA protocol using the alternative v1.5 Protocol	512	0000-00-00	384	Yes
+SLX 96well WTSS Bi-Directional	233	Inactive	SLX miRNA protocol using the alternative v1.5 Protocol	513	0000-00-00	384	Yes
+SOLiD 96 End Repair	3	Active	End Repair Sheared or PCR amplified DNA	515	0000-00-00	384	Yes
+SOLiD 96 Add A-Base To ER DNA	3	Active	Combine 40uL End Repaired-Phosphorylated DNA and 10uL dATP-Klenow exo- Brew Mix using Biomek FX-2. Incubate plates 15min at RT. Store plates at 4C or -20C. Scan RAC barcode	516	0000-00-00	384	Yes
+SOLiD 96 Adapter Ligation	3	Active	Ligate Index Adapters to DNA	517	0000-00-00	384	Yes
+SOLiD 96 PCR	3	Active	Phusion PCR Index DNA. 2 PE primers in PCR premix. Index primers added separately.	518	0000-00-00	384	Yes
+SOLiD 96 Cleanup ER	3	Active	Index Library Bead Cleanup End Repaired DNA	519	0000-00-00	384	Yes
+SOLiD 96 Cleanup A-Base	3	Active	Bead cleanup DNA after A-Base addition	520	0000-00-00	384	Yes
+SOLiD 96 Cleanup Adapter Lig	3	Active	Biomek FX AMPure Bead Cleanup Index Adapter Ligations	521	0000-00-00	384	Yes
+SOLiD 96 Cleanup PCR Rxn	3	Active	AMPure Bead Cleanup PCR Indexing Reactions on Biomek FX	522	0000-00-00	384	Yes
+SOLiD 96 QC Agilent PCR	3	Active	QC by Agilent and QBit the bead cleaned PCR Indexed DNA	523	0000-00-00	384	Yes
+SOLiD 96 QC Caliper PCR	3	Active	QC by Agilent and QBit the bead cleaned PCR Indexed DNA	524	0000-00-00	384	Yes
+SOLiD 96 Size Select DNA	3	Active	Acrylamide gel size select Pooled Indexed DNA	525	0000-00-00	384	Yes
+SOLiD 96 QC Gel Purified DNA	3	Active	Agilent and QBit QC gel purified Pooled Indexed DNA	526	0000-00-00	384	Yes
+SOLiD 96 QC Qubit Final Product	3	Inactive	Qbit quantify final 5uM diluted product. Write actual conc. on tube.	527	0000-00-00	384	Yes
+Rxns_BD384_1/48_5ulrxn_3ulDNA	3	Active		529	0000-00-00	384	Yes
+Index_QC_Starting_Material	3	Active	Plate must pass QC before entering any pipeline. Select Caliper GX or Agilent 2100 Bioanalyzer or Victor 3V Picogreen quant assay from menu.	530	\N	384	Yes
+PET PPGP Dilution	144	Active		531	0000-00-00	384	Yes
+PET PPGP	144	Active		532	0000-00-00	384	Yes
+PET PCR	144	Active		533	0000-00-00	384	Yes
+EXC Post Capture PPGP Dilution	144	Active		534	0000-00-00	384	Yes
+EXC Post Capture PPGP	144	Active		535	0000-00-00	384	Yes
+EXC Post Capture PCR	144	Active		536	0000-00-00	384	Yes
+EXC Pre Capture PCR	144	Inactive		537	0000-00-00	384	Yes
+PET Pre PCR	144	Active		538	0000-00-00	384	Yes
+EXC	144	Active		539	0000-00-00	384	Yes
+SOLID Bead Enrichment	181	Active		540	\N	384	Yes
+SOLiD 96 WGSS	3	Inactive	Create 96-well Whole Genome Shotgun Libraries for SOLiD sequencing	541	2011-03-03	384	Yes
+Whole Genome Amplification	114	Active		542	\N	384	Yes
+Offsite_Illumina_Concentration_Checked	117	Active	to check the 10nM dilution before submitting the sample for sequencing	543	0000-00-00	384	Yes
+SLX 96well WTSS Bi-Dir	233	Active	SLX miRNA protocol using the alternative v1.5 Protocol	544	0000-00-00	384	Yes
+AllPrep RNA and DNA Extraction	191	Active		545	0000-00-00	384	Yes
+mirVana	191	Active		546	0000-00-00	384	Yes
+SLX 96well miRNA make cDNA	233	Inactive	SLX miRNA protocol using the alternative v1.5 Protocol	547	0000-00-00	384	Yes
+SLX SMART cDNA synthesis	144	Active		548	0000-00-00	384	Yes
+DNA QC	233	Active		549	\N	384	Yes
+Accuscript 1st strand cDNA synthesis	233	Active	1st strand cDNA synthesis using Accuscript	550	\N	384	Yes
+Start of Plate Library Construction	233	Active		551	\N	384	Yes
+IonTorrent Library construction	164	Active		552	0000-00-00	384	Yes
+IonTorrent ePCR	164	Active		553	0000-00-00	384	Yes
+IonTorrent concentration check	181	Active		554	0000-00-00	384	Yes
+96Well_SizeSelect_with_XPBeads	3	Active	AMPure Bead Cleanup Covaris Sonicated DNA prior to End Repair 	555	0000-00-00	384	Yes
+96Well_large gap_HS_Agilent_QC	3	Active		556	0000-00-00	384	Yes
+Clone -glycerol stock	164	Active	To track glycerol stock tube	557	\N	384	Yes
+Clone -miniprep	164	Active		558	\N	384	Yes
+Clone -midiprep	164	Active		559	\N	384	Yes
+Illumina Amp to primer hyb draft 2	164	Inactive	This protocol will track the steps involved in the hybridization and amplification of template in the flowcell for cluster generation.	560	0000-00-00	384	Yes
+Illumina HiSeq Loading	161	Active	Protocol for scanning sequencing kit(s), multiplex box and multiplex primer	561	\N	384	Yes
+Illumina Paired End Read	161	Active	Protocol for tracking paired end read reagents	562	\N	384	Yes
+Index_QC_PCR	3	Active	QC by Agilent and QBit the bead cleaned PCR Indexed DNA	563	0000-00-00	384	Yes
+ON Test	137	Active		564	0000-00-00	384	Yes

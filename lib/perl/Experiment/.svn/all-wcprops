@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment
+END
+Illumina_SBS
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment/Illumina_SBS
+END
+Ion_Torrent
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment/Ion_Torrent
+END
+CLIPR
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment/CLIPR
+END
+Illumina
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment/Illumina
+END
+SOLID
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Experiment/SOLID
+END

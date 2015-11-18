@@ -1,0 +1,90 @@
+#################### Continuously Running ##########################:w
+
+# ensure library_list file is up to date
+*/10 * * * * /opt/alDente/versions/production/bin/update_library_list.pl > /opt/alDente/www/dynamic/logs/update_library_list.log
+
+# Backup all tables except Clone_Sequence to ~sequence
+*/10 6-18 * * * /opt/alDente/versions/production/bin/backup_DB.pl -D sequence -X Clone_Sequence > /opt/alDente/www/dynamic/logs/small_backup.log
+
+# regular checking for mirrored files or requested analysis
+*/5 * * * * /opt/alDente/versions/production/bin/update_sequence.pl -a >> /opt/alDente/www/dynamic/logs/update_sequence.log
+
+# regular synchronization of production source code
+*/10 8-19 * * 1-5 echo '' >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log; rsync -avz
+--exclude="system.conf" /opt/alDente/versions/production/ /home/sequence/alDente/WebVersions/Production/ >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log
+
+*/1 * * * * echo '' > /opt/alDente/www/dynamic/logs/seqdb01.cron
+
+
+################## Running Daily ###################################
+
+47 18 * * * /opt/alDente/versions/production/bin/usage.pl
+
+#02 23 * * * /home/sequence/alDente/bin/Notification.pl > /home/sequence/alDente/logs/Notification.log
+
+# Backup everything at the end of the day...
+01 23 * * * /opt/alDente/versions/production/bin/backup_DB.pl -D sequence -X Clone_Sequence -t 23:00 >> /opt/alDente/www/dynamic/logs/BIG_backup.log
+17 23 * * * /opt/alDente/versions/production/bin/backup_DB.pl -D sequence -T Clone_Sequence -t 23:00 >> /opt/alDente/www/dynamic/logs/BIG_backup.log
+
+####8 pm #########
+##Run data integrity checks
+01 20 */7 * * /opt/alDente/versions/production/cgi-bin/DBIntegrity.pl -d sequence -u achan -p tothemoon -t all -n achan@bcgsc.bc.ca,rguin@bcgsc.bc.ca -l /opt/alDente/www/dynamic/logs/DBIntegrity_fk.log
+
+31 20 * * * /opt/alDente/versions/production/cgi-bin/DBIntegrity.pl -d sequence -u achan -p tothemoon -e all -n achan@bcgsc.bc.ca,rguin@bcgsc.bc.ca -l /opt/alDente/www/dynamic/logs/DBIntegrity_err.log
+
+####9 pm ##########
+## After latest updates check_run_links status...
+17 21 * * * /opt/alDente/versions/production/bin/check_run_links.pl -f -s -F > /opt/alDente/www/dynamic/logs/check_run_links.log
+
+##### MIDNIGHT #####
+
+# ensure vector file includes all vector sequences
+12 0 * * * /opt/alDente/versions/production/bin/cat_vectors.pl > /opt/alDente/www/dynamic/logs/cat_vectors.log
+
+##### 1 am #####
+
+# cleanup command specifically for web server based files
+13 1 * * * /opt/alDente/versions/production/bin/cleanup_web.pl -S 6 > /opt/alDente/www/dynamic/logs/cleanup_web.log
+
+##### 2 am #####
+
+# This file compresses and cleans up Temp files and Dump directories
+03 2 * * * /opt/alDente/versions/production/bin/cleanup.pl -S 5 -P 1 -b -m > /opt/alDente/www/dynamic/logs/cleanup.log
+
+17 2 * * * /opt/alDente/versions/production/bin/update_sequence.pl -A all > /opt/alDente/www/dynamic/logs/update_sequence.log
+
+##### 3 am #####
+
+## Set up backup database...
+
+25 03 * * * /opt/alDente/versions/production/bin/restore_DB.pl -D seqtest -f sequence -F -X Clone_Sequence -u achan -p tothemoon > /opt/alDente/www/dynamic/logs/restore_DB.test.log
+45 03 * * * /opt/alDente/versions/production/bin/restore_DB.pl -D seqlast -f sequence -F -u achan -p tothemoon > /opt/alDente/www/dynamic/logs/restore_DB.last.log
+
+#### 4 am ####
+
+# Send Email notification for out of stock supplies etc (Stock, Expiry, Integrity) - daily
+56 4 * * * /opt/alDente/versions/production/bin/Notification.pl -S -E -I > /opt/alDente/www/dynamic/logs/Notification.log
+
+#### 5 am ####
+
+#
+# 5am+ add requests to automatically mirror sequencers every night. (5 minute intervals)
+#
+41 5 * * * echo '' > /home/sequence/mirror/request.mbace.3.data2
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.1.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.2.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.3.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.4.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.5.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3700.6.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3730.1.data1
+41 5 * * * echo '' > /home/sequence/mirror/request.3730.2.data1
+
+41 5 * * * /opt/alDente/versions/production/bin/update_Stats.pl -A -Q > /opt/alDente/www/dynamic/logs/update_Stats.log
+
+#### 7 am ####
+# Check the logs from the cron jobs.
+01 7 * * * /opt/alDente/versions/production/bin/check_logs.pl -f cron -x '0 failed' -m -1d -n achan@bcgsc.ca,rguin@bcgsc.ca > /opt/alDente/www/dynamic/logs/check_logs.log
+
+# Overwrites/cleans up the code synchronization log.
+30 7 * * 1-5 echo '' > /opt/alDente/www/dynamic/logs/code_sync.log

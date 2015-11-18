@@ -1,0 +1,613 @@
+#!/usr/local/bin/perl56 
+
+################################################################
+# $Id: copytont,v 1.4 2003/02/04 23:09:30 rguin Exp $
+################################################################
+#
+# CVS Revision: $Revision: 1.4 $ 
+# Commit date:  $Date: 2003/02/04 23:09:30 $
+#         Tag:  $Name:  $
+#      Author:  $Author: rguin $
+#  (revisions made my rguin)
+#
+# Script to copy files to NT systems from the network.
+#
+################################################################
+
+use Cwd;
+use Data::Dumper;
+use File::Copy;
+use Digest::SHA1 qw(sha1_base64);
+use strict;
+use POSIX qw(strftime);
+use Getopt::Long;
+
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+
+use RGTools::RGIO;
+
+my $VERSION = q{ $Revision: 1.4 $ };
+my $CVSTAG = q{ $Name:  $ };
+if($VERSION =~ /\$.*:\s*(.*?)\s*\$/) {
+  $VERSION=$1;
+}
+if($CVSTAG =~ /\$.*:\s*(.*?)\s*\$/) {
+  $CVSTAG=$1;
+}
+
+my $REQUESTPREFIX ="request";
+my $LOCKFILEPREFIX="smblock.";
+
+my %FILETYPES = ('samplesheet'=>["plt","psd"]);
+my $FILETYPEDEF = "samplesheet";
+
+################################################################
+# Copies a files from the network to one of the NT boxes
+#
+# Requires:
+#
+#  nthostname   | host name of the PC
+#  ntsharename  | NT share name to mount (e.g. data1)
+#  ntdirname    | directory to put the file in (e.g. my/directory)
+#  ntfilename   | filename to copy to (e.g. myfile.txt)
+#  networkfile  | filename to copy from (e.g. somefile.txt)
+
+my ($nthostname,$ntsharename,$ntdirname,$ntfilename,$networkfile,$autodir);
+my $debug=1;
+my $overwrite=0;
+my $filetype = $FILETYPEDEF;
+my $trial=0;
+my $remove=0;
+my $move=1;
+&GetOptions("host=s"=>\$nthostname,
+	    "share=s"=>\$ntsharename,
+	    "dir=s"=>\$ntdirname,	
+	    "autodir=s"=>\$autodir,
+	    "debug=i"=>\$debug,
+	    "filetype=s"=>\$filetype,
+	    "remove=i"=>\$remove,
+	    "move=i"=>\$move,
+	    "trial=i"=>\$trial,
+	    "overwrite=i"=>\$overwrite,
+	    "networkfile=s"=>\$networkfile,
+	    "ntfile=s"=>\$ntfilename) || usage();
+
+print "Processing Requests...by $user ($debug,$overwrite)". &date_time() . "\n****************************************************\n";
+
+my $user = $ENV{USER} || $ENV{LOGNAME} ;
+if($user ne "sequence") {
+  print "\n";
+  print "ERROR: This script must be executed by the sequence user. Your user now is [$user].\n\n";
+  exit 1;
+}
+
+my $requests;
+
+if(! defined $autodir) {
+  if(! defined $nthostname || ! defined $ntsharename || ! defined $ntdirname || ! defined $ntfilename) {
+    usage();
+    exit 1;
+  }
+} else {
+  if(! -d $autodir) {
+    print "\n";
+    print "ERROR: The request directory $autodir does not exist.\n\n";
+    exit 1;
+  } else {
+    # Slurp all the pending requests.
+    if(opendir (AUTODIR,$autodir)) {
+      my $file;
+      my $fileidx=0;
+      while($file=readdir (AUTODIR)) {
+	if($file=~/^$REQUESTPREFIX.[\d]+$/) {
+	  $requests->[$fileidx]->{'requestfile'} = "$autodir/$file";
+	  open(REQUEST,"$autodir/$file") || do {
+	    print "\n";
+	    print "Could not open the request file $autodir/$file.\n\n";
+	    next;
+	  };
+	  while(<REQUEST>) {
+	    chop;
+	    my ($var,$value);
+	    if($_ =~ /^(.*?)\s+(.*)$/) {
+	      $var=$1;
+	      $value=$2;
+	    }
+	    $value =~ s/\/$//g;
+	    if(defined $var && defined $value) {
+	      $requests->[$fileidx]->{$var} = $value;
+	    }
+	  }
+	  close(REQUEST);
+	  $fileidx++;
+	}
+      }
+      close(AUTODIR);
+    } else {
+      print "\n";
+      print "ERROR: Could not read the request directory $autodir.\n\n";
+      exit 1;
+    }
+  }
+}
+################################################################
+# single request - populate the request variables. in this
+# case request points to an array with one element
+if(! defined $autodir) {
+  $requests->[0]->{'nthostname'} = $nthostname;
+  $requests->[0]->{'ntsharename'} = $ntsharename;
+  $requests->[0]->{'ntdirname'} = $ntdirname;
+  $requests->[0]->{'ntfilename'} = $ntfilename;
+  $requests->[0]->{'networkfile'} = $networkfile;
+} else {
+################################################################
+# batch request
+  # nothing to do here. the request loop is below
+}
+
+################################################################
+# at this point $requests points to arrays filled with all 
+# requests to copy files
+my $request;
+foreach $request (@{$requests}) {
+  print Dumper($request);
+  $request->{error} = "OK";
+  # Validate the request
+  if(! Verify($request)) {
+    Debug("Your request is not complete or malformed.");
+    Debug("Possible causes: ");
+    Debug(" - some variables not set");
+    Debug(" - file to copy has wrong extension");
+    Debug(" - network file does not exist");
+    Debug(Dumper($request));
+    MoveRequestFile($request,"error");
+    $request->{error} = "Malformed";
+    goto NEXT;
+  }
+  # preprocessing: lower case on host and share names
+  # Find the mount point for this request
+#  if(! GetMountPoint($request)) {
+#    Debug("Could not find the share $request->{ntsharename} in /etc/fstab.");
+#    $request->{error} = "Share not found";    
+#    MoveRequestFile($request,"error");
+#    goto NEXT;
+#  } else {
+#    Debug("Mount point for share //$request->{nthostname}/$request->{ntsharename} located at $request->{mntdir}.");
+#  }
+#  # Mount the request's share
+#  if(! MountShare($request)) {
+#    Debug("Could not mount the share $request->{ntsharename}.");
+#    $request->{error} = "Mount problem";
+#    goto NEXT;
+#  } else {
+#    Debug("Share //$request->{nthostname}/$request->{ntsharename} mounted on $request->{mntdir}");
+#  }
+#  # Lock the request's share so that it can't be unmounted by another
+#  # process (all processes must respect $LOCKFILEPREFIX* files)!!!
+#  if(! LockShare($request)) {
+#    # Could not create the lock file. Unmount and move on
+#    Debug("Could not create the lockfile $request->{lockfile} in the share $request->{ntsharename} mounted at $request->{mntdir}.");
+#    $request->{error} = "Lockfile creation problem";
+#    UnmountShare($request);
+#    goto NEXT;
+#  } else {
+#    Debug("Share //$request->{nthostname}/$request->{ntsharename} locked with $request->{lockfile}.");
+#  }
+  if(! CopyFile($request)) {
+    Debug("ERROR: Cannot copy the file $request->{networkfile} to $request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}. Do you have permission to write to this directory? Or possibly the file already exists and you did not use the -overwrite=1 flag?");
+    $request->{error} = "Copy problem";
+    MoveRequestFile($request,"error");
+    goto UNLOCKUNMOUNT;
+  } else {
+    Debug("File $request->{networkfile} copied to $request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}.");
+  }
+  # Move the request file, if required
+  if($move && ! $remove) {
+    if(! $trial) {
+      MoveRequestFile($request,"done");
+      Debug("Request file $request->{requestfile} moved.");
+    } else {
+      Debug("*** Trial mode. Requested move of request file $request->{requestfile} will not be honoured.");
+    }
+  }
+  # Remove the request file. The value of the $move flag does not matter if $remove is set
+  if($remove) {
+    if(defined $request->{requestfile}) {
+      if(! $trial) {
+	unlink($request->{requestfile}) || do {
+	  Debug("Could not delete the request file $request->{requestfile}.");
+	  $request->{error} = "Request delete problem";
+	}
+      } else {
+	Debug("*** Trial mode. Requested request file $request->{requestfile} deletion will not be honoured.");
+      }
+    } else {
+      Debug("This request has no associated request file to remove.");
+    }
+  } else {
+    if(defined $request->{requestfile}) {
+      Debug("Request file $request->{requestfile} will not be removed.");
+    }
+  }
+ UNLOCKUNMOUNT:
+#  if(! UnlockShare($request)) {
+#    Debug("Share $request->{ntsharename} cannot be unlocked!!!");
+#    $request->{error} = "Share unlockable";
+#  } else {
+#    Debug("Share //$request->{nthostname}/$request->{ntsharename} unlocked.");
+#  }
+#  if(! UnmountShare($request)) {
+#    # Could not umount the share. It is locked by another
+#    # process
+#    $request->{error} = "Unmount problem. Locked? Busy?";
+#    goto NEXT;
+#  } else {
+#    Debug("Share //$request->{nthostname}/$request->{ntsharename} unmounted from $request->{mntdir}.");
+#  }
+ NEXT:
+  my $date = strftime "%Y%m%d %H%M%S",localtime;
+  my $prefix = "$date $VERSION $CVSTAG 000";
+  if($request->{error} ne "OK") {
+    $prefix = "$date ###";
+  }
+  print "$prefix $request->{networkfile} -> $request->{mntdir}/$request->{ntdirname}/$request->{ntfilename} $request->{error}\n";
+  print "$request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}\n";
+  print "$request->{error}\n";
+  print "$request->{networkfile}\n";
+  print "$request->{error}\n";
+  Debug("");
+}
+exit; 
+
+################################################################
+# Complete the request by moving the request file to a 
+# 'done' request file (add a .done extension)
+
+sub MoveRequestFile {
+  my $request   = shift;
+  my $extension = shift || "done";
+  copy("$request->{requestfile}","$request->{requestfile}.$extension");
+  if ($extension eq 'error') { print "** Error detected **\n"; }
+  unlink("$request->{requestfile}");
+}
+
+################################################################
+# Get the share mount directory from fstab
+# verify that this share exists, too!
+
+sub GetMountPoint {
+  my $request = shift;
+  open(FSTAB,"/etc/fstab");
+  my $mntdir;
+  my $found=0;
+  while(<FSTAB>) {
+    if(m|//$request->{'nthostname'}/$request->{'ntsharename'}|) {
+      my @line = split(/\s+/,$_);
+      $mntdir = $line[1];
+      $found=1;
+      last;
+    }
+  }
+  close(FSTAB);
+  if(! $found) {
+      Debug("/$request->{'nthostname'}/$request->{'ntsharename'} NOT found in /etc/fstab.\n");
+      return 0;
+  }
+  $request->{mntdir} = $mntdir;
+  Debug("Mount Point Retrieved ($mntdir).\n");
+  return 1;
+}
+################################################################
+
+################################################################
+# unlock the share
+sub UnlockShare {
+  my $request = shift;
+  # first, unlink the lock file for this request
+  unlink("$request->{mntdir}/$request->{lockfile}") || do {
+    return 0;
+  };
+  return 1;
+}
+# 
+################################################################
+
+################################################################
+# Locks the share so that it cannot be unmounted by another
+# process!
+sub LockShare {
+  my $request = shift;
+  # Generate a random base64 digest. This is based on 
+  # three random numbers. The possibility of duplication is 1 in 1e18.
+  # If 100 requests are written every second, it will take 3 billion years
+  # to get a lock of the same name (i.e. good enough)
+  my $lockid = GetLockID();
+  $request->{lockfile} = "$LOCKFILEPREFIX$lockid";
+  # Now write the lock file.
+  open(LOCKFILE,">$request->{mntdir}/$request->{lockfile}") ||
+      do {
+	  Debug(" ** $user Failed to create: $request->{mntdir}/$request->{lockfile}\n");
+	  return 0;
+      };
+  print LOCKFILE Dumper($request);
+  close(LOCKFILE);
+  return 1;
+}
+
+################################################################
+# mount the share
+# or quit if not possible
+sub MountShare {
+  my $request = shift;
+  my $mountedok=0;
+  # Check if the share is already mounted
+  open(MTAB,"/etc/mtab");
+  while(<MTAB>) {
+    if(m|//$request->{nthostname}/$request->{ntsharename}|) {
+      $mountedok=1;
+      last;
+    }
+  }
+  close (MTAB);
+  if(! $mountedok) {
+    # If the share is not yet mounted, try to mount it and check
+    # if it was successfully mounted
+    Mount("//$request->{nthostname}/$request->{ntsharename}");
+    open(MTAB,"/etc/mtab");
+    $mountedok=0;
+    while(<MTAB>) {
+      if(m|//$request->{nthostname}/$request->{ntsharename}|) {
+	$mountedok=1;
+	last;
+      }
+    }
+    close(MTAB);
+  } else {
+    Debug("Share $request->{ntsharename} already mounted.");
+  }
+  if(! $mountedok) {
+    return 0;
+  }
+  return 1;
+}
+################################################################
+
+################################################################
+# check whether the nt directory exists
+# or unmount and quit if not possible
+sub CheckNTDir {
+  my $request = shift;
+  if(! -d "$request->{mntdir}/$request->{ntdirname}") {
+    print "\n";
+    print "ERROR: Cannot change to directory $request->{mntdir}/$request->{ntdirname}.\n";
+    print "This happened because the specified NT directory does not exist on the mounted system.\n\n";
+    Unmount("//$request->{nthostname}/$request->{ntsharename}");
+    return 0;
+  }
+  return 1;
+}
+
+################################################################
+
+################################################################
+# copy the file
+sub CopyFile {
+  my $request = shift;
+  my $target  = "$request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}";
+  # If the file exists and we can't overwrite, don't do it!
+  if(! $overwrite && -e $target) {
+      print "No overwrite permission\n";
+      return 0;
+  }
+  if(! $trial) {
+      print "No trial\n";
+      copy($request->{networkfile},"$request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}") || do {
+	  print "cannot copy $request->{networkfile} to $request->{mntdir}/$request->{ntdirname}/$request->{ntfilename}";
+	  return 0;
+      };
+  } else {
+    Debug("*** Trial mode. File will not be copied.");
+  }
+  return 1;
+}
+
+################################################################
+
+################################################################
+# unmount the share
+sub UnmountShare {
+  my $request = shift;
+  # check for any other lock files that are owned
+  # by other request. By this time, this request's lock file
+  # has been removed.
+  my $locked=0;
+  if(opendir (MNTDIR,$request->{mntdir})) {
+    my $file;
+    while($file=readdir (MNTDIR)) {
+      if($file =~ /$LOCKFILEPREFIX/) {
+	# There is a lock file in here. We cannot unmount.
+	$locked=1;
+	last;
+      }
+    }
+  }
+  closedir (MNTDIR);
+  if(! $locked) {
+    # Try to mount it and check if it got unmounted
+    Unmount("//$request->{nthostname}/$request->{ntsharename}");
+    my $mountedok=0;
+    open(MTAB,"/etc/mtab");
+    while(<MTAB>) {
+      if(m|//$request->{nthostname}/$request->{ntsharename}|) {
+	$mountedok=1;
+	last;
+      }
+    }
+    close (MTAB);
+    if($mountedok) {
+      Debug("Share //$request->{nthostname}/$request->{ntsharename} could not be unmounted. File system busy?");
+      return 0;
+    }
+    return 1;
+  } else {
+    Debug("Could not unmount the share $request->{ntsharename}. It is locked by another process.");
+    return 0;
+  }
+}
+################################################################
+
+################################################################
+# verify and sanitize the request
+#
+# 1. all variables must be set
+# 2. files to be copied must have the right extension
+# 3. capitalization in hostname and sharename is removed
+#    
+sub Verify {
+  my $request = shift;
+  my $error = '';
+  # required fields:
+  # nthostname
+  # ntsharename
+  # ntdirname
+  # ntfilename
+  if(! defined $request->{nthostname}) { $error .= "Host."; }
+  if(! defined $request->{ntsharename}) { $error .= "Sharename."; }
+  if(! defined $request->{ntdirname}) { $error .= "NTdir."; }
+  if(! defined $request->{ntfilename}) { $error .= "NTfile."; }
+  if(! defined $request->{networkfile}) { $error .= "networkFile."; }
+  # check that the file is of the right file type
+  my $filetype_idx;
+  my $filetypefound=0;
+  my $filetypeext_ok=0;
+  foreach $filetype_idx (keys %FILETYPES) {
+    if($filetype eq $filetype_idx) {
+      $filetypefound=1;
+      # Verify the NT file extension
+      my $extension = $request->{ntfilename};
+      $extension =~ s/.*\.(.*)/$1/;
+      my $filetypeext;
+      foreach $filetypeext (@{$FILETYPES{$filetype}}) {
+	if($filetypeext eq $extension) {
+	  $filetypeext_ok+=1;
+	  last;
+	}
+      }
+      # Verify the network file extension
+      $extension = $request->{networkfile};
+      $extension =~ s/.*\.(.*)/$1/;
+      foreach $filetypeext (@{$FILETYPES{$filetype}}) {
+	if($filetypeext eq $extension) {
+	  $filetypeext_ok+=1;
+	  last;
+	}
+      }
+      last;
+    }
+  }
+  # Verify that the network file exists
+  if(! -e $request->{networkfile}) {
+    $request->{error} = "Network file not found.";
+    $error .= "No Network file.";
+  }
+  if(! ($filetypeext_ok==2)) {
+    $error .= "filetype_ext.";
+  }
+  $request->{nthostname} =~ tr/A-Z/a-z/;  
+  $request->{ntsharename} =~ tr/A-Z/a-z/;
+  if($error) {
+      print "\nErrors: \n$error.\n";
+      Debug("** Errors **:\n $error.");
+      return 0;
+  }
+  Debug("Verified.");
+  return 1;
+}
+################################################################
+
+################################################################
+# usage directions
+sub usage {
+
+my $usage = <<"END";
+
+ERROR: You did not specify all the parameters. 
+
+You can use this script in two modes: to copy files one at a time by specifying
+the source and target file attributes or to copy files in batches by specifying
+a directory containing request files which specify the file attributes. The 
+two modes of usage are exclusive, but can take some common parameters. 
+Processed request files can be removed if the -remove flag is passed.
+
+e.g. copytont [options]
+
+where [options] is a list of one or more parameters passed on the format
+
+     copytont -param1=value1 -param2=value2 ... -paramN=valueN
+
+SINGLE COPY parameters:
+ 
+  -host         the NT host to which the file is copied to (single copy)
+  -share        the NT share on which to put the file (single copy)
+  -dir          the NT directory in which to put the file (single copy)
+  -ntfilename   the target filename on the NT system (single copy)
+                  ***do not specify the full patch for ntfilename***
+  -networkfile  the source file on the linux network (single copy)
+                  ***specify the full patch for networkfile***
+
+BATCH COPY parameters:
+
+  -autodir      the directory holding request files (batch copy)
+                  The files are expected to be named request.X for some
+                  integer values X. Each file contains the single copy parameters
+		  and their values separated by a space, each on a separate line.
+  -remove=1|0   remove the request files after a successful copy (default=0)
+  -move=1|0     move the request file to a new name (+ .done) (default=1)
+  
+GLOBAL parameters:
+
+  -filetype     register the files to be copied to be of a certain type. Currently
+                only -filetype=samplesheet is supported. These files must have
+                either a .plt or .pld extension (both source and target files)
+
+  -trial=1|0      process but do not actually copy or remove request files
+                   (default 0)
+  -debug=1|0      print debugging information (default 0)
+  -overwrite=1|0  allow files to be overwritten on the target system (default 0)  
+END
+    print $usage;
+}
+################################################################
+
+### Mounting should now be done statically, so should not need mounting... 
+	    
+sub Mount {
+  my $fs = shift;
+  my $command = "sudo mount $fs";
+  system($command);
+}
+sub Unmount {
+  my $fs = shift;
+#
+# (do NOT unmount... leave mounted statically on plebe)... 
+#
+#  my $command = "sudo umount $fs";
+#  system($command);
+}
+sub GetLockID {
+  my $lockid  = sha1_base64(int(rand(1000000)+1)).
+                sha1_base64(int(rand(1000000)+1)).
+	        sha1_base64(int(rand(1000000)+1));
+  $lockid = sha1_base64($lockid);  
+  # get rid of characters that are not allowed in filenames
+  $lockid =~ s/\//Q/g;
+  $lockid =~ s/\+/R/g;
+  return $lockid;
+}
+sub Debug {
+  my $text = shift;
+  if($debug) {
+    print "   ",$text,"\n";
+  }
+}

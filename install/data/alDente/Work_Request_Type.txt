@@ -1,0 +1,4 @@
+Work_Request_Type_ID	Work_Request_Type_Name	Work_Request_Type_Description	Work_Request_Type_Status	FK_Grp__ID	Work_Request_Label
+1	Default Work Request	NULL	Active	0	NULL
+2	Custom Type	NULL	Active	0	NULL
+3	External		Active	0	

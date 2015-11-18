@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/82505/alDente/trunk/custom/Healthbank/install/patches/3.13
+END
+add_FK_Taxonomy__ID.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/82505/alDente/trunk/custom/Healthbank/install/patches/3.13/add_FK_Taxonomy__ID.pat
+END
+add_Taxonomy_plugin.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/82504/alDente/trunk/custom/Healthbank/install/patches/3.13/add_Taxonomy_plugin.pat
+END

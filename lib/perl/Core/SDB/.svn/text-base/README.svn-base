@@ -1,0 +1,6 @@
+This directory contains modules specific to SQL database handling.
+
+While developed for the alDente LIMS, these modules should not be dependant upon any structure specific to alDente.
+
+There are some formatting standards which should be followed for some of these routines to be utilized.
+These may be found in the alDente documentation or in the module descriptions themselves.

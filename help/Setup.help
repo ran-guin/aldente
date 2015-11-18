@@ -1,0 +1,43 @@
+<h2>Setting up & Installing the System</H2>
+
+<h3>Preliminary Requirements</h3>
+<UL>
+<LI>MySQL
+</UL>
+<UL>
+<LI>Install software
+<LI>run database generation program (DB_initialize.pl)
+<LI>set up read only user, and update/edit capable user
+<LI>add usernames/passwords to login configuration file
+<LI>Optionally:
+<UL>
+<LI>Using different database name - change name of database in default file.
+</UL>
+</UL>
+
+<LI>Directory setup
+<UL>
+<LI>go to base directory on web server
+<LI>uncompress packaged *.tar.gz file
+<LI>set default base directory path in defaults file (web_home)
+<LI>Optionally:
+<UL>
+<LI>move Data directory (used for data storage) to another path if desired.
+<LI>If storing data at another path, set home_dir in defaults file.
+<LI>Move entire '/Data/' subdirectory onto new home_dir.
+</UL>
+
+<LI>Adjustments
+<P>
+Some startup data may need to be adjusted for specific users, and should be entered as fully as possible at the outset.  All of these tables may be easily updated in the future, but by populating them as fully at the outset as possible, ongoing data entry is made much easier.
+<UL>
+<LI>Populate Plate_Format Table as required.
+<LI>Populate Vector Table with vectors as available.
+<LI>Populate Employee Table as required.
+<LI>Populate Organization Table as required.
+<LI>Determine general naming convention for Library_Names and Chemistry_Codes.
+<P>These may be named as desired by individual users (as long as they conform to formatting conventions), but confusion is often saved by establishing general conventions for naming of Libraries and chemistries ahead of time.
+<LI>Go through Initial Settings section of CustomSettings and SDB_Defaults files to ensure paths and defaults are correct.
+</UL>
+
+</UL>

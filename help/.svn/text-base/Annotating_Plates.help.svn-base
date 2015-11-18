@@ -1,0 +1,9 @@
+<H2>Adding comments or notes</h2>
+<p>
+Sometimes plates or sequence runs will be failed or annotated with a
+comment.  This can be done on a group of plates or sequence runs together by
+going to the same page used to delete entries for plates, or to the 'Check
+Runs Already Analyzed' for Sequence Runs which have already been analyzed.
+An option at the bottom of the page is available for annotating (or marking
+as failed), the Plates or Runs selected.
+<p>

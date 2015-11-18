@@ -1,0 +1,11 @@
+<h2>Preparation Summary</h2>
+<P>This summary allows lab administrators to monitor where plates are currently located in the pipleline.
+<P>Administrators can defined protocol steps which are to be tracked and monitor how many plates have completed each step.<P>
+<Img Src='$Help_Image_dir/Prep_Summary2.png'>
+<P>
+If a Prep_Summary request is made with no library specified, the system looks for all the plates created or 'prepped' in the last 5 days (or any other number of days specified by the user).  It then displays a summary of all of the Library plates of similar number and the status along the pipeline.  If any steps remain uncompleted, the last step completed is highlighted, and a link available to either the plates waiting at this step or the last preparation steps completed for these plates.
+<P>
+<Img Src='$Help_Image_dir/Recent_Plates.png'>
+<P>
+In both of the above cases, Administrators are also free to edit the steps which are to be tracked. (corresponding to the columns at the left in the above table).
+<Img Src='$Help_Image_dir/Edit_Tracking.png'>

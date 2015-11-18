@@ -1,0 +1,130 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>13.&nbsp;Internal System Testing</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="LIMS Help Pages"><link rel="up" href="ch20.html" title="Chapter&nbsp;20.&nbsp;Development"><link rel="prev" href="ch20s12.html" title="12.&nbsp;Development Reference Manual"><link rel="next" href="ch20s14.html" title="14.&nbsp;Web Services"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">13.&nbsp;Internal System Testing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch20s12.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;20.&nbsp;Development</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch20s14.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e16013"></a>13.&nbsp;Internal System Testing</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e16016"></a>13.1.&nbsp;API Testing</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e16019"></a>13.1.1.&nbsp;<span class="emphasis"><em>compareAPI.pl</em></span> and <span class="emphasis"><em>compareAPI_generic.pl</em></span></h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Introduction</p><p>The goal of these two scripts is to regularly compare the API outputs of the production release and the beta version of the code, given the same input. The user would be notified if there is any discrepancy. The scripts can basically compare the API outputs using any two versions of the LIMS API.</p><p>The menu for compareAPI.pl is shown below:</p><pre class="programlisting">&nbsp;&nbsp;1 Usage:  /opt/alDente/versions/echang/bin/compareAPI.pl -choice &lt;choice (0, 1, or 2)&gt;    (plus other options)
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; ===================================================
+&nbsp;&nbsp;&nbsp; Options for -choice = 0 (convert API log to test file):
+&nbsp;&nbsp;5 ===================================================
+&nbsp;&nbsp;&nbsp;   -input &lt;input API log file&gt;
+&nbsp;&nbsp;&nbsp;   -output &lt;output test file&gt;
+&nbsp;&nbsp;&nbsp;   -day &lt;check API log in the past ? days          (optional, default is 7)&gt;
+&nbsp;&nbsp;&nbsp;   -exclude_day &lt;exclude log in most recent ? days (optional, default is 0)&gt;
+&nbsp;10   -number &lt;max. number of test cases per log file (optional, default is 0)&gt;
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; e.g.    /home/echang/scripts/compareAPI.pl -input /home/echang/files/sample_API_log.txt -output /home/echang/files/sample_API_test_file.txt -choice 0 
+&nbsp;&nbsp;&nbsp; -day 10000 -number 10
+&nbsp;&nbsp;&nbsp; 
+&nbsp;15 ===================================================
+&nbsp;&nbsp;&nbsp; Options for -choice = 1 (run test file):
+&nbsp;&nbsp;&nbsp; ===================================================
+&nbsp;&nbsp;&nbsp;   -input &lt;input test file&gt;
+&nbsp;&nbsp;&nbsp;   -output &lt;output result file (omit extension)&gt;
+&nbsp;20   -libprod &lt;production library path&gt; (optional, default: /usr/local/ulib/prod/alDente/lib/perl/ (xhost) or /opt/alDente/versions/production/lib/perl/ (seqdb))
+&nbsp;&nbsp;&nbsp;   -libbeta &lt;beta library path&gt;       (optional, default: /usr/local/ulib/beta/alDente/lib/perl/ (xhost) or /opt/alDente/versions/beta/lib/perl/ (seqdb))
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;   ### API connection settings ###
+&nbsp;&nbsp;&nbsp; 
+&nbsp;25   -hostprod &lt;production DB host&gt;     (optional, default: lims-dbm)
+&nbsp;&nbsp;&nbsp;   -hostbeta &lt;beta DB host&gt;           (optional, default: lims-dbm)
+&nbsp;&nbsp;&nbsp;   -dbprod &lt;production DB&gt;            (optional, default: sequence)
+&nbsp;&nbsp;&nbsp;   -dbbeta &lt;beta DB&gt;                  (optional, default: seqdev)
+&nbsp;&nbsp;&nbsp;   -user &lt;LIMS user&gt;                  (optional, default: Guest) (*** password prompt ***)
+&nbsp;30   -debug &lt;0/1&gt;                       (optional, default: 0)
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; e.g.    /home/echang/scripts/compareAPI.pl -input /home/echang/files/API_test_scope.txt -output /home/echang/files/result -choice 1 
+&nbsp;&nbsp;&nbsp; -libbeta /opt/alDente/versions/echang/lib/perl/ -debug 1 -dbbeta sequence
+&nbsp;&nbsp;&nbsp; 
+&nbsp;35 ===================================================
+&nbsp;&nbsp;&nbsp; Options for -choice = 2 (automatic run):
+&nbsp;&nbsp;&nbsp; ===================================================
+&nbsp;&nbsp;&nbsp;   -temp &lt;temporary working directory&gt; (*** User must have writing permission. ***)
+&nbsp;&nbsp;&nbsp;   -report &lt;0/1&gt; switch to report Cron job result (optional, default: 0)
+&nbsp;40   -method &lt;method to be tested&gt;      (optional. comma-delimited)
+&nbsp;&nbsp;&nbsp;   -input &lt;input standard test case file&gt; (optional, default is /opt/alDente/versions/echang/bin/../conf/compareAPI_standard.txt)
+&nbsp;&nbsp;&nbsp;   -day &lt;check API log in the past ? days (optional, default is 7)&gt;
+&nbsp;&nbsp;&nbsp;   -exclude_day &lt;exclude log in most recent ? days (optional, default is 0)&gt;
+&nbsp;&nbsp;&nbsp;   -number &lt;max. number of test cases per log file (optional, default is 0)&gt;
+&nbsp;45   -libprod &lt;production library path&gt; (optional, default: /usr/local/ulib/prod/alDente/lib/perl/ (xhost) or /opt/alDente/versions/production/lib/perl/ (seqdb))
+&nbsp;&nbsp;&nbsp;   -libbeta &lt;beta library path&gt;       (optional, default: /usr/local/ulib/beta/alDente/lib/perl/ (xhost) or /opt/alDente/versions/beta/lib/perl/ (seqdb))
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;   ### API connection settings ###
+&nbsp;&nbsp;&nbsp; 
+&nbsp;50   -hostprod &lt;production DB host&gt;     (optional, default: lims-dbm)
+&nbsp;&nbsp;&nbsp;   -hostbeta &lt;beta DB host&gt;           (optional, default: lims-dbm)
+&nbsp;&nbsp;&nbsp;   -dbprod &lt;production DB&gt;            (optional, default: sequence)
+&nbsp;&nbsp;&nbsp;   -dbbeta &lt;beta DB&gt;                  (optional, default: seqdev)
+&nbsp;&nbsp;&nbsp;   -user &lt;LIMS user&gt;                  (optional, default: Guest) (*** password prompt if -report = 0***)
+&nbsp;55   -debug &lt;0/1&gt;                       (optional, default: 0)
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; e.g     /home/echang/scripts/compareAPI.pl -input /home/echang/files/standard.txt -temp /home/echang/tmp -choice 2 -day 1 -number 10 
+&nbsp;&nbsp;&nbsp; -method get_rearray_data,get_sage_data -libbeta /opt/alDente/versions/echuah/lib/perl/
+&nbsp;&nbsp;&nbsp; </pre></li><li style="list-style-type: circle"><p>Approach</p><p>There are four basic steps in compareAPI.pl: (1) parsing existing API logs and generate test cases, (2) running test cases on production code and beta code (or any two versions of the API) independently using compareAPI_generic.pl, (3) generating a report, and (4) generating unit test cases for LIMS unit testing (discussed in section 13.2).</p><div class="itemizedlist"><ul type="disc"><li><p>Parsing API logs and generating test cases</p><p>Every time a user calls an API method, the API call information is automatically appended to an API log. LIMS API logs are currently stored uner <code class="filename">/home/sequence/alDente/logs/alDente_API</code> and grouped by month and year. Within each month-year folder, there is a log for each user who has used the API. Within each file there are multiple logs for multiple API calls. Each call log usually has a consistent format. An example is provided here:</p><pre class="programlisting">&nbsp;&nbsp;1 2006-04-04 12:09:49
+&nbsp;&nbsp;&nbsp; User: jpang
+&nbsp;&nbsp;&nbsp; File: ./import_ugene.pl
+&nbsp;&nbsp;&nbsp; **************************
+&nbsp;&nbsp;5 ** Source **
+&nbsp;&nbsp;&nbsp; M =&gt; ./import_ugene.pl
+&nbsp;&nbsp;&nbsp; 0 =&gt; 'RGTools::RGIO::log_usage()' (245)
+&nbsp;&nbsp;&nbsp; 1 =&gt; 'alDente::alDente_API::api_output()' (2551)
+&nbsp;&nbsp;&nbsp; 2 =&gt; 'alDente::alDente_API::generate_data()' (2410)
+&nbsp;10 3 =&gt; 'alDente::alDente_API::get_library_data()' (1361)
+&nbsp;&nbsp;&nbsp; 4 =&gt; 'alDente::alDente_API::get_libraries()' (3442)
+&nbsp;&nbsp;&nbsp; 5 =&gt; 'alDente::alDente_API::get_plate_data()' (1702)
+&nbsp;&nbsp;&nbsp; 6 =&gt; 'Sequencing_API::get_Plate_data()' (2462)
+&nbsp;&nbsp;&nbsp; 7 =&gt; 'project_specific::MGC_Closure::popu_ugene::get_clonepicked()' (1436)
+&nbsp;15 8 =&gt; 'main::()' (288)
+&nbsp;&nbsp;&nbsp; ** Message **
+&nbsp;&nbsp;&nbsp; ** Summary **
+&nbsp;&nbsp;&nbsp; Login Name: mgcc_admin ()
+&nbsp;&nbsp;&nbsp; Size: ~17 bytes (1 records)
+&nbsp;20 *** Executed query in 0 second(s) ***
+&nbsp;&nbsp;&nbsp; Input:
+&nbsp;&nbsp;&nbsp; ************
+&nbsp;&nbsp;&nbsp; $VAR1 = {
+&nbsp;&nbsp;&nbsp;           '-project_id' =&gt; undef,
+&nbsp;25           '-quiet' =&gt; 1,
+&nbsp;&nbsp;&nbsp;           '-fields' =&gt; [
+&nbsp;&nbsp;&nbsp;                          'library'
+&nbsp;&nbsp;&nbsp;                        ],
+&nbsp;&nbsp;&nbsp;           '-library' =&gt; 'LarvA1',
+&nbsp;30           '-study_id' =&gt; undef
+&nbsp;&nbsp;&nbsp;         };
+&nbsp;&nbsp;&nbsp; Query:
+&nbsp;&nbsp;&nbsp; ************
+&nbsp;&nbsp;&nbsp; SELECT Library.Library_Name AS library FROM Library,Original_Source  WHERE Library.FK_Original_Source__ID=Original_Source_ID AND 1 AND Library.Library_Name IN ('LarvA1')
+&nbsp;35 DBH:
+&nbsp;&nbsp;&nbsp; </pre><p>The _parse_log() method in compareAPI.pl is a parser that read through each call log and extract the following information:</p><div class="itemizedlist"><ul type="circle"><li><p>user (e.g. jpang)</p></li><li><p>datetime (e.g. 2006-04-04 12:09:49)</p></li><li><p>calling module and method (e.g. Sequencing_API.pm module, get_Plate_data() method)</p></li><li><p>API input:</p><p>$VAR1 = { '-project_id' =&gt; undef, '-quiet' =&gt; 1, '-fields' =&gt; [ 'library' ], '-library' =&gt; 'LarvA1', '-study_id' =&gt; undef };</p><p>This is in Data::Dumper format and there is a parser in RGTools/RGIO.pm read_dumper() method that parses the Dumper output and convert it into the original object.</p></li></ul></div></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Running test cases</p><p>In order to prevent the used libraries for one version of the API from "contaminating" the libraries for another version of the API, it is necessary for compareAPI.pl to call a separate script, compareAPI_generic.pl. compareAPI.pl sends the library path of the API, database connection settings, and the test case (writtin into a test file) to compareAPI_generic.pl, and compareAPI_generic.pl loads the desired library and runs, reads the test file (_run() method in compareAPI_generic.pl), runs the API method (process_query() method in compareAPI_generic.pl), and prints the results (_print_output() method in compareAPI_generic.pl).</p><p>The printed result is captured by compareAPI.pl, which write the results for production and beta API calls sepaately into two text files (see _option_1() method in compareAPI.pl). Currently, to compare the difference between the production and beta result files, the script uses XML dif (xmldiff.pl and xmlpp.pl, which is used by xmldiff.pl). compareAPI.pl first has to convert the production and beta text files into XML files using XML::Dumper. Then, the two XML files are compared using xmldiff.pl. The result of the comparison is then written into an html file.</p></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Generating a report</p><p>After the result html file for each test API call is generated, compareAPI.pl creates a summary report shown below. There are currently six categories for each API test call: 'OK', 'Errors (all)' (errors occur in both versions of the API compared), 'Errors (production)' (error occurs in the production API), 'Errors (beta)' (error occurs in the beta API), 'Warnings' (this generally means there is a difference between production and beta API resutls), and 'No Data' (which means the API call generates no data, or there may be a MySQL error that causes the returned data to be undefined).</p><p>The API results are displayed in folders and subfolders, sorted by category, then module-method, and then individual test cases. By expanding a test case, the user can see the MySQL statements (if available), error (if available), user who made the API call, and the datetime the call was made. Clicking on the 'API log' shows the LIMS API log of the API called made by compareAPI_generic.pl, which is useful for determining the MySQL statements in some cases.</p><p>By clicking on the 'View Details' link, the user can see the complete XML diff result output. XML diff highlights any difference between the production output and beta output. Note that "production" refers to whatever version of the API that is used as the standard, and "beta" referes to the version of the API used to compare with the "production". They may not necessary be the production and beta API. The information not found in production is highlighted in green, and the information not found in beta is highlighted in red. If the production and beta outputs are exactly the same, then all the text would be shown in grey. Note that compareAPI_generic.pl prints the API input and API result using YAML Dump. The input and result can be read and converted back to objects for the purpose of generating LIMS unit test cases using YAML Load.</p><div class="figure"><a name="d0e16090"></a><p class="title"><b>Figure&nbsp;20.1.&nbsp;compareAPI.pl result output</b></p><div class="screenshot"><div class="mediaobject"><img src="resources/compareAPI_result.png" alt="compareAPI.pl result output"></div></div></div><div class="figure"><a name="d0e16099"></a><p class="title"><b>Figure&nbsp;20.2.&nbsp;compareAPI.pl result output, expanded</b></p><div class="screenshot"><div class="mediaobject"><img src="resources/compareAPI_result_expanded.png" alt="compareAPI.pl result output, expanded"></div></div></div><div class="figure"><a name="d0e16108"></a><p class="title"><b>Figure&nbsp;20.3.&nbsp;compareAPI.pl XML diff result file</b></p><div class="screenshot"><div class="mediaobject"><img src="resources/compareAPI_result_resultpage.png" alt="compareAPI.pl XML diff result file"></div></div></div></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Generating unit test cases for LIMS unit testing</p><p>For the purpose of generating LIMS unit testing cases, compareAPI.pl scans through each API call in the 'OK' category (no errors, output data is not null, production and beta outputs are identical). The existing unit test cases are stored under /home/sequence/alDente/logs/alDente_unit_test. Each test case consists of a method input (YAML Dump) and an expected output (YAML Dump), as shown by the example below. Everything between "***INPUT***" and "***OUTPUT***" is the YAML Dump for the input, and everything after "***OUTPUT" is the YAML Dump for the expected output. Note that the YAML Dump must end with a newline character.</p><p>Example from test case Sequencing_API-get_primer_data_2006-03-01-04-00-15_mgc.case:</p><pre class="programlisting">&nbsp;&nbsp;1 ***INPUT***
+&nbsp;&nbsp;&nbsp; ---
+&nbsp;&nbsp;&nbsp; -custom: 1
+&nbsp;&nbsp;&nbsp; -fields: solution_id
+&nbsp;&nbsp;5 -limit: 4
+&nbsp;&nbsp;&nbsp; -oligo: 1
+&nbsp;&nbsp;&nbsp; -primer: MGC_8783
+&nbsp;&nbsp;&nbsp; -quiet: 1
+&nbsp;&nbsp;&nbsp; ***OUTPUT***
+&nbsp;10 ---
+&nbsp;&nbsp;&nbsp; solution_id:
+&nbsp;&nbsp;&nbsp;   - 15822
+&nbsp;&nbsp;&nbsp;   - 44947
+&nbsp;&nbsp;&nbsp;   - 44947
+&nbsp;15   - 46818</pre><p>In order to generate new cases, compareAPI.pl converts the YAML Dump in the XML diff result file (everything between "------------ R E S U L T ----------" and "-------------------------------------") into an object using YAML Load. This object is compared with the object converted from each existing unit test case's input using a recursive data comparator method compare_data() in RGTools/RGIO.pm to ensure that this test case is not a duplicate. If the new test case is unique, a new unit test case is written.</p></li></ul></div></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e16129"></a>13.2.&nbsp;Unit Testing</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e16132"></a>13.2.1.&nbsp;<span class="emphasis"><em>API_unit_test.pl</em></span></h4></div></div></div><div class="itemizedlist"><ul type="opencircle"><li style="list-style-type: circle"><p>Introduction</p><p>The goal of this script is to regularly compare the LIMS method outputs with standards. The user would be notified if there is any discrepancy. The script is useful for testing API methods as well as non-API methods.</p><p>The script menu is shown below:</p><pre class="programlisting">&nbsp;&nbsp;1 *** Run this script as user aldente. ***
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; Usage:  /opt/alDente/versions/echang/bin/API_unit_test.pl
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;5   -help 1                                (optional, diplay help menu)
+&nbsp;&nbsp;&nbsp;   -temp &lt;temporary working directory&gt;    (optional, default: /tmp/API_unit_test) *** User must have write permission ***)
+&nbsp;&nbsp;&nbsp;   -report &lt;0/1&gt; report cron job          (optional, default: 0)
+&nbsp;&nbsp;&nbsp;   -method &lt;method to be tested&gt;          (optional. comma-delimited)
+&nbsp;&nbsp;&nbsp;   -number &lt;max. # test cases per method&gt; (optional, default is 100)
+&nbsp;10   -lib &lt;library path&gt;                    (optional, default: /usr/local/ulib/beta/alDente/lib/perl/ (xhost) or /opt/alDente/versions/beta/lib/perl/ (seqdb))
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;   ### API connection settings ###
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;   -host &lt;DB host&gt;                        (optional, default: lims-dbm)
+&nbsp;15   -dbase &lt;DB&gt;                            (optional, default: sequence)
+&nbsp;&nbsp;&nbsp;   -user &lt;LIMS user&gt;                      (optional, default: Guest)
+&nbsp;&nbsp;&nbsp;   -debug &lt;0/1&gt;                           (optional, default: 0)
+&nbsp;&nbsp;&nbsp;   -password                              (optional, default: pwd)
+&nbsp;&nbsp;&nbsp; 
+&nbsp;20 e.g     /opt/alDente/versions/echang/bin/API_unit_test.pl -report 1 -temp /tmp/API_unit_test/ -lib /opt/alDente/versions/beta/lib/perl/
+&nbsp;&nbsp;&nbsp; </pre></li><li style="list-style-type: circle"><p>Approach</p><p>There are three basic steps in API_unit_test.pl: (1) finding appropriate test cases, (2) running test cases (default: use beta code), and (3) generating a report. For more information, also see section 13.1.1.</p><div class="itemizedlist"><ul type="disc"><li><p>Finding appropriate test cases</p><p>The user can specify the method to test using the -method option. If the option is not specified, the script obtains a list of all methods from all the test cases stored under /home/sequence/alDente/logs/alDente_unit_test. The file name, such as Sequencing_API-get_primer_data_2006-03-07-14-44-33_jpang.case, represents module-method_datetime_user.case. After parsing the file name, the script will attempt to find the method in the module. If no method is found, a script warning is generated. Note that for LIMS API, Sequencing_API and alDente_API are interchangable.</p></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Running test cases</p><p>The script extracts method input and expected output from each test case, converts them into objects using YAML Load, run the desired method using the input, and compare the output with the expected output using a recursive data comparator method compare_data() in RGTools/RGIO.pm. If there is a discrepancy, the output data structures are printed into two files using Data Dumper, converted to XML format using XML Dumper, and compared using XML diff (discussed in section 13.1.1). The result of the comparison is displayed in a summary report.</p></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Generating a report</p><p>After the script runs through all the appropriate test cases, the script creates a summary report shown below. There are currently two categories for each test case: 'OK' and 'Error' (difference between standard and output).</p><p>The API results are displayed in folders and subfolders, sorted by category, then module path-module (e.g. Sequencing::Sequencing_API), then method (e.g. get_SAGE_data), and then individual test cases. By expanding a test case, the user can expand the 'Difference' folder to see the difference between the output and expected output (XML diff format), if any. The user can also see the test input under the 'Input' folder.</p><p>Note that if a test case cannot be executed, a script warning is genearated and can be found under the 'Script Warnings' folder.</p><div class="figure"><a name="d0e16174"></a><p class="title"><b>Figure&nbsp;20.4.&nbsp;API_unit_test.pl result output</b></p><div class="screenshot"><div class="mediaobject"><img src="resources/API_unit_test_result.png" alt="API_unit_test.pl result output"></div></div></div><div class="figure"><a name="d0e16183"></a><p class="title"><b>Figure&nbsp;20.5.&nbsp;API_unit_test.pl result output, expanded</b></p><div class="screenshot"><div class="mediaobject"><img src="resources/API_unit_test_result_expanded.png" alt="API_unit_test.pl result output, expanded"></div></div></div></li></ul></div></li></ul></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch20s12.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch20.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch20s14.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.&nbsp;Development Reference Manual&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;14.&nbsp;Web Services</td></tr></table></div></body></html>

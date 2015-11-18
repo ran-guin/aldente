@@ -1,0 +1,8 @@
+Rack_ID	FK_Equipment__ID	Rack_Type	Rack_Name	Movable	Rack_Alias	FKParent_Rack__ID
+1	2	Shelf	Temporary	N	Temporary Rack	0
+2	1	Shelf	S3	N	TBD (Room Temperature)	0
+3	1	Shelf	S1	N	TBD (-20 degrees)	0
+4	1	Shelf	S2	N	TBD (+4 degrees)	0
+6	1	Shelf	S4	N	TBD (-80 degrees)	0
+7	2	Shelf	In Use	N	In Use	0
+8	2	Shelf	Garbage	N	Garbage	0

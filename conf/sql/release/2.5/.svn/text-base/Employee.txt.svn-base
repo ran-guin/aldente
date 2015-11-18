@@ -1,0 +1,6 @@
+Employee_ID	Employee_Name	Employee_Start_Date	Initials	Email_Address	Employee_FullName	Position	Employee_Status	Permissions	IP_Address	Password	Machine_Name	Department	FK_Department__ID
+1	Admin	2001-01-01	ADM		Administrator	BioInformatics	Active	R,W,U,D,S,P,A	\N	459f153e2794f6da	\N	None	1
+2	Guest	0000-00-00	G		Guest		Active	R	\N	78a302dd267f6044	\N	None	2
+3	LabUser	0000-00-00	LU	labuser	Lab User	Lab User	Active	R,W,U,S,P	\N	78a302dd267f6044	\N	Lab	3
+4	LabAdmin	0000-00-00	LA	labadmin	Lab Admin	Lab Admin	Active	R,W,U,D,S,P,A	\N	78a302dd267f6044	\N	Lab	3
+5	Receiver	0000-00-00	REC		Receiver	Receiver	Active	R,W,U,D,S,P,A	\N	78a302dd267f6044		Receiving	4

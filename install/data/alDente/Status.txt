@@ -1,0 +1,4 @@
+Status_ID	Status_Type	Status_Name
+1	ReArray_Request	Barcoded
+2	ReArray_Request	Completed
+3	ReArray_Request	Aborted

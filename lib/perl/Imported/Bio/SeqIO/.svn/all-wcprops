@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO
+END
+genbank.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/genbank.pm
+END
+swiss.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/swiss.pm
+END
+largefasta.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/largefasta.pm
+END
+game.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/game.pm
+END
+FTHelper.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/FTHelper.pm
+END
+phd.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/phd.pm
+END
+scf.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/scf.pm
+END
+fastq.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/fastq.pm
+END
+embl.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/embl.pm
+END
+ace.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/ace.pm
+END
+raw.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/raw.pm
+END
+pir.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/pir.pm
+END
+MultiFile.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/MultiFile.pm
+END
+bsml.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/bsml.pm
+END
+fasta.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/fasta.pm
+END
+gcg.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/gcg.pm
+END
+qual.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SeqIO/qual.pm
+END

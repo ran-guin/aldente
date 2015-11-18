@@ -1,0 +1,32 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Database Monitor<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The bin/DB_monitor.pl script provides several database space
+usage monitoring functionalities.<br>
+  </li>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>Functionalities provided:</li>
+  <ul>
+    <li>For a user-specified list of hosts and databases:</li>
+    <ul>
+      <li>Report space usage</li>
+      <ul>
+        <li>Detail mode - report space usage for tables as well as
+total usage of the database<br>
+        </li>
+        <li>Summary mode - only report total usage of the database</li>
+        <li>Log mode - logs space usage information to a log file (this
+log file is automatically written by the script in XML format)</li>
+        <li>View mode - view space usage statistics over time based on
+information stored in the XML log file</li>
+      </ul>
+    </ul>
+  </ul>
+  <li>Right now this script is run as a cron job under aldente@seqdb01.<br>
+  </li>
+</ul>
+</span>

@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/79338/alDente/trunk/install/patches/Core/2.6
+END
+Queue_Core.pat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Queue_Core.pat
+END
+Work_Request_field.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Work_Request_field.pat
+END
+replacement.pat
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68992/alDente/trunk/install/patches/Core/2.6/replacement.pat
+END
+update_attribute_tables.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/update_attribute_tables.pat
+END
+modify_shipment_container.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/modify_shipment_container.pat
+END
+Installation.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Installation.pat
+END
+add_submission_requester.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/add_submission_requester.pat
+END
+add_Equipment_Attribute.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/add_Equipment_Attribute.pat
+END
+add_Study_Attribute.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/add_Study_Attribute.pat
+END
+QC_Batch.pat
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/69617/alDente/trunk/install/patches/Core/2.6/QC_Batch.pat
+END
+Parameter_Type_enum.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Parameter_Type_enum.pat
+END
+parameter_extra_units.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/parameter_extra_units.pat
+END
+upgrade_Core_2_6.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/79338/alDente/trunk/install/patches/Core/2.6/upgrade_Core_2_6.pat
+END
+source_shipment_expand.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/source_shipment_expand.pat
+END
+trigger_field.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/trigger_field.pat
+END
+source_shipment.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/source_shipment.pat
+END
+auto_increment_trigger_id.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/auto_increment_trigger_id.pat
+END
+Funding_Attribute.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Funding_Attribute.pat
+END
+Attribute_Name_Validation.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Attribute_Name_Validation.pat
+END
+list_condition.pat
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/list_condition.pat
+END
+move_plate_class_plus.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/move_plate_class_plus.pat
+END
+shipping_protocols.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/69617/alDente/trunk/install/patches/Core/2.6/shipping_protocols.pat
+END
+mandatory_sow.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/mandatory_sow.pat
+END
+DBField_Readonly.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68992/alDente/trunk/install/patches/Core/2.6/DBField_Readonly.pat
+END
+edit_subscription.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/69617/alDente/trunk/install/patches/Core/2.6/edit_subscription.pat
+END
+Attribute_Editable_Readonly.pat
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/install/patches/Core/2.6/Attribute_Editable_Readonly.pat
+END
+rename_trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/69194/alDente/trunk/install/patches/Core/2.6/rename_trigger.pat
+END

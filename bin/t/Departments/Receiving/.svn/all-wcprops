@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Departments/Receiving
+END
+Summary_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Departments/Receiving/Summary_App.t
+END
+Department.t
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Departments/Receiving/Department.t
+END
+Statistics_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Departments/Receiving/Statistics_App.t
+END

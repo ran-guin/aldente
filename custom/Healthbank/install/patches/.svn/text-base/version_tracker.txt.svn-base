@@ -1,0 +1,15 @@
+Version	Filename(.pat)		
+2.6.8.1.Healthbank.1	install_Healthbank_2_6	Healthbank
+2.6.9.0.Healthbank.1	upgrade_shipping	Healthbank
+2.7.1.0.Healthbank.1	change_organization_HB	Healthbank
+2.7.2.0.Healthbank.1	add_GENIC	Healthbank
+2.6.10.0.Healthbank.1	service_centre	Healthbank
+2.6.70.0.Healthbank.1	upgrade_anatomic_site	Healthbank
+2.7.3.0.Healthbank.1	upgrade_2_7	Healthbank
+2.7.4.0.Healthbank.1	db_trigger_import	Healthbank
+2.7.5.0.Healthbank.1	bcg_trigger	Healthbank
+3.7.1.0.Healthbank.1	collection_time_sample	Healthbank
+3.8.1.0.Healthbank.1	Normalize_Patient_and_Type	Healthbank
+3.5.1.0.Healthbank.1	Add_Software_Analysis_Plugin	Healthbank
+3.13.2.0.Healthbank.1	add_FK_Taxonomy__ID	Healthbank
+3.13.1.0.Healthbank.1	add_Taxonomy_plugin	Healthbank

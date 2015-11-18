@@ -1,0 +1,260 @@
+<h1>Sizing &amp; Concentration</h1>
+<br>
+<ul>
+  <li>When the technician runs the gel on the fluorometer, it generates
+a <b>.gel</b> file</li>
+</ul>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; for
+example: 3816_ll005_5d_sizing010112.gel
+</div>
+<ul>
+  <li>The technician copies the <b>.gel </b>file to another file with
+the same name but with an <b>.tif</b> extension<br>
+  </li>
+  <li>The technician opens up a x-term window and runs the command&nbsp;</li>
+</ul>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+seqimimport &lt;project name&gt; &lt;gel name&gt; &lt;image file&gt; <br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; project name = the image project
+name (ie.&nbsp; LL005, LL006)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; gel name = gel plate number (ie.
+28745)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; image file =
+3816_ll005_5d_sizing010112.tif<br>
+</div>
+<ul>
+  <li>The technician runs Bandleader by executing the script <b>run_sizing_gel</b>
+-p &lt;gel name&gt; &nbsp; &nbsp;&nbsp; </li>
+</ul>
+<br>
+<h2>Input files</h2>
+<ul>
+  <li>Sizing data:</li>
+  <ul>
+    <li>Input file =
+'/home/sequence/Projects/&lt;PROJECT&gt;&lt;/LIBRARY&gt/sizing_gels;/INCOMING/&lt;PLATE_ID&gt;/&lt;PLATE_ID&gt;.sizes',
+where:</li>
+    <ul>
+      <li>&lt;PROJECT&gt; = Project.Project_Path&nbsp; (e.g. Human_cDNA)</li>
+      <li>&lt;LIBRARY&gt; = Library.Library_Name (e.g LL005)</li>
+      <li>&lt;PLATE_ID&gt; = Plate.Plate_ID (e.g. 59055)</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Concentratin data:</li>
+  <ul>
+    <li>Input file =
+'/home/sequence/Projects/&lt;PROJECT&gt;/DNA_Quantitations/&lt;LIBRARY&gt;-240A_PLA&lt;PLATE_ID&gt;_040115TO_10-90.TXT',
+where:</li>
+    <ul>
+      <li>&lt;PROJECT&gt; = Project.Project_Path&nbsp; (e.g. Human_cDNA)</li>
+      <li>&lt;LIBRARY&gt; = Library.Library_Name (e.g LL005)</li>
+      <li>&lt;PLATE_ID&gt; = Plate.Plate_ID (e.g. 58013)</li>
+    </ul>
+  </ul>
+</ul>
+<h2>Scripts</h2>
+<ul>
+  <li>Sizing data:</li>
+  <ul>
+    <li>/home/ybutterf/www/cgi-bin/intranet/SizingGel.pl</li>
+    <ul>
+      <li>CGI script that can be run from
+&lt;http://ybweb.bcgsc.bc.ca/cgi-bin/intranet/SizingGel.pl&gt;</li>
+      <li>The script display the data from the input file</li>
+      <li>Also obtains the vector size by examining the *.seq file
+under /home/sequence/VECTOR/<br>
+      </li>
+      <li>Users look at the data and if they approve it then data will
+be imported into the database</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Concentration data:</li>
+  <ul>
+    <li>/projects/01/Full_Length_cDNA/Programs/ImportConc.pl</li>
+    <ul>
+      <li>Command-line Perl script to parse input files and import data
+into the database<br>
+      </li>
+    </ul>
+  </ul>
+</ul>
+<h2>Database tables</h2>
+<img src="$Help_Image_dir/ER_Sizing_Conc.png"><br>
+<br>
+<ul>
+  <li>Sizing data:</li>
+  <ul>
+    <li>Gel table:</li>
+    <ul>
+      <li>Stores data for the entire gel</li>
+      <li>References Plate.Plate_ID<br>
+      </li>
+    </ul>
+    <li>Clone_Gel table:</li>
+    <ul>
+      <li>Stores data for the individual clones (lanes) of the gel</li>
+      <li>References Gel.Gel_ID, Sample.Sample_ID<br>
+      </li>
+      <li>Both well and lane number are stored</li>
+      <li>Data fields:</li>
+      <ul>
+        <li>Band_Sizes:</li>
+        <ul>
+          <li>A comma-delimited list of band sizes obtained from input
+file<br>
+          </li>
+        </ul>
+        <li>Clone_Size_Estimate:</li>
+        <ul>
+          <li>Estimate of clone size (sum of band sizes minus vector
+size)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Concentration data:</li>
+  <ul>
+    <li>ConcentrationRun table:</li>
+    <ul>
+      <li>Stores data for the entire concentration run</li>
+      <li>References Plate.Plate_ID, Equipment.Equipment_ID<br>
+      </li>
+    </ul>
+    <li>Concentrations table:</li>
+    <ul>
+      <li>Stores data for the individual clones (wells) of the run</li>
+      <li>References ConcentrationRun.ConcentrationRun_ID,
+Sample.Sample_ID</li>
+      <li>Data fields:</li>
+      <ul>
+        <li>Concentration:</li>
+        <ul>
+          <li>Concentration data obtained from input file<br>
+          </li>
+        </ul>
+        <li>Measurement (?)</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2>Parsing<br>
+</h2>
+<ul>
+  <li>Sizing data:</li>
+  <ul>
+    <li>A sample of the *.sizes file for Plate_ID 22776:</li>
+  </ul>
+</ul>
+<div style="margin-left: 80px;">
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(51, 51, 255);">1</span> 2 22776</pre>
+<pre style="color: rgb(255, 0, 0);">2190</pre>
+<pre style="color: rgb(255, 0, 0);">2694</pre>
+<pre>-1</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(51, 51, 255);">2</span> 2 22776</pre>
+<pre style="color: rgb(255, 0, 0);">2138</pre>
+<pre style="color: rgb(255, 0, 0);">2691</pre>
+<pre>-1</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(51, 51, 255);">3</span> 2 22776</pre>
+<pre style="color: rgb(255, 0, 0);">2210</pre>
+<pre style="color: rgb(255, 0, 0);">2678</pre>
+<pre>-1</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(51, 51, 255);">4</span> 2 22776</pre>
+<pre style="color: rgb(255, 0, 0);">2017</pre>
+<pre style="color: rgb(255, 0, 0);">2679</pre>
+<pre>-1</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(51, 51, 255);">5</span> 2 22776</pre>
+<pre style="color: rgb(255, 0, 0);">2264</pre>
+<pre style="color: rgb(255, 0, 0);">2678<br><br><span
+ style="color: rgb(0, 0, 0);">-1</span><br></pre>
+</div>
+<ul>
+  <ul>
+    <li>A sample of the corresponding database records for Plate_ID
+22776:<br>
+    </li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">Gel<br>+--------+--------------+---------------------+-----------------+----------------------------------------------------------------------+----------+--------------+<br>| Gel_ID | FK_Plate__ID | Gel_Date            | FK_Employee__ID | Gel_Directory                                                        | Status   | Gel_Comments |<br>+--------+--------------+---------------------+-----------------+----------------------------------------------------------------------+----------+--------------+<br>|      1 |        22776 | 0000-00-00 00:00:00 |            NULL | /home/sequence/Projects/Human_cDNA/sizing_gels/RT001/INCOMING/22776/ | finished |              |<br>+--------+--------------+---------------------+-----------------+----------------------------------------------------------------------+----------+--------------+<br><br>Clone_Gel<br>+------------+------+----------+--------------+---------+------------+---------------------+--------------+---------------+<br>| FK_Gel__ID | Well | Comments | FK_Clone__ID | Lane_No | Band_Sizes | Clone_Size_Estimate | Clone_Gel_ID | FK_Sample__ID |<br>+------------+------+----------+--------------+---------+------------+---------------------+--------------+---------------+<br>|          1 | A01  | NULL     |         NULL |       <span
+ style="color: rgb(51, 51, 255);">1</span> | <span
+ style="color: rgb(255, 0, 0);">2694,2190</span>  |                2198 |            1 |       1058408 |<br>|          1 | B01  | NULL     |         NULL |       <span
+ style="color: rgb(51, 51, 255);">2</span> | <span
+ style="color: rgb(255, 0, 0);">2691,2138</span>  |                2143 |            2 |       1056145 |<br>|          1 | C01  | NULL     |         NULL |       <span
+ style="color: rgb(51, 51, 255);">3</span> | <span
+ style="color: rgb(255, 0, 0);">2678,2210</span>  |                2202 |            3 |       1056690 |<br>|          1 | D01  | NULL     |         NULL |       <span
+ style="color: rgb(51, 51, 255);">4</span> | <span
+ style="color: rgb(255, 0, 0);">2679,2017</span>  |                2010 |            4 |       1057527 |<br>|          1 | A02  | NULL     |         NULL |       <span
+ style="color: rgb(51, 51, 255);">6</span> | <span
+ style="color: rgb(255, 0, 0);">2678,2264</span>  |                2256 |            5 |       1058409 |<br>+------------+------+----------+--------------+---------+------------+---------------------+--------------+---------------+<br></pre>
+<ul>
+  <ul>
+    <li>The vector for Plate_ID 22776 is pUC19.&nbsp; Look at the
+corresponding pUC19.seq vector file, the vector size is determined to
+be 2686 by the following command:</li>
+  </ul>
+</ul>
+<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  more /home/sequence/VECTOR/pUC19.seq | grep -v "&gt;" | fold -1 | grep -v "\s" | wc -w</pre>
+<ul>
+  <ul>
+    <li>To calculate the Clone_Size_Estimate taking Lane #1 for example:</li>
+  </ul>
+</ul>
+<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  Clone_Size_Estimate = Sum(Band_Sizes) - Vector_Size = (2694 + 2190) - 2686 = 2198</pre>
+<ul>
+  <ul>
+    <li>Notice that lane #6 in the database actually corresponds to
+lane #5 from the file.&nbsp; This is because from the *.sizes file it
+only contains sample lanes (i.e. non-marker lanes) [every 5th lane is a
+marker lane]</li>
+  </ul>
+</ul>
+<ul>
+  <li>Concentration data:</li>
+  <ul>
+    <li>A sample of the *.TXT file for Plate_ID 58013 (note that only
+data in the section under [Plate: xx/xx ug/ml] is imported to the
+database:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">[Plate: 10/90 ug/ml]</pre>
+<pre style="margin-left: 80px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12</pre>
+<pre style="margin-left: 80px;">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+ style="color: rgb(255, 0, 0);">300.60&nbsp; -1.7647 127.36&nbsp; 381.67&nbsp; -5.0000</span> 294.23&nbsp; -6.9231 230.00&nbsp; 312.45&nbsp; 312.45&nbsp; 285.58&nbsp; 227.55</pre>
+<pre style="margin-left: 80px;">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 258.11&nbsp; 280.00&nbsp; 408.33&nbsp; 317.55&nbsp; 131.67&nbsp; 48.333&nbsp; -5.0000 155.00&nbsp; 196.67&nbsp; 230.73&nbsp; 408.33&nbsp; 307.36</pre>
+<pre style="margin-left: 80px;">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.0000&nbsp; 125.66&nbsp; 316.67&nbsp; 266.67&nbsp; -3.3962 298.33&nbsp; 168.11&nbsp; 201.67&nbsp; 251.67&nbsp; 220.75&nbsp; -13.585 156.67</pre>
+<pre style="margin-left: 80px;">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 429.62&nbsp; -3.3962 443.33&nbsp; 360.00&nbsp; 301.67&nbsp; 416.67&nbsp; 380.38&nbsp; 423.33&nbsp; 230.94&nbsp; 286.98&nbsp; 636.79&nbsp; 243.33</pre>
+<pre style="margin-left: 80px;">E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 412.36&nbsp; 6.6667&nbsp; 3.3962&nbsp; 280.00&nbsp; 301.67&nbsp; 355.00&nbsp; -6.6667 215.66&nbsp; 110.00&nbsp; 453.33&nbsp; 330.00&nbsp; 375.00</pre>
+<pre style="margin-left: 80px;">F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 190.00&nbsp; 275.09&nbsp; 334.53&nbsp; -1.6981 380.77&nbsp; -18.679 -3.3962 376.98&nbsp; 234.34&nbsp; 356.60&nbsp; 227.55&nbsp; 174.91</pre>
+<pre style="margin-left: 80px;">G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 418.24&nbsp; 448.27&nbsp; 325.38&nbsp; 297.69&nbsp; 354.60&nbsp; 337.06&nbsp; 286.20&nbsp; 818.82&nbsp; 326.47&nbsp; 259.41&nbsp; 176.47&nbsp; 158.82</pre>
+<pre style="margin-left: 80px;">H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 319.41&nbsp; 261.18&nbsp; 345.00&nbsp; 394.62&nbsp; 411.43&nbsp; 178.20&nbsp; 1.8750&nbsp; 334.80&nbsp; 199.41&nbsp; 388.87&nbsp; 178.27&nbsp; 323.65</pre>
+<ul>
+  <ul>
+    <li>A sample of the corresponding database records for Plate_ID
+58013:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;">ConcentrationRun<br>+---------------------+--------------+------------------+---------------------+---------------------+<br>| ConcentrationRun_ID | FK_Plate__ID | FK_Equipment__ID | DateTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | CalibrationFunction |<br>+---------------------+--------------+------------------+---------------------+---------------------+<br>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 408 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 58013 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 143 | 2004-01-15 12:41:45 | n/a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>+---------------------+--------------+------------------+---------------------+---------------------+<br><br>Concentrations<br>+------------------+-------------------------+------+-------------+-------+---------------+---------------+-------------------+<br>| Concentration_ID | FK_ConcentrationRun__ID | Well | Measurement | Units | Concentration | FK_Sample__ID | FK_Sample__ID_old |<br>+------------------+-------------------------+------+-------------+-------+---------------+---------------+-------------------+<br>|            34611 |                     408 | A01  | n/a         | ng/ul | <span
+ style="color: rgb(255, 0, 0);">300.60 </span>       |        756577 |              NULL |<br>|            34612 |                     408 | A02  | n/a         | ng/ul | <span
+ style="color: rgb(255, 0, 0);">0</span>             |        756579 |              NULL |<br>|            34613 |                     408 | A03  | n/a         | ng/ul | <span
+ style="color: rgb(255, 0, 0);">127.36</span>        |        756581 |              NULL |<br>|            34614 |                     408 | A04  | n/a         | ng/ul | <span
+ style="color: rgb(255, 0, 0);">381.67</span>        |        756583 |              NULL |<br>|            34615 |                     408 | A05  | n/a         | ng/ul | <span
+ style="color: rgb(255, 0, 0);">0</span>             |        756585 |              NULL |<br>+------------------+-------------------------+------+-------------+-------+---------------+---------------+-------------------+<br></pre>
+<ul>
+  <ul>
+    <li>Values from the *.TXT file becomes the values for the
+Concentration field of the Concentrations table, with the exception of
+negative values which become zeros.<br>
+    </li>
+  </ul>
+</ul>

@@ -1,0 +1,4568 @@
+#!/usr/local/web/perl56
+
+################################################################
+# $Id: dbsummary-front,v 1.2 2003/01/10 19:05:00 rguin Exp $
+################################################################
+#
+# CVS Revision: $Revision: 1.2 $ 
+# Commit date:  $Date: 2003/01/10 19:05:00 $
+#         Tag:  $Name:  $
+#      Author:  $Author: rguin $
+#
+################################################################
+
+################################################################
+#
+# Sequencing Database Viewer
+#
+#                                              Martin Krzywinski
+#                                         Genome Sequence Centre
+#                                               BC Cancer Agency
+#
+# This is a vastly improved database viewer for the in-house
+# sequencing database. The viewer uses cached binary memory
+# structures which are regenerated periodically from the database
+# to display its results. No database queries are made! This
+# results in a viewer that scales nearly as O(1) with the size 
+# of the database. As different libraries and projects are added
+# some pages will take longer to display but the loading time
+# is insensitive to the number of reads in a given library
+# 
+# The script can provide various reports, each summarizing 
+# a different aspect of the data. Some reports focus on time-scale
+# reporting, others show monthly activities, etc.
+#
+################################################################
+#
+# The main data structures are %DATA and %HIST, for the average data
+# and histograms respectively. These hashes are organized like this
+#
+# DATA{TYPE}->{TYPE_ITEM}->{TIMEPERIOD}->{DATA_TYPE} = DATA_VALUE
+#
+# TYPE       = Sequencer, Project, Library, Chemistry, etc
+# TYPE_ITEM  = D3700-1, Human cDNA, TL055, etc (instance of TYPE)
+# TIMEPERIOD = t_all, t_mtd, t_lweek, etc
+# DATA_TYPE  = AvgQ20, Tot_len, NReads, etc
+# DATA_VALUE = value of the DATA_TYPE for this hash element
+#
+# The cached data is processed and the above hash is built up.
+# The organization is already constructed so if you want
+# to get data for a particular scenario (e.g. D3700-5 last week)
+# you only need to look in the hash
+#
+# DATA{Sequencer}->{D3700-5}->{t_lweek}
+#
+# to get all the statistics. Similarly, the histogram for the
+# reads for this would be stored in 
+#
+# HIST{Sequencer}->{D3700-5}->{t_lweek}
+#
+################################################################
+
+################################################################
+# Pull in some packages n' such
+
+use POSIX qw(strftime);
+use File::Basename;
+use CGI qw/-no_debug :all/;  # the -no_debug pragma prevents CGI from pausing to
+                             # request parameters when run from the command line
+use CGI::Carp qw(fatalsToBrowser);
+use String::Random;
+use Storable;
+use Math::VecStat qw(sum average);
+use Date::Calc qw(Week_Number Today Now Day_of_Year Day_of_Week Month_to_Text Delta_Days Add_Delta_Days Date_to_Days Date_to_Text);
+use Date::Parse;
+use GD;
+use GD::Graph;
+use GD::Graph::bars; # was GIFgraph::bars
+use Number::Format;
+use lib "/home/kteague/work/cvs/histogram/";
+use lib "/home/martink/export/prod/modules/gscweb/";
+use lib "/home/kteague/work/cvs/calendar/";
+use calendar;
+use gscweb;
+use histogram;
+
+#use lib "/usr/local/apache/cgi-bin/intranet/sequence/summary/local";
+#use lib "/home/martink/export/prod/modules/misc";
+use lib "/home/kteague/work/cvs/mysqldb/";
+use MySQLdb;
+use MySQL_GSC;
+
+use Getopt::Std;
+use Time::HiRes qw(gettimeofday tv_interval);
+
+GD::Graph::colour::read_rgb("/usr/local/apache/site-images/rgb.txt");
+
+################################################################
+# Declare some global variables
+
+use strict "vars";
+# tighten up the code some more some day ...
+# use strict "refs";
+# use strict "subs";
+
+use vars qw(@fracts @sequencer_ids);
+use vars qw($opt_h $opt_v $opt_c $opt_T $opt_t $opt_d $opt_f $opt_id);
+use vars qw($run $flag $local_statistics $result);
+
+# Zero out our globals for mod_perl
+$run = $flag = $local_statistics = $result = 0;
+
+my $db  = MySQL_GSC::GetSequenceDb();
+my $dbh = $db->get_dbhandle;
+
+my $time_start = [ Time::HiRes::gettimeofday() ];
+
+my $scriptfilename = $ENV{'SCRIPT_FILENAME'}; # script filename relative to filesystem
+my ($scriptfilename_name, $scriptfilename_path) = fileparse($scriptfilename);
+my $scriptname     = $ENV{'SCRIPT_NAME'};     # script filename relative to www server root
+my $scriptname_old = "/cgi-bin/intranet/sequence/summary/dbsummary";
+
+#########
+# CVS headers and variables: VERSION(=revision), TAG and DATE.
+# The date is formatted to the local time zone.
+my $VERSION = q{ $Revision: 1.2 $ };
+my $CVSTAG = q{ $Name:  $ };
+my $CVSDATE = q{ $Date: 2003/01/10 19:05:00 $ };
+if ($VERSION =~ /\$.*?:\s*(.*?)\s*\$/) {
+  $VERSION=$1;
+}
+if ($CVSDATE =~ /\$.*?:\s*(.*?)\s*\$/) {
+  $CVSDATE=$1;
+}
+my $CVSDATE_gmttime = str2time($CVSDATE);
+$CVSDATE_gmttime -= 3600 * 8;
+$CVSDATE = strftime "%Y-%b-%d %H:%M",localtime($CVSDATE_gmttime);
+if ($CVSTAG =~ /\$.*?:\s*(.*?)\s*\$/) {
+  $CVSTAG=$1;
+}
+##########
+
+my $CACHEDIR      = "/usr/local/apache/tmp/"; # put beta here
+my $CACHEFILEROOT = "seqdb.cache.";
+my $CACHETTL  = 3600;
+my $IMGURL    = "/images/icons";
+# Number formatting
+my $nformat = new Number::Format(-thousands_sep => ",",
+				 -decimal_point => ".");
+
+my @DATA = ();
+my %DATA = {};
+my %HIST = {};
+my $page = 'gscweb'->new();
+
+my @avgfields = ("AvgQ20","AvgQ30","AvgQ40","Success100");
+my @maxfields = ("MaxQ20","MaxQ30","MaxQ40",);
+my @sequencer_ids = ('D3700-1', 'D3700-2', 'D3700-3', 'D3700-4', 'D3700-5', 'MB1', 'MB2',);
+
+# end global variable declaration
+################################################################
+
+
+################################################################
+# Begin Main block
+################################################################
+
+  ################################################################
+  # First things first: Retrieve the data structure(s) which
+  # hold the database contents. This can be obtained in one of
+  # two ways: (1) from a file produced by Storable and (2) from
+  # the database if the file from (1) is stale or does not exist.
+
+$page->AddTimer(name=>"fetching", showdot=>1);
+my ($DATA_aref, $DATA_array_age) = FetchData(cachefile=>$CACHEFILEROOT."avg", cachedir=>$CACHEDIR);
+my ($DATA_href, $DATA_hash_age) = FetchData(cachefile=>$CACHEFILEROOT."count", cachedir=>$CACHEDIR);
+my ($HIST_href, $HIST_age, $RUN_HIST_href, $RUN_HIST_age);
+($HIST_href, $HIST_age) = FetchData(cachefile=>$CACHEFILEROOT."hist", cachedir=>$CACHEDIR);
+($RUN_HIST_href, $RUN_HIST_age) = FetchData(cachefile=>$CACHEFILEROOT."run_hist", cachedir=>$CACHEDIR);
+@DATA = @$DATA_aref;
+%DATA = %$DATA_href;
+%HIST = (%$HIST_href, %$RUN_HIST_href); # merge together our HIST caches
+$page->StopTimer("fetching");
+
+if (@ARGV) { Maintenance() } # called with options, update cache, etc.
+elsif (! defined $ENV{'REMOTE_ADDR'}) { # still not called from the web
+  print "This is not how to use this script.\n";
+  print "\n";
+  Usage();
+  exit 0;
+}
+else { # Yes! We have been called as a web object. Let's get funky.
+  if (param('view') ne "exp_hist") {
+    # full page, with header navigation et. al.
+    $page->SetDebugFlag(0);
+    $page->Intranet();
+    if (! defined $DATA_array_age) {
+      $page->SetBarUnderside($page->TimeStamp(10) . " <b>no cache</b>");
+      $page->TopBar();
+      print "<h1>ERROR</h1>The cache is gone! Oops.<br><br>";
+      print "Consult the person who wrote this script and ask them why the file $CACHEDIR/$CACHEFILEROOT is gone.";
+      $page->BottomBar();
+      exit;
+    }
+    $page->SetBarUnderside($page->TimeStamp(10)." <b>cache age $DATA_array_age s</b>");
+    $page->TopBar();
+    VersionBar();
+
+    if (param('debug') == 1) { # turn this on to show all the debugging parameters
+      foreach my $key (param()) {
+	print "<span class=greytext>$key</span>=[", param($key), "] &nbsp;";
+      }
+    }
+  }
+  else {
+    print header();
+    print qq[<html>\n<head>\n<title>Histogram for ] . param('type') . " : " . param('item') . " : " . param('time') . qq[</title>\n</head>\n\n<body>\n];
+  }
+
+  ################################################################
+  # Handle section directives. Currently the following are available
+  #
+  # view =
+  #   allstats
+  #   calendar
+  #   toplist
+  #   recentruns
+  #   mainmenu (default)
+
+  if (param('view') eq "allstats") {
+    $page->AddTimer(name=>"allstats", showdot=>1);
+    viewAllStats();
+    $page->StopTimer("allstats");
+  }
+  elsif (param('view') eq "calendar") {
+    $page->AddTimer(name=>"calendar", showdot=>1);
+    viewCalendar();
+    $page->StopTimer("calendar");
+  }
+  elsif (param('view') eq "toplist") {
+    $page->AddTimer(name=>"toplist", showdot=>1);
+    viewTopList();
+    $page->StopTimer("toplist");
+  }
+  elsif (param('view') eq "recentruns") {
+    $page->AddTimer(name=>"recentruns", showdot=>1);
+    viewRecentRuns();
+    $page->StopTimer("recentruns");
+  }
+  elsif (param('view') eq "search_form") {
+    viewSearchForm();
+  }
+  elsif (param('view') eq "recentlibs") {
+    $page->AddTimer(name=>"recentlibs", showdot=>1);
+    viewRecentLibs();
+    $page->StopTimer("recentlibs");
+  }
+  elsif (param('view') eq "sumrecentlibs") {
+    $page->AddTimer(name=>"sumrecentlibs", showdot=>1);
+    viewSumRecentLibs();
+    $page->StopTimer("sumrecentlibs");
+  }
+  elsif (param('view') eq "weeklygraphs") {
+    viewWeeklyGraphs();
+  }
+  elsif (param('view') eq "weeklytext") {
+    viewWeeklyText();
+  }
+  elsif (param('view') eq "cache") {
+    $page->AddTimer(name=>"cache", showdot=>1);
+    viewCache();
+    $page->StopTimer("cache");
+  }
+  elsif (param('view') eq "exp_hist") {
+    viewExpandedHistogram();
+  }
+  else {
+    viewMainMenu()
+  } # no section directives, show the main menu
+
+  if (param('view') ne "exp_hist") {
+    $page->BottomBar();
+  }
+  else {
+    print qq[\n\n</body\n</html>\n];
+  }
+
+}
+
+# exit 1;
+# If all has gone well, the script should exit naturally at this point,
+# without us having to call exit. If mod_perl is installed, then the
+# process will continue running and we can save a few CPU cycles the
+# next time the script is called.
+
+################################################################
+# End Main block
+################################################################
+
+
+################################################################
+# Enumeration
+#
+# %DATA contains organized information based on run
+# data retrieved from the database or cache.
+# @DATA holds all the retrieved runs.
+#
+sub enumerateDATA_hash {
+  my $DATA_aref = shift;
+  my $DATA_href = shift;
+
+  my %ReportTypes = (
+		     Sequencer => {-label=>"Sequencer"},
+		     Project   => {-label=>"Project"},
+		     Chem      => {-label=>"Chemistry"},
+		     Library   => {-label=>"Library"},
+		     Status    => {-label=>"Run Status"},
+  );
+
+  foreach my $reporttype (keys %ReportTypes) {
+    $$DATA_href{$reporttype} = {};
+    $$DATA_href{$reporttype}->{'-label'} = $ReportTypes{$reporttype}->{'-label'};
+  }
+
+  foreach my $run (@$DATA_aref) {
+    # store the run date in array format usable by Date::Calc
+    # Prepare for the list of time periods this run is eligible for
+    my @t_set = GetTimeGroups($run->{Date});
+    foreach my $datatype (keys %$DATA_href) {
+      my $datatype_item = $run->{$datatype};
+      my $dataobj_item;
+      # Handle data for all time periods
+      foreach my $timeperiod (@t_set) {
+        if(! defined $$DATA_href{$datatype}->{$datatype_item}->{$timeperiod}) {
+	  $$DATA_href{$datatype}->{$datatype_item}->{$timeperiod} = {};
+        }
+        $dataobj_item = $$DATA_href{$datatype}->{$datatype_item}->{$timeperiod};
+        $dataobj_item->{NRun} ++;
+        $dataobj_item->{NWells} += $run->{NWells};
+        # If No_Grows are available, subtract them from the total number of wells for the run
+        # $dataobj_item->{NReads} += ($run->{NWells} - $run->{NoGrow});
+        $dataobj_item->{NReads} += $run->{NWells};
+      }
+    }
+    foreach my $sumfield ("AvgQ20","AvgQ30","AvgQ40", "Tot_Len","Tot_QLen","Tot_QVec","Tot_Vec", "Success100") {
+      foreach my $datatype (keys %$DATA_href) {
+        my $datatype_item = $run->{$datatype};
+        my $dataobj_item;
+        foreach my $timeperiod (@t_set) {
+  	$dataobj_item = $$DATA_href{$datatype}->{$datatype_item}->{$timeperiod};
+  	$dataobj_item->{$sumfield} += $run->{$sumfield};
+        }
+      }
+    }
+    foreach my $maxfield (@maxfields) {
+      foreach my $datatype (keys %$DATA_href) {
+        my $datatype_item = $run->{$datatype};
+        my $dataobj = $$DATA_href{$datatype};
+        my $dataobj_item;
+        foreach my $timeperiod (@t_set) {
+	  $dataobj_item = $dataobj->{$datatype_item}->{$timeperiod};
+  	  if($run->{$maxfield} > $dataobj_item->{$maxfield}) {
+  	    $dataobj_item->{$maxfield} = $run->{$maxfield};
+  	  }
+        }
+      }
+    }
+  }
+
+  foreach my $fractfield (@fracts) {
+    foreach my $datatype (keys %$DATA_href) {
+      my $dataobj = $$DATA_href{$datatype};
+      foreach my $datatype_item (keys %{ $$DATA_href{$datatype} }) {
+        my $dataobj_item;
+        foreach my $timeperiod (keys %{$dataobj->{$datatype_item}}) {
+	  $dataobj_item = $dataobj->{$datatype_item}->{$timeperiod};
+	  if($dataobj_item->{$fractfield->[1]}) {
+	    $dataobj_item->{$fractfield->[2]} = 100 *
+	      $dataobj_item->{$fractfield->[0]} /
+	        $dataobj_item->{$fractfield->[1]};
+	  }
+        }
+      }
+    }
+  }
+
+  foreach my $avgfield (@avgfields) {
+    foreach my $datatype (keys %$DATA_href) {
+      foreach my $datatype_item (keys %{ $$DATA_href{$datatype} }) {
+        my $dataobj_item;
+	next if $datatype_item =~ m/^-/;
+        foreach my $timeperiod (keys %{ $$DATA_href{$datatype}{$datatype_item} }) {
+          $dataobj_item = $$DATA_href{$datatype}->{$datatype_item}->{$timeperiod};
+          if ($dataobj_item->{'NRun'}) {
+            $dataobj_item->{$avgfield} = $dataobj_item->{$avgfield} / $dataobj_item->{'NRun'};
+          }
+        }
+      }
+    }
+  }
+
+  foreach my $datatype (keys %$DATA_href) {
+    my $dataobj = $$DATA_href{$datatype};
+    foreach my $datatype_item (keys %{$dataobj}) {
+      my $dataobj_item;
+      next if $datatype_item =~ m/^-/;
+      foreach my $timeperiod (keys %{ $dataobj->{$datatype_item} }) {
+        $dataobj_item = $dataobj->{$datatype_item}->{$timeperiod};
+        foreach my $avgfield (@avgfields) {
+	  if (! defined $dataobj_item->{$avgfield}) {
+	    $dataobj_item->{$avgfield} = "NA";
+	  }
+        }
+        foreach my $fractfield (@fracts) {
+	  if (! defined $dataobj_item->{$fractfield->[2]}) {
+  	    $dataobj_item->{ $fractfield->[2] } = "NA";
+	  }
+        }
+        foreach my $maxfield (@maxfields) {
+	  if (! defined $dataobj_item->{$maxfield}) {
+	    $dataobj_item->{$maxfield} = "NA";
+	  }
+        }
+      }
+    }
+  }
+
+  return $DATA_href;
+}
+
+
+################################################################
+# Maintenance
+#
+# Check if we were called with some options to do maintenance
+# rather than act as a web object
+#
+# Regenerate the cache. You can force (-f) to regenerate
+# it or use another TTL value with -t.
+# SCRIPTNAME -c cachegen [-f] [-t TTL]
+#
+# The cache will be generated if the current one is older than
+# the TTL value, or if there is no current cache.
+#
+# debugging output
+# SCRIPTNAME ... [-d]
+sub Maintenance {
+  getopts('dhvfT:t:c:');
+  if ($opt_h) {
+    Usage();
+    exit;
+  }
+  if ($opt_v) {
+    print "$0 [-h] \nCVS v$VERSION [$CVSTAG] $CVSDATE\n";
+    exit;
+  }
+  if ($opt_c =~ /cachegen/) {
+    my @cachetype;
+    if (! defined $opt_T) {
+      @cachetype = ("avg", "hist", "count");
+    } else {
+      @cachetype = split(",", $opt_T);
+    }
+    foreach my $cachetype (@cachetype) {
+      my $ttl = $opt_t || $CACHETTL;
+      if ($opt_d) {
+	print "Updating cache type=[$cachetype] [ttl $ttl]";
+	if ($opt_f) {
+	  print " [FORCED]";
+	}
+	print "\n";
+      }
+      if ($opt_f) {
+	$ttl = 0;
+      }
+      UpdateCache(cachefile=>$CACHEFILEROOT."$cachetype",
+		  cachedir=>$CACHEDIR,
+		  cachettl=>$ttl,
+		  cachetype=>$cachetype);
+      if ($opt_d) {
+	print "Done.\n\n";
+      }
+    }
+  }
+}
+
+
+################################################################
+# INT = UpdateCache(HASH)
+# Update the cache file for a particular type
+#
+# $age = UpdateCache(cachefile=>FILENAME,cachedir=>DIR,
+#                    cachettl=>TTL,cachetype=>TYPE);
+#
+# where $age is the file of the final cache file (either present
+# if age<ttl or newly created). Currently, the following
+# types are supported
+#
+# TYPE =
+#       avg : run average structure
+#      hist : read histograms
+#  run_hist : per run histograms
+#     count : enumarted runs structure
+#    weekly : Weekly summary statistics (Quality per week graph)
+#
+sub UpdateCache {
+  my %flags = @_;
+  my $cachefile = $flags{cachefile};
+  my $cachedir  = $flags{cachedir};
+  my $cachetype = $flags{cachetype};
+  my $ttl       = $flags{cachettl};
+  my $age = CacheAge(cachefile=>$cachefile,
+		     cachedir=>$cachedir);
+  if (param('d')) { print "<pre>\n\n" }
+  if ($opt_d or param('d')) {
+    print
+	"cachefile: $cachedir/$cachefile\n",
+	"cacheage [$age]\n",
+	"cachettl [$ttl]\n",
+  }
+  if (defined $age && $age < $ttl) {
+    if ($opt_d or param('d')) {
+      print "cachestatus [up-to-date]\n";
+    }
+    return $age;
+  }
+  if ($opt_d or param('d')) {
+    print "cachestatus [now making db call]\n";
+  }
+  my $t_start = [gettimeofday];
+  # If the age of the present cache is greater than the ttl
+  # then go to the database and update the cache.
+  if ($cachetype =~ /count/) {
+    # TIP: update the 'avg' cache before updating the 'count' cache.
+    my ($DATA_aref, $DATA_array_age) = FetchData(cachefile=>$CACHEFILEROOT."avg", cachedir=>$CACHEDIR);
+    my %DATA = undef;
+    %DATA = %{ enumerateDATA_hash( $DATA_aref, \%DATA) };
+    store(\%DATA, "$cachedir/$cachefile");
+   if ($opt_d or param('d')) {
+      print "cachewrite ", (stat("$cachedir/$cachefile"))[7]," bytes\n";
+    }
+  }
+  elsif ($cachetype eq "weekly") {
+    if ($opt_d or param('d')) { print "Creating and writing the AvgQ20 per Week graphs\n"; }
+    my ($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref)  = build_qweek_data();
+    make_qweek_image($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+    make_week_text('avg', $data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+
+    if ($opt_d or param('d')) { print "Creating and writing the Success ratio (AvgQ20 > 100) graphs\n"; }
+    ($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref)  = build_sweek_data();
+    make_sweek_image($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+    make_week_text('success100', $data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+
+    if ($opt_d or param('d')) { print "Creating and writing the Throughput per Week graphs\n"; }
+    ($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref) = build_tweek_data();
+    make_tweek_image($data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+    make_week_text('throughput', $data_prod_aref, $data_test_aref, $data_all_aref, $data_custom_aref, $colours_aref);
+  }
+  else {
+    FetchFromDB(cachefile=>$cachefile,
+	      cachedir=>$cachedir,
+	      querytype=>$cachetype,
+	      cachewrite=>1);
+  }
+  my $elapsed = tv_interval($t_start);
+  if ($opt_d or param('d')) {
+    print sprintf("db call: %.1f seconds\n", $elapsed);
+  }
+  $age = CacheAge(cachefile=>$cachefile,
+		  cachedir=>$cachedir);
+  if (param('d')) { print "\n\n</pre>\n" }
+  return $age;
+}
+
+sub Usage {
+  print "$0 -c COMMAND -t TTL -T TYPE1[,TYPE2,...] [-d] [-f]\n";
+  print "\n";
+  print "COMMAND : cachegen [regenerate cache]\n";
+  print "TTL     : time to live of cache (s)\n";
+  print "TYPE(S) : one or more cache types (avg, hist, run_hist, count, weekly)\n";
+  print "-f      : force cache write regardless of TTL\n";
+  print "-d      : debug messages\n";
+  print "-h      : usage information\n";
+  print "-v      : version information\n";
+}
+
+##########
+# output a histogram from %HIST given it's Run ID
+sub display_run_histogram {
+  my $run_id = shift;
+  my $histogram = $HIST{'ID'}->{$run_id}->{'t_all'};
+  if (defined $histogram) {
+    my $imghtml = MakeHistogramPNG(hist=>$histogram,
+				   x=>150,
+				   y=>60,
+				   xskip=>0,
+				   yskip=>2,
+				   xmax=>800,
+				   xticks=>4,
+				  );
+    if (defined $imghtml) {
+      DisplayHistogramPNG(hist=>$histogram, imghtml=>$imghtml, item=>$run_id, type=>'ID', time=>'t_all');
+    }
+  }
+}
+
+
+##########
+sub print_recent_success_stats {
+  my ($sr, $rt);
+  print qq{<table border="0" cellpadding="6" cellspacing="0" width="100%">\n};
+  print qq{<tr>\n<td class="vvlightprodblue">\n};
+  print qq{<b><span class=large>Success, Quality and Throughput Stats</span></b>\n};
+  print qq{</td>\n</tr>\n};
+  print qq{</table>\n};
+
+  print qq{<table width="100%" cellpadding="4" cellspacing="0" border="0">\n};
+  print qq{<tr class="vdarkprodblue"><td><br></td>\n};
+  print qq{<td><span class=whitetext><span class=small>Today</span></span></td>\n};
+  print qq{<td><span class=whitetext><span class=small>Week to Date</span></span></td>\n};
+  print qq{<td><span class=whitetext><span class=small>Last Week</span></span></td>\n};
+  print qq{<td><span class=whitetext><span class=small>Month to Date</span></span></td>\n};
+  print qq{<td><span class=whitetext><span class=small>Last Month</span></span></td>\n};
+
+  #####
+  # AvgQ20 > 100 ratio
+  print qq{<tr class="vvlightgrey"><td><span class="smaller"><B>Success</b> AvgQ20&nbsp;>&nbsp;100</span></td>};
+
+  # Today
+  my $upper = Date_to_Days(Today());
+  my $lower = $upper;
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>100, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)</span></td>\n";
+
+  # Week to Date
+  my @start_of_week = Add_Delta_Days(Today(), (0 - Day_of_Week(Today())));
+  $lower = Date_to_Days(@start_of_week);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>100, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_week); # verify correct dates
+  print "</span></td>\n";
+
+  # Last Week
+  $upper = $lower - 1;
+  $lower = $lower - 8;
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>100, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  print "</span></td>\n";
+
+  # Month to Date
+  $upper = Date_to_Days(Today());
+  my @start_of_month = Today();
+  $start_of_month[2] = 1;
+  $lower = Date_to_Days(@start_of_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>100, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_month); #veryify correct dates
+  print "</span></td>\n";
+
+  # Last Month
+  $upper = $lower - 1;
+  my @start_of_last_month = Add_Delta_Days(@start_of_month, -1);
+  $start_of_last_month[2] = 1;
+  $lower = Date_to_Days(@start_of_last_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>100, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: " . Date_to_Text(Add_Delta_Days(@start_of_month, -1))  . "<br>start: " . Date_to_Text(@start_of_last_month); # verify correct dates
+  print "</span></td>\n";
+  print qq{</tr>\n};
+
+  #####
+  # AvgQ20 > 50 ratio
+  print qq{<tr class="vvlightgrey"><td><span class="smaller"><b>Success</b> AvgQ20&nbsp;>&nbsp;50</span></td>};
+
+  # Today
+  $upper = Date_to_Days(Today());
+  $lower = $upper;
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>50, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)</span></td>\n";
+
+  # Week to Date
+  @start_of_week = Add_Delta_Days(Today(), (0 - Day_of_Week(Today())));
+  $lower = Date_to_Days(@start_of_week);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>50, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_week); # verify correct dates
+  print "</span></td>\n";
+
+  # Last Week
+  $upper = $lower - 1;
+  $lower = $lower - 8;
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>50, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  print "</span></td>\n";
+
+  # Month to Date
+  $upper = Date_to_Days(Today());
+  @start_of_month = Today();
+  $start_of_month[2] = 1;
+  $lower = Date_to_Days(@start_of_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>50, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_month); #veryify correct dates
+  print "</span></td>\n";
+
+  # Last Month
+  $upper = $lower - 1;
+  @start_of_last_month = Add_Delta_Days(@start_of_month, -1);
+  $start_of_last_month[2] = 1;
+  $lower = Date_to_Days(@start_of_last_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>50, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: " . Date_to_Text(Add_Delta_Days(@start_of_month, -1))  . "<br>start: " . Date_to_Text(@start_of_last_month); # verify correct dates
+  print "</span></td>\n";
+
+  print qq{</tr>\n};
+
+  #####
+  # AvgQ20 > 10 ratio
+  print qq{<tr class="vvlightgrey"><td><span class="smaller"><b>Success</b> AvgQ20&nbsp;>&nbsp;10</span></td>};
+
+  # Today
+  $upper = Date_to_Days(Today());
+  $lower = $upper;
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>10, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)</span></td>\n";
+
+  # Week to Date
+  @start_of_week = Add_Delta_Days(Today(), (0 - Day_of_Week(Today())));
+  $lower = Date_to_Days(@start_of_week);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>10, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_week); # verify correct dates
+  print "</span></td>\n";
+
+  # Last Week
+  $upper = $lower - 1;
+  $lower = $lower - 8;
+  print "<td><span class=smaller>$sr% ($rt)</span></td>\n";
+
+  # Month to Date
+  $upper = Date_to_Days(Today());
+  @start_of_month = Today();
+  $start_of_month[2] = 1;
+  $lower = Date_to_Days(@start_of_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>10, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: today's date<br>start: " . Date_to_Text(@start_of_month); #veryify correct dates
+  print "</span></td>\n";
+
+  # Last Month
+  $upper = $lower - 1;
+  @start_of_last_month = Add_Delta_Days(@start_of_month, -1);
+  $start_of_last_month[2] = 1;
+  $lower = Date_to_Days(@start_of_last_month);
+  ($sr, $rt) = success_over_time(lower=>$lower, upper=>$upper,  cutoff=>10, test=>0);
+  print "<td><span class=smaller>$sr% ($rt)";
+  # print "<br>end: " . Date_to_Text(Add_Delta_Days(@start_of_month, -1))  . "<br>start: " . Date_to_Text(@start_of_last_month); # verify correct dates
+  print "</span></td>\n";
+  print qq{</tr>\n};
+
+  print qq{</table>\n&nbsp;<br>&nbsp;<br>};
+
+  print qq{<div class="smaller"><b>Success ratio</b> (% of AvgQ20 > 100)</div>\n};
+  print qq{<img width="370" height="200" src="/intranet/sequencing/images/weekly/success100_prod.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<div class="smaller"><b>AvgQ20 per Week</b></div>\n};
+  print qq{<img width="370" height="200" src="/intranet/sequencing/images/weekly/quality_prod.png" alt="AvgQ20/Week" border="0">\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<div class="smaller"><b>Throughput per Week</b></div>\n};
+  print qq{<img width="370" height="200" src="/intranet/sequencing/images/weekly/throughput_prod.png" alt="AvgQ20/Week" border="0">\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+  print qq{<p>Above graphs show Production runs only.<br>View <a href="$scriptname?view=weeklygraphs">all graphs</a> or};
+  print qq{ <a href="$scriptname?view=weeklytext">all tables</a>.</p>};
+  print qq{<div class="smaller">Graph dates are in format month/day showing the <b>last</b> day of each week.};
+  print qq{The highlighted bars represent the first week of every month.</div>};
+
+}
+
+################################################################
+# view = main menu
+################################################################
+sub viewMainMenu {
+
+  print_lib_recent_runs();
+
+  print_seq_recent_run_results();
+
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="0" cellspacing="0" width="700">\n};
+  print qq{<tr><td width="300" valign="top">\n};
+
+  # Statistics summaries menus.
+  print << "HereStatisticsMenuHTML";
+  <table width="300" border="1" cellspacing="1" cellpadding="2" valign="top">
+
+  <tr>
+    <td colspan=5 valign=top>
+    <a href="$scriptname?view=allstats">
+    <img src="$IMGURL/view_allstats.png" align=left hspace=5 border=0></a>
+    <span class=darkorangetext><b><span class=large>
+    Statistics summaries
+    </span></b></span><br>
+    Summary statistics for all runs grouped by run status, sequencer, library, project and chemistry.
+    </td>
+  </tr>
+
+  <tr>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=allstats&show=Status">
+    <img src="$IMGURL/view_allstats_runstat.png" border=0 width=40></a><br>
+    <span class=greytext>status</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=allstats&show=Sequencer">
+    <img src="$IMGURL/view_allstats_seq.png" width=40 border=0></a><br>
+    <span class=greytext>seq</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=allstats&show=Library">
+    <img src="$IMGURL/view_allstats_lib.png" width=40 border=0 ></a><br>
+    <span class=greytext>lib</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=allstats&show=Project">
+    <img src="$IMGURL/view_allstats_proj.png" width=40 border=0></a><br>
+    <span class=greytext>proj</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=allstats&show=Chem">
+    <img src="$IMGURL/view_allstats_chem.png" width=40 border=0></a><br>
+    <span class=greytext>chem</span></td>
+  </tr>
+
+  </table>
+  <br><br>
+HereStatisticsMenuHTML
+
+  # Top list menus
+  print << "HereTopListMenuHTML";
+  <table width=300 border=1 cellspacing=1 cellpadding=2>
+
+  <tr>
+    <td colspan=3 valign=top>
+    <a href="$scriptname?view=toplist">
+    <img src="$IMGURL/view_toplists.png" align=left hspace=5 border=0></a>
+    <span class=darkorangetext><b><span class=large>Top lists</span></b></span><br>
+    Read statistics grouped by time periods, sorted by activity.
+    </td>
+  </tr>
+
+  <tr>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=toplist&show=Sequencer">
+    <img src="$IMGURL/view_toplists_seq.png" border=0 width=40></a><br>
+    <span class=greytext>seq</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=toplist&show=Library">
+    <img src="$IMGURL/view_allstats_lib.png" border=0 width=40 ></a><br>
+    <span class=greytext>lib</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=toplist&show=Project">
+    <img src="$IMGURL/view_allstats_proj.png" border=0 width=40></a><br>
+    <span class=greytext>proj</span>
+    </td>
+  </tr>
+
+  </table>
+  <br><br>
+HereTopListMenuHTML
+
+  # Calendar menus
+  print << "HereCalMenuHTML";
+  <table width=300 border=1 cellspacing=1 cellpadding=2>
+  <tr>
+    <td colspan=3 valign=top>
+    <a href="$scriptname?view=calendar">
+    <img src="$IMGURL/view_calendar.png" border=0 align=left hspace=5></a>
+    <span class=darkorangetext><b><span class=large>Sequencing Calendar</span></b></span><br>
+    Sequencing activity calendar, grouping reads for a day and week by sequencer, library or project.</td>
+  </tr>
+
+  <tr>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=calendar&groupby=sequencer">
+    <img src="$IMGURL/view_toplists_seq.png" width=40 border=0></a>
+    <br><span class=greytext>seq</span></td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=calendar&groupby=library">
+    <img src="$IMGURL/view_allstats_lib.png" width=40 border=0></a><br>
+    <span class=greytext>lib</span>
+    </td>
+    <td align=center valign=top class=small>
+    <a href="$scriptname?view=calendar&groupby=project">
+    <img src="$IMGURL/view_allstats_proj.png" width=40 border=0></a><br>
+    <span class=greytext>proj</span>
+    </td>
+  </tr>
+
+  </table>
+  <br><br>
+HereCalMenuHTML
+
+  print qq{<td width="30">&nbsp;&nbsp;&nbsp;&nbsp;</td>\n};
+  print qq{<td width="370" valign="top">\n};
+
+  print_recent_success_stats();
+
+  print qq{</td></tr>\n</table>\n\n};
+}
+
+
+sub viewWeeklyGraphs {
+  print qq{<table border="0" cellpadding="6" cellspacing="0" width="100%">\n};
+  print qq{<tr>\n<td class="vvlightprodblue">\n};
+  print qq{<b><span class=large>Success, Quality and Throughput Stats</span></b>\n};
+  print qq{</td>\n</tr>\n};
+  print qq{</table>\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1"><tr><td class="vvvlightgrey" align="center" colspan="4">\n};
+  print qq{<b>Success ratio</b> (% of AvgQ20 > 100)\n};
+  print qq{</td></tr>\n};
+  print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Production Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/success100_prod.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Test Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/success100_test.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">All Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/success100_all.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Custom Primer (CE, CB) Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/success100_custom.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td></tr></table>\n};
+  print qq{</td></tr></table>\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1"><tr><td class="vvvlightgrey" align="center" colspan="4">\n};
+  print qq{<b>Average Q20 per Week</b>\n};
+  print qq{</td></tr>\n};
+  print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Production Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/quality_prod.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Test Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/quality_test.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">All Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/quality_all.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Custom Primer (CB, CE) Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/quality_custom.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td></tr></table>\n};
+  print qq{</td></tr></table>\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1"><tr><td class="vvvlightgrey" align="center" colspan="4">\n};
+  print qq{<b>Throughput per Week</b>\n};
+  print qq{</td></tr>\n};
+  print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Production Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/throughput_prod.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Test Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/throughput_test.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">All Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/throughput_all.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td><td>\n};
+  print qq{<span class="smaller"><span class="vlightgreenbw">Custom Primer (CB, CE) Runs</span></span><br>\n};
+  print qq{<img hspace="10" width="370" height="200" src="/intranet/sequencing/images/weekly/throughput_custom.png" alt="% of AvgQ20 > 100" border="0">\n};
+  print qq{</td></tr></table>\n};
+  print qq{</td></tr></table>\n};
+  print qq{&nbsp;<br>\n};
+  print qq{View success, quality and throughput <a href="$scriptname?view=weeklytext">tables</a>.};
+
+}
+
+# At the Chevron Town Pantry 'Cool Zone' the watermelon flavoured Slurpee's taste "lemony"
+
+sub viewWeeklyText {
+  my $year = (Today())[0];
+
+  print qq{<table border="0" cellpadding="6" cellspacing="0" width="100%">\n};
+  print qq{<tr>\n<td class="vvlightprodblue">\n};
+  print qq{<b><span class=large>Success, Quality and Throughput Stats</span></b>\n};
+  print qq{</td>\n</tr>\n};
+  print qq{</table>\n};
+  print qq{&nbsp;<br>&nbsp;<br>\n};
+
+  print qq{<table border="0" cellpadding="6" cellspacing="0"><tr><td>\n};
+
+  # AvgQ20 table
+  $year = $year - 1;
+  my $ref = retrieve($CACHEDIR . "/" . $CACHEFILEROOT . "weekly.avg") || print "Could not retrieve weekly AvgQ20 cache: $!<br>";
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1">\n};
+
+  print qq{<tr class="vvvlightgrey" align="center">\n};
+  print qq{<td colspan="5"><b>AvgQ20</b></td>\n};
+  print qq{</tr>\n};
+
+  print qq{<tr class="vlightgrey" align="center">\n};
+  print qq{<td>Date</td>\n};
+  print qq{<td>Test</td>\n};
+  print qq{<td>Production</td>\n};
+  print qq{<td>All</td>\n};
+  print qq{<td>Custom<br>Primer</td>\n};
+  print qq{</tr>\n};
+  my ($i, $month, $day, @eow);
+  for my $item ( @{$ref->[0][0]} ) {
+      print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+      print $year . "/" . $item;
+      $item =~ m|(\d+)/(\d+)|;
+      $month = $1; $day = $2;
+      if (($month == 1) and ($day < 8)) { $year++ }
+      print qq{<br>to&nbsp;};
+      @eow = Add_Delta_Days($year, $month, $day, 6);
+      print $eow[0] . "/" . $eow[1] . "/" . $eow[2];
+      print qq{</td><td>};
+      print FormatPrintValue($nformat, value=>$ref->[0][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[1][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[2][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[3][1][$i], precision=>0) . qq{</td>\n};
+      print qq{</tr>\n\n};
+      $i++;
+  }
+  print qq{</table>\n</td></tr></table>\n\n};
+
+  print qq{</td><td>\n};
+
+  # Success100 table
+  $year = $year - 1;
+  my $ref = retrieve($CACHEDIR . "/" . $CACHEFILEROOT . "weekly.success100") || print "Could not retrieve weekly Success100 cache: $!<br>";
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1">\n};
+
+  print qq{<tr class="vvvlightgrey" align="center">\n};
+  print qq{<td colspan="5"><b>Success</b> (% of AvgQ20 &gt; 100)</td>\n};
+  print qq{</tr>\n};
+
+  print qq{<tr class="vlightgrey" align="center">\n};
+  print qq{<td>Date</td>\n};
+  print qq{<td>Test</span></td>\n};
+  print qq{<td>Production</span></td>\n};
+  print qq{<td>All</span></td>\n};
+  print qq{<td>Custom<br>Primer</td>\n};
+  print qq{</tr>\n};
+  my ($i, $month, $day, @eow);
+  for my $item ( @{$ref->[0][0]} ) {
+      print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+      print $year . "/" . $item;
+      $item =~ m|(\d+)/(\d+)|;
+      $month = $1; $day = $2;
+      if (($month == 1) and ($day < 8)) { $year++ }
+      print qq{<br>to&nbsp;};
+      @eow = Add_Delta_Days($year, $month, $day, 6);
+      print $eow[0] . "/" . $eow[1] . "/" . $eow[2];
+      print qq{</td>};
+      print qq{<td>%} . FormatPrintValue($nformat, value=>$ref->[0][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>%} . FormatPrintValue($nformat, value=>$ref->[1][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>%} . FormatPrintValue($nformat, value=>$ref->[2][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>%} . FormatPrintValue($nformat, value=>$ref->[3][1][$i], precision=>0) . qq{</td>\n};
+      print qq{</tr>\n\n};
+      $i++;
+  }
+  print qq{</table>\n</td></tr></table>\n\n};
+
+  print qq{</td><td>\n};
+
+  # Throughput table
+  $year = $year - 1;
+  my $ref = retrieve($CACHEDIR . "/" . $CACHEFILEROOT . "weekly.throughput") || print "Could not retrieve weekly Throughput cache: $!<br>";
+
+  print qq{<table border="0" cellpadding="0" cellspacing="0"><tr><td class="vdarkbluebw">\n};
+  print qq{<table border="0" cellpadding="4" cellspacing="1">\n};
+
+  print qq{<tr class="vvvlightgrey" align="center">\n};
+  print qq{<td colspan="5"><b>Throughput</b> (Number of Reads)</td>\n};
+  print qq{</tr>\n};
+
+  print qq{<tr class="vlightgrey" align="center">\n};
+  print qq{<td>Date</td>\n};
+  print qq{<td>Test</td>\n};
+  print qq{<td>Production</td>\n};
+  print qq{<td>All</td>\n};
+  print qq{<td>Custom<br>Primer</td>\n};
+  print qq{</tr>\n};
+  my ($i, $month, $day, @eow);
+  for my $item ( @{$ref->[0][0]} ) {
+      print qq{<tr class="vvvlightgrey" align="center"><td>\n};
+      print $year . "/" . $item;
+      $item =~ m|(\d+)/(\d+)|;
+      $month = $1; $day = $2;
+      if (($month == 1) and ($day < 8)) { $year++ }
+      print qq{<br>to&nbsp;};
+      @eow = Add_Delta_Days($year, $month, $day, 6);
+      print $eow[0] . "/" . $eow[1] . "/" . $eow[2];
+      print qq{</td><td>};
+      print FormatPrintValue($nformat, value=>$ref->[0][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[1][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[2][1][$i], precision=>0) . qq{</td>\n};
+      print qq{<td>} . FormatPrintValue($nformat, value=>$ref->[3][1][$i], precision=>0) . qq{</td>\n};
+      print qq{</tr>\n\n};
+      $i++;
+  }
+  print qq{</table>\n</td></tr></table>\n\n};
+
+  print qq{</td></tr></table>\n};
+  print qq{&nbsp;<br>};
+  print qq{View success, quality and throughput <a href="$scriptname?view=weeklygraphs">graphs</a>.};
+
+}
+
+##########
+# display an expanded histogram
+sub viewExpandedHistogram {
+  my $type = param('type');
+  my $item = param('item');
+  my $time = param('time');
+
+  my $histogram = $HIST{$type}->{$item}->{$time};
+  if (defined $histogram) {
+    my $imghtml = MakeHistogramPNG(hist=>$histogram,
+				   x=>700,
+				   y=>400,
+				   xskip=>2,
+				   yskip=>2,
+				   xmax=>1000,
+				   xticks=>40,
+				  );
+    if (defined $imghtml) {
+      DisplayHistogramPNG(hist=>$histogram, imghtml=>$imghtml);
+    }
+  }
+  else {
+    print "<p>Something is wrong with the histogram or your parameters or something.</p>\n";
+    print "<p>Perhaps the code has bugs.</p>\n";
+    print "<p>Most likely, it's bugs.</p>\n";
+    print "<p>The following data may help to fix the bugs:</p>\n";
+    print "<p>type: " . $type . "<br>\n";
+    print "item: " . $item . "<br>\n";
+    print "time: " . $time . "<br>\n";
+
+  }
+}
+
+
+##########
+# search form
+sub viewSearchForm {
+  my @libs  = MySQL_GSC::GetDistinctLibraries();
+  @libs = ("",sort @libs);
+
+  print qq{<form action="$scriptname" method="post">\n};
+
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="6" cellspacing="2" width="700">\n};
+  print qq{<tr>\n<td colspan="2" class="vvlightprodblue">\n};
+  print qq{<b><span class=large>Library Search</span></b>\n};
+  print qq{</td>\n</tr>\n};
+  print qq{<tr valign="top">\n<td class="vlightgreenbw"><b>Time Period</b> (YYYY-MM-DD)</td>\n};
+  print qq{<td class="vvvlightgrey">Start: <input type="text" size="10" maxsize="10" value="};
+  printf("%4d-%02d-%02d", (Add_Delta_Days(Today(), -5)));
+  print qq{"> &nbsp;&nbsp;to&nbsp;&nbsp; };
+  print qq{End: <input type="text" size="10" maxsize="10" value="};
+  printf("%4d-%02d-%02d", Today());
+  print qq{"></td></tr>};
+  print qq{<tr valign="top">\n<td class="vlightgreenbw" colspan="1"><b>Libraries</b></td>\n};
+  print qq{<td class="vvvlightgrey"><select name="libraries" size="10" multiple>\n};
+  foreach (@libs) {
+    print qq{<option value="$_">$_</option>\n};
+  }
+  print qq{</select>\n};
+  print qq{</td></tr>};
+  print qq{</table>\n\n};
+  print qq{</form>};
+}
+
+
+################################################################
+# viewCache
+# updates the cached data and prints out information about it
+# basically a web interface to the Maintenance subroutine.
+#
+sub viewCache {
+  if (param('v')) {
+    print "<hr><b>VERSION INFORMATION</b><br>";
+    print "$0<br>\nCVS v$VERSION [$CVSTAG] $CVSDATE\n";
+    print "<hr>\n";
+    return;
+  }
+  if (param('c') =~ /cachegen/) {
+    my @cachetype;
+    if (! defined param('T')) {
+      @cachetype = ("avg", "hist", "count");
+    } else {
+      @cachetype = split(",", param('T'));
+    }
+    foreach my $cachetype (@cachetype) {
+      my $ttl = param('t') || $CACHETTL;
+      print "<h1>Updating cache type=[$cachetype] [ttl $ttl]";
+      if (param('f')) {
+        print " [FORCED]";
+      }
+      print "</h1>\n";
+      if (param('f')) {
+	$ttl = 0;
+      }
+      UpdateCache(cachefile=>$CACHEFILEROOT."$cachetype",
+		  cachedir=>$CACHEDIR,
+		  cachettl=>$ttl,
+		  cachetype=>$cachetype);
+    }
+  }
+print << "HereCacheHelp";
+<span class=darkorangetext><b><span class=large>
+Cache Help</span></b></span><br>
+<P>Currently, summary data for all runs is computed at once. This usually takes a minute or
+two, so the results are cached to disk. When the summary data is shown it uses this
+disk cache. Visiting the following link will cause the run summary data to be refreshed with the
+most recent data:</p>
+
+<p><a href="$scriptname?view=cache&T=avg,count&c=cachegen&d=t&f=t">
+$scriptname?view=cache&T=avg,count&c=cachegen&d=t&f=t</a></p>
+
+<p>The cache can also be refreshed by running the <b>dbsummary-front</b> program from the 
+command line. The script lives at:</p>
+
+<p><tt>/usr/local/apache/cgi-bin/intranet/sequence/summary/dbsummary-front</tt></p>
+
+<p>Also note that the histograms can't currently be refreshed through the web.
+Generating new histograms generally takes quite a while (fifteen minutes or so).</p>
+
+<p><b>More cache confusion:</b> Also note that your web browser can cache web pages
+locally on your machine. This is not to be confused with the run data cache created by the 
+web server. If you follow refresh the cache and this results page appears right away,
+your web browser has pulled this page of your hard drive and hasn't triggered an update
+of the run data cache. Use the <b>Reload</b> function in your browser to cause a real
+cache refresh at this point.</p>
+
+HereCacheHelp
+
+
+}
+
+################################################################
+# print_lib_recent_runs
+#
+sub print_lib_recent_runs {
+  my $size = 50;
+  my %libs = %{ runs_by_lib_data( size=>$size )};
+
+  my @run_ids;
+  foreach my $lib_key (sort keys %libs) {
+    foreach my $run_key (keys %{ $libs{$lib_key} }) {
+      push (@run_ids, $libs{$lib_key}{$run_key}{'ID'});
+    }
+  }
+  my $grow_href = count_slow_and_no_grows(\@run_ids);
+
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="6" cellspacing="2" width="700">\n};
+  print qq{<tr>\n<td colspan="1" class="vvlightprodblue">\n};
+  print qq{<b><span class=large>$size Most Recent Runs by Library</span></b>\n};
+  print qq{<table border="0" cellpadding="2" cellspacing="0" align="right">\n};
+  print qq{<tr><td><span class="smaller">\n};
+  print qq{<a href="$scriptname?view=cache&T=avg,count&c=cachegen&d=t&f=t" target="Window2">Refresh the cache</a><br>\n};
+  print "(cache age = " . int($DATA_array_age / 60) . " minutes)";
+  print qq{</span></td></tr></table>\n};
+  print qq{</td>\n</tr>\n};
+
+  foreach my $lib (keys %libs) {
+    print qq{<tr><td colspan="1" class="vvlightgrey">\n};
+    print "<b>" . $lib . "</b> \n";
+    my ($rc, $no_grow, $slow_grow, $avg, $max);
+    foreach my $run (sort keys %{ $libs{$lib} }) {
+      my $href = $libs{$lib}{$run};
+      $rc++;
+      $avg = $avg + $href->{'AvgQ20'};
+      if ($href->{'MaxQ20'} > $max) { $max = $href->{'MaxQ20'} }
+      $no_grow = $no_grow + $$grow_href{$href->{'ID'}}{'no_grow'};
+      $slow_grow = $slow_grow + $$grow_href{$href->{'ID'}}{'slow_grow'};
+    }
+    $avg = $avg / $rc;
+    print qq{<span class="smaller">};
+    print RoundSigDig(num=>int($avg), sd=>2) . "/" . $max . " \n[";
+    # No Grows
+    if ($no_grow > 0) { print "<span style='color: red;'>" }
+    print $no_grow;
+    if ($no_grow > 0) { print "</span>"; }
+    print "/";
+    # Slow Grows
+    if ($slow_grow > 0) { print "<span style='color: red;'>" }
+    print $slow_grow;
+    if ($slow_grow > 0) { print "</span>"; }
+    print "]";
+    print qq{ for $rc run};
+    if ($rc > 1) { print "s" }
+
+    print qq{<table border="0" cellpadding="2" cellspacing="0" align="right">\n};
+    print qq{<tr><td><span class="smaller">\n};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=25&show_hist=1">25</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=50&show_hist=1">50</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=200&show_hist=1">200</a>&nbsp;&nbsp;\n};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=3days&show_hist=1">3d</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=7days&show_hist=1">7d</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=30days&show_hist=1">30d</a><br>\n};
+    print qq{</span></td></tr></table>\n};
+
+    print qq{</span></td></tr>\n};
+
+  }
+  print qq{<tr><td colspan="1" class="vlightgrey">\n};
+  print qq{<span class="smaller">Overview of recent runs: };
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=50">50</a>|};
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=100">100</a>|};
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=250">250</a>&nbsp;&nbsp;\n};
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=3days">3d</a>|};
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=7days">7d</a>|};
+  print qq{<a href="$scriptname?view=sumrecentlibs&size=30days">30d</a>&nbsp;&nbsp;\n};
+  print qq{</span></td></tr>\n};
+  print qq{</table>\n\n};
+
+  # Legend
+  print "<span class=small><b>LEGEND: </b> ";
+  print "Library AvgQ20/MaxQ20 [No Grows/Slow Grows]";
+  print "</span><br>";
+
+}
+
+########
+sub viewSumRecentLibs {
+  my $size = param('size') || 100;
+  my %libs = %{ runs_by_lib_data( size=>$size )};
+
+  my @run_ids;
+  foreach my $lib_key (sort keys %libs) {
+    foreach my $run_key (keys %{ $libs{$lib_key} }) {
+      push (@run_ids, $libs{$lib_key}{$run_key}{'ID'});
+    }
+  }
+  my $grow_href = count_slow_and_no_grows(\@run_ids);
+
+  $size =~ s/days/ Days/;
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="6" cellspacing="2" width="700">\n};
+  print qq{<tr>\n<td colspan="7" class="vvlightprodblue">\n};
+  print qq{<b><span class=large>$size Most Recent Runs by Library</span></b>\n};
+  print qq{<table border="0" cellpadding="2" cellspacing="0" align="right">\n};
+  print qq{<tr><td><span class="smaller">\n};
+  print qq{<a href="$scriptname?view=cache&T=avg,count&c=cachegen&d=t&f=t" target="Window2">Refresh the cache</a><br>\n};
+  print "(cache age = " . int($DATA_array_age / 60) . " minutes)";
+  print qq{</span></td></tr></table>\n};
+  print qq{</td>\n</tr>\n};
+
+  foreach my $lib (keys %libs) {
+    print qq{<tr><td colspan="7" class="vvlightgrey">\n};
+    print "<b>" . $lib . "</b> \n";
+    my ($rc, $no_grow, $slow_grow, $avg, $max);
+    foreach my $run (sort keys %{ $libs{$lib} }) {
+      my $href = $libs{$lib}{$run};
+      $rc++;
+      $avg = $avg + $href->{'AvgQ20'};
+      if ($href->{'MaxQ20'} > $max) { $max = $href->{'MaxQ20'} }
+      $no_grow = $no_grow + $$grow_href{$href->{'ID'}}{'no_grow'};
+      $slow_grow = $slow_grow + $$grow_href{$href->{'ID'}}{'slow_grow'};
+    }
+    $avg = $avg / $rc;
+    print qq{<span class="smaller">};
+    print RoundSigDig(num=>int($avg), sd=>2) . "/" . $max . " \n[";
+    # No Grows
+    if ($no_grow > 0) { print "<span style='color: red;'>" }
+    print $no_grow;
+    if ($no_grow > 0) { print "</span>"; }
+    print "/";
+    # Slow Grows
+    if ($slow_grow > 0) { print "<span style='color: red;'>" }
+    print $slow_grow;
+    if ($slow_grow > 0) { print "</span>"; }
+    print "]";
+    print qq{ for $rc run};
+    if ($rc > 1) { print "s" }
+
+    print qq{<table border="0" cellpadding="2" cellspacing="0" align="right">\n};
+    print qq{<tr><td><span class="smaller">\n};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=25&show_hist=1">25</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=50&show_hist=1">50</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=200&show_hist=1">200</a>&nbsp;&nbsp;\n};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=3days&show_hist=1">3d</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=7days&show_hist=1">7d</a>|};
+    print qq{<a href="$scriptname?view=recentlibs&lib=$lib&size=30days&show_hist=1">30d</a><br>\n};
+    print qq{</span></td></tr></table>\n};
+
+    print qq{</span></td></tr>\n};
+
+    my $trcount = 0;
+    foreach my $run (sort keys %{ $libs{$lib} }) {
+      my $href = $libs{$lib}{$run};
+
+      my $class = "vvvlightgrey";
+      if (($href->{'AvgQ20'}) < 201) {
+        $class = "lightredbw";
+      }
+      elsif (($href->{'AvgQ20'}) < 401) {
+        $class = "vlightyellowbw";
+      }
+      if ($href->{'Status'} =~ m/Test/) {
+        $class = "vvlightgrey";
+      }
+
+      if ($trcount == 0) { print qq{<tr>\n}; }
+      $trcount++;
+      print qq{<td class="$class" width="100">\n};
+      print qq{<span class="smaller">};
+      my $imgname = GetQImage(q=>$href->{'AvgQ20'});
+      print qq{<img width="8" height="8" src="$IMGURL/$imgname" border="0"> \n};
+      my @lt = @{ sqltime2lt($href->{'Date'}) };
+      print qq{<a href="$scriptname_old?scope=RunID&scopevalue=};
+      print $href->{'ID'};
+      print qq{&option=bpsummary" style="color: #004271;"><b>};
+      print $href->{'Sequencer'} . "</b></a>\n";
+      print strftime("%a&nbsp;%H:%M", @lt) . " ";
+      if ($href->{'Status'} =~ m/Test/) { print "[T] "; }
+      print RoundSigDig(num=>int($href->{'AvgQ20'}), sd=>2) . "/" . $href->{'MaxQ20'} . "\n [";
+      # No Grows
+      if (($grow_href->{$href->{'ID'}}{'no_grow'}) > 0) { print "<span style='color: red;'>" }
+      print $$grow_href{$href->{'ID'}}{'no_grow'};
+      if (($grow_href->{$href->{'ID'}}{'no_grow'}) > 0) { print "</span>" }
+      print "/";
+      # Slow Grows
+      if (($grow_href->{$href->{'ID'}}{'slow_grow'}) > 0) { print "<span style='color: red;'>" }
+      print $$grow_href{$href->{'ID'}}{'slow_grow'};
+      if (($grow_href->{$href->{'ID'}}{'slow_grow'}) > 0) { print "</span>" }
+      print "]";
+
+      print qq{</span></td>\n};
+      if ($trcount == 7) {
+	print qq{</tr>\n};
+	$trcount = 0;
+      }
+    }
+
+    for (my $i = $trcount; $i < 7; $i++) {
+      print qq{<td class="vvvlightgrey" width="100"><br></td>};
+      if ($i == 6) { print qq{</tr>\n}; }
+    }
+  }
+  print qq{</table>\n\n};
+}
+
+################################################################
+# print_seq_recent_run_results
+# Shows the most recent sequencer run results
+#
+sub print_seq_recent_run_results {
+
+  my %sequencer = %{ enumerateRecentRuns( size=>5 ) };
+
+  $page->AddTimer(name=>"SQLing", showdot=>1);
+  my @run_ids;
+  foreach my $seq_key (sort keys %sequencer) {
+    foreach my $run_key (keys %{ $sequencer{$seq_key} }) {
+      push (@run_ids, $sequencer{$seq_key}{$run_key}{'ID'});
+    }
+  }
+  my $grow_href = count_slow_and_no_grows(\@run_ids);
+  $page->StopTimer("SQLing");
+
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="6" cellspacing="2" width="700">\n};
+  print qq{<tr>\n<td colspan="7" class="vvlightprodblue">\n};
+  print qq{<b><span class=large>5 Most Recent Runs per Sequencer</span></b>\n};
+  print qq{<table border="0" cellpadding="2" cellspacing="0" align="right">\n};
+  print qq{<tr><td><span class="smaller">\n};
+  print qq{<a href="$scriptname?view=cache&T=avg,count&c=cachegen&d=t&f=t" target="Window2">Refresh the cache</a><br>\n};
+  print "(cache age = " . int($DATA_array_age / 60) . " minutes)";
+  print qq{</span></td></tr></table>\n};
+  print qq{</td>\n</tr>\n};
+
+  my @run_table = @{ build_recent_runs_table( size=>5 ) };
+
+  # output Sequencer names
+  print qq{<tr valign="top">\n};
+  foreach my $href (@{ @run_table[0] }) {
+    print qq{<td width="100" class="vvlightgrey">\n};
+    print $href->{'Sequencer'};
+    print qq{</td>\n};
+  }
+  print qq{</tr>\n};
+
+  # print out the array of arrays
+  foreach my $aref (@run_table) {
+    print qq{<tr valign="top">\n};
+    foreach my $href (@$aref) {
+      my $class = "vvvlightgrey";
+      if (($href->{'AvgQ20'}) < 201) {
+        $class = "lightredbw";
+      }
+      elsif (($href->{'AvgQ20'}) < 401) {
+        $class = "vlightyellowbw";
+      }
+
+      if ($href->{'Status'} =~ m/Test/) {
+        $class = "vvlightgrey";
+      }
+      print qq{<td class="$class"><span class="smaller">\n};
+
+      my $imgname = GetQImage(q=>$href->{'AvgQ20'});
+      print qq{<img width="8" height="8" src="$IMGURL/$imgname" border="0"> \n};
+
+      my @lt = @{ sqltime2lt($href->{'Date'}) };
+      print qq{<a href="$scriptname_old?scope=RunID&scopevalue=};
+      print $href->{'ID'};
+      print qq{&option=bpsummary" style="color: #004271;"><b>};
+      print $href->{'Library'} . "<br>\n";
+      print qq{</b></a>};
+      print strftime("%a&nbsp;%H:%M", @lt) . " ";
+      if ($href->{'Status'} =~ m/Test/) { print "[T] "; }
+      print RoundSigDig(num=>int($href->{'AvgQ20'}), sd=>2) . "/" . $href->{'MaxQ20'} . "\n [";
+      # No Grows
+      if (($grow_href->{$href->{'ID'}}{'no_grow'}) > 0) { print "<span style='color: red;'>" }
+      print $$grow_href{$href->{'ID'}}{'no_grow'};
+      if (($grow_href->{$href->{'ID'}}{'no_grow'}) > 0) { print "</span>" }
+      print "/";
+      # Slow Grows
+      if (($grow_href->{$href->{'ID'}}{'slow_grow'}) > 0) { print "<span style='color: red;'>" }
+      print $$grow_href{$href->{'ID'}}{'slow_grow'};
+      if (($grow_href->{$href->{'ID'}}{'slow_grow'}) > 0) { print "</span>" }
+      print "]";
+      print qq{</span></td>\n};
+    }
+    print qq{</tr>\n};
+  }
+
+  # summary statistics for the last 5 runs for each sequencer
+  # AvgQ20 average / MaxQ20 maximum [ total slow grows / total no grows ]
+  # first hack together a quick enumeration
+  my %short_sum;
+  foreach my $aref (@run_table) {
+    foreach my $href (@$aref) {
+      my $sid = $href->{'Sequencer'};
+      $short_sum{$sid}{'AvgQ20'} = $short_sum{$sid}{'AvgQ20'} + ($href->{'AvgQ20'} / 5);
+      if ($href->{'MaxQ20'} > $short_sum{$sid}{'MaxQ20'}) {
+        $short_sum{$sid}{'MaxQ20'} = $href->{'MaxQ20'};
+      }
+      $short_sum{$href->{'Sequencer'}}{'no_grow'} = $short_sum{$href->{'Sequencer'}}{'no_grow'} + $$grow_href{$href->{'ID'}}{'no_grow'};
+      $short_sum{$href->{'Sequencer'}}{'slow_grow'} = $short_sum{$href->{'Sequencer'}}{'slow_grow'} + $$grow_href{$href->{'ID'}}{'slow_grow'};
+    }
+  }
+  # now print out the summary statistics
+  print qq{<tr valign="top">\n};
+  foreach my $href (@{ @run_table[0] }) {
+    print qq{<td width="100" class="vvlightgrey"><span class="smaller">\n};
+    print RoundSigDig(num=>int($short_sum{$href->{'Sequencer'}}{'AvgQ20'}), sd=>2) . "/";
+    print $short_sum{$href->{'Sequencer'}}{'MaxQ20'} . " \n[";
+    # No Grows
+    if (($short_sum{$href->{'Sequencer'}}{'no_grow'}) > 0) { print "<span style='color: red;'>" }
+    print $short_sum{$href->{'Sequencer'}}{'no_grow'};
+    if (($short_sum{$href->{'Sequencer'}}{'no_grow'}) > 0) { print "</span>"; }
+    print "/";
+    # Slow Grows
+    if (($short_sum{$href->{'Sequencer'}}{'slow_grow'}) > 0) { print "<span style='color: red;'>" }
+    print $short_sum{$href->{'Sequencer'}}{'slow_grow'};
+    if (($short_sum{$href->{'Sequencer'}}{'slow_grow'}) > 0) { print "</span>"; }
+    print "]";
+    print qq{</span></td>\n};
+  }
+  print qq{</tr>\n};
+
+  # links to recent runs by sequencer
+  print qq{<tr valign="top" class="vlightgrey">\n};
+  foreach my $seq_key (sort keys %sequencer) {
+    print qq{<td><span class="smaller">\n};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=25">25</a>|};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=50">50</a>|};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=200">200</a><br>\n};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=3days">3d</a>|};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=7days">7d</a>|};
+    print qq{<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=30days">30d</a><br>\n};
+    print qq{</span></td>\n};
+  }
+  print qq{</tr>\n};
+  print qq{</table>\n\n};
+
+  # Quality icon legend
+  print "<span class=small><b>QUALITY: </b> ";
+  print GetQImage(legend=>1,
+		  template=>qq{QVAL <img src="$IMGURL/IMGTEXT.png"> &nbsp;&nbsp;});
+  print "<br>";
+
+  # Legend
+  print "<span class=small><b>LEGEND: </b> ";
+  print "Library DateTime [Test Run] AvgQ20/MaxQ20 [No Grows/Slow Grows]";
+  print "<br>";
+
+}
+
+
+################################################################
+# recentSequencerSummaries
+# Shows the performance for each sequencer over the last 5 runs
+#
+sub recentSequencerSummaries {
+
+  my %sequencer = %{ enumerateRecentRuns( size=>5 ) };
+
+  #####
+  # Display each machines summary
+  foreach my $seq_key (sort keys %sequencer) {
+    print '<span class="large"><span class="darkorangetext">Sequencer: <b>' . $seq_key . '</b></span></span><br>';
+    print qq{<table cellspacing="0" cellpadding="1" border="0">\n};
+    print '<tr>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>Date</span></span></td>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>AvgQ20</span></span></td>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>AvgQ40</span></span></td>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>MaxQ20</span></span></td>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>MaxQ40</span></span></td>';
+    print '<td class=vdarkprodblue align=center><span class=whitetext><span class=small>Library</span></span></td>';
+    print '</tr>';
+
+    my $switch = 0;
+    foreach my $run_key (keys %{ $sequencer{$seq_key} }) {
+      my $rowcolor = "vvlightprodblue";
+      if (! $switch) { $rowcolor = "white"; }
+      print "<tr valign=top>\n";
+      print "<td class=$rowcolor>\n";
+      print qq{<a href="$scriptname_old?scope=RunID&scopevalue=};
+      print $sequencer{$seq_key}{$run_key}{'ID'};
+      print qq{&option=bpsummary" style="color: #004271;"><b>};
+      my @lt = @{ sqltime2lt($sequencer{$seq_key}{$run_key}{'Date'}) };
+      print strftime("%a&nbsp;%I:%M&nbsp;%p", @lt);
+      print "</b></a></td>\n";
+      print "<td class=$rowcolor align=right>&nbsp;&nbsp;" . RoundSigDig(num=>int($sequencer{$seq_key}{$run_key}{'AvgQ20'}), sd=>2) . "</td>\n";
+      print "<td class=$rowcolor align=right>&nbsp;&nbsp;" . RoundSigDig(num=>int($sequencer{$seq_key}{$run_key}{'AvgQ40'}), sd=>2) . "</td>\n";
+      print "<td class=$rowcolor align=right>&nbsp;&nbsp;" . RoundSigDig(num=>int($sequencer{$seq_key}{$run_key}{'MaxQ20'}), sd=>2) . "</td>\n";
+      print "<td class=$rowcolor align=right>&nbsp;&nbsp;" . RoundSigDig(num=>int($sequencer{$seq_key}{$run_key}{'MaxQ40'}), sd=>2) . "</td>\n";
+      print "<td class=$rowcolor align=right>&nbsp;&nbsp;" . $sequencer{$seq_key}{$run_key}{'Library'} . "</td>\n";
+      print "</tr>\n";
+      $switch = ! $switch;
+    }
+    print "</table><br>\n";
+    print qq{More runs: [<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=25">last 25</a>]\n};
+    print qq{[<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=50">last 50</a>]\n};
+    print qq{ [<a href="$scriptname?view=recentruns&seq_key=$seq_key&size=200">last 200</a>]<br>\n};
+    print "&nbsp;<br>\n";
+  }
+  # showRunHash();
+}
+
+#########
+# sqltime2lt
+# converts a DateTime string from the SQL database into a Perlish @localtime
+# suitable for use with the strftime function
+sub sqltime2lt {
+  my $sqltime = shift;
+
+  my @lt = ();
+  $lt[0] = substr($sqltime, 17, 2);
+  $lt[1] = substr($sqltime, 14, 2);
+  $lt[2] = substr($sqltime, 11, 2);
+  $lt[3] = substr($sqltime, 8, 2);
+  $lt[4] = substr($sqltime, 5, 2) - 1;
+  $lt[5] = substr($sqltime, 0, 4) - 1900;
+  return \@lt;
+}
+
+
+##########
+# viewRecentRuns
+sub viewRecentRuns {
+  my $size = param('size') || 50;
+  my $seq_key = param('seq_key') || 'D3700-1';
+
+  my %sequencer = %{ enumerateRecentRuns( size=>$size ) };
+
+  if ((keys %sequencer) < 1) {
+    print qq{<p>There have been no runs on Sequencer <b>$seq_key</b> in the last <b>$size</b>.</p>};
+  }
+  printDataBySequencer( sequencer=>\%sequencer, seq_key=>$seq_key );
+
+}
+
+##########
+# viewRecentLibs
+sub viewRecentLibs {
+  my $size = param('size') || 50;
+  my $lib = param('lib');
+
+  my %libs = %{ runs_by_lib_size( lib=>$lib, size=>$size ) };
+  if ((keys %libs) < 1) {
+    print qq{<p>There have been no runs on Sequencer <b>$lib</b> in the last <b>$size</b>.</p>};
+  }
+  print_by_lib_size( size=>$size, libs=>\%libs, lib=>$lib );
+
+}
+
+##########
+# Calculates an average of Success by runs over a given date span.
+# This subroutine written by the infamous Monkeyman and Bally-ball, his talking volleyball.
+#
+sub success_over_time {
+  my %flags = @_;
+  my $cutoff = $flags{'cutoff'} || 100;
+  my $lower = $flags{'lower'};
+  my $upper = $flags{'upper'};
+  my $test = $flags{'test'} || 0; # 0 = count production runs only, 1 = count test runs only, 2 = count all runs, 3 = Custom Primer (CB or CE) only
+  my $keyname = "Success" . $cutoff;
+
+  my ($i, $run, $date, $runcount, $success_total);
+  while (defined ($run = $DATA[$i])) {
+    $i++;
+    next if (($test == 0) and ($run->{'Status'} =~ m/Test/));
+    next if (($test == 1) and ($run->{'Status'} !~ m/Test/));
+    next if (($test == 3) and (($run->{'Chem'} ne 'CE') and ($run->{'Chem'} ne 'CB')));
+    $run->{'Date'} =~ m/^(\d+)-(\d+)-(\d+)/;
+    $date = Date_to_Days(int($1), int($2), int($3));
+    next if ($date > $upper);
+    last if ($date < $lower);
+    $success_total = $success_total + $$run{$keyname};
+    $runcount++;
+  }
+  if ($runcount < 1) { return (0, 0); }
+
+  return (int($success_total / $runcount), $runcount);
+}
+
+##########
+# Data organized by library/time:
+#
+# %Library{library}{run_id}{DATA-KEY}
+#
+sub runs_by_lib_data {
+  my %flags = @_;
+  my $size = $flags{'size'} || 30;
+
+  my %Library;
+
+  # if the size param is of the format 3days
+  # then show runs for the last number of days
+  if ($size =~ m/days/) {
+    # build a recent run array by time in hours
+    my @today = Today();
+    # set @closing_time to the time X number of days in the past
+    # from the current time
+    $size =~ m/(\d+)days/;
+    my $ddays = $1;
+    my @closing_time;
+    (@closing_time[0,1,2]) = Add_Delta_Days(@today[0,1,2], -($ddays));
+	
+    my $i = 0; my @rundate = ();
+    RUN: while ( defined ($run = $DATA[$i]) ) {
+	
+      $run->{'Date'} =~ m/^(\d+)-(\d+)-(\d+)/;
+      @rundate = (int($1), int($2), int($3));
+
+      # if the run date falls on the same day as our closing date
+      # then stop adding runs to the hash for the current sequencer
+      last RUN if ( int(Delta_Days(
+				   @closing_time[0,1,2],
+				   @rundate[0,1,2]
+				  )) < 0 );
+	
+      # otherwise, add the run to our hash
+      $Library{$run->{'Library'}}{$i} = $run;
+      $i++;
+    }
+  }
+  # otherwise the size param should be the number of most
+  # recent runs you wish to see (25|50|200)
+  else {
+    my ($run, $lib);
+    for (my $i = 0; $i < $size; $i++) {
+      $run = $DATA[$i];
+      $lib = $run->{'Library'};
+      $Library{$lib}{$i} = $run;
+    }
+  }
+
+  return \%Library;
+}
+
+##########
+# build most recent runs by library
+# %Library{run_id}{DATA-KEY}
+#
+sub runs_by_lib_size {
+  my %flags = @_;
+  my $lib = $flags{'lib'};
+  my $size = $flags{'size'} || 30;
+
+  my %Library;
+
+  # if the size param is of the format 3days
+  # then show runs for the last number of days
+  if ($size =~ m/days/) {
+    # build a recent run array by time in hours
+    my @today = Today();
+    # set @closing_time to the time X number of days in the past
+    # from the current time
+    $size =~ m/(\d+)days/;
+    my $ddays = $1;
+    my @closing_time;
+    (@closing_time[0,1,2]) = Add_Delta_Days(@today[0,1,2], -($ddays));
+	
+    my $i = 0; my $j = 0; my @rundate = ();
+    RUN: while ( defined ($run = $DATA[$i]) ) {
+	
+      # if a run matches the current library, check it out
+      if ( $run->{'Library'} eq $lib ) {
+	$run->{'Date'} =~ m/^(\d+)-(\d+)-(\d+)/;
+	@rundate = (int($1), int($2), int($3));
+
+	# if the run date falls on the same day as our closing date
+	# then stop adding runs to the hash for the current Library
+	last RUN if ( int(Delta_Days(
+				     @closing_time[0,1,2],
+				     @rundate[0,1,2]
+				    )) < 0 );
+	
+	# otherwise, add the run to our hash
+	$Library{$j} = $run;
+	$j++;
+      }
+      $i++;
+    }
+  }
+  # otherwise the size param should be the number of most
+  # recent runs you wish to see (25|50|200)
+  else {
+    my $run;
+    my $i = 0; my $j = 0;
+    while (defined ($run = $DATA[$i])) {
+      if ($run->{'Library'} eq $lib) {
+	$Library{$j} = $run;
+	$j++;
+      }
+      last if ($j == $size);
+      $i++
+    }
+  }
+
+  return \%Library;
+}
+
+
+##########
+# Most recently added to items by type
+#
+sub recent_items_by_type {
+  my %flags = @_;
+  my $type = $flags{'type'};
+  my $size = $flags{'size'} || 9;
+
+  my @items;
+  my ($i, $count);
+  RUN: while (defined ($run = $DATA[$i])) {
+    $i++;
+    # if we've already seen this item go to the next run
+    for my $item (@items) {
+      if ($run->{$type} eq $item) { next RUN }
+    }
+    push(@items, $run->{$type});
+    $count++;
+    last RUN if ($count > $size);
+  }
+
+  return \@items;
+}
+
+
+##########
+# Data organized by sequencer/time. This data structure should look like so:
+#
+# %Sequencers{sequencer_id}{recent_run_number}{DATA-KEY}
+#
+sub enumerateRecentRuns {
+  my %flags = @_;
+  my $size = $flags{'size'} || 30;
+
+  my %sequencer;
+
+  # if the size param is of the format 3days
+  # then show runs for the last number of days
+  if ($size =~ m/days/) {
+    # build a recent run array by time in hours
+    my @today = Today();
+    foreach my $seq_key (@sequencer_ids) {
+      unless ($seq_key =~ /^-/) {
+	
+	# set @closing_time to the time X number of days in the past
+	# from the current time
+	$size =~ m/(\d+)days/;
+	my $ddays = $1;
+	my @closing_time;
+	(@closing_time[0,1,2]) = Add_Delta_Days(@today[0,1,2], -($ddays));
+	
+        my $i = 0; my $j = 0; my @rundate = ();
+        RUN: while ( defined ($run = $DATA[$i]) ) {
+	
+	  # if a run matches the current sequencer, check it out
+	  if ( $$run{'Sequencer'} eq $seq_key ) {
+	    $$run{'Date'} =~ m/^(\d+)-(\d+)-(\d+)/;
+	    @rundate = (int($1), int($2), int($3));
+
+            # if the run date falls on the same day as our closing date
+	    # then stop adding runs to the hash for the current sequencer
+ 	    last RUN if ( int(Delta_Days(
+	                           @closing_time[0,1,2],
+				   @rundate[0,1,2]
+	                           )) < 0 );
+	
+	    # otherwise, add the run to our hash
+	    $sequencer{$seq_key}{$j} = $run;
+	    $j++;
+	  }
+	  $i++;
+	}
+      }
+    }
+  }
+  # otherwise the size param should be the number of most
+  # recent runs you wish to see (25|50|200)
+  else {
+    foreach my $seq_key (@sequencer_ids) {
+      unless ($seq_key =~ /^-/) {
+        # idiomatically, this next block could probably be improved,
+        # but it does produce the desired results
+        my $i = 0; my $j = 0;
+        RUN: while ( defined ($run = $DATA[$i]) ) {
+          # feret out the desired number of runs for the sequencer
+	  if ( $$run{'Sequencer'} eq $seq_key ) {
+	    # got a recent run
+	    $sequencer{$seq_key}{$j} = $run;
+	    $j++;
+	  }
+	  last RUN if ($j == $size);
+	  $i++;
+        }
+      }
+    }
+  }
+  return \%sequencer;
+}
+
+##########
+# build_recent_runs_table
+# Create a list of lists of recent runs organized by sequencer
+# (letters are sequencers, numbers are most recent run #) 
+#
+#   +----+----+----+
+#   | a1 | b1 | c1 |
+#   +----+----+----+
+#   | a2 | b2 | c2 |
+#   +----+----+----+
+#
+sub build_recent_runs_table {
+  my %flags = @_;
+  my $size = $flags{'size'} || 5;
+
+  my @table;
+
+  for (my $row = 0; $row < $size; $row++) {
+    my $col = 0;
+    foreach my $seq_key (@sequencer_ids) {
+      unless ($seq_key =~ /^-/) {
+        my $seq_counter = 0;
+	my $i;
+        RUN: while ( defined (my $run = $DATA[$i]) ) {
+	  $i++;
+	  if (( ${$run}{'Sequencer'} eq $seq_key ) and ($seq_counter == $row)) {
+	    # got a recent run for the sequencer of interest
+	    $table[$row][$col] = $run;
+	    $col++;
+	    last RUN;
+	  }
+	  elsif ( ${$run}{'Sequencer'} eq $seq_key ) {
+	    $seq_counter++;
+	  }
+        }
+      }
+    }
+  }
+
+  return \@table;
+}
+
+#####
+# showRunHash - debugging n' learning purposes only
+sub showRunHash {
+
+  for (my $i = 0; $i < 10 ; $i++) {
+    print "<hr>\n<b>run number $i</b><br>\n";
+    foreach my $datatype (keys %DATA) {
+      if ('Sequencer' =~ /$datatype/i) {
+        foreach my $key (keys (%{ $DATA[$i] })) {
+          print '<b>' . $key . ":</b>";
+	  print ' ' . ${ $DATA[$i] }{$key} . "<br>\n";
+        }
+        print "<hr>\n";
+
+        # my $value = $DATA{$datatype}->{'D3700-1'}->{'t_lweek'}->{'AvgQ20'};
+        # print "Raw data: " . $value . "<br>\n";
+        # print "Rounded: " . RoundSigDig(num=>int($value), sd=>2) . "<br>\n";
+      }
+    }
+  }
+}
+
+
+################################################################
+# view = all stats
+################################################################
+# show statistics for all data groupings
+sub viewAllStats {
+
+  print
+      "<table cellspacing=3 cellpadding=5><tr>\n",
+      start_form,
+      "<td class=vvlightgrey>\n",
+      "<center><span class=darkorangetext><b>SORT BY</b></span></center>\n",
+      hidden(-name=>"view",-value=>"allstats"),
+      popup_menu(-name=>"sort",
+		 -size=>3,
+		 -style=>"font-size: 10px;",
+		 -values=>["key",
+		           "AvgQ20","AvgQ30","AvgQ40",
+			   "MaxQ20","MaxQ30","MaxQ40",
+			   "Tot_Len","Tot_QLen",
+			   "NRun","NReads"]),
+      "<br>",
+      "<center><span class=darkorangetext><b>SHOW<BR>HISTOGRAM</b></span></center>\n",
+      radio_group(-name=>'showhist',
+		  -values=>[0,1],
+		  -labels=>{0=>"No",1=>"Yes"},
+		  -default=>1),
+      "</td>\n",
+      "<td class=vvlightgrey>",
+      "<center><span class=darkorangetext><b>VIEWS</b></span></center>",
+      checkbox_group(-name=>"show",
+		     -style=>"font-size: 10px;",
+		     -linebreak=>'true',
+		     -values=>["Status","Sequencer","Library","Project","Chem"],
+		     -defaults=>["Library"]),
+      "<br>",
+      "<center>",submit(-name=>"Submit",-label=>"Show"),"</center>",
+      end_form,
+      "</td>\n<td>",
+      qq{<img src="$IMGURL/view_allstats.png" align=left>},
+      "<span class=darkprodbluetext><b>All Statistics</b>.</span> This view shows the summary of all runs done for all groupings: <span class=darkorangetext>sequencer</span>, <span class=darkorangetext>project</span>, <span class=darkorangetext>library</span>, <span class=darkorangetext>chemistry</span> and <span class=darkorangetext>run status</span>. Within each grouping, the data can be sorted by any of the columns (descending only), or by the name of the row (key). Histograms for each row can be displayed - these bin the phred 20 quality lengths for all reads for that data row.<br>",
+      "<center>",
+      "<table border=0 cellspacing=0 cellpadding=2><tr>",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>s t a t u s</b></span><br>",
+      qq{<a href="$scriptname?view=allstats&show=Status">},
+      qq{<img src="$IMGURL/view_allstats_runstat.png" width=45 hspace=10 border=0>},
+      "</a><br><span class=greytext>statistics</span>",
+      "</td>",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>s e q u e n c e r</b></span><br>",
+      qq{<a href="$scriptname?view=allstats&show=Sequencer">},
+      qq{<img src="$IMGURL/view_allstats_seq.png" width=45 hspace=10 border=0>},
+      "</a><br><span class=greytext>statistics</span>",
+      "</td>\n",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>l i b r a r y</b></span><br>",
+      qq{<a href="$scriptname?view=allstats&show=Library">},
+      qq{<img src="$IMGURL/view_allstats_lib.png" width=45 hspace=10 border=0>},
+      "</a><br><span class=greytext>statistics</span>",
+      "</td>\n",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>p r o j e c t</b></span><br>",
+      qq{<a href="$scriptname?view=allstats&show=Project">},
+      qq{<img src="$IMGURL/view_allstats_proj.png" width=45 hspace=10 border=0>},
+      "</a><br><span class=greytext>statistics</span>",
+      "</td>\n",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>c h e m i s t r y</b></span><br>",
+      qq{<a href="$scriptname?view=allstats&show=Chem">},
+      qq{<img src="$IMGURL/view_allstats_chem.png" width=45 hspace=10 border=0>},
+      "</a><br><span class=greytext>statistics</span>",
+      "</td>\n",
+      "</tr></table>\n\n",
+      "</center>",
+      "</td>\n",
+      "</tr>\n",
+      "</table>\n<hr noshade size=1 color=#cccccc><br>";
+  print "Current sort flag: ", param('sort') , "<BR>";
+
+  foreach my $datatype (keys %DATA) {
+    if (join("", param("show")) =~ /$datatype/i) {
+      PrintDATA($datatype, %{$DATA{$datatype}});
+      # Testing histograms!
+      print "<hr noshade size=1 color=#cccccc>\n";
+    }
+  }
+}
+
+################################################################
+# view = calendar
+################################################################
+# If a calendar was asked for, then show it! It is assumed that if the year and/or
+# month were not specified, then today's values are taken.
+#
+# The calendar can be modified by the parameters
+#
+# month      month to display
+# year       year to display
+# project    projects to include in listings
+# library    libraries to include in listings
+# sequencer  sequencers to include in listings
+#
+sub viewCalendar {
+
+  my @today = Today();
+  my $month    = param('month') || $today[1];
+  my $year     = param('year') || $today[0];
+  my $project  = [param('project')] || [];
+  my $library  = [param('library')] || [];
+  my $sequencer = [param('sequencer')] || [];
+  my $groupby   = param('groupby') || "sequencer";
+
+  ################################################################
+  # Show the calendar menu
+  my @sequencerlist = sort keys %{$DATA{Sequencer}};
+  @sequencerlist = splice(@sequencerlist, 1, @sequencerlist-1);
+  my @librarylist = sort keys %{$DATA{Library}};
+  @librarylist = splice(@librarylist, 1, @librarylist-1);
+  my @projectlist = sort keys %{$DATA{Project}};
+  @projectlist = splice(@projectlist, 1, @projectlist-1);
+  my @grouplist = ("sequencer","project","library");
+  my @monthtextlist = map {Month_to_Text($_)} (1..12);
+  my %monthlist = map {$_,$monthtextlist[$_-1]} (1..12);
+  my @yearlist  = map {(Today())[0]-$_} (0..5);
+
+  print
+      "<table border=0 cellspacing=2 cellpadding=3><tr>",
+      start_form,
+      "<td align=center>",
+      "<span class=greytext>S E Q U E N C E R</span><br>",
+      hidden(-name=>'view',-value=>"calendar"),
+      scrolling_list(-name=>'sequencer',
+		     -size=>3,
+		     -multiple=>'true',
+		     -style=>"font-size: 10px;",
+		     -values=>\@sequencerlist),
+      "</td>",
+      "<td align=center>",
+      "<span class=greytext>P R O J E C T</span><br>",
+      scrolling_list(-name=>'project',
+		     -size=>3,
+		     -multiple=>'true',
+		     -style=>"font-size: 10px;",
+		     -values=>\@projectlist),
+      "</td>",
+      "<td align=center>",
+      "<span class=greytext>L I B R A R Y</span><br>",
+      scrolling_list(-name=>'library',
+		     -size=>3,
+		     -multiple=>'true',
+		     -style=>"font-size: 10px;",
+		     -values=>\@librarylist),
+      "</td>",
+      "<td align=center>",
+      "<span class=greytext>G R O U P I N G</span><br>",
+      radio_group(-name=>'groupby',
+		  -default=>'library',
+		  -linebreak=>'true',
+		  -style=>"font-size: 10px;",
+		  -values=>\@grouplist),
+      "</td>",
+      "<td align=center>",
+      "<span class=greytext>D A T E</span><br>",
+      popup_menu(-name=>'month',
+		 -style=>"font-size: 10px;",
+		 -default=>(Today())[1],
+		 -labels=>\%monthlist,
+		 -values=>[(1..12)]),
+      "<br>",
+      popup_menu(-name=>'year',
+		 -style=>"font-size: 10px;",
+		 -values=>\@yearlist,
+		 -default=>(Today())[0]),
+      "<br>",
+      submit(-name=>"View",-label=>"Display"),
+      "</td>",
+      "</tr>",
+      "<tr>",
+      "<td colspan=3 class=vvlightgrey valign=top>",
+      "<span class=darkorangetext><b>Data filters</b>.</span> You can select one or more different kinds of filters. If a filter type has a selected item(s), only runs for the item(s) will be shown.",
+      "</td>",
+      "<td class=vvlightgrey valign=top>",
+      "<span class=darkorangetext><b>Data grouping</b>.</span> Select how to group the data. All runs for this data source will be collated in the day and week views.",
+      "</td>",
+      "<td class=vvlightgrey valign=top>",
+      "<span class=darkorangetext><b>View Date</b>.</span> Choose the month and year for the calendar view.",
+      "</td>",
+      "</tr>",
+      end_form,
+      "</table>";
+  #
+  ################################################################
+  ShowMonthlyCalendar(year=>$year,
+		      month=>$month,
+		      project=>$project,
+		      library=>$library,
+		      sequencer=>$sequencer,
+		      groupby=>$groupby
+		      );
+}
+
+
+################################################################
+# view = toplist
+################################################################
+# show top list statistics for sequencer, libraries and projects
+sub viewTopList {
+  my $tlabels = {
+    t_lday=>"yday",
+    t_l3day=>"last 3<br>days",
+    t_wtd=>"WTD",
+    t_lweek=>"last<br>week",
+    t_slweek=>"2nd last<br>week",
+    t_mtd=>"MTD",
+    t_lmonth=>"last<br>month",
+    t_all=>"ATD"
+  };
+
+  ################################################################
+  # menu for the top lists
+  ################################################################
+  print
+      "<table cellspacing=3 cellpadding=5>",
+      start_form,
+      "<tr><td valign=top class=vvlightgrey>",
+      "<center><span class=darkorangetext><b>TOP LISTS</b></span></center><br>",
+      hidden(-name=>"view",-value=>"toplist"),
+      checkbox_group(-name=>"show",
+		     -style=>"font-size: 10px;",
+		     -linebreak=>'true',
+		     -values=>["Sequencer","Library","Project"],
+		     -defaults=>["Sequencer","Library","Project"]),
+      "<br>",
+      "<center><span class=darkorangetext><b>SHOW<BR>HISTOGRAM</b></span></center>",
+      radio_group(-name=>'showhist',
+		  -values=>[0,1],
+		  -labels=>{0=>'No',1=>'Yes'},
+		  -default=>'1'),
+      "<br><center>",
+      submit(-name=>"Submit",
+	     -style=>"font-size: 10px;",
+	     -label=>"View"),
+      "</center></td>",
+      end_form,
+      "<td valign=top>",
+      qq{<img src="$IMGURL/view_toplists.png" align=left>},
+      "<span class=darkprodbluetext><b>Top List View</b>.</span> This view shows the summary of all runs done in the selected month. For each day the runs are grouped by the selected method (e.g. sequencer, project, etc). The number of reads excludes unused well and no-grows. The Q value is the average phred 20 quality length of the runs, not of the reads. Both numbers are rounded to two significant figures. The week column shows the totals for each day group for that week. If you selected the option, the runs are filtered by project, library and/or sequencer.<br>",
+      "<center>",
+      "<table border=0 cellspacing=0 cellpadding=2><tr>",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>s e q u e n c e r</b></span><br>",
+      qq{<img src="$IMGURL/view_toplists_seq.png" width=45 hspace=10>},
+      "<br><span class=greytext>top list</span>",
+      "</td>",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>l i b r a r y</b></span><br>",
+      qq{<img src="$IMGURL/view_toplists_lib.png" width=45 hspace=10>},
+      "<br><span class=greytext>top list</span>",
+      "</td>",
+      "<td align=center class=small>",
+      "<span class=darkorangetext><b>p r o j e c t</b></span><br>",
+      qq{<img src="$IMGURL/view_toplists_proj.png" width=45 hspace=10>},
+      "<br><span class=greytext>top list</span>",
+      "</td></tr></table>",
+      "</center>",
+      "</td>",
+      "</tr>",
+      "</table><hr noshade size=1 color=#cccccc><br>";
+
+  ################################################################
+  # Sequencer top list statistics
+  ################################################################
+  if(join("",param("show")) =~ /sequencer/i) {
+    print "<div>",
+    qq{<img src="$IMGURL/view_toplists_seq.png" width=40 align=left>},
+    "<span class=darkprodbluetext><b>Sequencer</b>.</span> Statistics compiled by sequencer. All sequencers are
+     listed and ordered alphabetically. The <span class=darkorangetext>recent runs</span> table shows runs from yesterday (yday),
+     last 3 days, week-to-date (wtd), last week and month-to-date (mtd). The <span class=darkorangetext>all time</span> table shows
+     runs over longer periods of time, including all-to-date (atd). Average quality length shows the average read quality for all runs
+     done on a given sequencer and during the time period represented by the table column. Number of reads excludes unused wells and no-grows.",
+    "</div>";
+    print
+	"<center>",
+	"<table cellspacing=2 cellpadding=3><tr>",
+	"<td valign=top>";
+    my @R = PrintDataStatsTable(type=>'Sequencer',
+				sort=>'key',
+				header=>"<span class=small>R E C E N T &nbsp;&nbsp; R U N S</span><br><b>Sequencer Statistics</b>",
+				tset=>[t_lday,t_l3day,t_wtd,t_lweek,t_mtd],
+				tlabels=>$tlabels,
+				);
+    print "</td><td valign=top>";
+
+    PrintDataStatsTable(type=>'Sequencer',
+			sort=>'key',
+			header=>"<span class=small>A L L  &nbsp;&nbsp; T I M E</span><br><b>Sequencer Statistics</b>",
+			tset=>[t_mtd, t_lmonth, t_all],
+			tlabels=>$tlabels,
+			);
+
+    print 
+	"</td>",
+	"</tr></table>",
+	"</center>";
+
+    if(param('showhist') == 1) {
+      print "<br>";
+      ShowAllListHistograms("Sequencer", $tlabels, @R);
+    }
+
+    print "<hr noshade size=1 color=#cccccc>";
+  }
+  ################################################################
+  # Library top list statistics
+  ################################################################
+  if (join("",param("show")) =~ /library/i) {
+    print "<div>",
+    qq{<img src="$IMGURL/view_toplists_lib.png" width=40 align=left>},
+    "<span class=darkprodbluetext><b>Library</b>.</span> Statistics compiled by library. Library listings in the <span class=darkorangetext>recent runs</span> table, showing sequencing activity in the past week, are ordered by the number of runs done yesterday, followed by the last 3 days and WTD. The <span class=darkorangetext>monthly runs</span> table shows sequencing activity in the current month. Here runs are ordered by mtd. Libraries ordered by total reads are shown in the <span class=darkorangetext>all time</span> table.",
+    "</div>";
+
+    print "<table cellspacing=2 cellpadding=3><tr><td valign=top>";
+
+    my @R = PrintDataStatsTable(type=>'Library',
+				sort=>[t_lday,t_l3day,t_wtd,t_lweek,t_mtd,t_lmonth],
+				topn=>7,
+				tset=>[t_lday,t_l3day,t_wtd,t_lweek,t_all],
+				tlabels=>$tlabels,
+				header=>"<span class=small>R E C E N T &nbsp;&nbsp; R U N S</span><br><b>Library Statistics</b><br><span class=small>by yesterday</span>");
+    print "</td><td valign=top>";
+
+    PrintDataStatsTable(type=>'Library',
+			sort=>[t_mtd,t_lmonth,t_lmonth],
+			topn=>7,			tset=>[t_wtd,t_lweek,t_mtd,t_lmonth],
+			tlabels=>$tlabels,
+			header=>"<span class=small>M O N T H L Y &nbsp;&nbsp; R U N S</span><br><b>Library Statistics</b><br><span class=small>by month-to-date</span>");
+
+    print "</td><td valign=top>";
+
+    PrintDataStatsTable(type=>'Library',
+			sort=>"t_all",
+			topn=>7,
+			tset=>[t_mtd,t_all],
+			tlabels=>$tlabels,
+			header=>"<span class=small>A L L &nbsp;&nbsp; T I M E</span><br><b>Library Statistics</b><br><span class=small>by all reads</span>");
+
+    print 
+      "</td>",
+      "</tr></table>";
+
+    if(param('showhist') == 1) {
+      print "<br>";
+      ShowAllListHistograms("Library",$tlabels,@R);
+    }
+
+    print "<hr noshade size=1 color=#cccccc>";
+
+  }
+  ################################################################
+  # Project top list statistics
+  ################################################################
+  if(join("",param("show")) =~ /project/i) {
+    print "<div>",
+    qq{<img src="$IMGURL/view_toplists_proj.png" width=40 align=left>},
+    "<span class=darkprodbluetext><b>Project</b>.</span> Statistics compiled by project. Project listings in the <span class=darkorangetext>recent runs</span> table, showing sequencing activity in the past week, are ordered by the number of runs done yesterday, followed by the last 3 days and WTD. The <span class=darkorangetext>monthly runs</span> table shows sequencing activity in the current month. Here runs are ordered by mtd. Libraries ordered by total reads are shown in the <span class=darkorangetext>all time</span> table.",
+    "</div>";
+
+    print
+      "<table cellspacing=2 cellpadding=3><tr>",
+      "<td valign=top>";
+
+    my @R = PrintDataStatsTable(type=>'Project',
+		      sort=>[t_lday,t_l3day,t_wtd,t_lweek],
+		      topn=>7,
+		      tset=>[t_lday,t_l3day,t_wtd,t_lweek,t_all],
+		      tlabels=>$tlabels,
+		      header=>"<span class=small>R E C E N T &nbsp;&nbsp; R U N S</span><br><b>Project Statistics</b><br><span class=small>by yesterday</span>");
+
+    print "</td><td valign=top>";
+
+    PrintDataStatsTable(type=>'Project',
+		      sort=>[t_mtd,t_lmonth,t_lmonth],
+		      topn=>7,
+		      tset=>[t_wtd,t_lweek,t_mtd,t_lmonth],
+		      tlabels=>$tlabels,
+		      header=>"<span class=small>M O N T H L Y &nbsp;&nbsp; R U N S</span><br><b>Project Statistics</b><br><span class=small>by month-to-date</span>");
+
+    print "</td><td valign=top>";
+
+    PrintDataStatsTable(type=>'Project',
+		      sort=>"t_all",
+		      topn=>7,
+		      tset=>[t_mtd,t_all],
+		      tlabels=>$tlabels,
+		      header=>"<span class=small>A L L &nbsp;&nbsp; T I M E</span><br><b>Project Statistics</b><br><span class=small>by all reads</span>");
+    print 
+	"</td>",
+	"</tr></table>";
+
+    if(param('showhist') == 1) {
+      print "<br>";
+      ShowAllListHistograms("Project",$tlabels,@R);
+    }
+  }
+}
+
+
+################################################################
+# Display the monthly calendar of activity during this month
+# Collate calendar statistics
+sub ShowMonthlyCalendar {
+  my %flags = @_;
+
+  # Initialize the calendar object
+  my $calendar = 'calendar'->new();
+  $calendar->set_tableopts({size=>700,sizeopts=>"abs"});
+  $calendar->set_columnopts({size=>87,sizeopts=>"abs"});
+  # Make sure the calendar view is set to the month that we are asking for.
+  $calendar->set_month($flags{month});
+  $calendar->set_year($flags{year});
+  my %calendar_events;
+  # Get the statistics for the runs for this month
+  my $monthstats = GetMonthStats(%flags);
+  my %grouplegend;
+  foreach my $day (1..31) {
+    my $daysumreads = 0;
+    foreach my $group (keys %{$monthstats->{"d$day"}}) {
+      my $sumreads = sum(@{$monthstats->{"d$day"}->{$group}->{NReads}});
+      $daysumreads += $sumreads;
+      my $avgQ20   = sprintf("%.0f",average(@{$monthstats->{"d$day"}->{$group}->{AvgQ20}}));
+      if($sumreads) {
+	my $group_label = MakeLabel(label=>$group,%flags);
+	$grouplegend{$group_label} = $group;
+	my $imgname = GetQImage(q=>$avgQ20);
+	$flag = qq{<img src="$IMGURL/$imgname">};
+	my $roundedavgQ20 = RoundSigDig(num=>$avgQ20,sd=>2);
+	my $roundedsumreads = RoundSigDig(num=>$sumreads,sd=>2);
+	$calendar->AddEvent(day=>$day,
+			    text=>"<span class=small>$flag $group_label $roundedavgQ20 r$roundedsumreads</span><br>",
+			    alphsortvalue=>$group);
+      }
+    }
+    if($daysumreads) {
+      $calendar->AddEvent(day=>$day,type=>"header",
+			  text=>"<span class=small><b>$daysumreads</b><span class=small>" );
+    }
+  }
+  my $monthsumreads;
+  foreach my $week (1..5) {
+    my $weeksumreads = 0;
+    foreach my $group (keys %{$monthstats->{"w$week"}}) {
+      my $sumreads = sum(@{$monthstats->{"w$week"}->{$group}->{NReads}});
+      $weeksumreads += $sumreads;
+      my $avgQ20   = sprintf("%.0f",average(@{$monthstats->{"w$week"}->{$group}->{AvgQ20}}));
+      if($sumreads) {
+	my $group_label = MakeLabel(label=>$group,%flags);
+	my $imgname = GetQImage(q=>$avgQ20);
+	my $flag = qq{<img src="$IMGURL/$imgname">};
+	my $roundedavgQ20 = RoundSigDig(num=>$avgQ20,sd=>2);
+	my $roundedsumreads = RoundSigDig(num=>$sumreads,sd=>2);
+	$calendar->AddEvent(week=>$week,
+			    text=>"<span class=small>$flag $group_label $roundedavgQ20 r$roundedsumreads</span><br>",
+			    alphsortvalue=>$group);
+      }
+    }
+    $monthsumreads += $weeksumreads;
+    $calendar->AddEvent(week=>$week,
+			text=>"<hr noshade size=1 color=#cccccc><span class=small>TOTAL: <b>$weeksumreads</b></span>",
+			alphsortvalue=>"zzz");
+  }
+  $calendar->AddEvent(month=>(Today())[1],
+		      text=>"<span class=greytext> <b>" . 
+		      FormatPrintValue($nformat, value=>$monthsumreads) .
+		      " reads this month</b></span>");
+
+  ################################################################
+
+  print "<table cellspacing=2 cellpadding=5><tr><td valign=top>";
+  print qq{<img src="$IMGURL/view_calendar.png" align=left>};
+  print "</td><td class=vvlightgrey valign=top>";
+  print << "END";
+  <span class=darkprodbluetext><b>Calendar View</b>.</span>
+  This view shows the summary of all runs done in the selected month. For each day the runs are
+  grouped by the selected method (e.g. sequencer, project, etc). The number of reads excludes
+  unused well and no-grows. The Q value is the average phred 20 quality length of the runs, not
+  of the reads. Both numbers are rounded to two significant figures. The week column shows the
+  totals for each day group for that week. If you selected the option, the runs are filtered by
+  project, library and/or sequencer.
+END
+  print "</td></tr></table>";
+  print "<br>\n";
+  print 
+      "<center><span class=darkorangetext><span class=large>",
+      "<b>M O N T H ' S &nbsp;&nbsp; R U N &nbsp;&nbsp; S U M M A R I E S</b>",
+      "</span></span></center>\n";
+  print "<span class=greytext>";
+  if(@{$flags{project}}) {
+    print "<center>Project:<b> ",join(", ",@{$flags{project}}),"</b><br></center>";
+  }
+  if(@{$flags{library}}) {
+    print "<center>Library:<b> ",join(", ",@{$flags{library}}),"</b><br></center>";
+  }
+  if(@{$flags{sequencer}}) {
+    print "<center>Sequencer:<b> ",join(", ",@{$flags{sequencer}}),"</b><br></center>";
+  }
+  print "<center>Grouping by:<b> ",$flags{groupby},"</b><br></center>";
+  print "</span>";
+  $calendar->Print();
+
+  my @legenditems;
+  foreach my $group_label (sort keys %grouplegend) {
+    my $group = $grouplegend{$group_label};
+    push(@legenditems,"[$group_label] <span class=greytext>$group</span>");
+  }
+  # Quality icon legend
+  print "<span class=small><b>QUALITY: </b> ";
+  print GetQImage(legend=>1,
+		  template=>qq{QVAL <img src="$IMGURL/IMGTEXT.png"> &nbsp;&nbsp;});
+  print "<br>";
+  print "<span class=small><b>LEGEND: </b>";
+  print join(" | ",@legenditems);
+  print "</span><br>";
+
+  print "<br><br>\n";
+
+  print "<table cellspacing=2 cellpadding=5><tr><td valign=top>";
+  print qq{<img src="$IMGURL/view_calendar_hist.png" align=left>};
+  print "</td><td class=vvlightgrey valign=top>";
+  print << "END";
+  These are the quality histograms for every run grouping for each week of the month. These
+  histograms bin the average run qualities, not the read qualities. Therefore, the number of
+  samples in each histogram corresponds to the number of runs done for that group/time,
+  not the number of reads.
+END
+  print "</td></tr></table>";
+  print "<br>\n";
+
+  ################################################################
+  # Now print the weekly histograms for this month's runs.
+  foreach my $key (sort keys %$monthstats) {
+    #If this is a key pointing to the weekly histograms...
+    if($key =~ /hw(\d)/) {
+      my $weeknum = $1;
+      print "<span class=large><b>Week $weeknum histograms</b></span><br>\n";
+      my $column=0;
+      my $column_n = 4;
+      print "<table cellspacing=0 cellpadding=5>";
+      my $histogram_week = 'histogram'->new(_binsize=>25);
+      foreach my $group (sort keys %{$monthstats->{$key}}) {
+	if (! ($column % $column_n) ) { print "<tr>"; }
+	my $histogram = $monthstats->{$key}->{$group};
+	my $imghtml;
+	if ($histogram && $histogram->get_samples > 2) {
+	  $histogram_week->AddHistogram($histogram);
+	  $imghtml = MakeHistogramPNG(hist=>$histogram,
+				      x=>200,
+				      y=>120,
+				      xskip=>0,
+				      yskip=>2,
+				      xmax=>800,
+				      xticks=>4,
+				      );
+	}
+	print "<td>";
+	if (defined $imghtml) {
+	  DisplayHistogramPNG(hist=>$histogram,
+			      annot=>1,
+			      small=>1,
+			      label=>"$group",
+			      imghtml=>$imghtml);
+	} else {
+	  print "$group NA";
+	}
+	print "</td>\n";
+	if(! (($column+1) % $column_n)) {print "</tr>";}
+	$column++;
+      }
+      print "</tr></table>\n\n";
+      # print "Weeks samples: ",$histogram_week->get_samples;
+      my $imghtml = MakeHistogramPNG(hist=>$histogram_week,
+				     x=>300,
+				     y=>100,
+				     xskip=>0,
+				     yskip=>2,
+				     xmax=>800,
+				     xticks=>4,
+				     );
+      if(defined $imghtml) {
+	print "<center>\n";
+	DisplayHistogramPNG(hist=>$histogram_week,
+			    annot=>1,
+			    small=>1,
+			    label=>"week $weeknum",
+			    imghtml=>$imghtml);
+	print "</center>\n";
+      }
+      print "<hr noshade size=1 color=#cccccc>\n";
+    }
+  }
+}
+
+
+##########
+# Sequencer statistics: week/month
+sub print_stats_table {
+  my %flags = @_;
+  my @items = @{$flags{items}};
+  my $type = $flags{type};
+  my $header = $flags{header};
+  my @t_set = @{$flags{tset}};
+  my $t_labels = $flags{tlabels};
+
+  my $t_cols   = @t_set;
+  my $t_cols2  = $t_cols*2;
+  my $td = "<td class=small align=center";
+
+  print "<table cellspacing=0 cellpadding=1 border=1>";
+  print "<tr>\n";
+  print "<td colspan=$t_cols2 class=mediumorange align=center>";
+  print "$header";
+  print "</td></tr>\n";
+
+  print "<tr>";
+  print "<td colspan=$t_cols class=vdarkprodblue align=center><span class=small>NReads</span></td>";
+  print "<td colspan=$t_cols class=vdarkprodblue align=center><span class=small>AvgQ20</span></td>\n";
+  print "</tr>\n";
+
+  print "<tr>";
+  foreach my $t_group (@t_set) {
+    print "$td>",$t_labels->{$t_group},"</td>\n";
+  }
+  foreach my $t_group (@t_set) {
+    print "$td>",$t_labels->{$t_group},"</td>\n";
+  }
+  print "</tr>";
+
+  foreach my $item (@items) {
+    my $item_obj = $DATA{$type}->{$item};
+    print "\n\n<!-- $item history -->\n\n";
+    $td = "<td align=center";
+    # Header
+    print "<tr>";
+    print "$td class=lightprodblue align=left colspan=$t_cols2><span class=small>&nbsp;<b>$item</b></span></td>";
+    print "</tr>";
+    # Stats
+    print "<tr>";
+    my $colidx=0;
+    my $colcolor = "vvlightprodblue";
+    foreach my $timeperiod (@t_set) {
+      my $value = $item_obj->{$timeperiod}->{NReads};
+      push(@{$local_statistics->{NReads}->{$timeperiod}}, $value);
+      $value = FormatPrintValue($nformat, value=>$value, precision=>0);
+      if( ($colidx % 2) ) {
+	$colcolor = "white";
+      } else {
+	$colcolor = "vvlightprodblue";
+      }
+      print "$td align=right class=$colcolor><span class=small>$value</span></td>\n";
+      $colidx++;
+    }
+    foreach my $timeperiod (@t_set) {
+      my $value = $item_obj->{$timeperiod}->{AvgQ20};
+      push(@{$local_statistics->{AvgQ20}->{$timeperiod}}, $value);
+      $value = FormatPrintValue($nformat, value=>$item_obj->{$timeperiod}->{AvgQ20}, precision=>0);
+      if( ($colidx % 2) ) {
+	$colcolor = "white";
+      } else {
+	$colcolor = "vvlightprodblue";
+      }
+      print "$td align=right class=$colcolor><span class=small>$value</span></td>\n";
+      $colidx++;
+    }
+    print "</tr>";
+  }
+
+  print "<tr>";
+  foreach my $coltype ("NReads","AvgQ20") {
+    foreach my $timeperiod (@t_set) {
+      my $value;
+      if ($coltype eq "AvgQ20") {
+	$value = average(@{$local_statistics->{$coltype}->{$timeperiod}});
+      } else {
+	$value = sum(@{$local_statistics->{$coltype}->{$timeperiod}});
+      }
+      print
+	"$td class=mediumprodblue><span class=small>",
+	FormatPrintValue($nformat, value=>$value, precision=>0),
+	"</span></td>\n";
+    }
+  }
+  print "</tr>\n";
+  print "</table>\n";
+}
+
+
+################################################################
+# Sequencer statistics: week/month
+sub PrintDataStatsTable {
+  my %flags = @_;
+  my $datatype = $flags{type};
+  my $sorttype = $flags{sort};
+  my $topn     = $flags{topn};
+  my $header   = $flags{header};
+  my @t_set    = @{$flags{tset}};
+  my $t_labels = $flags{tlabels};
+
+  my $t_cols   = @t_set;
+  my $t_cols2  = $t_cols*2;
+
+  my @ROWSDISPLAYED = ();
+
+  my $td = "<td class=small align=center";
+  print "<table cellspacing=0 cellpadding=1 border=1>";
+  print "<tr>\n";
+  print "<td colspan=$t_cols2 class=mediumorange align=center>";
+  print "$header";
+  print "</td></tr>\n";
+
+  print "<tr>";
+
+  print "<td colspan=$t_cols class=vdarkprodblue align=center><span class=small>NReads</span></td>";
+  print "<td colspan=$t_cols class=vdarkprodblue align=center><span class=small>AvgQ20</span></td>\n";
+
+  print "</tr><tr>";
+
+  foreach my $t_group (@t_set) {
+    print "$td>",$t_labels->{$t_group},"</td>\n";
+  }
+  foreach my $t_group (@t_set) {
+    print "$td>",$t_labels->{$t_group},"</td>\n";
+  }
+  print "</tr>";
+
+  my $sortfunc;
+  if($sorttype eq "key") {
+    $sortfunc = sub { $a cmp $b };
+  } else {
+    if (ref($sorttype) eq "ARRAY") {
+      if (@$sorttype == 2) {
+	$sortfunc = sub {
+	  ($DATA{$datatype}->{$b}->{$sorttype->[0]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[0]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[1]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[1]}->{NReads})
+	}
+      } elsif (@$sorttype == 3) {
+	$sortfunc = sub {
+	  ($DATA{$datatype}->{$b}->{$sorttype->[0]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[0]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[1]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[1]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[2]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[2]}->{NReads})
+	}
+      } elsif (@$sorttype == 4) {
+	$sortfunc = sub {
+	  ($DATA{$datatype}->{$b}->{$sorttype->[0]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[0]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[1]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[1]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[2]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[2]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[3]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[3]}->{NReads})
+	}
+      } elsif (@$sorttype == 5) {
+	$sortfunc = sub {
+	  ($DATA{$datatype}->{$b}->{$sorttype->[0]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[0]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[1]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[1]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[2]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[2]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[3]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[3]}->{NReads})
+	     ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[4]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[4]}->{NReads})
+	}
+      } elsif (@$sorttype == 6) {
+	$sortfunc = sub {
+	  ($DATA{$datatype}->{$b}->{$sorttype->[0]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[0]}->{NReads})
+	    ||
+	  ($DATA{$datatype}->{$b}->{$sorttype->[1]}->{NReads} <=>
+	   $DATA{$datatype}->{$a}->{$sorttype->[1]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[2]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[2]}->{NReads})
+	    ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[3]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[3]}->{NReads})
+	     ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[4]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[4]}->{NReads})
+	     ||
+	   ($DATA{$datatype}->{$b}->{$sorttype->[5]}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype->[5]}->{NReads})
+	}
+      }
+    } else {
+      $sortfunc = sub {
+	$DATA{$datatype}->{$b}->{$sorttype}->{NReads} <=>
+	    $DATA{$datatype}->{$a}->{$sorttype}->{NReads}
+      }
+    }
+  }
+  my $itemidx=0;
+  my %local_statistics;
+  foreach my $dataitem (sort $sortfunc keys %{$DATA{$datatype}}) {
+    if ($dataitem =~ /^\-/) {next}
+    my $dataobj_item = $DATA{$datatype}->{$dataitem};
+    print "\n\n<!-- $dataitem history -->\n\n";
+    $td = "<td align=center";
+    # Header
+    push(@ROWSDISPLAYED, $dataitem);
+    print "<tr>";
+    print "$td class=lightprodblue align=left colspan=$t_cols2><span class=small>&nbsp;<b>$dataitem</b></span></td>";
+    print "</tr>";
+    # Stats
+    print "<tr>";
+    my $colidx=0;
+    my $colcolor = "vvlightprodblue";
+    foreach my $timeperiod (@t_set) {
+      my $value = $dataobj_item->{$timeperiod}->{NReads};
+      push(@{$local_statistics->{NReads}->{$timeperiod}},$value);
+      $value = FormatPrintValue($nformat, value=>$dataobj_item->{$timeperiod}->{NReads}, precision=>0);
+      if( ($colidx % 2) ) {
+	$colcolor = "white";
+      } else {
+	$colcolor = "vvlightprodblue";
+      }
+      print "$td align=right class=$colcolor><span class=small>$value</span></td>\n";
+      $colidx++;
+    }
+    foreach my $timeperiod (@t_set) {
+      my $value = $dataobj_item->{$timeperiod}->{AvgQ20};
+      push(@{$local_statistics->{AvgQ20}->{$timeperiod}},$value);
+      $value = FormatPrintValue($nformat, value=>$dataobj_item->{$timeperiod}->{AvgQ20}, precision=>0);
+      if( ($colidx % 2) ) {
+	$colcolor = "white";
+      } else {
+	$colcolor = "vvlightprodblue";
+      }
+      print "$td align=right class=$colcolor><span class=small>$value</span></td>\n";
+      $colidx++;
+    }
+    print "</tr>";
+    if(defined $topn && $itemidx > $topn) {last}
+    $itemidx++;
+  }
+
+  print "<tr>";
+  foreach my $coltype ("NReads","AvgQ20") {
+    foreach my $timeperiod (@t_set) {
+      my $value;
+      if($coltype eq "AvgQ20") {
+	$value = average(@{$local_statistics->{$coltype}->{$timeperiod}});
+      } else {
+	$value = sum(@{$local_statistics->{$coltype}->{$timeperiod}});
+      }
+      print 
+	"$td class=mediumprodblue><span class=small>",
+	FormatPrintValue($nformat, value=>$value, precision=>0),
+	"</span></td>\n";
+    }
+  }
+  print "</tr>\n";
+  print "</table>\n";
+  return @ROWSDISPLAYED;
+}
+# End of data stats builder
+################################################################
+
+sub PrintDATA {
+  my $datatype = shift;
+  my %DATA = @_;
+
+  my $first = 1;
+  my $sortflag = param('sort');
+  my $sortfunc;
+  if (defined $sortflag) {
+    $sortfunc = sub { $DATA{$b}->{t_all}->{$sortflag} <=> $DATA{$a}->{t_all}->{$sortflag} };
+  } else {
+    $sortfunc = sub { $a cmp $b };
+  }
+  if ($datatype =~ /sequencer/i) {
+    print qq{<img src="$IMGURL/view_allstats_seq.png"> };
+  } elsif ($datatype =~ /status/i) {
+    print qq{<img src="$IMGURL/view_allstats_runstat.png"> };
+  } elsif ($datatype =~ /project/i) {
+    print qq{<img src="$IMGURL/view_allstats_proj.png"> };
+  } elsif ($datatype =~ /library/i) {
+    print qq{<img src="$IMGURL/view_allstats_lib.png"> };
+  } elsif ($datatype =~ /chem/i) {
+    print qq{<img src="$IMGURL/view_allstats_chem.png"> };
+  }
+  print "<span class=large><span class=darkorangetext><b>[", $DATA{'-label'}, "]</b></span></span><br>\n";
+  print "<table cellspacing=0 cellpadding=1 border=0>\n";
+  my $switch = 0;
+  foreach my $data_item (sort $sortfunc keys %DATA) {
+    next if $data_item =~ m/^-/;
+    # Table header
+    if ($first) {
+      print "\n\n<!-- $data_item table header -->\n\n";
+      print "<tr>\n";
+      print "<td class=vdarkprodblue></td>";
+      foreach my $key (sort keys %{$DATA{$data_item}->{t_all}}) {
+	print
+	  "<td class=vdarkprodblue align=center>",
+	  "<span class=whitetext><span class=small>",
+	  "$key",
+	  "</span></span>",
+	  "</td>";
+      }
+      print "</tr>\n";
+      $first=0;
+    }
+    my $rowcolor = "vvlightprodblue";
+    if (! $switch) { $rowcolor = "white"; }
+    print "<tr>";
+    my $data_item_label = $data_item;
+    $data_item_label =~ s/,/<br>/g;
+    print "<td align=right class=$rowcolor valign=top>";
+
+    if ($datatype =~ /sequencer|project|library/i) {
+      my $scope = $datatype;
+      print
+	qq{<a href="/cgi-bin/intranet/sequence/summary/dbsummary?scope=$scope&scopevalue=$data_item_label" style="color: #004271;">},
+	"<b>$data_item_label</b>",
+	qq{</a>\n};
+    } else {
+      print "<b>$data_item_label</b>",
+    }
+    # Print the histogram now!
+    if (param('showhist') == 1) {
+      my $histogram;
+      $histogram = $HIST{$datatype}->{$data_item}->{t_all};
+      if (defined $histogram) {
+        my $imghtml = MakeHistogramPNG(hist=>$histogram,
+				     x=>150,
+				     y=>60,
+				     xskip=>0,
+				     yskip=>2,
+				     xmax=>800,
+				     xticks=>4,
+				     );
+        if (defined $imghtml) {
+	  print "<br>";
+	  DisplayHistogramPNG(hist=>$histogram,
+			    imghtml=>$imghtml, type=>$datatype, item=>$data_item, time=>'t_all');
+        }
+      }
+    }
+    print "</td>\n";
+    foreach my $key (sort keys %{$DATA{$data_item}->{t_all}}) {
+      my $value_t_all = $DATA{$data_item}->{t_all}->{$key};
+      my $suffix = "";
+      if ($value_t_all > 100000) {
+	$value_t_all = RoundSigDig(num=>int($value_t_all/1000),sd=>3);
+	$suffix = "k";
+      } elsif($value_t_all > 1000) {
+	$value_t_all = RoundSigDig(num=>$value_t_all,sd=>3);
+      } else {
+	$value_t_all = RoundSigDig(num=>$value_t_all,sd=>2);
+      }
+      print 
+	  "<td align=right class=$rowcolor>",
+	  "&nbsp;&nbsp;",
+	  FormatPrintValue($nformat, value=>$value_t_all, key=>$key, precision=>0),
+	  $suffix,
+	  "<br>";
+      if ($DATA{$data_item}->{'t_wtd'}->{'NReads'}) {
+	my $value_t_wtd = $DATA{$data_item}->{'t_wtd'}->{$key};
+	print
+	  "<span class=small>",
+	  "&nbsp;&nbsp; ",
+	  FormatPrintValue($nformat, value=>$value_t_wtd, key=>$key, precision=>0),"<br>",
+	  "</span>\n";
+      }
+      if ($DATA{$data_item}->{'t_mtd'}->{'NReads'}) {
+	my $value_t_mtd = $DATA{$data_item}->{'t_mtd'}->{$key};
+	print
+	  "<span class=small>",
+	  "&nbsp;&nbsp;[",
+	  FormatPrintValue($nformat, value=>$value_t_mtd, key=>$key, precision=>0),"]<br>",
+	  "</span>\n";
+      }
+
+      print
+	"</td>\n";
+    }
+    $switch = ! $switch;
+    print "</tr>";
+  }
+  print "</table>\n";
+
+}
+
+
+
+##########
+# print_by_lib_size
+# outputs a pretty HTML table displaying recent run data for a particular library
+#
+sub print_by_lib_size {
+  my %flags = @_;
+  my %libs = %{ $flags{'libs'} };
+  my $size = $flags{'size'};
+  my $lib = $flags{'lib'}; # Which library are we interested in?
+  my $first = 1;
+
+  $size =~ s/days/ Days/;
+  print qq{&nbsp;<br>\n<table border="0" cellpadding="6" cellspacing="2" width="700">\n};
+  print qq{<tr>\n<td colspan="7" class="vvlightprodblue">\n};
+  print qq{<b><span class=large>$size Most Recent Runs for Library <b>$lib</b></span></b>\n};
+  print qq{</td></tr>\n};
+  print qq{<tr><td class="vlightgrey">\n};
+
+  my @run_ids;
+  foreach my $run_key (keys %libs) {
+    push (@run_ids, $libs{$run_key}{'ID'});
+  }
+  my $grow_href = count_slow_and_no_grows(\@run_ids);
+
+  my ($rc, $no_grow, $slow_grow, $avg, $max);
+  foreach my $run (sort keys %libs) {
+    my $href = $libs{$run};
+    $rc++;
+    $avg = $avg + $href->{'AvgQ20'};
+    if ($href->{'MaxQ20'} > $max) { $max = $href->{'MaxQ20'} }
+    $no_grow = $no_grow + $$grow_href{$href->{'ID'}}{'no_grow'};
+    $slow_grow = $slow_grow + $$grow_href{$href->{'ID'}}{'slow_grow'};
+  }
+  $avg = $avg / $rc;
+  print qq{<span class="smaller">};
+  print "AvgQ20 " . RoundSigDig(num=>int($avg), sd=>2) . " / MaxQ20 " . $max . " \n[";
+  # No Grows
+  if ($no_grow > 0) { print "<span style='color: red;'>" }
+  print $no_grow . " no grows";
+  if ($no_grow > 0) { print "</span>"; }
+  print " / ";
+  # Slow Grows
+  if ($slow_grow > 0) { print "<span style='color: red;'>" }
+  print $slow_grow . " slow grows ";
+  if ($slow_grow > 0) { print "</span>"; }
+  print "]";
+  print qq{ for $rc runs};
+
+  print qq{</td></tr>\n};
+  print qq{<tr><td>\n};
+
+  print "<table cellspacing=0 cellpadding=1 border=0>\n";
+  my $switch = 0;
+  foreach my $run (sort {$a <=> $b} keys %{ %libs }) {
+    # Table header
+    if ($first) {
+      print "\n\n<!-- $run table header -->\n\n";
+      print "<tr>\n";
+      if (param('show_hist')) {
+	print
+	  "<td class=vdarkprodblue align=center>\n",
+	  "<span class=whitetext><span class=small>Histogram",
+	  "</span></span>\n</td>\n";	
+      }
+      print "<td class=vdarkprodblue></td>";
+      foreach my $key (sort keys %{ $libs{$run} }) {
+	next if $key eq 'ID';
+	next if $key eq 'Library';
+	next if $key eq 'Date';
+	print
+	  "<td class=vdarkprodblue align=center>\n",
+	  "<span class=whitetext><span class=small>$key",
+	  "</span></span>\n</td>\n";
+      }
+      print "</tr>\n\n";
+      $first = 0;
+    }
+
+    my $rowcolor = "vvlightprodblue";
+    if (! $switch) { $rowcolor = "white"; }
+
+    print "<tr>";
+
+    # display each cell for the row
+    my $keyflag = 1;
+    foreach my $key (sort keys %{ $libs{$run} }) {
+
+      # make it like Date was really our key
+      if ($keyflag) {
+	if (param('show_hist')) {
+	  print "<td class=$rowcolor valign=top>\n";
+	  display_run_histogram($libs{$run}{'ID'});
+	  print "</td>\n";
+	}
+        print "<td align=right class=$rowcolor valign=top>";
+	print qq{<a href="$scriptname_old?scope=RunID&scopevalue=};
+        print $libs{$run}{'ID'};
+        print qq{&option=bpsummary" style="color: #004271;">};
+        print "<b>" . strftime("%a,&nbsp;%b&nbsp;%e %I:%M&nbsp;%p", @{ sqltime2lt($libs{$run}{'Date'}) } ) . "</b>\n";
+	print "</a></td>\n";
+	$keyflag = 0;
+	# don't put a next statement here! It will mess you up.
+      }
+
+      next if $key eq 'ID';
+      next if $key eq 'Library';
+      next if $key eq 'Date';
+
+      my $value = $libs{$run}{$key};
+
+      print "<td align=right class=$rowcolor>&nbsp;&nbsp;";
+      if ($key eq 'Status') {
+        $value =~ s/,/<br>/g;
+	print $value;
+      }
+      elsif ($key =~ m/Success/) {
+	print $value . "%";
+      }
+      else {
+        my $suffix = "";
+        if ($value > 100000) {
+	  $value = RoundSigDig(num=>int($value/1000),sd=>3);
+	  $suffix = "k";
+        } elsif($value > 1000) {
+	  $value = RoundSigDig(num=>$value, sd=>3);
+        } else {
+	  $value = RoundSigDig(num=>$value, sd=>2);
+	}
+        print FormatPrintValue($nformat, value=>$value, key=>$key, precision=>0);
+	print $suffix;
+      }
+      print "</td>\n";
+    }
+
+    $switch = ! $switch;
+    print "</tr>\n";
+  }
+  print "</table>&nbsp;<br>\n\n";
+  print qq{</td></tr></table>\n\n};
+
+}
+
+
+##########
+# printDataBySequencer
+# outputs a pretty HTML table displaying recent run data for a particular sequencer
+#
+sub printDataBySequencer {
+  my %flags = @_;
+  my %sequencer = %{ $flags{'sequencer'} }; # All Your Data Are Belong To %sequencer
+  my $seq_key = $flags{'seq_key'}; # Which sequencer are we interested in?
+
+  my $first = 1;
+  print "<span class=large><span class=darkorangetext>Most Recent Runs for Sequencer <b>", $seq_key, "</b></span></span><br>\n";
+  print "<table cellspacing=0 cellpadding=1 border=0>\n";
+  my $switch = 0;
+  foreach my $run (sort {$a <=> $b} keys %{ $sequencer{$seq_key} }) {
+    # Table header
+    if ($first) {
+      print "\n\n<!-- $run table header -->\n\n";
+      print "<tr>\n";
+      if (param('show_hist')) {
+	print
+	  "<td class=vdarkprodblue align=center>\n",
+	  "<span class=whitetext><span class=small>Histogram",
+	  "</span></span>\n</td>\n";	
+      }
+      print "<td class=vdarkprodblue></td>";
+      foreach my $key (sort keys %{ $sequencer{$seq_key}{$run} }) {
+	next if $key eq 'ID';
+	next if $key eq 'Sequencer';
+	next if $key eq 'Date';
+	print
+	  "<td class=vdarkprodblue align=center>\n",
+	  "<span class=whitetext><span class=small>$key",
+	  "</span></span>\n</td>\n";
+      }
+      print "</tr>\n\n";
+      $first = 0;
+    }
+
+    my $rowcolor = "vvlightprodblue";
+    if (! $switch) { $rowcolor = "white"; }
+
+    print "<tr>";
+
+    # display each cell for the row
+    my $keyflag = 1;
+    foreach my $key (sort keys %{ $sequencer{$seq_key}{$run} }) {
+
+      # make it like Date was really our key
+      if ($keyflag) {
+	if (param('show_hist')) {
+	  print "<td class=$rowcolor valign=top>\n";
+	  display_run_histogram($sequencer{$seq_key}{$run}{'ID'});
+	  print "</td>\n";
+	}
+        print "<td align=right class=$rowcolor valign=top>";
+	print qq{<a href="$scriptname_old?scope=RunID&scopevalue=};
+        print $sequencer{$seq_key}{$run}{'ID'};
+        print qq{&option=bpsummary" style="color: #004271;">};
+        print "<b>" . strftime("%a,&nbsp;%b&nbsp;%e %I:%M&nbsp;%p", @{ sqltime2lt($sequencer{$seq_key}{$run}{'Date'}) } ) . "</b>\n";
+	print "</a></td>\n";
+	$keyflag = 0;
+	# don't put a next statement here! It will mess you up.
+      }
+
+      next if $key eq 'ID';
+      next if $key eq 'Sequencer';
+      next if $key eq 'Date';
+
+      my $value = $sequencer{$seq_key}{$run}{$key};
+
+      print "<td align=right class=$rowcolor>&nbsp;&nbsp;";
+      if ($key eq 'Status') {
+        $value =~ s/,/<br>/g;
+	print $value;
+      }
+      elsif ($key =~ m/Success/) {
+	print $value . "%";
+      }
+      else {
+        my $suffix = "";
+        if ($value > 100000) {
+	  $value = RoundSigDig(num=>int($value/1000),sd=>3);
+	  $suffix = "k";
+        } elsif($value > 1000) {
+	  $value = RoundSigDig(num=>$value, sd=>3);
+        } else {
+	  $value = RoundSigDig(num=>$value, sd=>2);
+	}
+        print FormatPrintValue($nformat, value=>$value, key=>$key, precision=>0);
+	print $suffix;
+      }
+      print "</td>\n";
+    }
+
+    $switch = ! $switch;
+    print "</tr>\n";
+  }
+  print "</table>&nbsp;<br>\n\n";
+
+  # Form to display recent runs
+  print << "HereRecentRunForm";
+<table cellspacing="3" cellpadding="5" border="0">
+  <tr>
+  <td valign=top class=vvlightgrey>
+  <form action="$scriptname" method="get">
+  <input type="hidden" name="view" value="recentruns">
+  <span class=darkorangetext><b>Most recent runs by Sequencer</b></span><br>
+  <input type="radio" name="seq_key" value="D3700-1" checked> D3700-1&nbsp;
+  <input type="radio" name="seq_key" value="D3700-2"> D3700-2 &nbsp;
+  <input type="radio" name="seq_key" value="D3700-3"> D3700-3 &nbsp;
+  <input type="radio" name="seq_key" value="D3700-4"> D3700-4 &nbsp;
+  <input type="radio" name="seq_key" value="D3700-5"> D3700-5 &nbsp;
+  <input type="radio" name="seq_key" value="MB1"> MB1 &nbsp;
+  <input type="radio" name="seq_key" value="MB2"> MB2 <br>
+  &nbsp;<br>
+
+  <span class=darkorangetext><b>Runs to show</b></span><br>
+  Most recent by number:
+  <input type="radio" name="size" value="10"> 10 &nbsp;
+  <input type="radio" name="size" value="20"> 20 &nbsp;
+  <input type="radio" name="size" value="50" checked> 50 &nbsp;
+  <input type="radio" name="size" value="100"> 100 &nbsp;
+  <input type="radio" name="size" value="200"> 200 <br>
+  &nbsp;<br>
+  Most recent by days:
+  <input type="radio" name="size" value="3days"> 3 &nbsp;
+  <input type="radio" name="size" value="5days"> 5 &nbsp;
+  <input type="radio" name="size" value="7days"> 7 &nbsp;
+  <input type="radio" name="size" value="15days"> 15 &nbsp;
+  <input type="radio" name="size" value="30days"> 30 <br>
+  &nbsp;<br>
+
+  <span class=darkorangetext><b>Show Histogram per Run</b></span><br>
+  <input type="radio" name="show_hist" value="0"> No &nbsp;
+  <input type="radio" name="show_hist" value="1" checked> Yes<br>
+  &nbsp;<br>
+
+  <input type="submit" name="Submit" value=" View ">
+  </form>
+  </td>
+  </tr>
+</table>
+
+
+HereRecentRunForm
+
+}
+
+sub SameIntArray {
+  my $a1 = shift;
+  my $a2 = shift;
+  my $idx=0;
+  foreach (@$a1) {
+    if (int($_) != int($a2->[$idx])) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
+sub GetMonthStats {
+  ################################################################
+  # Get statistics on the month's runs
+  # The month's attributes are passed through the %flags hash.
+  #
+  ### Calendar date
+  # $flags{month}     - month (number 1..12);
+  # $flags{year}      - year (number, e.g. 2001)
+  ### Filters 
+  # $flags{library}   - library filter (ref to array of text, e.g. ["TL050","TL051"]) 
+  # $flags{project}   - project filter (ref to array of text) 
+  # $flags{sequencer} - sequencer filter (ref to array of text) 
+  # The filter matches are done using regexp. For example, if 
+  # $flags{project} = ["cdna","
+  # $flags{groupby}   - grouping to use (Sequencer, Library, Project)
+
+  my %flags = @_;
+
+  my @selectedruns;
+  my %monthstats;
+  my @today = Today();
+  my $stats_month = $flags{month} || $today[1];
+  my $stats_year  = $flags{year} || $today[0];
+  my $stats_library = $flags{library};
+  my $stats_project = $flags{project};
+  my $stats_sequencer = $flags{sequencer};
+  my $groupby = $flags{groupby};
+  # Calculate the day of the week number for the first day of the month. This is required
+  # to calculate on which day of the month a particular day falls. The indexing done by
+  # Date::Calc is 1=Mon, 2=Tue, ... , 6=Sat, 7=Sun. Because our calendar has Sun in the
+  # first column, we redefine this to be 1=Sun, 2=Mon, ... , 6=Sun.
+  my $firstdow = Day_of_Week($stats_year, $stats_month, 1);
+  # Redefine the index here.
+  $firstdow = $firstdow - 1;
+  if ($firstdow == 0) { $firstdow = 7; }
+
+  foreach my $run (@DATA) {
+    my @rundate = split("-",substr($run->{Date},0,10));
+    my $runproject = $run->{Project};
+    my $runlibrary = $run->{Library};
+    my $runsequencer = $run->{Sequencer};
+    my $runaccept = 0;
+    # If the run is not of this month and year then skip it. 
+    if ($rundate[0] != $stats_year || $rundate[1] != $stats_month) {
+      next;
+    }
+    if (@$stats_project) {
+      foreach my $project (@$stats_project) {
+	if($runproject =~ /$project/i) {
+	  $runaccept = 1;
+	  last;
+	}
+      }
+      if(! $runaccept) { next }
+    }
+    if (@$stats_library) {
+      foreach my $library (@$stats_library) {
+	if($runlibrary =~ /$library/i) {
+	  $runaccept = 1;
+	  last;
+	}
+      }
+      if (! $runaccept) { next }
+    }
+    if (@$stats_sequencer) {
+      foreach my $sequencer (@$stats_sequencer) {
+	if($runsequencer =~ /$sequencer/i) {
+	  $runaccept = 1;
+	  last;
+	}
+      }
+      if (! $runaccept) { next }
+    }
+    my $runday    = int($rundate[2]);
+    my $sequencer = $run->{Sequencer};
+    # Calculate the week number (1,2,3...) for this day. To do this we need the 
+    # day-of-week index for the first day of the month ($firstdow) and the day index
+    # for the current day ($runday). If you plug numbers into the formula below,
+    # or stare at a calendar long enough, you will be convinced that it works.
+    # (see also perldoc Date::Calc recipe #4 for this same formula)
+    my $runweek   = 1 + int( ($firstdow + $runday) / 7 );
+    #If No_Grows are available, subtract them from the number of wells for the run.
+    #my $reads     = $run->{NWells} - $run->{NoGrow};
+    my $reads     = $run->{NWells};
+    my $avg       = $run->{AvgQ20};
+    my $grouping;
+    if($groupby eq "sequencer") {
+      $grouping = $sequencer;
+    } elsif ($groupby eq "project") {
+      $grouping = $runproject;
+    } elsif ($groupby eq "library") {
+      $grouping = $runlibrary;
+    }
+    push (@{$monthstats{"d$runday"}->{$grouping}->{'AvgQ20'}}, $avg);
+    push (@{$monthstats{"d$runday"}->{$grouping}->{'NReads'}}, $reads);
+    push (@{$monthstats{"w$runweek"}->{$grouping}->{'AvgQ20'}}, $avg);
+    push (@{$monthstats{"w$runweek"}->{$grouping}->{'NReads'}}, $reads);
+    if (! defined $monthstats{"hw$runweek"}->{$grouping}) {
+      $monthstats{"hw$runweek"}->{$grouping} = 'histogram'->new(_binsize=>25);
+    } else {
+      $monthstats{"hw$runweek"}->{$grouping}->AddData([$avg]);
+    }
+  }
+  # Compute some sums now.
+  return \%monthstats;
+}
+################################################################
+
+sub DisplayHistogramPNG {
+  my %flags = @_;
+  my $label = $flags{label};
+  my $histogram = $flags{hist};
+  my $imghtml   = $flags{imghtml};
+  my $type = $flags{'type'};
+  my $item = $flags{'item'};
+  my $time = $flags{'time'};
+
+  if($flags{annot}) {
+    if($flags{small}) {
+      print "<span class=small>";
+    }
+    print "<b>$label</b> ";
+    print sprintf("<span class=greytext>avg</span> %d\n",
+		  RoundSigDig(num=>$histogram->get_average));
+    print sprintf("<span class=greytext> | sd</span> %d\n",
+		  RoundSigDig(num=>$histogram->get_stddev));
+    print sprintf("<span class=greytext> | n</span> %d\n", $histogram->get_samples);
+    print sprintf("<span class=greytext> | mode</span> %d\n", $histogram->get_maxbin_pos);
+    print "<br>\n";
+    if ($flags{'small'}) {
+      print "</span>\n";
+    }
+  }
+  if (defined $type) {
+    my $imagename = "img". $type . $item . $time;
+    $imagename =~ s/-//g; # Javascript doesn't like certain characters
+    print qq{<a href="javascript:} . $imagename;
+    print qq{=open('$scriptname?view=exp_hist&type=$type&item=$item&time=$time&show_hist=1', '$item', };
+    print qq{'width=720,height=420,scrollbars=no,resizable=yes,screenX=1,screenY=1,top=1,left=1');} . $imagename . qq{.focus();">};
+    print "$imghtml\n";
+    print "</a>\n";
+  } else {
+    print "$imghtml\n";
+  }
+}
+
+################################################################
+# Make a PNG out of a histogram and return the HTML of the
+# link to the image
+sub MakeHistogramPNG {
+  my %flags = @_;
+  my $histogram = $flags{hist};
+  my $sizex  = $flags{x} || 200;
+  my $sizey  = $flags{y} || 100;
+  my $xskip  = $flags{xskip} || 0;
+  my $yskip  = $flags{yskip} || 1;
+  my $xmax   = $flags{xmax}  || 0;
+  my $xticks = $flags{xticks} || 0;
+  my $align;
+  if ($flags{align}) {
+    $align = " align=".$flags{align};
+  }
+  my $graph  = new GD::Graph::bars($sizex,$sizey);
+  $graph->set(bar_spacing=>1);
+  $graph->set(axis_space=>1);
+  $graph->set(y_label_skip=>$yskip);
+  if($xticks) {
+    $graph->set(x_tick_number=>$xticks);
+  }
+  if ($xskip) {
+    $graph->set(x_label_skip=>$xskip);
+  }
+  $graph->set(text_space=>0);
+  $graph->set('boxclr'=>"gscblue1");
+  $graph->set('fgclr'=>"gscblue2");
+  $graph->set('accentclr'=>"dodgerblue4");
+  if ($histogram->get_average > 600) {
+    $graph->set('dclrs'=>["steelblue1","gold1","tomato","gold1","steelblue1","springgreen2"]);
+  } elsif ($histogram->get_average > 500) {
+    $graph->set('dclrs'=>["springgreen2"]);
+  } elsif ($histogram->get_average > 400) {
+    $graph->set('dclrs'=>["gold1"]);
+  } elsif ($histogram->get_average > 300) {
+    $graph->set('dclrs'=>["tomato"]);
+  } else {
+    $graph->set('dclrs'=>["lightslategrey"]);
+  }
+  $graph->set('y_long_ticks'=>1);
+  $graph->set('x_long_ticks'=>1);
+  my $filename = "seqdb." . $page->RandomSessionID(length=>15) . ".png";
+  if ($xmax) {
+    $graph->set(x_max_value=>$xmax);
+  }
+  $graph->set(y_max_value=>RoundSigDig(num=>$histogram->get_maxbin_value,sd=>2));
+  my $data = $histogram->GetData(gdformat=>1);
+  if(@{$data->[0]} > 2) {
+    my $gd = $graph->plot($data);
+    open(IMG,">/usr/local/web/apache/htdocs/tmp/$filename") || print "cannot open the image file $filename\n";
+    binmode IMG;
+    print IMG $gd->png;
+    close(IMG);
+    return qq{<img src="/tmp/$filename" border="0" $align>\n};
+  } else {
+    return undef;
+  }
+}
+
+################################################################
+# Build Throughput Week data
+sub build_tweek_data {
+  my @headers;
+  my @content_prod;
+  my @content_test;
+  my @content_all;
+  my @content_custom;
+  my ($sql, $sth, $row);
+  my ($start_date, $end_date);
+  my $weeks = 52;
+  my @today = Today();
+  # This bit of Date::Calc'ness gives goes back to the last Sunday of the current week
+  my @end_of_week = Add_Delta_Days(@today, (0 - Day_of_Week(@today)));
+  @end_of_week = Add_Delta_Days(@end_of_week, -($weeks * 7));
+  # And prime up a start_of_week as well ...
+  my @start_of_week = Add_Delta_Days(@end_of_week, -7);
+  for (my $i = 0; $i <= $weeks; $i++ ) {
+    $end_date = $end_of_week[0] . '/' . $end_of_week[1] . '/' . $end_of_week[2];
+    $start_date = $start_of_week[0] . '/' . $start_of_week[1] . '/' . $start_of_week[2];
+
+    # Do production runs first
+    $sql = qq{SELECT count(*) AS Throughput
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+	      AND Run_Status not like '%Test%'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    push @headers, substr($end_date, 5);
+    push @content_prod, $row->{'Throughput'};
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for production runs is $row->{'Throughput'}\n" }
+    $sth->finish();
+
+    # now do the test runs
+    $sql = qq{SELECT count(*) AS Throughput
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+	      AND Run_Status like '%Test%'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    push @content_test, $row->{'Throughput'};
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for test runs is $row->{'Throughput'}\n" }
+    $sth->finish();
+
+    # now do all runs
+    $sql = qq{SELECT count(*) AS Throughput
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    push @content_all, $row->{'Throughput'};
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for all runs is $row->{'Throughput'}\n" }
+    $sth->finish();
+
+    # now do all custom
+    $sql = qq{SELECT count(*) AS Throughput
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+              AND (FK_Chemistry_Code__Name='CB' OR FK_Chemistry_Code__Name='CE')};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    push @content_custom, $row->{'Throughput'};
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for custom runs is $row->{'Throughput'}\n" }
+    $sth->finish();
+
+    # Set the dates for the week start and ends next seven days
+    @start_of_week = Add_Delta_Days(@start_of_week, 7);
+    @end_of_week = Add_Delta_Days(@end_of_week, 7);
+  }
+
+  my @data_prod = ([@headers], [@content_prod]);
+  my @data_test = ([@headers], [@content_test]);
+  my @data_all = ([@headers], [@content_all]);
+  my @data_custom = ([@headers], [@content_custom]);
+
+  return \@data_prod, \@data_test, \@data_all, \@data_custom;
+}
+
+################################################################
+# Make a PNG out of the Throughput by Week data
+sub make_tweek_image {
+  my $data_prod = shift;
+  my $data_test = shift;
+  my $data_all = shift;
+  my $data_custom = shift;
+  my $colours_aref = shift;
+  my $graph  = new GD::Graph::bars(370,200);
+  $graph->set(bar_spacing=>1);
+  $graph->set(axis_space=>1);
+  $graph->set(y_label_skip=>5);
+  $graph->set(x_label_skip=>4);
+  $graph->set(text_space=>2);
+  $graph->set('boxclr'=>"gscblue1");
+  $graph->set('fgclr'=>"gscblue2");
+  $graph->set('accentclr'=>"dodgerblue4");
+  $graph->set('dclrs'=>$colours_aref);
+  $graph->set('y_long_ticks'=>1);
+  $graph->set('x_long_ticks'=>1);
+  $graph->set('y_tick_number'=>20);
+  $graph->set(y_max_value=>20000);
+  $graph->set('cycle_clrs'=>1);
+
+  my $gd = $graph->plot($data_prod);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/throughput_prod.png") || print "cannot open the image file throughput_prod.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  $gd = $graph->plot($data_test);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/throughput_test.png") || print "cannot open the image file throughput_test.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  $gd = $graph->plot($data_all);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/throughput_all.png") || print "cannot open the image file throughput_all.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  $gd = $graph->plot($data_custom);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/throughput_custom.png") || print "cannot open the image file throughput_custom.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+}
+
+
+################################################################
+# Build AvgQ20 Week data
+sub build_qweek_data {
+  my @headers;
+  my (@content_prod, @content_test, @content_all, @content_custom);
+  my @colours;
+  my $highlight = 'olivedrab1';
+  my $regular = 'springgreen2';
+  my ($sql, $sth, $row);
+  my ($start_date, $end_date);
+  my $weeks = 52;
+  my @today = Today();
+  # This bit of Date::Calc'ness gives goes back to the last Sunday of the current week
+  my @end_of_week = Add_Delta_Days(@today, (0 - Day_of_Week(@today)));
+  @end_of_week = Add_Delta_Days(@end_of_week, -($weeks * 7));
+  # And prime up a start_of_week as well ...
+  my @start_of_week = Add_Delta_Days(@end_of_week, -7);
+
+  for (my $i = 0; $i <= $weeks; $i++ ) {
+    $end_date = $end_of_week[0] . '/' . $end_of_week[1] . '/' . $end_of_week[2];
+    $start_date = $start_of_week[0] . '/' . $start_of_week[1] . '/' . $start_of_week[2];
+    # do the colour hack to highlight the first week of the month
+    if ($start_of_week[2] < 8) {
+      push @colours, $highlight;
+    }
+    else {
+      push @colours, $regular;
+    }
+
+    # first, do the non-Test runs
+    $sql = qq{SELECT avg(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) AS AvgQ20
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+	      AND Run_Status not like '%Test%'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    push @headers, substr($end_date, 5);
+    if ($row->{'AvgQ20'}) { push @content_prod, $row->{'AvgQ20'} } else { push @content_prod, 0 }
+    if ($opt_d or param('d')) {
+      print "Value for week from $start_date to $end_date for production runs is " . $content_prod[$#content_prod] . "\n";
+    }
+    $sth->finish();
+
+    # now do the Test runs
+    $sql = qq{SELECT avg(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) AS AvgQ20
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+	      AND Run_Status like '%Test%'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    if ($row->{'AvgQ20'}) { push @content_test, $row->{'AvgQ20'} } else { push @content_test, 0 }
+    if ($opt_d or param('d')) {
+      print "Value for week from $start_date to $end_date for test runs is " . $content_test[$#content_test] . "\n";
+    }
+    $sth->finish();
+
+    # now do all runs
+    $sql = qq{SELECT avg(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) AS AvgQ20
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    if ($row->{'AvgQ20'}) { push @content_all, $row->{'AvgQ20'} } else { push @content_all, 0 }
+    if ($opt_d or param('d')) {
+      print "Value for week from $start_date to $end_date for all runs is " . $content_all[$#content_all] . "\n";
+    }
+    $sth->finish();
+
+    # now do the Custom Primer only runs
+    $sql = qq{SELECT avg(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) AS AvgQ20
+	      FROM Sequence, Clone_Sequence
+	      WHERE Sequence_ID=FK_Sequence__ID
+	      AND Sequence_DateTime < '$end_date'
+	      AND Sequence_DateTime >= '$start_date'
+              AND (FK_Chemistry_Code__Name='CB' OR FK_Chemistry_Code__Name='CE')};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    if ($row->{'AvgQ20'}) { push @content_custom, $row->{'AvgQ20'} } else { push @content_custom, 0 }
+    if ($opt_d or param('d')) {
+      print "Value for week from $start_date to $end_date for custom runs is " . $content_custom[$#content_custom] . "\n";
+    }
+    $sth->finish();
+
+    # Set the dates for the week start and ends next seven days
+    @start_of_week = Add_Delta_Days(@start_of_week, 7);
+    @end_of_week = Add_Delta_Days(@end_of_week, 7);
+  }
+
+  my @data_prod = ([@headers], [@content_prod]);
+  my @data_test = ([@headers], [@content_test]);
+  my @data_all = ([@headers], [@content_all]);
+  my @data_custom = ([@headers], [@content_custom]);
+
+  return \@data_prod, \@data_test, \@data_all, \@data_custom, \@colours;
+}
+
+
+################################################################
+# Make a PNG out of the AvgQ20 by Week data
+sub make_qweek_image {
+  my $data_prod = shift;
+  my $data_test = shift;
+  my $data_all = shift;
+  my $data_custom = shift;
+  my $colours_aref = shift;
+  my $graph  = new GD::Graph::bars(370,200);
+  $graph->set('bar_spacing'=>1);
+  $graph->set('axis_space'=>1);
+  $graph->set('y_label_skip'=>2);
+  $graph->set('x_label_skip'=>4);
+  $graph->set('text_space'=>2);
+  $graph->set('boxclr'=>"gscblue1");
+  $graph->set('fgclr'=>"gscblue2");
+  $graph->set('accentclr'=>"dodgerblue4");
+  $graph->set('dclrs'=>$colours_aref);
+  $graph->set('y_long_ticks'=>1);
+  $graph->set('x_long_ticks'=>1);
+  $graph->set('y_tick_number'=>13);
+  $graph->set('y_max_value'=>650);
+  $graph->set('cycle_clrs'=>1);
+
+  # do the non-Test graph
+  my $gd = $graph->plot($data_prod);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/quality_prod.png") || print "cannot open the image file quality_prod.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  # Test runs only graph
+  $gd = $graph->plot($data_test);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/quality_test.png") || print "cannot open the image file quality_test.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  # all runs graph
+  $gd = $graph->plot($data_all);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/quality_all.png") || print "cannot open the image file quality_all.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  # custom runs graph
+  $gd = $graph->plot($data_custom);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/quality_custom.png") || print "cannot open the image file quality_custom.png\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+}
+
+#########
+# write Success, Quality or Throughput data structure to disk
+sub make_week_text {
+  my $type = shift;
+  my $data_prod = shift;
+  my $data_test = shift;
+  my $data_all = shift;
+  my $data_custom = shift;
+  my $colours_aref = shift;
+
+  my @group;
+  push(@group, $data_prod);
+  push(@group, $data_test);
+  push(@group, $data_all);
+  push(@group, $data_custom);
+  push(@group, $colours_aref);
+
+  store(\@group, $CACHEDIR . "/" . $CACHEFILEROOT . "weekly." . $type);
+}
+
+################################################################
+# Build Success ratio (AvgQ20 > 100) by Week data
+sub build_sweek_data {
+  my @headers;
+  my (@content_prod, @content_test, @content_all, @content_custom);
+  my ($sr, $rt);
+  my ($start_date, $end_date);
+  my $weeks = 52;
+  my @today = Today();
+  # This bit of Date::Calc'ness gives goes back to the last Sunday of the current week
+  my @end_of_week = Add_Delta_Days(@today, (0 - Day_of_Week(@today)));
+  @end_of_week = Add_Delta_Days(@end_of_week, -($weeks * 7));
+  # And prime up a start_of_week as well ...
+  my @start_of_week = Add_Delta_Days(@end_of_week, -7);
+
+  for (my $i = 0; $i <= $weeks; $i++ ) {
+    $end_date = Date_to_Days(@end_of_week);
+    $start_date = Date_to_Days(@start_of_week);
+
+    ($sr, $rt) = success_over_time(lower=>$start_date, upper=>$end_date,  cutoff=>100, test=>0);
+    push @headers, ($end_of_week[1] . "/" . $end_of_week[2]);
+    if ($sr > 0) { push @content_prod, $sr } else { push @content_prod, 0 }
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for production runs is $sr\n" }
+
+    ($sr, $rt) = success_over_time(lower=>$start_date, upper=>$end_date,  cutoff=>100, test=>1);
+    if ($sr > 0) { push @content_test, $sr } else { push @content_test, 0 }
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for test runs is $sr\n" }
+
+    ($sr, $rt) = success_over_time(lower=>$start_date, upper=>$end_date,  cutoff=>100, test=>2);
+    if ($sr > 0) { push @content_all, $sr } else { push @content_all, 0 }
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for all runs is $sr\n" }
+
+    ($sr, $rt) = success_over_time(lower=>$start_date, upper=>$end_date,  cutoff=>100, test=>3);
+    if ($sr > 0) { push @content_custom, $sr } else { push @content_custom, 0 }
+    if ($opt_d or param('d')) { print "Value for week from $start_date to $end_date for custom runs is $sr\n" }
+
+    # Set the dates for the week start and ends next seven days
+    @start_of_week = Add_Delta_Days(@start_of_week, 7);
+    @end_of_week = Add_Delta_Days(@end_of_week, 7);
+  }
+
+  my @data_prod = ([@headers], [@content_prod]);
+  my @data_test = ([@headers], [@content_test]);
+  my @data_all = ([@headers], [@content_all]);
+  my @data_custom = ([@headers], [@content_custom]);
+
+  return \@data_prod, \@data_test, \@data_all, \@data_custom;
+}
+
+################################################################
+# Make a PNG out of the Success ratio (AvgQ20 > 100) by Week data
+sub make_sweek_image {
+  my $data_prod = shift;
+  my $data_test = shift;
+  my $data_all = shift;
+  my $data_custom = shift;
+  my $colours_aref = shift;
+  my $graph  = new GD::Graph::bars(370,200);
+  $graph->set('bar_spacing'=>1);
+  $graph->set('axis_space'=>1);
+  $graph->set('y_label_skip'=>2);
+  $graph->set('x_label_skip'=>4);
+  $graph->set('text_space'=>2);
+  $graph->set('boxclr'=>"gscblue1");
+  $graph->set('fgclr'=>"gscblue2");
+  $graph->set('accentclr'=>"dodgerblue4");
+  $graph->set('dclrs'=>$colours_aref);
+  $graph->set('y_long_ticks'=>1);
+  $graph->set('x_long_ticks'=>1);
+  $graph->set('y_tick_number'=>10);
+  $graph->set('y_max_value'=>100);
+  $graph->set('cycle_clrs'=>1);
+
+  my $gd = $graph->plot($data_prod);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/success100_prod.png") || print "cannot open the image file\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  $gd = $graph->plot($data_test);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/success100_test.png") || print "cannot open the image file\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  # xxx
+  print "About to graph plot.\n";
+  foreach (@$data_all) {
+    foreach (@$_) {
+      print "item: $_\n";
+    }
+    print "\n\n======\n\n";
+  }
+
+  $gd = $graph->plot($data_all);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/success100_all.png") || print "cannot open the image file\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+  $gd = $graph->plot($data_custom);
+  open (IMG, ">/usr/local/apache/htdocs/intranet/sequencing/images/weekly/success100_custom.png") || print "cannot open the image file\n";
+  binmode IMG;
+  print IMG $gd->png;
+  close IMG;
+
+}
+
+
+################################################################
+# Round a number to X significant digits. This function is
+# meant only for integers.
+sub RoundSigDig {
+  my %flags = @_;
+  my $num = $flags{num};
+  # Return what we get if num
+  #  - is not defined
+  #  - is less than 10 (handles num=0) (this function does not handle single digits)
+  #  - includes non-digits
+  if (! defined $num || $num < 10 || $num =~ /\D/) {
+    return $num;
+  }
+  my $sd  = $flags{sd} || 2;
+  my $size = int(log($num)/log(10) + 1);
+  my $roundsize = $size-$sd;
+  if ($roundsize < 0) {
+    return $result;
+  }
+  my $mult = 10**$roundsize;
+  my $rem = ($num % $mult);
+  my $result;
+  if ($rem < $mult/2) {
+    $result = $mult*int($num/$mult);
+  } else {
+    $result = $mult*(int($num/$mult)+1);
+  }
+  return $result;
+}
+
+sub GetQImage {
+  my %flags = @_;
+  my $q = $flags{q};
+  my $ext = ".png";
+  my @scale = (
+	       [700,"q_exc"],
+	       [650,"q_vhigh"],
+	       [600,"q_high"],
+	       [550,"q_vgood"],
+	       [500,"q_good"],
+	       [450,"q_avg"],
+	       [400,"q_bavg"],
+	       [350,"q_bbavg"],
+	       [300,"q_low"],
+	       [200,"q_vlow"],
+	       [-1,"q_poor"],
+	     );
+  if($flags{legend}) {
+    my $legend = "";
+    my $lastmin;
+    my $item_idx = 0;
+    foreach my $item (@scale) {
+      my $min = $item->[0];
+      if($min<0) {
+	$min="&lt;$lastmin";
+      }
+      if(! $item_idx) {
+	$min="&gt;$min";
+      }
+      $item_idx++;
+      my $img = $item->[1];
+      my $template = $flags{template} || "QVAL <img src=\"$IMGURL/IMGTEXT.png\">";
+      $template =~ s/QVAL/$min/g;
+      $template =~ s/IMGTEXT/$img/g;
+      $legend .= $template;
+      $lastmin = $min;
+    }
+    return $legend;
+  } else {
+    foreach my $item (@scale) {
+      if($q > $item->[0]) {
+	return $item->[1].$ext;
+      }
+    }
+  }
+}
+
+sub MakeLabel {
+  my %flags = @_;
+  my $longlabel = $flags{label};
+  my $groupby   = $flags{groupby};
+  my $shortlabel = $longlabel;
+  $shortlabel =~ s/[aeiou]//ig;
+  if($flags{groupby} eq "sequencer") {
+    # The sequencer names are D3700-X and MBX. The label will be two characters: [D,M]X.
+    $shortlabel = substr($longlabel,0,1).substr($longlabel,length($longlabel)-1,1);
+  } elsif ($flags{groupby} eq "project") {
+    # In the case of 'X_Y' or 'X Y', remove vowels and take 3 chars each before the
+    # separator
+    if($shortlabel =~ /(.*?)[_\s]+(.*?)[_\s]+(.*)/) {
+      $shortlabel = lc substr($1,0,3).substr($2,0,3).substr($3,0,3);
+    } elsif ($shortlabel =~ /(.*?)[_\s]+([^_\s]*)/) {
+      $shortlabel = lc substr($1,0,3).substr($2,0,3);
+    } else {
+      # Take 5 chars
+      $shortlabel = substr($shortlabel,0,5);
+    }
+  } elsif ($flags{groupby} eq "library") {
+    # do nothing.
+  }
+  return $shortlabel;
+}
+
+################################################################
+# ARRAY = GetTimeGroups(SQL_DATE_TEXT)
+################################################################
+# Given an SQL date of the form YYYY-MM-DD HH:MM:SS, returns
+# the array of text labels of the time groups for this date. The
+# following time groups are supported
+#
+# t_all    all time (everything falls into this category)
+# t_lday   yesterday
+# t_l3day  last 3 days
+# t_wtd    week-to-day
+# t_lweek  last week
+# t_slweek second-last week
+# t_mtd    month-to-date
+# t_lmonth last month
+
+sub GetTimeGroups {
+  my $rundate = shift;
+  my @t_set = ("t_all");
+  if (! $rundate) {
+    # Return default if no date is passed - useful when you want
+    # a histogram assigned to only the default timegroup (e.g. run ID histogram)
+    return @t_set;
+  }
+  my @nowdate  = Today();
+
+  my @rundate = split("-", substr($rundate, 0, 10));
+  if ($rundate[0] < 1995) {
+    # Forget it. The date is 0000-00-00. Some mess up. Don't do anything with
+    # time statistics on this run, but include it in the catch-all category.
+    return @t_set;
+  }
+
+  my $runday = Date_to_Days(@rundate);
+  my ($start_day, $end_day);
+
+  # yesterday
+  if (abs(Delta_Days(@nowdate, @rundate)) <= 1)  { push(@t_set, "t_lday") }
+
+  # last 3 days
+  if (abs(Delta_Days(@nowdate, @rundate)) <= 3) { push(@t_set,"t_l3day") }
+
+  # week to date
+  $start_day = Date_to_Days(Add_Delta_Days(@nowdate, (0 - Day_of_Week(@nowdate))));
+  if ($runday >= $start_day) { push(@t_set, "t_wtd") }
+
+  # last week
+  $end_day = $start_day - 1;
+  $start_day = $end_day - 7;
+  if (($runday >= $start_day) and ($runday < $end_day)) { push(@t_set, "t_lweek") }
+
+  # second to last week
+  $end_day = $end_day - 7;
+  $start_day = $start_day -7;
+  if (($runday >= $start_day) and ($runday < $end_day)) { push(@t_set, "t_slweek") }
+
+  # month to date
+  my @start_of_month = @nowdate;
+  $start_of_month[2] = 1;
+  $start_day = Date_to_Days(@start_of_month);
+  if ($runday >= $start_day) { push(@t_set, "t_mtd") }
+
+  # last month
+  $end_day = $start_day - 1;
+  my @start_of_last_month = Add_Delta_Days(@start_of_month, -1);
+  $start_of_last_month[2] = 1;
+  $start_day = Date_to_Days(@start_of_last_month);
+  if (($runday >= $start_day) and ($runday <= $end_day)) { push(@t_set, "t_lmonth") }
+
+  return @t_set;
+}
+
+
+sub ShowAllListHistograms {
+  my $datatype = shift;
+  my $tlabels  = shift;
+  my @R = @_;
+  my @t_cols = ("t_lday","t_l3day","t_wtd","t_lweek","t_mtd","t_lmonth");
+  print "<table border=1 cellspacing=0 cellpadding=1>";
+  print "<tr>";
+  my $datatype_label = $datatype;
+  $datatype_label =~ s/(.)/$1 /g;
+  print "<td colspan=7 class=mediumorange align=center>";
+  print "<span class=small>$datatype_label &nbsp;&nbsp; H I S T O G R A M S</span><br><b>for various time periods</b><br><span class=small>by $datatype_label</span></td>";
+  print "</tr><tr>";
+  print "<td align=center class=vdarkprodblue><span class=small><b>$datatype_label</b></span></td>\n";
+  foreach my $t_col (@t_cols) {
+    print
+	"<td align=center class=vdarkprodblue>",
+	"<span class=small>",
+	$tlabels->{$t_col},
+	"</span></td>\n";
+  }
+  print "</tr>";
+  foreach my $r (@R) {
+    print "<tr>\n";
+    print "<td align=right class=darkprodbluetext><b>$r</b><br>\n";
+    if ($datatype eq 'Library') {
+      print qq{<span class="smaller"><a href="$scriptname?view=recentlibs&lib=$r&size=50&show_hist=1">50</a>|};
+      print qq{<a href="$scriptname?view=recentlibs&lib=$r&size=100&show_hist=1">100</a>|};
+      print qq{<a href="$scriptname?view=recentlibs&lib=$r&size=250&show_hist=1">250</a></span>};
+    }
+    print "</td>";
+    foreach my $t_col (@t_cols) {
+      my $histogram = $HIST{$datatype}->{$r}->{$t_col};
+      my $imghtml;
+      if ($histogram) {
+	$imghtml = MakeHistogramPNG(hist=>$histogram,
+				    x=>100,
+				    y=>60,
+				    xskip=>0,
+				    yskip=>2,
+				    xmax=>800,
+				    xticks=>4,
+				    );
+      }
+      if (defined $imghtml) {
+	print "<td valign=center align=center>\n";
+	DisplayHistogramPNG(hist=>$histogram,
+			    annot=>1,
+			    small=>1,
+			    imghtml=>$imghtml,
+			    type=>$datatype,
+			    item=>$r,
+			    time=>$t_col);
+	print "</td>\n\n";
+      } else {
+	print "<td valign=center align=center class=vvlightgrey>\n";
+	print "<span class=lightgreytext>no runs</span>";
+	print "</td>\n\n";
+      }
+
+    }
+    print "</tr>\n";
+  }
+  print "</table>\n";
+}
+
+sub FormatPrintValue {
+  my $nformat = shift;
+  my %args = @_;
+  my $value = $args{value};
+  my $key   = $args{key};
+  my $precision = $args{precision};
+  if(! defined $precision) {$precision = $1};
+  if($value =~ /[A-Za-z]/) {
+    # something
+  } elsif ($value < 0 && $key =~ /Tot/) {
+    $value = 0;
+  } elsif ($value < 1000 && $key !~ /NRun|NReads|NoGrow|NWells/) {
+    $value = sprintf("%s", $nformat->round($value,$precision));
+  } else {
+    $value = sprintf("%s", $nformat->format_number($value));
+  }
+  return $value;
+}
+
+################################################################
+# INT = CacheAge(HASH)
+################################################################
+# Fetch the age of a cache file using stat.
+#
+# $age = CacheAge(cachefile=>FILENAME,cachedir=>CACHEDIR);
+#
+# where $age is the age of the file in seconds, or UNDEF
+# if the file does not exist.
+sub CacheAge {
+  my %flags = @_;
+  my $cache_file = $flags{cachefile};
+  my $cache_dir  = $flags{cachedir};
+  my $age = undef;
+  if (-e "$cache_dir/$cache_file") {
+    my $ctime = (stat("$cache_dir/$cache_file"))[10];
+    my $now   = strftime "%s",localtime;
+    $age   = $now - $ctime;
+  }
+  return $age;
+}
+# CacheAge [end]
+################################################################
+
+################################################################
+# Fetch data from the the cache or database
+sub FetchData {
+  my %flags = @_;
+  my $cache_file = $flags{cachefile};
+  my $cache_dir  = $flags{cachedir};
+  my $DATA_ref;
+  my $DATA_age;
+  if (-e "$cache_dir/$cache_file") {
+    # Get the age of the file
+    $DATA_age = CacheAge(%flags);
+    $DATA_ref = retrieve("$cache_dir/$cache_file");
+  } else {
+    # If there is no cache, then ...
+    print "Woops! Where did the cache go?\n";
+  }
+  return ($DATA_ref, $DATA_age);
+}
+################################################################
+
+
+################################################################
+# count_slow_and_no_grows
+# Given a array of run_ids, count the number of slow and no grows for each
+# return a hash of the structure  RUN_ID->{GROW_TYPE}
+#
+sub count_slow_and_no_grows {
+  my $run_ids_ref = shift;
+  my $sql;
+  my %results;
+
+  foreach my $run_id (@$run_ids_ref) {
+    # No Grows
+    $sql = qq{select count(*) as count from Clone_Sequence};
+    $sql .= qq{ where Growth = "No Grow" and FK_Sequence__ID = $run_id};
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
+    my $row = $sth->fetchrow_hashref;
+    $results{$run_id}{'no_grow'} = $$row{'count'};
+    $sth->finish();
+
+    # Slow Grows
+    $sql = qq{select count(*) as count from Clone_Sequence};
+    $sql .= qq{ where Growth = "Slow Grow" and FK_Sequence__ID = $run_id};
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetchrow_hashref;
+    $results{$run_id}{'slow_grow'} = $$row{'count'};
+    $sth->finish();
+
+  }
+
+  return \%results;
+}
+
+
+################################################################
+# REF = FetchFromDB(HASH)
+################################################################
+# Fetch data from the database and save it in a cache
+# if requested.
+#
+# $ref = FetchFromDB(cachefile=>CACHEFILE,cachedir=>CACHEDIR
+#                    cachewrite=>BOOL,querytype=>TYPE);
+#
+# returns the reference to the data structure written to the
+# CACHEDIR/CACHEFILE if the write flag BOOL is 1.
+#
+# Currently the following TYPEs are supported
+#
+# avg   average run data
+# hist  read histograms
+################################################################ 
+# Connect to db
+
+sub FetchFromDB {
+  my %flags = @_;
+  my $cachefile = $flags{cachefile};
+  my $cachedir  = $flags{cachedir};
+  my $cachettl  = $flags{cachettl};
+  my $querytype = $flags{querytype};
+  my $db  = MySQL_GSC::GetSequenceDb();
+  my $dbh = $db->get_dbhandle;
+  # Define query substrings
+  my @sqltables =
+      (
+       "Sequence",
+       "Sequence_Batch",
+       "Clone_Sequence",
+       "Equipment",
+       "Plate",
+       "Library",
+       "Project",
+       );
+  my @sqlviews_avg =
+    (
+     "Sequence_ID as ID",
+     "avg(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) as AvgQ20",
+     "max(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1))) as MaxQ20",
+     "avg(256*ascii(mid(Phred_Histogram,62,1))+ascii(mid(Phred_Histogram,61,1))) as AvgQ30",
+     "max(256*ascii(mid(Phred_Histogram,62,1))+ascii(mid(Phred_Histogram,61,1))) as MaxQ30",
+     "avg(256*ascii(mid(Phred_Histogram,82,1))+ascii(mid(Phred_Histogram,81,1))) as AvgQ40",
+     "max(256*ascii(mid(Phred_Histogram,82,1))+ascii(mid(Phred_Histogram,81,1))) as MaxQ40",
+     "sum(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1)) > 10) as Success10",
+     "sum(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1)) > 50) as Success50",
+     "sum(256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1)) > 100) as Success100",
+     "sum(Sequence_Length) as Tot_Len",
+     "sum(Vector_Total) as Tot_Vec",
+     "sum(Vector_Quality) as Tot_QVec",
+     "sum(Quality_Length) as Tot_QLen",
+     "Sequence_DateTime as Date",
+     "Equipment_Name as Sequencer",
+     "Sequence.FK_Chemistry_Code__Name as Chem",
+     "Library_Name as Library",
+     "Project_Name as Project",
+     "Run_Status as Status",
+     "count(*) as NWells",
+     );
+  my @sqlviews_hist =
+    (
+     "Sequence_ID as ID",
+     "256*ascii(mid(Phred_Histogram,42,1))+ascii(mid(Phred_Histogram,41,1)) as Q20",
+     "256*ascii(mid(Phred_Histogram,62,1))+ascii(mid(Phred_Histogram,61,1)) as Q30",
+     "256*ascii(mid(Phred_Histogram,82,1))+ascii(mid(Phred_Histogram,81,1)) as Q40",
+     "Sequence_DateTime as Date",
+     "Equipment_Name as Sequencer",
+     "Sequence.FK_Chemistry_Code__Name as Chem",
+     "Library_Name as Library",
+     "Project_Name as Project",
+     "Run_Status as Status",
+     );
+  my @sqlwhere =
+      (
+       # Limit the runs for speed during debugging
+       # "Sequence_ID > 3000",
+       # Do not extract 'No Grow' wells (but do the 'Slow Grow' and 'OK')
+       "Growth != 'No Grow'",
+       "Sequence.Sequence_ID=Clone_Sequence.FK_Sequence__ID",
+       "Sequence_Batch.Sequence_Batch_ID=Sequence.FK_Sequence_Batch__ID",
+       "Sequence_Batch.FK_Equipment__ID=Equipment.Equipment_ID",
+       "Sequence.FK_Plate__ID=Plate.Plate_ID",
+       "Plate.FK_Library__Name=Library.Library_Name",
+       "Library.FK_Project__ID=Project.Project_ID",
+       );
+  my $sql;
+  if ($querytype eq "avg") {
+    # Create the first query, which averages wells within runs and gives only AvgQX values
+    $sql =
+      "select ".
+      join(", ",@sqlviews_avg).
+      " from ".
+      join(",",@sqltables).
+      " where ".
+      join(" and ",@sqlwhere).
+      " group by Sequence_ID ".
+      " order by Sequence_DateTime desc";
+  } elsif ($querytype =~ "hist") {
+    # Create the first query, which retrieves the histograms for the runs
+    $sql =
+	"select ".
+        join(", ",@sqlviews_hist).
+	" from ".
+        join(",",@sqltables).
+        " where ".
+        join(" and ",@sqlwhere).
+        " order by Sequence_DateTime desc";
+  }
+
+  # my $sql_format = $sql;
+  # $sql_format =~ s/, /, <br>\n/g;
+  # $sql_format =~ s/and/and<br>\n/g;
+  # $sql_format =~ s/(select|from|where|group|order)/<br><b>$1<\/b><br>\n/g;
+
+  if ($opt_d) {
+    print "db querytype [$querytype]\n";
+    print "db statement: $sql\n";
+  }
+  print "db statement: $sql\n";
+
+  my $sth = $dbh->prepare($sql);
+  if ($opt_d) {
+    my $now = strftime "%H:%M:%S",localtime;
+    print "db start query [$now]\n";
+  }
+  $sth->execute();
+  if ($opt_d) {
+    my $now = strftime "%H:%M:%S",localtime;
+    print "db end query [$now]\n";
+  }
+
+  my @DATA;
+  my $DATA_ref;
+  my $row_idx = 0;
+  if ($querytype =~ /avg/i) {
+    # This is the average (and max/sum) query. Store all runs in the @DATA structure.
+    while (my $row = $sth->fetchrow_hashref) {
+      $row->{'Success10'} = int(($row->{'Success10'} / $row->{'NWells'}) * 1000) / 10;
+      $row->{'Success50'} = int(($row->{'Success50'} / $row->{'NWells'}) * 1000) / 10;
+      $row->{'Success100'} = int(($row->{'Success100'} / $row->{'NWells'}) * 1000) / 10;
+      push (@DATA, $row);
+      $row_idx++;
+    }
+    $DATA_ref = \@DATA;
+  }
+  elsif ($querytype eq "hist") {
+    ($row_idx, $DATA_ref) = build_histograms($sth, $row_idx, {(
+		     Sequencer => {-label=>"Sequencer"},
+		     Project   => {-label=>"Project"},
+		     Chem      => {-label=>"Chemistry"},
+		     Library   => {-label=>"Library"},
+		     Status    => {-label=>"Run Status"}
+		    )});
+  }
+  elsif ($querytype eq "run_hist") {
+    # Added a run ID type histogram. There will be an additional group
+    # of histograms grouped by RunID - one histogram per run.
+    ($row_idx, $DATA_ref) = build_histograms($sth, $row_idx, { ( ID => {-label=>"Run ID"} ) } );
+  }
+  if ($opt_id) {
+    print "SQL rows: $row_idx\n";
+  }
+  $sth->finish();
+
+  # If the existing cache is older than the ttl value passed, or we are forcing
+  # the update ... then save the structure to file
+  if ($flags{cachewrite}) {
+    store($DATA_ref,"$cachedir/$cachefile");
+    if ($opt_d) {
+      print "cachewrite ",(stat("$cachedir/$cachefile"))[7]," bytes\n";
+    }
+  }
+  return $DATA_ref;
+}
+#
+#############################################################
+
+
+##########
+# build_histograms
+#
+sub build_histograms {
+  my $sth = shift;
+  my $row_idx = shift;
+  my $h_ref = shift;
+  my %HistogramTypes = %{$h_ref};
+  # This is the detailed query. We cannot write out all the reads to a file - too large.
+  # Create the histograms now and write the structure holding the histograms to a file.
+  # This is more manageable.
+  my %DATA;
+  my $hist_idx = 0;
+
+  while (my $row = $sth->fetchrow_hashref) {
+    foreach my $histtype (keys %HistogramTypes) {
+      my $histtype_item = $row->{$histtype};
+      my $q = $row->{Q20};
+      my $date = $row->{Date};
+      my @t_set;
+      if($histtype eq "ID") {
+	# If this is a run ID histogram, make it go into the default
+	# time group, which corresponds to "all" time. GetTimeGroups
+	# returns the default if no $date is passed
+	@t_set = GetTimeGroups();
+      } else {
+	@t_set = GetTimeGroups($date);
+      }
+      my $REF = $DATA{$histtype}->{$histtype_item};
+      foreach my $timegroup (@t_set) {
+	if (! defined $REF->{$timegroup}) {
+	  if ($opt_d) {
+	    print "+ [$histtype]=$histtype_item [T]=$timegroup\n";
+	  }
+	  $hist_idx++;
+	  $DATA{$histtype}->{$histtype_item}->{$timegroup} = 'histogram'->new(_binsize=>25);
+	} else {
+	  if ($opt_d) {
+	    print "+ [$histtype]=$histtype_item [T]=$timegroup\n";
+	  }
+	  $REF->{$timegroup}->AddData([$q]);
+	}
+      }
+    }
+    if (! ($row_idx % 1000)) {
+      if ($opt_d) {
+	print "hist $row_idx [$hist_idx histograms]\n";
+      }
+    }
+    $row_idx ++;
+  }
+
+  return ($row_idx, \%DATA);
+}
+
+################################################################
+# Prints a table showing the location of the script and
+# the human-readable name of the program
+# Supplies the script filename, name, revision and the
+# date of the commit.
+sub VersionBar {
+  print
+      "<table border=0 cellpadding=0 cellspacing=0 width=100%>",
+      "<tr>",
+      "<td align=left class=lightgreytext valign=top><span class=small>",
+      $scriptfilename,
+      "<br>",
+      "<span class=darkorangetext><b>GSC SEQ DB Viewer</b></span> ",
+      qq{<a href="$scriptname">HOME</a> | },
+      qq{<a href="$scriptname?view=allstats">ALL STATS</a> | },
+      qq{<a href="$scriptname?view=toplist">TOP LISTS</a> | },
+      qq{<a href="$scriptname?view=calendar">CALENDAR</a> },
+      "</span></td>\n",
+      "<td align=right class=darkgreytext valign=top><span class=small>",
+      "<span class=greytext>v $VERSION <b>$CVSTAG</b> [$CVSDATE]</span>",
+      "<BR>",
+      "<a href=\"$scriptname\">$scriptname</a></span>",
+      "</td>\n",
+      "</tr>\n",
+      "</table>\n",
+      "<hr color=#cccccc>";
+}

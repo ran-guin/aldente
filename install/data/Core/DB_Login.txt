@@ -1,0 +1,16 @@
+DB_Login_ID	DB_User	DB_Access_Level	DB_Login_Description	FKProduction_DB_Access__ID	FKnonProduction_DB_Access__ID
+14	LIMS_admin	4	LIMS Administrators	9	9
+15	login	0	Only used to generate login page (access to submit account request)	2	2
+16	guest_user		Guests and external users without LDAP password (read-only)	3	3
+17	internal	0	Internal users without any other specified access (limited write access)	3	3
+18	collab	0	Collaborators (access only to generate submission records)	5	5
+29	super_admin	3	Administrators with special access to restricted fields	9	9
+30	cron_user	0	Connect to run read-only cron jobs (very limited write access - eg notification tracking)	6	6
+31	super_cron_user	4	Connect to run cron jobs (including full database restore)	7	7
+32	read_api		Read only api access	4	4
+33	write_api	0	API with limited write access	6	6
+34	super_api	1	API with special write access to limited fields	6	6
+36	manual_tester	1	used for manual testing	4	8
+37	unit_tester	1	used for running unit tests	4	8
+38	repl_client	4	Connect to run cron jobs (including full database restore, start and stop replication capability)	10	10
+39	patch_installer	1	used for installing patches to test database	0	0

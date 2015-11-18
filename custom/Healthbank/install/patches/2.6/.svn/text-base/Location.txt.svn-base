@@ -1,0 +1,6 @@
+Location_ID	Location_Name	Location_Status	FK_Site__ID	Location_Type
+1	Lab	active	0	Internal
+2	Exported	active	2	External
+3	CRC	active	3	Internal
+4	DHCC	active	4	Internal
+5	Freezer Farm	active	5	Internal

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/68925/alDente/trunk/cron/generic
+END
+generic_test_db.cron
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/cron/generic/generic_test_db.cron
+END
+generic_backup_db.cron
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/cron/generic/generic_backup_db.cron
+END
+generic_backup_dump.cron
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/cron/generic/generic_backup_dump.cron
+END
+generic_backup_upgrade_dev.cron
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/cron/generic/generic_backup_upgrade_dev.cron
+END

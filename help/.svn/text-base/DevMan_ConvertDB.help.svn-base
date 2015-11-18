@@ -1,0 +1,26 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Database Batch Conversions/Modifications<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The bin/convert_DB.pl script provides various database batch
+conversion/modifications functionalities.<br>
+  </li>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>Functionalities supported:</li>
+  <ul>
+    <li>Batch conversion of tables from MyISAM to InnoDB.</li>
+    <li>Batch creation of missing indices for FK fields.<br>
+    </li>
+    <li>Batch creation of MySQL foreign key constraints for FK fields
+(also have the option of fixing the field definition of FK fields if
+they don't match the field definition of the corresponding primary key
+fields)</li>
+  </ul>
+  <li>Operations can be done to all tables in the database or a
+comma-delimited list of tables specified.<br>
+  </li>
+</ul>
+</span>

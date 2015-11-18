@@ -1,0 +1,26 @@
+/* account for fixed top header */
+body {
+    padding-top: 90px;  /* 205px; add to account for navbar paddding */
+}
+
+.utm-header {
+    background-color: #DEF !important;
+}
+
+.utm-title {
+    background-color: #DDD !important;
+}
+
+.utm-Tour {
+    background-color: #6CF !important;
+}
+
+.utm-Site {
+    background-color: #FFD !important;
+}
+
+
+.body {
+    background-color: #EEE;
+}
+

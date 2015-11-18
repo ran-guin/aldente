@@ -1,0 +1,2 @@
+Library_Source_Name	Library_Type	Library_Obtained_Date	Library_Source	Library_Name	External_Library_Name	Library_Description	FK_Project__ID	Library_Notes	Library_FullName	FKParent_Library__Name	Library_Goals	Library_Status	FK_Contact__ID	FKCreated_Employee__ID	FK_Grp__ID	FK_Original_Source__ID	Library_URL	Starting_Plate_Number	Source_In_House	Requested_Completion_Date	FKConstructed_Contact__ID	Library_Completion_Date
+NULL	NULL	0000-00-00	NULL	HBank	LIB001	NULL	1	NULL	Healthbank Sample Collection	NULL	NULL	In Production	NULL	1	3	1	NULL	1	Yes	NULL	0	NULL

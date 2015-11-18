@@ -1,0 +1,28 @@
+<span class=large>
+<h1>GSC-Specific Information (As of release 2.10)</h1>
+<ul>
+  <li><a href="#Scanner">Scanner settings</a><br>
+  </li>
+</ul>
+<h3><a name="Scanner"></a>Scanners<br>
+</h3>
+<ul>
+  <li>WINS/DNS settings</li>
+    <ul>
+      <li> The GSC has a DHCP server that should handle DNS/WINS. If this 
+	does not work correctly, try setting the DNS server to 10.9.203.10
+	(current DNS server as of Aug. 17, 2004), or ask Systems if the
+	DNS system is down.
+      </li>
+    </ul>
+  <li>ScanWedge</li>
+    <ul>
+      <li> ScanWedge is a program that allows the scanners to scan barcodes (1D and 2D).
+        It is recommended that you acquire ScanWedge from another scanner using Symbol's
+        point-to-point IR connection. The ScanWedge program should also reside on 
+	alDente's conf directory.
+      </li>
+    </ul>
+<ul>
+
+</span>

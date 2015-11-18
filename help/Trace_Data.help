@@ -1,0 +1,27 @@
+<h1>Trace Data</h1>
+<P>
+The raw trace Data for sequences is stored in an archive directory.  Within each Project/Library directory there are also directories containing traces.  These directories contain links to the archive directory.<P>
+<H2>Storage Structure</H2>
+<P>
+/home/sequence/<UL>
+<LI>mirror - a temporary repository for files as they are copied over from the sequencers.
+<LI>archive - a storage directory containing all trace files (organized by sequencer) <BR>eg:
+<UL>
+<LI>3700/2/data1/Data/
+<LI>3700/2/data1/Data/
+<LI>...</UL>
+<P>Within each machines data directory there are a number of directories - each containing a set of read data (usually 96 trace files).<BR>
+In addition there is a link created pointing to this directory which bears the name of the 'Sequence_Subdirectory' (link).<BR>
+This allows traces from specific libraries or plates to be easily found regardless of the naming convention of the original directories created.
+<LI>Projects - a central directory for storing information by project<P>
+Trace data in the project directory may be found by following the specified directory structure. eg:<BR>
+/Forestry/WS001/AnalyzedData/WS0011a.B7/chromat_dir/<P>
+This naming convention is unambiguous and the final directory contains links to the trace data for this run in the archive directory.
+</UL>
+<P>
+<H2>Viewing Trace Data</H2>
+Generally Trace data is in the form of '*.abd' files (ABI 3700 or 3730 sequencers), or '*.ab1' files (Megabace sequencers).<P>
+One simple way to view a trace is to use the command line function 'quick_view'.<P>
+
+This extracts information for the read as well as opening up a trace window (using 'ted' - a widely used and simple chromatogram viewer).<BR>
+The syntax for using this command is explained if you simply type 'quick_view' on the command line without any options.

@@ -1,0 +1,4 @@
+### CRONS TO CREATE DATABSE DUMPS:
+### (Many other cronjobs depend on this)
+## hourly backup of <DATABASE>
+12 6-18 * * * <Home_dir>/versions/<version_name>/bin/backup_DB.pl -dump -host <SQL_HOST> -dbase <DATABASE> -user super_cron -password repus -confirm 1> <Data_home_dir>/private/logs/<DATABASE>_hourly_backup.log 2>> <Data_home_dir>/private/logs/<DATABASE>_hourly_backup.err

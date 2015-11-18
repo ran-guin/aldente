@@ -1,0 +1,25 @@
+<configs>
+  <BACKUP_DATABASE default="" type="database" value="sequence" />
+  <BACKUP_HOST default="" type="database" value="lims07" />
+  <BETA_DATABASE default="" type="database" value="seqbeta" />
+  <BETA_HOST default="" type="database" value="lims07" />
+  <CORE_HOST default="" type="database" value="lims09" />
+  <CORE_DATABASE default="" type="database" value="Core_2_7" />
+  <DEV_HOST default="" type="database" value="limsdev04" />
+  <DEV_DATABASE default="" type="database" value="seqdev" />
+  <Data_home_dir default="" type="directory" value="/home/aldente" />
+  <Exclude_Table default="" type="web" value="Cross_Match,Band,Contaminant,Clone_Sequence" />
+  <LDAP_Server  type="web" value="gsc-ldap.bcgsc.ca" />
+  <Options default="" type="web" value="" />
+  <Plugins default="" type="web" value="Obsolete,Cluster,Capillary_Sequencing,Cap_Seq,NCBI,Multiwell_Plate,SOLID,Issue_Tracking,Fingerprinting,Sequencing,Help,Microarray,Genomic,JIRA,Lab,Biology,Multiwell_Plate,Software_Analysis,Experiment,Taxonomy,Bioanalyzer,Spectrophotometer,Orders,Illumina,Alignment_Analysis,Indexed_Run,miRNA,Patient,SRA,EDACC,CLIPR,BioSpecimens,Ion_Torrent,Qubit" />
+  <PRODUCTION_DATABASE default="" type="database" value="sequence" />
+  <PRODUCTION_HOST default="" type="database" value="lims05" />
+  <PRODUCTION_WEBHOST default="" type="database" value="lims08" />
+  <TEST_DATABASE default="" type="database" value="seqtest" />
+  <TEST_HOST default="" type="database" value="lims05" />
+  <UNIT_TEST_DATABASE default="" type="database" value="seqbeta" />
+  <UNIT_TEST_HOST default="" type="database" value="lims07" />
+  <mandatory_funding default="" type="database" value="yes" />
+  <QUBIT_HOME_DIR default="" type="directory" value="/projects/labinstruments/qubit" />
+  <login_type default = "" type="database" value="Employee" />
+</configs>

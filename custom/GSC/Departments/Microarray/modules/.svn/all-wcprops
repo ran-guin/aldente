@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/Microarray/modules
+END
+GenechipRun.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/Microarray/modules/GenechipRun.pm
+END
+Statistics_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/74295/alDente/trunk/custom/GSC/Departments/Microarray/modules/Statistics_App.pm
+END
+Bioanalyzer_Summary_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/74293/alDente/trunk/custom/GSC/Departments/Microarray/modules/Bioanalyzer_Summary_App.pm
+END
+Genechip_Statistics.pm
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/69723/alDente/trunk/custom/GSC/Departments/Microarray/modules/Genechip_Statistics.pm
+END
+Summary_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/74290/alDente/trunk/custom/GSC/Departments/Microarray/modules/Summary_App.pm
+END
+Genechip_Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/74292/alDente/trunk/custom/GSC/Departments/Microarray/modules/Genechip_Summary.pm
+END
+Microarray_API.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/Microarray/modules/Microarray_API.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/Microarray/modules/Department.pm
+END

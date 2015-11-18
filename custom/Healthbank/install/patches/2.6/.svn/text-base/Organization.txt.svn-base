@@ -1,0 +1,8 @@
+Organization_Name	Address	City	State	Zip	Phone	Fax	Email	Country	Notes	Organization_ID	Organization_Type	Website	Organization_FullName
+GSC	NULL	Vancouver	BC	NULL	NULL	NULL	NULL	NULL	NULL	1	Collaborator	NULL	Michael Smith's Genome Sciences Canada
+Sanyo	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	2	Manufacturer	NULL	NULL
+Brada	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	3	Manufacturer	NULL	NULL
+Igloo	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	4	Manufacturer	NULL	NULL
+London Drugs	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	5	Vendor	NULL	NULL
+The Brick	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	6	Vendor	NULL	NULL
+ESBE Scientific	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	7	Vendor	NULL	NULL

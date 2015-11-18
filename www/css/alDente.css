@@ -1,0 +1,116 @@
+
+.auto-width {
+    width: auto !important;
+}
+
+.narrow-txt {
+    width: 40px !important;
+}
+
+.short-txt {
+    width: 100px !important;
+}
+
+.normal-txt {
+    width: 200px !important;
+}
+
+.wide-txt {
+    width: 400px !important;
+}
+
+.superwide-txt {
+    width: 800px !important;
+}
+
+.flexbox-row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;    
+}
+
+@media (max-width: 768px) {
+    display: flex;
+    flex:1;
+    .flexbox-row {
+        flex-direction: column;
+    }
+}
+
+/* Background to top part of header */
+.local-header {
+        background-color: #FFF !important;
+        background-image: linear-gradient(to bottom, #FFF, #FFF) !important;
+}
+
+/* Progress Bar */
+
+.progress-bar-title {
+    line-height: 12px !important;
+}
+.progress-bar {
+    line-height: 12px !important;
+}
+.inline-progress-bar-title {
+    line-height: 12px !important;
+    display: inline-block;
+    *display: inline;
+}
+.inline-progress-bar {
+    line-height: 12px !important;
+    display: inline-block;
+    *display: inline;
+}
+
+/* specify margins for radio / checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+      margin: 4px 2px !important;
+}
+
+.inline {
+    display: inline-block !important;
+    *display: inline !important;
+}
+
+/* fix hover colour .... */
+
+.standard-size {
+    height:40px;
+    min-width:40px;
+}
+
+.small-size {
+    height:30px;
+    min-width:30px;
+}
+
+.large-size {
+    height: 46px;
+    min-width:46px;
+}
+
+.auto-width {
+    width: auto !important;
+}
+
+.narrow-txt {
+    width: 40px !important;
+}
+
+.short-txt {
+    width: 100px !important;
+}
+
+.normal-txt {
+    width: 200px !important;
+}
+
+.wide-txt {
+    width: 400px !important;
+}
+
+.superwide-txt {
+    width: 800px !important;
+}
+

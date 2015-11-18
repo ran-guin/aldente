@@ -1,0 +1,114 @@
+<perldata>
+ <arrayref memory_address="0x82174e0">
+  <item key="0">
+   <hashref memory_address="0x82cfaec">
+    <item key="SESSION_DIR">
+     <hashref memory_address="0x82ebb20">
+      <item key="desc">session storage path</item>
+      <item key="value">/home/sequence/alDente/collab_sessions</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="1">
+   <hashref memory_address="0x82e6094">
+    <item key="HOMEPAGE">
+     <hashref memory_address="0x82e60b8">
+      <item key="desc">homepage URL</item>
+      <item key="value">http://seqdb01/SDB_jsantos/cgi-bin/collab_view.pl</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="2">
+   <hashref memory_address="0x82e60f4">
+    <item key="LDAP">
+     <hashref memory_address="0x82e6118">
+      <item key="desc">LDAP server URL</item>
+      <item key="value">ldap://ldap01.bcgsc.ca</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="3">
+   <hashref memory_address="0x82e6154">
+    <item key="JAVASCRIPT">
+     <hashref memory_address="0x82e6178">
+      <item key="desc">javascript directory</item>
+      <item key="value">/SDB_jsantos/js</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="4">
+   <hashref memory_address="0x82e61b4">
+    <item key="CSS">
+     <hashref memory_address="0x82e61d8">
+      <item key="desc">CSS directory</item>
+      <item key="value">/SDB_jsantos/css</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="5">
+   <hashref memory_address="0x82e6214">
+    <item key="HOMELINK">
+     <hashref memory_address="0x82e6238">
+      <item key="desc">link to main page</item>
+      <item key="value">http://seqdb01/SDB_jsantos/cgi-bin/collab_view.pl</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="6">
+   <hashref memory_address="0x82e6274">
+    <item key="EXT_SUB_DIR">
+     <hashref memory_address="0x82e6298">
+      <item key="desc">External submission directory</item>
+      <item key="value">/home/sequence/www/htdocs/test/external_submissions/test</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="7">
+   <hashref memory_address="0x82e62d4">
+    <item key="EXT_DOC_DIR">
+     <hashref memory_address="0x82e62f8">
+      <item key="desc">Externally accessible HTML document directory</item>
+      <item key="value">/html</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="8">
+   <hashref memory_address="0x82e6334">
+    <item key="PUBLIC_PROJECT_DIR">
+     <hashref memory_address="0x82e6358">
+      <item key="desc">External project directory for publishing documents</item>
+      <item key="value">/html/Projects</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="9">
+   <hashref memory_address="0x82e6394">
+    <item key="BASE_EXT_PATH">
+     <hashref memory_address="0x82e63b8">
+      <item key="desc">base directory of external pages</item>
+      <item key="value">/opt/alDente/versions/jsantos/www</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+  <item key="10">
+   <hashref memory_address="0x82e6800">
+    <item key="IMAGE_DIR">
+     <hashref memory_address="0x82e6824">
+      <item key="desc">image directory off the BASE_EXT_PATH</item>
+      <item key="value">/SDB_jsantos/images/png</item>
+     </hashref>
+    </item>
+   </hashref>
+  </item>
+ </arrayref>
+</perldata>

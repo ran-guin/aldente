@@ -1,0 +1,48 @@
+Organism_ID	Organism_Name	Species	Sub_species	Common_Name
+1	Populus trichocarpa			\N
+2	Unspecified			\N
+3	Escherichia coli			\N
+4	Spruce			\N
+5	Caenorhabditis elegans			\N
+6	Haemophilus influenzae			\N
+7	Oncorhynchus nerka			\N
+8	Ratus ratus			\N
+9	Ustilago hordei			\N
+10	Xenopus			\N
+11	Chicken			\N
+12	Homo sapiens			\N
+13	Obliquum clavigerum			\N
+14	Puccinia triticina			\N
+15	Ustilago maydis			\N
+16	Euglena gracilis			\N
+17	Picea sitchensis			\N
+18	Pig			\N
+19	Salmo salar			\N
+20	Chlamydia trachomatis			\N
+21	Bos taurus			\N
+22	Unknown			\N
+23	Cryptococcus neoformans			\N
+24	Poplar			\N
+25	Rhodococcus			\N
+26	Mus musculus			\N
+27	Felis catus			\N
+28	Caenorhabditis briggsae			\N
+29	Picea mariana			\N
+30	Drosophila melanogaster			\N
+31	Pincea glauca			\N
+32	Gibbon	Nomascus leucogenys	\N	\N
+33	Horseshoe Bat	Rhinolophus ferrumequinum	\N	\N
+34	Winter wheat	Triticum aestivum	Norstar	\N
+35	Rainbow Smelt	Osmerus Mordax	\N	\N
+36	Flying Fox	Pteropus vampyrus	\N	\N
+37	Tree shrew	Tupaia belangeri	\N	\N
+38	Rock Hyrax	Procavia capensis	\N	\N
+39	Horse	Equus caballus	\N	\N
+40	Spruce Budworm	Christoneura Fumiferana	\N	\N
+41	Planarian	Schmidtea mediterranea	\N	\N
+42	Schmidtea mediterranea	\N	\N	\N
+43	Mixed	\N	\N	\N
+44	Caronavirus	\N	\N	\N
+45	Arabidopsis	Arabidopsis thaliana	\N	\N
+46	Mosquito	Aedes aegypti	\N	\N
+47	P. aeruginosa PA01	Pseudomonas aeruginosa PA01	\N	\N

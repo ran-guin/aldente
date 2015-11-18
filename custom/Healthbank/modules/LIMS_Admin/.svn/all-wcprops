@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/114613/alDente/trunk/custom/Healthbank/modules/LIMS_Admin
+END
+Department_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/108918/alDente/trunk/custom/Healthbank/modules/LIMS_Admin/Department_Views.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/114613/alDente/trunk/custom/Healthbank/modules/LIMS_Admin/Department.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/108824/alDente/trunk/custom/Healthbank/modules/LIMS_Admin/Department_App.pm
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel
+END
+Dump.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/Dump.pm
+END
+FmtDefault.pm
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/FmtDefault.pm
+END
+SaveParser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/SaveParser.pm
+END
+FmtUnicode.pm
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/FmtUnicode.pm
+END
+FmtJapan.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/FmtJapan.pm
+END
+FmtJapan2.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/FmtJapan2.pm
+END
+Utility.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel/Utility.pm
+END

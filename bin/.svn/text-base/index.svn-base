@@ -1,0 +1,246 @@
+#!/usr/local/bin/perl56 
+#############################################################
+# index.pl
+#############################################################
+#
+#  This file generates a documented listing of routines showing input parameters 
+#  and general comments as they appear in the actual code.
+#
+#
+#############################################################
+
+use CGI ':standard';
+
+use strict;
+
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib se
+
+use RGTools::Views;
+use RGTools::HTML_Table;
+
+use SDB::CustomSettings;
+
+use vars qw($opt_i $opt_d $opt_f $opt_b $opt_m $opt_p $opt_s $opt_o $opt_l $opt_a);
+use vars qw($THISFILE $INDEXFILE $URL_temp_dir $URL_dir_name $URL_home);
+
+require "getopts.pl";
+&Getopts('f:d:s:bm:p:s:o:la:');
+
+########### Options ##############
+
+my $timestamp = localtime();
+my $default_path = "/opt/alDente/versions/rguin/";
+my $default_dir = 'lib/perl/SDB';
+my $default_out = "$URL_temp_dir";
+
+my $filename = $opt_f || "search.$timestamp";
+my $dir = $opt_d || $default_dir;
+my $search = $opt_s || '';
+my $break = $opt_b || '<BR>';
+my $modules = $opt_m || '';
+my $path = $opt_p || $default_path;
+my $output_path = $opt_o || $default_out;
+my $search_area = $opt_a || 'routine';
+
+my $routine_list = '';
+if ($opt_l) { $routine_list = ".list"; }  ### just list routines..
+
+unless ($modules) { 
+    print<<HELP;
+
+File: index
+#####################
+
+Options:
+##########
+
+
+-f (filename)         output filename  
+
+-d (directory)        specify specific directory within path (defaults to $default_dir)
+
+-s (searchstring)     string to search for within modules
+
+-m (list or 'ALL')    modules to search for (comma-delimeted)
+
+-p (path)             path where files are found (defaults to $default_path)
+
+-o (path)             storagepath for html files (defaults to $default_out)
+
+
+Example:  
+###########
+           /home/sequence/SeqDB/cgi-bin/backup_DB -D sequence -T Plate 
+
+
+HELP
+    exit;
+}
+
+#
+# Establish the list of modules to be searched.
+#
+my  @index_list = glob("$path/$dir/*");
+
+my @new_index_list;
+if ($modules eq 'ALL') { 
+    @index_list = glob("$path/$dir/*");
+    foreach my $module (@index_list) {
+	if ($module=~/(.*)\/(.*?)\.(pm|pl)$/) { push(@new_index_list,"$2.$3"); }
+    }
+    @index_list = @new_index_list;
+    print "Indexing ALL Modules\n";
+}
+else {
+    my @module_list = split ',', $modules;
+    foreach my $module (@module_list) {
+	if (grep /\/$module\.pm$/, @index_list) {
+	    push(@new_index_list,"$module.pm");
+	} elsif (grep /\/$module\.pl$/, @index_list) {
+	    push(@new_index_list,"$module.pl");
+	} else { print "$module NOT found\n"; }
+    }
+    @index_list = @new_index_list;
+}
+
+print "Indexing: \n";
+print join "\n", @index_list;
+print "\n\n";
+print "generate: $path/$dir ($filename) page\n";
+generate_man_page(
+		  file_list => \@index_list,
+		  path => "$path/$dir",
+		  filename => $filename,
+		  search => $search,
+		  output => $output_path,
+		  search_area => $search_area,
+		  );
+
+exit;
+
+############################
+sub generate_man_page {
+############################
+    my %args = @_;
+    
+    my @index_list = @{$args{'file_list'}};
+    my $path = $args{'path'};
+    my $filename = $args{'filename'};
+    my $search = $args{'search'};
+    my $output = $args{'output'};
+    my $searchsection = $args{'search_area'}=~/comment/i;
+    my $searchroutine = ($args{'search_area'}=~/routine/i) || $searchsection;
+    
+    my $Table;
+
+   if ($search) {
+	$Table = HTML_Table->new();
+	$Table->Set_Prefix("<P>");
+	$Table->Set_Suffix("<HR>");
+	$Table->Set_Headers(['Module : Routine','Parameters','Defaults','Comment']);
+	$Table->Set_Title("$path with $search");
+	$Table->Set_Line_Colour('white');
+	$Table->Set_Border(1);
+	$Table->Set_Class('small');
+    }
+    
+    foreach my $file (@index_list) {   ### for each file/module... 
+	my $output = &RGTools::Views::Heading("Searching $path/$file");
+	if ($search) {print "Subroutines containing string: $search<P>";}
+	unless ($search) {
+	    $Table = HTML_Table->new();
+#	    $Table->Set_Suffix("<HR>");
+	    $Table->Set_Headers(['Routine','Parameters','Defaults','Comment']);
+	    $Table->Set_Title("$path/$file");
+	    $Table->Set_Line_Colour('white');
+	    $Table->Set_Border(1);
+	    $Table->Set_Class('small');
+	}
+	my $prefix = '';
+	print "Open $path/$file\n";
+	open(THISFILE,"$path/$file") or print "error opening $path/$file\n";
+	while (<THISFILE>) {
+	    my $line = $_;
+	    if ($line =~ /^\s*\#+(.*)/) {
+		$prefix .= substr($line,1,length($line));
+	    } elsif ($line=~/^sub\s+(\S+)/) {  ### found new subroutine...		
+		my $routine = $1;
+		my $perldoc_name = $file;
+		$perldoc_name =~s/\.pm$/\.html/;
+		my $link = $file;
+		if (-e "$URL_home/htdocs/html/perldoc/$perldoc_name") {
+		    $link = "<A Href='/$URL_dir_name/html/perldoc/$perldoc_name'>$file</A>";
+		} else { $link = "$file"; }
+
+		if ($search) {$routine = "$link : $routine";}  ### be more specific if listing for all routines...
+		print "Routine: $routine\n************************************\n";
+		my $Pnum=0;
+		my $comment = $prefix;
+		$prefix = '';            ## reset for next subroutine
+		my @parameter;
+		my @Pvalue;
+		my @Pcomment;
+		my @Plist;
+#		$Table->Set_Row([$routine],'mediumredbw');
+
+		my $end=0;
+		
+		my $commented_parameters = 0;
+		my $section;
+		while (!$end) {   ### as long as we are in the comment section of this routine...
+		    #
+		    # the keyword 'args' is expected below when passing a hash of arguments.  (this may be adjusted)..
+                    #
+		    $line = <THISFILE>;
+		    $section .= $line;
+		    if ($line=~/^\s*\#+\s+(.*)\s*\#*/) {  ## if it is commented out... 
+			$comment .= "$1 " . $break;
+		    } elsif ($line=~/(\S+)\s*=\s*([$|%|]args|shift|Option|\$_|\@_)(.*)\;\s*\#*(.*)/i) {
+			$parameter[$Pnum] = $1;
+			$Pvalue[$Pnum] = "$2$3";
+			$Pcomment[$Pnum] = $4;
+			if ($Pcomment[$Pnum] || $Pvalue[$Pnum]) { $commented_parameters++; }
+			chomp $parameter[$Pnum];
+			chomp $Pvalue[$Pnum];
+			chomp $Pcomment[$Pnum];
+			push(@Plist,$parameter[$Pnum]);
+			$Pnum++;
+		    }
+		    elsif (!($line=~/\S/)) {next;}
+		    elsif ($line=~/^\#/) {next;}
+		    else {$end=1;}
+		}
+		my $parameters = join ", ",@Plist;
+		if (!$search || ($searchsection && $section=~/$search/i) || ($searchroutine && $routine=~/$search/i)) {
+#		    print "R:$routine\t$comment\t$parameters\n";
+		    $Table->Set_Row(["<B>$routine</B>",$parameters],'lightgrey');
+		    if ($comment=~/[a-z]+/) {                                     ## use upper case for html tags (<BR>)
+			$comment=~s/\n/<BR>/g;
+			$Table->Set_sub_header($comment,'vlightgrey','class=small');
+		    }
+		    if ($commented_parameters && !$routine_list) {
+			foreach my $index (1..$Pnum) {   ### print parameter comments
+			    print "\t\t$parameter[$index-1]\t$Pvalue[$index-1]\t$Pcomment[$index-1]\n";
+			    $Table->Set_Row(['',$parameter[$index-1],$Pvalue[$index-1],$Pcomment[$index-1]]);
+			}
+		    }
+		}
+	    } else { $prefix = '' }        ## reset 
+
+	}
+	close(THISFILE);
+	unless ($search) { 
+	    $Table->Printout("$output_path/$filename.$file$routine_list.html"); 
+#	    `echo '<P><HR><P>' >> $output_path/$filename.$file$routine_list.html`;
+	    print "<P><HR><P>";
+	}
+	print "Stored $output_path/$filename.$file.html\n";
+    }
+    if ($search) { 
+	$Table->Printout("$output_path/$filename.search.html"); 	    
+#	`echo '<P><HR><P>' >> $output_path/$filename.$file$routine_list.html`;
+	print "<P><HR><P>";
+    }
+    return 1;
+}

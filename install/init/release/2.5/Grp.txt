@@ -1,0 +1,5 @@
+1	LIMS Admin	1	Admin
+2	Public	2	Guest
+3	Lab	3	Lab
+4	Lab Admin	3	Admin
+5	Receiving	4	Admin

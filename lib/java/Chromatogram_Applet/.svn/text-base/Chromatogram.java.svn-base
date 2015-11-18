@@ -1,0 +1,3 @@
+package Chromatogram_Applet;
+
+import java.io.*;public abstract class Chromatogram {		public abstract void read(InputStream IN) throws IOException;	public abstract void write(OutputStream OUT);	public abstract int getATrace(int x);	public abstract int getCTrace(int x);	public abstract int getGTrace(int x);	public abstract int getTTrace(int x);	public abstract int[] getATrace();	public abstract int[] getCTrace();	public abstract int[] getGTrace();	public abstract int[] getTTrace();	public abstract int getTraceLength();	public abstract int getBaseNumber();	public abstract char getBase(int x);	public abstract int getBasePosition(int x);	public abstract String getSequence();	public abstract String getComments();}

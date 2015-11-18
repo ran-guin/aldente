@@ -1,0 +1,296 @@
+Scanners
+<H1>Barcode Scanners</H1>
+<P>
+To help in the automation of the lab processes, numerous steps are tracked by allowing lab users to simply scan items with a barcode scanner while they are being used.  This scanner is tied to the database directly and updates information in real time, ensuring that lab processes are recorded and monitored as they happen.  This allows not only an up to date record of lab status, but allows constant error checking to take place within the lab, enabling these checks to catch many errors before they are made.  It also allows users to get information on various lab components by simply scanning their associated barcode.  Some of the steps most commonly tracked using the scanners include:
+<UL>
+<LI><h4>Tracking defined protocols for plate preparation.<h4>
+This includes applying plates to equipment (centrifuges, thermocyclers, hydras etc), the transferance of samples between plastic-ware, the application of solutions to plate samples.  <B>Scan plates, follow instructions (scanning bottles/equip as requested)</B>
+<LI>Mixing arbitrary reagents to form solutions.  <B>Scan reagents, enter volumes</B>.
+<LI>Mixing standard solutions.  <B>Choose standard solution (entering # of plates to apply to)</B> - Default volumes are calculated automatically and user need only confirm amounts.
+<LI>Creating sample sheets (configuration files for sequencing machines that are customized for each sample).  <B>Scan Equipment and Plates</B>
+<LI>Changing buffer or matrix for sequencing machines.  <B>(Scan Equipment and reagent barcodes)</B>
+</UL>
+
+<h2>Using the Symbol SDK3700 Barcode Scanner</h2>
+    
+<Img src='$Help_Image_dir/Scanner.gif'> 
+<P>	
+	    For the time being there are a couple of limitations on the
+scanner that will hopefully be resolved in the future.
+<UL><LI>There is no back button (don't try to use it - or you will lose your
+place)
+<LI>You need to currently use the pen. <BR>
+(Again, it is hoped that we can set it up to work without the pen, but this
+will take a bit longer to set up)
+</UL>
+
+<H3>To access the barcode website:</H3><UL>
+    <LI>Turn on the scanner (red key at bottom left)
+        <LI>click on Internet Explorer (drop down menu at top left of screen)
+	    <LI>click on the folder ('Favorites')icon at the bottom of the screen
+	        <LI>click on the file 'scanner' (while it loads the explorer
+icon should be visible at the top right of the screen)
+    <LI>Identify yourself and press the 'Login' button</UL>
+        
+	    
+	    <HR><H3>Using the Application Buttons</H3>
+	        
+		<Img src='$Help_Image_dir/Scanner_bottom.gif'><BR>
+		    
+		    Application buttons allow you to quickly go to
+particular applications.<BR>
+The scanners should be set up to provide the following quick links 
+(accessed by simply pressing the appropriate application button):
+    
+    <H3>Application Buttons</H3>
+    <UL><LI>A1 - Internet Explorer
+        <LI>A2 - File Explorer (to run scanner initialization if necessary)
+	    <LI>A3 - Calculator
+	        <LI>A4 - Signal Checking Routine ...</UL><HR>
+		    
+<h3>Some Other Useful Keys to Know ...</h3>
+   
+   <Table><TR>
+   <TD>Options</TD>
+   <TD>Keys to Press</TD>
+   </TR><TR>
+   
+   <TD>Internet Explorer</TD>
+   <TD>A1   </TR><TR>
+   <TD>File Explorer</TD>
+   <TD>A2</TD>
+   
+   </TR><TR>
+   <TD>Calculator</TD>
+   <TD>A3</TD>
+   
+   </TR><TR>
+   <TD>Signal Checking</TD>
+   <TD>A4   </TR><TR>
+   
+      <TD>Keyboard Toggle</TD>
+         <TD>A5</TD>
+   </TR><TR>
+      <TD>Turn on Backlighting</TD>
+         <TD>Function + any App Button</TD>
+	 
+	    </TR><TR>
+	       <TD>Warm Re-boot</TD>
+	          <TD>Scroll + A4</TD>
+		  
+		     </TR><TR>
+		        <TD>Adjust Font Size</TD>
+			   <TD>'View' (bottom left)... 'Text Size' ...</TD>
+			   </TR></TAble>
+			   
+			   <h3>If the laser doesn't operate when you press the scan button</h3>
+			 
+    <UL>
+        <LI>Go to 'File Explorer' (from drop-down menu at top left)
+	    <LI>select 'ScanWedge' from list of files (this should
+initialize the scanner)
+    press A1 (or return to Internet Explorer via the drop-down menu at the
+top left) and continue</UL>
+
+   <h3>Warm Booting</h3>
+	<B>If the system is really hung up badly, try a Warm Re-Boot<br>
+	(press the A4 and Scroll Button at the same time).<BR>
+	If this still does not work, a cold boot may be necessary <BR>
+	- See Below (though you should probably check with admin first)</B>
+	
+	   <h3>Cold Booting</h3>
+	   	    <P>
+		 <Img src='$Help_Image_dir/coldboot.gif'>
+		 <p>
+		 <h2>Re-Initializing after a Re-Boot</h2>
+		  If you need to perform a full cold reboot, the
+configuration settings may have to be reset.<bR>
+The following procedure should set the unit back up to operate properly:
+
+<OL>
+<LI>Start | Settings | Connections | Network
+<LI>Select Spectrum24 Wireless LAN PC Card
+   <UL><LI>enter the IP address from the sticker on the back <BR>
+   (e.g. 10.1.1.152 for ppt02) - NOT the IP address from the bridge
+(10.1.1.150)
+    <LI>subnet mask is 255.255.255.0
+        <LI>default gateway is 10.1.1.1
+	    <LI>hit OK in top right of screen
+	        </UL>
+		<LI>Select NE2000 Compatible Ethernet Driver
+		    <UL><LI>enter the IP address from the sticker on the back
+		            <LI>subnet mask is 255.255.255.0
+			            <LI>default gateway is 10.1.1.1
+				            <LI>select the Name Servers tab
+					            <LI>enter 10.1.1.8 in
+the DNS field - leave other fields blank
+        <LI>hit OK in top right of screen
+	</UL>
+	RF:
+	
+	<PRE>
+	
+	1. Start | Programs
+	2. Run NICTT
+	3. Select the 'General' tab
+	4. Enter 102 in the ESSID field. This is the network ID for the bridge
+	
+	
+	TURN UNIT OFF
+	TURN UNIT ON
+	
+	1. Start | Programs
+	2. Run NICTT
+	3. Select the 'Signal' tab
+	    - the signal quality should be 'Excellent'
+	        - the network status should be 'In range'
+		    - if the unit is not networked - CHECK WITH SYS SUPPORT
+		    4. Select the 'Transmission' tab
+		    5. Enter 10.1.1.8 in the Host Address box
+		    6. Hit 'Start Test'
+		        - this will begin pinging the file server to test
+the unit's networking
+    - it should proceed without trouble giving an average return time of
+200-400 ms.
+    - if you get any other significantly different results CHECK WITH SYS
+SUPPORT
+
+Checking Status From A Workstation (optional)
+
+1. open a console
+2. ping the pocket pc you just set up
+    - ping IP where IP is the address assigned previously (e.g. ping
+10.1.1.152 for ppt02)
+    - the standard values for the return times should be around 200-400ms.
+    
+    This unit responds SLOWLY
+        - if you get any other significantly different results CHECK WITH
+SYS SUPPORT
+
+</PRE>
+</UL>
+<HR>
+
+
+<H3>After Rebooting</H3>
+If a cold boot was necessary (or sometimes if the battery dies, you may need
+to re-initialize some of the settings:...
+<P>
+<h4>Re-Initializing the scanner</h4>
+$output .= "<UL>
+<LI>Go to File Explorer (Button 2) <BR>
+- (if you cannot find File Explorer, first 'Reset Buttons' - see below)
+<LI>Click on the Scan Wedge Program<BR>
+- (if you cannot find the Scan Wedge Program, first 'Download Programs' -
+see below)
+</UL>
+
+<h3>Re-Setting the Buttons</h3>
+<P>
+Sometimes the Buttons will require resetting.
+<BR>
+(The buttons at the bottom of the panel should allow quick access to IE,
+File Explorer etc)
+<UL>
+<LI>Start..Settings...
+<LI>Click on the 'Buttons' Icon at the top left
+<LI>Click on Button 1<BR>
+<LI>Select 'Internet Explorer' from the drop-down menu<BR>
+(This sets button 1 as a quick link to IE)
+<LI>Similarly set Button 2 to 'File Explorer'
+<LI>Set Button 3 to 'Calculator'
+<LI>Set Button 4 to 'Notes'
+<LI>Set Button 5 to '<Input Panel>'<BR>
+(Button 5 is the one at the top right of the device)
+</UL>
+
+<h3>Downloading Programs</h3>
+<P>Sometimes the programs on the device will have to be downloaded
+again from the NT.
+<UL>
+<LI>Click on the ActiveSync icon on the right side of the desktop
+(bioinformatics NT)
+<LI>Choose:  'File'..'Get Connected'<BR>
+(The handheld must first be in the cradle behind the computer)<BR>
+(Sometimes you may have to try this a second time)
+<LI>Once connected, choose:  'File'..'Explore'<BR>
+(This should open up a directory window)
+<LI>Open up the 'Sync Files' folder (on the right side of the desktop)
+<LI>Copy the 'ScanWedge' file into the 'Mobile Device' folder<BR>
+(You should now find the ScanWedge Program in File Explorer)
+<LI>Go to the My Pocket PC/Windows/Favourites/ directory in the 'Mobile
+Device' folder.
+<LI>Copy the 'scanner', and 'scanner_test' files into the 'Favourites'
+directory<BR>
+(You should now find these options available from Internet explorer)
+</UL>
+<h2>Using the IPAQ Scanners</h2>
+<img src="$Help_Image_dir/IPAQ.png">
+<p>	 </p>
+<h4>To access the barcode website:</h4>
+<ul>
+  <li>Turn on the scanner (red key at bottom left) </li>
+  <li>click on Internet Explorer (drop down menu at top left of screen)
+	 </li>
+  <li>click on the folder ('Favorites')icon at the bottom of the screen
+	 </li>
+  <li>click on the file 'scanner' (while it loads the explorer icon
+should be visible at the top right of the screen) </li>
+  <li>Identify yourself and press the 'Login' button </li>
+</ul>
+<h4>Initializing the Scanner (laser)</h4>
+<ul>
+  <li>Go to 'File Explorer' (from drop-down menu at top left) </li>
+  <li>select 'ScanWedge' from list of files (this should initialize the
+scanner) </li>
+</ul>
+<h4>Warm Re-Booting the Scanner</h4>
+<ul>
+  <li>Press the recessed reset button at the base of the scanner (using
+the plastic pen). </li>
+</ul>
+<h4>Intranet Settings</h4>
+<p>In case the connection to the internet is not working the following
+Settings may be checked: </p>
+<ul>
+  <li>Settings..Connections..Network Connections
+    <p>These should all be set to 'Work Settings' AND... </p>
+  </li>
+  <li>..Modify..
+    <p>If you check the settings by choosing the 'Modify' button, and
+select the 'Proxy Settings' tab, the <b>this network connects to the
+internet</b> checkbox should be ticked. </p>
+  </li>
+  <li>Settings..Connections..Network Adapters..
+    <p> Choose '...Ethernet Driver' and press the 'Properties' button </p>
+    <p>At the 'IP Address' tab, choose 'Use server-assigned IP address'<br>
+    </p>
+    <p>At the 'Name Server' tab, the DNS and WINS addresses should be
+set to <b>10.1.1.8</b></p>
+  </li>
+  <li>Close all windows on the iPAQ and click on the Status icon at the
+bottom-right corner of the screen (the icon has a network adapater card
+with a green bar behind)</li>
+  <ul>
+    <li>'Mode' tab:&nbsp; Make sure the '802.11 ESSID:' drop-down menu
+says '101'.</li>
+    <li>'IP Config' tab:&nbsp; Make sure 'DHCP' is selected.</li>
+    <li>'Options' tab:&nbsp; Deselect the 'Allow Pocket PC to suspend
+when wireless network is used' checkbox.&nbsp; Leave all other
+checkboxes deselected as well.</li>
+    <li>'Encryption' tab:&nbsp; Choose '40-bit Shared Key' for the
+'Algorithm:' drop-down box.&nbsp; Select the radio button '1', select
+the 'Adapter will use this key' checkbox, and then obtain the
+encryption key from the LIMS administrator and enter the key into the 2
+textfields.</li>
+    <li>'Ping' tab:&nbsp; Enter '10.1.1.1' into the 'IP:' drop-down
+box, press the 'Start Test' button and you should start to see signals.</li>
+    <li>'Signal' tab:&nbsp; Should be able to see signals as well.<br>
+    </li>
+    <li>After making all the settings, you will be required to reset
+the iPAQ (using the reset button) and then you should be able to
+connect to the Internet/Intranet.<br>
+    </li>
+  </ul>
+</ul>
+

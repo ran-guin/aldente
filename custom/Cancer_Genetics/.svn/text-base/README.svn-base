@@ -1,0 +1,30 @@
+## README file for implementing customizations of the Cancer Genetics LIMS deployment
+File: /home/aldente/custom/Cancer_Genetics/README_customize
+
+===========================
+Explanation of this folder:
+===========================
+
+The code in this folder is not common to all LIMS, and thus is not committed/updated in the same way.
+
+When an administrator changes the code in one of these files, this folder is updated with the most recent revisions,
+and from here they must be copied to their appropriate location
+
+=============================
+List/explanation of files in this folder:
+=============================
+
+./install/
+GO HERE FIRST
+contains all the information necessary to implement the Cancer Genetics LIMS effectively
+
+./init
+Contains the initialization database dump files for each release
+
+./modules/
+Contains modules only applicable to the Cancer Genetics group
+
+./cronjobs/ 
+Contains files with cronjobs and/or explanations of cronjobs that need to be run on whatever server the database is on
+
+==============================

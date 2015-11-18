@@ -1,0 +1,4 @@
+lib/perl/Core/alDente/Document.pm
+lib/perl/Core/alDente/Tools.pm
+bin/t/Core/alDente/Document.t
+bin/t/Core/alDente/Tools.t

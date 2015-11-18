@@ -1,0 +1,12 @@
+<H2>Solution Tracking</H2>
+<P>
+Tracking of Reagents and Solutions, ensures that a detailed record of what is available and what has been used within the lab is maintained.
+
+<UL>
+<LI>Recording of incoming reagents to the lab. (this may include details such as cost, supplier, original quantities, expiry dates etc).
+<LI>Monitoring of quantities of various reagents used during the mixture of solutions.  (monitoring date & time of mixing, users involved in the process, quantities of reagents involved, location for storage etc)
+<LI>Monitoring application of solutions/reagents to plate samples, associating reagents with the target samples.
+<LI>Allowing stock monitoring routines that can search for given types of solutions or send regular email messages to indicate low levels.
+<LI>Specification of certain standard formulas for solutions that may be defined via the web page with any number of parameters as desired.  (These standard solutions show up on a pull-down menu for quick selection by lab users, automatically setting the default values for reagent quantities).
+</UL>
+

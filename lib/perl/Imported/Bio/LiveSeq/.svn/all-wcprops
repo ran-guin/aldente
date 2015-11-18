@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq
+END
+Intron.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Intron.pm
+END
+Exon.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Exon.pm
+END
+Gene.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Gene.pm
+END
+Repeat_Unit.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Repeat_Unit.pm
+END
+Prim_Transcript.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Prim_Transcript.pm
+END
+Chain.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Chain.pm
+END
+Repeat_Region.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Repeat_Region.pm
+END
+Transcript.pm
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Transcript.pm
+END
+Mutator.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Mutator.pm
+END
+ChainI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/ChainI.pm
+END
+Range.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Range.pm
+END
+AARange.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/AARange.pm
+END
+Translation.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Translation.pm
+END
+Mutation.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/Mutation.pm
+END
+SeqI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/SeqI.pm
+END
+DNA.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/LiveSeq/DNA.pm
+END

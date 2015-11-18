@@ -1,0 +1,134 @@
+Sequencing
+<H2>Run Monitoring</H2>
+<P>
+In the generation of high throughput sequencing information, it is essential to have constant feedback as to the lab-wide status of various samples, allowing lab administrators to identify pending processes, bottlenecks, or data requiring closer observation.  Some of the tools made available to facilitate these and other tasks include:
+<UL>
+<LI>Monitoring of the status of samples within a specified library.
+<P>This provides a quick view of which samples have yet to be sequenced, which chemistries have been performed, and the number of samples at each position within the protocol.
+<LI>Quick views of recent runs, displaying average quality lengths, vector components, chemistry information as well as an easy to view colour-coded map indicating quality distribution of reads within a plate.
+<LI>Quick views summarizing the results by library or project.
+<LI>Automatic Diagnostics checking, which correlates sequence quality with numerous subtle variables within the lab setting which could have an effect on final data quality.  These correlations involve equipment, solutions, and processes applied to samples prior to sequencing, as well as more direct factors such as which sequencing machine was used.
+<LI>Complex Database summaries may also be generated, with a whole suite of highly informative visual reports that represent data in a variety of formats.
+</UL><h2>Sequence Data</h2>
+<P>
+<B>The bulk of the sequence data is stored in a table called 'Clone_Sequence', which stores the sequence string as well as a binary string of bytes representing associated sequence quality (as determined by 'phred').<P>
+In addition to this, each read has the following information stored in this table:</B>
+<UL>
+<LI><B>Phred_Histogram</B> (another binary field storing a histogram of Phred values over the read)<BR>
+(eg the 5th 2-byte chunk stores the number of basepairs of phred value 5)
+<LI><B>Quality_Histogram</B> (a cumulative histogram of phred values over the read)<BR>
+(eg the 20th 2-byte chunk stores the number of basepairs of phred 20 <B>or better</B>)
+<LI><B>Growth</B> (normally 'OK', but could be set to 'Slow Grow' or 'No Grow')
+<LI><B>Quality_Left</B> (the left index position of the 'high quality' contiguous section of the read as determined by phred)
+<LI><B>Quality_Length</B> (the length of the 'high quality' contiguous section as determined by phred - roughly phred 20)
+<LI><B>Vector_Left</B> - (the index position of discovered vector on the left side of the 'quality' section - (negative if no vector found on the left)
+<LI><B>Vector_Right</B> - (the index position of discovered vector on the right side of the 'quality' section - (negative if no vector found on the right)
+<BR>(Note: if entire 'quality' section is vector, Vector_Right=0 and Vector_Left= length of sequence indicating ALL vector)
+<LI><B>Vector_Quality</B> - (the number of bases within 'Quality_Length' which have been identified as vector)
+<LI><B>Capillary</B> - the capillary number for the associated machine from which the read was generated.
+<LI><B>FK_Note__ID</B> - a reference to a table of applicable notes.<BR>
+<UL>Standard Notes include:
+<span class=small>
+<LI><B>Empty Sequence Read</B> - sequence string of 0 length found
+<LI><B>Trace Data Missing</B>  - no trace data for the given read
+<LI><B>Poor Quality Warning</B> - phred indicates that there is NO contiguous section of 'quality' within the read.
+<LI><B>Index Warning</B> - a strange vector portion found within the 'quality' region.
+	<BR>(Comments indicate details regarding vector found within this region)
+</UL>
+</Span>
+</UL>
+
+<P>
+<B>In addition some information is stored for each separate sequence run such as:
+</B>
+<UL>
+<LI><B>FK_Plate__ID</B> - reference to the plate used for the run
+<LI><B>Sequence_DateTime</B> - date and time that the datafiles were generated
+<LI><B>Sequence_Subdirectory</B> - the name of the subdirectory path at which the trace files can be found (formatted to unambiguously show library, plate number, quadrant and chemistry)
+<LI><B>Run_State</B> - (may be 'Analyzed','In Process','Aborted','Failed' or 'Expired')
+<LI><B>Run_Status</B> - (either 'Production' or 'Test')
+<LI><B>FKPrimer_Solution__ID</B> - reference to the primer used for this run.
+<LI><B>FK_Sequence_Batch__ID</B> - reference to a record for this batch of sequence runs.
+</UL>
+
+<P>
+<B>Some parameters are set for an entire group of runs that may go through at the same time such as:
+</B>
+<UL>
+<LI><B>Sequence_RequestTime</B> - time when the runs were requested (configuration files generated)
+<LI><B>Run_Voltage</B>
+<LI><B>Run_Temperature</B>
+<LI><B>Run_Time</B>
+<LI><B>Injection_Voltage</B>
+<LI><B>Injection_Time</B>
+<LI><B>PMT1</B> - the 1st photomultiplier tube voltage setting.
+<LI><B>PMT2</B> - the 2nd photomultiplier tube voltage setting. 
+<LI><B>Sequence_Batch_Comments</B>
+</UL>
+
+<P>It is also possible to retrieve more information regarding the Sequence runs by following the reference links into the various Libraries, Plates, Solutions etc, but this is covered in more detail in the Lab Monitoring section.
+<H2>Phred Analysis of Sequencing Runs</H2>When a sequence is requested, the
+'Run_State' is defined as 'In Process' meaning that the data is not yet
+available.<P>
+The following steps take place in the creation of sequencing Data:<P>
+<UL>
+<LI>Generate Sample Sheet - (Run_State = 'In Process')
+<LI>data collection on Sequencer (stores files on local machine on completion)
+<LI>Sequencers are mirrored regularly (on request as well as daily via a
+cron job)<BR>
+(This entails copying all of the Data Trace files (and raw data) into the
+appropriate subdirectories in the /home/sequence/mirror/ directory)
+<LI><B>update_sequence.pl -A all</B> is run as a cronjob<BR>(for info on
+this script type '/home/rguin/public/update_sequence.pl' from the command
+line.)<P>This program generates a list of all sequence runs which are still
+'In Process'.<BR>For each of these runs, it then runs the script
+<B>'post_sequence.pl'</B> on each of them, passing this script values
+relating to the details of the run (machine, employee, plate, chemistry,
+primer ...etc.).<P>This script in turn performs the following operations for
+each sequence run:<OL>
+    <LI>generates the appropriate directories in
+/home/sequence/Projects/$proj/$lib/AnalyzedData/
+    <LI>creates symbolic links to all of the chromat directories in the
+mirror directory (placing them in chromat_dir/)
+    <LI>runs 'phred' on the chromat_dir (This results in a number of
+statistical files which include phred scores for each nucleatide generated),
+placing the resultant files in the directory phd_dir.
+    <LI>extracts information from these 'phred' files and places the
+appropriate information in the Clone_Sequence table (as well as some
+subsidiary information such as the well growth status ('OK','No Grow' or
+'Slow Grow'), warnings (poor quality, lack of data, vector only, recurring
+string etc.)
+        <LI>Generates a colour map gif file of the 96-well plate (done
+separately for each of the sub-plates of a 384-well plate) - and placing a
+copy in the directory /www/htdocs/intranet/SDB/RunMaps/. 
+    <LI>Re-sets the 'Run_State' of the Run to 'Analyzed'
+	<LI>Deletes any current information on this run (in case it has been analyzed before)
+	<LI>Updates information in the database on this read.
+    </OL>
+    </UL><TABLE width=100% cellpadding=4>
+    <TR>
+    <TD class=lightheader><SPAN class='larger'>Special Cases</SPAN></TD>
+    </TR>
+    </TABLE>
+    
+    <B>Mis-named Files:</B><P>
+    If files have the incorrect name, the names of the files should 
+    be changed in the mirror directory.  The names should follow the 
+    standard naming convention (check other valid filenames if you are
+unsure).<P>
+ <B>Reverse-Oriented Files:</B><P>
+ If files are reverse oriented, the script update_sequence.pl should be run
+ directly using the '-R' option (type 'update_sequence.pl' for a description
+on the usage of this script).
+<P>
+
+<h3>Manually running Phred</H3>
+Phred Analysis may periodically be run from the command line for purposes of
+time, or to specify particular options (such as the reversal of plate
+orientation), or to re-analyze a run that was originally misnamed etc.
+<P>
+Generally the format for accomplishing this is:
+<B>/home/sequence/public/update_sequence.pl -A all -S (RunID) (options)</B>
+<BR>(Where the RunID and options are entered by the user)<BR>
+(type 'update_sequence.pl' for a list of options)
+

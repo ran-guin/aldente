@@ -1,0 +1,316 @@
+LIMS API modules
+<H1>ReArray API Manual: Sequencing</H1>
+
+<P>The ReArray API provides a way for people to submit rearray requests to the lab. All the information is entered into the database, and both the lab administrators and the person requesting the rearray can check the status of a request through the alDente LIMS system. Periodically, the alDente LIMS will inform the requester of status changes on the rearray plate, such as the rearray being approved and applied onto a plate. 
+
+<P>To use the ReArray API for Sequencing, use the module <b>"Sequencing_ReArray.pm"</b> from the alDente directory. To initialize the object, use the line "my $rearray_object = new Sequencing_ReArray(-dbh=>$dbh);", where $dbh is the database handle to the sequence database.
+
+<P>There are two basic types of rearrays that can be done through the API: <i>Clone rearrays</i> and <i>Primer ReArrays</i>. Primer rearrays are typically used for sequence reactions (primarily for oligo primers). Clone rearrays are rearrays that are picked from glycerol plates (usually by Q-PIX pickers), and do not require primers. It is also possible to order primers, and this feature is usually used in conjunction with oligo primer rearrays.
+
+<P> The user is provided with two high-level functions that can order primers and do rearrays in one step. These are create_clone_rearray() and order_oligo_rearray_from_file. These two functions make calls to lower level functions which are also provided to the user. These functions allow the user to have more control over the rearraying process, but may not be as user-friendly.</p>
+
+<BR><h2>High Level Functions</h2><BR><BR>
+
+<h2>Clone ReArrays - create_clone_rearray()</h2>
+
+<P>The function create_clone_rearray() reads a clone file, creates a clone rearray, reserves the necessary plates, and optionally reserves 96-well plates for primer rearrays derived from the clone rearray and orders primers and oligo rearrays for these plates.
+
+<P>The required clone file input is a plain text field with the clone name, primer sequence, and melting temperature, in this format:
+<pre>
+RHA1111G05,gggatgtcctctatgcc,53.5423532
+RHA1157A18,ctcgcgacactcagc,52
+RS0015dA05,tgccgcagtggtagg,56
+RHA1171dC11,ccaaaccacctactgga,52
+RHA1132L13,cgctgatgtatagccg,52
+RHA1161H23,tgcacaaccctgtga,50
+RHA1136N06,gcgcggtcaggtagg,57
+</pre>
+<P>The create_clone_rearray() function also allows the user to directly transfer the 384-well rearray plate created to 4 96-well oligo rearray plates, with the primer information derived from the clone file. This is done by transferring the 384-well clone rearray plate to 4 96-well plates, and then creating a primer rearray for each of those plates. Take note that each 96-well plate will correspond to the quadrants of the 384-well clone rearray plate. Each 96-well plate will initially be set to reserved, but will become Pre-Printed once the clone rearray is applied.
+
+<p>It is possible to override the plate choosing algorithm (which typically picks the original plate with the defined Plate Number). If a barcode id is added to the end of a line, it will pick that plate for the source plate for every instance of that Library.Plate_Number combination. For example:
+
+<pre>
+RHA1157A18,ctcgcgacactcagc,52
+</pre>
+<p>will pick pla44514 if the -original flag is specified (which it should be). To override this and pick plate pla44536 for RHA1157, use:
+<pre>
+RHA1157A18,ctcgcgacactcagc,52,pla44536
+</pre>
+<P>This will assign pla44536 to ALL instances of RHA1157. This is done for special cases only, and should typically never be done.
+ 
+<h3>Required arguments</h3>
+<p><b>-emp_name</b> => takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.
+<p><b>-data</b> => a scalar string of data for the qpix rearray. Contains the same information as the clone file, with each line delimited by newlines. Takes priority over -clonefile.
+<p><b>-clonefile</b> => path and filename of the clone file. The path should be fully qualified (eg /home/jsantos/csv/clonefile.txt). Overriden by -data.
+<p><b>-target_library</b> => a string that identifies the library that the new plates will be part of. This is needed because new plates are created for this rearray.
+<p><b>-plate_application</b> => a string that identifies the application that the new plates will be used for. One of Sequencing, PCR, or Mapping.
+<p><b>-create_96_transfer</b> => flag that determines whether or not to create 4 96-well pre-rearrays for the qpix rearray (in the form of Reserved transfer plates). Primers will also be ordered and assigned to the pre-rearray.
+<p><b>-oligo_direction</b> => a number representing the oligo direction. One of 5 or 3.
+<p><b>-notify_list_primer_order</b> => a comma-delimited string of emails who will be notified when the external order number is applied.
+<p><b>-format</b> => determines which plate format to search for, and picks the latest plate with that format. For example, -format=>'Glycerol' will grab the latest glycerol plate with that Library_Name.Plate_Number combination.
+<p><b>-original</b> => flag that determines whether or not to grab the earliest ORIGINAL plates. This should be the typical behaviour.
+<p><b>-supplies_tag</b> => A hash reference that contains information that needs to be filled in the order. Currently, the user needs to fill in the COMMENTS field.
+
+<h3>Example:</h3>
+<pre>
+use lib "/usr/local/ulib/beta/alDente/perl";
+use alDente:Sequencing_ReArray;
+
+my $rearray_object = new Sequencing_ReArray(-dbh=>$dbh);
+my %supplies_tag;
+$supplies_tag{COMMENTS} = "test comments";
+
+$rearray_object->create_clone_rearray(
+			-target_library=>'10790',
+			-emp_name=>'jsantos',
+			-plate_application=>'Sequencing',
+			-clonefile=>"/home/jsantos/source/cgi-bin/rob2.csv",
+			-create_96_transfer=>1,
+			-oligo_direction=>5,
+			-original=>1,
+                        -supplies_tag=>\%supplies_tag
+			);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+</pre><br>
+
+<h2>Primer ReArrays - order_oligo_rearray_from_file()</h2>
+<P>The function order_oligo_rearray_from_file() reads a comma-delimited file that contains source plate, source well, target well, primer name, and primer sequence. This orders primers and does rearrays for all wells defined in the file, split into individual 96-well plates.
+<P>The required clone file input is a plain text field with the source plate, source well, target well, primer name, primer sequence, and optionally a melting temperature, in this format:
+<pre>
+648423,A01,A01,LLO05-1764-1,GATGGGTTTAACCC
+</pre>
+
+<h3>Required Arguments:</h3>
+<p><b>-emp_name</b> => takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.
+<p><b>-files</b> => takes a comma-delimited string giving the fully-qualified filenames of the source files.
+<p><b>-direction</b> => The direction of the primers. One of 5 or 3.
+<p><b>-target_library</b> => The library of the plates to be created.
+<p><b>-supplies_tag</b> => A hash reference that contains information that needs to be filled in the order. Currently, the user needs to fill in the COMMENTS field.
+
+<h3>Optional Arguments:</h3>
+<p><b>-notify_list</b> => a comma-delimited string of emails who will be informed when the primer plate has been provided with an external order number. 
+<p><b>-data</b> => An input string with information formatted exactly like the input file. Overrides the -files tag.
+
+<h3>Example:</h3>
+<pre>
+use lib "/usr/local/ulib/beta/alDente/perl";
+use alDente:Sequencing_ReArray;
+
+my $rearray_object = new Sequencing_ReArray(-dbh=>$dbh);
+my %supplies_tag;
+$supplies_tag{COMMENTS} = "test comments";
+
+$rearray_object->order_oligo_rearray_from_file(
+			-target_library=>'10790',
+			-emp_name=>'nliao',
+			-files=>"/home/nliao/order1.csv,/home/nliao/order2.csv",
+			-direction=>5,
+			-notify_list=>'tzeng@bcgsc.ca',
+                        -supplies_tag=>\%supplies_tag
+			);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+</pre>
+
+</p>
+<BR><h2>Lower-Level functions</h2><BR><BR>
+<h2>Ordering Primers</h2>
+
+<p>To order primers, use the function order_oligo_primers(<arguments>). There are two special required arguments - -tm_working and -tm_calc. You only need to provide one or the other. The function order_oligo_primers() only compiles the order in the Sequencing_ReArray object. To write out the order files and send notification to the lab administrators, call the function send_primer_order().
+
+<h3>Required arguments for order_oligo_primers()</h3>
+<p><b>-name</b>  => takes an array reference of primer names.
+<p><b>-sequence</b> => takes an array reference of primer sequences. Note that the indices should correspond to the -name array indices.
+<p><b>-wells</b> => takes an array reference of well ids for each primer name. Note that the indices should correspond to the -name array indices.
+<p><b>-tm_working</b> => takes an array reference of melting temperatures. Note that the indices should correspond to the -name array indices, and overrides the -tm_calc argument.
+<p><b>-tm_calc</b> => takes a scalar representing the name of the calculation method for melting temperature. Currently, the function only supports 'MGC Standard', the formula for which is provided by Anca Petrescu. The algorithm is provided at the bottom of this help page.
+<p><b>-emp_name</b> => takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.
+<p><b>-file_only</b> => A flag that disables the database write to the Primer table. This will still save order information in the object for send_primer_order() - this is useful for ordering primers that shouldn't be in the database, or are already in the database. In general, however, this flag should not be set.
+
+<h3>Required arguments for send_primer_order()</h3>
+<p><b>-emp_name</b> => takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.
+<p><b>-supplies_tag</b> => A hash reference that contains information that needs to be filled in the order. Currently, the user needs to fill in the COMMENTS field.
+
+<h3>Example:</h3>
+
+<pre>
+use lib "/usr/local/ulib/beta/alDente/perl";
+use alDente::Sequencing_ReArray;
+
+my @primer_names = map {$_ = 'PRIMER_NAME_1_'.$_} (1..96);       # create 'PRIMER_NAME_1_1' to 'PRIMER_NAME_1_96' 
+my @primer_sequence = map {$_ = 'taatacgactcactataggg'} (1..96); # create a 96-element array of 'taatacgactcactataggg'
+my @target_wells = ();
+# creates an array from 'A01' to 'H12'
+foreach my $row ('A'..'H') {
+    foreach my $col (1..12) {
+	$col = sprintf "%02d", $col;
+	my $newwell = $row.$col;
+	push (@target_wells,$newwell);	
+    }
+}
+my $rearray_object = new Sequencing_ReArray(-dbh=>$dbh);
+$rearray_object->order_oligo_primers(
+		-emp_name=>"robertk",
+		-wells=>\@target_wells,
+		-name=>\@primer_names,
+		-sequence=>\@primer_sequence,
+	        -tm_calc=>"MGC Standard"
+		);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+my %supplies_tag;
+$supplies_tag{COMMENTS} = "test comments";
+
+$rearray_object->send_primer_order(
+		-emp_name=>"robertk",
+                -supplies_tag=>\%supplies_tag
+		);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+</pre>
+<p>This segment of code will input 96 oligo primers named 'PRIMER_NAME_1_1' to 'PRIMER_NAME_1_96' with the sequence 'taatacgactcactataggg' (for all primers) and melting point computed by the 'MGC Standard' algorithm into the database. Also, this will write out order files in both Excel and tab-delimited Illumina format. An email will be sent to the lab administrators informing them of the primer order and the location of the order files. 
+
+
+<h2>Primer ReArrays</h2>
+<P>To request a Primer ReArray, use the function create_primer_rearray(<arguments>). Take note that this will create an "On Order" ReArray, and the user will need to input the External Primer Order number from the LIMS system before the lab administrators are informed that the ReArray has been requested.
+<h3>Required arguments</h3>
+
+<p><b>-source_plates</b> => takes an array reference representing source plates for source wells in format (4001,4002,4001,4003.....). This must correspond to source wells. Not required if -status is 'Pre_Rearray'.
+<p><b>-source_wells</b> => takes an array reference representing source wells in format (A01,B01,B02,B03.....). This must correspond to target wells and source plates.
+<p><b>-target_wells</b> => takes an array reference representing target wells in format (A01,B02,B01,E03.....). This must correspond to source wells.
+<p><b>-emp</b> => takes a scalar representing the unix/linux userid of the employee doing the ordering. This can be obtained by using the command 'whoami' in the unix terminal. If this is not provided, the script will attempt to derive the username using 'whoami'. It is recommended that the employee_name be provided. If the employee does not exist in the Employee table, this will return an "Employee does not exist" error.
+<p><b>-type</b> => rearray type, whether it is an 'Oligo','Standard','Reprep', 'Resequence ESTs', or 'Clone' rearray.
+<p><b>-target_size</b> => size of target plate. Should be 96 or 384.
+<p><b>-target_library</b> => library name for new plate. Required if -status is 'Reserved' (which is default) and the wells are from multiple libraries.
+
+<h3>Optional arguments</h3>
+<p><b>-status</b> => ReArray status. Used to determine what information is needed to construct the rearray, and has to be one of Requested, Reserved, Pre-Rearray, On Order, or Assigned. This defaults to 'On Order'. This should be set to 'Reserved' if the primers do not need to be ordered and are already in the database. Support for the Pre-Rearray type is not guaranteed.
+<p><b>-primer_names</b> => primer names for each well in format ('M13 Reverse','M13 Reverse', ....). This must correspond to target wells.
+<p><b>-oligo_direction</b> => Oligo Direction. Required if the ReArray type is 'Oligo'.
+<p><b>-target_plate</b> => Plate ID of target plate. Required if -status is 'Assigned'.
+<p><b>-target_rack</b> => plate rack ID for new plate. Optional, and only if -status is 'Reserved'.
+<p><b>-plate_format</b> => plate format ID of new plate. Optional, and only if -status is 'Reserved'.
+<p><b>-plate_application</b> => plate application for new plate. One of Sequencing, PCR, or Mapping. Required if -status is 'Reserved'.
+<p><b>-notify_list_primer_order</b> => a comma-delimited string of emails who will be notified when the external order number is applied.
+
+<h3>Example:</h3>
+<pre>
+use lib "/usr/local/ulib/beta/alDente/perl";
+use alDente::Sequencing_ReArray;
+
+my @primer_names = map {$_ = 'PRIMER_NAME_1_'.$_} (1..96); # create 'PRIMER_NAME_1_1' to 'PRIMER_NAME_1_96' 
+my @source_plates = map {$_ = "4001" } (1..96);	           # create array of 96 "4001"  
+ my @primer_sequence = map {$_ = 'taatacgactcactataggg'} (1..96); # create a 96-element array of 'taatacgactcactataggg'
+my @target_wells = ();
+# creates an array from 'A01' to 'H12'
+foreach my $row ('A'..'H') {
+    foreach my $col (1..12) {
+	$col = sprintf "%02d", $col;
+	my $newwell = $row.$col;
+	push (@target_wells,$newwell);	
+    }
+}
+my @source_wells = @target_wells; # creates an array from 'A01' to 'H12'
+
+my $rearray_object = new Sequencing_ReArray(-dbh=>$dbh);
+
+$rearray_object->order_oligo_primers(
+		-emp_name=>"robertk",
+		-wells=>\@target_wells,
+		-name=>\@primer_names,
+		-sequence=>\@primer_sequence,
+	        -tm_calc=>"MGC Standard"
+		);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+$rearray_object->create_primer_rearray(
+		-source_plates=>\@source_plates,
+		-source_wells=>\@source_wells,
+		-target_wells=>\@target_wells,
+		-primer_names=>\@primer_names,
+		-emp=>'robertk',
+		-type=>"Oligo",
+		-oligo_direction=>5,
+		-target_size=>96,
+		-notify_list_primer_order=>'tzeng@bcgsc.ca'
+);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+$rearray_object->send_primer_order(
+		-emp_name=>"robertk"
+		);
+
+if ($rearray_object->error()) {
+	print $rearray_object->error();
+	return 0;
+}
+
+</pre>
+<p>This segment of code will send a request for an Oligo rearray to the lab administrators. It will be from plate 4001, with primers 'PRIMER_NAME_1_1' for well A01, to primer 'PRIMER_NAME_1_96' for well H12. The target wells will be A01-H12. Note that order_oligo_primers() was called before create_primer_rearray() to order the primers first. The create_primer_rearray() call will fail if the primers do not exist in the database. Note the error checking at each step, so the user knows exactly which call fails if there is an error.<br>
+
+<h2>The "MGC Standard" melting temperature algorithm</h2>
+<pre>
+############################################################
+# Subroutine: takes a string that represents a primer sequence and calculates the temperature
+# RETURN: 0 if unsuccessful, or the working temperature of the primer otherwise.
+############################################################
+sub _calc_temp_MGC_Standard {
+    my $self = shift;
+    my %args = @_;
+    my $sequence = $args{-sequence};
+    # do temperature calculation
+    # MGC Standard - provided by Anca Petrescu
+    my @sequence_array=split(//,$sequence);
+    my $sequence_length = scalar(@sequence_array);
+    unless ($sequence_length > 0) {
+	$self->error("ERROR: Invalid argument: Zero length sequence");
+	$self->success(0);
+	return 0;
+    }
+    my $num_G = 0;
+    my $num_C = 0;
+    foreach my $base (@sequence_array){
+	if ($base eq 'G' || $base eq 'g'){
+	    $num_G++;
+	}
+	elsif ($base eq 'C' || $base eq 'c'){
+	    $num_C++;
+	}
+    }
+    my $Na = 0.1;          
+    my $GC = ($num_G/$sequence_length + $num_C/$sequence_length);
+    my $Tm=81.5+41*($GC)-500/$sequence_length + 16.6*log10($Na);       
+    $Tm = $Tm - 7;
+
+    $self->success(1);
+    return $Tm;
+}
+</pre>
+<H2>Using the Run API for alDente</H2>
+<P>The Read API enables easy extraction of Sequence Run information from the sequencing database without requiring the user to understand the underlying data storage structure.<P>
+<H2>Using the Read API for alDente</H2>
+<P>The Read API enables easy extraction of Read information from the sequencing database without requiring the user to understand the underlying data storage structure.<P>

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control
+END
+PersistentSearch.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/PersistentSearch.pm
+END
+SortResult.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/SortResult.pm
+END
+VLVResponse.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/VLVResponse.pm
+END
+EntryChange.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/EntryChange.pm
+END
+Sort.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/Sort.pm
+END
+VLV.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/VLV.pm
+END
+ManageDsaIT.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/ManageDsaIT.pm
+END
+Paged.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/Paged.pm
+END
+ProxyAuth.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/LDAP/Net/LDAP/Control/ProxyAuth.pm
+END

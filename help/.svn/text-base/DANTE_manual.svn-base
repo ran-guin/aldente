@@ -1,0 +1,317 @@
+DANTE
+
+General
+
+ DANTE is essentially a LIMS System (yet ANOTHER #*@ acronym for 'Laboratory Information Management System' - slightly redundant yes..) which has been specifically designed for use in a genome sequencing laboratory. It has been developed to store detailed information related to standard sample preparation procedures as well as final sequence data.
+
+In addition there is an interface which allows users to interact with the database via a barcode scanner during regular lab processes, and a sophisticated suite of report generating and data visualization tools which provide lab administrators with the means to quickly and effectively evaluate results and monitor status on a regular basis.
+
+Also, by maintaining this detailed information in a highly structured format, there is the capability to perform a number of automatic procedures such as monitoring stock, error checking, and diagnostic analysis, generating real-time messages for users or regular email notifications to administrators. This helps to ensure the integrity of recorded data, and may prevent time-consuming errors by flagging them or identifying possible problems.
+
+
+<h3>Data Acquisition 'N Tracking Environment</h3>
+<P>
+This interface is primarily used for the purposes of:
+<UL>
+<LI><h4>Tracking and Monitoring procedures within a lab environment</H4>
+This generally involves monitoring:
+<UL><LI>creation and transferring of sample Plates
+<LI>receipt of Stock (Reagents, Equipment, etc) and monitoring of Stock levels
+<LI>the mixing of reagents into various solutions
+<LI>the application of lab processes to groups of plates<BR>
+	(eg. using equipment and/or applying solutions)
+<LI>Equipment Maintenance Procedures
+<LI>ongoing requesting and monitoring of Sequencing Runs
+</UL>
+In each case, a detailed record is maintained of what procedure was carried out by whom at what time and applied to which samples.
+<P>
+Because all of the steps in the generation of data are also monitored carefully, it is also possible to quickly identify elements in the process which may be tied to poor data for the purpose of trouble-shooting (such as identifying contaminated solutions, or equipment that may be malfunctioning without notice), by correlating the use of various reagents, equipment or procedures with data quality.
+
+<LI><H4>Error Checking</H4>
+By having information on most elements in the laboratory, checks can be made during lab actions that can minimize mistakes taking place in the lab.  Some of the things which may be checked automatically - either preventing users from continuing or delivering 'Warning' messages include:
+<UL>
+<LI>ensuring names of expected solutions match specified format
+<LI>ensuring correct primer has been applied to plates in a given library
+<LI>ensuring correct antibiotics, inducers, and substrates are applied to samples based on their library
+</UL>
+
+<LI><H4>Lab Automation</H4>
+While there is some time required to use scanners within the lab, other time is saved by simplifying commonly used processes such as Sample Sheet Generation.<BR>
+To generate sample sheets, users need only scan the plates to be used and the sequencer.<BR>
+The database determines which primers have been applied to the plates, sending a warning if more than one is found, or if an unexpected primer was used.<BR>
+The default parameters are set and the name of the plates, primers, current matrix and buffer are determined and displayed to the user.
+<BR>By pressing a single button the user can set in motion the code used to generate this configuration file, which will then be transferred to the sequencer and the run details recorded in the database.
+
+<LI><H4>Data Acquisition</H4>
+The bulk of the data that is actually stored in the database is derived from
+Sequence Runs.  By storing this data in a database, it allows the immediate
+viewing of data a variety of forms that allow for sophisticated
+representations of this data to be displayed as reports or for ongoing
+quality monitoring.
+
+<LI><H4>Automated Processes</H4>
+A number of automated processes can be performed regularly which help ensure high throughput of quality data.  Such processes include:
+<UL>
+<LI>Sequence Run Analysis (which runs regularly to perform analysis on any
+pending sequence runs)
+<LI>Diagnostic monitoring (which sends emails warning of elements that are noted to be correlated to poor quality data)
+<LI>Stock monitoring - (which sends emails to warn of low levels of certain items of stock)
+</UL>
+
+</UL>
+<h3>Standard Database Structure</h3>
+<P>
+The Data itself is maintained in a mySQL database.<BR>
+The Automated Laboratory Data Entry 'N Tracking Environment consists of a comprehensive interface with this database which enables people to interact with the database in real time for the purposes of updating information in the database, or viewing existing information.
+<P>
+<H2>Input to the Database</H2>
+<P>
+The Data which is input into the database may be entered in a variety of forms.
+<UL>
+<LI>Using a desktop computer<P>
+Via a standard web page, users can enter data into the database via a web-site designed to enable standard procedures to be carried out easily.  Data that is typically entered this way includes all information related to:
+<UL>
+<LI>Defining New Projects/Libraries/Vectors/Grants etc.
+<LI>Creating New Plates/Tubes etc.
+<LI>Receiving New Equipment/Reagents etc. 
+<LI>Editing of various records within the database
+</UL>
+<P>
+
+<LI>Using a handheld wireless barcode scanner<P>
+During standard lab processes, it is often more convenient to simply scan particular items to indicate their usage rather than record the details pedantically at some other time.  This provides real time updating of the database, and can be used to ensure during actual processes that mistakes are not made. <P>
+Data entered using scanners in the lab typically includes:
+<UL>
+<LI>Mixing of Reagents/Solutions
+<LI>Changing Matrix/Buffer solutions for Sequencers
+<LI>Performing detailed Lab Protocols <BR>
+(applying Solutions,Equipment,Comments etc to sets of plates in a pre-determined order)
+<LI>Moving Plates/Reagents/Tubes within the lab<BR>
+(Tracking their location)
+<LI>Generating configuration files for Sequencers.
+</UL>
+
+<P>
+<LI>Automatically running processes<P>
+Some data is entered into the database by scripts which run periodically including:
+<UL>
+<LI>Sequence Information<BR>
+Data from Sequence runs is parsed and stored in the database 
+</UL>
+</UL>
+<H2>What is Stored</H2>
+<P>
+The database itself consists of a number of tables which store information in a structured form.
+The table themselves generally correspond to actual objects or entities in the lab such as:
+<UL>
+<LI>Projects
+<LI>Libraries
+<LI>Vectors
+<LI>Plates
+<LI>Solutions or Reagents
+<LI>Equipment
+<LI>Employees
+<LI>Runs
+<LI>Organizations
+<LI>Clones
+<LI>Reads
+</UL>
+<P>
+In Addition some other tables record details of procedures that have been carried out within the lab such as:
+<UL>
+<LI>Preparation steps (applied to groups of plates)
+<LI>Maintenance procedures (carried out on various equipment)
+</UL>
+
+<P>In many cases, this information is further distributed between 'Tables' to maximize efficiency in storing information.  Users themselves, however, rarely need to deal with the tables themselves, as the code is designed to interpret the information within them automatically.  Information is typically tied through hyperlinks between associated entities, all of which is handled by an underlying script which drives the web-page used to interact with the database.
+
+<H2>What does the code accessing the database look like ?</H2>
+<P>
+The interface to the database is written in perl and includes over 100,000 lines of code which interprets information in the database, providing users with a means to navigate within it.
+<P>
+Also within the code there are numerous integrity checking procedures, error checking procedures, and functions which facilitate the administration of standard laboratory procedures.  
+<P>
+In addition, a whole suite of visualization tools which are able to effectively summarize various information from the database in a form that is easy to use and provides a quick way of monitoring numerous aspects of the data and the lab processes that are going on during the production of the data.
+<h3>Sequence Data</h3>
+<P>
+<B>The bulk of the sequence data is stored in a table called 'Clone_Sequence', which stores the sequence string as well as a binary string of bytes representing associated sequence quality (as determined by 'phred').<P>
+In addition to this, each read has the following information stored in this table:</B>
+<UL>
+<LI><B>Phred_Histogram</B> (another binary field storing a histogram of Phred values over the read)<BR>
+(eg the 5th 2-byte chunk stores the number of basepairs of phred value 5)
+<LI><B>Quality_Histogram</B> (a cumulative histogram of phred values over the read)<BR>
+(eg the 20th 2-byte chunk stores the number of basepairs of phred 20 <B>or better</B>)
+<LI><B>Growth</B> (normally 'OK', but could be set to 'Slow Grow' or 'No Grow')
+<LI><B>Quality_Left</B> (the left index position of the 'high quality' contiguous section of the read as determined by phred)
+<LI><B>Quality_Length</B> (the length of the 'high quality' contiguous section as determined by phred - roughly phred 20)
+<LI><B>Vector_Left</B> - (the index position of discovered vector on the left side of the 'quality' section - (negative if no vector found on the left)
+<LI><B>Vector_Right</B> - (the index position of discovered vector on the right side of the 'quality' section - (negative if no vector found on the right)
+<BR>(Note: if entire 'quality' section is vector, Vector_Right=0 and Vector_Left= length of sequence indicating ALL vector)
+<LI><B>Vector_Quality</B> - (the number of bases within 'Quality_Length' which have been identified as vector)
+<LI><B>Capillary</B> - the capillary number for the associated machine from which the read was generated.
+<LI><B>FK_Note__ID</B> - a reference to a table of applicable notes.<BR>
+<UL>Standard Notes include:
+<span class=small>
+<LI><B>Empty Sequence Read</B> - sequence string of 0 length found
+<LI><B>Trace Data Missing</B>  - no trace data for the given read
+<LI><B>Poor Quality Warning</B> - phred indicates that there is NO contiguous section of 'quality' within the read.
+<LI><B>Index Warning</B> - a strange vector portion found within the 'quality' region.
+</UL>
+</Span>
+
+<P>
+<B>In addition some information is stored for each separate sequence run such as:
+</B>
+<UL>
+<LI><B>FK_Plate__ID</B> - reference to the plate used for the run
+<LI><B>Sequence_DateTime</B> - date and time that the datafiles were generated
+<LI><B>Sequence_Subdirectory</B> - the name of the subdirectory path at which the trace files can be found (formatted to unambiguously show library, plate number, quadrant and chemistry)
+<LI><B>Run_State</B> - (may be 'Analyzed','In Process','Aborted','Failed' or 'Expired')
+<LI><B>Run_Status</B> - (either 'Production' or 'Test')
+<LI><B>FKPrimer_Solution__ID</B> - reference to the primer used for this run.
+<LI><B>FK_Sequence_Batch__ID</B> - reference to a record for this batch of sequence runs.
+</UL>
+
+<P>
+<B>Some parameters are set for an entire group of runs that may go through at the same time such as:
+</B>
+<UL>
+<LI><B>Sequence_RequestTime</B> - time when the runs were requested (configuration files generated)
+<LI><B>Run_Voltage</B>
+<LI><B>Run_Temperature</B>
+<LI><B>Run_Time</B>
+<LI><B>Injection_Voltage</B>
+<LI><B>Injection_Time</B>
+<LI><B>PMT1</B> - the 1st photomultiplier tube voltage setting.
+<LI><B>PMT2</B> - the 2nd photomultiplier tube voltage setting. 
+<LI><B>Sequence_Batch_Comments</B>
+</UL>
+
+<P>It is also possible to retrieve more information regarding the Sequence runs by following the reference links into the various Libraries, Plates, Solutions etc, but this is covered in more detail in the Lab Monitoring section.
+
+<H3>Plate Tracking</H3>
+<P>
+Plate tracking (including the tracking of all laboratory processes applied
+to samples within plates) allows records to be maintained which represent
+essentially a lab history of everything that has happened to a sample in
+preparation for being sequenced.  This is particularly valuable to monitor
+the distribution of large numbers of tasks.  It also provides proves very
+useful in optimizing laboratory procedure by allowing specific processes,
+reagents, or equipment to be correlated with data quality - something that
+can quickly identify troublesome aspects such as contaminated reagents,
+malfunctioning equipment, or ineffective processes.
+<P>
+Plate Tracking as a whole may be broken down into a number of common tasks
+performed on a computer or utilizing a barcode scanner:
+<UL>
+<LI>Creation of Plates<P> 
+<LI>Protocol Specification<P>
+Detailed Protocols may be created and edited directly on the web using the
+Protocol interface which allows lab administrators to specify exactly what
+steps are to be monitored, and what types of information is expected.<BR>
+(eg. if a piece of equipment or a solution is to be scanned during a step)
+<LI>Protocol Tracking<P>
+Once a Protocol has been defined, lab users can then enter the protocol and
+are prompted step-by-step as they work through the protocol, generally
+requiring the user only to scan equipment or solutions used.  Within this
+protocol, users may add notes to plates, fail individual plates (while
+working with a large set to begin with), or skip steps if desired.
+<LI>Viewing Plate Information<P>
+At various times it is valuable for users to be able to view or edit information
+regarding plates that they are working with.  Some examples of this include:
+<UL>
+<LI>Plate History<P>
+Viewing a History of procedures which have been carried
+out on a plate (including those carried out on parent plates)
+<LI>Plate Ancestry<P>
+Viewing the ancestry of plates allows users to see
+all plates related to a given plate ranging from the original plate
+generated from the library to all daughter plates as they are transferred or
+aliquoted out.
+<LI>Tracking No Grows, Slow Grows and Unused Wells<P>
+This allows users to check or to edit particular wells which are noted to be 'No Grows' or 'Slow
+Grows', or to specify certain wells that are unused for some reason.  These
+values will normally be carried on to any daughter plates in the future.
+</UL>
+</UL>
+<H3>Solution Tracking</H3>
+<P>
+Tracking of Reagents and Solutions, ensures that a detailed record of what is available and what has been used within the lab is maintained.
+
+<UL>
+<LI>Recording of incoming reagents to the lab. (this may include details such as cost, supplier, original quantities, expiry dates etc).
+<LI>Monitoring of quantities of various reagents used during the mixture of solutions.  (monitoring date & time of mixing, users involved in the process, quantities of reagents involved, location for storage etc)
+<LI>Monitoring application of solutions/reagents to plate samples, associating reagents with the target samples.
+<LI>Allowing stock monitoring routines that can search for given types of solutions or send regular email messages to indicate low levels.
+<LI>Specification of certain standard formulas for solutions that may be defined via the web page with any number of parameters as desired.  (These standard solutions show up on a pull-down menu for quick selection by lab users, automatically setting the default values for reagent quantities).
+</UL>
+
+<H3>Equipment Monitoring</H3>
+<P>
+Various details may be monitored for equipment beyond their original entry into the database.
+<UL>
+<LI>Changing of Matrix and/or Buffer solutions for Sequencing machines.
+<LI>Recording service repairs and adjustments, allowing maintenance history for each machine to be easily viewed.
+<LI>Monitoring the correlation of sequence quality with specific capillaries for the purpose of trouble-shooting.
+<LI>In addition, steps used in plate preparation processes which utilize specific equipment are tracked and correlated against final data quality, allowing subtle problems with equipment to be identified, or facilitating the optimization of the conditions of equipment use where these conditions may affect final data quality.
+</UL>
+<H3>Run Monitoring</H3>
+<P>
+In the generation of high throughput sequencing information, it is essential to have constant feedback as to the lab-wide status of various samples, allowing lab administrators to identify pending processes, bottlenecks, or data requiring closer observation.  Some of the tools made available to facilitate these and other tasks include:
+<UL>
+<LI>Monitoring of the status of samples within a specified library.
+<P>This provides a quick view of which samples have yet to be sequenced, which chemistries have been performed, and the number of samples at each position within the protocol.
+<LI>Quick views of recent runs, displaying average quality lengths, vector components, chemistry information as well as an easy to view colour-coded map indicating quality distribution of reads within a plate.
+<LI>Quick views summarizing the results by library or project.
+<LI>Automatic Diagnostics checking, which correlates sequence quality with numerous subtle variables within the lab setting which could have an effect on final data quality.  These correlations involve equipment, solutions, and processes applied to samples prior to sequencing, as well as more direct factors such as which sequencing machine was used.
+<LI>Standard Report views summarizing average quality and sequence length information over libraries or projects, with colour-coded histograms providing a quickly readable measure of the distribution of quality. 
+<LI>Complex Database summaries may also be generated, with a whole suite of highly informative visual reports that represent data in a variety of formats.
+</UL>
+<h2>Run Results for Recent Runs</h2>
+<P>
+A Searchable Page that defaults to a view of runs that have been processed in the past 24 Hours.  In addition to Quality Information, a colour coded map which indicates the distribution of sequence quality over the plate is supplied for each run which has been analyzed.  Links are available from this page to more detailed information on the Run, Plates or Library.
+<P>
+<A Href = '/SDB/images/help_images/Last_24_Hours.png'>Last 24 Hours</A>
+<HR>
+
+<h2>Preparation Status for a given Library</H2>
+<P>
+A detailed list of what plates have been generated for a given library is available at the top of the 'Prep Summary' page.
+<P>
+<A Href = '/SDB/images/help_images/Prep_Plates.png'>Plates Created</A>
+<P>
+Details also exist depicting the position of the various plates in the pipeline for a given library, allowing administrators to easily determine what has been done, and what is still required.
+<P>
+<A Href = '/SDB/images/help_images/Prep_Summary.png'>Status of Plates in the Pipeline</A>
+<HR>
+
+<h2>Statistics for Project/Library</H2>
+<P>
+Details for various Projects/Libraries are summarized on the Project Summary Page.
+<P>
+<A Href = '/SDB/images/help_images/project_stats.png'>Project/Library Summaries</A>
+<HR>
+
+<h2>Database Summary Views</H2>
+<P>
+An additional suite of visualization tools exist for more detailed information on runs, libraries or projects.
+<P>
+<A Href = '/SDB/images/help_images/dbsummary_hist.png'>Histograms</A>
+<P>
+<A Href = '/SDB/images/help_images/dbsummary_scorecard.png'>ScoreCard</A>
+<P>
+<A Href = '/SDB/images/help_images/dbsummary-front.html'>More Info</A>
+<HR>
+
+
+
+<H3>Barcode Scanners</H3>
+<P>
+To help in the automation of the lab processes, numerous steps are tracked by allowing lab users to simply scan items with a barcode scanner while they are being used.  This scanner is tied to the database directly and updates information in real time, ensuring that lab processes are recorded and monitored as they happen.  This allows not only an up to date record of lab status, but allows constant error checking to take place within the lab, enabling these checks to catch many errors before they are made.  It also allows users to get information on various lab components by simply scanning their associated barcode.  Some of the steps most commonly tracked using the scanners include:
+<UL>
+<LI>Tracking defined protocols for plate preparation.  This includes applying plates to equipment (centrifuges, thermocyclers, hydras etc), the transferance of samples between plastic-ware, the application of solutions to plate samples.
+<LI>Mixing reagents to form solutions.
+<LI>Creating sample sheets (configuration files for sequencing machines that are customized for each sample).
+<LI>Changing buffer or matrix for sequencing machines.
+</UL>
+

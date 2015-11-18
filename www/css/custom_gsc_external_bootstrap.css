@@ -1,0 +1,5 @@
+/* account for fixed top header */
+body {
+    padding-top: 160px;  /* 205px; add to account for navbar paddding */
+}
+

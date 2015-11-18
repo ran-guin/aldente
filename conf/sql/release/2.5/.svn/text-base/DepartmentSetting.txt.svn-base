@@ -1,0 +1,3 @@
+DepartmentSetting_ID	FK_Setting__ID	FK_Department__ID	Setting_Value
+1	1	1	auto1@urania
+2	1	2	auto1@orbita

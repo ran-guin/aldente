@@ -1,0 +1,37 @@
+~Start Header
+Oligator Entry Form
+PO:		<PO>
+Date:		<DATE>
+
+Company:	Genome Sciences Centre
+Ship To Street:	Suite 100, 570 West 7th Ave
+Ship To City: 	Vancouver
+Ship To State:	BC, Canada
+Ship To Zip: 	V5Z 4S6
+
+Bill To Street:	Suite 100, 570 West 7th Ave
+Bill To City: 	Vancouver
+Bill To State:	BC, Canada
+Bill To Zip: 	V5Z 4S6
+
+Contact:	Carrie Jang and Irene Peloso
+Phone:		604-707-5800 ext. 2546 or ext 2539
+Email:		smesser@bcgsc.ca
+
+Scale in micromoles:	0.025
+Plate Format:		96
+Concentration in µM:	5
+Volume in µL:		200
+Buffer:			Water
+
+Purification:			No
+Deliver Partial Shipments:	No
+Ship Medium:			Frozen
+Aliquot Count:			0
+Aliquot Volume in µL:		0
+
+Customer Reference:		<CUST_REF>
+Comments:			<COMMENTS>
+
+~End Header
+Plate	Row	Column	Sequence Name	5' Mod	Sequence (5' - 3') (Blanks use period)	3' Mod	Comments

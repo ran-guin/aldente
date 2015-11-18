@@ -1,0 +1,5 @@
+lib/perl/Experiment/Illumina/Solexa_Analysis.pm
+lib/perl/Experiment/Illumina/Run_App.pm
+lib/perl/Experiment/Illumina/Run_Views.pm
+bin/t/Experiment/Illumina/Solexa_Analysis.t
+bin/t/Experiment/Illumina/Run_Views.t

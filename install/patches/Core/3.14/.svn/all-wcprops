@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/84925/alDente/trunk/install/patches/Core/3.14
+END
+Core_3_14.pat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/83995/alDente/trunk/install/patches/Core/3.14/Core_3_14.pat
+END
+add_grp_access.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/84007/alDente/trunk/install/patches/Core/3.14/add_grp_access.pat
+END
+update_Object_ID.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/84925/alDente/trunk/install/patches/Core/3.14/update_Object_ID.pat
+END
+update_Priority_Object.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/83873/alDente/trunk/install/patches/Core/3.14/update_Priority_Object.pat
+END
+SOW_Column_Adding.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/84087/alDente/trunk/install/patches/Core/3.14/SOW_Column_Adding.pat
+END
+update_Grp_Access.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/84574/alDente/trunk/install/patches/Core/3.14/update_Grp_Access.pat
+END

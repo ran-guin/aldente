@@ -1,0 +1,62 @@
+<h1>Sample Extraction</h1>
+<ul>
+</ul>
+<h3>Defining a sample extraction step</h3>
+<ol>
+  <li>As admin, log on to the protocol admin page.</li>
+  <li>Either select an existing protocol or create a new protocol for
+the extraction step.</li>
+  <li>In the screen that accepts inputs for a protocol step:</li>
+  <ul>
+    <li>Select either the Transfer' or 'Aliqout' radio button in the
+Step Name section.&nbsp; The difference between the two is a Transfer
+assumes all sample within source tube will be extracted, whereas an
+Aliquot assumes only part of the sample will be extracted.<br>
+    </li>
+    <li>Select the target container type from the popup menu.&nbsp;
+Right now only tubes are supported.</li>
+    <li>Check the 'Transfer/Aliquot/Pool to new sample of type:"
+checkbox and select the type of sample to be extracted to the target
+tube from the popup menu.<br>
+    </li>
+    <li>Check the 'Scanner View Enabled' checkbox</li>
+    <li>You can also optionally specify the amount to be extracted by
+checking the "Amount To Aliqout/Transfer:" checkbox and specify the
+amount on the right.<br>
+    </li>
+    <img src="$Help_Image_dir/Extraction_Step_Setup.png">
+  </ul>
+  <li>Save the step. Note that the step name will be automatically
+generated, with the sample type end up after either the word Transfer
+or Aliquot in the step name.&nbsp; For example, if we are extracting
+DNA to a 1.5 mL tube, then the step name will be 'Transfer <span
+ style="font-weight: bold;">DNA</span> to 1.5 mL tube', whereas a
+regular transfer will just be 'Transfer to 1.5 mL tube'.<br>
+  </li>
+</ol>
+<h3>Going through a sample extraction step</h3>
+<ol>
+  <li>Scan in the source tubes that are to be extracted.</li>
+  <li>Save the tubes as a tube set.</li>
+  <li>Select the protocol that contains the extraction step.</li>
+  <li>In the extraction step page, if extraction amount is specified
+then either accepts it or changes it.&nbsp; Clicking on the "Transfer
+&lt;sample type&gt; to ......" button will complete the extraction step.<br>
+  </li>
+  <img src="$Help_Image_dir/Extraction_Step_Usage.png"> <li>A new
+original tube will be created along with a barcode.</li>
+  <li>The protocol will continue with the next step.<br>
+  </li>
+</ol>
+<h3>Viewing pooling ancestry</h3>
+<ol>
+  <li>After the extraction is done, its ancestry can be viewed from the
+scan tubes home page.</li>
+  <ul>
+    <li>Scan in one of the source tubes:</li>
+    <img src="$Help_Image_dir/Extraction_To_Ancestry.png"> <li>Scan in
+the target tube:<br>
+    </li>
+    <img src="$Help_Image_dir/Extraction_From_Ancestry.png">
+  </ul>
+</ol>

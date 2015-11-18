@@ -1,0 +1,229 @@
+<h1>Data Acquisition 'N Tracking Environment</h1>
+<P>
+This interface is primarily used for the purposes of:
+<UL>
+<LI><h2>Tracking and Monitoring procedures within a lab environment</H2>
+This generally involves monitoring:
+<UL><LI>creation and transferring of sample Plates
+<LI>receipt of Stock (Reagents, Equipment, etc) and monitoring of Stock levels
+<LI>the mixing of reagents into various solutions
+<LI>the application of lab processes to groups of plates<BR>
+	(eg. using equipment and/or applying solutions)
+<LI>Equipment Maintenance Procedures
+<LI>ongoing requesting and monitoring of Sequencing Runs
+</UL>
+In each case, a detailed record is maintained of what procedure was carried out by whom at what time and applied to which samples.
+<P>
+Because all of the steps in the generation of data are also monitored carefully, it is also possible to quickly identify elements in the process which may be tied to poor data for the purpose of trouble-shooting (such as identifying contaminated solutions, or equipment that may be malfunctioning without notice), by correlating the use of various reagents, equipment or procedures with data quality.
+
+<LI><H2>Error Checking</H2>
+By having information on most elements in the laboratory, checks can be made during lab actions that can minimize mistakes taking place in the lab.  Some of the things which may be checked automatically - either preventing users from continuing or delivering 'Warning' messages include:
+<UL>
+<LI>ensuring names of expected solutions match specified format
+<LI>ensuring correct primer has been applied to plates in a given library
+<LI>ensuring correct antibiotics, inducers, and substrates are applied to samples based on their library
+</UL>
+
+<LI><H2>Lab Automation</H2>
+While there is some time required to use scanners within the lab, other time is saved by simplifying commonly used processes such as Sample Sheet Generation.<BR>
+To generate sample sheets, users need only scan the plates to be used and the sequencer.<BR>
+The database determines which primers have been applied to the plates, sending a warning if more than one is found, or if an unexpected primer was used.<BR>
+The default parameters are set and the name of the plates, primers, current matrix and buffer are determined and displayed to the user.
+<BR>By pressing a single button the user can set in motion the code used to generate this configuration file, which will then be transferred to the sequencer and the run details recorded in the database.
+
+<LI><H2>Data Acquisition</H2>
+The bulk of the data that is actually stored in the database is derived from
+Sequence Runs.  By storing this data in a database, it allows the immediate
+viewing of data a variety of forms that allow for sophisticated
+representations of this data to be displayed as reports or for ongoing
+quality monitoring.
+
+<LI><H2>Automated Processes</H2>
+A number of automated processes can be performed regularly which help ensure high throughput of quality data.  Such processes include:
+<UL>
+<LI>Sequence Run Analysis (which runs regularly to perform analysis on any
+pending sequence runs)
+<LI>Diagnostic monitoring (which sends emails warning of elements that are noted to be correlated to poor quality data)
+<LI>Stock monitoring - (which sends emails to warn of low levels of certain items of stock)
+</UL>
+
+</UL>
+<H1>Lab Protocol Tracking</H1>
+Process tracking in the lab consists primarily of three types of ongoing procedures that are monitored.  For each of these, details such as who was implementing the task, and at what time are recorded:
+
+<UL>
+<LI>Plate Tracking:
+<UL>
+<LI>creation of Plates
+<LI>transfer of sample between plates
+<LI>application of protocol procedures to plates <BR>
+ (may involve applying reagents/solutions or use of equipment)
+<LI>failure of plates during protocol procedures if applicable
+<LI>throwing out of plates
+</UL>
+
+<LI>Reagent Tracking:
+<UL>
+<LI>Receipt of Reagents
+<LI>Mixing of Reagents into solutions
+<LI>Use of Reagents/Solutions
+<LI>Ongoing monitoring of quantities used from each bottle
+</UL>
+
+<LI>Equipment Monitoring:
+<UL>
+<LI>Application of Service and Maintenance Procedures
+</UL>
+
+</UL>
+
+
+<h1>Sequencing Flowchart</H1>
+<P>
+This shows the general data flow in the generation of sequence data:<br>
+<Img Src = '$Help_Image_dir/Sequencing.png'></img>
+
+
+<h1>Scanning Flowchart</H1>
+<P>
+This shows the logic handling to enable shortcuts using the handheld barcode scanners:<br>
+<Img Src = '$Help_Image_dir/scan.png'></img>
+ 
+<h1><a name="Navigating">Navigating</a></H1>
+<h2>Icons at the top of the page</H2>
+The Icons provide quick links to common pages such as:<p>  
+      <Table cellpadding = 10><TR><TD width=50>
+         <A Href=$homelink><Img src='$Help_Image_dir/Home.png' alt = 'Home'
+align = top border=0 height=32 width=32></A><img src='$Image_dir/Space.png'
+width=10 height=1>
+   </TD><TD><B>Home</B></TD><TD>This returns the user to the Home page
+   
+      </TD></TR><TR><TD>
+         <A Href='$homelink&Issues_Home=1'><Img src='$Help_Image_dir/bugs.png' alt =
+'Issues' align = top border=0 height=32 width=32></A><img
+src='$Image_dir/Space.png' width=10 height=1>
+   </TD><TD>
+      <B>Issues</b></TD><TD>This takes the user to a page where
+they can enter issues (defects, enhancement requests, etc).  Please Use!!!
+
+   </TD></TR><TR><TD>
+      <A Href=$homelink&Change+User=1><Img
+src='$Help_Image_dir/enter2.png' alt = 'Re-Login' align=top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+   </TD><TD><B>Re-Login</B></TD><TD>Returns user to login page where they
+can redefine the User/Database/Project or turn off/on the top & bottom
+banners (freeing up at the same time some space on the sides of the screen)
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Last+24+Hours=1><Img
+src='$Help_Image_dir/Hourglass.png' alt = 'Last 24 Hours' align = top
+border=0 height=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Last 24 Hours</B></TD><TD>This displays the current status
+(including Avg Read Length, Phred 20 values, Good Wells, # of Mirrored
+Files, Machine) for Sequences Requested (or Run) in the last 24 hours.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Sample+Sheets=1><Img
+src='$Help_Image_dir/Ssheet.png' alt = 'Sample Sheets' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Sample Sheets</B></TD><TD>This directs the user to the
+Sample Sheet main page where they can generate a sample sheet, or delete a
+recently made sample sheet
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Solution=1><Img
+src='$Help_Image_dir/bottle.png' alt = 'Reagents/Chemicals/Solutions' align =
+top border=0 height=32 width=32></A><img src='$Image_dir/Space.png' width=10
+height=1>
+    </TD><TD><B>Reagents/Chemicals/Solutions</B></TD><TD>This sends the
+user to the Reagent/Chemical/Solution home page where they can
+Create/List/Edit/Delete Reagents (including Primers or 'Vector/Primer'
+direction information)
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Equipment=1><Img
+src='$Help_Image_dir/equipment.png' alt = 'Equipment' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Equipment</B></TD><TD>This sends the user to the Equipment
+home page where they can List/Edit/Add Equipment or Maintenance procedures
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Plate=1><Img
+src='$Help_Image_dir/Plate.png' alt = 'Plates' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Plates</B></TD><TD>This sends the user to the Plates home
+page where they can Create/Edit/Delete Plates (& New Libraries if needed).
+Re-Arrayed Plates can also be set up or viewed from this page.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Sequencing+Status=1><Img
+src='$Help_Image_dir/data.png' alt = 'Sequencing Summary' align = top
+border=0 height=32 width=32></A><img src='$Image_dir/Space.png' width=10
+height=1>
+    </TD><TD><B>Summary</B></TD><TD>This sends user to the Summary Page
+which can list Read Summaries or Prep Status for Libraries or Projects
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Library=1><Img
+src='$Help_Image_dir/Library.png' alt = 'Libraries' align = top border=0
+height=36 width=36></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Libraries</B></TD><TD>This directs the user to the Library
+home page where they can Create/Edit/View Libraries
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Main+Contact=1><Img
+src='$Help_Image_dir/contacts.gif' alt = 'Contacts' align = top border=0
+height=32 width=32></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Contacts</B></TD><TD>This sends the user to the Contacts
+home page where they can View/Edit/Add Contact or Organization information
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Admin+Page=1><Img
+src='$Help_Image_dir/admin.png' alt = 'Sequencing Admin' align = top border=0
+height=50 width=50></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Sequencing Admin</B></TD><TD>This sends lab administrators to the 'Admin' page,
+where they can adjust defaults, add new Projects, edit Standard Solution chemistries etc.
+
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Page+Name=Main+Orders&Last+Page=Orders><Img
+src='$Help_Image_dir/box.png' alt = 'Orders' align = top border=0
+height=40 width=40></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>Orders</B></TD><TD>This sends the user to the Orders database
+if this application is being used.
+ 
+   </TD></TR><TR><TD>
+       <A Href=$homelink&Help=1&Revisions=1><Img src='$Help_Image_dir/new.png' 
+alt = 'New Changes' align = top border=0
+height=32 width=70></A><img src='$Image_dir/Space.png' width=10 height=1>
+    </TD><TD><B>New Changes</B></TD><TD>This describes briefly the latest
+changes that have been made to the barcode pages as new versions are
+released.  An archive is also available at the bottom of the page linking to
+a history of changes made to each release.
+    </TD></TR></Table>
+
+<h2>Using the Tab Bar</H2>
+The tab bar can be found on top of all the web pages:
+<Img src='$Help_Image_dir/Tab_bar.png'><p>
+It consists of the following elements:
+<span class=small><ul>
+<li>Tabs: Clicking on a tab will bring the user to the corresponding department. (For more information on deparment home pages, please refer to the 'Departments' section below).</li>
+<li>Info: Display info including the database and database server currently logged-in, the current user and the release version.</li>
+<li>Error Notification: Allows users to report errors to LIMS administrators.</li>
+<li>Quick Actions: Allows users to search database, search help pages, scan barcodes, grab plate sets and print text labes.</li>
+<li>Links: Various useful links.</li>
+</ul></span>
+
+<h2>Departments</H2>
+When users login to the alDente web interface, they will be directed to their corresponding department home pages. Alternatively, users can navigate among department home pages using the Tab Bar (see above).  Currently home pages are avaiable for the following departments.<p>
+These home pages contain the most commonly used operations by the users in the corresponding department. In addition, these pages contain a 'Display results in new window' checkbox besides the page title; when this checkbox is checked, the results of actions in this home page will be displayed in a new window:
+<span class=small><ul>
+<li>Sequencing (Note that only users with Admin permissions will see the 'Sequencing Admin' section)</li>
+<img src="$Help_Image_dir/Sequencing_Home.png"><br>
+<li>Receiving</li>
+<img src="$Help_Image_dir/Receiving_Home.png"><br>
+<li>Administration (Note that currently this is the same page as the 'Summary' page)</li>
+<img src="$Help_Image_dir/Summary_Page.png"><br>
+</ul></span>
+        <HR>
+
+	

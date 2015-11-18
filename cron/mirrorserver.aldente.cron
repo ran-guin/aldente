@@ -1,0 +1,10 @@
+### Ongoing ###
+
+# Synchronization of Production code
+*/10 8-19 * * 1-5 echo '' >> /home/sequence/alDente/logs/code_sync.log; date >> /home/sequence/alDente/logs/code_sync.log; rsync -avz /home/sequence/alDente/WebVersions/Production/ /usr/local/ulib/prod/alDente/ >> /home/sequence/alDente/logs/code_sync.log; date >> /home/sequence/alDente/logs/code_sync.log
+
+# Synchronization of Production code for Perl 5.8
+*/10 8-19 * * 1-5 echo '' >> /home/sequence/alDente/logs/code_sync.production.log; date >> /home/sequence/alDente/logs/code_sync.production.log; rsync -avz --exclude="*.log" /home/sequence/alDente/WebVersions/Production_Perl58/ /usr/local/ulib/prod/alDente_Perl58/ >> /home/sequence/alDente/logs/code_sync.production.log; date >> /home/sequence/alDente/logs/code_sync.production.log
+
+# Synchronization of Beta code
+*/10 8-19 * * 1-5 echo '' >> /home/sequence/alDente/logs/code_sync.beta.log; date >> /home/sequence/alDente/logs/code_sync.beta.log; rsync -avz --exclude="*.log" /home/sequence/alDente/WebVersions/Beta/ /usr/local/ulib/beta/alDente/ >> /home/sequence/alDente/logs/code_sync.beta.log; date >> /home/sequence/alDente/logs/code_sync.beta.log

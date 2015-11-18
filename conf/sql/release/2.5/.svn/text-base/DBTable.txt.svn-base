@@ -1,0 +1,251 @@
+DBTable_ID	DBTable_Name	DBTable_Description	DBTable_Status	Status_Last_Updated	DBTable_Type	DBTable_Title
+1	Account	Accounts used for purchasing/ordering	Missing values from the Account Type column - perhaps changed to enum	2002-11-20 15:09:00	General	Account
+2	Barcode_Label	Barcode formats used for the scanners	OK	2002-11-20 15:09:00	\N	Barcode_Label
+3	Box	Boxes received in the lab	Some boxes have no data at all (box 9 and 10); Some boxes do not have a corresponding box type even only Kit and Supplies are the only enums; also dates for Box_Opened are questionable	2002-11-20 15:09:00	Lab Object	Box
+4	Chemistry_Code	Chemistry used for the sequencers	Chemistry_Description not nullable yet a lot of chemistry code have blank description; Terminator and Dye fields have values not belonged to the enum list	2002-11-20 15:09:00	\N	Chemistry_Code
+5	Solution	Individual solutions used in the lab	There are solutions with Quantity_Used filled in but without Solution_Quantity;  Also there are solutions that have no solution type; when linked with the Stock table, there are a solutions that belongs to different solution_type for the same stock_name - currently Jeff/George are taking a look at the list to see how it can be cleaned up.;Also whether there should be Solution that does not belong to any Stock.	2002-11-20 15:09:00	Lab Object	Solution
+6	Solution_Info	Extra information for solutions used in the lab	The idea of this table is many Solution can share the same Solution_Info.  However, there are a lot of records in the Solution_Info table that have the exact same nMoles, ODs and micrograms, causing redundant information.  The combination of these 3 fields should be unique	2002-11-20 15:09:00	\N	Solution_Info
+7	Stock	Stock item in the lab	There are a lot of entries having NO Stock_Catalog_Number even though their Stock_Source is not Made In House;Also currently there are a lot of entries with the same Stock_Catalog_Number but having different Stock_Name;Lots of entries have slightly different Stock_Name which can be propably be amalgamated - Jeff/George are currently going over the list.	2002-11-20 15:09:00	Lab Object	Stock
+11	Pool	A pool of clones	Contains both FK_Transposon__Name and FK_Transposon__ID fields - this is redundant. All we need is the FK_Transponson__ID which can link us to the Transposon table via Transposon.Transposon_ID	2002-11-20 16:13:44	Lab Process	Pool
+12	Transposon	Transposons	Currently only contains one record	2002-11-20 16:33:46	General	Transposon
+15	Clone_Sequence	Stores the actual sequences along with other statistics and comments/notes	Finished cleaning up the Clone_Sequence_Comments field;Next step is to get rid of the FK_Note__ID field	2002-11-27 10:15:34	Application Specific	Clone_Sequence
+17	Collaboration	GSC collaborations	Currently only 1 record. Need to fill in the missing data	2002-11-20 17:32:15	Join	Collaboration
+18	Communication	Communications/messages between GSC staff and another contact	Only few records now - whether table is really used at all	2002-11-20 17:36:06	\N	Communication
+21	ConcentrationRun	Correlates the plate ID and equipment ID for the concentration information of the individual wells from the Concentraions table	1 record has empty value for CalibrationFunction - probably should be set to n/a as well	2002-11-21 11:31:00	Application Specific	ConcentrationRun
+23	Concentrations	Concentration of the wells	Currently the Units field is a varchar - probably should make it into an enum	2002-11-21 11:36:31	\N	Concentrations
+24	Contact	Contacts for GSC	There are records that contain no Contact_Name - perhaps this is because the organization itself is the contact - still maybe better to make the Contact_Name field non-nullable; Also there is a contact called nobody - what is this for; There are multiple records that contain the same contact name and if fact they are the same person - the difference is they belong to a different organzation - this could cause data inconsistency and duplicate data - It will be better to create a new table called Person that actually stores the personal info like name, personal phone, personal email, personal address, etc and hence link the Contact table to the Person table via a FK_Person__ID - this will also help to remove various other personal related fields from the Contact table; There are also various fields related to the workplae info like Work_Address, Work_City etc - perhaps this can be removed as well since we already have a link to the Organization table via FK_Organization__ID;	2002-11-21 11:52:40	General	Contact
+25	Contaminant	Contaminants found in wells during sequence runs	OK	2002-11-21 12:44:29	General	Contaminant
+26	Contamination	Contaminations that could be found during sequence runs	Are the only 2 records in the table the same thing	2002-11-21 13:01:44	Application Specific	Contamination
+27	Cross_Match	Stores the results of the vector screening of sequences based on the Cross_Match program	OK	2002-11-21 13:37:08	Application Specific	Cross_Match
+28	DBTable	Descriptions and status of all tables in the current database	OK	2002-11-21 13:39:27	\N	DBTable
+29	Dye_Chemistry	Various information of dyes used for sequencing	This table will probably be removed after the new addition of the sample sheet tables like SS_Config and SS_Option	2002-11-21 13:44:24	\N	Dye_Chemistry
+30	Employee	GSC employees - users of the alDente system	Other than some info like positions are outdated/inaccurate, in general the table is fine	2002-11-21 13:55:52	Lab Object	Employee
+31	Equipment	Equipments in the lab	There are equipments that have the same Serial_Number but have different Equipment_Name - in some cases this is because of having different equipment number but this info is already in the Equipment_Number field and so should not appear in Equipment_Name - worth to look into; Also there are equipments that have no FK_Stock__ID - ok or not	2002-11-21 14:11:18	Lab Object	Equipment
+32	Error_Check	Error checking criteria for database fields	Not understand how this table is used;There are records in the table that are not even referencing a table from the database or are some testing data;Also most records are for the seqtest database - wonder whether this is an obsolete table	2002-11-21 14:22:20	\N	Error_Check
+36	Funding	Fundings for GSC	Seems like the data is not up-to-date/a lot of funding missing	2002-11-21 14:41:28	\N	Funding
+37	Gel	Gel run for plates	Data looks pretty incomplete	2002-11-21 14:49:31	\N	Gel
+39	Lab_Protocol	Protocols created by lab administrators to be used in the lab	There are few protocols that links to FK_Employee__ID of zero - since there is no such employees this should be fixed	2002-11-21 15:53:37	General	Lab_Protocol
+40	Library	Information about a proposed collection/library.	There are libraries that do not have Library_Source_Name - whether it is a good idea to make this a required field; Also no records has a FK_Vector__ID - they all link to the Vector table via FK_Vector__Name - hence probably can remove the FK_Vector__ID field	2002-11-21 16:25:34	General	Collection
+41	LibraryPrimer	Assign a primer to a library. Once done adding primers, click skip to go to the next form.	There are records that contain no FK_Library__Name - should look into it	2002-11-21 16:33:52	Join	LibraryPrimer
+42	LibraryProgress	Progess/status of libraries	Looks like this table is not updated often - in fact the only progress in the table is Created;Need to determine whether this table will be continued to be used and if so probably so frequently track the progress - perhaps should create a new field that is a enum of different progresses and use the existing LibraryProgress_Comments field to store extra detail info	2002-11-21 16:39:23	\N	LibraryProgress
+43	Machine_Default	Stores default machine configurations for the sequencers	With the new addition of the sample sheet tables like SS_Config and SS_Option, many fields in this table can be dropped; Also the information from other fields are stored in the Sequence_Batch table at the sequence batch level - Need to determine whether these fields can be removed from Machine_Default as well	2002-11-21 16:46:13	Settings	Machine_Default
+44	Maintenance	Historical record for maintenance performed on machines	There are records with no Maintenance_Process - probably this should be a required field and perhaps even worth to make this an enum field	2002-11-21 17:01:06	Lab Process	Maintenance
+45	Maintenance_Protocol	Detail steps for regular machine maintenance/services from the Service table	There are currently no records in this table, and in fact there are only 2 records in the Service table - Need to determine whether these tables are obsolete and if not then need to encourage users to use them	2002-11-21 17:19:57	\N	Maintenance_Protocol
+46	Message	Messages	Seems like an obsolete table that no one is using anymore	2002-11-21 17:35:25	\N	Message
+47	Misc_Item	Miscellaneous lab items	Contains no data	2002-11-21 17:42:51	Lab Object	Misc_Item
+48	Mixture	Mixtures made from solutions	The older records do not have data for Units_Used - should backfill these data and make the Units_Used field not nullable	2002-11-21 17:47:36	Join	Mixture
+49	MultiPlate_Run	Multiplate sequence runs	OK	2002-11-22 09:28:48	\N	MultiPlate_Run
+50	Multiple_Barcode	Correlates a MUL barcode to the individual PLAs	There are some MULs that only contains a single PLA	2002-11-22 09:32:53	\N	Multiple_Barcode
+51	Note	Notes from sequence runs	Probably better to make the field Note_Type to be enum; Probably the table will be dropped	2002-11-22 09:37:04	\N	Note
+52	Notice	Notice sent to users during sequence runs	Target_List has missing and inconsistent data; also no new data in a while	2002-11-22 09:41:21	\N	Notice
+53	Optical_Density	Optical Density and concentration measurements for wells	None of the records have any data for 260nm_Corrected, 280nm_Corrected and Density	2002-11-22 09:50:04	\N	Optical_Density
+54	Order_Notice	Notice sent to users when supply is low and may need to order	No new data for a while	2002-11-22 09:53:29	Settings	Order_Notice
+55	Orders	Orders of items	Currently not being used - need to integrate this part of alDente with the Excel system currently used; Also might be worthwhile to create a separate Item table to store some of the detail info of an item to get rid of redundant data and data inconsistency - in this case the Orders table will link to the Item table via FK_Item__ID	2002-11-22 10:03:23	\N	Orders
+56	Organization	Organizations that GSC deals with	In the process of removing redundant/outdated organizations	2002-11-27 10:10:34	General	Organization
+57	Parameter	Parameters for the standard solution chemistry calculator	There are a few records that are missing Standard_Solution_ID and/or Parameter_Type - look into it	2002-11-22 10:27:47	Settings	Parameter
+58	Standard_Solution	Contains the formula for the chemistry calulator for those solutions that are used often in the lab	OK	2002-11-22 10:29:10	Settings	Standard_Solution
+59	Plate	Plates	There are plates that have no FK_Rack__ID - need to clean these up	2002-11-22 10:38:47	Lab Object	Container
+60	Plate_Format	Various plate formats of the plates	OK	2002-11-22 10:40:34	Object Detail	Plate_Format
+61	Plate_Set	Correlates a plate set number to its individual plates	OK	2002-11-22 10:45:26	\N	Plate_Set
+62	Plate_Tube	Junction table between plates and tubes	Currently contains no records	2002-11-22 10:48:35	\N	Plate_Tube
+64	Primer	Primer Types	Most of the primer sequences are in lower cases except for a few - wonder whether should make it consistent	2002-11-22 11:20:38	General	Primer
+65	Primer_Info	Extra information for Primers	OK	2002-11-22 11:32:00	Application Specific	Primer_Info
+66	Project	GSC projects	Project 20 has no Project_Type; Also a lot of projects are missing FK_Funding__ID	2002-11-22 11:36:06	General	Project
+67	Protocol_Step	Individual steps of lab protocols	OK	2002-11-22 11:41:15	Settings	Protocol_Step
+68	Protocol_Tracking	Lab protocol steps to be tracked when performed	OK	2002-11-22 11:50:42	Settings	Protocol_Tracking
+69	Rack	Racks for storing plates	OK	2002-11-22 11:53:08	Lab Object	Rack
+70	ReArray	Information about rearrays, including source and target plates/wells and other info	OK	2002-11-22 12:00:07	Lab Process	ReArray
+71	Restriction_Site	Restriction sites and their sequences	OK	2002-11-22 12:02:14	General	Restriction_Site
+72	SS_Config	Sample sheet configurations for the sequencers	OK	2002-11-22 12:43:52	Application Specific	SS_Config
+73	SS_Option	Option values for sample sheet configurations for the sequencers	OK	2002-11-22 12:44:41	Application Specific	SS_Option
+74	Sequencer_Type	Different types of sequencers along with some of their parameters	OK	2002-11-22 12:47:22	Application Specific	Sequencer_Type
+75	Service	Regular maintenance/service for the lab equipments	Currently only 2 records in the table	2002-11-22 12:49:32	\N	Service
+76	Service_Contract	Service contracts for lab equipments	Currently contains no records	2002-11-22 12:51:23	\N	Service_Contract
+78	Suggestion	Suggestions for improving the alDente system	Not sure how FK_Employee__ID and FK_Person__ID works	2002-11-22 13:16:15	\N	Suggestion
+79	Tube	Tubes containing DNA/RNA/Tissue, DNA ligation tubes or agar plates prior to colony picking, etc	Currently contains no records	2002-11-22 13:21:43	\N	Tube
+80	Tube_Application	Junction table between tubes and solutions	Currently contains no records	2002-11-22 13:24:43	\N	Tube_Application
+81	Vector	Info about the vectors	Vector 81 and 82 contains no Vector_Name; Not sure how Vector_Manufacturer is different than Vector_Sequence_Source - perhaps should link to FK_Organization__ID rather than specifying the names directly	2002-11-22 13:30:56	General	Vector
+82	VectorPrimer	Primers for the vectors	Record 84 contains no FK_Vector__Name	2002-11-22 13:33:45		VectorPrimer
+83	Warranty	Warranties for the equipments	Currently contains no records	2002-11-22 13:36:07	\N	Warranty
+84	Well_Lookup	Maps well positions between 384-wells plate and 96-wells plate	OK	2002-11-22 13:39:37	\N	Well_Lookup
+86	Microtiter	\N	\N	0000-00-00 00:00:00	Application Specific	Microtiter
+87	Ligation	\N	\N	0000-00-00 00:00:00	Application Specific	Ligation
+88	Xformed_Cells	\N	\N	0000-00-00 00:00:00	Application Specific	X-Formed Cells
+89	Submission	\N	\N	0000-00-00 00:00:00	\N	Submission
+90	SAGE_Library	Detailed information about a SAGE library.		0000-00-00 00:00:00	Application Specific	SAGE_Library
+91	cDNA_Library	Detailed information about cDNA libraries		0000-00-00 00:00:00	Application Specific	cDNA_Library
+92	Genomic_Library	Detailed information about genomic libraries.		0000-00-00 00:00:00	Application Specific	Genomic_Library
+93	PCR_Library	Detailed information about PCR libraries. 		0000-00-00 00:00:00	Application Specific	PCR_Library
+94	Issue	\N	\N	0000-00-00 00:00:00	\N	Issue
+95	TraceData	\N	\N	0000-00-00 00:00:00	Dynamic	TraceData
+97	Primer_Customization	Customization info for Primers		0000-00-00 00:00:00	General	Primer_Customization
+98	Primer_Order	\N	\N	0000-00-00 00:00:00	\N	Primer_Order
+99	Setting	\N	\N	0000-00-00 00:00:00	\N	Setting
+100	EmployeeSetting	\N	\N	0000-00-00 00:00:00	\N	EmployeeSetting
+102	Clone_Alias	\N	\N	0000-00-00 00:00:00	\N	Clone_Alias
+103	Clone_Details	\N	\N	0000-00-00 00:00:00	\N	Clone_Details
+105	Clone_Sample	\N	\N	0000-00-00 00:00:00	\N	Clone_Sample
+106	Clone_Source	\N	\N	0000-00-00 00:00:00	\N	Clone_Source
+107	DBField	\N	\N	0000-00-00 00:00:00	\N	DBField
+108	DB_Form	\N	\N	0000-00-00 00:00:00	\N	DB_Form
+109	Department	\N	\N	0000-00-00 00:00:00	\N	Department
+110	Enzyme	\N	\N	0000-00-00 00:00:00	\N	Enzyme
+111	Funding_Applicant	\N	\N	0000-00-00 00:00:00	\N	Funding_Applicant
+112	Funding_Distribution	\N	\N	0000-00-00 00:00:00	\N	Funding_Distribution
+113	Funding_Segment	\N	\N	0000-00-00 00:00:00	\N	Funding_Segment
+115	GrantApplication	\N	\N	0000-00-00 00:00:00	\N	GrantApplication
+116	GrantDistribution	\N	\N	0000-00-00 00:00:00	\N	GrantDistribution
+117	Grp	\N	\N	0000-00-00 00:00:00	\N	Grp
+118	GrpDBTable	Join table between Table and Grps (indicating permissions)	\N	0000-00-00 00:00:00	\N	GrpDBTable
+119	GrpEmployee	Join table, Grp-Employee	\N	0000-00-00 00:00:00	Join	Employee Groups
+120	GrpLab_Protocol	Join table, Grp-Lab_Protocol	\N	0000-00-00 00:00:00	\N	GrpLab_Protocol
+121	GrpStandard_Solution	Join table, Grp-Standard_Solution	\N	0000-00-00 00:00:00	\N	GrpStandard_Solution
+122	Grp_Relationship	Join table, Grp-Grp	\N	0000-00-00 00:00:00	\N	Grp_Relationship
+123	Issue_Detail	\N	\N	0000-00-00 00:00:00	\N	Issue_Detail
+124	Issue_Log	\N	\N	0000-00-00 00:00:00	\N	Issue_Log
+125	LibraryStudy	\N	\N	0000-00-00 00:00:00	\N	LibraryStudy
+126	Library_Plate	\N	\N	0000-00-00 00:00:00	\N	Library_Plate
+127	Matched_Funding	\N	\N	0000-00-00 00:00:00	\N	Matched_Funding
+128	Plate_Prep	\N	\N	0000-00-00 00:00:00	\N	Plate_Prep
+130	Plate_Sample	\N	\N	0000-00-00 00:00:00	Join	Plate_Sample
+131	PoolSample	\N	\N	0000-00-00 00:00:00	\N	PoolSample
+132	Prep	\N	\N	0000-00-00 00:00:00	\N	Prep
+133	Primer_Plate	\N	\N	0000-00-00 00:00:00	\N	Primer_Plate
+134	Primer_Plate_Well	\N	\N	0000-00-00 00:00:00	\N	Primer_Plate_Well
+136	ProjectStudy	\N	\N	0000-00-00 00:00:00	\N	ProjectStudy
+140	ReArray_Request	\N	\N	0000-00-00 00:00:00	\N	ReArray_Request
+141	RunPlate	\N	\N	0000-00-00 00:00:00	\N	RunPlate
+142	Sample	\N	\N	0000-00-00 00:00:00	\N	Sample
+143	Sequencing_Library	Additional information about this library	\N	0000-00-00 00:00:00	Application Specific	Library
+144	Study	\N	\N	0000-00-00 00:00:00	\N	Study
+145	Submission_Detail	\N	\N	0000-00-00 00:00:00	\N	Submission_Detail
+146	Transposon_Pool	\N	\N	0000-00-00 00:00:00	\N	Transposon_Pool
+147	Version	\N	\N	0000-00-00 00:00:00	\N	Version
+152	DepartmentSetting	\N	\N	0000-00-00 00:00:00	\N	DepartmentSetting
+157	Sample_Pool	\N	\N	0000-00-00 00:00:00	\N	Sample_Pool
+158	ReArray_Plate	\N	\N	0000-00-00 00:00:00	\N	ReArray Plate
+160	Agilent_Assay	\N	\N	0000-00-00 00:00:00	\N	Agilent_Assay
+161	DB_Login	\N	\N	0000-00-00 00:00:00	\N	DB_Login
+162	Extraction	\N	\N	0000-00-00 00:00:00	\N	Extraction
+163	Extraction_Details	\N	\N	0000-00-00 00:00:00	\N	Extraction_Details
+164	Extraction_Sample	\N	\N	0000-00-00 00:00:00	\N	Extraction_Sample
+165	Original_Source	Generic information about the source of a sample	\N	0000-00-00 00:00:00	General	Sample Origin
+169	Sample_Alias	\N	\N	0000-00-00 00:00:00	\N	Sample_Alias
+171	Printer	\N	\N	0000-00-00 00:00:00	\N	Printer
+172	Attribute	\N	\N	0000-00-00 00:00:00	\N	Attribute
+173	Band	\N	\N	0000-00-00 00:00:00	\N	Band
+174	How_To_Object	\N	\N	0000-00-00 00:00:00	\N	How_To_Object
+175	How_To_Step	\N	\N	0000-00-00 00:00:00	\N	How_To_Step
+176	How_To_Topic	\N	\N	0000-00-00 00:00:00	\N	How_To_Topic
+177	Hybrid_Original_Source	\N	\N	0000-00-00 00:00:00	\N	Hybrid_Original_Source
+180	Lab_Request	\N	\N	0000-00-00 00:00:00	\N	Lab_Request
+181	Lane	\N	\N	0000-00-00 00:00:00	\N	Lane
+182	Library_Source	\N	\N	0000-00-00 00:00:00	Join	Library/Source Link
+184	Original_Source_Attribute	\N	\N	0000-00-00 00:00:00	\N	Original_Source_Attribute
+187	Pipeline	\N	\N	0000-00-00 00:00:00	\N	Pipeline
+188	Plate_PrimerPlateWell	\N	\N	0000-00-00 00:00:00	\N	Plate_PrimerPlateWell
+189	Prep_Detail_Option	\N	\N	0000-00-00 00:00:00	\N	Prep_Detail_Option
+190	Prep_Details	\N	\N	0000-00-00 00:00:00	\N	Prep_Details
+193	Sample_Attribute	\N	\N	0000-00-00 00:00:00	\N	Sample_Attribute
+194	Source	Information about the sample being sent to the GSC.	\N	0000-00-00 00:00:00	Lab Object	Starting Material
+195	SubmissionVolume	\N	\N	0000-00-00 00:00:00	\N	SubmissionVolume
+196	Submission_Alias	\N	\N	0000-00-00 00:00:00	\N	Submission_Alias
+197	Submission_Volume	\N	\N	0000-00-00 00:00:00	\N	Submission_Volume
+198	Trace_Submission	\N	\N	0000-00-00 00:00:00	\N	Trace_Submission
+199	Trigger	\N	\N	0000-00-00 00:00:00	\N	Trigger
+200	Plate_Attribute	\N	\N	0000-00-00 00:00:00	\N	Plate_Attribute
+201	WorkLog	\N	\N	0000-00-00 00:00:00	\N	WorkLog
+202	WorkPackage	\N	\N	0000-00-00 00:00:00	\N	WorkPackage
+203	Printer_Assignment	\N	\N	0000-00-00 00:00:00	\N	Printer_Assignment
+204	Printer_Group	\N	\N	0000-00-00 00:00:00	\N	Printer_Group
+205	UseCase	\N	\N	0000-00-00 00:00:00	\N	UseCase
+206	UseCase_Step	\N	\N	0000-00-00 00:00:00	\N	UseCase_Step
+207	WorkPackage_Attribute	\N	\N	0000-00-00 00:00:00	\N	WorkPackage_Attribute
+208	Change_History	\N	\N	0000-00-00 00:00:00	\N	Change_History
+209	Child_Ordered_Procedure	\N	\N	0000-00-00 00:00:00	\N	Child_Ordered_Procedure
+212	FailureReason	\N	\N	0000-00-00 00:00:00	\N	FailureReason
+213	GCOS_Config	\N	\N	0000-00-00 00:00:00		GCOS_Config
+214	Genechip_Experiment	\N	\N	0000-00-00 00:00:00		Genechip_Experiment
+215	GrpProject	\N	\N	0000-00-00 00:00:00	\N	GrpProject
+216	Location	\N	\N	0000-00-00 00:00:00	\N	Location
+217	Ordered_Procedure	\N	\N	0000-00-00 00:00:00	\N	Ordered_Procedure
+218	Organism	\N	\N	0000-00-00 00:00:00	\N	Organism
+219	Plate_Tray	\N	\N	0000-00-00 00:00:00	\N	Plate_Tray
+220	ProcedureTest_Condition	\N	\N	0000-00-00 00:00:00	\N	ProcedureTest_Condition
+221	ReArray_Attribute	\N	\N	0000-00-00 00:00:00	\N	ReArray_Attribute
+222	Source_Pool	\N	\N	0000-00-00 00:00:00	\N	Source_Pool
+223	Status	\N	\N	0000-00-00 00:00:00	\N	Status
+224	Submission_Info	\N	\N	0000-00-00 00:00:00	\N	Submission_Info
+225	Test_Condition	\N	\N	0000-00-00 00:00:00	\N	Test_Condition
+226	Tray	\N	\N	0000-00-00 00:00:00	\N	Tray
+227	Tissue	\N	\N	0000-00-00 00:00:00	\N	Tissue
+228	Stage	\N	\N	0000-00-00 00:00:00	\N	Stage
+229	Submission_Table_Link	\N	\N	0000-00-00 00:00:00	\N	Submission_Table_Link
+230	Prep_Attribute_Option	\N	\N	0000-00-00 00:00:00	\N	Prep_Attribute_Option
+231	Prep_Attribute	\N	\N	0000-00-00 00:00:00	\N	Prep_Attribute
+232	EST_Library	\N	\N	0000-00-00 00:00:00		EST_Library
+233	Transposon_Library	\N	\N	0000-00-00 00:00:00		Transposon_Library
+234	Work_Request	\N	\N	0000-00-00 00:00:00	\N	Work_Request
+235	Antibiotic	\N	\N	0000-00-00 00:00:00	\N	Antibiotic
+236	Event	\N	\N	0000-00-00 00:00:00	\N	Event
+237	Event_Attribute	\N	\N	0000-00-00 00:00:00	\N	Event_Attribute
+238	Fail	\N	\N	0000-00-00 00:00:00	\N	Fail
+239	FailReason	\N	\N	0000-00-00 00:00:00	\N	FailReason
+240	Field_Map	\N	\N	0000-00-00 00:00:00	\N	Field_Map
+242	GelAnalysis	\N	\N	0000-00-00 00:00:00	\N	GelAnalysis
+243	GelRun	\N	\N	0000-00-00 00:00:00	\N	GelRun
+244	Goal	\N	\N	0000-00-00 00:00:00	\N	Goal
+246	LibraryApplication	\N	\N	0000-00-00 00:00:00	\N	Association
+247	LibraryGoal	\N	\N	0000-00-00 00:00:00	\N	Target Goals
+248	LibraryVector	\N	\N	0000-00-00 00:00:00	\N	LibraryVector
+249	Library_Segment	\N	\N	0000-00-00 00:00:00	\N	Segmented Source
+250	Object_Class	\N	\N	0000-00-00 00:00:00	\N	Object_Class
+251	Run	\N	\N	0000-00-00 00:00:00	\N	Run
+252	RunBatch	\N	\N	0000-00-00 00:00:00	\N	RunBatch
+254	Run_Attribute	\N	\N	0000-00-00 00:00:00	\N	Run_Attribute
+255	SequenceAnalysis	\N	\N	0000-00-00 00:00:00	\N	SequenceAnalysis
+256	SequenceRun	\N	\N	0000-00-00 00:00:00	\N	SequenceRun
+259	Source_Attribute	\N	\N	0000-00-00 00:00:00	\N	Source_Attribute
+260	Vector_Type	\N	\N	0000-00-00 00:00:00	\N	Vector_Type
+261	Vector_TypeAntibiotic	\N	\N	0000-00-00 00:00:00	\N	Vector_TypeAntibiotic
+262	Vector_TypePrimer	\N	\N	0000-00-00 00:00:00	\N	Vector_TypePrimer
+263	View	\N	\N	0000-00-00 00:00:00	\N	View
+264	ViewInput	\N	\N	0000-00-00 00:00:00	\N	ViewInput
+265	ViewJoin	\N	\N	0000-00-00 00:00:00	\N	ViewJoin
+266	ViewOutput	\N	\N	0000-00-00 00:00:00	\N	ViewOutput
+267	Array	\N	\N	0000-00-00 00:00:00	\N	Array
+268	BioanalyzerAnalysis	\N	\N	0000-00-00 00:00:00	\N	BioanalyzerAnalysis
+269	BioanalyzerRead	\N	\N	0000-00-00 00:00:00	\N	BioanalyzerRead
+270	BioanalyzerRun	\N	\N	0000-00-00 00:00:00	\N	BioanalyzerRun
+271	Branch	\N	\N	0000-00-00 00:00:00	\N	Branch
+272	Genechip	\N	\N	0000-00-00 00:00:00	\N	Genechip
+273	GenechipAnalysis	\N	\N	0000-00-00 00:00:00	\N	GenechipAnalysis
+274	GenechipAnalysis_Attribute	\N	\N	0000-00-00 00:00:00	\N	GenechipAnalysis_Attribute
+275	GenechipExpAnalysis	\N	\N	0000-00-00 00:00:00	\N	GenechipExpAnalysis
+276	GenechipMapAnalysis	\N	\N	0000-00-00 00:00:00	\N	GenechipMapAnalysis
+277	GenechipRun	\N	\N	0000-00-00 00:00:00	\N	GenechipRun
+278	Genechip_Type	\N	\N	0000-00-00 00:00:00	\N	Genechip_Type
+279	Microarray	\N	\N	0000-00-00 00:00:00	\N	Microarray
+280	Probe_Set	\N	\N	0000-00-00 00:00:00	\N	Probe_Set
+281	Probe_Set_Value	\N	\N	0000-00-00 00:00:00	\N	Probe_Set_Value
+282	SpectAnalysis	\N	\N	0000-00-00 00:00:00	\N	SpectAnalysis
+283	SpectRead	\N	\N	0000-00-00 00:00:00	\N	SpectRead
+284	SpectRun	\N	\N	0000-00-00 00:00:00	\N	SpectRun
+285	Sorted_Cell	\N	\N	0000-00-00 00:00:00	\N	Sorted Cells
+286	Tissue_Source	\N	\N	0000-00-00 00:00:00	\N	Tissue_Source
+288	SolexaRun	\N	\N	0000-00-00 00:00:00	\N	SolexaRun
+289	SolexaAnalysis	\N	\N	0000-00-00 00:00:00	\N	SolexaAnalysis
+290	RunBatch_Attribute	\N	\N	0000-00-00 00:00:00	\N	RunBatch_Attribute
+291	Flowcell	\N	\N	0000-00-00 00:00:00	\N	Flowcell
+292	Branch_Condition	\N	\N	0000-00-00 00:00:00	\N	Branch_Condition
+293	Defined_Plate_Set	\N	\N	0000-00-00 00:00:00	\N	Defined_Plate_Set
+294	GCOS_Config_Record	\N	\N	0000-00-00 00:00:00	\N	GCOS_Config_Record
+295	Label_Format	\N	\N	0000-00-00 00:00:00	\N	Label_Format
+296	Maintenance_Process_Type	\N	\N	0000-00-00 00:00:00	\N	Maintenance_Process_Type
+297	Pipeline_Step	\N	\N	0000-00-00 00:00:00	\N	Pipeline_Step
+298	Pipeline_StepRelationship	\N	\N	0000-00-00 00:00:00	\N	Pipeline_StepRelationship
+299	RNA_DNA_Collection	\N	\N	0000-00-00 00:00:00	\N	RNA_DNA_Collection
+300	RNA_DNA_Source	\N	\N	0000-00-00 00:00:00	\N	RNA_DNA_Source
+301	RNA_DNA_Source_Attribute	\N	\N	0000-00-00 00:00:00	\N	RNA_DNA_Source_Attribute
+302	Work_Request_Type	\N	\N	0000-00-00 00:00:00	\N	Work_Request_Type
+303	Pipeline_Group	\N	\N	0000-00-00 00:00:00	\N	Pipeline_Group

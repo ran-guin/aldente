@@ -1,0 +1,7 @@
+1	Shelf					0000-00-00	0	0	0	0				In Use	1		\N
+2	TBD	Storage	\N			\N	0	\N	\N	1	\N	\N		In Use	1		\N
+3	TBD (Room Temperature)	Storage	\N	\N	\N	\N	\N	\N	\N	1	\N	\N	\N	In Use	1	Room Temperature	\N
+4	TBD (-80 degrees)	Storage	\N	\N	\N	\N	\N	\N	\N	1	\N	\N	\N	In Use	1	-80 degrees	\N
+5	TBD (-40 degrees)	Storage	\N	\N	\N	\N	\N	\N	\N	1	\N	\N	\N	In Use	1	-40 degrees	\N
+6	TBD (-20 degrees)	Storage	\N	\N	\N	\N	\N	\N	\N	1	\N	\N	\N	In Use	1	-20 degrees	\N
+7	TBD (+4 degrees)	Storage	\N	\N	\N	\N	\N	\N	\N	1	\N	\N	\N	In Use	1	+4 degrees	\N

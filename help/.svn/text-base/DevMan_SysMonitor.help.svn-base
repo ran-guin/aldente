@@ -1,0 +1,23 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - System Monitor<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The bin/sys_monitor.pl script performs various system
+monitoring/checking functions and send email notifications to LIMS
+admin if problems found.<br>
+  </li>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>Functionalities supported:</li>
+  <ul>
+    <li>Ping wireless access points in the lab.&nbsp; If it has
+problems/errors pinging, email notification will be sent.</li>
+    <li>Check hard disk usage.&nbsp; If usage goes above a certian
+threshold (e.g. 90%), email notification will be sent.</li>
+  </ul>
+  <li>This script is run as a cron job under sequence@seqdb01.<br>
+  </li>
+</ul>
+</span>

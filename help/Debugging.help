@@ -1,0 +1,43 @@
+<h2>Debugging_Errors</h2>
+<P>
+    For Debugging problems in the lab, I am tracking the Sessions for each
+user, monitoring all parameters sent each time a button is pressed.
+When a user hits the 'Error Notification' button, a message is sent to the
+administrator, indicating that an error occurred.<BR>
+Both the user and the time of the error is indicated, as is a link to the
+session page.<BR>
+The session page displays all parameters passed through each execution of a
+web page link.  The administrator may then observe exactly what processes
+were being completed, and may retrieve the session by clicking on the
+appropriate time stamp button.
+<P>
+If an 'Error Notification' button is seen in the parameter list, generally
+the administrator should retrieve the PREVIOUS page to avoid re-executing a
+command that may affect the database...
+
+<h3>Database Access Errors</h3>
+<P>
+Sometimes the mysql database will get locked up, disabling
+people from interacting with it (or with specific tables within it).  This
+is a partial list of some possible problems that have occurred in the past,
+and solutions:<UL>
+<LI>Table handling error (28 ?) - this has been caused in the past by the
+tmp directory on SQL server filling up.  If this is the case, it needs to be
+cleared out.
+<LI>A runaway process - If anyone has run SQL queries, (even if they cancel
+the query with ctrl-c), their process may still be running.  Have them log
+into mysql and type 'showprocesslist'.  This will display current running
+commands.  You may kill the process from here by typing kill \$idNumber.
+Most users can only see or kill their own processes, but Martin can see all
+running processes and kill any of them if necessary.  Processes should be
+killed to see if this is the problem before assuming the data is corrupt.
+If, however, after killing processes, the system continues to hang up when
+one tries to access tables through simple commands, it could be a problem
+with corrupt data. 
+<LI>Corrupt data - you should then restore the affected tables within the
+database (see note on Restoring Database).
+<LI>Generally slow response... Take a look to make sure no large jobs are
+running on either SQL server or on the web server (if access is slow via the
+web).  For scanners, check memory usage, and ensure that Netscape pages are
+not being cached.
+</UL>

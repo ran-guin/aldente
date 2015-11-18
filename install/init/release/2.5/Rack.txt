@@ -1,0 +1,5 @@
+1	1	Shelf	Temporary	N	Temporary Rack	0
+2	36	Shelf	S3	N	TBD (Room Temperature)	0
+3	36	Shelf	S1	N	TBD (-20 degrees)	0
+4	36	Shelf	S2	N	TBD (+4 degrees)	0
+6	36	Shelf	S4	N	TBD (-80 degrees)	0

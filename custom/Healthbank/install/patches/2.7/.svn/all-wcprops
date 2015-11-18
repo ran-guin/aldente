@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/70452/alDente/trunk/custom/Healthbank/install/patches/2.7
+END
+add_GENIC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/70451/alDente/trunk/custom/Healthbank/install/patches/2.7/add_GENIC.pat
+END
+bcg_trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/70452/alDente/trunk/custom/Healthbank/install/patches/2.7/bcg_trigger.pat
+END
+upgrade_2_7.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/69927/alDente/trunk/custom/Healthbank/install/patches/2.7/upgrade_2_7.pat
+END
+change_organization_HB.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68925/alDente/trunk/custom/Healthbank/install/patches/2.7/change_organization_HB.pat
+END
+db_trigger_import.pat
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/69123/alDente/trunk/custom/Healthbank/install/patches/2.7/db_trigger_import.pat
+END
+DB_Trigger.txt
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/69123/alDente/trunk/custom/Healthbank/install/patches/2.7/DB_Trigger.txt
+END

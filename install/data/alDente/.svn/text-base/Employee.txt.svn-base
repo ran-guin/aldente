@@ -1,0 +1,7 @@
+Employee_ID	Employee_Name	Employee_Start_Date	Initials	Email_Address	Employee_FullName	Position	Employee_Status	Permissions	IP_Address	Password	Machine_Name	FK_Department__ID
+1	Admin	2001-01-01	ADM		Administrator	BioInformatics	Active	R,W,U,D,S,P,A	NULL	459f153e2794f6da	NULL	3
+2	Guest	0000-00-00	G		Guest		Active	R	NULL	78a302dd267f6044	NULL	3
+3	LabUser	0000-00-00	LU	labuser	Lab User	Lab User	Active	R,W,U,S,P	NULL	78a302dd267f6044	NULL	3
+4	LabAdmin	0000-00-00	LA	labadmin	Lab Admin	Lab Admin	Active	R,W,U,D,S,P,A	NULL	78a302dd267f6044	NULL	3
+5	Receiver	0000-00-00	REC		Receiver	Receiver	Active	R,W,U,D,S,P,A	NULL	78a302dd267f6044		4
+6	API Client	0000-00-00	API	aldente	API Client	BioInformatics	Active	R,W,U,D,S,P,A		71166fe020917973		3

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/68925/alDente/trunk/data
+END
+library_list
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/data/library_list
+END
+include.dirs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/data/include.dirs
+END
+login_file
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/68925/alDente/trunk/data/login_file
+END
+barcodes.dat
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/data/barcodes.dat
+END
+hosts.list
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/68925/alDente/trunk/data/hosts.list
+END
+config.dat
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/68925/alDente/trunk/data/config.dat
+END

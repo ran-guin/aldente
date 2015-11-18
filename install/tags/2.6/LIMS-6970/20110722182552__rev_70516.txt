@@ -1,0 +1,9 @@
+lib/perl/Core/SDB/HTML.pm
+lib/perl/Core/alDente/View_App.pm
+lib/perl/Core/alDente/Query_Summary.pm
+lib/perl/Core/alDente/View.pm
+lib/perl/Core/alDente/View_Generator.pm
+bin/t/Core/SDB/HTML.t
+bin/t/Core/alDente/Query_Summary.t
+bin/t/Core/alDente/View.t
+bin/t/Core/alDente/View_Generator.t

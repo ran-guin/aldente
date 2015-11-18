@@ -1,0 +1,34 @@
+<h2>Annotating records with notes</H2>
+<P>	
+Sometimes mistakes are made during laboratory procedures that cause
+errant records to be placed in the 
+database.  These can often be removed from the database.
+<p>
+<B>Removing invalid plates:</B><BR>
+Plates can be removed by going to the 'Plates' page icon and then selecting
+the <B>Check Recent Plates</B> Button.  This will bring up plates made by
+the same user within the last 7 days. 
+<p>
+From here users can select any number of plates for deletion <BR>
+(you may instead mark plates as failed, or annotate any number of plates
+with a common note)
+<P>
+Note: If any other data points to a plate, you will NOT be able to delete
+it.<br>
+(if for example a sequence run uses a plate - then you will not be able to
+delete that plate).<BR>
+<P>
+<B>Removing Sequence Requests (sample sheets):</B><BR>
+Requests for Sequence Runs can be erased in a similar fashion by going to
+the 'Sample Sheets' page and selecting 'Remove Sequence Requests'.  Again
+the user will be given a list of all requests that they have made that have
+not yet been analyzed.
+<P>
+<B>Removing Solutions (or Reagents):</B><BR>
+Solutions can be deleted in a similar fashion.  By clicking on 'Check my
+Recent Solutions', the user may select any number of recently made solutions
+for deletion (as long as they have not been used in the meantime).  The same
+page allows users to reprint a number of barcodes at the same time.
+<P>
+<B>Specifying an incorrect Plate prior to sequencing</B><BR>
+(see Wrong Plate info..)

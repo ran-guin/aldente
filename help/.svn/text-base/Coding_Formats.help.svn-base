@@ -1,0 +1,45 @@
+<h1>Coding Formats</h1>
+
+Standard Perl coding standards adopted:
+<UL>
+<LI>
+</UL>
+
+Local coding style formats:
+<LI>subroutine / method initialization :
+<UL>
+<LI>surround description and subroutine name with comment marks to allow quick identification
+<LI>example of usage (if applicable) surrounded by <snip> tags - used for automatic perldoc generation
+<LI>indication of value returned from subroutine
+<LI>use filter_input if applicable to allow users to shift in standard arguments (see filter_input), error check for mandatory fields
+<LI>use Cast_List to cast expected lists to array or string (accepts input as scalar (comma-delimited string) or array reference).
+</UL><P>
+<PRE>
+Eg:
+
+#############################################
+# Description of method below
+#
+# <snip> 
+# Example:
+#     (if applicable)
+# ...
+# </snip>
+#
+# Return: (description of returned value)
+#############################################
+sub method_name {
+##################
+	my $self = shift;
+	my %args = &filter_input(\@_,-args=>'arg1,arg2',-mandatory=>'arg1');
+	my $arg2 = Cast_List(-list=>$arg2,-to=>'string',-autoquote=>1);
+	...
+}
+</PRE>
+<LI>alDente module standard formats:
+<UL>
+<LI>initialize attributes for all intuitive object characteristics
+<LI>define load_Object method if applicble (polymorphism)
+<LI>define home_page method if applicable
+</UL>
+</UL>

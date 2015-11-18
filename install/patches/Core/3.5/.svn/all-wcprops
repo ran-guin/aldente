@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/73335/alDente/trunk/install/patches/Core/3.5
+END
+Alter_Run_Analysis_Type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/73239/alDente/trunk/install/patches/Core/3.5/Alter_Run_Analysis_Type.pat
+END
+RNA_Strategy.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/73335/alDente/trunk/install/patches/Core/3.5/RNA_Strategy.pat
+END
+TechD_Access.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/73261/alDente/trunk/install/patches/Core/3.5/TechD_Access.pat
+END
+Sample_Collection_Time.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/73291/alDente/trunk/install/patches/Core/3.5/Sample_Collection_Time.pat
+END

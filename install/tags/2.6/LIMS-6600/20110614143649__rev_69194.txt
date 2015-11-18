@@ -1,0 +1,1 @@
+install/patches/Core/2.6/rename_trigger.pat

@@ -1,0 +1,405 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Barcoding</h2>
+<h3>Barcoding Symbologies</h3>
+<ul>
+  <li>Sequencing Lab:</li>
+  <ul>
+    <li>1D barcode (code128 symbology) - all barcoding needs<br>
+    </li>
+  </ul>
+  <li>Gene Expression Lab:</li>
+  <ul>
+    <li>1D barcode (code128 symbology) - all barcoding needs except for
+tubes<br>
+    </li>
+    <li>2D barcode (Data Matrix symbology) - all barcoding needs for
+tubes (e.g. samples, reagents, libraries, etc)</li>
+  </ul>
+</ul>
+<h3>Barcoding Products</h3>
+<ul>
+  <li>Sequencing Lab<br>
+  </li>
+  <ul>
+    <li>Printers</li>
+    <ul>
+      <li>203 DPI printer</li>
+      <ul>
+        <li>Zebra S600 203 DPI printer<br>
+        </li>
+      </ul>
+    </ul>
+    <li>Scanners</li>
+    <ul>
+      <li>Wireless handheld scanner</li>
+      <ul>
+        <li>Symbol PPT 2846</li>
+        <ul>
+          <li>Ordered from AdvAnce Micro Solutions Ltd.</li>
+          <li>Contact person:&nbsp; Roger Yip (ryip@ad-micro.com)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><big><font color="#000000"><font
+ face="Book Antiqua, serif"><font size="2" style="font-size: 9pt;"><big>Symbol
+PPT2846 1D scanner<br>
+      </big></font></font></font></big></td>
+      <td style="vertical-align: top;"><big><font color="#000000"><font
+ face="Book Antiqua, serif"><font size="2" style="font-size: 9pt;"><big>PPT2846-TRBZ0YUS</big></font></font></font></big></td>
+      <td style="vertical-align: top;"><big><font color="#000000"><font
+ face="Book Antiqua, serif"><font size="2" style="font-size: 9pt;"><big>64M
+Ram, 32M Rom, color display, 1D, 802.11b, 1 year
+warranty</big></font></font></font></big></td>
+      <td style="vertical-align: top;"><small>$2180.00<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+      <title></title>
+      <meta name="GENERATOR" content="OpenOffice.org 1.0.2  (Linux)">
+      <style><small>
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+	-->
+	</small></style><small>
+Charging
+crad<span style="font-family: book antiqua,serif;">le</span> </small></td>
+      <td style="vertical-align: top;">
+      <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+      <title></title>
+      <meta name="GENERATOR" content="OpenOffice.org 1.0.2  (Linux)">
+      <small> </small>
+      <style><small><big>
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+	-->
+	</big></small></style>
+      <small> CRD2X00-100S <br>
+      </small></td>
+      <td style="vertical-align: top;"><small>1 slot charging cradle
+with
+power supply<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$206.00<br>
+      </small></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <ul>
+    <li>Labels</li>
+    <ul>
+      <li>Steve M. and Carrie J. from Purchasing handles the ordering
+of these labels.&nbsp; I believe they got it from Integrated Labeling
+Systems, Inc.<br>
+      </li>
+    </ul>
+  </ul>
+  <li>Gene Expression Lab<br>
+  </li>
+  <ul>
+    <li>Printers</li>
+    <ul>
+      <li>300 DPI printer</li>
+      <ul>
+        <li>Zebra Z4M Plus 300 DBI printer</li>
+        <ul>
+          <li>Ordered from AdvAnce Micro Solutions Ltd.</li>
+          <li>Contact person:&nbsp; Roger Yip (ryip@ad-micro.com)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>Zebra Z4M Plus 300 DPI
+Printer<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>Z4M00-3001-0000<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>thermal printer,
+parallel/serial
+8M Dram 2M Flash<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$1950.00<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>Zebra Resin Ribbon<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>5095BK06045<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>resin ribbon 2.36"x1476'<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$50.00 per roll<br>
+      </small></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+<ul>
+  <ul>
+    <li>Scanners</li>
+    <ul>
+      <li>Workstation scanner</li>
+      <ul>
+        <li>Code Reader 2.0<br>
+        </li>
+        <ul>
+          <li>Ordered from Brady/Fisher Scientific<br>
+          </li>
+          <li>More info can be found at <a
+ href="http://www.codecorp.com">http://www.codecorp.com</a></li>
+          <li>Contact person:&nbsp; Lynn Wilson
+(Lynn_Wilson@bradycorp.com)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>CR 2.0 WIRED, GUN-HANDLE,
+USB
+CONFIGURATION</small></td>
+      <td style="vertical-align: top;"><small>89355<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>The actual scanner<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$859.78</small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>CR 2.0 WIRED, STAND</small></td>
+      <td style="vertical-align: top;"><small>63766</small></td>
+      <td style="vertical-align: top;"><small>The metal stand<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$184.8</small></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <ul>
+    <ul>
+      <li>Wireless handheld scanner</li>
+      <ul>
+        <li>Symbol PPT 8146</li>
+        <ul>
+          <li>Ordered from AdvAnce Micro Solutions Ltd.</li>
+          <li>Contact person:&nbsp; Roger Yip (ryip@ad-micro.com)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>Symbol PPT8416 2D scanner</small></td>
+      <td style="vertical-align: top;">
+      <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+      <title></title>
+      <meta name="GENERATOR" content="OpenOffice.org 1.0.2  (Linux)">
+      <style><small>
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+	--> </small></style><small>
+      <span style="font-family: book antiqua,serif;"> PDT8146 XScale</span>
+      <br>
+      </small></td>
+      <td style="vertical-align: top;"><small>Imager, S24 11Mbps,
+Pocket PC
+2002, color display, 64M Ram/Rom, 37-key Battery is included<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$3475.00<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>Charging cradle<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>CRD8100-1200S<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>1 slot serial cradle with
+power
+supply<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$200.00<br>
+      </small></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <ul>
+    <li>Labels</li>
+    <ul>
+      <li>1D labels</li>
+      <ul>
+        <li>Standard room temperature 2.25" x .75" direct thermal label</li>
+        <ul>
+          <li>Ordered from Maximum Barcode Inc.</li>
+          <li>More info can be found at <a
+ href="http://www.maximumbarcode.com">http://www.maximumbarcode.com</a></li>
+          <li>Contact person:&nbsp; Bruce Gagnon
+(bgagnon@maximumbarcode.com)</li>
+          <li><span style="font-weight: bold;">Note: Steve M. from
+Purchasing found out that we can order the same labels from Integrated
+Labeling Systems, Inc. with the price of $14.38 per roll!&nbsp; We
+should contact these guys if we need more of these in the future.&nbsp;
+Contact Person:&nbsp; Doris J. Petroules
+(dpetroules@integratedlabeling.com)</span><br>
+          </li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>Case of 4 rolls 2.25" x
+.75"
+Direct Thermal 7995 Labels<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>800622-075<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>It must come in case of 4
+rolls<br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$90.60 per roll<br>
+      </small></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <ul>
+    <ul>
+      <li>2D labels</li>
+      <ul>
+        <li>Circular label for 2D barcodes with rectangular label</li>
+        <ul>
+          <li>Ordered from Brady/Fisher Scientific</li>
+          <li>Contact person:&nbsp; Lynn Wilson
+(Lynn_Wilson@bradycorp.com)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<div style="margin-left: 200px;">
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;"><small>Item<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Catalog
+#<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Description<br>
+      </small></td>
+      <td style="vertical-align: top; font-weight: bold;"><small>Price
+(Cdn.)<br>
+      </small></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><small>0.900 inches x 0.500
+inches
+rectangular labels with 0.500 diameters circular labels</small></td>
+      <td style="vertical-align: top;"><small>THT-126-499-3</small></td>
+      <td style="vertical-align: top;"><small><br>
+      </small></td>
+      <td style="vertical-align: top;"><small>$154.65<br>
+      </small></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+<br>
+</span>

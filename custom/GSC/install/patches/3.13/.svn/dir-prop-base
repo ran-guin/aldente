@@ -1,0 +1,7 @@
+K 13
+svn:mergeinfo
+V 214
+/LIMS/branches/lims_4_1-branch/custom/GSC/install/patches/3.13:104987-106196
+/LIMS/trunk/custom/GSC/install/patches/3.13:100477-104986
+/LIMS/trunk/lib/perl/Core/LampLite/custom/GSC/install/patches/3.13:99992-100217
+END

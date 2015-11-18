@@ -1,0 +1,44 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<!-- saved from url=(0014)about:internet -->
+<tocdata>
+<item name="Chapter 1" url="aldente/system_description/system_description.htm" />
+<book name="System Description" url="aldente/system_description/system_description.htm#TOC_System_Descriptionbc-1" >
+  <item name="Context" url="aldente/system_description/system_description.htm#TOC_Contextbc-2" />
+  <item name="Flowcharts" url="aldente/system_description/system_description.htm#TOC_Flowchartsbc-3" />
+  <book name="Features" url="aldente/system_description/system_description.htm#TOC_Featuresbc-4" >
+    <item name="Data tracking for the Sequencing Application" url="aldente/system_description/system_description.htm#TOC_Data_tracking_for_thebc-5" />
+    <item name="Plate Tracking" url="aldente/system_description/system_description.htm#TOC_Plate_Trackingbc-6" />
+    <item name="Location Tracking" url="aldente/system_description/system_description.htm#TOC_Location_Trackingbc-7" />
+    <item name="Receiving and Purchasing" url="aldente/system_description/system_description.htm#TOC_Receiving_and_Purchasingbc-8" />
+    <item name="Protocol Tracking" url="aldente/system_description/system_description.htm#TOC_Protocol_Trackingbc-9" />
+  </book>
+  <book name="Plugins" url="aldente/system_description/system_description.htm#TOC_Pluginsbc-10" >
+    <item name="Issue Tracking" url="aldente/system_description/system_description.htm#TOC_Issue_Trackingbc-11" />
+    <item name="DNA Sequencing" url="aldente/system_description/system_description.htm#TOC_DNA_Sequencingbc-12" />
+    <item name="SAGE Library Construction" url="aldente/system_description/system_description.htm#TOC_SAGE_Library_Constructionbc-13" />
+    <item name="DNA Fingerprinting and Sizing" url="aldente/system_description/system_description.htm#TOC_DNA_Fingerprinting_andbc-14" />
+  </book>
+  <book name="Architecture and Technologies" url="aldente/system_description/system_description.htm#TOC_Architecture_andbc-15" >
+    <item name="Architecture view of the alDente LIMS system" url="aldente/system_description/system_description.htm#TOC_Architecture_view_of_thebc-16" />
+  </book>
+  <book name="Users" url="aldente/system_description/system_description.htm#TOC_Usersbc-17" >
+    <item name="Lab users" url="aldente/system_description/system_description.htm#TOC_Lab_usersbc-18" />
+    <item name="Lab administrators" url="aldente/system_description/system_description.htm#TOC_Lab_administratorsbc-19" />
+    <item name="Administrators" url="aldente/system_description/system_description.htm#TOC_Administratorsbc-20" />
+    <item name="Programmers" url="aldente/system_description/system_description.htm#TOC_Programmersbc-21" />
+  </book>
+</book>
+<item name="Appendix A" url="aldente/release_2_7/release_2_7.htm" />
+<book name="Release 2.7" url="aldente/release_2_7/release_2_7.htm#TOC_Release_2_7bc-1" >
+  <item name="List of Primary Changes" url="aldente/release_2_7/release_2_7.htm#TOC_List_of_Primary_Changesbc-2" />
+  <item name="Minor Changes" url="aldente/release_2_7/release_2_7.htm#TOC_Minor_Changesbc-3" />
+  <item name="Group Specific Improvements" url="aldente/release_2_7/release_2_7.htm#TOC_Group_Specificbc-4" />
+  <item name="LIMS Background Improvements" url="aldente/release_2_7/release_2_7.htm#TOC_LIMS_Backgroundbc-5" />
+  <item name="Deferred Requests" url="aldente/release_2_7/release_2_7.htm#TOC_Deferred_Requestsbc-6" />
+  <item name="Future Development" url="aldente/release_2_7/release_2_7.htm#TOC_Future_Developmentbc-7" />
+  <item name="Hotfix Patches since previous release" url="aldente/release_2_7/release_2_7.htm#TOC_Hotfix_Patches_sincebc-8" />
+  <item name="Hotfixed:" url="aldente/release_2_7/release_2_7.htm#TOC_Hotfixedbc-9" />
+  <item name="Not Hotfixed:" url="aldente/release_2_7/release_2_7.htm#TOC_Not_Hotfixedbc-10" />
+</book>
+
+</tocdata>

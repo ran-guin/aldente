@@ -1,0 +1,24 @@
+<delete> 
+    <delete1>
+        <days   default="" type="" value="3" />
+        <types  default="" type="" value="files" />
+        <name   default="" type="" value="URL_temp_dir" />
+    </delete1>
+     <delete2>
+         <days   default="" type="" value="365" />
+         <types  default="" type="" value="files" />
+         <name   default="" type="" value="slow_pages_log_dir" />
+     </delete2>
+     <delete3>
+         <days   default="" type="" value="100" />
+         <types  default="" type="" value="directory" />
+         <name   default="" type="" value="process_monitor_log_dir" />
+         <depth  default="" type="" value="2" />
+     </delete3>
+     <delete4>
+         <days   default="" type="" value="31" />
+         <types  default="" type="" value="files" />
+         <name   default="" type="" value="updates_logs_dir" />
+         <depth  default="" type="" value="1" />
+     </delete4>
+</delete>

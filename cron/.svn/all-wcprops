@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/68925/alDente/trunk/cron
+END
+limsserver.sequence.cron
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/cron/limsserver.sequence.cron
+END
+limsserver.aldente.cron
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/cron/limsserver.aldente.cron
+END
+mirrorserver.sequence.cron
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/cron/mirrorserver.sequence.cron
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/68925/alDente/trunk/cron/readme.txt
+END
+mirrorserver.aldente.cron
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/cron/mirrorserver.aldente.cron
+END

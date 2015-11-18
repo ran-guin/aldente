@@ -1,0 +1,23 @@
+<H2>Keeping Track of Chemicals & Reagents</H2>  
+<P>
+To ensure that stock supplies remain
+conservative, when a new catalog number is entered into the database,
+administrators have the option of specifying a 'minimum number of units' for
+this item.  If stock falls below this value, notification will be sent to
+indicate that this item needs to be resupplied
+<P>
+<Img src='$Help_Image_dir/Notice.png'>
+<P>
+In addition, when new
+chemicals/reagents are added, the user will be shown the current stock
+supply of that item (showing the number of Unopened, Open and Finished
+Bottles)
+<P>
+<Img src='$Help_Image_dir/Status.png'>
+<P>
+This allows stocks of
+Reagents & Chemicals to be monitored regularly.  If a particular item is low
+on stock, an e-mail notification is sent to re-supply the item, showing the
+current available bottles in stock
+<P>
+<Img src='$Help_Image_dir/Email.png'>   

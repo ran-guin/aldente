@@ -1,0 +1,16 @@
+DB_Trigger_ID	Table_Name	DB_Trigger_Type	Value	Trigger_On	Status	Trigger_Description	Fatal	Field_Name
+1	Source	Method	new_source_trigger	insert	Active		Yes	NULL
+2	WorkLog	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_from_WorkLog(-dbh=>$dbh, -id=><ID>);	insert	Active		Yes	NULL
+3	Plate	Perl	require alDente::Container;my $po = new alDente::Container(-dbc=>$self,-id=><ID>,-quick_load=>1);$po->new_container_trigger();return 1; 	insert	Active		Yes	NULL
+4	Issue	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_trigger(-dbh=>$dbh, -id=><ID>);	insert	Active	Initialize fields (Latest_ETA) for new Issue record	Yes	NULL
+5	Library	Method	new_library_trigger	insert	Active	Insert an external source/library_source if library is supplied by collaborator/another dept	Yes	NULL
+6	Plate_Prep	Method	plate_prep_insert_trigger	insert	Active	Update branch for plate if applicable reagent has been applied	No	NULL
+7	GrpEmployee	Perl	require alDente::Employee;  my $ok=alDente::Employee::new_GrpEmployee_trigger($self,<ID>); return $ok;	insert	Active	if in shared groups - change to multiple derived group membership	No	NULL
+8	Project	Method	new_Project_trigger	insert	Active	on insertion, add new Project_ID to active list in connection object	No	NULL
+9	Location	Perl	require alDente::Rack; my $ok = alDente::Rack::add_rack_for_location(-dbc=>$self,-id=>);	insert	Active	Need to add record to equipment and rack as well	Yes	NULL
+10	Branch_Condition	Perl	require alDente::Branch; my $ok = alDente::Branch::new_branch_condition_trigger(-dbc=>$self,-id=><ID>);	insert	Active	Prevent inserting an ambiguous branch condition	Yes	NULL
+11	Source	Method	new_source_trigger	insert	Active		No	NULL
+12	Attribute	Method	validate_attribute_name_trigger	insert	Active	Not allowing Attribute_Name and Field_Name in tables to be the same	Yes	NULL
+13	Vector_Type	Perl	require alDente::Vector; my $ok = alDente::Vector::new_Vector_trigger(-dbc=>$self,-id=><ID>);	insert	Active	Anytime a vector is added primers should be validated for it accordingly	No	NULL
+14	Primer	Method	new_Primer_trigger	insert	Active	Anytime a primer is added vectors should be validated for it accordingly	No	NULL
+15	Organization	Method	new_Organization_trigger	insert	Active	Does not allow more than one org which is local	Yes	

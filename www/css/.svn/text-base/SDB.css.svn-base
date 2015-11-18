@@ -1,0 +1,81 @@
+/* Label box for standard home pages */
+
+.object-header {
+    border: 2px solid #000 !important;
+    background-color: #ccc !important;
+    color: #333 !important;
+    padding: 4px !important;
+}
+
+.object-label {
+    border: 2px solid #000 !important;
+    background-color: #eee; /*  !important; */
+    color: #333 !important;
+    padding: 4px !important;
+}
+/** Colour coding for object-label sub classes **/
+.object-label .original {
+    background-color: #9f9;
+}
+.object-label .failed {
+    background-color: #f99;
+}
+.object-label .test {
+    background-color: #fcc;
+}
+.object-label .highlight {
+    background-color: #fcc;
+}
+.object-label .inactive {
+    background-color: #bbb;
+}
+.object-label .exported {
+    background-color: #ddd;
+}
+.object-label .active {
+    background-color: #cfc;
+}
+.object-label .undefined {
+    background-color: #fc9;
+}
+
+/** Default Logo Size - override in custom.css if desired **/
+.logo {
+    max-height: 70px;
+}
+
+/** Standard Heading Sizes **/
+.table-heading {
+    padding:10px;
+    background-color:#116;
+    color:#ddd;
+    a { color: #ddd }
+    a:hover { color: #fff }
+}
+
+.table-subheading {
+    padding:10px;
+    background-color:#9bd;
+    color:#333;
+    a { color: #111 }
+    a:hover { color: #111 }
+}
+.table-subheading a { color: #339 } .table-subheading a:hover { color: #111 }
+
+.attn-highlight {
+    background-color:#fcc;
+}
+
+
+select
+ {
+   width: auto; 
+}
+
+img.hspace {
+    height: 1 !important;
+}
+
+img.vspace {
+    width: 1 !important;
+}

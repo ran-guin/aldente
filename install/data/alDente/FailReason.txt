@@ -1,0 +1,2 @@
+FailReason_ID	FK_Grp__ID	FailReason_Name	FailReason_Description	FK_Object_Class__ID
+1	2	Contamination	Contamination noted - do not use	3

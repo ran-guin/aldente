@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/103322/alDente/trunk/bin/t/Sequencing
+END
+Sequencing_Summary.t
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Sequencing_Summary.t
+END
+SolexaRun.t
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/103322/alDente/trunk/bin/t/Sequencing/SolexaRun.t
+END
+Seq_Data.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Seq_Data.t
+END
+Run_Histogram.t
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Run_Histogram.t
+END
+QPIX.t
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/QPIX.t
+END
+Multiprobe.t
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Multiprobe.t
+END
+Post.t
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Post.t
+END
+Sequencing_Library.t
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Sequencing_Library.t
+END
+Lab_View.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Lab_View.t
+END
+Primer_Order.t
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Primer_Order.t
+END
+Sequencing_API.t
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Sequencing_API.t
+END
+Sequencing_Data.t
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Sequencing_Data.t
+END
+alDente_Tools.t
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/alDente_Tools.t
+END
+Views.t
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Views.t
+END
+Primer.t
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Primer.t
+END
+Fasta.t
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Fasta.t
+END
+Tools.t
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Tools.t
+END
+Phred.t
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Phred.t
+END
+ReArray.t
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/ReArray.t
+END
+Sequence.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Sequence.t
+END
+Sample_Sheet.t
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Sample_Sheet.t
+END
+Custom.t
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Custom.t
+END
+SDB_Status.t
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/SDB_Status.t
+END
+Read.t
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/68925/alDente/trunk/bin/t/Sequencing/Read.t
+END
+Stat_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/79378/alDente/trunk/bin/t/Sequencing/Stat_App.t
+END

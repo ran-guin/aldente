@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/107992/alDente/trunk/install/patches
+END
+header.pl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/install/patches/header.pl
+END
+footer.pl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/install/patches/footer.pl
+END
+version_tracker.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106287/alDente/trunk/install/patches/version_tracker.txt
+END

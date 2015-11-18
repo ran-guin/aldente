@@ -1,0 +1,2 @@
+Site_ID	Site_Name	Site_Address	Site_City	Site_State	Site_Zip	Site_Country
+1	External	NULL	NULL	NULL	NULL	NULL

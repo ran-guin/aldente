@@ -1,0 +1,37 @@
+- data_root:
+        - public:
+            - share
+            - views
+            - published
+            - mirror
+        - private:
+            - dumps
+            - logs 0777:
+                - uploads
+                - cron_logs 0770
+                - cleanup
+                - deletions
+                - data_fixes
+            - session_archive
+            - views
+            - media
+            - run_maps
+            - Upload_Template
+            -  Test_files
+- web_root: 
+        - www:
+            - dynamic:
+                - share
+                - tmp
+                - media
+                - sessions
+            - htdocs
+        - versions
+- url_root:
+    - images:
+            - png
+            - icons
+            - help_images
+            - colour
+            - ui
+    - media

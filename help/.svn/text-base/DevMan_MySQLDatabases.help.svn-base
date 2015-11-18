@@ -1,0 +1,52 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - MySQL Databases<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The LIMS system uses MySQL databases as the backend databases.</li>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>The LIMS has variuos MySQL databases setup on 2 hosts:</li>
+  <ul>
+    <li>seqdb01 host</li>
+    <ul>
+      <li>sequence database <br>
+      </li>
+      <ul>
+        <li>Production database</li>
+      </ul>
+      <li>seqtest database</li>
+      <ul>
+        <li>Testing database for production release</li>
+        <li>Restored from sequence database every night (except
+Clone_Sequence table)</li>
+        <li>To be used for testing hotfixes for production release<br>
+        </li>
+      </ul>
+    </ul>
+    <li>lims-dbm host</li>
+    <ul>
+      <li>sequence database</li>
+      <ul>
+        <li>Replicated/mirrored version of the sequence database on
+seqdb01 (see details on <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=MySQL_Replication">Replication</a>)<br>
+        </li>
+        <li>A read-only database, mostly used by bioinformatics users
+to query data</li>
+      </ul>
+      <li>seqdev database</li>
+      <ul>
+        <li>To be used for beta testing</li>
+      </ul>
+      <li>individual developer's databases (e.g. seqrguin, seqjsantos,
+seqechuah)</li>
+      <ul>
+        <li>To be used for ongoing development by individual developers<br>
+        </li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+</span>

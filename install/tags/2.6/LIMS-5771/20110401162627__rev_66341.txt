@@ -1,0 +1,5 @@
+Ion_Torrent/modules/Run_Summary.pm
+BioSpecimens/modules/Statistics.pm
+BioSpecimens/modules/Summary.pm
+CLIPR/modules/Run_Summary.pm
+SOLID/modules/SOLIDRun_Summary.pm

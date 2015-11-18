@@ -1,0 +1,3 @@
+Grp_Relationship_ID	FKBase_Grp__ID	FKDerived_Grp__ID
+1	2	3
+2	3	4

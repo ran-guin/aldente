@@ -1,0 +1,54 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Data Integrity<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>In the LIMS, the followings help to maintain data integrity:<br>
+  </li>
+  <ul>
+    <li>Data integrity checks by functions in SDB::GSDB that performs
+inserts, updates and deletes. (i.e. Table_update(),
+Table_update_array(), Table_append(), Table_append_array(),
+delete_records(), delete_record())</li>
+    <li>MySQL transactions (see <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Transaction">Developer's
+Manual - Transaction</a>)</li>
+    <li>MySQL foreign keys (to be implemented in the future)<br>
+    </li>
+    <li>DB Integrity Checker - This tool monitors data integrity and
+reports problems found</li>
+    <li>bin/fix_data.pl - Custom defined data fixes<br>
+    </li>
+  </ul>
+</ul>
+<h3>Details</h3>
+<ul>
+  <li>DB Integrity Checker:</li>
+  <ul>
+    <li>Composed of:</li>
+    <ul>
+      <li>cgi-bin/DBIntegrity.pl</li>
+      <li>alDente/DBIntegrity.pm</li>
+    </ul>
+    <li>Has both a web and command-line interface</li>
+    <li>Performs 2 types of checks:</li>
+    <ul>
+      <li>Foreign key checks - Checks orphan child records that point
+to no parents</li>
+      <li>Custom defined error checks<br>
+      </li>
+    </ul>
+    <li>Use the -h switch for help information</li>
+    <li>This script is run as a cron job under sequence@seqdb01</li>
+  </ul>
+</ul>
+<ul>
+  <li>bin/fix_data.pl</li>
+  <ul>
+    <li>Consists of blocks of data integrity checks and fixes</li>
+    <li>Use the -h switch for help information</li>
+    <li>This script is run as a cron job under aldente@seqdb01<br>
+    </li>
+  </ul>
+</ul>
+</span>

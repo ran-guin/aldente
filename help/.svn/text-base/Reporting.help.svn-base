@@ -1,0 +1,36 @@
+<h2>Generating and Viewing Reports</H2>
+<P>
+
+One of the most powerful features of maintaining an organized database of
+Lab Processes and Data is that it is possible to generate detailed specific
+reports that make monitoring and viewing data easy and informative.
+<BR>
+Some of the most commonly used Reporting tools include:
+<UL>
+<LI>Last 24 Hours View <BR>
+This view provides a summary of runs generated within the last 24 Hours.
+<BR>It provides a quick colour map view of the runs allowing lab
+administrators to quickly and easily evaluate run quality over an entire
+plate (or group of plates).  It also indicates average phred quality,
+component of vector found, as well as various identification details.<BR>
+From here one can link directly to various pages providing more information
+such as more detailed views of the plate.
+
+<LI>Project Summary <BR>
+This allows users to quickly see statistics on Phred 20 quality, Number of
+Reads, and Number of Runs completed for each library.  Totals are available
+as well by Project, and a histogram displayed showing the general quality
+distribution over a library and project.
+
+<LI>Preparation Status <BR>
+This allows users to view the current state of a Library, detailing the
+status along the production line of all plates originating from the library.
+Plates are grouped as well by chemistry to display which chemistries have
+been used and which are still in need of processing.  
+
+<LI>DB Summary <BR>
+An entire suite of data visualization tools is also available that allow
+users to view comprehensive information about sequencing data.  In addition,
+users may provide a detailed filter of runs to include specifying machine,
+dates, projects, chemistry etc. 
+</UL>

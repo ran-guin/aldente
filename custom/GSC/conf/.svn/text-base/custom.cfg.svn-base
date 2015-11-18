@@ -1,0 +1,30 @@
+## Configuration settings that are customized for specific installations ##
+custom_version_name: GSC
+DATABASE: seqdev
+SQL_HOST: limsdev04
+default_mode: DEV
+PRODUCTION_DATABASE : sequence
+PRODUCTION_HOST : lims05
+PRODUCTION_WEBHOST : lims08
+TEST_DATABASE : seqtest
+TEST_HOST : lims05
+UNIT_TEST_DATABASE : seqbeta
+UNIT_TEST_HOST : lims07
+BACKUP_DATABASE : sequence
+BACKUP_HOST : lims07
+BETA_DATABASE : seqbeta
+BETA_HOST : lims07
+CORE_HOST : lims09
+CORE_DATABASE : Core_2_7
+DEV_HOST : limsdev04
+DEV_DATABASE : seqdev
+default_email_domain: bcgsc.ca
+URL_domain: http://limsdev02.bcgsc.ca
+admin_email : rguin@bcgsc.ca
+jira_project : ALDENTE
+jira_proxy_user : aldente_proxy_user
+jira_password : jiraforaldente
+jira_wsdl : https://www.bcgsc.ca/jira/rpc/soap/jirasoapservice-v2?wsdl
+web_root: /opt/alDente
+data_root: /home/aldente
+url_root: SDB

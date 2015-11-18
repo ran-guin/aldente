@@ -1,0 +1,19 @@
+###################
+# Temporary Note:
+#
+# These files are copies files currently remaining in bin/ ... 
+#
+# Original bin/ files should not be deleted until all calls to these files are working in the new directory #
+###################
+
+Data correction scripts are used to correct or edit data more easily.
+
+delete_replace.pl   - used to delete current records in the database (may replace one value with another optionally)
+                    - this method also displays current references to the object identified, so can be used to find references to an object in the database.
+
+change_project.pl   - used to move libraries from one project to another.  Generally frowned upon, this may be necessary periodically.
+                    - this method will move all data in the Projects directory under one project and move it to the new project (which should already exist).
+
+
+
+                    

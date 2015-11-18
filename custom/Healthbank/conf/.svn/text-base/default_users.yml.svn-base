@@ -1,0 +1,40 @@
+forestry_admin:
+    password: MISSING - Need to be filled before using this file
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+            
+mapper_admin:
+    password: MISSING - Need to be filled before using this file
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>            
+
+mgcc_admin:
+    password: MISSING - Need to be filled before using this file
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST> 
+
+seqbio:
+    password: MISSING - Need to be filled before using this file
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST> 
+
+
+            
+
+

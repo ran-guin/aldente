@@ -1,0 +1,3 @@
+These modules should be usable by anyone, and provide generic functionality that was originally used by the alDente LIMS.
+
+Generally only standard perl libraries (if any) are required to allow the use of any routines in these modules.

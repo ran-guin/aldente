@@ -1,0 +1,49 @@
+<h1>What is a Reagent?</H1>
+A Reagent generally consists bottle (usually liquid, but it can also be a solid like salt).
+From Reagents, solutions may also be made, for which similar information is kept.<BR>For 'Solutions', we also keep track of which original reagents (and in what quantity) were used to form the Solution mixture.  
+ 
+<h2>What sort of information do we store for a Reagent?</H2>
+Reagents (as well as Solutions) are stored as 'Stock'.  Information for the stock is kept in a separate table, and includes such information as:
+<UL>
+<LI>Type - 'Reagent', 'Solution', 'Equipment', 'Box' etc.
+<LI>Size - the size of the stock item (normally in mL for Solutions/Reagents)
+<LI>Size Units - the units in which the Reagent size is defined (typically mL or mg)<BR>
+	(this may be converted to mL from L after it is entered to maintain consistency) 
+<LI>Employee - who recorded the arrival of the stock (or who made up a particular solution)
+</UL>
+All of the above information applies to each item in the stock<BR>
+eg. if 10 bottles of a reagent are received, the information above is common to all bottles and is recorded once for that Stock Item, and the fact noted that there are 10 items in this record.
+<BR><A Href=$homelink&Table+Info=Stock>View Stock Fields</A>
+<BR><BR>
+In addition, there is some information which is stored SEPARATELY for each of the 10 bottles such as:
+<LI>Start Date - when the reagent was opened.
+<LI>Status - 'Unopened','Open','Expired'
+<LI>Expiry - when a given bottle expires
+<LI>Number in Batch - the number of bottles in the same batch of stock
+<LI>Bottle Number - the number of this bottle in the batch of stock 
+<LI>Quantity Used - the quantity of contents that has been tracked as used thus far.
+</UL>
+<BR><A Href=$homelink&Table+Info=Reagent>View Reagent Fields</A>
+
+<h2>How does a Reagent relate to other 'Tables' ?</h2>
+<BR>
+<A Href='$homelink&User=Auto&Tree=1&TableName=Solution'>View Relationship of Reagents/Solutions with other 'Tables'</A>
+
+<h2>How do I define a Reagent</H2>
+A Reagent can be easily defined by first clicking on the 'Reagents' icon
+after logging into the main page.<BR>
+From here, there is a button part way down that allows you to create a new 'Reagent'.
+Simply fill out the form that you are given, and the reagent will be created, and the barcodes for the reagents automatically generated<BR>(showing in text the initials of the creator, the date, and the name of the Reagent)
+
+<h2>How can I view information on a Reagent?</H2>
+By simply scanning the reagent at the home page, (or by typing in the barcode - 'sol' followed by the solution 'ID'),
+you will be shown basic information on the reagent or solution.<BR>
+<Img Src = '$Help_Image_dir/Reagent_info.png'>
+<BR>
+For more information, simply click on the hyperlink on the solution name, and you will be shown more details.
+(For solutions, you will also be shown the components of the solution)
+<A Href='$homelink&Help_Image=Reagent_info.png'>Typical Reagent Information</A>
+
+<h2>How can I change information on a Reagent?</H2>
+After viewing the information as described above for a Reagent, there should be a button allowing the user to 'Edit' this information.
+<A Href='$homelink&Help_Image=Reagent_form.png'>Reagent Information Form</A>

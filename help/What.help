@@ -1,0 +1,35 @@
+<h1>What?</H1>
+
+<h2>What is it comprised of ?</H2>
+
+The system itself requires essentially only three simple elements:
+<UL>
+<LI>mySQL database
+<LI>perl code
+<LI>web browser
+</UL>
+
+<h2>mySQL database</h2>
+mySQL itself has a number of inherent advantages and disadvantages.
+
+Its most relevent characteristics however are its:
+<UL>
+<LI>simplicity
+<LI>robustness
+<LI>performance.
+</UL>
+<P>The most serious criticism of mySQL involves its lack of true ACID compliance.  
+<P>
+While this can result in poor data integrity, it can be dealt with by establishing code that ensures that all data passes through validation filters.  While this requires overhead on the part of developers, it is something that may be reasonably accomplished by programmers.  It is important, however, to retain any level of confidence in data integrity, to require all access to the database to pass through these filters.
+<P>
+In cases where there is no room for integrity loopholes of any size, mySQL's lack of inherent atomicity may preclude it from being the database of choice, though newer versions of mySQL seem to address most of these issues.
+<P>
+The advantage of the mysql, however, by not including the complex overhead of actually maintaining relationships between tables, is that it tends to be much less prone to intangible corruption issues, and benefits greatly in terms of performance from the lack of overhead.<P>
+While it is beyond the scope or intent of this manual to provide a justification for mySQL as a whole, it has been found to function very well for the task at hand, and in the presence of programming developers, the standard pitfalls can fairly easily be addressed by developing code to meet any features inherently missing in the database itself.
+
+<h2>perl code</h2>
+There are about 50,000 lines of code currently that drive the system, most of which exists in number of perl modules.  Some of these modules are specific to a sequencing laboratory, while others are much more generic and may be used with any SQL database that follows the formating definitions supplied.
+
+<h2>web browser</h2>
+The advantage of using a standard web browser to drive the interface is that it is extremely portable, and easily facilitates new code generation and presents no overhead when using wireless barcode scanners to interface with the system.
+

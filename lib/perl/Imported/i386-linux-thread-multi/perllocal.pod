@@ -1,0 +1,22 @@
+=head2 Mon Feb 12 10:07:21 2007: C<Module> L<Method::Alias|Method::Alias>
+
+=over 4
+
+=item *
+
+C<installed into: /home/tgibbs/svn/2.5-beta-new/lib/perl/Imported>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 1.03>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

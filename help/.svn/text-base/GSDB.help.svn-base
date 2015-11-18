@@ -1,0 +1,75 @@
+<H2>SDB::GSDB.pm</H2>
+<P>The GSDB module is designed to act as a data retrieval module for a SQL database.<P>
+Some of the primary functions include:
+<UL>
+<LI>Data retrieval functions:
+<UL>
+<LI>%Data = Table_retrieve($dbh,$tables,\@fields,$condition)
+<LI>@data = Table_find($dbh,$table,$fields,$condition) - a simpler, slightly faster version 
+</UL>
+<P>
+Example (showing sample code with and without using module):
+<Table><TR><TD>Before</TD><TD>After</TD></TR><TR>
+<TD bgcolor=lightgrey valign=top>
+<PRE>
+<B>
+my $query = 
+	"SELECT Employee_Name,Email_Address 
+	FROM Employee 
+	WHERE Employee_Status like 'Active'";
+
+my $sth = $dbh->prepare($query);
+
+$sth->execute();
+
+if (defined $sth->err()) {
+      print "problem executing query $query";
+}
+
+if ($sth->rows) {
+      $Farray = $sth->fetchall_arrayref();
+      $sth->finish();
+      my $index=0;
+      while (defined $Farray->[$index]) {
+            my $name = $Farray->[$index][0];
+            my $address = $Farray->[$index][1];
+            push(@employees,"$name,$address);
+      }
+      $index++;
+}
+</B>
+print join "\n",@employees;
+</PRE>
+</TD><TD bgcolor=lightyellow valign=top>
+<PRE>
+<B>
+my @employees = &Table_find($dbh,'Employee','Employee_Name,Email_Address',
+	"where Employee_Status = 'Active'");
+</B>
+print join "\n", @employees;
+
+</PRE>
+</TD></TR></Table>
+<P>
+<LI>Functions to update or append the database:
+<UL>
+<LI>$ok = Table_copy($dbh,$table,$condition);
+<LI>Table_update($dbh,$table,\@fields,\@values,$condition);
+<LI>Table_append($dbh,$table,\@fields,\@values);
+<LI>delete_records($dbh,$table,$condition);
+</UL>
+<P>
+These functions perform integrity checking functions automatically to ensure that references are not broken, by enforcing foreign key validity during updates, deletions, and additions of data.  This is crucial in maintaining the overall integrity of data within a mySQL database.  By forcing all database changes through these filters, breaks to data integrity may be minimized without requiring this time consuming checking to be carried out each time the database is updated.
+
+<LI>general information retrieving functions:
+<UL>
+<LI>$info = get_FK_info($dbh,$field,$id);
+<LI>$id   = get_FK_ID($dbh,$field,$info);
+<LI>@fields = get_fields($dbh,$table);
+<LI>@prompts = get_prompts($dbh,$table);
+</UL>
+<P>
+These functions are simply useful within the scope of perl code where this type of information is often required.
+</UL>
+<P>
+<A Href='/cgi-bin/rguin/Table_man.pl'>More info on using the GSDB.pm module</A>

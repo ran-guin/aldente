@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/106288/alDente/trunk/bin/t/Core/LampLite
+END
+Bootstrap.t
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/99995/alDente/trunk/bin/t/Core/LampLite/Bootstrap.t
+END
+File.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/106288/alDente/trunk/bin/t/Core/LampLite/File.t
+END
+Form_Views.t
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/98643/alDente/trunk/bin/t/Core/LampLite/Form_Views.t
+END
+HTML.t
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/103313/alDente/trunk/bin/t/Core/LampLite/HTML.t
+END

@@ -1,0 +1,69 @@
+/* account for fixed top header */
+body {
+    padding-top: 0px;  /* 205px; add to account for navbar paddding */
+    position: relative;
+}
+
+.primaryHeader {
+    position: relative;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    background:#444;
+    z-index: 100;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+.mobile-menu li {
+    padding:10px 15px; 
+    border-top:1px solid #666;
+}
+
+.mobile-menu li a {
+    color: #aaa;
+}
+
+.mobile-menu li a:hover {
+    color: #ccc;
+}
+
+.mobile-menu-icon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.full-page-image {
+    position: fixed; 
+    top: 68px; 
+    left: 0px;
+    width: 100%;
+}
+
+.top-right-tabs {
+    position: fixed;
+    top: 25px;
+    right: 10px;
+}
+
+/** Tab Layer Classes **/
+.tabclass {
+//        background-color: #aaa !important;
+//            color: #339;
+}
+.tabclass { color: #339 } .tabclass a:hover { color: #33f }
+li.active .tabclass {
+        font-weight: bold;
+//            background-color: #ddd !important;  /* to match border of tab-content */
+}
+
+.tab-content {
+//        border: 2px solid #ddd !important;
+//            padding: 2%;
+}
+

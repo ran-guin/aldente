@@ -1,0 +1,8 @@
+K 13
+svn:mergeinfo
+V 229
+/LIMS/branches/lims_4_1-branch/lib/perl/Sequencing:104987-106196
+/LIMS/trunk/lib/perl/Core/SDB/lib/perl/Sequencing:100971-103009
+/LIMS/trunk/lib/perl/Sequencing:100971-104986
+/LIMS/trunk/rest_api/lib/perl/Sequencing:101461-103005
+END

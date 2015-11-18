@@ -1,0 +1,65 @@
+<H2>Phred Analysis of Sequencing Runs</H2>When a sequence is requested, the
+'Run_State' is defined as 'In Process' meaning that the data is not yet
+available.<P>
+The following steps take place in the creation of sequencing Data:<P>
+<UL>
+<LI>Generate Sample Sheet - (Run_State = 'In Process')
+<LI>data collection on Sequencer (stores files on local machine on completion)
+<LI>Sequencers are mirrored regularly (on request as well as daily via a
+cron job)<BR>
+(This entails copying all of the Data Trace files (and raw data) into the
+appropriate subdirectories in the /home/sequence/mirror/ directory)
+<LI><B>update_sequence.pl -A all</B> is run as a cronjob<BR>(for info on
+this script type '/home/rguin/public/update_sequence.pl' from the command
+line.)<P>This program generates a list of all sequence runs which are still
+'In Process'.<BR>For each of these runs, it then runs the script
+<B>'post_sequence.pl'</B> on each of them, passing this script values
+relating to the details of the run (machine, employee, plate, chemistry,
+primer ...etc.).<P>This script in turn performs the following operations for
+each sequence run:<OL>
+    <LI>generates the appropriate directories in
+/home/sequence/Projects/$proj/$lib/AnalyzedData/
+    <LI>creates symbolic links to all of the chromat directories in the
+mirror directory (placing them in chromat_dir/)
+    <LI>runs 'phred' on the chromat_dir (This results in a number of
+statistical files which include phred scores for each nucleatide generated),
+placing the resultant files in the directory phd_dir.
+    <LI>extracts information from these 'phred' files and places the
+appropriate information in the Clone_Sequence table (as well as some
+subsidiary information such as the well growth status ('OK','No Grow' or
+'Slow Grow'), warnings (poor quality, lack of data, vector only, recurring
+string etc.)
+        <LI>Generates a colour map gif file of the 96-well plate (done
+separately for each of the sub-plates of a 384-well plate) - and placing a
+copy in the directory /www/htdocs/intranet/SDB/RunMaps/. 
+    <LI>Re-sets the 'Run_State' of the Run to 'Analyzed'
+	<LI>Deletes any current information on this run (in case it has been analyzed before)
+	<LI>Updates information in the database on this read.
+    </OL>
+    </UL><TABLE width=100% cellpadding=4>
+    <TR>
+    <TD class=lightheader><SPAN class='larger'>Special Cases</SPAN></TD>
+    </TR>
+    </TABLE>
+    
+    <B>Mis-named Files:</B><P>
+    If files have the incorrect name, the names of the files should 
+    be changed in the mirror directory.  The names should follow the 
+    standard naming convention (check other valid filenames if you are
+unsure).<P>
+ <B>Reverse-Oriented Files:</B><P>
+ If files are reverse oriented, the script update_sequence.pl should be run
+ directly using the '-R' option (type 'update_sequence.pl' for a description
+on the usage of this script).
+<P>
+
+<h3>Manually running Phred</H3>
+Phred Analysis may periodically be run from the command line for purposes of
+time, or to specify particular options (such as the reversal of plate
+orientation), or to re-analyze a run that was originally misnamed etc.
+<P>
+Generally the format for accomplishing this is:
+<B>/home/sequence/public/update_sequence.pl -A all -S (RunID) (options)</B>
+<BR>(Where the RunID and options are entered by the user)<BR>
+(type 'update_sequence.pl' for a list of options)
+

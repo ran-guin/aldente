@@ -1,0 +1,67 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Index<br>
+</h2>
+<h3>Features/Functionalities</h3>
+<ul>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_LibrarySubmission">Library
+Submissions</a></li>
+  <li>Gene Expression department functionalities<br>
+  </li>
+  <ul>
+    <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_RNASources">RNA
+Original Source and RNA Source</a></li>
+    <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Extraction">Extraction</a></li>
+    <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Pooling">Pooling</a></li>
+    <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Rack">Racks<br>
+      </a></li>
+  </ul>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_SecuritySystem">LIMS
+Security System</a><br>
+  </li>
+</ul>
+<h3>Tools</h3>
+<ul>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_MultipageForm">Multipage
+Form</a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_ConvertDB">Database
+Batch Conversions/Modifications<br>
+    </a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Transaction">Transactions</a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_PerlWarning">Inspecting
+Perl Warnings</a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_DataIntegrity">Data
+Integrity</a></li>
+</ul>
+<h3>Administrative Tasks</h3>
+<ul>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_MySQLDatabases">MySQL
+Databases<br>
+    </a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_SysMonitor">System
+Monitor</a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_DBMonitor">Database
+Monitor</a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_DevelopmentRelease">LIMS
+Development/Release Cycle<br>
+    </a></li>
+  <li><a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Barcoding">Barcoding</a><br>
+  </li>
+</ul>
+<br>
+</span>

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location
+END
+WidestCoordPolicy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/WidestCoordPolicy.pm
+END
+Fuzzy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/Fuzzy.pm
+END
+FuzzyLocationI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/FuzzyLocationI.pm
+END
+Simple.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/Simple.pm
+END
+NarrowestCoordPolicy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/NarrowestCoordPolicy.pm
+END
+Split.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/Split.pm
+END
+SplitLocationI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/SplitLocationI.pm
+END
+AvWithinCoordPolicy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/AvWithinCoordPolicy.pm
+END
+CoordinatePolicyI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Location/CoordinatePolicyI.pm
+END

@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template
+END
+Config.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Config.pm
+END
+Tools.pod
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Tools.pod
+END
+Filters.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Filters.pm
+END
+Tutorial.pod
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Tutorial.pod
+END
+Base.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Base.pm
+END
+View.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/View.pm
+END
+Constants.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Constants.pm
+END
+FAQ.pod
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/FAQ.pod
+END
+Modules.pod
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Modules.pod
+END
+Document.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Document.pm
+END
+Directive.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Directive.pm
+END
+Test.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Test.pm
+END
+Plugins.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Plugins.pm
+END
+Stash.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Stash.pm
+END
+Manual.pod
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Manual.pod
+END
+Context.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Context.pm
+END
+Grammar.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Grammar.pm
+END
+Iterator.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Iterator.pm
+END
+VMethods.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/VMethods.pm
+END
+Provider.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Provider.pm
+END
+Toolkit.pod
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Toolkit.pod
+END
+Parser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Parser.pm
+END
+Exception.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Exception.pm
+END
+Plugin.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Plugin.pm
+END
+Service.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/79377/alDente/trunk/lib/perl/Imported/Template/Service.pm
+END

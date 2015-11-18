@@ -1,0 +1,13 @@
+Configuration Files in this directory:
+
+barcodes.dat	- specification for various barcodes that are generated (via the Barcode module)
+login.sql	- list of users and passwords for logging into mysql
+paths.dat	- list of paths used by the application to store various data (may be customized for individual application)
+
+
+Additional settings that are made locally (run from installation script):
+
+SET GLOBAL max_user_connections=50;
+SET GLOBAL max_connections=100;
+
+

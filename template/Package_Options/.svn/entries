@@ -1,0 +1,49 @@
+10
+
+dir
+115487
+https://svn01.bcgsc.ca/svn/alDente/trunk/template/Package_Options
+https://svn01.bcgsc.ca/svn
+
+
+
+2011-03-07T18:24:10.141950Z
+65435
+dcheng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad02020f-2a26-4133-947e-1829317c1416
+
+Standard_App
+dir
+
+Analysis
+dir
+
+Department
+dir
+
+Run
+dir
+
+API
+dir
+
+Statistics
+dir
+
+Summary
+dir
+

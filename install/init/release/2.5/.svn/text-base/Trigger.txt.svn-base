@@ -1,0 +1,6 @@
+1	Source	Method	new_source_trigger	insert	Active		Yes
+2	WorkLog	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_from_WorkLog(-dbh=>$dbh, -id=><ID>);	insert	Active		Yes
+3	Plate	Perl	require alDente::Container;my $po = new alDente::Container(-dbc=>$self,-id=><ID>,-quick_load=>1);$po->new_container_trigger();return 1; 	insert	Active		Yes
+4	Issue	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_trigger(-dbh=>$dbh, -id=><ID>);	insert	Active	Initialize fields (Latest_ETA) for new Issue record	Yes
+5	Library	Method	new_library_trigger	insert	Active	Insert an external source/library_source if library is supplied by collaborator/another dept	Yes
+6	Plate_Prep	Method	plate_prep_insert_trigger	insert	Active	Update branch for plate if applicable reagent has been applied	No

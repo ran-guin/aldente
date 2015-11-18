@@ -1,0 +1,12 @@
+<H1>Barcode Scanners</H1>
+<P>
+To help in the automation of the lab processes, numerous steps are tracked by allowing lab users to simply scan items with a barcode scanner while they are being used.  This scanner is tied to the database directly and updates information in real time, ensuring that lab processes are recorded and monitored as they happen.  This allows not only an up to date record of lab status, but allows constant error checking to take place within the lab, enabling these checks to catch many errors before they are made.  It also allows users to get information on various lab components by simply scanning their associated barcode.  Some of the steps most commonly tracked using the scanners include:
+<UL>
+<LI><h4>Tracking defined protocols for plate preparation.<h4>
+This includes applying plates to equipment (centrifuges, thermocyclers, hydras etc), the transferance of samples between plastic-ware, the application of solutions to plate samples.  <B>Scan plates, follow instructions (scanning bottles/equip as requested)</B>
+<LI>Mixing arbitrary reagents to form solutions.  <B>Scan reagents, enter volumes</B>.
+<LI>Mixing standard solutions.  <B>Choose standard solution (entering # of plates to apply to)</B> - Default volumes are calculated automatically and user need only confirm amounts.
+<LI>Creating sample sheets (configuration files for sequencing machines that are customized for each sample).  <B>Scan Equipment and Plates</B>
+<LI>Changing buffer or matrix for sequencing machines.  <B>(Scan Equipment and reagent barcodes)</B>
+</UL>
+

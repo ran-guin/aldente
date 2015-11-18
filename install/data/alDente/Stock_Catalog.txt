@@ -1,0 +1,7 @@
+Stock_Catalog_ID	Stock_Catalog_Name	Stock_Catalog_Description	Stock_Catalog_Number	Stock_Type	Stock_Source	Stock_Status	Stock_Size	Stock_Size_Units	FK_Organization__ID	FKVendor_Organization__ID	Model	FK_Equipment_Category__ID
+1	TBD Shelf	NULL	NULL	Equipment	Made in House	Active	1	pcs	1	1	NULL	81
+2	Water	NULL	NULL	Reagent	Made in House	Active	NULL	n/a	1	1	NULL	0
+3	Undefined	Undefined Equipment Items		Equipment		Inactive	1	pcs	0	0		84
+4	Poured Agar Plates	Agar plates prepared with Agarose and Antibiotic		Untracked	Made in House	Active	0	n/a	27	27		0
+5	Poured Glycerol Plates	Glycerol plates prepared with Antibiotic		Untracked	Made in House	Active	0	n/a	27	27		0
+6	Virtual Storage	Meta-equipment for tracking general Locations unrelated to Freezers		Equipment		Active	0		0	0		83

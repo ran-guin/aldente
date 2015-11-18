@@ -1,0 +1,7 @@
+Department_ID	Department_Name	Department_Status
+1	LIMS Admin	Active
+2	Public	Active
+3	Lab	Active
+4	Receiving	Active
+5	QC	Active
+6	Management	Active

@@ -1,0 +1,5 @@
+GrpLab_Protocol_ID	FK_Grp__ID	FK_Lab_Protocol__ID
+1	3	3
+2	3	4
+3	3	5
+4	3	6

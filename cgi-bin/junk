@@ -1,0 +1,503 @@
+DB_admin.pl-28-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+DB_admin.pl-29-
+DB_admin.pl:30:#use SDB::SDB_Status;
+DB_admin.pl:31:#use SDB::Plate;
+DB_admin.pl:32:#use SDB::Info;
+DB_admin.pl:33:#use SDB::Sequence;
+DB_admin.pl:34:#use SDB::Solutions;
+DB_admin.pl:35:#use SDB::Table;
+DB_admin.pl:36:#use SDB::DB_Record;
+DB_admin.pl:37:#use SDB::Equipment;
+DB_admin.pl:38:#use SDB::Prep;
+DB_admin.pl:39:#use SDB::Seq_validation;
+DB_admin.pl:40:#use SDB::Seq_Data;
+DB_admin.pl:41:#use SDB::SDB_Status;
+DB_admin.pl:42:#use SDB::Views;
+DB_admin.pl-43-
+DB_admin.pl:44:use SDB::Sequencing;
+DB_admin.pl:45:use SDB::DB_Form_Viewer;
+DB_admin.pl:46:use SDB::GSDB;
+DB_admin.pl:47:use SDB::DB_IO;
+DB_admin.pl:48:use SDB::RGIO;
+DB_admin.pl:49:use SDB::SDB_Defaults;
+DB_admin.pl:50:use SDB::Views;
+DB_admin.pl:51:use SDB::TLC;
+DB_admin.pl:52:use SDB::CustomSettings;
+DB_admin.pl-53-
+DB_admin.pl-54-
+--
+DB_copy.pl-16-
+DB_copy.pl-17-use lib $FindBin::RealBin . "/../lib/perl/";
+DB_copy.pl:18:use SDB::GSDB;
+DB_copy.pl:19:use SDB::RGIO;
+DB_copy.pl:20:use SDB::DB_IO;
+DB_copy.pl:21:use SDB::Plate;
+DB_copy.pl:22:use SDB::GSCvariables;
+DB_copy.pl:23:use SDB::Sequence;
+DB_copy.pl:24:use SDB::Solutions;
+DB_copy.pl:25:use SDB::Table;
+DB_copy.pl:26:use SDB::Sequencing;
+DB_copy.pl:27:use SDB::Equipment;
+DB_copy.pl:28:use SDB::Prep;
+DB_copy.pl:29:use SDB::Seq_validation;
+DB_copy.pl:30:use SDB::Seq_Data;
+DB_copy.pl:31:use SDB::SDB_Status;
+DB_copy.pl:32:use SDB::Views;
+DB_copy.pl:33:use SDB::Info;
+DB_copy.pl:34:use SDB::Library;
+DB_copy.pl:35:use SDB::Process;
+DB_copy.pl:36:use SDB::Chemistry;
+DB_copy.pl-37-
+DB_copy.pl-38-use vars qw($testing);
+--
+DB_tools.pl-7-use lib '/home/rguin/CVS/SeqDB/lib/perl/';
+DB_tools.pl-8-
+DB_tools.pl:9:#use SDB::Sequencing;
+DB_tools.pl:10:#use SDB::DB_Form_Viewer;
+DB_tools.pl-11-
+DB_tools.pl:12:#use SDB::DB_IO;    ## for the DB_Connect function
+DB_tools.pl:13:use SDB::GSDB;     ## for various Table reading functions...
+DB_tools.pl:14:#use SDB::RGIO;     ## for the Message() function
+DB_tools.pl:15:#use SDB::DB_Form_Viewer;  ## this generates some of the HTML views of the Database..
+DB_tools.pl-16-#use HTML_Table;           ## used to generate the HTML tables automatically...
+DB_tools.pl:17:#use SDB::Views;
+DB_tools.pl:18:#use SDB::SDB_Defaults;
+DB_tools.pl:19:#use SDB::TLC;
+DB_tools.pl:20:use SDB::CustomSettings;
+DB_tools.pl-21-
+DB_tools.pl-22-use vars qw($testing);
+--
+Notification.pl-28-
+Notification.pl-29-use lib $FindBin::RealBin . "../lib/perl/";
+Notification.pl:30:use SDB::GSDB qw(Table_update Table_update_array Table_find Table_retrieve);
+Notification.pl:31:use SDB::DB_IO qw(DB_Connect);
+Notification.pl:32:use SDB::RGIO;
+Notification.pl:33:use SDB::Views;
+Notification.pl:34:use SDB::GSCvariables;
+Notification.pl:35:use SDB::Seq_validation;
+Notification.pl:36:use SDB::Notification;
+Notification.pl:37:use SDB::Diagnostics;
+Notification.pl-38-
+Notification.pl-39-use vars qw($testing);
+--
+Protocol.pl-64-use FindBin;
+Protocol.pl-65-use lib "$FindBin::RealBin/../lib/perl/";
+Protocol.pl:66:use SDB::DB_IO;
+Protocol.pl:67:use SDB::GSCvariables;
+Protocol.pl:68:use SDB::GSDB;
+Protocol.pl:69:use SDB::Table;
+Protocol.pl:70:use SDB::RGIO;
+Protocol.pl:71:use SDB::Seq_validation;
+Protocol.pl:72:use SDB::Sequencing;
+Protocol.pl:73:use SDB::Help;
+Protocol.pl-74-
+Protocol.pl-75-use vars qw($testing $OUTFILE $homefile $homelink $dbase);
+--
+Protocol_man.pl-20-
+Protocol_man.pl-21-use lib $FindBin::RealBin . "/../lib/perl/";
+Protocol_man.pl:22:use SDB::Views;
+Protocol_man.pl-23-
+Protocol_man.pl-24-print "Content-type: text/html\n\n";
+--
+Table_man.pl-34-use local::Barcode;
+Table_man.pl-35-use lib $FindBin::RealBin . "/../lib/perl/";
+Table_man.pl:36:use SDB::Views;
+Table_man.pl-37-
+Table_man.pl-38-print "Content-type: text/html\n\n";
+--
+Table_man.pl-51-use lib '/home/rguin/cvs/SeqDB/';<BR>
+Table_man.pl-52-<BR>
+Table_man.pl:53:use SDB::Table;<BR>
+Table_man.pl:54:use SDB::DB_IO;<BR>
+Table_man.pl:55:use SDB::GSCvariables;<BR>
+Table_man.pl:56:use SDB::GSDB;<BR>
+Table_man.pl:57:use SDB::RGIO;<BR>
+Table_man.pl:58:use SDB::Seq_validation;<P>
+Table_man.pl-59-You will also need a database handle which you can generate easily using the command:<BR>
+Table_man.pl-60-<B>my $dbh = DB_Connect(dbase=>'sequence',user=>'rguin');</B>, or by logging in with your own code"]);
+--
+Views_man.pl-42-use local::Barcode;
+Views_man.pl-43-use lib $FindBin::RealBin . "/../lib/perl/";
+Views_man.pl:44:use SDB::Views;
+Views_man.pl-45-
+Views_man.pl-46-print "Content-type: text/html\n\n";
+--
+Views_man.pl-65-$Hist->Set_Line_Colour('white');
+Views_man.pl-66-$Hist->Set_Row(['This is a simple object used to create histograms allowing for quick generation of small histograms for data viewing purposes on web pages.  Further features can be added as they prove useful, with only very basic features exist currently.']);
+Views_man.pl:67:$Hist->Set_Row(['<H2>Code</H2><UL<LI>Include in your code the lines:<BR><B>use lib \'/home/sequence/Production/SeqDB/\'<BR>use SDB::Views.pm</B><bR><LI>Initializing:<BR><B>my $Hist = Histogram->new();</B><LI>Define bins:<BR><B>$Hist->Set_Bins(\@data,$width);</B><BR>(where $width = defined width of bars in pixels - defaults to 10)<LI>Set Path to write images to (defaults to /home/rguin/www/htdocs/intranet/SDB/Temp/)<BR>(This is necessary if you are another user and wish to both write to the directory and read from it via the web)<B>$Hist->Set_Path($path);</B><LI>Set Options...<LI>Draw:<BR><B>$Hist->DrawIt($filename,$height)</B><BR>(where $height is the defined height in pixels of the image)</UL>']);
+Views_man.pl-68-
+Views_man.pl-69-$Hist->Set_Row(['<H2>Options</H2><UL><LI>$Hist->Number_of_Colours(N) - set number of colours to N (currently up to 10)<LI>$Hist->Group_Colours(N) - group N bins together for each colour<LI>Future options:  Specification of colours, axes labelling, background specification, multiple datasets...</UL>']);
+--
+archive.pl-24-use FindBin;
+archive.pl-25-use lib $FindBin::RealBin . "/../lib/perl/";
+archive.pl:26:use SDB::RGIO;
+archive.pl:27:use SDB::DB_IO;
+archive.pl:28:use SDB::GSDB;
+archive.pl:29:#use SDB::Table;
+archive.pl:30:use SDB::SDB_Defaults;
+archive.pl-31-
+archive.pl-32-require "getopts.pl";
+--
+barcode.pl-53-
+barcode.pl-54-######## Standard Database Modules #######################
+barcode.pl:55:use SDB::DB_Form_Viewer; #### General Form handluse SDB::GSDB;      
+barcode.pl:56:use SDB::SDB_Status;       ### Status page generating routines ('Last 24 Hours')
+barcode.pl-57-#### Sequencing Database Handling Routines
+barcode.pl:58:use SDB::Seq_validation;   ### entry validation checking
+barcode.pl:59:use SDB::Seq_Data;         ### Sequence Data analysis routines (eg fasta.pl)
+barcode.pl:60:use SDB::DB_Record;
+barcode.pl:61:use SDB::Info;             ### General information displaying routines
+barcode.pl-62-
+barcode.pl:63:use SDB::Sequencing;       ### General routines specific to Sequencing Database
+barcode.pl:64:#use SDB::DB_IO qw(DB_Connect);     #### General Database IO Routines
+barcode.pl:65:#use SDB::Table qw(Table_find Table_retrieve Table_retrieve_display Table_copy);     #### Table handling Routines
+barcode.pl:66:use SDB::GSDB;
+barcode.pl:67:use SDB::RGIO;
+barcode.pl:68:use SDB::Views;          #### HTML_Table generator, Colour Map generator routines
+barcode.pl-69-
+barcode.pl-70-### Chemistry calculator
+barcode.pl:71:use SDB::Chemistry qw(Chemistry_calculate Chemistry_home Chemistry_development);        
+barcode.pl-72-
+barcode.pl:73:use SDB::Sequence;         ### routines used in generating Sequence Run Sample Sheets
+barcode.pl-74-
+barcode.pl:75:use SDB::Plate;            ### Plate handling routines
+barcode.pl:76:use SDB::Solutions;        ### Solution handling routines
+barcode.pl:77:use SDB::Equipment;        ### Equipment handling routines
+barcode.pl:78:use SDB::Misc_Item;        ### Handling of Box, Misc_Item entries
+barcode.pl:79:use SDB::Library;          ### Library handling
+barcode.pl:80:use SDB::Stock;            ### Stock editing routines
+barcode.pl-81-
+barcode.pl:82:use SDB::Prep;             ### Plate Preparation Tracking procedures
+barcode.pl:83:use SDB::Process;          ### Preparation Step Processing (called from Prep.pm)
+barcode.pl-84-
+barcode.pl:85:use SDB::Orders;           ### Orders database handling (for Carrie, Steve, Letty)
+barcode.pl-86-
+barcode.pl:87:use SDB::Diagnostics;      ### Diagnostics calculations (correlating Sequence Quality)
+barcode.pl:88:use SDB::TLC;              ### getting/saving Tips/Quotes/Links
+barcode.pl:89:use SDB::Notification;     ### Automatic Notification routines
+barcode.pl-90-
+barcode.pl:91:use SDB::Comments;
+barcode.pl:92:use SDB::Help;
+barcode.pl:93:use SDB::HelpButtons;
+barcode.pl-94-
+barcode.pl:95:use SDB::ChromatogramHTML;      ### Cleaned up version of Olivers trace viewer
+barcode.pl-96-
+barcode.pl:97:use SDB::SDB_Defaults;
+barcode.pl:98:use SDB::CustomSettings;
+barcode.pl-99-
+barcode.pl-100-########## Here there be Global Variables ##########
+--
+chemistry.pl-14-
+chemistry.pl-15-use lib $FindBin::RealBin . "/../lib/perl/";
+chemistry.pl:16:use SDB::RGIO;
+chemistry.pl:17:use SDB::DB_IO;
+chemistry.pl:18:use SDB::GSCvariables;
+chemistry.pl:19:use SDB::GSDB;
+chemistry.pl:20:use SDB::Table;
+chemistry.pl-21-
+chemistry.pl-22-use strict;
+--
+cleanup.pl-25-use FindBin;
+cleanup.pl-26-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+cleanup.pl:27:#use SDB::DB_IO;
+cleanup.pl:28:use SDB::RGIO qw(try_system_command Message);
+cleanup.pl:29:use SDB::GSCvariables qw(:all);
+cleanup.pl:30:use SDB::SDB_Defaults;
+cleanup.pl-31-
+cleanup.pl-32-require "getopts.pl";
+--
+db_growth.pl-37-use lib $FindBin::RealBin . "/../lib/perl/";
+db_growth.pl-38-
+db_growth.pl:39:use SDB::Plate;
+db_growth.pl:40:use SDB::GSDB;
+db_growth.pl:41:use SDB::RGIO;
+db_growth.pl:42:use SDB::DB_IO;
+db_growth.pl:43:use SDB::Histogram;
+db_growth.pl:44:#use SDB::Seq_validation;
+db_growth.pl:45:use SDB::Errors;
+db_growth.pl:46:use SDB::Report;
+db_growth.pl:47:use SDB::Views;
+db_growth.pl:48:use SDB::SDB_Defaults;
+db_growth.pl-49-
+db_growth.pl:50:#use SDB::Table;
+db_growth.pl:51:#use SDB::Views;
+db_growth.pl:52:#use SDB::Info;  ##### SQL_phred
+db_growth.pl-53-
+db_growth.pl-54-use vars qw($opt_R);
+--
+decompress.pl-18-
+decompress.pl-19-use lib $FindBin::RealBin . "/../lib/perl/";
+decompress.pl:20:use SDB::GSDB;
+decompress.pl:21:use SDB::RGIO;
+decompress.pl:22:use SDB::DB_IO;
+decompress.pl:23:use SDB::Plate;
+decompress.pl:24:use SDB::GSCvariables;
+decompress.pl:25:use SDB::Sequence;
+decompress.pl:26:use SDB::Solutions;
+decompress.pl:27:use SDB::Table;
+decompress.pl:28:use SDB::Sequencing;
+decompress.pl:29:use SDB::Equipment;
+decompress.pl:30:use SDB::Prep;
+decompress.pl:31:use SDB::Seq_validation;
+decompress.pl:32:use SDB::Seq_Data;
+decompress.pl:33:use SDB::SDB_Status;
+decompress.pl:34:use SDB::Views;
+decompress.pl:35:use SDB::Info;
+decompress.pl:36:use SDB::Library;
+decompress.pl:37:use SDB::Process;
+decompress.pl:38:use SDB::Chemistry;
+decompress.pl:39:use SDB::Diagnostics;
+decompress.pl-40-
+decompress.pl-41-use vars qw($testing);
+--
+example.pl-7-use lib '/home/sequence/WebVersions/Beta/SeqDB/lib/perl/';
+example.pl-8-
+example.pl:9:#use SDB::Sequencing;
+example.pl:10:#use SDB::DB_Form_Viewer;
+example.pl-11-
+example.pl:12:use SDB::DB_IO;    ## for the DB_Connect function
+example.pl:13:use SDB::GSDB;     ## for various Table reading functions...
+example.pl:14:use SDB::RGIO;     ## for the Message() function
+example.pl:15:use SDB::DB_Form_Viewer;  ## this generates some of the HTML views of the Database..
+example.pl-16-use HTML_Table;           ## used to generate the HTML tables automatically...
+example.pl:17:use SDB::Views;
+example.pl:18:#use SDB::SDB_Defaults;
+example.pl:19:#use SDB::TLC;
+example.pl:20:#use SDB::CustomSettings;
+example.pl-21-
+example.pl-22-
+--
+fasta.pl-32-
+fasta.pl-33-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+fasta.pl:34:use SDB::Seq_Data;
+fasta.pl:35:use SDB::DB_IO;
+fasta.pl:36:use SDB::Table;
+fasta.pl:37:use SDB::Plate;  ## get_Plate_parents..
+fasta.pl-38-
+fasta.pl-39-use vars qw($opt_S $opt_L $opt_o $opt_W $opt_w $opt_A $opt_V $opt_v $opt_c $opt_R $opt_I $opt_N $opt_l $opt_u $opt_f $opt_T);
+--
+genss.pl-42-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+genss.pl-43-
+genss.pl:44:use SDB::GSDB;
+genss.pl:45:use SDB::RGIO;
+genss.pl:46:use SDB::DB_IO;
+genss.pl:47:use SDB::Plate;
+genss.pl:48:use SDB::SDB_Defaults;
+genss.pl:49:use SDB::Sequence;
+genss.pl:50:use SDB::Solutions;
+genss.pl:51:use SDB::Table;
+genss.pl:52:use SDB::Seq_validation;
+genss.pl:53:use SDB::Report;
+genss.pl-54-
+genss.pl-55-use vars qw($opt_h $opt_n $opt_N $opt_f $opt_m $opt_v $opt_c $opt_x);
+--
+parse_table.pl-25-
+parse_table.pl-26-use lib $FindBin::RealBin . "/../lib/perl/";
+parse_table.pl:27:use SDB::Table;
+parse_table.pl:28:use SDB::GSDB;
+parse_table.pl:29:use SDB::DB_IO;
+parse_table.pl:30:use SDB::Seq_validation;
+parse_table.pl-31-
+parse_table.pl-32-use vars qw($LIB);
+--
+post_sequence.pl-34-use lib $FindBin::RealBin . "/../lib/perl/";
+post_sequence.pl-35-
+post_sequence.pl:36:use SDB::Plate;
+post_sequence.pl:37:use SDB::GSDB;
+post_sequence.pl:38:use SDB::RGIO;
+post_sequence.pl:39:use SDB::DB_IO;
+post_sequence.pl:40:#use SDB::Seq_validation;
+post_sequence.pl:41:use SDB::Errors;
+post_sequence.pl:42:use SDB::Report;
+post_sequence.pl:43:use SDB::SDB_Defaults;
+post_sequence.pl-44-
+post_sequence.pl:45:#use SDB::Table;
+post_sequence.pl:46:#use SDB::Views;
+post_sequence.pl:47:#use SDB::Info;  ##### SQL_phred
+post_sequence.pl-48-
+post_sequence.pl-49-require "getopts.pl";
+--
+quick_view.pl-18-
+quick_view.pl-19-use lib $FindBin::RealBin . "/../lib/perl/";
+quick_view.pl:20:use SDB::GSDB;
+quick_view.pl:21:use SDB::RGIO;
+quick_view.pl:22:use SDB::DB_IO;
+quick_view.pl:23:use SDB::Plate;
+quick_view.pl:24:use SDB::GSCvariables;
+quick_view.pl:25:use SDB::Sequence;
+quick_view.pl:26:use SDB::Solutions;
+quick_view.pl:27:use SDB::Table;
+quick_view.pl:28:use SDB::Sequencing;
+quick_view.pl:29:use SDB::Equipment;
+quick_view.pl:30:use SDB::Prep;
+quick_view.pl:31:use SDB::Seq_validation;
+quick_view.pl:32:use SDB::Seq_Data;
+quick_view.pl:33:use SDB::SDB_Status;
+quick_view.pl:34:use SDB::Views;
+quick_view.pl:35:use SDB::Info;
+quick_view.pl:36:use SDB::Library;
+quick_view.pl:37:use SDB::Process;
+quick_view.pl:38:use SDB::Chemistry;
+quick_view.pl-39-
+quick_view.pl-40-use vars qw($testing);
+--
+run_analysis.pl-30-use lib $FindBin::RealBin . "/../lib/perl/";
+run_analysis.pl-31-
+run_analysis.pl:32:use SDB::DB_IO;
+run_analysis.pl:33:use SDB::GSDB;
+run_analysis.pl:34:use SDB::RGIO;
+run_analysis.pl:35:use SDB::SDB_Defaults;
+run_analysis.pl:36:use SDB::Post;
+run_analysis.pl:37:use SDB::Report;
+run_analysis.pl:38:use SDB::CustomSettings;
+run_analysis.pl-39-
+run_analysis.pl-40-our ($opt_h, $opt_A, $opt_x, $opt_v, $opt_S, $opt_D, $opt_i, $opt_M, $opt_t, $opt_l, $opt_v, $opt_R, $opt_f, $opt_F);
+--
+scanner.pl-53-
+scanner.pl-54-######## Standard Database Modules #######################
+scanner.pl:55:use SDB::DB_Form_Viewer; #### General Form handluse SDB::GSDB;      
+scanner.pl:56:use SDB::SDB_Status;       ### Status page generating routines ('Last 24 Hours')
+scanner.pl-57-#### Sequencing Database Handling Routines
+scanner.pl:58:use SDB::Seq_validation;   ### entry validation checking
+scanner.pl:59:use SDB::Seq_Data;         ### Sequence Data analysis routines (eg fasta.pl)
+scanner.pl:60:use SDB::DB_Record;
+scanner.pl:61:use SDB::Info;             ### General information displaying routines
+scanner.pl-62-
+scanner.pl:63:use SDB::Sequencing;       ### General routines specific to Sequencing Database
+scanner.pl:64:#use SDB::DB_IO qw(DB_Connect);     #### General Database IO Routines
+scanner.pl:65:#use SDB::Table qw(Table_find Table_retrieve Table_retrieve_display Table_copy);     #### Table handling Routines
+scanner.pl:66:use SDB::GSDB;
+scanner.pl:67:use SDB::RGIO;
+scanner.pl:68:use SDB::Views;          #### HTML_Table generator, Colour Map generator routines
+scanner.pl-69-
+scanner.pl-70-### Chemistry calculator
+scanner.pl:71:use SDB::Chemistry qw(Chemistry_calculate Chemistry_home Chemistry_development);        
+scanner.pl-72-
+scanner.pl:73:use SDB::Sequence;         ### routines used in generating Sequence Run Sample Sheets
+scanner.pl-74-
+scanner.pl:75:use SDB::Plate;            ### Plate handling routines
+scanner.pl:76:use SDB::Solutions;        ### Solution handling routines
+scanner.pl:77:use SDB::Equipment;        ### Equipment handling routines
+scanner.pl:78:use SDB::Misc_Item;        ### Handling of Box, Misc_Item entries
+scanner.pl:79:use SDB::Library;          ### Library handling
+scanner.pl:80:use SDB::Stock;            ### Stock editing routines
+scanner.pl-81-
+scanner.pl:82:use SDB::Prep;             ### Plate Preparation Tracking procedures
+scanner.pl:83:use SDB::Process;          ### Preparation Step Processing (called from Prep.pm)
+scanner.pl-84-
+scanner.pl:85:use SDB::Orders;           ### Orders database handling (for Carrie, Steve, Letty)
+scanner.pl-86-
+scanner.pl:87:use SDB::Diagnostics;      ### Diagnostics calculations (correlating Sequence Quality)
+scanner.pl:88:use SDB::TLC;              ### getting/saving Tips/Quotes/Links
+scanner.pl:89:use SDB::Notification;     ### Automatic Notification routines
+scanner.pl-90-
+scanner.pl:91:use SDB::Comments;
+scanner.pl:92:use SDB::Help;
+scanner.pl:93:use SDB::HelpButtons;
+scanner.pl-94-
+scanner.pl:95:use SDB::ChromatogramHTML;      ### Cleaned up version of Olivers trace viewer
+scanner.pl-96-
+scanner.pl:97:use SDB::SDB_Defaults;
+scanner.pl:98:use SDB::CustomSettings;
+scanner.pl-99-
+scanner.pl-100-########## Here there be Global Variables ##########
+--
+sqltest.pl-30-use Benchmark;
+sqltest.pl-31-
+sqltest.pl:32:use SDB::DB_IO;
+sqltest.pl:33:use SDB::GSDB;
+sqltest.pl:34:use SDB::RGIO;
+sqltest.pl:35:use SDB::Plate;
+sqltest.pl:36:use SDB::GSCvariables;
+sqltest.pl:37:use SDB::Sequence;
+sqltest.pl:38:use SDB::Solutions;
+sqltest.pl:39:use SDB::Table;
+sqltest.pl:40:use SDB::Sequencing;
+sqltest.pl:41:use SDB::SDB_Status;
+sqltest.pl-42-
+sqltest.pl:43:use SDB::Seq_validation;
+sqltest.pl:44:use SDB::Views;
+sqltest.pl:45:use SDB::DB_Form_Viewer;
+sqltest.pl-46-
+sqltest.pl-47-######## Sequencing Lab Specific Modules ########
+--
+test.pl-37-use lib $FindBin::RealBin . "/../lib/perl/";
+test.pl-38-
+test.pl:39:use SDB::Plate;
+test.pl:40:use SDB::GSDB;
+test.pl:41:use SDB::RGIO;
+test.pl:42:use SDB::DB_IO;
+test.pl:43:use SDB::Histogram;
+test.pl:44:#use SDB::Seq_validation;
+test.pl:45:use SDB::Errors;
+test.pl:46:use SDB::Report;
+test.pl:47:use SDB::Views;
+test.pl:48:use SDB::SDB_Defaults;
+test.pl-49-
+test.pl:50:#use SDB::Table;
+test.pl:51:#use SDB::Views;
+test.pl:52:#use SDB::Info;  ##### SQL_phred
+test.pl-53-
+test.pl-54-use vars qw($opt_R);
+--
+update_Stats.pl-15-
+update_Stats.pl-16-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+update_Stats.pl:17:use SDB::Plate;
+update_Stats.pl:18:#use SDB::GSCvariables;
+update_Stats.pl:19:#use SDB::Sequence;
+update_Stats.pl:20:#use SDB::Solutions;
+update_Stats.pl:21:#use SDB::Table;
+update_Stats.pl:22:#use SDB::Sequencing;
+update_Stats.pl:23:#use SDB::Equipment;
+update_Stats.pl:24:#use SDB::Prep;
+update_Stats.pl:25:#use SDB::Seq_validation;
+update_Stats.pl:26:#use SDB::Seq_Data;
+update_Stats.pl:27:#use SDB::SDB_Status;
+update_Stats.pl:28:#use SDB::Views;
+update_Stats.pl:29:#use SDB::Info;
+update_Stats.pl:30:#use SDB::Library;
+update_Stats.pl:31:#use SDB::Process;
+update_Stats.pl:32:#use SDB::Chemistry;
+update_Stats.pl:33:use SDB::DB_IO;
+update_Stats.pl:34:use SDB::GSDB;
+update_Stats.pl:35:use SDB::RGIO;
+update_Stats.pl:36:use SDB::SDB_Defaults;
+update_Stats.pl:37:use SDB::CustomSettings;
+update_Stats.pl-38-
+update_Stats.pl-39-use vars qw($opt_S $opt_C $opt_D $opt_A);
+--
+update_library_list.pl-22-
+update_library_list.pl-23-use lib $FindBin::RealBin . "/../lib/perl/";
+update_library_list.pl:24:use SDB::DB_IO;     # Standard Input/Output routines (DB_Connect)
+update_library_list.pl:25:use SDB::Table;
+update_library_list.pl:26:use SDB::GSDB;
+update_library_list.pl:27:use SDB::RGIO;
+update_library_list.pl-28-
+update_library_list.pl-29-use vars qw($testing);
+--
+update_sequence.pl-30-use lib $FindBin::RealBin . "/../lib/perl/";
+update_sequence.pl-31-
+update_sequence.pl:32:use SDB::DB_IO;
+update_sequence.pl:33:use SDB::GSDB;
+update_sequence.pl:34:use SDB::RGIO;
+update_sequence.pl:35:use SDB::SDB_Defaults;
+update_sequence.pl:36:use SDB::Post;
+update_sequence.pl:37:use SDB::Report;
+update_sequence.pl:38:use SDB::CustomSettings;
+update_sequence.pl-39-
+update_sequence.pl-40-our ($opt_h, $opt_A, $opt_x, $opt_v, $opt_S, $opt_D, $opt_i, $opt_M, $opt_t, $opt_l, $opt_v, $opt_R, $opt_f, $opt_F);
+--
+view_chromatogram.pl-96-use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+view_chromatogram.pl-97-
+view_chromatogram.pl:98:use SDB::ChromatogramHTML;
+view_chromatogram.pl-99-
+view_chromatogram.pl-100-$| = 1;		# flush STDOUT
+--
+warnings.pl-18-
+warnings.pl-19-use lib $FindBin::RealBin . "/../lib/perl/";
+warnings.pl:20:use SDB::Views;
+warnings.pl:21:use SDB::Table;
+warnings.pl:22:use SDB::SDB_Status;
+warnings.pl:23:use SDB::DB_IO;
+warnings.pl-24-
+warnings.pl-25-use vars qw($dbh $testing);

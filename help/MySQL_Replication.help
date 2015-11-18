@@ -1,0 +1,111 @@
+<h2>Setting up MySQL Replication</h2>
+<br>
+This is a step-by-step guide for setting up MySQL replication for the
+'sequence' database at GSC.&nbsp; This is assuming the production
+database is located at the 'seqdb01' host and the backup database is at
+the 'lims-dbm' host.&nbsp; The complete reference for MySQL Replication
+can be found <a href="http://www.mysql.com/doc/en/Replication.html">here</a>.<br>
+<h4>Initial Setup</h4>
+<ol>
+  <li>Setup an account on the master that the slave's I/O thread can
+connect to.
+    <pre style="color: rgb(153, 0, 0);">mysql&gt; GRANT REPLICATION SLAVE ON *.* TO repl@'%' IDENTIFIED BY '&lt;replication password&gt;';	</pre>
+  </li>
+  <li>Take a snapshot of the database on the master:<br>
+    <pre style="color: rgb(153, 0, 0);">mysql&gt; FLUSH TABLES WITH READ LOCK;&nbsp;<br>shell&gt; tar -cvf /tmp/sequence.tar ./sequence<br>mysql&gt; UNLOCK TABLES;</pre>
+  </li>
+  <li>Turn on binary logging on the master (seqdb01).&nbsp; Add the
+followings to the my.cnf file under the [mysqld] section:<br>
+    <pre style="color: rgb(153, 0, 0);">log-bin&nbsp;&nbsp;&nbsp;               # Enable binary logging<br
+ style="color: rgb(153, 0, 0);">binlog-do-db = sequence&nbsp; # Only log the sequence database<br>server-id&nbsp;&nbsp;&nbsp; = 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Ensure the server-id of the master is different from the server-id of the slave<br></pre>
+  </li>
+  <li>Specify which database to replicate to the slave
+(lims-dbm).&nbsp; Add the followings to the my.cnf file under the
+[mysqld] section:<br style="color: rgb(153, 0, 0);">
+    <pre style="color: rgb(153, 0, 0);">replicate-do-db = sequence&nbsp; # Only replicate the sequence database<code
+ style="color: rgb(153, 0, 0);"></code><br></pre>
+  </li>
+  <li>Restore the database to the slave.</li>
+  <li>Gather information about the binary logging status of the master
+and record the values from the 'File' and 'Position' fields:<br>
+    <pre style="color: rgb(153, 0, 0);">mysql &gt; SHOW MASTER STATUS;<br>+------------------+----------+--------------+------------------+<br>| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |<br>+------------------+----------+--------------+------------------+<br>| seqdb01-bin.001  | 79       | sequence     |                  |<br>+------------------+----------+--------------+------------------+<br>1 row in set (0.06 sec)</pre>
+    <br>
+  </li>
+  <li>Specify master information on the slave:<br>
+    <pre style="color: rgb(153, 0, 0);">mysql&gt; CHANGE MASTER TO<br>    -&gt;     MASTER_HOST='seqdb01',<br>    -&gt;     MASTER_USER='repl',<br>    -&gt;     MASTER_PASSWORD='&lt;replication password&gt;',<br>    -&gt;     MASTER_LOG_FILE='seqdb01-bin.001',<br>    -&gt;     MASTER_LOG_POS=79;</pre>
+  </li>
+  <li>Start the slave:<br>
+    <pre><pre style="color: rgb(153, 0, 0);">mysql&gt; START SLAVE; </pre></pre>
+  </li>
+  <li>By this time, replication is already setup.&nbsp; You can verify
+the state of the slave.&nbsp; Note that the 'Master_Log_file' and
+'Read_Master_Log_Pos' fields should match the 'File' and 'Position'
+fields from the above.<br>
+    <pre><span style="color: rgb(153, 0, 0);">mysql&gt; SHOW SLAVE STATUS\G</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">*************************** 1. row ***************************</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">          Master_Host: seqdb01</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">          Master_User: repl</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">          Master_Port: 3306</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">        Connect_Retry: 3</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">      Master_Log_File: seqdb01-bin.001</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">  Read_Master_Log_Pos: 79</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">       Relay_Log_File: lims-dbm-relay-bin.001</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">        Relay_Log_Pos: 46</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">Relay_Master_Log_File: seqdb01-bin.001</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">     Slave_IO_Running: Yes</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">    Slave_SQL_Running: Yes</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">      Replicate_do_db: sequence</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">  Replicate_ignore_db:</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">           Last_errno: 0</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">           Last_error:</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">         Skip_counter: 0</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">  Exec_master_log_pos: 79</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">      Relay_log_space: 46</span><br
+ style="color: rgb(153, 0, 0);"></pre>
+  </li>
+</ol>
+<h4>Ongoing Maintenance</h4>
+After binary logging has been turned on, we need some sort of mechanism
+to periodically clean up the binary logs to prevent them from filling
+up all the disk spaces.&nbsp; We also want to have some way to backup
+the binary logs and restore a database using these binary logs.&nbsp;
+Hence, we came up with a pair of scripts that can be found in the 'bin'
+folder to handle these:<br>
+<ul>
+  <li>backup_RDB.pl - This script support 3 backup types:</li>
+  <ul>
+    <li>full:&nbsp; Performs a full database dump, backup and purge the
+binary logs (the backups will be written to a folder named something
+like '/home/sequence/alDente/dumps/seqdb01.sequence/2004-02-18/<br>
+    </li>
+    <li>binlog:&nbsp; Just backup the binary logs</li>
+    <li>purge:&nbsp; Purge and backup the binary logs.&nbsp; Note that
+prior to the purge, the script will check the status of all the slaves
+and make sure their I/O threads have caught up with the master.&nbsp;
+As long as one slave is still behind, the binary logs won't be purged.</li>
+  </ul>
+</ul>
+<ul>
+  <li>restore_RDB.pl - This script will actually locate the latest full
+backup dump and the latest binary logs backup. Afterwards, a comparison
+will be done between the two:<br>
+  </li>
+  <ul>
+    <li>If latest full backup dump is created later than the latest
+binary logs backup, then the restore will simply restore the dumps.</li>
+    <li>If latest full backup dump is created earlier than the latest
+binary logs backup, then the restore will restore the dumps and then
+apply the binary logs using the mysqlbinlog program.</li>
+  </ul>
+</ul>
+The backup_RDB.pl script should be placed in crontab so regular backups
+are made.&nbsp; The idea will be to have binlog backups regularly (like
+every 10 minutes from 6 am to 6 pm everyday) and then a full backup
+(which will purge the binary logs) once per day.&nbsp; An example of
+the crontab will be:<br>
+<pre><span style="color: rgb(153, 0, 0);"># Binary logs backup once every 10 minutes from 6 am to 6pm</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">*/10 6-18 * * * /opt/alDente/versions/production/bin/backup_RDB.pl -D seqdb01:sequence -S lims-dbm -u username -p password -t binlog &gt; /opt/alDente/www/dynamic/logs/binlog_backup.log</span><br
+ style="color: rgb(153, 0, 0);"><br style="color: rgb(153, 0, 0);"><span
+ style="color: rgb(153, 0, 0);"># Full backup (also purge binary logs) once per day at 10 pm</span><br
+ style="color: rgb(153, 0, 0);"><span style="color: rgb(153, 0, 0);">0 22 * * * /opt/alDente/versions/production/bin/backup_RDB.pl -D seqdb01:sequence -S lims-dbm -u username -p password -t full &gt; /opt/alDente/www/dynamic/logs/full_backup.log</span><br></pre>
+<br>

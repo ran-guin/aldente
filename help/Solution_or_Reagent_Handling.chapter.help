@@ -1,0 +1,275 @@
+Solution/Reagent Handling
+<h1>What is a Reagent?</H1>
+A Reagent generally consists bottle (usually liquid, but it can also be a solid like salt).
+From Reagents, solutions may also be made, for which similar information is kept.<BR>For 'Solutions', we also keep track of which original reagents (and in what quantity) were used to form the Solution mixture.  
+ 
+<h2>What sort of information do we store for a Reagent?</H2>
+Reagents (as well as Solutions) are stored as 'Stock'.  Information for the stock is kept in a separate table, and includes such information as:
+<UL>
+<LI>Type - 'Reagent', 'Solution', 'Equipment', 'Box' etc.
+<LI>Size - the size of the stock item (normally in mL for Solutions/Reagents)
+<LI>Size Units - the units in which the Reagent size is defined (typically mL or mg)<BR>
+	(this may be converted to mL from L after it is entered to maintain consistency) 
+<LI>Employee - who recorded the arrival of the stock (or who made up a particular solution)
+</UL>
+All of the above information applies to each item in the stock<BR>
+eg. if 10 bottles of a reagent are received, the information above is common to all bottles and is recorded once for that Stock Item, and the fact noted that there are 10 items in this record.
+<BR><A Href=$homelink&Table+Info=Stock>View Stock Fields</A>
+<BR><BR>
+In addition, there is some information which is stored SEPARATELY for each of the 10 bottles such as:
+<LI>Start Date - when the reagent was opened.
+<LI>Status - 'Unopened','Open','Expired'
+<LI>Expiry - when a given bottle expires
+<LI>Number in Batch - the number of bottles in the same batch of stock
+<LI>Bottle Number - the number of this bottle in the batch of stock 
+<LI>Quantity Used - the quantity of contents that has been tracked as used thus far.
+</UL>
+<BR><A Href=$homelink&Table+Info=Reagent>View Reagent Fields</A>
+
+<h2>How does a Reagent relate to other 'Tables' ?</h2>
+<BR>
+<A Href='$homelink&User=Auto&Tree=1&TableName=Solution'>View Relationship of Reagents/Solutions with other 'Tables'</A>
+
+<h2>How do I define a Reagent</H2>
+A Reagent can be easily defined by first clicking on the 'Reagents' icon
+after logging into the main page.<BR>
+From here, there is a button part way down that allows you to create a new 'Reagent'.
+Simply fill out the form that you are given, and the reagent will be created, and the barcodes for the reagents automatically generated<BR>(showing in text the initials of the creator, the date, and the name of the Reagent)
+
+<h2>How can I view information on a Reagent?</H2>
+By simply scanning the reagent at the home page, (or by typing in the barcode - 'sol' followed by the solution 'ID'),
+you will be shown basic information on the reagent or solution.<BR>
+<Img Src = '$Help_Image_dir/Reagent_info.png'>
+<BR>
+For more information, simply click on the hyperlink on the solution name, and you will be shown more details.
+(For solutions, you will also be shown the components of the solution)
+<A Href='$homelink&Help_Image=Reagent_info.png'>Typical Reagent Information</A>
+
+<h2>How can I change information on a Reagent?</H2>
+After viewing the information as described above for a Reagent, there should be a button allowing the user to 'Edit' this information.
+<A Href='$homelink&Help_Image=Reagent_form.png'>Reagent Information Form</A>
+    <h2>Entering New Reagents into the Database</h2>
+     <h3>Using the scanner</h3>
+      Due to the amount of information that should be
+added, this will not yet be available via the barcode scanners.  Information
+should be added through a standard keyboard.
+
+    <h3>From the web page</h3>
+<ul>
+<span class=smaller>
+<li>Go to the Receiving home page.
+<li>Search for the stock in the current database either by catalog number or stock name: <br> 
+<img src="$Help_Image_dir/Receive_Stock_Search.png"><p>
+Note that catalog number searches will ignore spaces and dashes. If only one match is found, you will be taken to the 'Stock' updating form directly with information preset for you. If more than one matches are found, you can then pick you stock from the list.
+<li>If the stock you are entering is indeed a new stock item, you will then create the stock by using the drop-down menu in the 'Create New...' section of the Receiving home page.
+</ul>
+<P>
+Some information specific to Reagents may be entered at the top of the 'Stock' updating form:
+<P>
+<Img Src = '$Help_Image_dir/Adding_Reagent_Stock.png'>
+<P>
+The rest of the information is common to all types of stock information, and is retrieved using
+the standard stock item form:
+<P>
+<Img Src = '$Help_Image_dir/Adding_Stock.png'>
+<P>
+</span>
+After entering the appropriate information (which will be common for all
+units in the same batch), a record will be saved and for every unit
+indicated as received (The number of bottles in the case of Reagents), an
+individual record will be added to the 'Solutions/Reagents' database as
+well.<P>At this time, the screen will display a link to the Stock batch.  Clicking on this link
+will display to the user information specific to the entire batch of stock added:
+<P>
+(this may be edited if required by clicking on the 'Edit' button below the
+batch information)
+<P>
+<Img Src = '$Help_Image_dir/New_Stock.png'>
+<P>Below this appears a record by record list of each of the resultant Reagents that have
+been added to the database. (ie. if you have indicated that 5 bottles were
+received, there would be 5 records created - one for each bottle.
+<P>
+When created, barcode labels for reagents are printed automatically if the system is set up for barcoding.
+<P>
+At this time, any changes to individual Reagents may be made,
+though normally, there should be no need to make changes. (On this form, for
+instances, specific values may be set for Serial Numbers if applicable, or
+Expiry dates or 'Open/Unopened' status for Solutions/Reagents.
+<P>
+Note that if a reagent has previously been entered as a 'Primer' or 'Matrix' (two special types of reagents),
+or visa versa, a warning will come up indicating that the solution_type is ambiguous.  At this time the user should ensure that all similar reagents/solutions are specified correctly.  (sometimes when a reagent is diluted, it may be called a solution - this is generally ok, but Primers and Matrix reagents SHOULD ALWAYS be identified as such)<P>Their 'solution_type' may be edited easily at this point if entered incorrectly to begin with.
+<P>
+<Img Src = '$Help_Image_dir/edit_New_Reagents.png'>
+<P>From here, you may go to another page by clicking another icon, or scan
+another item in front of the 'Scan' field at the bottom of the page
+<h2>Mixing Solutions</h2>
+<h3>Using the scanner</h3>
+<h4>From the scanner choose a standard solution or
+select any number of solutions to mix together from the main page</h4>
+   <Img src='$Help_Image_dir/standard_solutions.png'>
+    <P>
+        
+</h3>From the web page</h3>
+<P>
+Another easy way to make solutions from the
+home page is to simply scan the solutions that you wish to mix into the main
+textfield box on the home page.  You will then be directed to a page that
+will prompt you for the respective quantities of each reagent:
+<P>
+<Img src='$Help_Image_dir/Std_Solutions.png'>
+<P>This page will dynamically calculate the total volume of
+the final product, as well as its calculated value.<BR>At the bottom of the
+page you should also indicate the location in which the solution will be
+stored.
+  <P>
+<PA>
+<h2>Database Interactions During Standard Laboratory Procedures</h2>
+    
+<Table><TR>
+<TD>Step</TD>
+<TD>Database Changes</TD>
+
+</TR><TR><TD>
+<B>Recieve new
+Reagent</B><P>
+(Create 'A' and 'B')
+</TD>
+<TD>
+<B>Solution</B> (new)<UL><LI>Name<LI>Recieved
+Date<LI>Quantity<LI>Supplier<Li>Lot Number<LI>Catalog Number<LI>Type (if
+Primer/Buffer/Matrix)<LI>Status = 'Unopened'<LI>Cost<LI>Expiry
+Date<Li>Bottle Number<LI>Quantity Used = 0<LI>Location (Rack)</UL>
+</TD>
+</TR><TR>
+
+<TD>
+<B>Mix Solutions</B><BR>eg. A & B
+</TD>
+<TD>
+<B>Solution</B>
+(new)<UL><LI>(similar to above except:)<LI>Recieved Date = NULL<LI>Start
+Date = (current)<LI>Supplier = 'GSC' (in house)<LI>Cost =
+(calculated)</UL><BR><B>Mixture</B> (new)<UL><LI>Solution Made<LI>Solution
+Used (A)</UL><BR><B>Mixture</B> (new)<UL><LI>Solution Made<LI>Solution Used
+(B)</UL><BR><B>Solution</B> (update A)<UL><LI>Quantity Used += ?<LI>Status =
+'Open' (if not already)</UL><BR><B>Solution</B> (update B)<UL><LI>Quantity
+Used += ?<LI>Status = 'Open' (if not already)</UL><BR>...
+</TD>
+</TR><TR>
+
+<TD>
+<B>Use Solutions</B>
+</TD>
+<TD>
+<B>Preparation</B>
+(new)<UL><LI>Employee<Li>Time<Li>Equipment(if applic)<Li>Solution_ID(if
+applic)<Li>Conditions<Li>Comments</Ul><B>Solution</B>
+(update)<BR><UL><LI>Quantity_Used += ?</UL>
+</TD>
+</TR><TR>
+<TD>
+<B>Empty Solution</B>
+</TD>
+<TD>
+<B>Solution</B>
+(new)<UL><LI>Status = 'Finished'<Li>Finished Date = (current)</UL>
+</TD>
+</TR></Table>
+
+<H2>Solution Tracking</H2>
+<P>
+Tracking of Reagents and Solutions, ensures that a detailed record of what is available and what has been used within the lab is maintained.
+
+<UL>
+<LI>Recording of incoming reagents to the lab. (this may include details such as cost, supplier, original quantities, expiry dates etc).
+<LI>Monitoring of quantities of various reagents used during the mixture of solutions.  (monitoring date & time of mixing, users involved in the process, quantities of reagents involved, location for storage etc)
+<LI>Monitoring application of solutions/reagents to plate samples, associating reagents with the target samples.
+<LI>Allowing stock monitoring routines that can search for given types of solutions or send regular email messages to indicate low levels.
+<LI>Specification of certain standard formulas for solutions that may be defined via the web page with any number of parameters as desired.  (These standard solutions show up on a pull-down menu for quick selection by lab users, automatically setting the default values for reagent quantities).
+</UL>
+
+<H2>Keeping Track of Chemicals & Reagents</H2>  
+<P>
+To ensure that stock supplies remain
+conservative, when a new catalog number is entered into the database,
+administrators have the option of specifying a 'minimum number of units' for
+this item.  If stock falls below this value, notification will be sent to
+indicate that this item needs to be resupplied
+<P>
+<Img src='$Help_Image_dir/Notice.png'>
+<P>
+In addition, when new
+chemicals/reagents are added, the user will be shown the current stock
+supply of that item (showing the number of Unopened, Open and Finished
+Bottles)
+<P>
+<Img src='$Help_Image_dir/Status.png'>
+<P>
+This allows stocks of
+Reagents & Chemicals to be monitored regularly.  If a particular item is low
+on stock, an e-mail notification is sent to re-supply the item, showing the
+current available bottles in stock
+<P>
+<Img src='$Help_Image_dir/Email.png'>   
+<H2>Standard Solution Chemistry Calculator</H2>
+To allow users to quickly and easily generate standard solutions using default volumes (often defined by the number of plates to which they are being applied), lab administrators may indicate formulas for those chemistries used most commonly within the lab.  Volumes and solution names are set up with default values initially, maximizing the ease with which these solutions are created within the lab, and ensuring consistency.<P>Error checking is also available at this stage with formatting options available for the reagents to be used in this process.
+<P>In addition, printers may be set up to automatically print out small stickers showing chemistry formulas and defaults used to provide a fast easy way of recording this information in lab books if desired.
+<P>
+
+Notes:<P>
+Automatic Chemistry Calculations depend on an accurate and complete entry
+into these Tables.  
+If you are unsure of how to set these values, please speak with your
+administrator.
+
+The Formula in the Standard_Solution Table is used to calculate 
+amounts of each Solution Parameter.
+<UL>
+<LI>'Wells' will be replaced in the formula by the number of wells required.
+<LI>Any other textfield specified in the Parameter Table will be replaced by
+its corresponding value.
+<LI>'Multiple' parameters will be replaced successively by the value of the
+indexed parameters.
+(eg.  if you wish to specify a Solution consisting of Reagent1, Reagent2,
+and Reagent3:
+<UL>
+<LI>
+You would use a Parameter called 'Reagent' in the Standard_Solution Table
+(eg. Brew*Wells + ExtraBrew)
+<LI>
+you would set the number of Parameters to 3
+<LI>
+You would add 3 entries to the Parameter table, called: 
+'Reagent1' 
+'Reagent2'
+'Reagent3'
+
+<LI>Set the Description fields in this table to the prompt you would like to
+see.
+<LI>Set the Format field (if desired) to specify the expected name of the
+solution to be used.
+(You may use the '|' (OR) operator to signify two possibilities. (eg.
+'Water|H2O')
+
+<LI>Set the value field to the value to be used in the formula for this
+reagent.
+<LI>Set the Type field to 'Multiple' indicating that there will be multiple
+values for this parameter.
+
+Note: There should only be ONE base name for the 'Multiple' Parameters 
+(in this case the base name is 'Reagent' as used in the original formula
+<LI>Set 'Static' parameters as required.
+(eg. Name a parameter 'ExtraBrew' with a value of 300 uL)
+</UL>
+
+<LI>'Hidden' parameters are generally used for information purposes only,
+but not used in the formula
+(eg. for Total Volumes expected from all 'Multiple' Parameters)
+<LI>'Static' Parameters will be replaced in the formula by their specified
+Value.
+</UL>
+
+Note:  Names of all parameters should not be contained within names of
+another parameter.
+(ie if you have a parameter Extra, and another called ExtraBrew, the formula may not work...
+(in this case you COULD use 'Extra1' and 'ExtraBrew')

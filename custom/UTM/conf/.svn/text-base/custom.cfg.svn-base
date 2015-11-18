@@ -1,0 +1,29 @@
+## Configuration settings that are customized for specific installations ##
+custom_version_name: UTM
+DATABASE: tg
+SQL_HOST: limsdev04
+default_mode: DEV
+PRODUCTION_DATABASE : bcg
+PRODUCTION_HOST : hblims05
+PRODUCTION_WEBHOST : hblims01
+TEST_DATABASE : bcg_test
+TEST_HOST : hblims05
+UNIT_TEST_DATABASE : bcg_test
+UNIT_TEST_HOST : hblims05
+BACKUP_DATABASE : bcg 
+BACKUP_HOST : hblims04
+BETA_DATABASE : bcg_beta
+BETA_HOST : hblims05
+CORE_HOST : hblims05
+CORE_DATABASE : Core
+DEV_HOST : limsdev04
+DEV_DATABASE : tg
+default_email_domain: bcgsc.ca
+URL_domain: http://limsdev02.bcgsc.ca
+admin_email : rguin@bcgsc.ca
+jira_project : ALDENTE
+jira_proxy_user : aldente_proxy_user
+jira_password : jiraforaldente
+web_root: /opt/alDente/utm
+data_root: /opt/alDente/utm/data
+url_root: SDB

@@ -1,0 +1,5 @@
+lib/perl/Core/alDente/View_App.pm
+lib/perl/Core/alDente/View_Generator.pm
+lib/perl/Core/alDente/Query_Summary.pm
+bin/t/Core/alDente/View_Generator.t
+bin/t/Core/alDente/Query_Summary.t

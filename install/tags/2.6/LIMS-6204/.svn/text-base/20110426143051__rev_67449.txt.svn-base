@@ -1,0 +1,9 @@
+bin/install.pl
+lib/perl/Core/alDente/Validation.pm
+lib/perl/Core/SDB/Installation.pm
+bin/find_string_usage.pl
+bin/t/Core/SDB/Installation.t
+bin/t/Core/alDente/Validation.t
+bin/svn.pl
+bin/t/Core/alDente/Validation.t
+bin/t/Core/SDB/Installation.t

@@ -1,0 +1,6 @@
+Plate_Format_ID	Plate_Format_Type	Plate_Format_Status	FK_Barcode_Label__ID	Max_Row	Max_Col	Plate_Format_Style	Well_Capacity_mL	Capacity_Units	Wells	Well_Lookup_Key
+1	ACD Blood Vacuum Tube	Active	31	A	1	Tube	8.50	ml	1	
+2	SST Blood Vacuum Tube	Active	31	A	1	Tube	8.50	ml	1	
+3	EDTA Blood Vacuum Tube	Active	31	A	1	Tube	8.50	ml	1	
+4	Urine Cup	Active	31	A	1	Tube	100.00	ml	1	
+5	cryovial	Active	35	A	1	Tube	2.00	ml	1	

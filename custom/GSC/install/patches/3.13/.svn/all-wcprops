@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/install/patches/3.13
+END
+update_attribute_format.pat
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/82522/alDente/trunk/custom/GSC/install/patches/3.13/update_attribute_format.pat
+END
+3_Deleting_Invoiceable_Work.pat
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/81904/alDente/trunk/custom/GSC/install/patches/3.13/3_Deleting_Invoiceable_Work.pat
+END
+Update_Invoice_Protocol.pat
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/82032/alDente/trunk/custom/GSC/install/patches/3.13/Update_Invoice_Protocol.pat
+END
+GSC_3_13.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/82741/alDente/trunk/custom/GSC/install/patches/3.13/GSC_3_13.pat
+END
+Update_Invoiced.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/82893/alDente/trunk/custom/GSC/install/patches/3.13/Update_Invoiced.pat
+END
+2_Filling_New_Invoiceable_Work_Reference_Table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/100983/alDente/trunk/custom/GSC/install/patches/3.13/2_Filling_New_Invoiceable_Work_Reference_Table.pat
+END
+Backfill_Active_Project_Work.pat
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/100983/alDente/trunk/custom/GSC/install/patches/3.13/Backfill_Active_Project_Work.pat
+END
+Backfill_Invoice_Runs.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/100983/alDente/trunk/custom/GSC/install/patches/3.13/Backfill_Invoice_Runs.pat
+END

@@ -1,0 +1,40 @@
+-- MySQL dump 10.9
+--
+-- Host: lims02    Database: sequence
+-- ------------------------------------------------------
+-- Server version	4.1.20-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `GCOS_Config_Record`
+--
+
+DROP TABLE IF EXISTS `GCOS_Config_Record`;
+CREATE TABLE `GCOS_Config_Record` (
+  `GCOS_Config_Record_ID` int(11) NOT NULL auto_increment,
+  `Attribute_Type` enum('Field','Prep') default NULL,
+  `Attribute_Name` char(50) NOT NULL default '',
+  `Attribute_Table` char(50) default '',
+  `Attribute_Step` char(50) default '',
+  `Attribute_Field` char(50) NOT NULL default '',
+  `FK_GCOS_Config__ID` int(11) NOT NULL default '0',
+  `Attribute_Default` char(50) default NULL,
+  PRIMARY KEY  (`GCOS_Config_Record_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

@@ -1,0 +1,303 @@
+--------------
+alter table Band modify Band_Intensity enum('Unspecified','Weak','Medium','Strong')
+--------------
+
+Query OK, 7274793 rows affected
+Records: 7274793  Duplicates: 0  Warnings: 0
+
+--------------
+update Band set Band_Intensity = 'Unspecified' where (Band_Intensity = '' or Band_Intensity is null)
+--------------
+
+Query OK, 43623 rows affected
+Rows matched: 43623  Changed: 43623  Warnings: 0
+
+--------------
+alter table Clone_Source modify clone_quadrant enum('','a','b','c','d')
+--------------
+
+Query OK, 37511 rows affected
+Records: 37511  Duplicates: 0  Warnings: 0
+
+--------------
+update Clone_Source, Well_Lookup set Source_Comments = Concat(Source_Comments,'.  Clone_quadrant of the specified by source_row and source_col does not match with quadrant in Well_Lookup table')
+where Left(Plate_384,1)=source_row and Mid(Plate_384,2,2)=source_col and CLONE_QUADRANT <>'' AND clone_quadrant <>quadrant
+--------------
+
+Query OK, 4032 rows affected
+Rows matched: 10368  Changed: 4032  Warnings: 0
+
+--------------
+update Plate, Clone_Source, Well_Lookup set Clone_quadrant = quadrant where FK_Plate__ID = plate_id and Left(Plate_384,1)=source_row and Mid(Plate_384,2,2)=source_col and clone_quadrant =''
+--------------
+
+Query OK, 0 rows affected
+Rows matched: 0  Changed: 0  Warnings: 0
+
+--------------
+update Clone_Sequence set Growth = 'OK' where (Growth is null or Growth = '')
+--------------
+
+Query OK, 0 rows affected
+Rows matched: 0  Changed: 0  Warnings: 0
+
+--------------
+update Contact set Contact_Status = 'Active' where (Contact_status ='')
+--------------
+
+Query OK, 61 rows affected
+Rows matched: 61  Changed: 61  Warnings: 0
+
+--------------
+alter table Contact alter Contact_Status set default 'Active'
+--------------
+
+Query OK, 523 rows affected
+Records: 523  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Active' where field_table = 'Contact' and field_name = 'contact_status'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Funding set Currency = 'Canadian' where (Currency ='')
+--------------
+
+Query OK, 80 rows affected
+Rows matched: 80  Changed: 80  Warnings: 0
+
+--------------
+alter table Funding alter Currency set default 'Canadian'
+--------------
+
+Query OK, 145 rows affected
+Records: 145  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Canadian' where field_table = 'Funding' and field_name = 'currency'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Funding set funding_status = 'Received' where (funding_status ='')
+--------------
+
+Query OK, 93 rows affected
+Rows matched: 93  Changed: 93  Warnings: 0
+
+--------------
+alter table Funding alter funding_Status set default 'Received'
+--------------
+
+Query OK, 145 rows affected
+Records: 145  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Received' where field_table = 'Funding' and field_name = 'funding_status'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Funding set funding_type = 'New' where (funding_type ='')
+--------------
+
+Query OK, 77 rows affected
+Rows matched: 77  Changed: 77  Warnings: 0
+
+--------------
+update GelRun set file_extension_type = 'none' where file_extension_type = ''
+--------------
+
+Query OK, 66 rows affected
+Rows matched: 66  Changed: 66  Warnings: 0
+
+--------------
+update Issue set actual_time_unit = null where actual_time_unit = ''
+--------------
+
+Query OK, 109 rows affected
+Rows matched: 109  Changed: 109  Warnings: 0
+
+--------------
+update Issue set estimated_time_unit = null where estimated_time_unit = ''
+--------------
+
+Query OK, 205 rows affected
+Rows matched: 205  Changed: 205  Warnings: 0
+
+--------------
+update Plate_Prep set transfer_quantity_units = null where transfer_quantity_units = ''
+--------------
+
+Query OK, 1439311 rows affected
+Rows matched: 1439311  Changed: 1439311  Warnings: 0
+
+--------------
+update PoolSample set sample_quantity_units = null where sample_quantity_units = ''
+--------------
+
+Query OK, 12 rows affected
+Rows matched: 12  Changed: 12  Warnings: 0
+
+--------------
+update Prep set Prep_Action = 'completed' where Prep_Action = ''
+--------------
+
+Query OK, 43 rows affected
+Rows matched: 43  Changed: 43  Warnings: 0
+
+--------------
+alter table RNA_DNA_Source modify storage_medium_quantity_units enum('','ml','ul')
+--------------
+
+Query OK, 2272 rows affected
+Records: 2272  Duplicates: 0  Warnings: 0
+
+--------------
+update RNA_DNA_Source set storage_medium_quantity_units = null where storage_medium_quantity_units = ''
+--------------
+
+Query OK, 241 rows affected
+Rows matched: 241  Changed: 241  Warnings: 0
+
+--------------
+update Run set billable = 'Yes' where billable = ''
+--------------
+
+Query OK, 999 rows affected
+Rows matched: 999  Changed: 999  Warnings: 0
+
+--------------
+alter table Run alter billable set default 'Yes'
+--------------
+
+Query OK, 77598 rows affected
+Records: 77598  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Yes' where field_table = 'Run' and field_name = 'billable'
+--------------
+
+Query OK, 0 rows affected
+Rows matched: 1  Changed: 0  Warnings: 0
+
+--------------
+update Run set run_status = 'Initiated' where run_status = ''
+--------------
+
+Query OK, 99 rows affected
+Rows matched: 99  Changed: 99  Warnings: 0
+
+--------------
+alter table Run alter run_Status set default 'Initiated'
+--------------
+
+Query OK, 77598 rows affected
+Records: 77598  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Initiated' where field_table = 'Run' and field_name = 'run_status'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Run set run_test_status = 'Production' where run_test_status = ''
+--------------
+
+Query OK, 99 rows affected
+Rows matched: 99  Changed: 99  Warnings: 0
+
+--------------
+alter table Run alter run_test_Status set default 'Production'
+--------------
+
+Query OK, 77598 rows affected
+Records: 77598  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Production' where field_table = 'Run' and field_name = 'run_test_status'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Run set run_validation = 'Pending' where run_validation = ''
+--------------
+
+Query OK, 425 rows affected
+Rows matched: 425  Changed: 425  Warnings: 0
+
+--------------
+alter table Run alter run_validation set default 'Pending'
+--------------
+
+Query OK, 77598 rows affected
+Records: 77598  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Pending' where field_table = 'Run' and field_name = 'run_validation'
+--------------
+
+Query OK, 0 rows affected
+Rows matched: 1  Changed: 0  Warnings: 0
+
+--------------
+update DBField set field_options = 'Hidden,Obsolete' where Field_Table = 'Sequencing_Library' and Field_name = 'Vector_Type'
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+update Stock set stock_size_units = null where stock_size_units = ''
+--------------
+
+Query OK, 1193 rows affected
+Rows matched: 1193  Changed: 1193  Warnings: 0
+
+--------------
+update Trace_Submission set submission_status = 'Accepted' where submission_status = ''
+--------------
+
+Query OK, 262720 rows affected
+Rows matched: 262720  Changed: 262720  Warnings: 0
+
+--------------
+update Transposon_Pool set test_status = 'Production' where test_status = ''
+--------------
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+alter table Transposon_Pool alter test_Status set default 'Production'
+--------------
+
+Query OK, 531 rows affected
+Records: 531  Duplicates: 0  Warnings: 0
+
+--------------
+update DBField set field_default = 'Production' where field_table = 'Transposon_Pool' and field_name = 'test_status'
+--------------
+
+Query OK, 0 rows affected
+Rows matched: 1  Changed: 0  Warnings: 0
+
+--------------
+update Tube set Concentration_units = null where Concentration_units = ''
+--------------
+
+Query OK, 220 rows affected
+Rows matched: 220  Changed: 220  Warnings: 0
+
+Bye

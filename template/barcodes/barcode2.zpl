@@ -1,0 +1,9 @@
+^XA
+^LT10
+^LH25,25
+^FO0,100^A0N,25^FDtype_field^FS
+^FO0,0^A0N,35^FDSampletext^FS
+^BY2,3.0,10
+^FO0,45^BCN,50,N,N,N,N^FDcode128^FS
+^FO325,90^A0N,15^FDsecondary_id^FS
+^XZ

@@ -1,0 +1,235 @@
+<H1>Re-Arraying Plates</H1>
+<P>
+This process is a little complex, so that it should be done carefully until
+users are familiar with the procedure.
+<BR>
+Generally Re-Arraying consists of taking sample from a variety of plates and
+aliquoting it into a single target plate.  In this case the source well and
+plate id needs to be associated with the target plate id and well.
+<P>
+The Re-Arraying procedure may be partially automated by having external code
+create the template for re-arraying. The Sequencing_Rearray module of
+the alDente system provides an interface by which rearrays can be requested 
+outside the LIMS (most often by a script). See the help entries for 
+"ReArray_API" for details.
+<P>
+<B>Viewing ReArray Requests:</B>
+<P>
+When ReArray requests are made by other means besides being specified using this interface
+(for example sometimes external developers may decide that a plate needs to be rearrayed, and
+may develop code to insert the rearraying information), 
+this information can be viewed by selecting the
+'Rearray Home' button from the Sequencing home page.  From here, you
+can print out the Well assignments, and/or assign these Requests to an
+actual Plate. Rearrays can be searched using a variety of parameters:
+
+<P>
+<img src='$Help_Image_dir/rearray_home.gif'>
+
+<HR>
+<h3>Uploading a Yield Report</h3>
+<P>
+<img src='$Help_Image_dir/rearray_upload_yieldreport.gif'>
+<P> You can upload a custom primer yield report from Illumina or Invitrogen. The LIMS will automatically determine which rearrays use the uploaded primers and set them to Reserved status as necessary. Also, a solution barcode will be printed for each custom primer plate that has been received.
+
+<HR>
+<h3>Viewing Primer Plates</h3>
+<P>
+<img src='$Help_Image_dir/rearray_view_primerplates.gif'>
+<P>The primer plate view alows users to search primer plates by status, date, types, or notes associated with a primer plate. The view displays a table that lists relevant information about the primer plate as a whole - primer plate name, solution ids, status, types of oligos it contains, its location, and relevant dates. Note that primer plate name and solution id will not be assigned until a primer plate has been received.
+<P>A link is provided to view a single primer plate.
+<P>This view also allows the regeneration of primer order files, and to mark To Order primers as Ordered.
+<p><i>view of all ordered primer plates</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_view_primerplates_table.gif'>
+<p><i>view of a single primer plate</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_view_primerplate_table.gif'>
+
+
+<HR>
+<h3>Rearray Summary</h3>
+<P>
+<img src='$Help_Image_dir/rearray_summary_search.gif'>
+<P>The rearray summary allows users to see a quick summation of the rearray pipeline. The view allows users to see which rearrays are grouped together, and what rearrays are ready to be done, and which are not, and why. Each 'state' that is available is a hyperlink to the objects in question - primer plates are linked if the primer plate hyperlinks are clicked, rearrays for rearray hyperlinks, plates for plate hyperlinks, and the Last 24 Hours view for sequenced runs/plates.
+<P>
+<img src='$Help_Image_dir/rearray_summary_view.gif'>
+
+
+
+<P><B>Note:</B><BR>
+<B>'On Order'</B> ReArrays are rearrays that are waiting for an order of reagents (typically custom oligos) to come in. Once the yield reports are uploaded, they will be set to Reserved. <BR>
+<B>'Requested'</b> ReArrays will be assigned to a new plate (and a new barcode generated).<BR>
+<B>'Reserved'</B> ReArrays will be assigned to a plate whose barcode has already been reserved.  (A new plate will not be generated, but a barcode will be reprinted, and the plate status changed from 'Reserved' to 'Active') <BR>
+<B>'Assigned'</B> ReArrays have had barcodes printed for their target plates, and are assumed to have been done <BR>
+<B>'Re-Assigned'</B> ReArrays have been redone from a previous Assigned rearray, with a new target plate <BR>
+<B>'Completed'</B> ReArrays are archived rearrays. Otherwise, they are the same as Assigned rearrays <BR>
+<B>'Aborted'</B> ReArrays are erroneous rearrays, and should never have been done <BR>
+
+<HR>
+<h2>The Main ReArray Request Page</h2>
+
+<P>
+<img src='$Help_Image_dir/rearray_request_main.gif'>
+
+<P>The main page allows the user to view the status of rearrays, to apply them, and to generate control files for the QPIX and Multiprobe robots.
+<P>The ReArray status segment of the page shows the ReArray Request ID, the person who requested the rearray, the rearray type, and the target plate. There are also checkboxes that denote which requests are selected for rearray actions. 
+<P>The Creating ReArrayed Plates from Current Request segment of the page is where the user applies the rearray onto a target plate. The user can choose which library the plate belongs to, the plate format of the target plate, and the location of the plate. Note that the plate size is grayed out - this option is set when the user creates the rearray request. 
+<P> The selected rearrays are applied onto the plate (thus activating the plate and printing the barcode) by selecting 'Apply Rearrays' in the Rearray Action pop-up menu.
+<h3>Rearray actions:</h3>
+<P>
+<img src='$Help_Image_dir/rearray_request_main_options.gif'>
+<P>Actions that could be done on the SELECTED rearrays are listed in the 'Rearray Actions' pop-up menu:
+<B>Locations</B> Displays a summary of the locations of the source plates. <BR>
+<B>View rearrays</B> Displays the selected rearrays one after another on a printable table. <BR>
+<B>Apply rearrays</B> Applies the selected rearrays and activates/prints off the barcodes for the target plate <BR>
+<B>Abort rearrays</B> Aborts the selected rearrays. Only allowed for On Order and Reserved rearrays. <BR>
+<B>Move to Completed</B> Sets the selected rearrays to 'Completed'. Only allowed for Applied rearrays. <BR>
+<B>Group into Lab Request</B> Groups the selected rearrays into one Lab Request (for summary viewing). <BR>
+<B>Regenerate QPIX File</B> Generates a QPIX control file for the selected rearrays. Only valid for Clone rearrays. <BR>
+<B>Show QPIX Rack</B> Displays how the QPIX rack/s would look for the selected rearrays. Only valid for Clone rearrays <BR>
+<B>Generate DNA Multiprobe</B> Generates a multiprobe control file for the selected rearrays. Only valid for Oligo rearrays <BR>
+<B>Generate Custom Primer Multiprobe </B> Generates a multiprobe control file for remapping the selected rearrays' custom primer plates. Only valid for Oligo rearrays <BR>
+<B>Create remapped custom primer plate</B> Creates a new solution ID for the remapped custom primer plate. <BR>
+
+
+<h3>View</h3>
+
+<p><i>normal top and bottom views of expand rearray View</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_expand_top.gif'>
+<P>
+<img src='$Help_Image_dir/rearray_expand_bottom.gif'>
+
+<P>This page allows the user to view all the wells being rearrayed. The column headers can be clicked to sort the table by that field. Also, at the bottom, there is an Average Temperature (useful for oligo rearrays), and a Sort by Equipment/Rack hyperlink. Sorting by Equipment/Rack may be useful in the lab when plates need to be retrieved, as this sorting groups plates in the same area together, which reduces time taken to retrieve equipment.
+
+<h3>Library view</h3>
+<p><i>Library view</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_library_view.gif'>
+<P> The library view shows a visual representation of the libraries that are rearrayed onto a rearrayed plate. 
+
+<h3>Locations view</h3>
+<p><i>Location top view of Location view</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_location_top.gif'>
+
+<P> The Location view shows the equipment name and rack ID of all the source plates needed for the rearray. This starts out sorted by Equipment Name and Rack ID.
+
+<h3>QPIX view</h3>
+<p><i>qpix control file view of QPIX view</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_qpix_top.gif'>
+
+<P> The QPIX view dynamically generates a qpix file for the QPIX picking machines.
+
+<h3>QPIX Rack view</h3>
+<p><i>QPIX Rack view</i></p>
+<P>
+<img src='$Help_Image_dir/rearray_qpix_rack.gif'>
+
+<P> This page represents the positions of all the source plates on Q-PIX machine racks. It will show the plate barcode number, the plate name, and the location of each of the plates. Keep in mind that the arrangement of source plates on the rack is transposed - source plate 1 on the QPIX control file would be on the lowest-right rack position, and each subsequent plate placed above it, moving to the bottom row of the next column to the left once the current column is filled. 
+
+
+
+
+
+<HR>
+<h2>Manually Setting Up A ReArray Plate</h2>
+<P>
+<img src='$Help_Image_dir/rearray_manual_button.gif'>
+<P>To access this page, click on the Manually Set Up ReArray Page button on the Rearray Search page. Take note that you have to set the Target Well Nomenclature to either 96-well (A01-H12, and if necessary, with quadrant letters A01a-H12d) or 384-well (A01-P24). Selecting 384-well nomenclature will restrict the user to using 384-well plates, as it is impossible to use 96-well plates with this naming scheme.
+<P>There are two forms that have to be navigated in manually setting up a rearray plate - the Pre-Selecting Wells to ReArray form and the Complete Specification form.
+<P> <i>1. Pre-Selecting Wells to ReArray</i>
+<P>
+<img src='$Help_Image_dir/rearray_manual_1stpage.gif'>
+<P>This page is where the user provides information about:
+<UL>
+<LI>Source Plates<P>this is a comma-delimited string that denotes all the source plates for the rearray being created. eg. 4002,4050
+<LI> Using Wells <P>this is a comma-delimited string that denotes the wells that are used for the rearray. Ranges are allowed. eg. a1-d12.
+<LI> Don't Use Columns <P>this is a comma-delimited string that omits columns (denoted by numbers) from the rearray. Ranges are allowed. eg 1-2.
+<LI> Don't Use Rows <P>this is a comma-delimited string that omits rows (denoted by letters) from the rearray. Ranges are allowed. eg A-D.
+<LI> Total Number of ReArrayed Wells <P>the total number of wells being rearrayed. This defaults to 96, or the total number of wells that are being used. The user can specify a smaller or larger number than the number of wells being used, but the maximum rearray size is currently 384.
+<LI> Target Plate Size <P>the size of the target plate. Currently, the available sizes are 96-well and 384-well.
+<LI> Fill by Row <P>orders the target wells in the next form to be by row (A01,A02,A03,...,B01,B02,...).
+<LI> Fill by Column <P>orders the target wells in the next form to be by column (A01,B01,C01,...,A02,B02,...).
+<LI> Complete Specification <P>saves all settings in memory, and moves the page to the next form.
+</UL>
+<P> <i>2. Complete Specification</i>
+<P>
+<img src='$Help_Image_dir/rearray_manual_2ndpage.gif'>
+<P>This page will take a while to load. This page allows the user to specify which wells in the source plates will go to which wells in the target plates. This page also has a form that defines the target plate that has to be created for this rearray. Note that the choices for this form are restricted depending on what the user selected for the target plate size and nomenclature. A '' in the Source Plate, Source Well, Primer, and Target Quadrant fields denotes that the setting above that field will be used. This allows the user to only set the first value in the table and all other corresponding values will take on that value.
+
+<P>The Create ReArrayed Plate from Current Request area requires the user to define the plate that will be created for this rearray. 
+<UL>
+<LI> Library <P>the library that the plate is going to be a part of.
+<LI> Plate Size <P>this is the size that has been defined in the previous section.
+<LI> Plate Format <P>the format for the plate. The choices here are restricted depending on the plate size chosen in the previous section.
+<LI> Rack Location <P>the location of the plate.
+<LI> Created <P>the date/time the plate was created. This field is filled in automatically.
+</UL>
+<P>The main rearray form defines the mapping from source plate/well to target well. The options are as follows:
+<UL>
+<LI> Set All Other Wells to Unused <P>sets omitted wells (from Don't Use Columns/Rows in the previous section) to unused if checked.
+<LI> Ignore <P>ignores the associated row if checked.
+<LI> Source Plate <P>The source plate of the target well.
+<LI> Source Well <P>The source well (from the associated source plate) of the target well.
+<LI> Primer <P>The primer associated with the target well.
+<LI> Target Well <P>The target well.
+<LI> Target Quadrant <P>the quadrant of the target well. This column only appears in the Target Plate Nomenclature is 96-well and the Plate Size is 384.
+<LI> Save ReArray Details  <P> creates the target plate and rearray, and saves all settings to the database.
+</UL>
+		       					          
+<h2>Basic Re-Array Types</h2>
+<P>
+<UL><LI> On Order  
+<P>This is a list of plates that are expected to be rearrayed, but the primers are not yet in.
+
+<P><LI> Pre-Rearray  
+<P>This is a list of plates that are expected to be rearrayed, but the source plates are not provided yet.
+
+<P><LI> Reserved  
+<P>This is a list of plates that are requested (via bioinformatics) for re-arraying.<Br>The primers in these cases should be available and ready for re-arraying.<BR>Target plates in this case have ALREADY been assigned and also have a 'Reserved' Status which will be set to 'Active' once the ReArray is specified as complete.<BR>
+<B>Assignment of these ReArrays does NOT create a new plate (it
+is already assigned)</B>
+
+<P>
+<LI> Requested  
+<P>- This is a list of plates that are
+requested (via bioinformatics) for re-arraying.<Br>The primers in these
+cases should be available and ready for re-arraying.<BR>Target plates,
+however, are NOT yet defined since they have yet to be
+'Assigned'.<BR>
+<B>Assignment of these ReArrays creates a NEW plate</B>
+
+<P>
+<LI> Assigned  
+<P>This is a list of plates that were
+previously 'Requested', and have now been assigned to a plate.<Br>Target
+plate information should now be available for these.
+
+<P>
+<LI> Re-Assigned  
+<P> This is a list of plates that
+were previously assigned, but have been assigned again.
+
+<P>
+ <LI> Manually Applied  
+<P>This is a list of plates
+that were Re-Arrayed manually.<Br>ie. the plate to plate mapping was
+specified by the user for the entire plate.<BR>
+<B> Assignment of these ReArrays creates a NEW plate </B><BR>
+
+<P>
+<LI> Completed  
+<P> This is a list of plates that were
+Re-Arrayed, and have been processed (data analysis available).
+
+<P>
+<LI> Aborted  
+<P> This is a list of plates that were
+initially specified to be re-arrayed, but which are no longer to be
+completed.<BR>This may be because either the primers did not come in or some
+other reason further down the pipe.
+<P>
+</UL>

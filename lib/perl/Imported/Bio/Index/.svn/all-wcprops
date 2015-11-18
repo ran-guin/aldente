@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index
+END
+Blast.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/Blast.pm
+END
+GenBank.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/GenBank.pm
+END
+AbstractSeq.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/AbstractSeq.pm
+END
+SwissPfam.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/SwissPfam.pm
+END
+Swissprot.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/Swissprot.pm
+END
+Fasta.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/Fasta.pm
+END
+Fastq.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/Fastq.pm
+END
+EMBL.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/EMBL.pm
+END
+Abstract.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Index/Abstract.pm
+END

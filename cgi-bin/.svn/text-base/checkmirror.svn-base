@@ -1,0 +1,498 @@
+#!/usr/bin/perl
+################################################################
+#
+# CVS Revision: $Revision: 1.10 $
+# Commit date:  $Date: 2003/09/25 21:57:17 $
+#
+# Script to request mirroring and check mirror status for
+# particular machines.
+#
+# Call with arguments to create a request file
+#
+# e.g. checkmirror 3700 2 data1
+#
+# To mirror share data1 on machine 3700 id 2.
+#
+#
+# options:
+#   - report (shows files last mirrored - retrieved from rsync file)
+#   - request (prompt for password to request mirror)
+#
+################################################################
+
+use POSIX qw(strftime);
+use CGI qw/:all/;
+
+use Storable;
+
+require "getopts.pl";
+&Getopts('p:n:u:f:');
+use vars qw($opt_p $opt_n $opt_u $opt_f);
+
+use FindBin;
+use lib $FindBin::RealBin . "/../lib/perl/"; # add the local directory to the lib search path
+
+use SDB::DB_IO;
+ 
+use SDB::CustomSettings;
+use alDente::SDB_Defaults;
+
+use RGTools::RGIO;
+
+use vars qw($mirror $config_dir);
+
+################################################################
+# CVS headers
+my $VERSION = q{ $Revision: 1.10 $ };
+my $CVSTAG = q{ $Name:  $ };
+my $CVSDATE = q{ $Date: 2003/09/25 21:57:17 $ };
+if($VERSION =~ /\$.*?:\s*(.*?)\s*\$/) {
+  $VERSION=$1;
+}
+if($CVSDATE =~ /\$.*?:\s*(.*)\s*\$/) {
+  $CVSDATE=$1;
+}
+if($CVSTAG =~ /\$.*?:\s*(.*?)\s*\$/) {
+  $CVSTAG=$1;
+}
+
+my $passfile     = "$config_dir/mirror.passwd";
+# The directory of the files from a given machine, id and drive
+
+if($opt_p && $opt_u) {
+
+    my $user = $opt_u;
+    my $passwd = $opt_p;
+    my $newpass = $opt_n || $opt_p;
+    if ($opt_f) {$passfile = $opt_f;} ## override defaults..
+
+    my $crypt;
+    my $auth = 0;
+    my $found = 0;
+
+    open(PASS,$passfile);
+    while(<PASS>) {
+	chop;
+	my ($username,$pass_crypt) = split(/:/,$_);
+	if($username eq $user) {
+	    $found = 1;
+	    $crypt = crypt($passwd,substr($passwd,0,2));  ## use first two characters as key..
+	    if($crypt && ($crypt eq $pass_crypt)) { $auth = 1; }    
+	}
+    }
+    close(PASS);
+    
+    if ($auth) {
+	print "Change password\n";
+	my $command = "grep -v $user:$crypt $passfile";
+	my $grepped = try_system_command($command);
+	open(PASS,">$passfile");   #rewrite password file... 
+	print PASS $grepped;
+	close(PASS);
+	$found = 0;  ### now add it... 
+	### Reset password ...
+    } 
+    if (!$found && $newpass) {  ### new user... 
+	open(PASS,">>$passfile");
+	my $new_crypt = crypt($newpass,substr($newpass,0,2));
+	print PASS "$user:$new_crypt\n";
+	close(PASS);
+	print "Password added to $passfile\n";
+    } else {
+	print "Not authorized in $passfile..\n";
+    }
+    
+    print "Done\n";
+    exit;
+}
+
+my $type = param('type'); # type of machine, e.g. mbace
+my $id   = param('id');   # id of machine, e.g. 2
+my $dir  = param('dir');  # directory to mirror, e.g. data2
+
+if(@ARGV) {
+  if(defined $ARGV[2]) {
+    $type = $ARGV[0];
+    $id   = $ARGV[1];
+    $dir  = $ARGV[2];
+  }
+}
+
+################################################################
+# The password file for the users
+my $mirror_dir   = "$mirror/$type/$id/$dir";
+# The lock file which prevents other mirror processes from mirroring
+# the same files
+my $lockfile     = "$mirror_dir/mirror.lock";
+# The lock file which is present during analysis
+my $analysisfile = "$mirror_dir/analysis.lock";
+# The status of the last mirror
+my $statusfile   = "$mirror_dir/rsync.status";
+# The request file containing the details about the current mirror request
+# This file is 0 if no requests are pending.
+my $requestfile  = "$mirror/request.$type.$id.$dir"; ## "$mirror_dir/requests";
+    
+if(@ARGV) {
+  if(open(REQUEST,">$requestfile")) {
+    my $request = RequestString("Timed daemon",$type,$id,$dir);
+    print REQUEST $request,"\n";
+    close(REQUEST);
+    chmod 0666, $requestfile;
+  } else {
+    #
+  }
+  exit;
+}
+
+my $lockflag=0;
+
+if(defined param('getversion')) {
+  print header;
+  print "$VERSION $CVSTAG [$CVSDATE]\n\n";
+  exit 0;
+}
+
+if(defined param('getstatus')) {
+  print header;
+  print "<span class=small>";
+  if (-e $analysisfile) {
+    print "<span class=vlightredtext>$dir</span>";
+  } elsif(-e $lockfile) {
+    print "<span class=vlightyellowtext>$dir</span>";
+  } else {
+    print "<span class=vlightgreentext>$dir</span>";
+  }
+  print "</span>";
+  exit 0;
+}
+
+if(param('report')) {
+
+  my $page;  print &alDente::Web::Initialize_page();
+  print "<h1>Mirror Report</h1>";
+  print "<h2>$type-$id $dir</h2>";
+  print "<b><span class=large>Legend</b></span><br><br>";
+  print "<span class=vvlightgreen>Copied items</span> ";
+  print "<span class=vvlightred>Totals</span><br>";
+  print "<br><pre><div class=small>";
+  if(-e $statusfile) {
+    open(FILE,$statusfile);
+    while(<FILE>) {
+      if(/send/) {
+	print "<span class=vvlightgreen>";
+	print "<div class=indent>";
+	print;
+	print "</div>";
+	print "</span>";
+      } elsif (/wrote|total/) {
+	print "<span class=vvlightred>";
+	print "<div class=indent>";
+	print;
+	print "</div>";
+	print "</span>";
+      } else {
+#	print;
+      }
+    }
+    close(FILE);
+    print "</div></pre>";
+  } else {
+
+      print "Status file $statusfile not found.<br><br>";
+  }
+  print q{<br><br><a href="javascript:history.back()">back</a>};
+  print &alDente::Web::unInitialize_page($page);
+  exit;
+}
+
+if(param('authrequest')) {
+
+    my $page;  print &alDente::Web::Initialize_page();
+    my $type = param('type');
+    my $id  = param('id');
+    my $dir  = param('dir');
+    my $passwd = param('pass');
+    my $user   = param('user');
+    print "<h1>Mirror Request</h1>";
+
+    print "You requested a mirror as user <b>$user</b><br><br>";
+
+    my $auth=0;
+# remove passwording for testing
+    $auth = 0; 
+
+#    goto SKIPPASS;
+    open(PASS,$passfile);
+    while(<PASS>) {
+	chop;
+	my ($username,$pass_crypt) = split(/:/,$_);
+	if($username eq $user) {
+#	    my $crypt = crypt($passwd);
+	    my $crypt = crypt($passwd,substr($passwd,0,2));
+	    if($crypt eq $pass_crypt) {
+#	    if($passwd eq $pass_crypt) {
+		print "<span class=vdarkgreentext>Authorized.</span><br><br>";
+#		print qq{<a href="/intranet/sequencing/mirror.shtml">Back to mirror status</a><br>};
+		print qq{<a href="$URL_address/checkmirror?type=$type&id=$id&dir=$dir&queue=1">See this machine\'s mirror queue</a><br>};
+		print qq{<a href="$URL_address/checkmirror?type=$type&id=$id&dir=$dir&report=1">See last mirror report</a><br>};	
+#		print qq{<a href="$URL_domain/cgi-bin/SDB/barcode.pl?User=$user&&Admin+Page=1">Back to Mirror Status</a><br>};
+		$auth=1;
+#		print qq{<a href="$URL_domain/cgi-bin/rguin/checkmirror?changepass=1">Change Password</a><br>};
+	    } else {
+		print "<span class=vdarkredtext>Incorrect password ($crypt ne $pass_crypt).</span><br>";
+	    }
+	    last;
+	}
+    }
+    close(PASS);
+
+  SKIPPASS:        
+    if($auth) {
+	print "File=$requestfile".br;
+      if(open(REQUEST,">$requestfile")) {
+	my $request = RequestString($user,$type,$id,$dir);
+	
+	print REQUEST $request,"\n";
+	close(REQUEST);
+	chmod 0666, $requestfile;
+	print "<br>";
+	FormatRequest($request);
+      } else {
+	print "Can not open for writing: $requestfile";
+      }
+    } else {
+	RequestForm();
+    }
+    print &alDente::Web::unInitialize_page($page);
+    exit;
+
+}
+
+sub RequestForm {
+
+    my $type = param('type');
+    my $id  = param('id');
+    my $dir  = param('dir');
+    
+
+    my $dbc = &SDB::DB_IO::DB_Connect(dbase=>'sequence');
+    my $ip = $ENV{'REMOTE_ADDR'};
+    my ($user) = &Table_find($dbc,'Employee','Email_Address',"Where IP_Address = '$ip'");
+    my @lab_admin = &Table_find($dbc,'Employee','Email_Address',"Where Permissions like '%A%' Order by Email_Address",'Distinct');
+    
+    print
+	"<table cellspacing=3>",
+	start_form,
+	"<tr><td>Machine </td><td><b>$type-$id</b></td></tr>",
+	"<tr><td>Disk </td><td><b>$dir</b></td></tr>",
+	"<tr><td align=right>User</td>",
+	"<td>",popup_menu(-name=>'user',-values=>['',@lab_admin],-size=>1,-default=>$user,-force=>1),"</td></tr>",
+	"<tr>",
+	"<td align=right>Password </td><td>",
+	password_field(-name=>'pass',-value=>'',-size=>15),
+	hidden(-name=>'type',-value=>$type),
+	hidden(-name=>'id',-value=>$id),
+	hidden(-name=>'dir',-value=>$dir),
+	"</td></tr>",
+	"<td colspan=2 align=center><br>",
+	submit(-name=>'authrequest',-label=>'Mirror'),"</td></tr>",
+	"</table>",
+	end_form;
+
+    print &vspace(10).
+	&Link_To("$URL_address/checkmirror","Check files last mirrored","?type=$type&id=$id&dir=$dir&report=1",'blue',['newwin']);
+
+}
+
+if(param('request')) {
+
+    my $page;  print &alDente::Web::Initialize_page();
+    print "<h1>Mirror Request</h1>";
+    RequestForm();
+    print &alDente::Web::unInitialize_page($page);
+    exit;
+
+}
+
+sub RequestString {
+  
+  my ($user,$type,$id,$dir) = @_;
+  my $date = strftime "%Y-%m-%d %H:%M:%S",localtime;
+  return "$user#$date#$type#$id#$dir";
+
+}
+
+sub PrintMachineTable {
+    
+    my $type = shift;
+    my $id = shift;
+    my $dir = shift;
+
+    print 
+	"<table>",
+	"<tr><td>Machine </td><td><b>$type-$id</b></td></tr>",
+	"<tr><td>Disk </td><td><b>$dir</b></td></tr>",
+	"</table>";
+    
+}
+
+sub FormatRequest {
+
+    my $request = shift;
+    my ($user,$date,$type,$id,$dir) = split(/#/,$request);
+
+    @stat = stat($requestfile);
+    $mtime = $stat[9];
+    my $secdiff = time-$mtime;
+    if($secdiff <0) {
+	$secdiff = 0;
+    }
+
+    print 
+	"<table>",
+	"<tr><td colspan=2 class=vlightblue align=center>Request Stamp</td></tr>",
+	"<tr><td align=right>User </td><td><b>$user</b></td></tr>",
+	"<tr><td align=right>Date </td><td><b>$date</b></td></tr>",
+	"<tr><td align=right>Request age </td><td><b>$secdiff sec</b></td></tr>",
+	"</table>";
+    
+
+}
+
+sub ReadRequest {
+
+    my $requestfile = shift;
+    my $request;
+    my @info;
+    my $secdiff;
+    if(-e $requestfile) {
+	@stat = stat($requestfile);
+	my $mtime = $stat[9];
+	$secdiff = time-$mtime;
+	open(FILE,$requestfile);
+	while(<FILE>) {
+	    chop;
+	    $request = $_;
+	}
+	close(FILE);
+    }
+    if(defined $request) {
+	@info = ($secdiff,split(/\#/,$request));
+	
+    }
+    return @info;
+}
+
+if(param('queue')) {
+
+    my $page;  print &alDente::Web::Initialize_page();
+    print "<h1>Mirror Request Queue</h1>";
+    PrintMachineTable($type,$id,$dir);
+    print "<br>";
+    my $requests = 0 ;
+    if(-e $requestfile) {
+	open(FILE,$requestfile);
+	while(<FILE>) {
+	    chop;
+	    FormatRequest($_);
+	    $requests++;
+	}
+	close(FILE);
+    }
+    if(! $requests) {
+	print "The queue for this sequencer is empty.<br>";
+    }
+    print "<br>";
+    print qq{<a href="/intranet/sequencing/mirror.shtml">Back to mirror status</a><br>};
+    print qq{<a href="$URL_address/checkmirror?type=$type&id=$id&dir=$dir&report=1">See last mirror report</a><br>};
+    print &alDente::Web::unInitialize_page($page);
+    exit;
+
+}
+
+print header;
+
+if(-e $lockfile) {
+  print "<span class=darkred>";
+  print "<b>Currently mirroring</b></span><br>";
+  @stat = stat($lockfile);
+  $mtime = $stat[9];
+  my $secdiff = time-$mtime;
+  print "<span class=darkredtext>";
+  print strftime "%Y-%m-%d %H:%M:%S",localtime($mtime);
+  print " ($secdiff sec)<br>";
+  print "</span>";
+  if(-e $analysisfile) {
+    print "<span class=darkred>";
+    print "<b>Analyzing Data</b></span><br>";
+  }
+  $lockflag=1;
+}
+
+if(-e $statusfile) {
+
+  if($lockflag) {
+    print "<span class=vdarkgreen>";
+    print "Previous status file";
+    print "</span><br>";
+  } else {
+
+  }
+
+  @stat = stat($statusfile);
+  $mtime = $stat[9];
+  print "<span class=darkgreentext><span class=small>";
+  print strftime "%Y-%m-%d %H:%M:%S",localtime($mtime);
+  print "</span></span><br>";
+
+  my $size;
+  my $wrotebytes;
+  my $files = 0;
+
+  open(STATUS,"$statusfile");
+  
+  while(<STATUS>) {
+    chop;
+    if(/^building file list/) {next}
+    if(/total size is (\d+) /) {
+      $size = $1;
+      $size = $size/1000000;
+      next;
+    }
+    if(/wrote (\d+) bytes/) {
+      $wrotebytes = $1/1000000;
+      next;
+    }
+    if(/(.*) (.*) (\d+) send (.*)/) {
+      $files++;
+    }
+  }
+  close(STATUS);
+
+  print "<span class=small>";
+  if($files) {
+    print sprintf("last write: %.3f Mb<br>",$wrotebytes);
+    print sprintf("files: %d<br>",$files);
+  } else {
+    print "last write: no new files<br>";
+  }
+  print sprintf("current: %.1f Mb<br>",$size);
+
+  my ($age,$user,$date) = ReadRequest($requestfile);
+  if(defined $user) {
+      print sprintf("status: <span class=vlightred>queued</span><br>");
+      print sprintf("user: %s<br>",$user);
+      print sprintf("date: %s<br>",$date);
+      print sprintf("age: %s sec<br>",$age);
+  } else {
+      if(! $lockflag) {
+	  print sprintf("status: <span class=vlightgreen>done</span><br>");
+      }
+  }
+
+  print "</span>";
+  print qq{<a href="$URL_address/checkmirror?type=$type&id=$id&dir=$dir&report=1" onMouseOver="select(view$type$id$dir,1)" onMouseOut="select(view$type$id$dir,0)"><img src="/images/view-s0.png" name=view$type$id$dir border=0></a>};
+  print qq{<a href="$URL_address/checkmirror?type=$type&id=$id&dir=$dir&request=1" onMouseOver="select(request$type$id$dir,1)" onMouseOut="select(request$type$id$dir,0)"><img src="/images/request-s0.png" name=request$type$id$dir border=0></a>};
+
+}
+

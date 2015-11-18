@@ -1,0 +1,48 @@
+<h1>Scanning Shortcuts</h1>
+<P>There are a number of shortcuts set up to enable commonly used lab tasks to be 
+initiated by simply scanning the items involved.
+<P>
+Some of the most common 'shortcuts' are:<P>
+(indicating the barcodes scanned to initiate the shortcut)
+<UL>
+<LI><B>Sample Sheet creation</B>: Plate + Equipment(Sequencer)<P>
+This initiates the creation of a samplesheet.<P>
+Requirements:  Plates MUST be associated with a Primer (unless Custom/None specified)
+<LI><B>Apply Solution to Plate</B>: Plate + Solution<P>
+This checks for valid/suggested Primers for this plate, displaying results.<P>
+Regardless, users may apply the given solution directly to the plate indicating quantity used.
+<LI><B>Mix Solution</B>: Solution + Solution (+ Solution...)<P>
+Scanning N reagents/solutions initiates the mixture of these reagents into a new solution.<P>
+In some cases, naming is preset (these are customized and may be adjusted):
+<UL>
+<LI>Water + Reagent -> Same name (assumed simply diluted)
+<LI>Agar + Reagents -> 'Agar + Rea1 (+ Rea2...)' (where ReaN is the first 4 letters of Reagent N)
+<LI>2xYT + Water + Agar -> '2xYT Agar'
+<LI>2xYT + Water -> '2xYT Media'
+<LI>10X ... + Water -> '1X ...'
+</UL> 
+<LI><B>Mix Standard Solution</B>: (select from dropdown menu)<P>
+Instead of scanning solutions, users may select from a list of standard solutions,
+initiating a prompt for barcode_ids showing default volumes expected based upon a
+pre-specified formula set up by lab administrators.<P>
+(See <A Href=$homelink?Help=Chemistry_Calculator>Chemistry Calculator</A>
+<LI><B>Change Matrix and/or Buffer</B>: Solution + Equipment(Sequencer)<P>
+This assumes users are trying to record matrix/buffer changes for Sequencers.<P>
+Both matrix AND buffer may be scanned with the equipment to initiate the recording of this information.
+<LI><B>Move Plates/Tubes/Solutions</B>: Plate/Tube/Solution + Rack<P>
+This allows users to move any number of plates/tubes/solutions to a new rack simply by scanning the items to move.<P>
+After scanning they are required only to confirm the move process.
+<LI><B>Move Rack</B>: Rack + Equipment(Freezer)<P>
+This allows rack locations to be moved between equipment.<P>
+All items on the moved rack are moved along with the rack itself.
+<LI><B>Prepare Tubes</B>: Tube + Solution(s)<P>
+Depending upon Tube status, appropriate preparation procedures are initiated.<P>
+Restrictions:
+<UL>
+<LI>Tubes must be 'Electro-porated' before 'Plating'
+<LI>Electro-poration must utilize correct antibiotics/Inducers/Substrates as defined by the original library.
+<LI>Tubes must be 'Plated' before 'Picking'
+<LI>Tubes must be plated to 'Agar' type solutions containing appropriate antibiotic.
+</UL>
+</UL>
+

@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/106294/alDente/trunk/conf
+END
+lims_users.sql
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/68925/alDente/trunk/conf/lims_users.sql
+END
+filesystem.yml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/102716/alDente/trunk/conf/filesystem.yml
+END
+data_submission.passwd
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/conf/data_submission.passwd
+END
+my.cnf.master
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/70916/alDente/trunk/conf/my.cnf.master
+END
+paths.dat
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/68925/alDente/trunk/conf/paths.dat
+END
+lims_default_users.sql
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/70894/alDente/trunk/conf/lims_default_users.sql
+END
+rgb.txt
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/68925/alDente/trunk/conf/rgb.txt
+END
+lims_default_users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/86463/alDente/trunk/conf/lims_default_users.yml
+END
+barcodes.dat
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/103330/alDente/trunk/conf/barcodes.dat
+END
+my.cnf
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/102451/alDente/trunk/conf/my.cnf
+END
+cleanup_delete.conf
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/conf/cleanup_delete.conf
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/68925/alDente/trunk/conf/README
+END
+protocol.passwd
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/conf/protocol.passwd
+END
+slx_credentials.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/conf/slx_credentials.txt
+END
+my.cnf.slave
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/70916/alDente/trunk/conf/my.cnf.slave
+END
+system.conf.seqdb01
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/conf/system.conf.seqdb01
+END
+mirror.passwd
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/68925/alDente/trunk/conf/mirror.passwd
+END
+sys_monitor_config.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/98052/alDente/trunk/conf/sys_monitor_config.yml
+END
+Template
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/68925/alDente/trunk/conf/Template
+END
+system.conf.limsdev01
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/conf/system.conf.limsdev01
+END
+login.mysql
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/85834/alDente/trunk/conf/login.mysql
+END
+directories.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/103766/alDente/trunk/conf/directories.yml
+END
+cleanup_archive.conf
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/conf/cleanup_archive.conf
+END
+phredpar.dat
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/68925/alDente/trunk/conf/phredpar.dat
+END
+map.yml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/93948/alDente/trunk/conf/map.yml
+END
+compareAPI_standard.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/conf/compareAPI_standard.txt
+END

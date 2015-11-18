@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/UHTS/modules
+END
+GenechipRun.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/UHTS/modules/GenechipRun.pm
+END
+TTR.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/TTR.pm
+END
+Sample_Receiving.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Sample_Receiving.pm
+END
+GE_View.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/96318/alDente/trunk/custom/GSC/Departments/UHTS/modules/GE_View.pm
+END
+Statistics_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/81690/alDente/trunk/custom/GSC/Departments/UHTS/modules/Statistics_App.pm
+END
+Statistics.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/81690/alDente/trunk/custom/GSC/Departments/UHTS/modules/Statistics.pm
+END
+Spect_Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Spect_Summary.pm
+END
+Genechip_Statistics.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Genechip_Statistics.pm
+END
+Bioanalyzer_Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Bioanalyzer_Summary.pm
+END
+Summary_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/UHTS/modules/Summary_App.pm
+END
+Genechip_Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Genechip_Summary.pm
+END
+GCOS_SS.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/UHTS/modules/GCOS_SS.pm
+END
+Microarray_API.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/Microarray_API.pm
+END
+GCOS_Report_Parser.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/74149/alDente/trunk/custom/GSC/Departments/UHTS/modules/GCOS_Report_Parser.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/93099/alDente/trunk/custom/GSC/Departments/UHTS/modules/Department_App.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/UHTS/modules/Department.pm
+END

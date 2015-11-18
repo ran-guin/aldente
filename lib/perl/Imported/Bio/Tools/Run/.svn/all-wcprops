@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Run
+END
+EMBOSSApplication.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Run/EMBOSSApplication.pm
+END
+StandAloneBlast.pm
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Run/StandAloneBlast.pm
+END
+RemoteBlast.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Tools/Run/RemoteBlast.pm
+END

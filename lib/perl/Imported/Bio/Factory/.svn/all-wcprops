@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory
+END
+ApplicationFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/ApplicationFactoryI.pm
+END
+HitFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/HitFactoryI.pm
+END
+EMBOSS.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/EMBOSS.pm
+END
+SeqAnalysisParserFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/SeqAnalysisParserFactoryI.pm
+END
+BlastResultFactory.pm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/BlastResultFactory.pm
+END
+MapFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/MapFactoryI.pm
+END
+ResultFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/ResultFactoryI.pm
+END
+TreeFactoryI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/TreeFactoryI.pm
+END
+SeqAnalysisParserFactory.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/SeqAnalysisParserFactory.pm
+END
+BlastHitFactory.pm
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/BlastHitFactory.pm
+END
+DriverFactory.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/Factory/DriverFactory.pm
+END

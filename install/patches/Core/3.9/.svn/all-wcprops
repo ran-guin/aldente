@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/76789/alDente/trunk/install/patches/Core/3.9
+END
+Backfill_Work_Request_FK_Source__ID.pat
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/76726/alDente/trunk/install/patches/Core/3.9/Backfill_Work_Request_FK_Source__ID.pat
+END
+Cascading_Goals.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/76759/alDente/trunk/install/patches/Core/3.9/Cascading_Goals.pat
+END
+Shipment_Submission.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/76728/alDente/trunk/install/patches/Core/3.9/Shipment_Submission.pat
+END
+sample_origin_type_3_9.pat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/75890/alDente/trunk/install/patches/Core/3.9/sample_origin_type_3_9.pat
+END
+Change_Invoice_fields.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/76789/alDente/trunk/install/patches/Core/3.9/Change_Invoice_fields.pat
+END
+Backfill_Invoiceable_Work_Comment.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/76780/alDente/trunk/install/patches/Core/3.9/Backfill_Invoiceable_Work_Comment.pat
+END

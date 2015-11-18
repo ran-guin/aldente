@@ -1,0 +1,10 @@
+<h2>Call</h2>
+<form action="[% api_call_url %]" method=post>
+  <dl>
+    <dt>Call name:
+    <dd><input type=text name=call>
+    <dt>Parameters:
+    <dd><input type=text name=params>
+    <dd><input type=submit value=api_call>
+  </dl>
+</form>

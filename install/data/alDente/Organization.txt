@@ -1,0 +1,4 @@
+Organization_Name	Address	City	State	Zip	Phone	Fax	Email	Country	Notes	Organization_ID	Organization_Type	Website	Organization_FullName
+Local	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	1	Manufacturer,Collaborator,Vendor,Funding Source	NULL	NULL
+n/a	NULL	NULL	NULL	NULL	NULL	NULL	NULL	Canada	NULL	2	Manufacturer,Collaborator,Vendor,Funding Source	NULL	Not Applicable
+Unknown	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	3	Manufacturer,Collaborator,Vendor,Funding Source	NULL	NULL

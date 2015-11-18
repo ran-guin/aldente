@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/103088/alDente/trunk/rest_api/environments
+END
+development.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/103088/alDente/trunk/rest_api/environments/development.yml
+END
+production.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/103088/alDente/trunk/rest_api/environments/production.yml
+END

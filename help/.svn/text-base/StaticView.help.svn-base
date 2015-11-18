@@ -1,0 +1,166 @@
+<H2>Static Class methods</H2>
+<P>
+<B>The list below is INCOMPLETE and is under construction...</B>
+<span class=small>
+<UL>
+<LI>Lab Objects:
+
+<h3>Plate</h3>
+	Attributes:
+	<UL>
+	<LI>Name       - label for plate
+	<LI>Type       - type of Container (Library_Plate, Tube, Agar_Plate, Gel, Chip)
+	<LI>Number     - number of plate from given source (eg. 'plate number 3' from the CC001 Library)
+	<LI>Size       - number of samples (wells)
+	<LI>Rack       - location 
+	<LI>SubSection - label for subsection (if split off from larger plate)
+	<LI>Comments   - comments applied
+	<LI>Ancestors - list of plates in ancestry (+ self)
+	<LI>Progeny   - list of plates spawned
+	<LI>Family    - all plates in Progeny + Ancestry
+	<LI>AppliedReagents - list of reagents/solutions applied to ancestors 
+	<LI>PrepsCompleted  - list of preparation ids completed on ancestors
+	<LI>AppliedEquipment - list of equipment applied to ancestors
+	<LI>CompletedProtocols - list of completed protocols
+	<LI>TrackedSteps       - list of steps (defined in Protocol_Tracking table) completed by ancestors
+	<LI>Unused_Wells
+	<LI>Status             - test / production
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>create
+	<LI>get_parents
+	<LI>get_children
+	<LI>get_family
+	<LI>get_reagents
+	<LI>get_equipment
+	<LI>get_preps
+	<LI>get_tracked_steps
+	<LI>set_wells - define Unused_Wells
+	<LI>throw_away
+	</UL>
+
+<h3>Library_Plates</h3>
+These plates are specific to the Sequencing plug in and have all of the attributes of a standard plate in addition to the following:<P>
+	Attributes:
+	<UL>
+	<LI>Library
+	<LI>Unused_Wells
+	<LI>Slow_Grows
+	<LI>No_Grows
+	<LI>Format
+	<LI>Application ('Sequencing','PCR','Mapping')
+	<LI>AvailableQuadrants
+	<LI>FamilyRuns
+	<LI>BrewMix
+	<LI>BrewMixQty
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>get_runs - list of run ids for all plates in family
+	<LI>get_BrewMix    - list of applied Brew Mix
+	</UL>
+<h3>Tube</h3>
+These plates are specific to the Sequencing plug in and have all of the attributes of a standard plate in addition to the following:<P>
+	Attributes:
+	<UL>
+	<LI>Name 
+	<LI>Volume
+	<LI>Sample
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>dispense
+	<LI>throw_away
+	</UL>
+<h3>Reagents/Solutions</h3>
+	<P>Attributes:	
+	<UL>
+	<LI>Name
+	<LI>Original_Quantity
+	<LI>Expiration_Date
+	<LI>Type (eg. 'Primer', 'Buffer','Matrix')
+	<LI>Reagents
+	<LI>Components
+	<LI>Plates
+	<LI>Preps
+	<LI>Solutions
+	</UL>
+	<P>Methods:
+	<UL>
+	<LI>get_reagents	- get list of original reagents required to make this solution
+	<LI>get_components	- get list of reagents making up this solution
+	<LI>get_plates          - get list of plates applied to 
+	<LI>get_preps		- get list of preparation ids using reagent(s)
+	<LI>get_solutions
+	</UL>
+
+<h3>Equipment</h3>
+
+<h3>Box</h3>
+
+<h3>Employee</h3>
+	<UL>
+	<LI>Permissions
+	<LI>Password
+	<LI>Department
+	<LI>Email_Address 
+	</UL>
+<h3>Contact</h3>
+	<UL>
+	<LI>Organization
+	<LI>Position
+	<LI>Phone
+	<LI>Email Address 
+	</UL>
+<h3>Organization</h3>
+	<UL>
+	<LI>Address
+	<LI>Web Site
+	</UL>
+</UL>
+<LI>Descriptive Entities:
+
+<h3>Project</h3>
+	<UL>
+	<LI>Path
+	<LI>Initiated
+	<LI>Completed
+	</UL>
+<h3>Library</h3>
+<h3>Vector</h3>
+<h3>Primer</h3>
+<h3>Tissue</h3>
+<h3>Clone</h3>
+
+<LI>Procedural Entities:<P>
+<h3>Preparation</h3>
+	Attributes:
+<UL>
+<LI>dbh           - database handle
+<LI>protocol_name - name of protocol
+<LI>protocol_id  - id of protocol 
+<LI>input[]      - array of step input requirements
+<LI>format[]     - array of step formats expected
+<LI>default[]    - array of step defaults
+<LI>step[]       - array of step names
+<LI>tracksteps   - number of steps to track 
+<LI>totalsteps   - total number of steps in protocol
+<LI>thisstep     - current step number
+<LI>set          - sample set id
+<LI>sample_ids   - list of samples being prepared
+<LI>records      - number of records 
+<LI>fields       - fields to store to table
+<LI>values       - values to store
+</UL><P>
+Methods:
+<UL>
+<LI>load_Step     - load step information
+<LI>load_Plates   - load Plates (including history)
+<LI>get_next_Step - get next step in protocol
+</UL>
+
+</UL>
+</span>
+
+

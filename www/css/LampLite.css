@@ -1,0 +1,51 @@
+.toggle-block {
+    padding:20px;
+    background-color:#EEE;
+}
+
+.narrow-txt {
+    width: 40px !important;
+}
+.short-txt {
+    width: 100px !important;
+}
+.normal-txt {
+    width: 200px !important;
+}
+
+.wide-txt {
+    width: 400px !important;
+}
+
+.superwide-txt {
+    width: 800px !important;
+}
+
+/** page-heading **/
+.page-heading {
+    font-size: 31.5px !important;
+    line-height: 44px; 
+    padding: 14px;
+    background-color:#9ac;
+    a { color: #3cc }
+    a:hover { color: #fff }
+}
+.page-heading a { color: #339 } .page-heading a:hover { color: #33f }
+
+/** section-heading **/
+.section-heading {
+    font-size: 24.5px;
+    line-height: 40px; 
+    padding: 14px;
+    background-color:#abd;
+}
+.section-heading a { color: #339 } .section-heading a:hover { color: #33f }
+
+/** subsection-heading **/
+.subsection-heading {
+    font-size: 17.5px;
+    line-height: 36px; 
+    padding: 14px;
+    background-color:#cdf;
+}
+.subsection-heading a { color: #339 } .subsection-heading a:hover { color: #33f }

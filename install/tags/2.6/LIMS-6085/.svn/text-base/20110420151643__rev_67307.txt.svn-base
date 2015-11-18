@@ -1,0 +1,11 @@
+BWA/modules/Run_Analysis.pm
+SOLID/modules/Run.pm
+Illumina/scripts/generate_basecall_summary.pl
+Illumina/scripts/bcl.pl
+Illumina/scripts/solexa_cleanup.pl
+Illumina/scripts/solexa_post_analysis.pl
+Illumina/modules/Run.pm
+Illumina/modules/Solexa_API.pm
+Illumina/modules/Solexa_Summary_App.pm
+Illumina/modules/SolexaRun_Summary.pm
+Illumina/modules/Solexa_Analysis.pm

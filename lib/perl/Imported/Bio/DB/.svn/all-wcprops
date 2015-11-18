@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB
+END
+GenBank.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GenBank.pm
+END
+WebDBSeqI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/WebDBSeqI.pm
+END
+Failover.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Failover.pm
+END
+XEMBL.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/XEMBL.pm
+END
+Registry.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Registry.pm
+END
+Universal.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Universal.pm
+END
+BiblioI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/BiblioI.pm
+END
+NCBIHelper.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/NCBIHelper.pm
+END
+RandomAccessI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/RandomAccessI.pm
+END
+Makefile.PL
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Makefile.PL
+END
+SwissProt.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/SwissProt.pm
+END
+EMBL.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/EMBL.pm
+END
+BioFetch.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/BioFetch.pm
+END
+InMemoryCache.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/InMemoryCache.pm
+END
+RefSeq.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/RefSeq.pm
+END
+Flat.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Flat.pm
+END
+Ace.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Ace.pm
+END
+UpdateableSeqI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/UpdateableSeqI.pm
+END
+XEMBLService.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/XEMBLService.pm
+END
+MANIFEST
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/MANIFEST
+END
+GDB.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GDB.pm
+END
+Fasta.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/Fasta.pm
+END
+DBFetch.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/DBFetch.pm
+END
+SeqI.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/SeqI.pm
+END
+GenPept.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GenPept.pm
+END
+GFF.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/GFF.pm
+END
+FileCache.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/DB/FileCache.pm
+END

@@ -1,0 +1,3 @@
+Stock_ID	FK_Employee__ID	Stock_Lot_Number	Stock_Received	FK_Orders__ID	FK_Box__ID	Stock_Number_in_Batch	Stock_Cost	FK_Grp__ID	FK_Barcode_Label__ID	Identifier_Number	Identifier_Number_Type	FK_Stock_Catalog__ID	Stock_Notes	PO_Number	Requisition_Number
+1	1	NULL	NULL	NULL	NULL	0	NULL	2	0	NULL	NULL	3	NULL	NULL	NULL
+2	1	NULL	NULL	NULL	NULL	NULL	NULL	2	10	NULL	NULL	6	NULL	NULL	NULL

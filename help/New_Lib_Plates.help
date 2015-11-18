@@ -1,0 +1,12 @@
+<h2>Generating New Library Plates</H2>
+Assuming the appropriate Library has been added to the database, 
+adding a plate is accomplished by simply clicking on the 'Plates' icon 
+and selecting 'Create New Plate'.
+<P>
+Generally the user will only need to specify the format of the plate, the
+size, and the expected storage conditions.
+<P>
+<Img Src='/Images/NewPlate.png'>
+More than one plate can be created simultaneously by specifying a number
+at the bottom of the form.
+<P>

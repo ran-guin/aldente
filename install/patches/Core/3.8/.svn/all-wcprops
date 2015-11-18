@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/75666/alDente/trunk/install/patches/Core/3.8
+END
+Link_Src_to_Work_Request.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/75566/alDente/trunk/install/patches/Core/3.8/Link_Src_to_Work_Request.pat
+END
+Pathology_Stage_3_8.pat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/75356/alDente/trunk/install/patches/Core/3.8/Pathology_Stage_3_8.pat
+END
+Bioinformatics_Goal_Library_Analysis_Status.pat
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/75666/alDente/trunk/install/patches/Core/3.8/Bioinformatics_Goal_Library_Analysis_Status.pat
+END
+Update_Src_Numbers.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/75662/alDente/trunk/install/patches/Core/3.8/Update_Src_Numbers.pat
+END
+Admin_Editable_Fields.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/75567/alDente/trunk/install/patches/Core/3.8/Admin_Editable_Fields.pat
+END
+Invoicing_Normalization.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/75641/alDente/trunk/install/patches/Core/3.8/Invoicing_Normalization.pat
+END

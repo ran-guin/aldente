@@ -1,0 +1,10 @@
+Object_Class_ID	Object_Class	Object_Type
+1	Antibiotic	Solution
+3	Plate	
+4	Run	
+5	Lab_Protocol	
+6	Enzyme	Solution
+7	Run	GelRun
+8	Lane	
+9	Solution	Solution
+10	Untracked	

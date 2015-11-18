@@ -1,0 +1,71 @@
+<h1>What is a Tube?</H1>
+A Tube generally refers to a DNA ligation tube, but it may also be associated with an Agar plate upon which the tube contents are placed prior to colony picking.  (see Status below for the laboratory stages associated with Tubes).
+ <P>
+By being specified in this way, we can automatically ensure that protocols are followed in the preparation of tubes within the laboratory, and correct reagents are being applied appropriately.
+
+<h2>What sort of information do we store for a Tube?</H2>
+Tubes are defined by the following information
+<UL>
+<LI>Library - The parent library from which the ligation originates
+<LI>Number  - The number of the tube extracted directly from the source library (like Plate_Number)
+<LI>Format - the format in which the tube is stored (ie. '1.5ml Eppendorf' or 'Agar plate')
+<LI>Quantity - the quantity of solution within the tube
+<LI>DNA_cfu  - the density of DNA within the tube
+<LI>Parent - if not the original tube, the tube that this tube was dispensed from.
+<LI>Status - at what stage is this tube in, following the progression through:
+<UL>
+<LI>Original
+<LI>Diluted
+<LI>Electro-porated
+<LI>Plated
+<LI>Picked
+<LI>Finished
+</UL>
+<LI>Location
+<LI>Creation details - when the tube was formed and by whom...
+</UL>
+
+<BR><A Href=$homelink&Table+Info=Tube>View Tube Fields</A>
+
+<h2>How does a Tube relate to other 'Tables' ?</h2>
+<BR>
+<A Href='$homelink&User=Auto&Tree=1&TableName=Tube'>View Relationship of Tubes with other 'Tables'</A>
+
+<h2>How do I define a Tube</H2>
+On the 'Plates' page, instead of selecting 'New Plate', there is a 'New Tube' button which allows users to add new tubes in the same way that they add new plates.
+
+<h2>How can I view information on a Tube?</H2>
+By simply scanning the tube at the home page, (or by typing in the barcode - 'tub' followed by the tube 'ID'),
+you will be shown basic information on the tube.<BR>
+<Img Src = '$Help_Image_dir/Tube_info.png'>
+<BR>
+For more information, simply click on the hyperlink on the tube name, and you will be shown more details.
+
+<H2>How can I change information on a Tube?</H2>
+After viewing the information as described above for a Tube, there should be a button allowing the user to 'Edit' this information.
+
+<H2>What is the protocol for using tubes ?</H2>
+<P>
+The standard protocol consists of a number of possible steps.  In some cases the step is optional (ie Dilution), but in other cases, the previous step must be performed before continuing.  
+<P>Steps in the preparation of tubes include:
+<UL>
+<LI>Dilute (optional) - This transfers an 'Original' tube to a 'Diluted' tube, adding only water 
+<LI>Electro-porate - This associates a tube with SOC media and cells.  Formatting may be specified to ensure that the reagents applied match certain naming patterns.  (ie containing the letters 'soc' somewhere in the name).
+<LI>Plate to Agar - This involves applying an electro-porated tube to an agar plate.  The agar plate is initially labelled as a 'Solution' containing an antibiotic, inducer and substrate.  If these elements match those expected based upon the tube library, the agar plate is re-labelled as a 'Tube', since it is now the medium for the DNA ligation. 
+<LI>Pick - If the tubes are to be picked and applied to one or more plates, the antibiotic must again match that expected, and if appropriate, new plates are generated automatically, adopting appropriate information from the tubes. 
+</UL>
+<P>In all of the above cases, users are warned by the system if incorrect reagents are applied, and given the opportunity to scan new reagents.  
+<P>Shortcuts also speed up the handling of tubes, so that by scanning a tube along with a solution, the step to be undertaken is determined by the current status of the tube, and the user prompted accordingly.
+
+<H2>Why is the Agar plate not a plate ?</H2>
+<P>
+Generally plates refer to DNA plates originating from a library with clones in individual wells.
+<P>In the case of an agar plate in its initial stages, it is essentially simply a mixture of reagents in a flat medium, rather than in a bottle.  
+<P>Once the DNA ligation is added to the agar plate, it takes on the characteristics of the tube. (Namely single pooled ligation of DNA that differs primarily only in the container itself)  At this stage, the agar plate becomes a 'Tube', making it easy to determine whether or not the plate contains DNA or not.  <BR>(ie. if it is a 'Solution', it has no DNA on it, if it is a 'Tube', the DNA has been added)
+
+<h2>How can I tell what is on the Agar plate ?</H2>
+<P>Agar plate solutions are named automatically, by appending subsequent reagent names onto the original name.
+<P>For example,the original Agar plate is usually called simply:<BR><B>'Agar'</B>
+<P>If 2xYT inducer is added, the name becomes:<BR><B>'Agar + 2xYT'</B><BR>- extracting the first 4 characters of the second reagent. <P>If Kanamyacin is then added, the name becomes:<BR><B>'Agar + 2xYT + Kana'</B>
+<P>The intention is to allow users to be able to determine the reagents contained on agar plates from its name, but in some cases, this may need to be reduced for brevity.
+<P>Once the DNA is added to the Agar plate, it becomes a 'Tube', and should be labelled as such.

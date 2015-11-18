@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/94141/alDente/trunk/install/patches/Core/3.16
+END
+Change_FK_Library_Name_Length_3.pat
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/87708/alDente/trunk/install/patches/Core/3.16/Change_FK_Library_Name_Length_3.pat
+END
+add_tube_weight.pat
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/88468/alDente/trunk/install/patches/Core/3.16/add_tube_weight.pat
+END
+add_DBField_Relationship.pat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/86949/alDente/trunk/install/patches/Core/3.16/add_DBField_Relationship.pat
+END
+correct_Package_Condition.pat
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/89460/alDente/trunk/install/patches/Core/3.16/correct_Package_Condition.pat
+END
+init_access.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/89248/alDente/trunk/install/patches/Core/3.16/init_access.pat
+END
+General_3_16.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/88841/alDente/trunk/install/patches/Core/3.16/General_3_16.pat
+END
+Tube_Created.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/94141/alDente/trunk/install/patches/Core/3.16/Tube_Created.pat
+END
+barcode_b_object.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/88364/alDente/trunk/install/patches/Core/3.16/barcode_b_object.pat
+END
+Source_Created.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/89013/alDente/trunk/install/patches/Core/3.16/Source_Created.pat
+END
+Run_Analysis_Comment.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/88050/alDente/trunk/install/patches/Core/3.16/Run_Analysis_Comment.pat
+END
+sample_request.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/89310/alDente/trunk/install/patches/Core/3.16/sample_request.pat
+END
+Run_Analysis_Test_Mode.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/94072/alDente/trunk/install/patches/Core/3.16/Run_Analysis_Test_Mode.pat
+END

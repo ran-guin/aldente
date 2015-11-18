@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/TCGA/modules
+END
+Statistics_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/92394/alDente/trunk/custom/GSC/Departments/TCGA/modules/Statistics_Views.pm
+END
+Statistics.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/TCGA/modules/Statistics.pm
+END
+Statistics_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/TCGA/modules/Statistics_App.pm
+END
+Summary_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/TCGA/modules/Summary_Views.pm
+END
+Validation.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/78254/alDente/trunk/custom/GSC/Departments/TCGA/modules/Validation.pm
+END
+Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/TCGA/modules/Summary.pm
+END
+Summary_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/Departments/TCGA/modules/Summary_App.pm
+END
+Department_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/TCGA/modules/Department_Views.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/TCGA/modules/Department.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/93103/alDente/trunk/custom/GSC/Departments/TCGA/modules/Department_App.pm
+END
+Trigger.pm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/73493/alDente/trunk/custom/GSC/Departments/TCGA/modules/Trigger.pm
+END

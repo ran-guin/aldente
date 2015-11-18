@@ -1,0 +1,252 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Multipage Form<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>The Multipage Form allows users to input information over
+multiple pages of forms and at the very end insert the database into
+the database in a batch.</li>
+  <li>The insertion of data is wrapped inside a transaction (See
+ <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_Transaction">Developer's Manual - Transaction</a>).&nbsp;
+Hence, either all data from the multipage forms will be inserted or
+none at all.</li>
+  <li>The order of forms to show up in the multipage form is configured
+via a database table - hence no hardcoding of form sequences is
+required.<br>
+  </li>
+</ul>
+<h3>Database tables</h3>
+<ul>
+  <li>DB_Form</li>
+  <ul>
+    <li>
+      <pre>+----------------------+--------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+----------------------+--------------+------+-----+---------+----------------+</pre>
+      <pre>| DB_Form_ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| Form_Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(80)&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Form_Order&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Min_Records&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Max_Records&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKParent_DB_Form__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Parent_Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(80)&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Parent_Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(200) | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+----------------------+--------------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>This table contains configurations on the ordering of
+tables/forms to be shown in a multipage form.</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Field descriptions:</li>
+    <ul>
+      <li>Form_Table - The name of the table</li>
+      <li>Form_Order - This is usually set to '1'.&nbsp; However, in
+the case where several tables are candidates for the next form in a
+given branch, this field becomes relevant (more on this later)</li>
+      <li>Min_Records - The minimum number of records to be prompted
+for the table.&nbsp; Special values are:</li>
+      <ul>
+        <li>'0' - Data input is optional.&nbsp; In this case, a 'Skip'
+button will be avaiable for the user to skip the form.</li>
+      </ul>
+      <li>Max_Records - The maximum number of records to be prompted
+for the table.&nbsp; Special values are:</li>
+      <ul>
+        <li>'-1' - This corresponds to 'n' number of records, meaning
+the user can specify as many records as they can.&nbsp; <br>
+        </li>
+      </ul>
+      <li>FKParent_DB_Form__ID - The DB_Form_ID of the parent table</li>
+      <li>Parent_Field and Parent_Value - This is specified if the
+branching should occurs only if the value in the Parent_Value field is
+the one specified by the user for the field in Parent_Field field.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Example for the Pool related tables:</li>
+    <ul>
+      <li>The order of tables that we want to show is:</li>
+      <br>
+      <img src="$Help_Image_dir/DB_Form_Example.png">
+      <p> </p>
+      <li>The following is what we need in the DB_Form table to allow
+this to happen:<br>
+      </li>
+      <pre>+------------+-----------------+------------+-------------+-------------+----------------------+-------------------+--------------+<br>| DB_Form_ID | Form_Table      | Form_Order | Min_Records | Max_Records | FKParent_DB_Form__ID | Parent_Field      | Parent_Value |<br>+------------+-----------------+------------+-------------+-------------+----------------------+-------------------+--------------+<br>|         19 | Pool            |          1 |           1 |           1 |                 NULL | NULL              | NULL         |<br>|         20 | Transposon_Pool |          1 |           1 |           1 |                   29 | Library_Pool_Type | Transposon   |<br>|         21 | PoolSample      |          2 |           1 |          -1 |                   29 | NULL              | NULL         |<br>|         29 | Library_Pool    |          1 |           1 |           1 |                   19 | Pool_Type         | Library      |<br>|         39 | Sample_Pool     |          1 |           1 |           1 |                   19 | Pool_Type         | Sample       |<br>|         40 | PoolSample      |          1 |           1 |          -1 |                   39 | NULL              | NULL         |<br>+------------+-----------------+------------+-------------+-------------+----------------------+-------------------+--------------+<br></pre>
+      <ul>
+        <li>Note that the starting table (Pool) does not have
+FKParent_DB_Form__ID.</li>
+        <li>Either Library_Pool or Sample_Pool will be next.&nbsp; This
+is determined based on whether Pool.Pool_Type = 'Library' or 'Sample'.</li>
+        <li>If we go to Library_Pool:</li>
+        <ul>
+          <li>We will then go to Transposon_Pool if
+Library_Pool.Library_Pool_Type = 'Transposon'; otherwise go directly to
+PoolSample.</li>
+          <li>Notice that DB_Form_ID 21 (PoolSample) has a form order
+of '2'.&nbsp; This indicates that in the event of the Transposon_Pool
+table being included in the form series, the system will first display
+the Transposon_Pool table (Form_Order = 1) and then the PoolSample
+table (Form_Order = 2)</li>
+        </ul>
+        <li>If we go to Sample_Pool, then we will still go to
+PoolSample table as our last table.</li>
+        <li>Notice that there are 2 entries required for the
+'PoolSample' table (i.e. ID 21 and 40).&nbsp; This is because
+PoolSample can be coming from 2 branches:</li>
+        <ul>
+          <li>Library_Pool (ID of 29)</li>
+          <li>Sample_Pool (ID of 39)</li>
+        </ul>
+        <li>Finally, notice that Max_Records of PoolSample has a value
+of '-1', indicating that user can specify as many PoolSample entries as
+possible during the form (this is due to a one-to-many relationship)<br>
+        </li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h3>Coding</h3>
+<ul>
+  <li>The logic of the multipage form is inside the SDB::DB_Form
+object.&nbsp; Several key concepts:</li>
+  <ul>
+    <li>The 'mode' attribute indicates what submit buttons will be
+shown to the user.&nbsp; Note that this attribute contains a
+comma-delimited list of modes that are one of the following:</li>
+    <ul>
+      <li>'Normal' - This is used for single page form.&nbsp; The
+button displayed will be 'Update &lt;TABLE&gt;'&nbsp; (e.g. Update
+Project)</li>
+      <li>And the followings are only applicable to a multi-page form:</li>
+      <ul>
+        <li>'Start' - This indicates the start of a new multipage form
+session<br>
+        </li>
+        <li>'Continue' - This indicates there are more forms to be
+followed by the current form.&nbsp; The button displayed will be
+'Continue'.<br>
+        </li>
+        <li>'Skip' - This is the case for tables that have Min_Records
+of '0', meaning that the current form is optional and can be
+skipped.&nbsp; The button displayed will be 'Skip'.<br>
+        </li>
+        <li>'Finish' - This indicates this form CAN be the last form of
+the series.&nbsp; The button displayed will be 'Finish' - upon clicking
+on this button, all the form data will be batch inserted into the
+database.</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>The configure() method accepts a configuration hash.&nbsp; This
+controls which fields will be greyed out, hidden, preset, etc.&nbsp;
+For instance, if the Pool_Type is to be preset to 'Library' and
+Library_Pool_Type grey out to 'Transposon', you will do the following:</li>
+  </ul>
+</ul>
+<pre style="margin-left: 80px;"><span class="medium">my %configs;<br>$configs{-preset}{'Pool.Pool_Type'} = 'Library';<br>$configs{-grey}{'Library_Pool.Library_Pool_Type'} = 'Transposon';</span></pre>
+<pre style="margin-left: 80px;"><span class="medium">$form-&gt;configure(%configs);</span></pre>
+<ul>
+  <ul>
+    <li>To actually generate the form, you would call the public method
+generate().&nbsp; Note that this method will pass in the corresponding
+configurations generated by the configure() method to the
+_generate_form() private method, which is the actual code that
+generates the form.</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>After the user click on a button to go to the next page and all
+the necessary data storage or update has been done, the code goes back
+to alDente::Button_Options, in which it receives the parameter
+'Multipage_Form'.&nbsp; Note that the Multipage_Form parameter actually
+contains the frozen/encoded copy of the DB_Form object itself,
+including the all the data from the previous forms (note that the data
+are stored in the 'data' attribute of the DB_Form object).&nbsp; So at
+this point if the mode is not 'Finish', then Button_Options will
+re-create the DB_Form object based on the frozen/encoded copy and the
+next form page will be generated by calling the generate() method.</li>
+  </ul>
+</ul>
+<ul>
+  <li>At this point, the sequence of events that happened during the
+entire multipage form session is rather confusing (we should clean up
+this when we have the chance).&nbsp; So here I will try to illustrate
+what actually happens:</li>
+  <ol>
+    <li>Generation of the form:<br>
+      <ul>
+        <li>DB_Form-&gt;new() - Constructor of the DB_Form object<br>
+        </li>
+        <li>DB_Form-&gt;configure() - Configuration for the entire
+multipage form<br>
+        </li>
+        <li>DB_Form-&gt;generate() - Generates the first form<br>
+        </li>
+      </ul>
+    </li>
+    <li>After user clicked on 'Continue':</li>
+    <ul>
+      <li>Goes to SDB::DB_Form_Viewer::DB_Viewer_Branch() and inside it
+calls:<br>
+      </li>
+      <ul>
+        <li>alDente::Validation::Validate_Form_Info() - Performs
+validation on user input (e.g. mandatory fields, field formats, etc)</li>
+        <li>SDB::DB_Form_Viewer::_update_record().&nbsp; Inside this
+routine:</li>
+        <ul>
+          <li>Appends the data from the previous form to data gathered
+from earlier forms.<br>
+          </li>
+        </ul>
+        <ul>
+          <li>If we are inside a submission, then also writes the data
+into the submission file.</li>
+        </ul>
+      </ul>
+      <li>Goes to alDente::Special_Branches::Post_DBForm_Skip() and see
+if there are any special operations to be done for the previous form<br>
+      </li>
+      <li>Goes to alDente::Button_Options::Check_Button_Options, and
+under the section that receives the 'Multipage_Form' param, it
+thaws/decodes the frozen/encoded DB_Form object, calls configure() and
+generate() to generate the next form.</li>
+    </ul>
+    <li>After user clicked on 'Finish':</li>
+    <ul>
+      <li><span class="medium">Goes to
+SDB::DB_Form_Viewer::DB_Viewer_Branch() and inside it calls:</span></li>
+      <ul>
+        <li><span class="medium">alDente::Validation::Validate_Form_Info()
+- Performs validation on user input (e.g. mandatory fields, field
+formats, etc)</span></li>
+        <li><span class="medium">SDB::DB_Form_Viewer::_update_record().&nbsp;
+Inside this routine, it calls SDB::GSDB::Batch_Append() to batch insert
+all form data into the database.&nbsp; Notice that this is wrapped
+inside a transaction.</span></li>
+      </ul>
+      <li><span class="medium">Goes to
+alDente::Special_Branches::Post_DBForm_Skip() and see if there are any
+special operations to be done for the last form.&nbsp; After this the
+transaction will be comitted.&nbsp; Then at the end, it checks the new
+IDs and see if any barcode labels will need to be printed.&nbsp; <br>
+        </span></li>
+      <li><span class="medium">Goes to
+alDente::Button_Options::Check_Button_Options, and under the section
+that receives the 'Multipage_Form' param, it will return to the home
+page.<br>
+        </span></li>
+    </ul>
+  </ol>
+</ul>
+</span>

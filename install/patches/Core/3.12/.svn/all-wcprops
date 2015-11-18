@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/81797/alDente/trunk/install/patches/Core/3.12
+END
+Invoice_Column_Deletion.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/81487/alDente/trunk/install/patches/Core/3.12/Invoice_Column_Deletion.pat
+END
+add_created_date.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/81760/alDente/trunk/install/patches/Core/3.12/add_created_date.pat
+END
+virtual_shipment.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/80990/alDente/trunk/install/patches/Core/3.12/virtual_shipment.pat
+END
+1_Creating_Invoiceable_Work_Reference_Table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/81242/alDente/trunk/install/patches/Core/3.12/1_Creating_Invoiceable_Work_Reference_Table.pat
+END
+add_work_request_created_by.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/81012/alDente/trunk/install/patches/Core/3.12/add_work_request_created_by.pat
+END
+collboration_type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/81797/alDente/trunk/install/patches/Core/3.12/collboration_type.pat
+END

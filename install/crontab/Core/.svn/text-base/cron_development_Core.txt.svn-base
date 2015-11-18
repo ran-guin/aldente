@@ -1,0 +1,28 @@
+<FILE_HEADER>
+#**************************************************************************************
+#
+# ALL .LOG AND .ERR FILES SHOULD BE WRITTEN TO THE DIRECTORY: <Data_home_dir>/private/logs/
+#
+# finish each command with:
+#    1><Data_home_dir>/private/logs/<script>.log 2> <Data_home_dir>/private/logs/<script>.err
+#*************************************************************************************************************************
+
+## ENVIRONMENT VARIABLES ##
+
+## PATH Below should normally point to production code - may point to beta shortly prior to release to test integrity of cron scripts ##
+PATH=/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/opt/alDente/bin:<Home_dir>/versions/production/bin
+## NOTE: Path should be exclusively indicated in cron jobs working for Production system 
+
+## Turn off standard mailing functionality ##
+# MAILTO = ''
+
+## Log cronjobs dynamically ##
+0 0 * * * crontab -l > <Data_home_dir>/private/crontabs/<DEV_HOST>.aldente.cron
+
+
+###########################################################
+## FREQUENTLY RUNNING CRON JOBS (More than once per day) ##
+###########################################################
+</FILE_HEADER>
+
+

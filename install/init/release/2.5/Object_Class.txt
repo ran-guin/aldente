@@ -1,0 +1,7 @@
+5	Lab_Protocol	
+8	Lane	
+3	Plate	
+4	Run	
+7	Run	GelRun
+1	Antibiotic	Solution
+6	Enzyme	Solution

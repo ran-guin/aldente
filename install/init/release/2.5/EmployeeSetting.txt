@@ -1,0 +1,4 @@
+1	1	110	auto1@jetdirect02
+2	1	139	auto1@jetdirect02
+3	1	163	auto1@jetdirect02
+4	1	109	auto1@jetdirect02

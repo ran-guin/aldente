@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/102826/alDente/trunk/install/build
+END
+coredump.sql
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/102536/alDente/trunk/install/build/coredump.sql
+END
+build_lims.pl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/102826/alDente/trunk/install/build/build_lims.pl
+END

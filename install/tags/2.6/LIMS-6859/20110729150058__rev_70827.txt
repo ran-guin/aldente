@@ -1,0 +1,4 @@
+lib/perl/Departments/Receiving/Department.pm
+lib/perl/Departments/LIMS_Admin/Department.pm
+bin/t/Departments/Receiving/Department.t
+bin/t/Departments/LIMS_Admin/Department.t

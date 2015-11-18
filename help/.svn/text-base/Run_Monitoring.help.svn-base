@@ -1,0 +1,11 @@
+<H2>Run Monitoring</H2>
+<P>
+In the generation of high throughput sequencing information, it is essential to have constant feedback as to the lab-wide status of various samples, allowing lab administrators to identify pending processes, bottlenecks, or data requiring closer observation.  Some of the tools made available to facilitate these and other tasks include:
+<UL>
+<LI>Monitoring of the status of samples within a specified library.
+<P>This provides a quick view of which samples have yet to be sequenced, which chemistries have been performed, and the number of samples at each position within the protocol.
+<LI>Quick views of recent runs, displaying average quality lengths, vector components, chemistry information as well as an easy to view colour-coded map indicating quality distribution of reads within a plate.
+<LI>Quick views summarizing the results by library or project.
+<LI>Automatic Diagnostics checking, which correlates sequence quality with numerous subtle variables within the lab setting which could have an effect on final data quality.  These correlations involve equipment, solutions, and processes applied to samples prior to sequencing, as well as more direct factors such as which sequencing machine was used.
+<LI>Complex Database summaries may also be generated, with a whole suite of highly informative visual reports that represent data in a variety of formats.
+</UL>

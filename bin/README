@@ -1,0 +1,55 @@
+command line scripts for LIMS system:
+
+backup_DB.pl - backup the specified database (optional table inclusion/exclusion)
+restore_DB.pl - restore a specified database from a backup
+searchDB.pl - a limited command line query tool to extract info from the database
+quick_view.pl - a simple read command line read viewer showing basic data along with the trace file (generated from 'ted')
+update_sequence.pl - generate secondary data from raw sequence trace data (runs phred and populates database)
+fasta.pl - generate fasta files for Runs/Libraries
+setDB.pl - update or generate the DBTable, DBField tables based on database structure
+buildDB.pl - create an SQL database structure based on the definitions in DBField, DBTable
+create_virtual_original.pl - This script creates a virtual original plate for each specified original plate. This allows the user to keep the same samples and plate numbers.
+
+### Cron Jobs ###
+                                                                
+cleanup_DB.pl
+cleanup_binlog.pl
+cleanup.pl
+bulk_email_notification.pl
+Report_generator.pl
+Notification.pl
+DB_monitor.pl
+Cron_Summary.pl
+API_unit_test.pl
+usage_growth.pl
+unit_test.pl
+sys_monitor.pl
+run_unit_tests.pl
+refresh_parameters.pl
+publish_mirror.pl
+daily_upgrade.pl
+cleanup_web.pl
+cleanup_slx_space.pl
+cleanup_mirror.pl
+
+## Wrapper scripts ###
+dev_cron
+	backup_RDB
+	restore_DB (structure)
+	restore_DB (records)
+	upgrade_DB
+	compare_DB
+
+### Data Correction scripts ###
+
+README                          
+cat_vectors.pl                  
+change_project.pl               
+convert_DB.pl                   
+convert_NULL_string.pl          
+delete_replace.pl
+fix_data.pl		
+fix_dup_aliquot_trays.pl
+fix_plates.pl		
+fix_spatial.pl		
+update_library_list.pl  

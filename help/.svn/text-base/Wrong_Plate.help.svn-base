@@ -1,0 +1,46 @@
+<H2>Fixing data when the wrong plate was defined for use in a sequencing run</H2>
+
+Please follow the following steps in order to properly identify plates that
+have been incorrectly specified.
+
+<UL>
+<LI>Find plate which was incorrectly scanned or specified (and note where
+this occurred. (eg 'Pla1' during 'Step A')
+<LI>Find the correct id which should have been scanned or specified. (eg 'Pla2')
+<LI>Scan the incorrectly scanned plate and view its history. (in 'edit' mode)
+<LI>Change the plate id to the correct id ONLY for preparation steps which:
+<UL>
+<LI>
+identify the plate specifically<BR>
+(many will ONLY specify the plate SET - do NOT change these records) 
+<LI>AND ... occur AFTER the mis-naming and BEFORE it is transferred on to
+another plate.<BR>
+(there may not be any if it was transferred right away)
+</UL>
+<LI>Note the Plate SET number associated with the plate directly AFTER mis-labelling.
+<LI>Find any plate sets which include Pla1 (which SHOULD include Pla2 instead).
+<LI>Edit the Plate Set as required.<BR>
+   (Plate Sets which include daughter plates of Pla2 DO NOT have to be edited)
+
+<LI>IF Pla2 is Transferred to daughter plate(s):
+ <UL><LI>Find the target plate (plate it was transferred TO)
+     <LI>Edit the target plate to change the details as necessary.<BR>
+       (The plateID will remain unchanged, but other details will have to be
+changed)<BR>
+       ie FKParent_Plate__ID MUST be changed (to 'Pla2') <BR>
+       - as well as details such as Parent_Quadrant as necessary
+     <LI>(Repeat this process for each subsequent transfer as required).
+ </UL>
+<LI>Find the Sequence run associated with the mis-entered plate.
+<BR>(IF the name of the Sample sheet needs to be changed:)
+<UL><LI>Find the Samplesheet directory for the plate (as it SHOULD be named)
+<LI>Figure out what the name should be (ie. which version it will be)
+<LI>Rename the mis-named samplesheet to the correct name<BR>
+(directory will only need to be changed if the Library is different)
+<LI>Edit the name in the Sequence table to reflect the new samplesheet name.
+<LI>Note that the name has been changed in the Comments field.
+<LI>Find the .ab1 files in the mirror directory.  
+<LI>Rename the files in this directory as required.
+<LI>Re-analyze this run (update_sequence.pl)
+</UL>
+

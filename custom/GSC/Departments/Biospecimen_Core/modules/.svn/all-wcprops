@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/Departments/Biospecimen_Core/modules
+END
+Department_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/Biospecimen_Core/modules/Department_Views.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/Departments/Biospecimen_Core/modules/Department.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/96303/alDente/trunk/custom/GSC/Departments/Biospecimen_Core/modules/Department_App.pm
+END

@@ -1,0 +1,7 @@
+Trigger_ID	Table_Name	Trigger_Type	Value	Trigger_On	Status	Trigger_Description
+1	Source	Method	new_source_trigger	insert	Active	\N
+2	WorkLog	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_from_WorkLog(-dbh=>$dbh, -id=><ID>);	insert	Active	\N
+3	Plate	Perl	require alDente::Container;my $po = new alDente::Container(-dbc=>$self,-id=><ID>,-quick_load=>1);$po->new_container_trigger();return 1; 	insert	Active	\N
+4	Issue	Perl	require alDente::Issue; my $ok = &alDente::Issue::update_Issue_trigger(-dbh=>$dbh, -id=><ID>);	insert	Active	Initialize fields (Latest_ETA) for new Issue record
+5	Library	Perl	require alDente::Library; my $ok = alDente::Library::initialize_external_source(-dbh=>$dbh, -library=>'<ID>');return 1;	insert	Active	Insert an external source/library_source if library is supplied by collaborator/another dept
+6	Plate_Prep	Method	plate_prep_insert_trigger	insert	Active	Update branch for plate if applicable reagent has been applied

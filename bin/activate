@@ -1,0 +1,89 @@
+#!/usr/local/bin/perl
+
+use FindBin;
+
+my $version = $ARGV[0];
+
+if (!$version) { 
+    help();
+    exit;
+}
+
+my $wd = `pwd`;
+chomp $wd;
+
+my $root = $0;   ## $FindBin::RealBin;
+$root =~s /.*bin\/\w+/$wd/;
+
+print "ROOT: $root.\n\n";
+
+my $dir = "$root/custom";
+my $target = "$root/conf/";
+
+my $validate = `find $dir/$version -type d`;
+
+if (!$validate) { 
+    print "$version not valid customization option\n\n";
+    my @options = split "\n", `ls $dir`;
+    print "Valid Options:\n*******************\n";
+    print join "\n", @options;
+    print "\n\n";
+    exit;
+}
+
+## Copy applicable cfg files to local conf directory ##
+`rm $root/cgi-bin/$version; ln -s $root/cgi-bin/alDente.pl $root/cgi-bin/$version`;
+
+print "resetting links to cfg/js/css/logo files in $d department\n";
+    reset_link("conf", 'custom.cfg', "$version.cfg");
+    reset_link("www/images", 'logo.png', "$version.logo.png");
+    reset_link("www/css", 'custom.css', "$version.css");
+    reset_link("www/js", 'custom.js', "$version.js");
+    reset_link("", 'modules', "lib/perl/Departments/$version");
+
+## Link applicable Department directories to main Department directory ##
+
+my @depts = split "\n", `find $dir/$version/Departments/ -type d -maxdepth 1`;
+print  "find $dir/$version/Departments/ -type d -maxdepth 1\n";
+
+print "Found Departments: @depts\n\n";
+foreach my $dept (@depts) {
+    if ($dept =~/Departments\/(\w+)/) {
+        my $d = $1;
+        reset_link("", "Departments/$d/modules", "lib/perl/Departments/$d");
+    }
+}
+
+exit;
+
+#################
+sub reset_link {
+################
+    my $path = shift;
+    my $source = shift;
+    my $target = shift;
+
+    my $source_path = $root . "/custom/$version";
+    my $target_path = $root;
+    if ($path) { 
+        $source_path .= "/$path";
+        $target_path .= "/$path";
+    }
+    
+    my $clear = "rm $target_path/$target";
+    my $relink = "ln -s $source_path/$source $target_path/$target";
+    
+    print "*"x50;
+    print "\n* $clear\n$relink\n\n";
+    `$clear`;
+    `$relink`;
+}
+    
+#############
+sub help {
+#############
+    print "activate resets the active installation to the customization specified, setting the following files in the process:\n";
+    print "* custom.cfg\n* custom.css\n* custom.js\n*logo\n\n";
+    print "Usage:\neg: > bin/activate Healthbank\n\n";
+}
+

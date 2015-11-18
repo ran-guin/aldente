@@ -1,0 +1,19 @@
+## Copy these cron commands into the crontab for whatever server you are running: 
+
+## hourly backup of <DATABASE>
+12 6-18 * * * <Home_dir>/versions/<version_name>/bin/backup_DB.pl -dump -host <SQL_HOST> -dbase <DATABASE> -user super_cron -password repus -confirm 1> <Data_home_dir>/private/logs/<DATABASE>_hourly_backup.log 2>> <Data_home_dir>/private/logs/<DATABASE>_hourly_backup.err
+
+## daily restore of <DATABASE> schema
+30 2 * * * export LD_ASSUME_KERNEL=2.4.1 && <Home_dir>/versions/<version_name>/bin/restore_DB.pl -rebuild -host <BACKUP_HOST> -dbase <DATABASE>_schema -from  <SQL_HOST>:<DATABASE> -force -structure -time 18:12 -user super_cron -password repus 1> <Data_home_dir>/private/logs/daily_restore_schema_<DATABASE>.log  2> <Data_home_dir>/private/logs/daily_restore_schema_<DATABASE>.err
+
+## daily restore of <DATABASE> database
+35 2 * * * export LD_ASSUME_KERNEL=2.4.1 && <Home_dir>/versions/<version_name>/bin/restore_DB.pl -rebuild -host <BACKUP_HOST> -dbase <DATABASE>_dev -from <SQL_HOST>:<DATABASE> -force -time 16:12 -user super_cron -password repus 1> <Data_home_dir>/private/logs/daily_restore_<BACKUP_HOST>.<DATABASE>_dev.log 2> <Data_home_dir>/private/logs/daily_restore_<BACKUP_HOST>.<DATABASE>_dev.err
+
+## update a few things (should be incorporated into upgrade script)
+1 3 * * * /usr/local/bin/mysql -h <BACKUP_HOST> -u aldente_admin -petnedla <DATABASE>_dev -e "UPDATE Version SET Release_Date = CURDATE() WHERE Version_Name = '2.6'"
+
+30 18 * * * /usr/local/bin/svn update <Home_dir>/versions/<version_name>
+
+## upgrade <DATABASE> database
+30 3 * * * <Home_dir>/versions/<version_name>/bin/upgrade_DB.pl -D <BACKUP_HOST>:<DATABASE>_dev -u aldente_admin -b all -p etnedla -A all -S -f -o <Custom> -O <Options> -g <Plugins> 1> <Data_home_dir>/private/logs/upgrade_DB.<BACKUP_HOST>.<DATABASE>_dev.log 2> <Data_home_dir>/private/logs/upgrade_DB.<DATABASE>_dev.err
+

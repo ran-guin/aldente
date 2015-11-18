@@ -1,0 +1,217 @@
+.fullspan { width: 100% }
+/* topmenu and bottommenu adjust settings for menus above and below a header section (rounds corners at top of bottom of tabs accordingly) */
+
+/************ Top **************/
+#topmenu {
+  height: 24px;
+}
+
+#topmenu ul {
+}
+
+#topmenu li {
+    background-color: #AAAAAA;  // rgb(30,35,35); 
+    color: #555555; // rgb(50,50,50);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top: 1px solid #FFFFFF;
+    margin: 1;
+}
+
+#topmenu li:hover {
+    background-color: rgb(85,85,85);
+//    background:transparent url('images/hover.gif') no-repeat top right;
+    color: rgb(1,1,1);
+}
+
+/******* Bottom ***********/
+
+#bottommenu ul {
+    /** adjust specs to make sense for menu below header section (eg rounded corners on bottom of elements) **/
+} 
+
+#activelabel > ul > li > a {
+    color: #111111;
+}
+
+/** Top single link tab menu sections (dept) **/
+/**********************************************/
+/*** Can probably tweak this so that it simply adjusts a few settings from the dropnav class below ***/
+/*
+#tabmenu {
+    background-color: #DDDDDD;
+}
+*/
+
+#tabmenu > ul > li > a { 
+    color: rgb(50,50,50); 
+}
+
+#tabmenu > ul > li > a:hover {color: rgb(250,250,250); }
+
+#tabmenu ul{
+      margin:0;
+        padding:0;
+            list-style-type:none;
+                width:auto;
+                    position:relative;
+                        display:block;
+                            height:18px;   // li height + padding + border/2 ?
+                                text-transform:uppercase;
+                                    font-size:12px;
+                                        font-weight:bold;
+                                            // background:transparent url('images/off.gif') repeat-x top left;
+                                            //    font-family:Helvetica,Arial,Verdana,sans-serif;
+                                            //        border-bottom:2px solid #555555;
+                                            //           border-top:1px solid #919191;
+}
+#tabmenu li{
+    display:block;
+        float:left;
+             margin:0;
+             margin-left:1;
+             margin-right:1;
+                padding:0;
+                    }
+#tabmenu li a{
+                        display:block;
+                            float:left;
+                                // color:#8c3a3a;
+                                    text-decoration:none;
+                                        font-weight:bold;
+                                            padding:3px 20px 0 20px; // space above titles 
+                                                height: 20px;   // 26
+                                                     // background:transparent url('images/divider.gif') no-repeat top right;
+                                                        }
+#tabmenu li a:hover{
+                                                            // background:transparent url('images/hover.gif') no-repeat top right; 
+                                                                }
+
+/************** Icon Type Menu ***************/
+/* Separate Specs for Icons across the top of the page - alternative to dropdown menus (dropmenu) */
+
+#iconmenu {
+    margin: 0;
+    padding: 0;
+    height: 70px;
+    border-bottom-Color: #FFFFFF;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    box-shadow: 0px 0px 0px rgba(0,0,0,.4);
+}
+
+#iconmenu ul {
+   list-style-type:none;
+   width: auto;
+      margin:0;
+        padding:0;
+            list-style-type:none;
+                width:auto;
+                    position:relative;
+                        display:block;
+                            height:20px;   // li height + padding + border/2 ?
+                                font-size:12px;
+                                        font-weight:bold;
+}
+                                                                
+#iconmenu li{
+    display:block;
+    float:left;
+    margin:0;
+    padding:5;
+    font-size:10px;                                                                
+    color:#DDDDDD;  // color of lists that are NOT links
+    text-decoration:none;
+}
+
+#iconmenu li:hover { background-color: #DDDDDD; // rgb(35,35,35); }
+
+#iconmenu li a:hover{
+    /* color of hover links in dropdown */
+    color:#DDDDDD;
+    text-decoration:none;
+}
+
+
+#iconmenu > ul > li > a:hover {color: rgb(250,250,250); }
+
+/************  Main Navigation Menu **************/
+/* Hide submenus (ul beneath ul); display on hover */
+#dropnav {
+    margin: 0;
+    padding 0;
+    white-space: nowrap;
+    z-index:99;
+}
+#dropnav img {
+    height: 30px;
+}
+
+#dropnav ul ul {
+    display: none;
+}
+
+#dropnav ul li:hover > ul {
+    display: block;
+}
+
+/**** Main Menu Bar ****/
+#dropnav > ul { 
+    margin:5; 
+    width: 80%; 
+    z-index: 99;
+}
+
+/* apply to ALL ul sections: */
+#dropnav  ul {
+    background: #eee; 
+    background: linear-gradient(top, #ddd 0%, #aaa 100%);  
+    background: -moz-linear-gradient(top, #ddd 0%, #aaa 100%); 
+    background: -webkit-linear-gradient(top, #ddd 0%,#aaa 100%); 
+    border-radius: 10px;  
+    list-style: none;
+    position: relative;
+    display: inline-table;
+}
+#dropnav ul:after {
+    content: ""; clear: both; display: block;
+}
+
+/* apply to ALL li elements */
+#dropnav  ul  li {
+        float: left;
+        padding: 10;  /* separate main menu items */
+    background-image: url(images/css/btn1.gif);
+    border-radius: 10px;  
+}
+
+/* hover settings */
+#dropnav ul li:hover {
+    background: #aaa;
+    color: #fff;
+}
+
+/* All Dropdown elements */
+#dropnav ul ul {
+    border: 2px solid #333;
+    padding: 0;
+    position: absolute; 
+}
+
+#dropnav ul  ul  li {
+ float: none; 
+ position: relative;
+}
+
+/** Section Specific Settings **/
+
+
+#dropnav > ul > ul { }
+#dropnav > ul > ul > ul  {  }
+
+/**** Secondary Breakout elements ****/
+#dropnav ul ul ul {
+    left: 95%; 
+    top:-30;
+    white-space: nowrap;
+}

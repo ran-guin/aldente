@@ -1,0 +1,19 @@
+## This file contains initial values for global variables used within the code.
+
+## The following directories MAY be edited to vary the location of various data files on individual systems:
+
+## NOTE: do NOT change the variable name (first value preceeded by '$' - this is the name of the global variable used in the code)
+
+$Project_dir	/home/sequence/Projects		Base path for all Project directories, subdirectories
+$Fasta_dir	/home/sequence/FASTA		Directory used for default repository for fasta files
+$Dump_dir	/home/sequence/alDente/Dumps	Directory where periodic database backups are stored
+
+
+## The following directories should NOT be edited.  They should be located in the /alDente/www/dynamic directory:
+
+$submission_dir		dynamic/submissions		Repository for submissions to database (hashes or xml input)
+$session_dir		dynamic/sessions		Repository for user sessions (tracked monitoring of interface sessions)
+$cache_dir		dynamic/cache			Storage of cached statistical information used for fast access
+$logs_dir		dynamic/logs			Storage of logs monitoring various elements of the system
+$run_map_dir		dynamic/run_maps		Central directory containing links to mini-gifs representing analyzed runs.
+$temp_dir		dynamic/tmp			Directory used to store temporary files (dynamically generated images) - cleared out regularly

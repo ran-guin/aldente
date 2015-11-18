@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/103088/alDente/trunk/rest_api
+END
+MANIFEST
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/103088/alDente/trunk/rest_api/MANIFEST
+END
+Makefile.PL
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/103088/alDente/trunk/rest_api/Makefile.PL
+END
+MANIFEST.SKIP
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/103088/alDente/trunk/rest_api/MANIFEST.SKIP
+END

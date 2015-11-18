@@ -1,0 +1,10 @@
+K 14
+svn:executable
+V 1
+*
+K 13
+svn:mergeinfo
+V 132
+/LIMS/trunk/cgi-bin/Web_Service.pl:99992-100217,100971-103005
+/LIMS/trunk/lib/perl/Core/LampLite/cgi-bin/Web_Service.pl:99992-100217
+END

@@ -1,0 +1,50 @@
+DB_Form_ID	Form_Table	Form_Order	Min_Records	Max_Records	FKParent_DB_Form__ID	Parent_Field	Parent_Value	Finish	Class
+1	Employee	1	1	1	\N	\N	\N	0	\N
+2	GrpEmployee	1	1	5	1	\N	\N	1	\N
+3	Primer	1	1	1	\N	\N	\N	0	\N
+4	Primer_Customization	1	0	1	3	\N	\N	1	\N
+5	Branch	2	1	1	3	\N	\N	0	Primer
+6	Plate	1	1	1	\N	\N	\N	0	\N
+7	Tube	1	1	1	6	Plate_Type	Tube	0	\N
+8	Standard_Solution	1	1	1	\N	\N	\N	0	\N
+9	GrpStandard_Solution	1	1	-1	8	\N	\N	0	\N
+10	Study	1	1	1	\N	\N	\N	0	\N
+11	ProjectStudy	1	1	5	10	\N	\N	0	\N
+12	RunBatch	1	1	1	\N	\N	\N	0	\N
+13	Run	1	1	1	12	\N	\N	0	\N
+14	GelRun	1	1	1	13	\N	\N	0	\N
+15	Work_Request	1	1	1	\N	\N	\N	0	\N
+16	LibraryApplication	1	1	1	15	Work_Request_Type	DNA Preps	1	Antibiotic
+17	LibraryApplication	1	1	3	15	Work_Request_Type	1/16 End Reads|1/256 End Reads|1/24 End Reads	1	Primer
+18	LibraryApplication	1	0	1	15	Work_Request_Type	1/16 Custom Reads|1/256 Custom Reads	1	Primer
+19	LibraryApplication	1	1	2	15	Work_Request_Type	1/24 Custom Reads	1	Primer
+20	Original_Source	1	1	1	\N	\N	\N	1	\N
+21	Source	1	1	1	20	Sample_Available	Yes	0	\N
+22	RNA_DNA_Source	1	1	1	21	Source_Type	RNA_DNA_Source	1	\N
+23	ReArray_Plate	1	1	1	21	Source_Type	ReArray_Plate	1	\N
+24	Ligation	1	1	1	21	Source_Type	Ligation	1	\N
+25	Microtiter	1	1	1	21	Source_Type	Microtiter	1	\N
+26	Xformed_Cells	1	1	1	21	Source_Type	Xformed_Cells	1	\N
+27	Library_Segment	1	1	1	21	Source_Type	Library_Segment	1	\N
+28	Sorted_Cell	1	1	1	21	Source_Type	Sorted_Cell	1	\N
+29	Library	1	1	1	20	\N	\N	0	\N
+30	RNA_DNA_Collection	1	1	1	29	Library_Type	RNA/DNA	0	\N
+31	Sequencing_Library	1	1	1	29	Library_Type	Sequencing|Mapping	0	\N
+32	LibraryApplication	2	1	15	29	Library_Type	Mapping	0	Enzyme
+33	LibraryGoal	1	0	2	29	\N	\N	0	\N
+34	Vector	1	1	1	31	\N	\N	0	\N
+35	LibraryVector	1	1	1	34	\N	\N	0	\N
+36	LibraryApplication	1	1	1	35	\N	\N	0	Antibiotic
+37	SAGE_Library	1	1	1	31	Sequencing_Library_Type	SAGE	0	\N
+38	cDNA_Library	1	1	1	31	Sequencing_Library_Type	cDNA	0	\N
+39	Genomic_Library	1	1	1	31	Sequencing_Library_Type	Genomic	0	\N
+40	PCR_Library	1	1	1	31	Sequencing_Library_Type	PCR	0	\N
+41	Transposon_Library	1	1	1	31	Sequencing_Library_Type	Transposon	0	\N
+42	EST_Library	1	1	1	31	Sequencing_Library_Type	EST	0	\N
+43	LibraryApplication	2	1	4	29	Library_Type	Sequencing	0	Primer
+44	Library_Source	1	1	1	\N	\N	\N	1	\N
+45	Enzyme	1	1	1	\N	\N	\N	1	\N
+46	Branch	1	1	1	45	\N	\N	0	Enzyme
+47	Branch_Condition	2	1	4	46	\N	\N	1	Enzyme
+48	Branch_Condition	1	1	4	5	\N	\N	1	Primer
+49	LibraryApplication	1	0	4	15	Work_Request_Type	1/256 Submission QC|Bac End Reads|1/256 Transposon|1/256 Single Prep End Reads|1/16 Glycerol Rearray Custom Reads	1	Primer

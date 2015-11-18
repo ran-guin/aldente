@@ -1,0 +1,400 @@
+<span class="medium">
+<h2>LIMS Developer's Manual - Library Submission<br>
+</h2>
+<h3><span style="font-weight: bold;">Overview</span></h3>
+<ul>
+  <li>In Sequencing lab, only lab admins are able to create new
+libraries</li>
+  <li>Collaborators and internal GSC users other than lab admins create
+new libraries via a submission.&nbsp; There are 2 types of library
+submissions:<br>
+  </li>
+  <ul>
+    <li>External submission - these submissions are created via Kevins'
+GSC Sequencing Library Submission page.</li>
+    <li>Internal submission - these submissions are created via the
+multipage form mechanism of the LIMS web page.</li>
+  </ul>
+</ul>
+<h3>Database tables</h3>
+<ul>
+  <li>Submission</li>
+  <ul>
+    <li>
+      <pre>+--------------------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+      <pre>| Submission_ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| Submission_DateTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | datetime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Submission_Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | enum('External','Internal')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Submission_Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | enum('Submitted','Partially Approved','Approved','Completed','Cancelled','Rejected') | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FK_Contact__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKSubmitted_Employee__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Submission_Comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKApproved_Employee__ID&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Approved_DateTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | datetime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>One record generated for one library submission.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Submission_Detail</li>
+  <ul>
+    <li>
+      <pre>+--------------------------+-------------+------+-----+---------+----------------+</pre>
+      <pre>| Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default | Extra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+-------------+------+-----+---------+----------------+</pre>
+      <pre>| Submission_Detail_ID&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI | NULL&nbsp;&nbsp;&nbsp; | auto_increment |</pre>
+      <pre>| FK_Submission__ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | int(11)&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| FKSubmission_DBTable__ID | int(11)&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>| Reference&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | varchar(40) |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+      <pre>+--------------------------+-------------+------+-----+---------+----------------+</pre>
+    </li>
+    <li>One to many records generated for one library submission,
+depending on how many table entities are included in the
+submission.&nbsp; For instance, a sequencing library submission of a
+SAGE library in Ligation format with 2 primers will generate a total of
+7 records:</li>
+    <ul>
+      <li>1 record that references the Library table</li>
+      <li>1 record that references the Sequencing_Library table</li>
+      <li>1 record that references the SAGE_Library table</li>
+      <li>1 record that references the Library_Container table</li>
+      <li>1 record that references the Ligation table</li>
+      <li>2 records that reference the LibraryPrimer table</li>
+    </ul>
+    <li>Note that the references to the database tables are done
+through the FKSubmission_DBTable__ID field.&nbsp; In addition, the
+Reference field stores the primary field value of the referenced table
+entry created by the submission.&nbsp; (e.g. Library_Name for the
+Library table, Sequencing_Library_ID for the Sequencing_Library table,
+etc)<br>
+    </li>
+  </ul>
+</ul>
+<h3>Implementation Details</h3>
+<ul>
+  <li>Generation of external submission:</li>
+  <ul>
+    <li>Collaborators go to GSC public web site (<a
+ href="http://www.bcgsc.ca">www.bcgsc.ca</a>) and go to "Collaborator
+Access" under the "Additional Access" section.<br>
+    </li>
+    <li>After loggin in, go to "Sequencing Library submissions" under
+the "Additional Access" section.</li>
+    <li>Collaborators will the go through the multipage library
+submission form and input library information:<br>
+    </li>
+    <img src="$Help_Image_dir/GSC_Lib_Submission_Form.png"><br>
+    <br>
+    <li>After
+the forms are finished, the following will be created:</li>
+    <ul>
+      <li>A new entry in the Submission table:</li>
+      <ul>
+        <li>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+          <pre>| Submission_ID | Submission_DateTime | Submission_Source | Submission_Status | FK_Contact__ID | FKSubmitted_Employee__ID | Submission_Comments | FKApproved_Employee__ID | Approved_DateTime |</pre>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+          <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 | 2004-06-04 11:12:48 | <span
+ style="color: rgb(255, 0, 0);">External</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <span
+ style="color: rgb(255, 0, 0);">Submitted</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 347 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL | NULL                |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL | NULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+        </li>
+      </ul>
+      <li>A new submission file under
+'/home/sequence/www/htdocs/external_submissions/', with a name such as
+'2004-06-04_11:12:45.347.420',
+where '347' is the contact ID of the user who submitted the library and
+'420' is the submission ID.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Generation of internal submission:</li>
+  <ul>
+    <li>Sequencing libraries are also submitted by internal GSC
+users.&nbsp; Currently this is pretty much exclusively done by the Gene
+Expression lab admins when they want to submit a library to the
+Sequencing lab.&nbsp; This is done thru the 'Submit new Sequencing
+Library' link under the 'Sequencing Library Submissions' section in the
+Gene Expression Admin page.</li>
+    <li>User will go through the multipage form and input library info.</li>
+    <li>After the forms are finished, the following will be created:</li>
+    <ul>
+      <li>A new entry in the Submission table:</li>
+      <ul>
+        <li>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+          <pre>| Submission_ID | Submission_DateTime | Submission_Source | Submission_Status | FK_Contact__ID | FKSubmitted_Employee__ID | Submission_Comments | FKApproved_Employee__ID | Approved_DateTime |</pre>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+          <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 430 | 2004-06-30 10:14:23 | <span
+ style="color: rgb(255, 0, 0);">Internal</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <span
+ style="color: rgb(255, 0, 0);">Submitted</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 143 | NULL                |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL| NULL              |</pre>
+          <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+-------------------+</pre>
+        </li>
+      </ul>
+      <li>A new submission file under
+'/opt/alDente/www/dynamic/submissions/', with a name such as
+'2004-06-29_10:33:04.143.441', where '143' is the employee ID of the
+user who submitted the library and '441' is the submission ID.</li>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Approval of submission:</li>
+  <ul>
+    <li>For both external and internal submissions, email notification
+will be sent to the Sequencing lab admins when the submission is
+created.&nbsp; <br>
+    </li>
+    <li>Sequencing lab admins can view/edit/approve submissions from
+the Sequencing Admin page -&gt; 'Check Submissions' under the 'Admin
+Operations' section.&nbsp; A list of submissions will then be shown:</li>
+    <img src="$Help_Image_dir/Check_Submissions.png"><br>
+    <br>
+    <li>Clicking on
+a submission (e.g. submission ID 420) will retrieve the info included
+in that submission:</li>
+    <img src="$Help_Image_dir/Retrieve_Submission.png"><br>
+    <br>
+    <ul>
+      <li>Notice that the message on the top indicates where the
+information is read from.&nbsp; In this case, it is from the file '2004-06-04_11:12:45.347.420.mapped'.&nbsp;
+This file is generated by the _map_submission() subroutine in
+DBinput.pm - basically, this hash is the mapped version of the
+submission hash generated by Kevin's page (see below).</li>
+      <li>The table displays all the values that were submitted with
+their corresponding database fields.</li>
+      <li>In the bottom there are various links/options for the lab
+admin:</li>
+      <ul>
+        <li>Edit Submission - Allows user to cycle through the
+multipage form and view/edit info of the library submission.&nbsp;
+After the multipage form is cycled through, a new file will be
+generated under the submission directory (e.g.
+2004-06-04_11:12:45.347.420.modified).&nbsp; This file has the same
+format as the corresponding *.mapped file, except the *.modified file
+contains the modifications of information by the lab admin. (i.e. the
+*.mapped file always contains information from the original submission
+by the user)<br>
+        </li>
+        <li>Edit Submission as a re-submission - Allows the submission
+to be edit as a re-submission (see below)<br>
+        </li>
+        <li>Cancel submission - Sets the submission status to
+'Cancelled'.&nbsp; This is used when the submission was created by
+mistake or the lab admin simply want to cancel the submission.<br>
+        </li>
+        <li>Reject submission - Sets the submission status&nbsp; to
+'Rejected'.&nbsp; This is used when the submission is to be rejected.<br>
+        </li>
+        <li>View/Edit Submission Info - This allows view/edit operation
+on the Submission table itself.</li>
+      </ul>
+      <li>Notice that at this point there is no option for the lab
+admin to approve the submission.&nbsp; This is because of one or more
+of the followings:</li>
+      <ul>
+        <li>If the submission is for a new library and a library name
+is not yet specified by the lab admin.</li>
+        <li>If the submission does not have a library container barcode
+label specified yet.</li>
+      </ul>
+      <li>Once all required information is there, then 'Approve
+submission and update database' link will appear, allowing lab admin to
+set the submission status to 'Approved' and enter all the information
+into the corresponding tables (i.e. Library, Sequencing_Library,
+etc.).&nbsp; The Submission and Submission_Detail table will have the
+following entries:</li>
+      <ul>
+        <li>Submission table:</li>
+        <ul>
+          <li>
+            <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+---------------------+</pre>
+            <pre>| Submission_ID | Submission_DateTime | Submission_Source | Submission_Status | FK_Contact__ID | FKSubmitted_Employee__ID | Submission_Comments | FKApproved_Employee__ID | Approved_DateTime&nbsp;&nbsp; |</pre>
+            <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+---------------------+</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 | 2004-06-04 11:12:48 | External&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <span
+ style="color: rgb(255, 0, 0);">Approved</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 347 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL | NULL                |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 152 | 2004-07-05 13:47:53 |</pre>
+            <pre>+---------------+---------------------+-------------------+-------------------+----------------+--------------------------+---------------------+-------------------------+---------------------+</pre>
+          </li>
+          <li>Note that Submission_Status is set to 'Approved', with
+FKApproved_Employee__ID and Approved_DateTime populated as well.<br>
+          </li>
+        </ul>
+        <li>Submission_Detail table:</li>
+        <ul>
+          <li>
+            <pre>+----------------------+-------------------+--------------------------+-----------+</pre>
+            <pre>| Submission_Detail_ID | FK_Submission__ID | FKSubmission_DBTable__ID | Reference |</pre>
+            <pre>+----------------------+-------------------+--------------------------+-----------+</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1112 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40 | GQ123&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1113 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 143 | 1035&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1114 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 91 | 783&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1115 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 155 | 20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1116 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 56 | 118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1117 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 86 | 82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1118 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 420 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 41 | 576&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</pre>
+            <pre>+----------------------+-------------------+--------------------------+-----------+</pre>
+          </li>
+          <li>In this case, the references are:</li>
+          <ul>
+            <li>DBTable_ID of 40&nbsp;&nbsp; = Library
+(Submission_Detail.Reference = Library.Library_Name = 'GQ123')</li>
+            <li>DBTable_ID of 143 = Sequencing_Library (Submission_Detail.Reference
+= Sequencing_Library.Sequencing_Library_ID = 1035)</li>
+            <li>DBTable_ID of 91&nbsp;&nbsp; = cDNA_Library (Submission_Detail.Reference
+= cDNA_Library.cDNA_Library_ID = 783)</li>
+            <li>DBTable_ID of 155 = Library_Container (Submission_Detail.Reference
+= Library_Container.Library_Container_ID = 20)</li>
+            <li>DBTable_ID of 56&nbsp;&nbsp; = Organization (Submission_Detail.Reference
+= Organization.Organization_ID = 118)</li>
+            <li>DBTable_ID of 86&nbsp;&nbsp; = Microtiter (Submission_Detail.Reference
+= Microtiter.Microtiter_ID = 82)</li>
+            <li>DBTable_ID of 41&nbsp;&nbsp; = LibraryPrimer (Submission_Detail.Reference
+= LibraryPrimer.LibraryPrimer_ID = 576)</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Library re-submission</li>
+  <ul>
+    <li>Sometimes a given library ran out of materials and the user
+have to re-submit additional materials for an existing library.&nbsp;
+Usually this is submitted in the same library format as before (i.e.
+Ligation, Microtiter, Xformed_Cells), but in theory it can come in a
+different format.&nbsp; Re-submissions only specify information related
+to the library format (i.e. Ligation, Microtiter, Xformed_Cells),
+library container (i.e. Library_Container table) and the primers (i.e.
+LibraryPrimer table).&nbsp; Re-submission can be both of External type
+or Internal type:</li>
+    <ul>
+      <li>External - This is done via Kevin's GSC Library Submission
+Page, with the 'Use existing library' radio button selected instead of
+the 'Create new library' button in the 'Choose Library' form.</li>
+      <li>Internal - This is done in the Gene Expression Admin page,
+via '<span class="small">Resubmit existing Sequencing Library XXXXX in
+the format of: XXX' under the 'Sequencing Library Submissions' section.</span></li>
+    </ul>
+    <li><span class="small">It is also possible to create re-submission
+on a complete submission using the 'Edit Submission as a re-submission
+link' when the submission is retrieved.&nbsp; In this case, information
+contained in tables other than the re-submission tables will not be
+entered into the database.</span></li>
+  </ul>
+</ul>
+<h3>Coding</h3>
+<ul>
+  <li>Generation of external submission:</li>
+  <ul>
+    <li>The pages for this is written by Kevin in Python and is outside
+the LIMS code base.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Generation of internal submission:</li>
+  <ul>
+    <li>'Sequencing Library Submissions' section in the Gene Expression
+Admin page:</li>
+    <ul>
+      <li>alDente::Admin::Admin_page()</li>
+    </ul>
+    <li>Multipage form for library submission information:</li>
+    <ul>
+      <li>Methods in SDB::DB_Form (refer to the <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=DevMan_MultipageForm">Multipage
+Form Developer's Manual</a>)</li>
+    </ul>
+    <li>Creation of submission:</li>
+    <ul>
+      <li>SDB::Submission::Generate_Submission()</li>
+      <ul>
+        <li>Generates the submission file in
+/opt/alDente/www/dynamic/submissions/.</li>
+        <li>Creates the new entry in the Submission table and sets its
+status to 'Submitted'.</li>
+        <li>Send email notifications to:</li>
+        <ul>
+          <li>Sequencing lab admins - This contains brief information
+such as submission ID, who submitted the library and submission
+datetime.<br>
+          </li>
+          <li>The person who submit the library - This contains details
+and information specified in the submission.</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <li>Approval of submission:</li>
+  <ul>
+    <li>Sequencing Admin page -&gt; 'Check Submissions' under the
+'Admin
+Operations' section:</li>
+    <ul>
+      <li>alDente::Admin::Admin_page()</li>
+    </ul>
+    <li>Showing a list of submissions:</li>
+    <ul>
+      <li>SDB::Submission::Check_Submissions()</li>
+    </ul>
+    <li>Retrieving details of a given submission:</li>
+    <ul>
+      <li>SDB::Submission::Retrieve_Submission()</li>
+    </ul>
+    <li>Generating multipage forms with submission information</li>
+    <ul>
+      <li>SDB::DBinput::Load_Submission(), with $action = 'edit'<br>
+      </li>
+      <li>alDente::Special_Branches::Post_DBForm_Skip()</li>
+    </ul>
+    <li>Mapping external submission generated by Kevin to table
+entities in the sequence database (<span style="font-weight: bold;">NOTE:&nbsp;
+Whenever Kevin modifies the fields to be included in an external
+submission from his site, or if we change the database table schema for
+the submission tables on our side, this is the place where we need to
+pay attention to so we make the necessary changes</span>)<br>
+    </li>
+    <ul>
+      <li>SDB::DBinput::_map_submission()</li>
+      <ul>
+        <li>This function maps the data structure generated from Kevin
+to our structure.&nbsp; For example:</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; $submission{Library_Name}{1} = 'PX005'                             (General format = $submission{&lt;FIELD&gt;}{&lt;RECORD_INDEX&gt;})<br>		       $submission{Blue_white_selection}{1} = 1<br></pre>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; becomes:<br>
+&nbsp;&nbsp; <span style="font-family: monospace;"><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+$submission{tables}{Library}{1}{Library_Name} = 'PX005'</span><span
+ style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(General format =
+$submission{table}{&lt;TABLE&gt;}{&lt;RECORD_INDEX&gt;}{&lt;FIELD&gt;})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$submission{tables}{cDNA_Library}{1}{Blue_White_Selection} = 'Yes'<br>
+</span>
+<ul>
+  <ul>
+    <li>Saving modification by lab admins to the submission *.modified
+file:</li>
+    <ul>
+      <li>SDB::Submission::Modify_Submission()</li>
+    </ul>
+    <li>Approving submission and saving information to the database:</li>
+    <ul>
+      <li>SDB::DBinput::Load_Submission(), with $action = 'add'<br>
+      </li>
+    </ul>
+  </ul>
+</ul>
+</span>

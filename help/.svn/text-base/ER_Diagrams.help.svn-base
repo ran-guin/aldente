@@ -1,0 +1,30 @@
+ diagrams for sequence database</h1> 
+<p> 
+ 
+<ul> 
+<li><a href='#Administration'>Administration</a> 
+<li><a href='#Inventory'>Inventory</a> 
+<li><a href='#Protocol'>Protocol</a> 
+<li><a href='#SeqDev'>SeqDev</a> 
+<li><a href='#Sequencing'>Sequencing</a> 
+<li><a href='#System'>System</a> 
+</ul> 
+ 
+<h2><a name='Administration'>Administration</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["Administration"].height = document.images["Administration"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["Administration"].height = document.images["Administration"].height / 1.25;'></h2> 
+<Img src='$Help_Image_dir/ER_Administration.png' id='Administration'> 
+<p> 
+<h2><a name='Inventory'>Inventory</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["Inventory"].height = document.images["Inventory"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["Inventory"].height = document.images["Inventory"].height / 1.25;'></h2></a> 
+<Img src='$Help_Image_dir/ER_Inventory.png' id='Inventory'> 
+<p> 
+<h2><a name='Protocol'>Protocol</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["Protocol"].height = document.images["Protocol"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["Protocol"].height = document.images["Protocol"].height / 1.25;'></h2></a> 
+<Img src='$Help_Image_dir/ER_Protocol.png' id='Protocol'> 
+<p> 
+<h2><a name='SeqDev'>SeqDev</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["SeqDev"].height = document.images["SeqDev"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["SeqDev"].height = document.images["SeqDev"].height / 1.25;'></h2></a> 
+<Img src='$Help_Image_dir/ER_SeqDev.png' id='SeqDev'> 
+<p> 
+<h2><a name='Sequencing'>Sequencing</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["Sequencing"].height = document.images["Sequencing"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["Sequencing"].height = document.images["Sequencing"].height / 1.25;'></h2></a> 
+<Img src='$Help_Image_dir/ER_Sequencing.png' id='Sequencing'> 
+<p> 
+<h2><a name='System'>System</a>&nbsp;&nbsp;&nbsp;<input type='button' name='Enlarge' value='Enlarge' style='background-color:yellow' onClick='document.images["System"].height = document.images["System"].height * 1.25;'>&nbsp;&nbsp;&nbsp;<input type='button' name='Reduce' value='Reduce' style='background-color:yellow' onClick='document.images["System"].height = document.images["System"].height / 1.25;'></h2></a> 
+<Img src='$Help_Image_dir/ER_System.png' id='System'> 
+<p> 

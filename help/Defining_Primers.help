@@ -1,0 +1,17 @@
+<H1>Defining New Primer Type</H1>
+<ul>
+<li>Go to the Sequencing Admin page.
+<li>In the "Vectors, Primers, Primer Customizations, Chemistry Codes" section, select "Primer" from the "Create New" drop-down menu. You will then be directed to the 'New Primer' form:
+<Img Src = '$Help_Image_dir/New_Primer_Type_Form.png'>
+<li>After pressing 'Continue', you will be presented with the 'New Primer Customization' form. A primer customization is a property of the primer that is defined by the lab rather than by the manufacturer. If you wish to define value(s), fill in this form and press 'Continue'; otherwise press 'Skip' to skip this form:
+<Img Src = '$Help_Image_dir/New_Primer_Customization_Form.png'>
+<li>Next you will need to specify details for the Big Dye chemistry code and ET chemistry code respectively:
+<Img Src = '$Help_Image_dir/New_Chemistry_Code_B_Form.png'><p>
+<Img Src = '$Help_Image_dir/New_Chemistry_Code_ET_Form.png'>
+<li>Press 'Finish' in the last form will complete the process.
+</ul>
+
+
+
+
+

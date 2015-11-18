@@ -1,0 +1,333 @@
+<h1>System architecture</h1>
+<p>
+
+<Img src='$Help_Image_dir/system_architecture.png'>
+<p>
+
+<h1>Filesystem</h1>
+<h2>Filesystem on the web server (web03):<h2>
+<table class=small cellpadding=5>
+<tr bgcolor=lightblue><th>Folder</th><th>Description</th></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/Production/</td><td>Link to production version.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/Last_Version/</td><td>Link to last version.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/Beta/</td><td>Link to beta version.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/</td><td>Root folders of all versions.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/</td><td>Root folder of alDente. (Note that the name could be anything else)</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/cgi-bin/</td><td>>CGI/Perl scripts of the alDente system. Also contains utility programs that are run from a web interface.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/lib/perl/</td><td>Root folder of the Perl modules used by alDente.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/lib/perl/Imported/</td><td>Modules written by someone else outside of alDente.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/lib/perl/RGTools/</td><td>Modules that contain utility functions which can be used by any Perl programs.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/lib/perl/SDB/</td><td>Modules that can be used by Perl programs written for any Sequence databases.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/Webversions/alDente_&lt;MMM-DD-YYYY&gt;/SeqDB/lib/perl/alDente/</td><td>Modules that can only be used by the alDente system.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/alDente/Cache/<td>Cache data for various statistics.</td></tr>
+<tr bgcolor=lightyellow><td>/opt/sequence/alDente/Sessions/<td>Session files for user logins.</td></tr>
+</table>
+
+<p>
+<h2>Filesystem on the data directory:<h2>
+<table class=small cellpadding=5>
+<tr bgcolor=lightblue><th>Folder</th><th>Description</th></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/</td><td>Root folder of all sequence related data.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Data/</td><td>Data from sequencing run. Each run has its own subfolder.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/FASTA/</td><td>FASTA files generated from runs.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/File_Transfers</td><td>Request files for moving samplesheets to sequencers</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/File_Transfers/Data</td><td>Data from sequencing run. Each run has its own subfolder.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects</td><td>Contains projects divided into subfolers.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/</td><td>Root folder of a project. Contains libraries divided into subfolders.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/</td><td>Root folder of a library. Contains the AnalyzedData and SampleSheets subfolders.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/AnalyzedData</td><td>Contains folders of sequencing runs, where each of these subfolders are further divided into folders containing analyzed data (e.g. Phred, chromatogram)</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/SampleSheets</td><td>Sample sheets for the sequencing runs.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/Projects/Test_files/</td><td>Sample sheets under testings.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/VECTOR/</td><td>Sequence of vectors in FASTA format.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/VECTOR/contaminants/</td><td>Sequence of contaminants in various formats.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/alDente</td><td>The root alDente data directory.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/alDente/Dumps/</td><td>Contains recent dumps of the sequence database's schema and data in SQL files. Each subfolder is the dump of the particular day at 18:50 which contains the Clone_Sequence table as well. The exception to this is the dump for the current day, in which it contains dumps in subfolders created once every 10 minutes from 06:00 to 18:50. With the exception of the 18:50 folder, the dumps do NOT contain the Clone_Sequence table.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/alDente/bin/</td><td>Admin/utility programs that are run from the command-line.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/alDente/config_files/</td><td>Configuration files for alDente.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/archive/</td><td>Root folder for analyzed sequence data for all sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/archive/&lt;SEQUENCER_TYPE&gt;/</td><td>Contains subfolders for each sequencer of this type.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/archive/&lt;SEQUENCER_TYPE&gt;/&lt;EQUIPMENT_NUMBER&gt;/data1/Data/</td><td>Contains subfolders for each sequencing runs. Note that symbolic links with useful information are created for the more recent runs.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/mirror/</td><td>Root folder for to-be-analyzed sequence data for all sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/mirror/&lt;SEQUENCER_TYPE&gt;/</td><td>Contains subfolders for each sequencer of this type.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/mirror/&lt;SEQUENCER_TYPE&gt;/&lt;EQUIPMENT_NUMBER&gt;/data1/Data/</td><td>Contains subfolders for each sequencing runs.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/mirror/&lt;SEQUENCER_TYPE&gt;/&lt;EQUIPMENT_NUMBER&gt;/data1/SampleSheets/</td><td>Sample sheets for the sequencing runs.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/</td><td>Root folder for various types of documents used by the alDente web site.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/images/colours/</td><td>Colors (stored as images) used by the alDente web pages.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/images/help_images/</td><td>Images used by the help manual/pages.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/images/png/</td><td>Images used by the alDente web pages.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/Temp/</td><td>Temporary files created by the web site.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/images/wells/</td><td>Well images.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/css/</td><td>Contains symbolic links to the cascading style sheets on the web server.</td></tr>
+<tr bgcolor=lightyellow><td>/home/sequence/www/htdocs/SDB/js/</td><td>JavaScripts.</td></tr>
+</table>
+
+<p>
+<h1>Major files and file types:</h1>
+<table class=small cellpadding=5>
+<tr bgcolor=lightblue><th>File/File Types</th><th>Location</th><th>Description</th></tr>
+<tr bgcolor=lightyellow><td>*.psd</td><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/SampleSheets/</td><td>Sample sheets generated from the Megabace sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>*.plt</td><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/SampleSheets/</td><td>Sample sheets generated from the 3700 sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>*.txt</td><td>/home/sequence/Projects/&lt;PROJECT_NAME&gt;/&lt;LIBRARY_NAME&gt;/SampleSheets/</td><td>Sample sheets generated from the 3730 sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>*.seq</td><td>/home/sequence/VECTOR/</td><td>Files containg the sequence of vectors in FASTA format.</td></tr>
+<tr bgcolor=lightyellow><td>vector</td><td>/home/sequence/VECTOR/</td><td>The concatenated version of all the individual vector (*.seq) files. This file is screened against sequence runs using 'cross_match'.</td></tr>
+<tr bgcolor=lightyellow><td>*.sql</td><td>Subfolders under /home/sequence/alDente/Dumps/</td><td>Each SQL file is a dump of the schema and data of a database table.</td></tr>
+<tr bgcolor=lightyellow><td>Notification.pl</td><td>/home/sequence/alDente/bin/</td><td>Checks data from the database and sends out warning/error notifications.</td></tr>
+<tr bgcolor=lightyellow><td>backup_DB.pl</td><td>/home/sequence/alDente/bin/</td><td>Backup data from the database and dump into SQL files.</td></tr>
+<tr bgcolor=lightyellow><td>cat_vectors.pl</td><td>/home/sequence/alDente/bin/</td><td>Concatenate individual *.seq files into the vector file.</td></tr>
+<tr bgcolor=lightyellow><td>cleanup.pl</td><td>/home/sequence/alDente/bin/</td><td>Clean up temp files and dump directories.</td></tr>
+<tr bgcolor=lightyellow><td>cleanup_web.pl</td>/home/sequence/alDente/bin/<td></td><td>Clean up files on the web server.</td></tr>
+<tr bgcolor=lightyellow><td>fasta.pl</td><td>/home/sequence/alDente/bin/</td><td>Generate FASTA files from libraries or sequence runs.</td></tr>
+<tr bgcolor=lightyellow><td>restore_DB.pl</td><td>/home/sequence/alDente/bin/</td><td>Restore database tables from another source.</td></tr>
+<tr bgcolor=lightyellow><td>update_Stats.pl</td><td>/home/sequence/alDente/bin/</td><td>Update various statistics such as project stats, library stats, sequence stats, etc.</td></tr>
+<tr bgcolor=lightyellow><td>update_sequence.pl</td><td>/home/sequence/alDente/bin/</td><td>Analyzed the sequence runs and update the Clone_Sequence table.</td></tr>
+<tr bgcolor=lightyellow><td>*.log</td><td>/home/sequence/alDente/logs/</td><td>Log files. Most are generated when cron jobs are run.</td></tr>
+<tr bgcolor=lightyellow><td>*.ab1</td><td>/home/sequence/archive/&lt;SEQUENCER_TYPE&gt;/&lt;EQUIPMENT_NUMBER&gt;/data1/Data/</td><td>Trace data from the 3700/3730 sequencers.</td></tr>
+<tr bgcolor=lightyellow><td>*.abd</td><td>/home/sequence/archive/&lt;SEQUENCER_TYPE&gt;/&lt;EQUIPMENT_NUMBER&gt;/data1/Data/</td><td>Trace data from the MegaBace sequencers.</td></tr>
+</table>
+
+<p>
+<h1>Cron jobs</h1>
+Cron jobs configurations are stored under the 'cron' folder of the alDente source code.  Currently there are four configuration files, which correspond to four crontabs:
+<ul>
+  <li>limsserver.aldente.cron - Crontab of aldente user under the production web/database server (i.e. seqdb01)</li>
+  <li>limsserver.sequence.cron - Crontab of sequence user under the production web/database server (i.e. seqdb01)</li>
+  <li>mirrorserver.aldente.cron - Crontab of aldente user under the mirror server (i.e. plebe2)</li>
+  <li>mirrorserver.sequence.cron - Crontab of sequence user under the mirror server (i.e. plebe2)</li>
+</ul>
+
+<h2><u><b>alDente System Architecture </b></u></h2>
+<br>
+<span class=normal>
+<hr width="100%" size="2">Proposed filesystem hierachy of the alDente installation
+folder: 
+<ul>
+  <li><b>alDente</b></li>
+     
+  <ul>
+    <li><b>bin</b>: Programs that are run from the command-line.</li>
+         
+    <ul>
+      <li><u>backup_DB.pl</u>: Backups the database into SQL files.</li>
+      <li><u>cat_vectors.pl</u>: Concatenates the *.seq files into a single
+vector file. </li>
+      <li><u>check_hierachy.pl</u>: Checks the hierachy of the modules for
+circular references. </li>
+      <li><u>check_run_links.pl</u>: Checks the presence of trace files for
+each sequence run requested. </li>
+      <li><u>cleanup.pl</u>: Cleans up temp and dump files. </li>
+      <li><u>cleanup_web.pl</u>: Cleans up files on web server. </li>
+      <li><u>complement.pl</u>: Generates a complement or reverse sequence
+for a given sequence. </li>
+      <li><u>decompress.pl</u>: Decompresses the zipped trace data files in
+the chromat_dir folder. </li>
+      <li><u>fasta.pl</u>: Generates FASTA files from library or sequence
+runs. </li>
+      <li><font color="#cc0000"><u>generate_samplesheet.pl</u>: Generates
+sample sheets for sequence runs. Obsolete?</font></li>
+      <li><font color="#cc0000"><u>genss.pl</u>: Generates sample sheets for
+sequence runs. Obsolete?</font></li>
+    
+    </ul>
+                                             
+    <ul>
+      <li><u>Notification.pl</u>: Checks data and send out warning/error notifications.</li>
+      <li><u>parse_table.pl</u>: Parses a file into a database table.</li>
+      <li><u>quick_view.pl</u>: Displays trace/sequence data from a sequence
+run.</li>
+      <li><u>restore_DB.pl</u>: Restores a database schema and data from another
+source.</li>
+      <li><u>searchDB.pl</u>: Querys the database for various information.</li>
+      <li><u>setDB.pl</u>: Populates the DBFields table.</li>
+      <li><font color="#cc0000"><u>test.pl</u>: For testing?</font></li>
+      <li><font color="#cc0000"><font color="#000000"><u>update_library_list.pl</u>:</font>
+        <font color="#000000">Updates the library_list file with the current
+libraries.</font></font></li>
+      <li><font color="#cc0000"><u>update_runs.pl</u>: Looks like it is similar
+to the backup_DB.pl. Perhaps this is obsolete file?</font></li>
+      <li><u>update_sequence.pl</u>: Analyses sequence runs, generate run
+stats (RunStats table) and updates the Clone_Sequence table.</li>
+      <li><u>update_Stats.pl</u>: Generates the cache for project stats, library
+stats, sequencer stats, etc.</li>
+    
+    </ul>
+    <li><b>config_files</b>: Various configuration files for the alDente system.
+ Replaces the current <b>alDente/data/</b> folder.</li>
+    
+    <ul>
+      <li><font color="#cc0000">The odd file here is library_list. This one
+looks more like a cache file.</font></li>
+      <li><font color="#cc0000">Perhaps configurations in CustomSettings.pm
+should be moved to a file here instead?</font><br>
+      </li>
+    
+    </ul>
+    <li><b>cron</b>: Templates for cron jobs.</li>
+    
+    <ul>
+      <li><u>dataserver.cron</u>: Cron jobs to be run on the data server (plebe).</li>
+      <li><u>webserver.cron</u>: Cron jobs to be run on the web server (web03).</li>
+      <li>Note that there are other .cron files here that not sure if we should
+remove.<br>
+      </li>
+    
+    </ul>
+    <li><b>data</b>: Stores data that is generated when the alDente system
+is in use. All subfolders here should be empty folders when alDente is first
+installed.</li>
+    <ul>
+      <li><b>cache</b>: An empty folder when first installed. Will be used
+to store cache files for various statistics data.</li>
+      <li><b>dumps</b>: An empty folder when first installed. Will be used
+to store dump SQL files for database tables.</li>
+      <li><b>logs</b>: An empty folder when first installed. Will be used
+to store various logs generated by the alDente system.</li>
+      <li><b>sessions</b>: An empty folder when first installed. Will be used
+to store session files for user logins.</li>
+    </ul>
+    
+    <ul>
+      <ul>
+      
+      </ul>
+    
+    </ul>
+        <li><b>root</b>: Programs that are run by the system administrator
+and are custom modified/written for a particular lab environment.</li>
+    <li><b>www</b>: The root folder of the web interface portion of the alDente
+system.</li>
+    
+    <ul>
+            <li><b>cgi-bin</b>: All the CGI scripts to be run on the web
+server.  Replaces the current <b>alDente/cgi-bin/</b> folder.</li>
+      <li><b>css</b>: Cascading style sheets.<br>
+      </li>
+      <li><b>help</b>: Help manuals and other files needed to generate these
+manuals.</li>
+      <li><b>js</b>: JavaScripts.</li>
+            <li><b>images</b>: The root folder of all the image files used
+by the alDente system.</li>
+      
+      <ul>
+        <li><b>colours</b>: Various colors in GIF format.  Replaces the current
+          <b>alDente/www/Colours/</b> folder.</li>
+        <li><b>help_images</b>: Images used by the help manuals.  Replaces
+the current <b>alDente/www/images/help_images/</b> folder.</li>
+        <li><b>wells</b>: Well images in GIF format.  Replaces the current
+          <b>alDente/www/Wells/</b> folder.</li>
+        <li><b>site_images</b>: All other images used by the web site.  Replaces
+the current <b>alDente/www/Images/</b> folder.</li>
+      
+      </ul>
+      <li><b>lib</b>: The root folder of all the alDente modules.</li>
+      <ul>
+        <li><b>perl</b>: The root folder of all Perl modules.</li>
+        <ul>
+          <li><b>alDente</b>: Modules that are only for the alDente system.</li>
+          <li><b>Imported</b>: 3rd party modules that are used by the alDente
+system.</li>
+          <li><b>RGTools</b>: Modules that can be used by any other Perl
+programs.</li>
+          <li><b>SDB</b>: Modules that can be used by any sequencing lab
+environment.</li>
+          <li><font color="#cc0000">Not sure what the current <b>alDente/lib/perl/auto/</b>
+folder is for.  Can we get rid of this?</font></li>
+        </ul>
+      </ul>
+      <li><b>run_maps</b>: An empty folder when first installed.  Will be
+used to store GIF files for run maps of plates.</li>
+            <li><font color="#cc0000">Not sure what the current <b>alDente/www/html/</b>
+folder is for.  Can we get rid of this?</font></li>
+    
+    </ul>
+     
+  </ul>
+</ul>
+<hr width="100%" size="2">Proposed filesystem hierachy on the web server:<br>
+<ul>
+  <li>Under the existing web folder on the web server, either:</li>
+  
+  <ul>
+    <li>Install the alDente package into a new subfolder here, or</li>
+    <li>Create a symbolic link that points to the installed location of the
+alDente package.</li>
+  
+  </ul>
+</ul>
+<hr width="100%" size="2">Proposed filesystem hierachy for GSC:<br>
+<ul>
+  <li><b>/home/sequence</b>: Root folder of all files for the sequencing environment.</li>
+  
+  <ul>
+    <li><b>WebVersions</b>: Root folder of all the alDente versions.</li>
+    
+    <ul>
+      <li><b>alDente_MMM-DD-YYYY</b>: Root folder of each alDente version.</li>
+      <li><b>Production</b>: Symbolic link to the production version.</li>
+      <li><b>Last_Version</b>: Symbolic link to the previous version.</li>
+      <li><b>Beta</b>: Symbolic link to the beta version.</li>
+    
+    </ul>
+    <li><b>alDente</b>: Symbolic link to <b>/home/sequence/WebVersions/Production</b>.<br>
+    </li>
+  
+  </ul>
+  <li><b>/opt/sequence</b>: Root folder of alDente system on the web server.</li>
+  
+  <ul>
+    <li><b>WebVersions</b>: Symbolic link to <b>/home/sequence/WebVersions</b>.
+(Not sure if this is possible or would it have performance penalties.  If
+not, then we can still have all the alDente versions installed here as well
+- just have a cron job to synchronize the files between <b>/home/sequence/WebVersions</b>
+and <b>/opt/sequence/WebVersions</b>.)</li>
+    <li><b>alDente</b>: Symbolic link to <b>/opt/sequence/WebVersions/Production</b>.</li>
+  
+  </ul>
+</ul>
+<hr width="100%" size="2">Cleanups needed to be done on the existing filesystem
+for GSC:<br>
+<ul>
+  <li>There seems to be quite a few places for or links to the <b>cgi-bin</b>
+or <b>WebVersions</b>. Need to clean these up.</li>
+  <li>Probably worthwhile to rewrite a release_production script to automate
+the release process.<br>
+  </li>
+</ul>
+<ul>
+  <li><b>/home/sequence</b>:</li>
+  
+  <ul>
+    <li>Still need the <b>AnalyzedData</b> folder? Are these data now moved
+into the individual project subfolders under the <b>Project</b> folder?</li>
+    <li>Still need the <b>DANTE</b> folder? Looks like it is the older version
+of alDente.</li>
+    <li>Still need the <b>Data</b> folder? Are these data now moved to the
+      <b>archive</b> folder?</li>
+    <li>Should remove the <b>config_files</b> folder.</li>
+    <li>Under the <b>www/htdocs/SDB</b> folder, the <b>RunMaps</b> symbolic
+link is now pointing to folder underneath <b>/home/rguin</b>.</li>
+    <li>Not sure what the role of the <b>WebVersions</b> folder is.  If you
+look inside it, the links are outdated.<br>
+    </li>
+  
+  </ul>
+  <li><b>/opt/sequence</b>:</li>
+  
+  <ul>
+    <li><b>alDente</b>:</li>
+    
+    <ul>
+      <li>The <b>WebVersions</b>, <b>config_files</b> folder seems to be of
+no use and can be removed.</li>
+      <li>The <b>man</b> folder looks obsolete and should be removed for now.<br>
+      </li>
+    
+    </ul>
+    <li>Still need the <b>vectors</b> folder? Should the system be looking
+at <b>/home/sequence/VECTOR</b>?</li>
+    <li>Not sure what the <b>www</b> folder is for.  I thought the one we
+need is <b>/opt/sequence/alDente/www</b>.<br>
+    </li>
+  
+  </ul>
+</ul>
+</span>

@@ -1,0 +1,9 @@
+Setting_ID	Setting_Name	Setting_Default	Setting_Description
+1	LARGE_LABEL_PRINTER	auto1@urania	Printer to send large labels to
+2	CHEMISTRY_PRINTER	auto1@zebraps2-01.bcgsc.ca	Printer to send chemistry labels to
+3	SMALL_LABEL_PRINTER	auto1@saturnia	Printer to send small labels to
+4	2D_BARCODE_PRINTER	auto1@jetdirect01	Printer to send 2d barcode labels to
+5	PRINTER_GROUP	Default Printer Group	Defaults set of printers to use for this group
+6	BLOCK_SIZE	384	Number of wells in standard plate size (eg 96 or 384)
+7	LASER_PRINTER	polyhymnia	Printer to send paper labels to
+8	DEFAULT_LOCATION	153	Location used when the actual location is not known

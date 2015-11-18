@@ -1,0 +1,31 @@
+<H1>Lab Protocol Tracking</H1>
+
+Process tracking in the lab consists primarily of three types of ongoing procedures that are monitored.  For each of these, details such as who was implementing the task, and at what time are recorded:
+
+<UL>
+<LI>Plate Tracking:
+<UL>
+<LI>creation of Plates
+<LI>transfer of sample between plates
+<LI>application of protocol procedures to plates <BR>
+ (may involve applying reagents/solutions or use of equipment)
+<LI>failure of plates during protocol procedures if applicable
+<LI>throwing out of plates
+</UL>
+
+<LI>Reagent Tracking:
+<UL>
+<LI>Receipt of Reagents
+<LI>Mixing of Reagents into solutions
+<LI>Use of Reagents/Solutions
+<LI>Ongoing monitoring of quantities used from each bottle
+</UL>
+
+<LI>Equipment Monitoring:
+<UL>
+<LI>Application of Service and Maintenance Procedures
+</UL>
+
+</UL>
+
+

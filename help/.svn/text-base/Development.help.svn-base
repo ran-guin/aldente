@@ -1,0 +1,320 @@
+<span class="large">
+<h2>Development Cycle for the LIMS System</h2>
+The LIMS system has a monthly development cycle and it consists of the
+following 4 phrases (assuming 30 days per month):<br>
+<ul>
+  <li>Requirement Review (15% of time; 1st to 5th of the month) </li>
+  <li>Design (15% of time; 4th to 9th of the month)</li>
+  <li>Development (40% of time; 5th to 22nd of the month)</li>
+  <li>Integration and Test (30% of time; 22nd to 30th of the month)</li>
+</ul>
+It is possible that there are overlaps between 2 phrases. <br>
+<br>
+(Note: For details on terminologies used for issues tracking, please
+refer to the <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=Issues">Issues
+Tracker help file</a>.)<br>
+<h3>Requirement Review </h3>
+<ul>
+  <li>Any new features should be entered and tracked in the Issues
+Tracker as an Enhancement with Priority and Severity assigned.</li>
+  <li>For features requested by users, there should always be a review
+with the users.</li>
+  <li>For features requested by developers:</li>
+  <ul>
+    <li>If priority is Critical/High and/or severity is Fatal/Major,
+there should be a review by another developer.</li>
+    <li>If severity is Minor/Cosmetic, the review is optional.</li>
+  </ul>
+  <li>For features that are requested after this stage:</li>
+  <ul>
+    <li>Features that require a lot of coding will be deferred to the
+next development cycle.</li>
+    <li>Features that do not require a lot of coding or features that
+are related to an existing feature request will be implemented in the
+current development cycle.<br>
+    </li>
+  </ul>
+</ul>
+<h3>Design </h3>
+<ul>
+  <li>For features that have priority of Critical/High and/or severity
+of Fatal/Major, the design should be reviewed by another developer.</li>
+  <li>For features that are very straight forward the design phase can
+be skipped.<br>
+  </li>
+</ul>
+<h3>Development</h3>
+<ul>
+  <li>Codes that are more complicated should be reviewed by another
+developer.</li>
+</ul>
+<h3>Integration and Test</h3>
+<ul>
+  <li>All new features should be throughoutly tested.</li>
+  <li>Features that have priority of Critical/High and/or severity of
+Fatal/Major should be briefly tested by another developer as well.</li>
+  <li>All defects found within this phrase should be submitted to the
+Issues Tracker right the way with Priority and Severity assigned.</li>
+  <ul>
+    <li>Defects that have priority of Critical/High must be fixed
+before the release.</li>
+    <li>Defects that have priority of Medium/Low will be deferred to
+the next release.</li>
+  </ul>
+  <li>Refer to the <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=Testing_Protocol">Testing
+Protocol</a> help page for details on what should be tested and how the
+testing should be done.</li>
+</ul>
+<h2>Release</h2>
+<ul>
+  <li>A release will be made monthly in the beginning of the month.<br>
+  </li>
+  <li>A release will only be made if there are no outstanding
+Critical/High defects found in the Beta Version for the last 0.5 days.</li>
+  <li>A release will only be made before noon so that developers will
+still be around to deal with issues that arised from the new release.</li>
+</ul>
+<h2>Procedures for Release Process and Ongoing Development </h2>
+<ul>
+  <li>The steps for the release process are as follows (assuming the
+new release is release 2.00 and will be tagged&nbsp;seqdb01-2_00 while
+the old release is release 1.30):</li>
+  <ul>
+    <li>Turn off all cron jobs in seqdb01, lims-dbm, plebe and plebe2
+that are run by 'sequence' and 'aldente' users</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Login as the 'aldente' user</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Under <span style="font-weight: bold;">/opt/alDente/versions/</span>:<br>
+    </li>
+    <ul>
+      <li>Checkout the production code to the <span
+ style="font-weight: bold;">seqdb01-2_00</span> folder: <br>
+      </li>
+      <ul>
+        <li>mv <span class="large">seqdb01-2_00 </span><span
+ class="large">seqdb01-2_00.bak</span></li>
+      </ul>
+      <ul>
+        <li>cvs checkout -d seqdb01-2_00 alDente</li>
+      </ul>
+      <li>Generate the system configuation file:<br>
+      </li>
+      <ul>
+        <li>install/setup.pl</li>
+        <li>ensure the sql database hosts are set correctly<br>
+        </li>
+      </ul>
+      <li>Backup the production database by running:</li>
+      <ul>
+        <li>bin/backup_DB.pl -h seqdb01 -D sequence -u viewer -p viewer
+-P /home/sequence/alDente/dumps/sequence.pre-2_00 &gt;
+/opt/alDente/www/dynamic/logs/sequence.pre-2_00.backup.log</li>
+        <li>Verify the dumps are actually created</li>
+      </ul>
+      <li><span class="large"><span class="large">R<span class="large"><span
+ class="large">elink the symbolic link <span style="font-weight: bold;">production
+        </span>to the </span><span class="large"><span class="large"><span
+ style="font-weight: bold;">seqdb01-2_00</span> folder:</span></span></span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large"><span class="large">rm
+-f production &amp;&amp; ln -s seqdb01-2_00 production<br>
+          </span></span></span></li>
+      </ul>
+      <li>Upgrade the production database by running:</li>
+      <ul>
+        <li>bin/upgrade_DB.pl -A upgrade -D seqdb01:sequence -u
+username -p password -S -l -F &gt;
+/opt/alDente/www/dynamic/logs/sequence.2_00.upgrade.log</li>
+      </ul>
+      <li>Create the symlink <i>scanner.pl</i> in the cgi-bin directory to barcode.pl</li>
+      <ul>
+	<li>ln -s cgi-bin/barcode.pl cgi-bin/scanner.pl</li>
+      </ul>
+      <li>After upgrade is done, test to make sure page is still
+working (Perhaps restore a seqtest database to do invasive testing)</li>
+      <li>Turn the cron jobs in seqdb01, lims-dbm, plebe and plebe2 run
+by 'sequence' and 'aldente' users back on again<br>
+      </li>
+      <li>After verifying everything is running ok, cvs tag the trunk
+with the tag <span style="font-weight: bold;">seqdb01-2_00</span>.&nbsp;
+        <span class="large">This is to create a snap shot of the
+release 2.00 so it is can be
+retrieved in the future if needed. &nbsp;Note that the trunk will be
+used for ongoing development of the next release:</span></li>
+      <ul>
+        <li>&nbsp;cvs tag seqdb01-2_00</li>
+      </ul>
+      <li><span class="large">Confirm that the tag is successfully
+created:</span></li>
+      <ul>
+        <li><span class="large">cvs stat -v cgi-bin/barcode.pl (this
+should show the new tag)<br>
+          </span></li>
+      </ul>
+      <li><span class="large">Now branch the code.</span></li>
+      <ul>
+        <li><span class="large">cvs tag -b seqdb01-2_00-branch<br>
+          </span></li>
+      </ul>
+      <li><span class="large">Confirm that the branch is successfully
+created:</span></li>
+      <ul>
+        <li><span class="large">cvs stat -v cgi-bin/barcode.pl (this
+should show the new tag)<br>
+          </span></li>
+        <li><span class="large">cvs -n update -r seqdb01-2_00-branch
+(this should indicate no updates to be made)</span></li>
+      </ul>
+      <li><span class="large">Checkout another copy of the production
+code to the <span style="font-weight: bold;">seqdb01-2_00-hotfix</span>
+folder.&nbsp; This folder will be used for making hotfixes in the
+future:</span></li>
+      <ul>
+        <li><span class="large">cvs checkout -d seqdb01-2_00-hotifx -r
+seqdb01-2_00-branch alDente</span></li>
+      </ul>
+      <li><span class="large">Copy the system configuration file over:</span></li>
+      <ul>
+        <li><span class="large">cp seqdb01-2_00/conf/system.conf
+seqdb01-2_00-hotfix/conf/</span></li>
+      </ul>
+      <li><span class="large">Relink the symbolic link <span
+ style="font-weight: bold;">test </span>to the </span><span
+ class="large"><span class="large"><span style="font-weight: bold;">seqdb01-2_00-hotfix</span>
+folder:</span></span></li>
+      <ul>
+        <li><span class="large">rm -f test &amp;&amp; ln -s
+seqdb01-2_00-hotfix test</span></li>
+      </ul>
+    </ul>
+  </ul>
+  <ul>
+    <ul>
+      <li>R<span class="large"><span class="large">elink the symbolic
+link <span style="font-weight: bold;">last </span>to the </span><span
+ class="large"><span class="large"><span style="font-weight: bold;">seqdb01-1_30</span>
+folder:</span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large">rm -f last
+&amp;&amp; ln -s seqdb01-1_30 last</span></span></li>
+      </ul>
+      <li><span class="large">R<span class="large"><span class="large">elink
+the symbolic link <span style="font-weight: bold;">production </span>to
+the </span><span class="large"><span class="large"><span
+ style="font-weight: bold;">seqdb01-1_30</span> folder</span></span></span></span></li>
+      <li><span class="large"><span class="large"><span class="large"><span
+ class="large">Under <span style="font-weight: bold;">production/www</span>,
+create the symlink <span style="font-weight: bold;">share</span> to
+/home/sequence/alDente/share/:</span></span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large"><span class="large"><span
+ class="large">ln -s /home/sequence/alDente/share share<br>
+          </span></span></span></span></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+</span><span class="large">
+<ul>
+  <ul>
+    <li>Under <span style="font-weight: bold;">/home/sequence/alDente/WebVersions/:</span></li>
+    <ul>
+      <li>cvs checkout the production version from the branch:</li>
+      <ul>
+        <li><span class="large">mv <span class="large">seqdb01-2_00 </span><span
+ class="large">seqdb01-2_00.bak</span></span></li>
+      </ul>
+    </ul>
+    <ul>
+      <ul>
+        <li>cvs checkout -d seqdb01-2_00 -r seqdb01-2_00-branch alDente</li>
+      </ul>
+    </ul>
+    <ul>
+      <li><span class="large"><span class="large">Create the system
+configuration file by running setup.pl:</span></span></li>
+      <ul>
+        <li>install/setup.pl</li>
+        <li><span class="large">ensure the sql database hosts are set
+correctly</span></li>
+      </ul>
+    </ul>
+    <ul>
+      <li>Relink the symbolic link <span style="font-weight: bold;">Production</span>
+to the <span style="font-weight: bold;">seqdb01-2_00 folder</span>:</li>
+      <ul>
+        <li>rm -f Production &amp;&amp; ln -s seqdb01-2_00 Production</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Send email notification to lab users about the new release.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Ongoing development (under <span style="font-weight: bold;">/opt/alDente/versions/)</span>:</li>
+  <ul>
+    <li>New code development (development stream):</li>
+    <ul>
+      <li>Now that release 2.00 is out, say you are starting to work on
+new features for release 2.10. &nbsp;Assuming your ongoing code
+development folder is <span style="font-weight: bold;">achan</span>,
+make sure you have the latest code - under <span
+ style="font-weight: bold;">/opt/alDente/versions/achan/</span>:</li>
+      <ul>
+        <li>cvs update</li>
+      </ul>
+      <li>Develop code and commit changes to CVS as usual.<br>
+      </li>
+    </ul>
+    <li>Hotfixes/maintenance on existing production version (production
+stream):</li>
+    <ul>
+      <li>Say there is now a bug in the production version requiring a
+hotfix. &nbsp;First make sure the <span style="font-weight: bold;">hotfix</span>
+folder contains the latest code from the current production branch -
+under <span style="font-weight: bold;">/opt/alDente/versions/hotfix/</span>:</li>
+      <ul>
+        <li>cvs update</li>
+      </ul>
+      <li>Make the require coding changes, test the changes and then
+cvs commit the changes.</li>
+      <li>Now it's time to put your hotfix into the <span
+ style="font-weight: bold;">production</span> folder. To be absolutely
+safe about the changes to be applied, first do a cvs diff to find out
+the changes to be applied (say the file that was changed is
+cgi-bin/barcode.pl) - under&nbsp;<span style="font-weight: bold;">/opt/alDente/versions/production/</span>:</li>
+      <ul>
+        <li>cvs diff -r HEAD cgi-bin/barcode.pl</li>
+      </ul>
+      <li>If the changes look OK, then update the code in the <span
+ style="font-weight: bold;">production</span> folder - under&nbsp;<span
+ style="font-weight: bold;">/opt/alDente/versions/production/</span>:</li>
+      <ul>
+        <li>cvs update cgi-bin/barcode.pl</li>
+      </ul>
+      <li>After making sure the production version is ok, it is crucial
+that you also merge the same hotfix changes to the development stream.
+&nbsp;The sooner you do the merge, the lower the chance a conflict will
+occur. &nbsp;Under <span style="font-weight: bold;">/opt/alDente/versions/achan/</span>:</li>
+      <ul>
+        <li>cvs update -j seqdb01-2_00-branch cgi-bin/barcode.pl</li>
+      </ul>
+      <li>It is possible that a conflict will result from the merge. If
+this is the case, resolve the conflict manually, and then commit the
+changes to CVS.</li>
+    </ul>
+  </ul>
+</ul>
+</span>

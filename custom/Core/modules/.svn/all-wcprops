@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/109207/alDente/trunk/custom/Core/modules
+END
+Menu.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Menu.pm
+END
+Help_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Help_Views.pm
+END
+Config.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/108290/alDente/trunk/custom/Core/modules/Config.pm
+END
+Statistics_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Statistics_Views.pm
+END
+Login_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/108862/alDente/trunk/custom/Core/modules/Login_App.pm
+END
+Login.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Login.pm
+END
+Summary_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Summary_Views.pm
+END
+User.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/107560/alDente/trunk/custom/Core/modules/User.pm
+END
+Employee.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Employee.pm
+END
+Department_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/108289/alDente/trunk/custom/Core/modules/Department_Views.pm
+END
+App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/App.pm
+END
+Login_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/108862/alDente/trunk/custom/Core/modules/Login_Views.pm
+END
+DB.pm
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/DB.pm
+END
+Help_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Help_App.pm
+END
+Help.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Help.pm
+END
+Statistics_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Statistics_App.pm
+END
+Summary_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Summary_App.pm
+END
+Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Views.pm
+END
+Model.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/108161/alDente/trunk/custom/Core/modules/Model.pm
+END
+DB_Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/107560/alDente/trunk/custom/Core/modules/DB_Views.pm
+END
+Department_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/108289/alDente/trunk/custom/Core/modules/Department_App.pm
+END
+Department.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/108289/alDente/trunk/custom/Core/modules/Department.pm
+END

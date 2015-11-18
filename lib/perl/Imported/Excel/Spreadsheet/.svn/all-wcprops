@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet
+END
+ParseExcel.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/ParseExcel.pm
+END
+WriteExcel.pm
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel.pm
+END

@@ -1,0 +1,61 @@
+Patch_ID	FK_Package__ID	Patch_Type	Patch_Name	Install_Status	Installation_Date	FKRelease_Version__ID	Patch_Version	Patch_Description
+1	24	installation	1patch.sql	Installed	2008-11-06	8	2.5.2.0	NULL
+2	24	installation	2package.sql	Installed	2008-11-06	8	2.5.3.0	NULL
+24	24	installation	upgrade_Core_2_6	Installed	2009-02-25	10	2.6.0.0	NULL
+31	24	installation	Installation	Installed	0000-00-00	10	2.6.6.0	
+33	24	installation	Queue_Core	Installed	2009-05-13	10	2.6.7.0	NULL
+34	24	installation	move_plate_class_plus	Installed	2011-06-28	10	2.6.8.0	NULL
+35	24	installation	add_Equipment_Attribute	Installed	2011-06-28	10	2.6.10.0	NULL
+36	24	installation	add_Study_Attribute	Installed	2011-06-28	10	2.6.13.0	NULL
+37	24	installation	QC_Batch	Installed with errors	2011-06-28	10	2.6.14.0	NULL
+38	24	installation	Attribute_Name_Validation	Installed	2011-06-28	10	2.6.15.0	NULL
+39	24	installation	mandatory_sow	Installed	2011-06-28	10	2.6.21.0	NULL
+40	24	installation	shipping_protocols	Installed with errors	2011-06-28	10	2.6.22.0	NULL
+41	24	installation	Parameter_Type_enum	Installed	2011-06-28	10	2.6.24.0	NULL
+42	24	installation	edit_subscription	Installed with errors	2011-06-28	10	2.6.25.0	NULL
+43	24	installation	list_condition	Installed	2011-06-28	10	2.6.32.0	NULL
+44	24	installation	trigger_field	Installed with errors	2011-06-28	10	2.6.33.0	NULL
+45	24	installation	source_shipment	Installed	2011-06-28	10	2.6.34.0	NULL
+46	24	installation	modify_shipment_container	Installed	2011-06-28	10	2.6.36.0	NULL
+47	24	installation	update_attribute_tables	Installed	2011-06-28	10	2.6.40.0	NULL
+48	24	installation	DBField_Readonly	Installed	2011-06-28	10	2.6.53.0	NULL
+49	24	installation	add_submission_requester	Installed	2011-06-28	10	2.6.57.0	NULL
+50	24	installation	Funding_Attribute	Installed	2011-06-28	10	2.6.69.0	NULL
+51	24	installation	Attribute_Editable_Readonly	Installed	2011-06-28	10	2.6.71.0	NULL
+52	24	installation	source_shipment_expand	Installed with errors	2011-06-28	10	2.6.73.0	NULL
+53	24	installation	rename_trigger	Installed	2011-06-28	10	2.6.74.0	NULL
+54	24	installation	replacement	Installed with errors	2011-06-28	10	2.6.78.0	NULL
+55	25	installation	add_Source	Installed	2011-06-28	10	2.6.79.0	NULL
+56	24	installation	auto_increment_trigger_id	Installed	2011-06-28	10	2.6.87.0	NULL
+57	24	installation	parameter_extra_units	Installed	2011-06-28	10	2.6.91.0	NULL
+58	24	installation	Work_Request_field	Installed	2011-06-28	10	2.6.92.0	NULL
+59	24	installation	upgrade_Core_2_7	Installed	2011-08-23	12	3.0.0.0	NULL
+60	24	installation	add_attribute_to_DBField	Installed	2011-08-23	12	3.0.1.0	NULL
+61	24	installation	change_Organization_Type	Installed	2011-08-23	12	3.0.2.0	NULL
+62	24	installation	update_Organization_Type	Installed	2011-08-23	12	3.0.3.0	NULL
+63	24	installation	Biomaterial_Type	Installed	2011-08-23	12	3.0.5.0	NULL
+64	24	installation	OS_Flip	Installed with errors	2011-08-23	12	3.0.6.0	NULL
+65	24	installation	Biomaterial_Type_Final	Installed	2011-08-23	12	3.0.7.0	NULL
+66	24	installation	Invertebrate	Installed with errors	2011-08-23	13	3.1.1.0	NULL
+67	24	installation	general_2_7_1_changes	Installed with errors	2011-08-23	13	3.1.2.0	NULL
+68	24	installation	Process_Deviation	Installed	2011-08-23	13	3.1.3.0	NULL
+69	24	installation	Roundtrip	Installed	2011-08-23	14	3.2.1.0	NULL
+70	24	installation	Add_Sample_ID_To_Run_Analysis	Installed with errors	2012-01-16	15	3.3.3.0	NULL
+71	24	installation	Source_Type_Section	Installed	2012-01-16	15	3.3.5.0	NULL
+72	24	installation	FKOriginal_Source__ID	Installed	2012-01-16	15	3.3.6.0	NULL
+73	24	installation	Management_Dept	Installed	2012-01-16	15	3.3.7.0	NULL
+74	24	installation	Strain_Table	Installed with errors	2012-01-16	15	3.3.9.0	NULL
+75	24	installation	Sex_Fields	Installed with errors	2012-01-16	15	3.3.10.0	NULL
+76	24	installation	Parameter_Units	Installed	2012-01-16	15	3.3.11.0	NULL
+77	24	installation	Pathology_Occurence	Installed	2012-01-16	16	3.4.1.0	NULL
+78	24	installation	Removed_DBField	Installed	2012-01-16	16	3.4.2.0	NULL
+79	24	installation	TechD_Access	Installed	2012-01-16	17	3.5.1.0	NULL
+80	24	installation	Sample_Collection_Time	Installed	2012-01-16	17	3.5.2.0	NULL
+81	24	installation	Alter_Run_Analysis_Type	Installed with errors	2012-01-16	17	3.5.3.0	NULL
+82	24	installation	RNA_Strategy	Installed	2012-01-16	17	3.5.4.0	NULL
+83	24	installation	add_stage_3_6	Installed	2012-01-16	18	3.6.1.0	NULL
+84	24	installation	Projects_Admin_Invoicing	Installed with errors	2012-01-16	18	3.6.3.0	NULL
+85	24	installation	Open_Solution	Installed	2012-01-16	18	3.6.4.0	NULL
+86	24	installation	Change_Goal_Type	Installed with errors	2012-01-16	19	3.7.1.0	NULL
+87	24	installation	Library_Billable	Installed	2012-01-16	19	3.7.2.0	NULL
+88	24	installation	Projects_Admin_Invoicing_v2	Installed with errors	2012-01-16	19	3.7.3.0	NULL

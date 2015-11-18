@@ -1,0 +1,68 @@
+[ALDENTE_IMPORT] Path to the alDente Imported modules
+
+/opt/alDente/versions/jsantos/lib/perl/Imported
+
+[ALDENTE_LIB] Path to the alDente main modules
+
+/opt/alDente/versions/jsantos/lib/perl
+
+[BASE_EXT_PATH] base directory of external pages
+
+/opt/alDente/versions/jsantos/www
+
+[CONFIG] Path to the installation configuration files
+
+/opt/alDente/versions/jsantos/www/html/conf
+
+[CSS] CSS web path
+
+/SDB_jsantos/css
+
+[EXT_DOC_DIR] Externally accessible HTML document web directory
+
+/html
+
+[EXT_SUB_DIR] External submission directory
+
+/home/aldente/public/external_submissions/
+
+[HOMELINK] home link to main page
+
+http://limsdev01/SDB_jsantos/cgi-bin/collab_view.pl
+
+[HOMEPAGE] homepage URL
+
+http://limsdev01/SDB_jsantos/cgi-bin/collab_view.pl
+
+[HTDOCS] Path to the web-accesible documents directory
+
+/opt/alDente/versions/jsantos/www
+
+[IMAGE_DIR] image directory off the BASE_EXT_PATH
+
+/SDB_jsantos/images/png
+
+[INSTALL] Path to the cgi-bin install
+
+/opt/alDente/versions/jsantos/cgi-bin
+
+[JAVASCRIPT] javascript web path
+
+/SDB_jsantos/js
+
+[LDAP] LDAP server URL
+
+ldap://ldap01.bcgsc.ca
+
+[LDAP_LIB] Path to the LDAP modules
+
+/opt/alDente/versions/jsantos/lib/perl/Imported/LDAP
+
+[PUBLIC_PROJECT_DIR] External project directory for publishing documents
+
+/html/Project
+
+[SESSION_DIR] session storage path
+
+/home/aldente/private/collab_sessions
+

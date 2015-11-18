@@ -1,0 +1,5 @@
+Location_ID	Location_Name	Location_Status	FK_Site__ID	Location_Type
+1	Lab	active	0	Internal
+2	External	active	1	External
+3	Unknown	active	0	Internal
+4	In Transit	active	1	External

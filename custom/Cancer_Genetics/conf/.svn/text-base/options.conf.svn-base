@@ -1,0 +1,12 @@
+## Options to configure with Cancer Genetics custom package
+
+<MANDATORY>
+Storage_Tracking
+Tubes_Only
+Rack_Label_Fullname
+</MANDATORY>
+<RECOMMENDED>
+## enter recommended options here
+
+
+</RECOMMENDED>

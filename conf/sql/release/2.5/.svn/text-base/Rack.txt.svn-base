@@ -1,0 +1,6 @@
+Rack_ID	FK_Equipment__ID	Rack_Type	Rack_Name	Movable	Rack_Alias	FKParent_Rack__ID
+1	1	Shelf	Shelf	N	RT Shelf	0
+2	1	Shelf	Garbage	N	Garbage Rack	0
+3	1	Shelf	Exported	N	Exported Rack	0
+4	1	Shelf	Temporary	N	Temporary Rack	0
+5	2	Rack	TBD	N	TBD	0

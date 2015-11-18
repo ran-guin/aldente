@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/109573/alDente/trunk/cgi-bin/ajax
+END
+query.pl
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/109573/alDente/trunk/cgi-bin/ajax/query.pl
+END
+submit_issue.pl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/cgi-bin/ajax/submit_issue.pl
+END
+formgen.pl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103318/alDente/trunk/cgi-bin/ajax/formgen.pl
+END
+auto_fill.pl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68925/alDente/trunk/cgi-bin/ajax/auto_fill.pl
+END
+auto_completer.pl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/cgi-bin/ajax/auto_completer.pl
+END
+storeobject.pl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/100893/alDente/trunk/cgi-bin/ajax/storeobject.pl
+END
+unique_check.pl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/cgi-bin/ajax/unique_check.pl
+END

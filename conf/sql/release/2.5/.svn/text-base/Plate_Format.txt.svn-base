@@ -1,0 +1,58 @@
+Plate_Format_ID	Plate_Format_Type	Plate_Format_Size	Plate_Format_Status	FK_Barcode_Label__ID	Max_Row	Max_Col	Plate_Format_Style	Capacity	Capacity_Units	Wells	Well_Lookup_Key
+1	Genetix - Glycerol	384-well	Active	2	P	24	Plate	\N	\N	384	\N
+2	Beckman - Culture	96-well	Active	1	H	12	Plate	\N	\N	96	\N
+3	Robbins - ET	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+4	Costar - Round Bottom Assay	96-well	Inactive	2	H	12	Plate	\N	\N	96	\N
+5	NUNC	96-well	Inactive	2	H	12	Plate	\N	\N	96	\N
+6	MicroAmp	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+7	MJR384	384-well	Active	2	P	24	Plate	\N	\N	384	\N
+8	PE384	384-well	Active	2	P	24	Plate	\N	\N	384	\N
+9	Marsh384	384-well	Inactive	2	P	24	Plate	\N	\N	384	\N
+10	MJR96 - skirted	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+11	IS800 - skirted	96-well	Inactive	2	H	12	Plate	\N	\N	96	\N
+12	Axygen_OLD	96-well	Inactive	2	H	12	Plate	\N	\N	96	\N
+13	Glycerol96	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+14	BD_Falcon	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+15	Axygen-384-240	384-well	Active	1	P	24	Plate	\N	\N	384	\N
+16	Virtual	96-well	Active	2	H	12	Plate	\N	\N	96	\N
+17	Virtual Slice	\N	Active	2	H	12	Plate	\N	\N	1	\N
+18	Virtual 384	384-well	Active	2	P	24	Plate	\N	\N	384	\N
+19	Tube	1.5 ml	Active	6	A	1	Tube	1.5	ml	1	\N
+20	Undefined - To Be Determined	\N	Active	2	A	1	\N	\N	\N	1	\N
+21	Wallac384	384-well	Active	2	P	24	Plate	384	well	384	\N
+22	Axygen96_RBHH	96-well	Active	1	H	12	Plate	96	well	96	\N
+23	Phase Lock Gel-Heavy		Active	6	A	1	Tube	2	ml	1	\N
+26	Phase-Lock Gel Tube		Active	6	A	1	Tube	15	ml	1	\N
+27	Eppendorf Tube	\N	Active	6	A-	9	Tube	\N	\N	1	\N
+28	 cRNA Cleanup column	1.5 ml	Active	6	A	1	Tube	\N	\N	1	\N
+29	 cDNA Cleanup Column	1.5 ml	Active	6	A	1	Tube	1.5	ml	1	\N
+30	Non-Stick	1.5 ml	Active	6	Z	9	Tube	1.5	ml	1	\N
+31	AB384	384-well	Active	2	P	24	Plate	384	well	384	\N
+32	Screw-cap Conical Tube		Active	6	A	1	Tube	15	ml	1	\N
+33	Tube	\N	Active	6	A	1	Tube	\N	\N	1	\N
+34	cDNA Cleanup Column		Active	6	A	1	Tube	2	ml	1	\N
+35	cRNA Cleanup Column		Active	6	A	1	Tube	2	ml	1	\N
+36	Agar Plate	\N	Active	19	A	1	Tube	\N	\N	1	\N
+37	Manual 121 Lane Gel	\N	Active	2	H	12	Gel	121	\N	96	Gel_121_Standard
+38	Tube	50 ml	Active	6	A	1	Tube	50	ml	1	\N
+39	Tube	15 ml	Active	6	A	1	Tube	15	ml	1	\N
+40	Tube	5 ml	Active	6	A	1	Tube	5	ml	1	\N
+41	Tube	2 ml	Active	6	A	1	Tube	2	ml	1	\N
+42	Eppendorf	2 ml	Active	6	Z	9	Tube	2	ml	1	\N
+43	Phase Lock Gel Tube Heavy	2 ml	Active	6	Z	9	Tube	2	ml	1	\N
+44	Tube	0.5 ml	Active	6	A	1	Tube	0.5	ml	1	\N
+45	Tube	0.2 ml	Active	6	A	1	Tube	0.2	ml	1	\N
+46	Non-stick	0.5 ml	Active	6	Z	9	Tube	0.5	ml	1	\N
+47	Greiner	96-well	Active	2	H	12	Plate	\N	well	96	\N
+48	ABGene	96-well	Active	2	H	12	Plate	96	well	96	\N
+49	Whatman	96-well	Active	1	H	12	Plate	0.8	ml	96	\N
+50	Axygen96 P-96-450V	96-well	Active	2	H	12	Plate	96	well	96	\N
+51	Abgene_HHRB	96-well	Active	1	H	12	Plate	1.2	ml	96	\N
+52	Genetix X6004	384-well	Active	2	P	24	Plate	384	well	384	\N
+53	Genechip	1-well	Active	6	A	1	Array	\N	\N	1	\N
+54	MJR96 - unskirted	96-well	Active	2	H	12	Plate	96	well	96	\N
+55	Agar Plate Q Tray	1-well	Active	19	A	1	Tube	\N	\N	1	\N
+56	NUNC	384-well	Active	2	P	24	Plate	0.12	ml	384	\N
+57	Abgene - Culture	384-well	Active	1	P	24	Plate	\N	well	384	\N
+58	FlowCell		Active	1	A	8	Plate	8	well	8	\N
+59	Ferro 121 Lane Gel	\N	Active	2	A	121	Gel	\N	\N	121	Gel_121_Custom

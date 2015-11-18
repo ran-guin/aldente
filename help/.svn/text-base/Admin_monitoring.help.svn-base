@@ -1,0 +1,15 @@
+<h2>Administrative monitoring of System</h2>
+<P>
+The following areas should be regularly monitored by LIMS administrators to ensure effective usage.
+<UL>
+<LI>Error messages sent by users (Issues)
+<LI>API usage files (check for slow queries, inefficient calls etc)
+<LI>Monitoring of cron job output and log files:
+<UL>
+<LI>Integrity monitoring
+<LI>Backups
+<LI>Stock monitor
+</UL>
+</UL>
+
+

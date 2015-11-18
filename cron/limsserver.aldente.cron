@@ -1,0 +1,51 @@
+### Ongoing ###
+
+# Ongoing synchronization of Beta source code
+*/10 8-19 * * 1-5 echo '' >> /opt/alDente/www/dynamic/logs/code_sync.beta.log; date >> /opt/alDente/www/dynamic/logs/code_sync.beta.log; rsync -avz --exclude="system.conf" --exclude="*.log" /opt/alDente/versions/beta/ /home/sequence/alDente/WebVersions/Beta/ >> /opt/alDente/www/dynamic/logs/code_sync.beta.log; date >> /opt/alDente/www/dynamic/logs/code_sync.beta.log
+
+# Ongoing synchronization of Production source code
+*/10 8-19 * * 1-5 echo '' >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log; rsync -avz --exclude="system.conf" /opt/alDente/versions/production/ /home/sequence/alDente/WebVersions/Production/ >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log
+
+# Ongoing synchronization of Production source code for Perl 5.8
+*/10 8-19 * * 1-5 echo '' >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log; rsync -avz --exclude="system.conf" /opt/alDente/versions/production/ /home/sequence/alDente/WebVersions/Production_Perl58/ >> /opt/alDente/www/dynamic/logs/code_sync.log; date >> /opt/alDente/www/dynamic/logs/code_sync.log
+
+# Ongoing synchronization of CGH code
+*/10 8-19 * * 1-5 cghsync
+
+# Database dumps once every 10 minutes using clusters (to be implemented)
+#*/10 6-18 * * * export SGE_ROOT=/opt/sge/ && /opt/sge/bin/glinux/qsub /home/sequence/alDente/WebVersions/Production/bin/cluster_backup_job.sh >> /home/aldente/logs/cluster_backup_job.log
+
+# Binary logs backup once every 10 minutes from 6 am to 6pm
+*/10 6-18 * * * /opt/alDente/versions/production/bin/backup_RDB.pl -D seqdb01:sequence -S lims-dbm -u achan -p tothemoon -t binlog > /opt/alDente/www/dynamic/logs/binlog_backup.log
+
+# Check replication status every 10 minutes
+*/10 6-19 * * 1-5 /opt/alDente/versions/achan/bin/check_replication.pl -q -M seqdb01:sequence -S lims-dbm:sequence -u aldente_admin -p etnedla > /opt/alDente/www/dynamic/logs/check_replication.log
+
+### 10 PM ###
+
+# Full backup (also purge binary logs) once per day at 10 pm
+0 22 * * * /opt/alDente/versions/production/bin/backup_RDB.pl -D seqdb01:sequence -S lims-dbm -u achan -p tothemoon -t full > /opt/alDente/www/dynamic/logs/full_backup.log
+
+# Backup the 'mysql' database of both lims-dbm and seqdb01
+10 22 * * * mv /opt/alDente/dumps/lims-dbm.mysql/lims-dbm.mysql.2 /opt/alDente/dumps/lims-dbm.mysql/lims-dbm.mysql.3; mv /opt/alDente/dumps/lims-dbm.mysql/lims-dbm.mysql.1 /opt/alDente/dumps/lims-dbm.mysql/lims-dbm.mysql.2; /usr/bin/mysqldump --add-drop-table --extended-insert --add-locks --all -h lims-dbm -u viewer --password=viewer mysql > /opt/alDente/dumps/lims-dbm.mysql/lims-dbm.mysql.1
+
+15 22 * * * mv /opt/alDente/dumps/seqdb01.mysql/seqdb01.mysql.2 /opt/alDente/dumps/seqdb01.mysql/seqdb01.mysql.3; mv /opt/alDente/dumps/seqdb01.mysql/seqdb01.mysql.1 /opt/alDente/dumps/seqdb01.mysql/seqdb01.mysql.2; /usr/bin/mysqldump --add-drop-table --extended-insert --add-locks --all -h seqdb01 -u viewer --password=viewer mysql > /opt/alDente/dumps/seqdb01.mysql/seqdb01.mysql.1
+
+### 1 AM ###
+
+# Cleanup for binary logs
+03 1 * * * /opt/alDente/versions/production/bin/cleanup.pl -D sequence -S 5 -B > /opt/alDente/www/dynamic/logs/cleanup_binary.log
+
+# Cleanup www/dynamic directories and reorganize sessions
+13 1 * * * /opt/alDente/versions/production/bin/cleanup_web.pl -S 6 > /opt/alDente/www/dynamic/logs/cleanup_web.log
+
+### 2 AM ###
+
+# Log sequence database growth
+01 2 * * * /opt/alDente/versions/achan/bin/DB_monitor.pl -H seqdb01 -D sequence -m log -l /opt/alDente/www/dynamic/logs/DB_monitor.log
+
+### 7 AM ###
+
+# Overwrites/cleans up the cluster backup log.
+#32 7 * * * echo '' > / /home/aldente/logs/cluster_backup_job.log
+

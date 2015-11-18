@@ -1,0 +1,22 @@
+Protocol_Step_Number	Protocol_Step_Name	Protocol_Step_Instructions	Protocol_Step_ID	Protocol_Step_Defaults	Input	Scanner	Protocol_Step_Message	FK_Employee__ID	Protocol_Step_Changed	Input_Format	FK_Lab_Protocol__ID	FKQC_Attribute__ID	QC_Condition	Validate
+1	Do Not Discard This Protocol		1			0		1	2001-10-16		1	NULL	NULL	NULL
+1	Throw Away		2			0		1	2001-10-16		1	NULL	NULL	NULL
+1	Export		3			0		1	2004-08-13		1	NULL	NULL	NULL
+1	Fail Plate	Standard Protocol Step for Failing Plates	4	NULL	NULL	0	NULL	1	2005-04-20		1	NULL	NULL	NULL
+1	Thaw	Standard Protocol Step for Thawing Plates	5	NULL	NULL	0	NULL	1	2006-08-04		1	NULL	NULL	NULL
+1	Get Sample		10			1		1	2007-07-10		2	NULL		
+2	Aliquot to 384-well Abgene - Culture		11			1		1	2007-07-10		2	NULL		
+3	Centrifuge		12		FK_Equipment__ID	1		1	2007-07-10		2	NULL		
+4	Apply solution		13	:l	FK_Solution__ID:Solution_Quantity	1		1	2007-07-10	:	2	NULL		
+1	Setup tubes with DMSO		14			1	Fill empty tubes with RPMI / 20% DMSO	4	2009-06-02		3	NULL		
+2	Transfer Whole Blood to cryovial		15	750ul:3	Track_Transfer:Split	1		1	2009-04-20		3	NULL		
+3	Store Tubes in Box		16		FK_Rack__ID	0		4	2009-06-02		3	NULL		
+1	Centrifuge	Centrifuge at 1300 x g for 10 minutes at room temperature	18			1	Centrifuge 1300 x g; 10 min (RT)	1	2009-05-04		5	NULL		
+1	Pre-Print Blood Serum out to cryovial		22	3	Split	1		1	2009-04-23		4	NULL		
+2	Centrifuge	Centrifuge 1300 x g; 10 minutes at room temperature	23			1		1	2009-04-20		4	NULL		
+4	Transfer Blood Serum to cryovial		24	1.0ml	Track_Transfer	1		4	2009-06-02		4	NULL		
+1	Transfer Urine to cryovial		26	1.5ml:3	Track_Transfer:Split	1		4	2009-06-02	:	6	NULL		
+3	Record Clotting time		27		Prep_Attribute=Minutes Clotted	0		4	2009-06-02		4	NULL		
+2	Extract Blood Plasma out to cryovial		29	1.0ml:3	Track_Transfer:Split	1		4	2009-06-02	:	5	NULL		
+3	Extract White Blood Cells out to cryovial		30	1.0ml	Track_Transfer	1	Extract Buffy Coat	4	2009-06-02		5	NULL		
+4	Transfer Red Blood Cells to cryovial		31	1.0ml	Track_Transfer	1		4	2009-06-02		5	NULL		

@@ -1,0 +1,2 @@
+Lab_Protocol_Name	FK_Employee__ID	Lab_Protocol_Status	Lab_Protocol_Description	Lab_Protocol_ID	Lab_Protocol_VersionDate
+Standard	0	Active	\N	1	\N

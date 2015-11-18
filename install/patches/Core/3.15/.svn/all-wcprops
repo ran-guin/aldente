@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/89071/alDente/trunk/install/patches/Core/3.15
+END
+add_Process_Deviation_Object.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/85360/alDente/trunk/install/patches/Core/3.15/add_Process_Deviation_Object.pat
+END
+Core_3_15.pat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/86555/alDente/trunk/install/patches/Core/3.15/Core_3_15.pat
+END
+Package_Conditon_Table.pat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/85485/alDente/trunk/install/patches/Core/3.15/Package_Conditon_Table.pat
+END
+add_Plate_QC.pat
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/86820/alDente/trunk/install/patches/Core/3.15/add_Plate_QC.pat
+END
+Adding_Invoice_Status_Column.pat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/85766/alDente/trunk/install/patches/Core/3.15/Adding_Invoice_Status_Column.pat
+END
+parent_contact.pat
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/86501/alDente/trunk/install/patches/Core/3.15/parent_contact.pat
+END
+Run_Types.pat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/89071/alDente/trunk/install/patches/Core/3.15/Run_Types.pat
+END
+Pathology_Recurrent_Relapse.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/85472/alDente/trunk/install/patches/Core/3.15/Pathology_Recurrent_Relapse.pat
+END

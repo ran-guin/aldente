@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SearchIO/Writer
+END
+HitTableWriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SearchIO/Writer/HitTableWriter.pm
+END
+HSPTableWriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SearchIO/Writer/HSPTableWriter.pm
+END
+HTMLResultWriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SearchIO/Writer/HTMLResultWriter.pm
+END
+ResultTableWriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Bio/SearchIO/Writer/ResultTableWriter.pm
+END

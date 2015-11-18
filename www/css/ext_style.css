@@ -1,0 +1,82 @@
+.mainTable {
+//        background-color: #F5F5F5;
+        border: medium double #C0C0C0;
+}
+
+#topbar,#botbar{
+        background-color: #CCCCFF;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+        color: #0000FF;
+}
+
+#topbar{
+        font-variant: small-caps;
+        word-spacing: 10px;
+}
+
+#botbar{
+        font-size: small; 
+        word-spacing: 5px;
+}
+
+#topbar a, #botbar a{
+        color: #003399;
+        font-size: small;
+}
+
+#topbar a:hover, #botbar a:hover{
+        color: #006633;
+}
+
+#topbar a:hover, #botbar a:hover{
+        color: #330066;
+}
+
+
+#PageContent {
+        padding: 25 0 25 0;
+}
+
+
+h1 {
+	font-family : "Trebuchet MS",Lucida,Arial,Clean,Helvetica,sans-serif;
+	font-size   : 17px;
+	font-style  : normal;
+	font-weight : normal;	
+	color       : #a33;
+}
+
+h2 {
+	font-family : "Trebuchet MS",Lucida,Arial,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 15px;
+	font-style  : normal;
+	font-weight : bold;	
+	color       : #339;
+}
+
+h3 {
+	font-family : "Trebuchet MS",Lucida,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 13px;
+	font-style  : normal;
+	font-weight : bold;
+	margin-left : 0.1in;
+	color       : #339;
+}
+
+h4 {
+	font-family : "Trebuchet MS",Lucida,Clean,Arial,Helvetica,sans-serif;
+	font-size   : 12px;
+	font-style  : normal;
+	font-weight : normal;	
+	margin-left : 0.2in;
+	color       : #339;
+}
+/*
+* { border: 1px dashed red; }
+*/
+
+
+.toolTipCont {position:absolute;  width:200px; visibility:hidden; layer-background-color:#ffd; z-index:200;}
+.toolTip     {width:150px; left:0px; top:0px; font-family:verdana,arial,helvetica,sans-serif; overflow:hidden; border: 1px solid #999999; padding:3px; font-size:11px; background-color:#ffd; layer-background-color:#ffd;}
+
+

@@ -1,0 +1,78 @@
+---
+Sample_QC_Attribute: Sample_QC_Status
+analysis_data:
+  - header: Lane_Quality
+    name: Lane_Quality
+  - header: Concentration
+    name: Concentration
+  - default: ng/ul
+    header: Concentration_Units
+    name: Concentration_Units
+attribute_copy_over:
+  Set Sample QC Status:
+    - Concentration
+    - Lane_Quality
+buttons:
+  - Name: run_validation_button
+    Run_Status:
+      - Data Acquired
+      - Analyzed
+    Run_Validation:
+      - Pending
+  - Name: edit_analysis_data_button
+    Run_Status:
+      - Data Acquired
+      - Analyzed
+    Run_Validation:
+      - Approved
+  - Name: sample_qc_button
+    Run_Status:
+      - Analyzed
+    Run_Validation:
+      - Approved
+  - Name: edit_run_info_button
+    Run_Status:
+      - In Process
+      - Data Acquired
+    Run_Validation:
+      - Pending
+  - Name: reprint_button
+    Run_Status:
+      - Initiated
+      - In Process
+      - Data Acquired
+      - Analyzed
+      - Aborted
+      - Failed
+      - Expired
+      - Not Applicable
+      - Analyzing
+    Run_Validation:
+      - Pending
+      - Approved
+      - Rejected
+sample_attribute:
+  Concentration: DNA_concentration_ng_uL
+  Lane_Quality: DNA_Quality_Check
+show_run_data:
+  conditions: WHERE Gel_Lane.FK_Run__ID = Run_ID AND Gel_Lane.FK_Gel_Run__ID = Gel_Run_ID
+  extra_output_param:
+    -highlight_column:
+      Sample_QC_Status:
+        Approved:
+          colour: green
+        'Approved - On Hold':
+          colour: green
+        Failed:
+          colour: red
+        'Failed - Proceed with sequencing':
+          colour: green
+    -link_parameters:
+      Gel_Run_ID: rm=home_page&ID=<VALUE>&cgi_application=Gel::Run_App
+  fields:
+    - Lane_Number
+    - Result_File
+    - Lane_Quality
+  file_link:
+    - Result_File
+  tables: 'Gel_Lane,Gel_Run,Run LEFT JOIN Plate ON Run.FK_PLate__ID = Plate_ID LEFT JOIN Library ON Plate.FK_Library__Name = Library_Name'

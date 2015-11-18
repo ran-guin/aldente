@@ -1,0 +1,69 @@
+System Requirements
+<h2>Hardware Requirements</h2>
+<P>The following hardware is recommended for running the alDente LIMS:
+<UL class=small>
+<LI>CPU : 
+<LI>RAM : 
+<LI>Static disk storage space : 
+<UL>
+<LI>System Installation - 
+<LI>Web Server:
+<LI>Core Laboratory Data -
+	<UL>
+	<LI>Projects directory: 20k / read
+	<LI>Archive: 300k / read
+	<LI>Database: 4K / read
+	<LI>Backups: 
+	<LI>Cache:
+	</UL>
+</UL>
+<LI>Barcode Printer & Labels (sticky 1000 recommended for low temperature applications -> -80 degrees) 
+<LI>Wireless Barcode Scanners (Compaq - IPAQ 3850) - not mandatory, but recommended for effective lab tracking
+<LI>Wireless Hubs (at least 2 are recommended to provide redundancy)
+</UL><h2>Software Requirements</h2>
+<P>The following software is recommended for usage, and should be available to maximize the seamlessness of an installation:
+<UL class=small>
+<LI>OS: Linux (Red Hat)
+<LI>Web Browser: (Mozilla 1.40)
+<LI>Perl: (version 5.6)
+<LI>Perl Libraries (Standard - available from CPAN):
+<UL class=small>
+<LI>Storable
+<LI>GD
+<LI>CGI
+<LI>DBI
+<LI>File
+<LI>FindBin
+<LI>Date
+<LI>Benchmark
+<LI>Cwd
+<LI>POSIX
+<LI>Term
+<LI>MIME
+<LI>URI
+</UL>
+</UL>
+<h2>Staff Requirements</h2>
+<P>The following is also recommended for installation of the alDente LIMS:
+<P>
+While generally the system does not require a full time administrator, there are a number of roles which should be filled by locally at sites which intend to use the LIMS.
+<UL>
+<LI>LIMS Administrator :<P>
+There should be at least one person on site who is responsible for locally addressing issues regarding the LIMS.  Their responsibilities may typically include:
+<UL class=small>
+<LI>Familiarizing themselves with the key function and running of the LIMS.
+<LI>Providing basic training on the LIMS to new users.
+<LI>Fielding simple questions regarding usage. 
+<LI>Facilitating communication between users of the system and the LIMS developers as required.
+</UL>
+<LI>Database Administrator :<P>
+There should be someone on site with the ability to minimally maintain an SQL database.  This person should be able to set up accounts as necessary, kill runaway processes and understand SQL query logic.  While duties in this area should be minimal, it is valuable to have someone comfortable with these tasks on site, particularly if the LIMS is used in a high throughput production environment.
+<LI>Advanced Lab Administrator User:<P>
+There should be at least one Laboratory administrator (or someone responsible for much of the data entering the database), who has the time to familiarize themselves with various aspects of the system, and remain in close contact with the LIMS administrator.  They should develop at least enough comfort with the system to add / edit laboratory protocols, add / edit standard chemistry formulas, define new Projects / Libraries, and generate data summaries using the LIMS.
+<LI>Systems Administrator :<P>
+There are a few tasks that should be set up locally that require customized set-up that is generally accomplished by local systems staff such as:
+<UL class=small>
+<LI>synchronizing the local file systems with the network file system (eg. mirroring samplesheets to, and raw data from the sequencers)
+<LI>setting up permissions if necessary to install the required directories for installation
+</UL>
+</UL>

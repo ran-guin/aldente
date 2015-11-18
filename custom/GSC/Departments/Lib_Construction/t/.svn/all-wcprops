@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/Lib_Construction/t
+END
+GE_View.t
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/GE_View.t
+END
+Statistics_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Statistics_App.t
+END
+Statistics.t
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Statistics.t
+END
+Spect_Summary.t
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Spect_Summary.t
+END
+Genechip_Statistics.t
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Genechip_Statistics.t
+END
+Bioanalyzer_Summary.t
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Bioanalyzer_Summary.t
+END
+Summary_App.t
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Summary_App.t
+END
+Genechip_Summary.t
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/106290/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Genechip_Summary.t
+END
+GCOS_SS.t
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/GCOS_SS.t
+END
+Microarray_API.t
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Microarray_API.t
+END
+GCOS_Report_Parser.t
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/GCOS_Report_Parser.t
+END
+Department.t
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/103228/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Department.t
+END
+GenechipRun.t
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/GenechipRun.t
+END
+TTR.t
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/TTR.t
+END
+Sample_Receiving.t
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/74171/alDente/trunk/custom/GSC/Departments/Lib_Construction/t/Sample_Receiving.t
+END

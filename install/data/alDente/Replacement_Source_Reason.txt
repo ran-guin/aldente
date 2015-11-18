@@ -1,0 +1,3 @@
+Replacement_Source_Reason_ID	Replacement_Source_Reason	Replacement_Source_Context
+1	Insufficient Volume	External
+2	Technical Issue	Internal

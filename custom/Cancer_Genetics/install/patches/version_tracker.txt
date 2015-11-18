@@ -1,0 +1,3 @@
+Version	Filename	Package
+2.5.0.4.Cancer_Genetics.1	cg_initialize.pat	Cancer_Genetics
+2.5.0.4.Cancer_Genetics.2	printer_assign.pat	Cancer_Genetics

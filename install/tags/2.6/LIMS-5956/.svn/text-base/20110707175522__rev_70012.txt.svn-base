@@ -1,0 +1,7 @@
+lib/perl/Core/alDente/Container_Views.pm
+lib/perl/Core/alDente/Container_Set.pm
+lib/perl/Core/alDente/Container.pm
+lib/perl/Core/alDente/Container_App.pm
+bin/t/Core/alDente/Container_Views.t
+bin/t/Core/alDente/Container_Set.t
+bin/t/Core/alDente/Container.t

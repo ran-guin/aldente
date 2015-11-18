@@ -1,0 +1,31 @@
+<h1>Formats</h1>
+
+<h2>Table Formats</H2>
+<UL>
+<LI>
+ID fields = TableName_ID (eg. 'Employee_ID' in 'Employee' Table)
+<LI>
+Foreign Keys = FK(optional_string)_TableName__ID <P>
+eg: <BR>
+FKParent_Plate__ID  points to -> Plate.Plate_ID
+</UL>
+
+<h2>Sequence_Subdirectory</h2>
+This is a field in the Sequence table that is formatted to provide more specific information:
+<P>
+(LibraryName - 5 characters)(PlateNumber)(Plate Quadrant - optional).(Chemistry_Code)(.version - as required)
+<P>
+eg. 'CN00113a.B7.2' -> 'CN001' Library, Plate 13a, Chemistry Code = 'B7', version '.2'
+<P>
+
+<h2>Primer Names</H2>
+<P>
+This is a non-standard foreign key.  Names should match IDENTICALLY with the Stock_Name in the stock table.
+<BR>
+This way, Primer information can be tied directly to the appropriately named reagents.
+<P>
+
+
+
+
+

@@ -1,0 +1,2 @@
+lib/perl/Core/alDente/ReArray.pm
+bin/t/Core/alDente/ReArray.t

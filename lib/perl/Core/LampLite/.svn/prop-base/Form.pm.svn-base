@@ -1,0 +1,6 @@
+K 13
+svn:mergeinfo
+V 159
+/LIMS/branches/lims_4_1-branch/lib/perl/Core/LampLite/Form.pm:104987-106196
+/LIMS/trunk/lib/perl/Core/LampLite/Form.pm:99992-100476,100971-102989,103006-104986
+END

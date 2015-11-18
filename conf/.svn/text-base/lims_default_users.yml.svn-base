@@ -1,0 +1,111 @@
+aldente_admin:
+    password: '*A87E89200D0C9CE65685755494903674E01B897D'
+    access:
+        FULL:
+            - <BETA_HOST>
+            - <DEV_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+
+super_cron:
+    password: '*D7FFB765481929B29071F7AC68BAF8A9C6B91C43'
+    access:
+        SUPER:
+            - <BETA_HOST>
+            - <DEV_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+
+super_api:
+    password: '*92DBB9DA76B402ABBB5DBAB7821C15FE164DF871'
+    access:
+        ADMIN:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+
+repl:
+    password: '*92DBB9DA76B402ABBB5DBAB7821C15FE164DF871'
+    access:
+        ADMIN:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>            
+
+replicant:
+    password: '*406E480B04BF741F3FB65E0C8976FC856BDBF418'
+    access:
+        ADMIN:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST> 
+
+limsdev:
+    password: '*A87E89200D0C9CE65685755494903674E01B897D'
+    access:
+        FULL:
+            - <BETA_HOST>
+            - <DEV_HOST>
+            - <TEST_HOST>:<TEST_DATABASE>
+        RO:
+            - <PRODUCTION_HOST>:<PRODUCTION_DATABASE>    
+
+viewer:
+    password: '*DB915A0C6B3B228C1BFBBFB1CF119883882D2709'
+    access:
+        RO:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+
+labuser:
+    password: '*2991EF2151F1EB2E71CCFA4C25F20F6AE2A1CE65'
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+
+cron:
+    password: '*92DBB9DA76B402ABBB5DBAB7821C15FE164DF871'
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>
+            
+collab_user:
+    password: '*92DBB9DA76B402ABBB5DBAB7821C15FE164DF871'
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST>            
+
+lims_admin:
+    password: '*92DBB9DA76B402ABBB5DBAB7821C15FE164DF871'
+    access:
+        STD:
+            - <DEV_HOST>
+            - <BETA_HOST>
+            - <TEST_HOST>
+            - <PRODUCTION_HOST> 
+
+unit_tester:
+    password: '*226D51D80F36F01F51EC19303DC472047D3869A0'
+    access:
+        STD:
+            - <BETA_HOST>:<BETA_DATABASE>
+            - <TEST_HOST>:<TEST_DATABASE>
+
+
+            
+
+

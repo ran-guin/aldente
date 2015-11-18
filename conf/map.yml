@@ -1,0 +1,150 @@
+--- !!perl/hash
+
+Help Map:
+    - LIMS Usage Instructions for:
+        - Lab Techs:
+            - Using the Scanner:
+                - Logging In: http://www.bcgsc.ca/wiki/x/toQp/#TechManual-LoggingIn-scanner
+                - Identifying Items: http://www.bcgsc.ca/wiki/x/PIUp
+                - Moving Items: http://www.bcgsc.ca/wiki/x/SIUp/#TechManual-MovingBarcodedItems-scanner
+                - Mixing Reagents: http://www.bcgsc.ca/wiki/x/HYUp
+                - Transferring Items: http://www.bcgsc.ca/wiki/x/4IQp
+                - Following Defined Protocols: http://www.bcgsc.ca/wiki/x/lIQp
+                - Throwing out Items: http://www.bcgsc.ca/wiki/x/z4Qp
+                - Re-Activating Items: http://www.bcgsc.ca/wiki/x/xIBQ
+                - Loading Experiment Runs: 	http://www.bcgsc.ca/wiki/x/7IQp
+                - Submitting Bugs: http://www.bcgsc.ca/wiki/x/p4Yp/#TechManual-SubmittingBugs-scanner
+            - Using the Desktop:
+                - Logging In: http://www.bcgsc.ca/wiki/x/toQp
+                - Home Pages: http://www.bcgsc.ca/wiki/x/PIEp
+                - Moving Items: http://www.bcgsc.ca/wiki/x/SIUp
+                - Mixing Reagents: http://www.bcgsc.ca/wiki/x/HYUp
+                - Transferring Items: http://www.bcgsc.ca/wiki/x/4IQp
+                - Following Defined Protocols: http://www.bcgsc.ca/wiki/x/lIQp
+                - Throwing out Items: http://www.bcgsc.ca/wiki/x/z4Qp
+                - Re-Activating Items: http://www.bcgsc.ca/wiki/x/xIBQ
+                - ReArray: http://www.bcgsc.ca/wiki/x/_4Qp
+                - Loading Experiment Runs: 	http://www.bcgsc.ca/wiki/x/7IQp
+                - Tracking Bioanalyzer Runs: http://www.bcgsc.ca/wiki/x/SwJb
+                - Submitting Bugs: http://www.bcgsc.ca/wiki/x/p4Yp
+                - Editing Form: 	http://www.bcgsc.ca/wiki/x/sYYp
+                - Search Edit Form: http://www.bcgsc.ca/wiki/x/CYcp
+                - Views: http://www.bcgsc.ca/wiki/x/J4Up
+                - Deleting a Plate: http://www.bcgsc.ca/wiki/display/lims/Tech+Manual+-+Deleting+Plates
+                - Edit Plate History: http://www.bcgsc.ca/wiki/x/TIaB
+        - Receiving Samples: 
+            - Single Sample Entry:
+            - Batch Sample Entry:
+            - Approving Single Sample Submissions:
+            - Approving Batch Sample Submissions:
+            - Receiving Shipments:
+            - Internal Sample Shipments:
+            - Sample Progress Data:
+        - Receiving Equipment/Stock:
+            - Equipment:
+            - Solution:
+            - Kit:
+        - Administrators:
+            - Admin Layer: http://www.bcgsc.ca/wiki/x/QJIp
+            - Monitoring Run Data: ch18s03.html#d0e4993
+            - Receiving Sample Shipments: http://www.bcgsc.ca/wiki/display/lims/Tech+Manual+-+Receiving+Sample+Shipments
+            - Approving Collaborator Submissions: http://www.bcgsc.ca/wiki/x/EoAy
+            - Change Plate Work Request: http://www.bcgsc.ca/wiki/pages/viewpage.action?pageId=8487430
+        - Bioinformatics:
+            - API Usage:
+        - QA/QC:
+            - QA / QC page: http://www.bcgsc.ca/wiki/x/LIIp
+        - Collaborators:
+            - Public Page: http://www.bcgsc.ca/wiki/x/v4Yp
+            - Logging In: http://www.bcgsc.ca/wiki/x/v4Yp/#TechManual-PublicPage-logginin
+            - Submitting Samples: http://www.bcgsc.ca/wiki/x/v4Yp/#TechManual-PublicPage-submitsamples
+            - Other Options: http://www.bcgsc.ca/wiki/x/v4Yp/#TechManual-PublicPage-otheroptions
+    - LIMS Tracking and Shortcuts:
+        Location Tracking:
+            - Storage Locations:
+                - Descriptions:
+                - Adding Storage Locations:
+            - Moving Items:
+            - Shipping Samples: http://www.bcgsc.ca/wiki/display/lims/Tech+Manual+-+Shipping+Items
+            - Inventory:
+            - Viewing Freezer Contents:
+        Laboratory Protocols:
+            - Defining Protocols: ch09s01.html#d0e2373
+            - Transfer Options: ch08s03.html
+            - Other Options: ch09s01.html#d0e2415
+            - Validation: ch09s01.html#d0e2533
+            - Following Protocols: ch09s01.html#d0e2518
+        Experiment Tracking:
+            - Loading Runs:
+            - Automated Analysis:
+            - Tracking Bioanalyzer Runs: http://www.bcgsc.ca/wiki/x/SwJb
+    - Interface:
+        - Home Pages:
+            Library: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-library
+            Original_Source: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-os
+            Source: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-source
+            Plate/Tube: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-plate
+            Equipment: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-equipment
+            Solution/Reagent: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-solution
+            Project: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-project
+            Funding: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-funding
+        - Forms:
+            - New Record Form:
+            - Dynamic Forms:
+            - Single Edit Form: http://www.bcgsc.ca/wiki/x/sYYp
+            - Multiple Search/Edit Form: http://www.bcgsc.ca/wiki/x/CYcp
+            - Editing Fields/Attributes: http://www.bcgsc.ca/wiki/x/joEy
+            - Upload Templates: 
+        - Departments / Groups:
+            - Custom Dept Pages: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages
+            - Ownership / Access: http://www.bcgsc.ca/wiki/x/PIEp/#TechManual-Homepages-access
+        - Reports:
+            - Notifications / Subscriptions:
+            - Automated Report Generation:
+        - Icons:
+            - Last 24 Hours:
+            - Contacts:
+    - LIMS Architecture:
+        - Overview:
+        - Primary Objects: 
+            - Barcoded Objects:
+                - Plate/Tube: 
+                    - Description: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-plate
+                - Source: 
+                    - Description: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-source
+                - Solution: 
+                    - Description: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-solution
+                - Equipment:
+                    - Description: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-equipment
+                - Box/Kit: 
+                    - Create:
+                - Rack:
+                    - Description: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-rack
+                    - Create: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-createrack
+            - Non Barcoded Classes:
+                - Projects: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-project
+                - Library Collections: http://www.bcgsc.ca/wiki/x/moAp/#alDenteImplementation-LIMSObjects-library
+                - Original_Sources:
+                - Contact:
+        - Schema:
+            - Receiving:
+            - Sample_Tracking:
+        - Database:
+            - mySQL Overview:
+    - Appendix:
+        - Lookup Tables:
+            - Taxonomy: 
+            - Sample_Type: 
+            - Organization: 
+            - Fail Reasons:     
+        - Home Page Details:
+            - PLA:
+Site Map:
+    - Adding New Records:
+        - Shelf/Rack/Box in Freezer: New Entry=New Rack
+        - Laboratory Shelf:
+        - Location: New Entry=New Location
+        - Site: New Entry=New Site
+        - Employee: New Entry=New Employee
+    - login: 
+        - login_help: login.html

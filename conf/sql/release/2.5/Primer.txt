@@ -1,0 +1,2 @@
+Primer_Name	Primer_Sequence	Primer_ID	Purity	Tm1	Tm50	GC_Percent	Coupling_Eff	Primer_Type	Primer_OrderDateTime	Primer_External_Order_Number	Primer_Status
+No Primer		1	\N	\N	\N	\N	\N	\N	\N	\N	\N

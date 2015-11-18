@@ -1,0 +1,29 @@
+## Configuration settings that are customized for specific installations ##
+custom_version_name: PRAM 
+DATABASE: purch 
+SQL_HOST: limsdemo01.dmz
+default_mode: DEV
+PRODUCTION_DATABASE : purch
+PRODUCTION_HOST : limsdemo01.dmz
+PRODUCTION_WEBHOST : limsdev02
+TEST_DATABASE : core_test
+TEST_HOST : limsdemo01
+UNIT_TEST_DATABASE : core_test
+UNIT_TEST_HOST : limsdemo01
+BACKUP_DATABASE : core 
+BACKUP_HOST : limsdemo01
+BETA_DATABASE : core_beta
+BETA_HOST : limsdemo01
+CORE_HOST : limsdemo01
+CORE_DATABASE : Core
+DEV_HOST : limsdemo01.dmz
+DEV_DATABASE : purch
+default_email_domain: bcgsc.ca
+URL_domain: http://limsdev02.bcgsc.ca
+admin_email : rguin@bcgsc.ca
+jira_project : ALDENTE
+jira_proxy_user : aldente_proxy_user
+jira_password : jiraforaldente
+web_root: /opt/alDente
+data_root: /home/aldente
+url_root: SDB

@@ -1,0 +1,21 @@
+### Ongoing ###
+
+# Check for any sample sheets to be copied
+*/1 * * * * export LD_ASSUME_KERNEL=2.4.1 && /home/sequence/alDente/WebVersions/Production/root/seqmirror -m >> /home/sequence/alDente/logs/seqmirror.log
+
+# Check disk usage
+1 19 * * * date >> /home/sequence/alDente/logs/usage.log; du -sk /projects/seq/01/* | sort -nr >> /home/sequence/alDente/logs/usage.log
+
+# CGH stuff
+*/1 8-19 * * 1-5 /home/sequence/alDente/WebVersions/CGH/bin/generate_image.pl >> /home/sequence/alDente/logs/generate_image.log
+*/1 8-19 * * 1-5 /home/sequence/alDente/WebVersions/CGH/bin/update_CGH.pl >> /home/sequence/alDente/logs/update_CGH.log
+
+#### 7 AM ####
+
+# Check the logs from the cron jobs.
+01 07 * * * /home/sequence/alDente/bin/check_logs.pl -f cron -x 'Error: Problem Unmounting ?','0 failed','Connection to d3700-6 failed',/program ERROR','error connecting to 10.1.1.136:139','Error mounting ?','SMB connection failed'  -m -1d -n achan@bcgsc.ca,rguin@bcgsc.ca > /home/sequence/alDente/logs/check_logs_plebe.log
+
+### 12 AM ###
+
+# Rewrite originals
+27 0 * * * /home/sequence/alDente/WebVersions/Production/root/seqmirror -m > /home/sequence/alDente/logs/seqmirror.log

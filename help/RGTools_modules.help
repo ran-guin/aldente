@@ -1,0 +1,22 @@
+<H2>RGTools Modules</H2>
+<P>
+These modules should be usable by anyone, and provide generic functionality that was originally used by the alDente LIMS.
+
+Generally only standard perl libraries (if any) are required to allow the use of any routines in these modules.
+
+<span class=small><UL>
+
+<LI><A Href="http://seqdb01/SDB/html/perldoc/HTML_Table.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/HTML_Table.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >HTML_Table</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Code.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Code.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Code</A> : This object represents a Perl source code.  It has the ability to insert Perldoc and re-organize a source file.
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Views.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Views.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Views</A> : This facilitates automatic viewing in HTML view..
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Graph.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Graph.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Graph</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Object.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Object.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Object</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/RGIO.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/RGIO.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >RGIO</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/RGmath.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/RGmath.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >RGmath</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Read.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Read.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Read</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Conversion.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Conversion.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Conversion</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Reads.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Reads.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Reads</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/TLC.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/TLC.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >TLC</A> : Tips/Links/Code
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Directory.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Directory.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Directory</A> : This module auto-documents modules 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/String.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/String.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >String</A> : 
+</UL></span>

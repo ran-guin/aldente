@@ -1,0 +1,22 @@
+The manual may be generated automatically by simply building the components in relatively small html files.
+
+Use the build_help.files file to define the layout of the Manual.
+Chapters are automatically built as defined in this file.
+
+Links to the applicable help files are created automatically.
+
+Example:
+
+Chapter: This is a sample chapter:Example_chapter
+File1
+File2 Description:File2
+
+This would require the original building of two html files: File1.help, File2.help.
+
+Running build_help.pl will then automatically combine these files into a single help file (html file) called 'Example_chapter.chapter.help', which will be labeled: 'This is a sample chapter'.  
+
+(Optionally, a more descriptive label can be used for the individual files if a colon is used to separate this label from the actual filename - eg. File2.help is accessed via the label 'File2 Description'.
+
+It will also combine all Chapters into a large single html file called Manual.help.
+
+A Table of Contents is also automatically generated (TofC.help), which is included in the Manual.help file.

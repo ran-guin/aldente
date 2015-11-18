@@ -1,0 +1,20 @@
+<H1>Using the Search Tool</H1>
+<P>
+The search tool is set up to search for data quickly, even if you are not sure where to find it.
+<P>
+It searches a number of standard fields for the string entered in the textfield.  For example if you are interested in finding a piece of equipment, you may enter the name of the equipment, the serial number or the equipment type, and you may be shown various elements in the database that may be what you are looking for.  Alternatively if you are looking for a plate or run from a specific library you can enter the library name, and you will be given a list of all the plates and runs found for that library.  From here you can click on the table you wish to look at, and be taken to a list of all items of a given type.
+<P>
+Standard fields searched using the Search Tool:<P>
+<UL>
+<LI>Employee: Name (Alias), Full Name, Initials, Email Address
+<LI>Equipment: Name (Alias), Model, Serial_Number, Type
+<LI>Stock: Name, Catalog_Number, Lot_Number
+<LI>Library: Name
+<LI>Sequence: Sequence_Subdirectory (specially formatted)
+<LI>Organization: Name
+<LI>Vector: Name
+<LI>Primer: Name
+<LI>Plate: Library, Library+Plate_Number+Quadrant
+</UL>
+<P>
+Note: If you wish to search for reagents/solutions using this method, the items of interest should turn up in the 'Stock' table.  This stores information common to all stock items in this batch.  To link to individual bottle information (in the 'Solution' table), you can link via the references listed in the 'FKeys->' link. (If this is hidden, you may opt to display these links or just click on the stock batch you are interested in, and the FKey-> link should appear at the bottom of the page showing Stock information.)

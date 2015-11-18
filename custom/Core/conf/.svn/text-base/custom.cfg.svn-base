@@ -1,0 +1,29 @@
+## Configuration settings that are customized for specific installations ##
+custom_version_name: Core
+DATABASE: core_dev
+SQL_HOST: limsdev04
+default_mode: DEV
+PRODUCTION_DATABASE : core
+PRODUCTION_HOST : limsdev04
+PRODUCTION_WEBHOST : hblims01
+TEST_DATABASE : core_test
+TEST_HOST : limsdev04
+UNIT_TEST_DATABASE : core_test
+UNIT_TEST_HOST : limsdev04
+BACKUP_DATABASE : core 
+BACKUP_HOST : limsdev04
+BETA_DATABASE : core_beta
+BETA_HOST : limsdev04
+CORE_HOST : limsdev04
+CORE_DATABASE : Core
+DEV_HOST : limsdev04
+DEV_DATABASE : core_dev
+default_email_domain: bcgsc.ca
+URL_domain: http://limsdev02.bcgsc.ca
+admin_email : rguin@bcgsc.ca
+jira_project : ALDENTE
+jira_proxy_user : aldente_proxy_user
+jira_password : jiraforaldente
+web_root: /opt/alDente
+data_root: /home/aldente
+url_root: SDB

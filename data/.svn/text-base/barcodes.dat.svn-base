@@ -1,0 +1,248 @@
+# Barcodes Class Definition File
+#
+# 10 July 2000
+#
+#
+
+# Mapping label with barcode. Use the 'id' field to set
+# the value of the barcode (e.g. ma1234b)
+[mapnightcult_b] MAPPING overnight culture barcode
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  plateid	[a-zA-Z]{1,2}\d{3,5}	0,0 	60	caps,s="ma0323"
+  quad		[a-dA-D\s]		350,0	50 	caps,s="a"
+  date		\d{2,4}-\d{2}-\d{2}	0,105	30	caps,s="today"
+  init		[a-zA-Z]{2,3}		340,105	30	caps,s="jms"
+  barcode       code\d+                 0,50    45  s="code128"
+  id            [a-zA-Z]{1,2}\d{3,5}[a-zA-Z]?  125,90  20  s="ma0323",noprint
+
+[mapnightcult] MAPPING overnight culture 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  plateid	[a-zA-Z]{1,2}\d{3,5}	0,0 	60	caps,s="ma0323"
+  quad		[a-dA-D\s]		350,0	50 	caps,s="a"
+  date		\d{2,4}-\d{2}-\d{2}	0,75	30	caps,s="today"
+  init		[a-zA-Z]{2,3}		340,75	30	caps,s="jms"
+
+[mapmanual] MAPPING tray box label 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  plateid	[a-zA-Z]{1,2}\d{3,5}[a-zA-Z] 0,10 40	caps,s="ma0323d"
+  date		\d{6}			  0,45	 35	caps,s="010715"
+  note		.{0,30}			  0,80	 30	caps,s="note_field"
+  param		.{0,30}			  0,105	 15	caps,s="1.2%,_12ch"
+  field1        .{0,50}                   175,20 25     caps,s="Tray:____"
+  field2        .{0,50}                   182,55 25     caps,s="Box:____"
+  field3        .{0,50}                   190,90 25     caps,s="Init:____"
+
+[mapnightcult_s] MAPPING small overnight culture 
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO  15,15
+  TOP   15
+  plateid	[a-zA-Z]{1,2}\d{3,5}	0,5 	40	caps,s="ma0323"
+  quad		[a-dA-D\s]		300,5	40 	caps,s="a"
+  date		\d{2,4}-\d{2}-\d{2}	160,5	20	caps,s="today"
+  init		[a-zA-Z]{2,3}		160,22	20	caps,s="jms"
+ 
+  
+[seqnightcult] SEQUENCING overnight culture 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25 
+  TOP 15
+  class         [a-zA-Z0-9]{3}       0,100   20      caps,s="PLA"
+  id            [0-9]{1,10}          45,100  20      s="500",nopad
+  barcode       code\d+              0,50    40  s="code128",zeropad=10
+  plateid	[a-zA-Z0-9]{5}(_|\-)\d{1,3} 50,0  50 	caps,s="cn001-232"
+  quad		[a-dA-D\s]		360,0	  30 	caps,s="b"
+  date		\d{2,4}-\d{2}-\d{2}	220,100	  20	caps,s="today"
+  init		[a-zA-Z]{2,3}		360,100	  20	caps,s="jms"	
+  app           [a-zA-Z]{0,1}		0,0	  30	caps,s="S"
+
+[seqnightcult_s] SEQUENCING small overnight culture 
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,10
+  TOP 15
+  class         [a-zA-Z0-9]{3}            30,25    15   caps,s="PLA"
+  id            [0-9]{1,10}               65,25    15   s="432",nopad
+  barcode       code\d+                   30,0     24   s="code128",zeropad=10
+  plateid	[a-zA-Z0-9]{5}(_|\-)\d{1,3} 160,25   15   caps,s="cn001_232"
+  quad		[a-zA-Z\s]		  390,10   20 	caps,s="b"
+  date		\d{2,4}-\d{2}-\d{2}	  260,25   15	caps,s="today"
+  init		[a-zA-Z]{2,3}		  360,25   15	caps,s="jms"	
+  app		[a-zA-Z]{0,1}		  10,10	   20	caps,s="S"
+
+[seqnightcult_smult] SEQUENCING small overnight culture 
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 15
+  class         [a-zA-Z0-9]{3}            30,25    15   caps,s="MUL",noprint
+  id            [0-9]{1,10}               65,25    15   s="432",nopad,noprint
+  barcode       code\d+                   30,0     24   s="code128",zeropad=10
+  multtext      .*                        30,25    15   s="PLA0001,0002,0003"
+  plateid	[a-zA-Z0-9]{5}(_|\-)\d{1,3} 260,25   15   caps,s="cn001_232"
+  quad		[a-dA-D\s]		  400,0	   30 	caps,s="b"
+  init		[a-zA-Z]{2,3}		  360,25   15	caps,s="jms"	
+  app		[a-zA-Z]{0,1}		  0,0 	30	caps,s="S"
+
+[label1] Simple text label plate 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO  25,25 
+  TOP   15
+  field1	.*	0,0	40	caps,s="field_1_ABCdef_0123"
+  field2	.*	0,35	30	caps,s="field_2_ABCdef_0123"
+  field3	.*	0,60	20	s="field_3_ABCdef_0123" 
+  field4	.*	0,80	20	s="field_4_ABCdef_0123"
+  field5	.*	0,100	20	s="field_5_ABCdef_0123"
+
+[label2] Small text label plate
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 15
+  field1        .*      10,2     20      s="field_1"
+  field2        .*      10,22    20      s="field_2"
+
+[barcode1] General barcode label 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          80,90   20  caps,s="EQU"
+  id            \d{1,8}                 125,90  20  s="1234",zeropad=8
+  barcode       code\d+                 0,25    60  s="code128",zeropad=8
+  text          .*                      0,0     30  s="Sampletext" 
+
+[barcode2] General barcode label - barcode encodes something else
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          80,90   20  caps,s="EQU",noprint
+  id            \d{1,8}                 125,90  20  s="1234",zeropad=8,noprint
+  barcode       code\d+                 0,35    50  s="code128",zeropad=8
+  string        .*                      0,0     35  s="Sampletext" 
+  type          .*                      0,100   25  s="type_field"
+  secid         .*                      325,90  15  s="secondary_id"
+
+
+[lto1] LTO tape label
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  class         [a-zA-Z0-9]{0,3}          80,90   30  caps,s="LTO"
+  id            \w{1,8}                   125,110 20  s="1234"
+  barcode       code\d+                   20,35   70  s="code128"
+  text          .*                        20,0    30  s="Sampletext" 
+
+[employee] Employee label 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          10,80   40      s="Emp"
+  id            [0-9]{1,10}             100,80  30      s="452",nopad
+  barcode       code\d+                 10,26   50      s="code128",zeropad=5
+  init		[a-zA-Z]{2,3}		280,85 25       caps,s="jms"	 
+  name          .{1,50}                 10,0    30      s="Duane Smailus"
+
+[password] Employee label with password included
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         Emp.{1,20}      0,0     0     	s="Emp3",noprint
+  id            .{1,10} 	0,0     0     	s="pwd",noprint
+  name	 	.{1,20}		10,0    30	s="Duane Smailus"	
+  initials	.{2,3}		280,0 	25	caps, s='jms'
+  barcode       code\d+          10,50   40      s="code39"
+
+[solution] Solution label 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          0,85   30      s="SOL"
+  id            [0-9]{1,10}             40,70  50      s="452",nopad
+  barcode       code\d+                 0,26   40      s="code128",zeropad=10
+  date		\d{2,4}-\d{2}-\d{2}	280,70 15      caps,s="today"
+  init		[a-zA-Z]{2,3}		280,85 25      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}        335,85 25      s="2/5"
+  solname       .{1,50}                 0,0    30      s="EDTA_0.2%_v/v"
+
+[agar_solution] Agar Solution label 
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO 15,15
+  TOP 15
+  class         [a-zA-Z0-9]{3}          10,25   15      s="SOL"
+  id            [0-9]{1,10}             30,25   15      s="452",nopad
+  barcode       code\d+                 10,0    24      s="code128",zeropad=10
+  date		\d{2,4}-\d{2}-\d{2}	340,25   15      caps,s="today"
+  init		[a-zA-Z]{2,3}		320,25  15      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}        370,5   15       s="2/5"
+  solname       .{1,50}                 80,25  15      s="EDTA_0.2%_v/v"
+
+[proc_long] Long procedure 
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO 15,15
+  TOP 15
+  class         .{1,24}                 0,26   20     s="SampleText"
+  id            [0-9]{0,8}              125,85 20     s="",noprint
+  barcode       code\d+                 0,0    24     s="code39",dense      
+
+[proc_med] Medium procedure 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         .{1,15}                 0,65   55     s="1234567890abc"
+  id            [0-9]{0,8}              0,85   20     s="",noprint
+  barcode       code\d+                 0,0    60     s="code39"
+
+[proc_short] Short procedure 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         .{1,5}                  240,26 50      s="12345"
+  id            [0-9]{0,8}              125,85 20      s="",noprint
+  barcode       code\d+                 0,5    100     s="code128"
+
+[chemistry_calc] Chemistry calculations
+  HEIGHT 1.0
+  WIDTH  2.25
+  ZERO   15,15
+  TOP 15
+  name		.{1,40}			20,0	40	s="BD Brew"
+  class		[a-zA-Z0-9]{3}		200,0 0	s="sol"
+  R1name	.{0,20}			40,40	30	s="Primer"
+  R1amt		.{0,15}			290,40	30	s="100 ul"
+  R1total       .{0,15}                 440,40  30      s="100 ul"
+  R2name	.{0,25}			40,75	30	s="Buffer"
+  R2amt		.{0,15}			290,75	30	s="10 ul"
+  R2total	.{0,15}                 440,75  30      s="100 ul"
+  R3name        .{0,20}                 40,110   30      s="Buffer"
+  R3amt         .{0,15}                 290,110  30      s="100 ul"
+  R3total       .{0,15}                 440,110  30      s="100 ul"
+  R4name        .{0,25}                 40,145   30      s="Buffer"
+  R4amt         .{0,15}                 290,145  30      s="10 ul"
+  R4total       .{0,15}                 440,145  30      s="100 ul"
+  R5name        .{0,50}                 40,180   30      s="Buffer"
+  R5amt         .{0,15}                 290,180  30      s="100 ul"
+  R5total       .{0,15}                 440,180  30      s="100 ul"
+  message	.{0,55}			350,0	30	s="Message" 
+  barcode	code\d+			250,0	0	s="code128"
+  id		[0-9]{0,8}		225,0	0	s="",noprint	

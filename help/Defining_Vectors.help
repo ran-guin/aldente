@@ -1,0 +1,36 @@
+<H1>What is a Vector ?</H1>
+A Vector is a defined nucleotide sequence that is associated with a
+library.  It is typically screened out of any resultant sequence data
+since it is not part of the sequenced insert that is of interest.
+
+<H2>What sort of information do we store for Vectors ?</H2>
+For Vectors we will store various details including:
+<UL>
+<LI>Manufacturer
+<LI>Catalog Number
+<LI>Sequence File (the name of a file containing sequence information
+- see below)
+<LI>Source (where it came from)
+<LI>Antibiotic Marker
+<LI>Inducer
+<LI>Substrate
+</UL>
+
+<H2>What does the Vector Sequence File look like?</H2>
+The name specified for the Sequence File (eg. 'pOTB7.seq') 
+should refer to a file located in the vector directory (/home/sequence/VECTOR/)
+In this directory, all of the vector files are located, and a
+concatenated version created on a daily basis.  <P>
+The concatenated file is screened against sequence using
+'cross_match',
+and the resulting screened matches found stored in the 'Cross_Match'
+table.<P>
+The standard format of the *.seq file is similar to the standard fasta
+format. eg.
+
+Name_of_vector (any appropriate comments)
+agggggttc.....
+
+
+
+

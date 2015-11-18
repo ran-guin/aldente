@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/103242/alDente/trunk/lib/perl/Plugins
+END
+Bioanalyzer
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/86043/alDente/trunk/lib/perl/Plugins/Bioanalyzer
+END
+Cluster
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Cluster
+END
+Alignment_Analysis
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Alignment_Analysis
+END
+Qubit
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/80317/alDente/trunk/lib/perl/Plugins/Qubit
+END
+Raindance
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/86038/alDente/trunk/lib/perl/Plugins/Raindance
+END
+JIRA
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/70228/alDente/trunk/lib/perl/Plugins/JIRA
+END
+POG
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/94243/alDente/trunk/lib/perl/Plugins/POG
+END
+SRA
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/SRA
+END
+Lab_Instrument
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/103242/alDente/trunk/lib/perl/Plugins/Lab_Instrument
+END
+Bismark
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/84028/alDente/trunk/lib/perl/Plugins/Bismark
+END
+Sci_Print
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/87135/alDente/trunk/lib/perl/Plugins/Sci_Print
+END
+Submission
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Submission
+END
+Novoalign
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/96136/alDente/trunk/lib/perl/Plugins/Novoalign
+END
+SequenceRun
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95205/alDente/trunk/lib/perl/Plugins/SequenceRun
+END
+Lab
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Lab
+END
+EDACC
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/EDACC
+END
+Indexed_Run
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Indexed_Run
+END
+Patient
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Patient
+END
+QPCR
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/88036/alDente/trunk/lib/perl/Plugins/QPCR
+END
+Gel
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/94617/alDente/trunk/lib/perl/Plugins/Gel
+END
+Equipment
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Equipment
+END
+BWA
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/BWA
+END
+Issue_Tracking
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/Issue_Tracking
+END
+Illumina
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/94215/alDente/trunk/lib/perl/Plugins/Illumina
+END
+NCBI
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Plugins/NCBI
+END

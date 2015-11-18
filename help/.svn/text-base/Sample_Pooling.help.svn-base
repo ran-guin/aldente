@@ -1,0 +1,43 @@
+<h1>Sample Pooling</h1>
+<ul>
+</ul>
+<h3>Defining a sample pooling step</h3>
+<ol>
+  <li>As admin, log on to the protocol admin page.</li>
+  <li>Either select an existing protocol or create a new protocol for
+the pooling step.</li>
+  <li>In the screen that accepts inputs for a protocol step:</li>
+  <ul>
+    <li>Select the 'Pool' radio button in the Step Name section</li>
+    <li>Select the target container type from the popup menu.&nbsp;
+Right now only tubes are supported.</li>
+    <li>Check the 'Scanner View Enabled' checkbox</li>
+    <img src="$Help_Image_dir/Pooling_Step_Setup.png">
+  </ul>
+  <li>Save the step. Note that the step name will be automatically generated.<br>
+  </li>
+</ol>
+<h3>Going through a sample pooling step</h3>
+<ol>
+  <li>Scan in the source tubes that are to be pooled.</li>
+  <li>Save the tubes as a tube set.</li>
+  <li>Select the protocol that contains the pooling step.</li>
+  <li>In the pooling step page, enter the amounts to pooled from for
+each source tubes.</li>
+  <img src="$Help_Image_dir/Pooling_Step_Usage.png"> <li>A new
+original tube will be created along with a barcode.</li>
+  <li>The protocol will continue with the next step.<br>
+  </li>
+</ol>
+<h3>Viewing pooling ancestry</h3>
+<ol>
+  <li>After the pooling is done, its ancestry can be viewed from the
+scan tubes home page.</li>
+  <ul>
+    <li>Scan in one of the source tubes:</li>
+    <img src="$Help_Image_dir/Pooling_To_Ancestry.png"> <li>Scan in
+the target tube:<br>
+    </li>
+    <img src="$Help_Image_dir/Pooling_From_Ancestry.png">
+  </ul>
+</ol>

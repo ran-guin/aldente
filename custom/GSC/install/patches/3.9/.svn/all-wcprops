@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/79048/alDente/trunk/custom/GSC/install/patches/3.9
+END
+Add_BCR_Study_Target_Length.pat
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/79048/alDente/trunk/custom/GSC/install/patches/3.9/Add_BCR_Study_Target_Length.pat
+END
+TSS.pat
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/78123/alDente/trunk/custom/GSC/install/patches/3.9/TSS.pat
+END
+Cascading_Goals_data.pat
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/76700/alDente/trunk/custom/GSC/install/patches/3.9/Cascading_Goals_data.pat
+END
+Update_TCGA_Annotation.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/76776/alDente/trunk/custom/GSC/install/patches/3.9/Update_TCGA_Annotation.pat
+END

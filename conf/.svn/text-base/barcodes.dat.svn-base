@@ -1,0 +1,813 @@
+# Barcodes Class Definition File
+#
+
+######################################
+## Regular large (0.75 inch) labels ##
+######################################
+
+[seqnightcult] SEQUENCING overnight culture 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  20,20 
+  TOP 15
+  class         [a-zA-Z0-9]{3}          0,100   20      caps,s="PLA"
+  id            [0-9]{1,10}             45,100  20      s="500",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   30,30    40  s="code128",zeropad=10	code128
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 50,0  50 	s="cn001-232"
+  quad		[a-dA-D\s]		295,0	  40 	caps,s="b"
+  b_code	\w{0,5}		        380,0     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	220,100	  20	caps,s="today"
+  init		[a-zA-Z]{2,4}		330,100	  20	caps,s="jms"	
+  p_code        \w{0,1}                 0,0       30    caps,s="S"
+  p2_code	\w{0,2}		        22,8	  20	caps,s="q2"
+  label         \w{0,3}                 280,50     20    caps,s="abc"
+
+[seqnightcult_mult] SEQUENCING big multiplate barcode
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,15 
+  TOP 15
+  class         [a-zA-Z0-9]{3}            0,100    25   caps,s="MUL",noprint
+  id            [0-9]{1,10}               35,100    25   s="432",nopad,noprint
+  label         [.]{0,5}                  55,100    25   s="'A'",nopad,noprint
+  barcode       [a-zA-Z0-9]{3}\d{1,9}      0,35     40   s="code128",zeropad=10	code128
+  multtext      .*                        0,100    15   s="PLA0001,0002,0003"
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 50,0   30   s="cn001_232"
+  quad		[a-dA-D\s]		  360,0	   30 	caps,s="b"
+  init		[a-zA-Z]{2,4}		  360,100   25	caps,s="jms"	
+  p_code        \w{0,1}         0,0       30    caps,s="S"
+  p2_code	\w{0,2}		15,0	  20	caps,s="q2"
+  b_code	\w{0,5}		400,0     20    caps,s="T7"
+  date          \d{2,4}-\d{2}-\d{2}       220,100   15   caps,s="today"
+
+[agar_plate] MGC Agar plates 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25 
+  TOP 15
+  class         [a-zA-Z0-9]{3}       0,100   20      caps,s="PLA"
+  id            [0-9]{1,10}          45,100  20      s="500",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}     0,40    40  s="code128",zeropad=10	code128
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 50,0  25 	caps,s="cn001-232"
+  sample	[a-zA-z0-9]*		80,30	10	s="nosample"		
+  quadwell	[a-zA-Z0-9\s_?]*		360,0	  30 	caps,s="b"
+  date		\d{2,4}-\d{2}-\d{2}	220,100	  20	caps,s="today"
+  init		[a-zA-Z]{2,4}		360,100	  20	caps,s="jms"	
+  p_code	\w{0,1}		0,0	  20	caps,s="S"
+  p2_code        \w{0,2}         20,0      15    caps,s="q2"
+  b_code	\w{0,5}		400,0     20    caps,s="T7"
+
+[label1] Simple text label plate 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO  25,25 
+  TOP   15
+  field1	.*	0,0	40	caps,s="field_1_ABCdef_0123"
+  field2	.*	0,35	30	caps,s="field_2_ABCdef_0123"
+  field3	.*	0,60	20	s="field_3_ABCdef_0123" 
+  field4	.*	0,80	20	s="field_4_ABCdef_0123"
+  field5	.*	0,100	20	s="field_5_ABCdef_0123"
+
+[equip_label] General barcode label 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          80,90   20  caps,s="EQU"
+  id            \d{0,8}                 125,90  20  s="1234",zeropad=8
+  barcode       [a-zA-Z0-9]{3}\d{1,9}      0,25    40  s="code128",zeropad=8	code128
+  text          .*                      0,0     30  s="Sampletext" 
+
+[barcode1] General barcode label 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 10
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   0,25    60  s="code128",zeropad=8	code128
+  text          .*                      0,0     30  s="Sampletext,caps" 
+  text2         .*                      280,00  20  s="Sampletext"
+  class         \w*     80,100   20      caps,s="RAC"
+  id            \d*     125,100  20      s="12345"
+
+[barcode2] General barcode label - barcode encodes something else
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 10
+  class         [a-zA-Z0-9]{3}          80,90   20  caps,s="EQU",noprint
+  id            \d{1,8}                 125,90  20  s="1234",zeropad=8,noprint
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   0,35    50  s="code128",zeropad=8	code128
+  string        .*                      0,0     35  s="Sampletext" 
+  type          .*                      0,100   25  s="type_field"
+  secid         .*                      325,100 15  s="secondary_id"
+
+[lto1] LTO tape label
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  class         [a-zA-Z0-9]{0,3}          80,90   30  caps,s="LTO"
+  id            \w{1,8}                   125,110 20  s="1234"
+  barcode       .*                 20,35   70  s="code128"	code128
+  text          .*                        20,0    30  s="Sampletext" 
+
+[employee] Employee label 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}          10,90   30      s="Emp"
+  id            [0-9]{1,10}             100,90  30      s="452",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   10,20   50      s="code128",zeropad=5	code128
+  init		[a-zA-Z]{2,4}		280,85 25       caps,s="jms"	 
+  name          .{1,50}                 10,0    30      s="Duane_Smailus"
+
+[password] Employee label with password included
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         Emp.{1,20}      0,0     0     	s="Emp3",noprint
+  id            .{1,10} 	0,0     0     	s="pwd",noprint
+  name	 	.{1,20}		10,0    30	s="Duane_Smailus"	
+  initials	.{2,4}		280,0 	25	caps, s='jms'
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   10,50   40      s="code39"	code128
+
+[solution] Solution label 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}           0,85   30      caps,s="SOL"
+  id            [0-9]{1,10}              50,80  35      s="452",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}     0,24   40      s="code128",zeropad=10	code128
+  exp_date      EXP\:\d{2,4}-\d{2}-\d{2} 165,90 15      caps,s="EXP:06-01-01"
+  date		\d{2,4}-\d{2}-\d{2}	 165,105 15      caps,s="today"
+  init		[a-zA-Z]{2,4}		 280,85 25      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}         335,85 25      s="2/5"
+  solname       .{1,50}                  0,0    30      s="EDTA_0.2%_v/v"
+  test  	.{0,1}			 335,0	30	s='T'			
+  label         \w{0,3}                 280,50     20    caps,s="abc"
+
+[proc_med] Medium procedure 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         .{1,15}                 0,75   35     s="1234567890abc"
+  id            [0-9]{0,8}              0,85   20     s="",noprint
+  barcode       .*                      0,0    55     s="code39"	code128
+
+[proc_short] Short procedure 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         .{1,5}                  240,26 50      s="12345"
+  id            [0-9]{0,8}              125,85 20      s="",noprint
+  barcode       [a-zA-Z0-9]{3}\d{1,9}        0,5    100     s="code128"	code128
+
+[custom_large] large custom barcode label, with a different string encoded in the barcode 
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  25,25
+  TOP 15
+  barcode_value .*                      0,0     0   s="value"
+  barcode       .*                      0,20    55  s="code128"	code128
+  text          .*                      0,0     30  s="Sampletext"
+  subtext	.*			0,100	20  s="subtext"  
+
+[flowcell_large] large custom flowcell barcode label
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO  25,25
+  TOP 15
+  barcode       .*                      0,20    55  s="code128" code128
+  text          .*                      0,0     30  s="Sampletext"
+  subtext       .*                      0,100   20  s="subtext"
+  
+[run_barcode_1D]
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 0,0
+  TOP 10
+  DPI 200
+  class         [a-zA-Z0-9]{3}                45,20	23	caps,s="RUN"
+  id            [0-9]{1,10}		      90,20	23	s="432",zeropad=7
+  position      .*                            190,20    23      s="rac_alias"
+  barcode       [a-zA-Z0-9]{3}\d{1,9}         25,40     70      s="code128",zeropad=7   code128
+  p_code	\w{0,4}                       250,60	20	caps,s="S"
+  type          .*                            290,60    20      s="Gel"
+  initial       [A-Za-z]{2,4}                 350,60    20      s="REZ"
+  creation      .*                            250,80    20      s="jan-20-2004"
+  name          .*                            250,100   23      s="LB02329.CR.1"
+  
+[gelpour_barcode_1D]
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 0,0
+  TOP 30
+  DPI 200
+  class         [a-zA-Z0-9]{3}                45,20	23	caps,s="GLP"
+  id            [0-9]{1,10}		      90,20	23	s="432",zeropad=7
+  barcode       [a-zA-Z0-9]{3}\d{1,9}         25,25     70      s="code128",zeropad=7	code128
+  rack          [a-zA-Z0-9]{1,13}             250,20    23      s="rac234" 
+  creation      .*                            250,60    23      s="jan-20-2004"
+  initial       [A-Za-z]{2,4}                 250,90    23      s="REZ"
+
+[E-Gel_barcode_1D]
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 20,20
+  TOP 15
+  class         [a-zA-Z0-9]{3}                45,20	23	caps,s="GRN"
+  id            [0-9]{1,10}		      100,20	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}         30,25     40      s="code128", code128
+  solution          [a-zA-Z0-9]{1,13}             270,20    23      s="sol234" 
+  creation      .*                            270,60    23      s="jan-20-2004"
+  initial       [A-Za-z]{2,4}                 270,90    23      s="REZ"
+
+[AATI_Run_barcode_1D]
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 20,20
+  TOP 15
+  class         [a-zA-Z0-9]{3}                45,20	23	caps,s="ARN"
+  id            [0-9]{1,10}		      100,20	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}         30,25     40      s="code128", code128
+  creation      .*                            270,60    23      s="jan-20-2004"
+  initial       [A-Za-z]{2,4}                 270,90    23      s="REZ"
+
+[microarray] Microarray (Genechip) label 
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO 25,25
+  TOP 15
+  class         [a-zA-Z0-9]{3}           0,85   30      caps,s="MRY"
+  id            [0-9]{1,10}              55,85  30      s="452",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}      0,26   40      s="code128",zeropad=10	code128
+  exp_date      EXP\:\d{2,4}-\d{2}-\d{2} 165,90 15      caps,s="EXP:06-01-01"
+  date		\d{2,4}-\d{2}-\d{2}	 165,105 15      caps,s="today"
+  init		[a-zA-Z]{2,4}		 280,85 25      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}         335,85 25      s="2/5"
+  solname       .{1,50}                  0,0    30      s="Genechip"
+  test  	.{0,1}			 335,0	30	s='T'
+
+[cg_large_tube] Cancer Genetics large tube
+  HEIGHT 0.75
+  WIDTH 2.25
+  ZERO  20,20
+  TOP 15
+  class         [a-zA-Z0-9]{3}          0,100   20      caps,s="PLA"
+  id            [0-9]{1,10}             45,100  20      s="500",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   0,30    40  s="code128",zeropad=10     code128
+  plateid       [a-zA-Z0-9]{4,6}(_|\-)\d{1,4} 25,0  50  s="BM08-232"
+  date          .{2}\d{2,4}-\d{2}-\d{2}     180,100   20    caps,s="C:2008-09-09"
+  init          [a-zA-Z]{2,4}           330,100   20    caps,s="jms"
+  label         .{0,8}                 280,0   30    caps,s="P:244"
+  content       \w{0,8}                 280,35  30      caps,s="plasma"
+
+ [cg_tube_1D] BCG 1D Plate Large Label
+  HEIGHT 0.75
+  WIDTH 2.25	
+  ZERO  20,20 
+  TOP 15
+  class         [a-zA-Z0-9]{3}          0,100   20      caps,s="PLA"
+  id            [0-9]{1,10}             45,100  20      s="500",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   30,30    40  s="code128",zeropad=10	code128
+  b_code	\w{0,5}		        380,0     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	220,100	  20	caps,s="today"
+  init		[a-zA-Z]{2,4}		330,100	  20	caps,s="jms"	
+  p_code        \w{0,1}                 0,0       30    caps,s="S"
+  p2_code	\w{0,2}		        22,8	  20	caps,s="q2"
+  label         \w{0,3}                 50,0      25    caps,s="abc"
+  
+##############################
+## Small (0.25 inch) labels ##
+##############################
+
+[seqnightcult_s] SEQUENCING small overnight culture 
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}            45,5    15   caps,s="PLA"
+  id            [0-9]{1,10}               70,5    15   s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}      30,15     24   s="code128",zeropad=10,scale	code128
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4}[a-dA-D]{0,1} 130,5   15   s="cn001_232"
+  date		\d{2,4}\-\d{2}-\d{2}	  240,5   15	caps,s="today"
+  init		[a-zA-Z]{2,4}		  215,5   15	caps,s="jms"
+  p_code	\w{0,1}	        	  0,5	  20	caps,s="S"
+  p2_code	\w{0,2}		          15,5	  15	caps,s="q2"
+  b_code	\w{0,5}		          370,4   18   caps,s="T7"
+  label     \w{0,3}               325,5   18   caps,s="T7" 
+
+[seqnightcult_smult] SEQUENCING small overnight culture 
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}            30,5    15   caps,s="MUL",noprint
+  id            [0-9]{1,10}               65,5    15   s="432",nopad,noprint
+  barcode       [a-zA-Z0-9]{3}\d{1,9}	 30,15     24   s="code128",zeropad=10	code128
+  multtext      .*                        35,5    15   s="PLA0001,0002,0003"
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4}[a-dA-D]{0,1} 160,5   15   s="cn001_232"
+  date          \d{2,4}\-\d{2}-\d{2}       235,5   15   caps,s="today"
+  init		[a-zA-Z]{2,4}		  335,5   15	caps,s="jms"		
+  p_code	\w{0,1}		0,5	  20	caps,s="S"
+  p2_code        \w{0,2}         15,5      15    caps,s="q2"
+  b_code	\w{0,5}		390,4     20    caps,s="T7"
+
+[agar_plate_s] MGC Agar plates (thin barcodes)
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}                30,5    15    caps,s="PLA"
+  id            [0-9]{1,10}                   65,5    15    s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}         30,15   24    s="code128",zeropad=10	code128
+  plateid	    [a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 140,5   15    caps,s="cn001_232"
+  sample	    [a-zA-z0-9]*		          100,10  10	s="nosample"
+  quadwell	    [a-zA-Z0-9\s_?]*	          365,4   20 	caps,s="b"
+  date		    \d{2,4}-\d{2}-\d{2}	          235,5   15	caps,s="today"
+  init		    [a-zA-Z]{2,4}		          335,5   15	caps,s="jms"	
+  p_code	    \w{0,1}		                  0,8	  20	caps,s="S"
+  p2_code       \w{0,2}                       0,25    15    caps,s="q2"
+  b_code	    \w{0,5}		                  390,4   20    caps,s="T7"
+
+[label2] Small text label plate
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP    5
+  DPI 200
+  TOP 5
+  field1        .*      10,5     20      s="field_1"
+  field2        .*      10,30    20      s="field_2"
+
+[solution_small] small solution labels (for primer plates)
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO 5,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}          10,5   15      caps,s="SOL"
+  id            [0-9]{1,10}             35,5   15      s="452",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   10,15    24      s="code128",zeropad=10	code128
+  date		\d{2,4}-\d{2}-\d{2}	318,5   15      caps,s="today"
+  exp_date      EXP:\d{2,4}-\d{2}-\d{2}  270,20   15   caps,s="EXP:06-01-01"
+  init		[a-zA-Z]{2,4}		390,5  15      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}        380,20   15       s="2/5"
+  solname       .{1,50}                 80,5  15      s="EDTA_0.2%_v/v"
+  test          .{0,1}                  410,10    20       s='T'
+
+[agar_solution] Agar Solution label 
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO 15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}          10,5   15      caps,s="SOL"
+  id            [0-9]{1,10}             30,5   15      s="452",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   10,15    24      s="code128",zeropad=10	code128
+  date		\d{2,4}-\d{2}-\d{2}	340,5   15      caps,s="today"
+  init		[a-zA-Z]{2,4}		300,5  15      caps,s="jms"	 
+  batch         \d{1,3}\/\d{1,3}        370,35   15       s="2/5"
+  solname       .{1,50}                 80,5  15      s="EDTA_0.2%_v/v"
+
+[proc_long] Long procedure 
+  HEIGHT 0.25
+  WIDTH 2.25
+  ZERO 15,15
+  TOP   5
+  DPI 200
+  class         .{1,24}                 0,5   20     s="SampleText"
+  id            [0-9]{0,8}              125,85 20     s="",noprint
+  barcode       .*                       0,15    24     s="code39",dense	code128      
+
+[src_plate] 1D Labels for Source
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP     5
+  DPI    200
+  class         [a-zA-Z0-9]{3}            30,5    15   caps,s="SRC"
+  id            [0-9]{1,10}               55,5    15   s="432",nopad
+  barcode       [a-zA-Z]{3}\d+             30,15     24   s="code128",zeropad=10	code128
+  name	 	.{1,50}			  130,5   15   s="Tissue_RNA"
+  number        .*                        240,5   15   s='11',optional
+  amount        .*                        280,5   15   s='13_ml',optional
+  init		[a-zA-Z]{1,4}		  360,5   15	caps,s="jrs"	
+
+[equip_small] General barcode label 
+  HEIGHT 0.25
+  WIDTH 2.25	
+  ZERO  15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}          10,5	15  caps,s="EQU"
+  id            \d{1,8}                 40,5	15  s="1234",zeropad=8
+  barcode       [a-zA-Z0-9]{3}\d+       10,15	24  s="code128",zeropad=8	code128
+  text          .*                      175,5	15  s="Sampletext" 
+
+[rack_small] Small Rack Label 
+  HEIGHT 0.25
+  WIDTH  2.25	
+  ZERO   15,15
+  TOP 5
+  DPI 200
+  class         [a-zA-Z0-9]{3}            45,5    15   caps,s="RAC"
+  id            [0-9]{1,10}               70,5    15   s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}      30,15     24   s="code128",zeropad=10	code128
+
+##############################
+## small 2 part labels (2D) ##
+##############################
+
+[ge_tube_barcode] DataMatrix layout, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		70,30	23	caps,s="PLA"
+  id            [0-9]{1,10}		120,30	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   350,0	4	s="Pla432",zeropad=10	datamatrix
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 70,0   28   caps,s="cn001_232"
+  p_code	\w{0,1}		20,23	  30	caps,s="Sq"
+  p2_code       \w{0,2}         30,23     15    caps,s="q"
+  b_code	\w{0,5}		20,51     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	  70,58   23	caps,s="today"
+  init		[a-zA-Z]{1,4}		  70,85   23	caps,s="jrs"
+  ors_name	.{1,10}		  70,112  23	caps,s="ors"
+  plateid_tube	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 335,73  20   caps,s="cn001_232"
+  init_tube	[a-zA-Z]{2,4}		  355,95    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		320,50	20	caps,s="PLA"
+  id_tube       [0-9]{1,10}		355,50	20	s="432",nopad
+
+[ge_tube_barcode_l] DataMatrix layout, circular label on left
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		240,30	23	caps,s="PLA"
+  id            [0-9]{1,10}		290,30	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   40,0	4	s="Pla432",zeropad=10	datamatrix
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 240,0   28   caps,s="cn001_232"
+  p_code	\w{0,2}		180,23	  30	caps,s="Sq"
+  b_code	\w{0,5}		190,23     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	  240,58   23	caps,s="today"
+  init		[a-zA-Z]{1,4}		  240,85   23	caps,s="jrs"
+  ors_name	.{1,10}			240,112   23	caps,s="ors"
+  plateid_tube	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 25,73  20   caps,s="cn001_232"
+  init_tube	[a-zA-Z]{2,4}		  45,95    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		10,50	20	caps,s="PLA"
+  id_tube       [0-9]{1,10}		45,50	20	s="432",nopad
+
+[tube_solution] Solution label for 2D barcodes, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		30,30	23	caps,s="SOL"
+  id            [0-9]{1,10}		100,30	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   350,7	4	s="Sol432",zeropad=10	datamatrix
+  solname	.{1,50}			30,0   23   s="EDTA_0.2%_v/v"
+  exp_date      EXP\:\d{2,4}-\d{2}-\d{2}  30,58   23    caps,s="EXP:06-01-01"
+  date		\d{2,4}-\d{2}-\d{2}	  30,85   23	caps,s="today"
+  init		[a-zA-Z]{1,4}		  30,112  23	caps,s="jrs"
+  batch         \d{1,3}\/\d{1,3}          90,112  23    s="2/5"
+  init_tube	[a-zA-Z]{2,4}		  355,95    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		320,65	20	caps,s="SOL"
+  id_tube       [0-9]{1,10}		355,65	20	s="432",nopad
+
+[tube_solution_l] Solution label for 2D barcodes, circular label on left
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		200,30	23	caps,s="SOL"
+  id            [0-9]{1,10}		250,30	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   40,7	4	s="Sol432",zeropad=10	datamatrix
+  solname	.{1,50}			200,0   28   s="EDTA_0.2%_v/v"
+  exp_date      EXP:\d{2,4}-\d{2}-\d{2}  200,58   23   caps,s="EXP:06-01-01"
+  date		\d{2,4}-\d{2}-\d{2}	  200,85   23	caps,s="today"
+  init		[a-zA-Z]{1,4}		  200,112  23	caps,s="jrs"
+  batch         \d{1,3}\/\d{1,3}          260,112  23   s="2/5"
+  init_tube	[a-zA-Z]{2,4}		  45,95    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		10,65	20	caps,s="SOL"
+  id_tube       [0-9]{1,10}		45,65	20	s="432",nopad
+
+[src_tube] 2D Labels for Source
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300 
+  name		.{1,50}			20,0    28      s="TissueRNA"
+  number        .*                      200,0   28      s="asdf"
+  organism      .{1,50}			20,30   23	s="Human"
+  class         [a-zA-Z0-9]{3}		20,60	23	caps,s="SRC"
+  id            [0-9]{1,10}		60,60	23	s="432",nopad
+  amount        .*                      20,90   23      s="1.5ml",optional
+  date		\d{2,4}-\d{2}-\d{2}	20,110   23      caps,s="today"
+  init		[a-zA-Z]{1,4}		160,110  23	caps,s="jrs"
+  name_2d	.{1,50}			310,90	20	s="TissueRNA"
+  number_2d     .*                      340,0   23      s="asdf",optional
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   350,20	4	s="Src432",zeropad=10	datamatrix
+
+[src_tube_ext_id] 2D Labels for Source
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300 
+  name		.{1,50}			20,0    0      s="TissueRNA"
+  number        .*                      200,0   0      s="asdf"
+  organism      .{1,50}			20,30   0	s="Human"
+  class         [a-zA-Z0-9]{3}		20,10	20	caps,s="SRC"
+  id            [0-9]{1,10}		60,10	20	s="432",nopad
+  amount        .*                      20,90   0      s="1.5ml",optional
+  date		\d{2,4}-\d{2}-\d{2}	20,110   12      caps,s="today"
+  init		[a-zA-Z]{1,4}		160,110  12	caps,s="jrs"
+  name_2d	.{1,50}			320,90	20	s="TissueRNA"
+  number_2d     .*                      340,0   0      s="asdf",optional
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   350,20	4	s="Src432",zeropad=10	datamatrix
+  ext_id        .{0,50}                 20,60   30 
+
+[src_simple_tube] Simple 2D Labels for Source
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300 
+  number        .*                      200,0   0      s="asdf"
+  class         [a-zA-Z0-9]{3}		100,30	30	caps,s="SRC"
+  id            [0-9]{1,10}		100,55	30	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   10,15	4	s="Src432",zeropad=10	datamatrix
+
+[src_tube_l] 2D Labels for Source
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5 
+  DPI 300
+  class         [a-zA-Z0-9]{3}		200,60	23	caps,s="SRC"
+  id            [0-9]{1,10}		250,60	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}   40,10	4	s="Src432",zeropad=10	datamatrix
+  name		.{1,50}			200,0    28      s="Tissue_RNA"
+  organism      .{1,50}			200,30   23	s="Human"
+  date		\d{2,4}-\d{2}-\d{2}	200,90   23      caps,s="today"
+  init		[a-zA-Z]{1,4}		45,90  23	caps,s="jrs"
+  name_2d	.{1,50}			30,60	20	s="Tissue_RNA"
+
+[custom_2D_tube] 2D Labels for Source
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10 
+  TOP 5
+  DPI 300
+  id            [a-zA-Z0-9]{3}[0-9]{1,10}   100,75  20      s="Cnt432"
+  barcode       [a-zA-Z]{3}\d+          10,25   4       s="Cnt432",zeropad=10	datamatrix
+  name          .{0,50}                 10,0    20     s="Label"
+  name_tube     .{0,50}                 100,50   20      s="Digest"
+  label         .{0,50}			100,25   20     s="EcoRI"
+  date          \d{2,4}-\d{2}-\d{2}     110,100   20     caps,s="today"
+  init          [a-zA-Z]{1,4}           75,100  20       caps,s="jre"
+  id2           [a-zA-Z0-9]{3}[0-9]{1,10}   315,75  20      s="Cnt432"
+  name2		.{1,50}			310,25	20	s="Label"
+  name_tube2    .{0,50}                 315,0  20      s="Digest"
+  label2        .{0,50}                 310,50  20      s="EcoRI"
+
+[cg_tube_2D_old] 2D Labels for Cancer Genetics tubes
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		200,60	23	caps,s="BCG"
+  id            [a-zA-Z0-9]{3}[0-9]{1,10}   100,75  20      s="Cnt432"
+  barcode       [a-zA-Z]{3}\d+          10,25   4       s="Cnt432",zeropad=10   datamatrix
+  content       .{0,50}                 100,50   20      s="Digest"
+  label         .{0,50}                 100,25   20     s="EcoRI"
+  date          \d{2,20}     110,100   20     caps,s="today"
+  init          [a-zA-Z]{1,4}           75,100  20       caps,s="jre"
+  id2           [a-zA-Z0-9]{3}[0-9]{1,10}   315,75  20      s="Cnt432"
+  init2          [a-zA-Z]{1,4}           75,100  20       caps,s="jre"
+  content2      .{0,50}                 315,0  20      s="Digest"
+  label2        .{0,50}                 310,50  20      s="EcoRI"
+
+[cg_tube_2D] 2D Labels for Cancer Genetics tubes
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		0,0	1	caps,s="BCG"
+  id            .*                   85,0  30      s="T01N03"
+  barcode       [a-zA-Z]{3}\d+            10,25   5       s="Cnt432",zeropad=10   datamatrix
+  content       .{0,50}                   170,0    30     s="WholeBlood"
+  label         .{0,50}                   85,35   30     s="BC11111"
+  plate_id      [a-zA-Z0-9]{3}[0-9]{1,10}   85,70   30      s="BCG100"
+  init          [a-zA-Z]{1,4}             30,105  20       caps,s="jre"
+  date          \d{2,20}                  55,105   30     caps,s="today"
+  plate_id2     [a-zA-Z0-9]{3}[0-9]{1,10}   345,4    17     s="ACD"
+  label2        .*                   335,23  17      s="BC111111"
+  barcode2      [a-zA-Z]{3}\d+            353,38   3       s="Cnt432",zeropad=10   datamatrix
+  content2      .{0,50}                   335,92  17      s="WholeBlood"
+  id2           .*                   355,111  17      s="T01N03"
+
+
+[ge_tube_barcode_2D] DataMatrix layout, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		      70,30	20	caps,s="PLA"
+  id            [0-9]{1,10}		      110,30	20	s="432",nopad
+  barcode       [a-zA-Z]{3}\d{1,9}            10,0	4	s="Pla432",zeropad=10	datamatrix
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 70,0      28      caps,s="cn001_232"
+  p_code	\w{0,1}		13,70	  30	caps,s="Sq"
+  p2_code       \w{0,2}         52,70     20    caps,s="q"
+  b_code	\w{0,5}		13,100     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	      70,53     20	caps,s="today"
+  init		[a-zA-Z]{1,4}		      210,53    23	caps,s="jrs"
+  quadwell      [a-zA-Z0-9\s_?]*              210,25    23    caps,s="b"
+  ors_name	.{1,10}		              70,78     23	caps,s="ors"
+  label         [a-zA-Z0-9\s_?]*              210,78    20      caps,s="b"
+  plateid_tube	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 300,42    25      caps,s="cn001_232"
+  init_tube	[a-zA-Z]{2,4}		      340,75    20	caps,s="jrs"
+  quadwell_tube [a-zA-Z0-9\s_?]*              350,95    20      caps,s="b"
+  class_tube    [a-zA-Z0-9]{3}		      317,12	20	caps,s="PLA"
+  id_tube       [0-9]{1,10}		      349,12	20	s="432",nopad
+  label_tube    [a-zA-Z0-9\s_?]*              380,75    20      caps,s="b"
+
+[tube_solution_2D] Solution label for 2D barcodes, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 15,10
+  TOP 5
+  DPI 300
+  class         [a-zA-Z0-9]{3}		      70,30	20	caps,s="SOL"
+  id            [0-9]{1,10}		      110,30	20	s="432",nopad
+  barcode       [a-zA-Z]{3}\d{1,9}            10,0	4	s="Sol432",zeropad=10	datamatrix
+  solname	.{1,50}                       70,0      25      s="EDTA_0.2%"
+  date		\d{2,4}-\d{2}-\d{2}	      70,53     23	caps,s="today"
+  init		[a-zA-Z]{1,4}		      210,53    23	caps,s="jrs"
+  exp_date	EXP\:\d{2,4}-\d{2}-\d{2}      70,78     23	caps,s="EXP:06-01-01"
+  batch         \d{1,3}\/\d{1,3}              200,30    23    s="2/5"
+  app		[a-zA-Z]{0,1}		      13,70     50	caps,s="G"
+  solname_tube	.{1,50}                       300,42    25      s="EDTA_0.2%"
+  init_tube	[a-zA-Z]{2,4}		      350,75    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		      317,12	20	caps,s="PLA"
+  id_tube       [0-9]{1,10}		      349,12	20	s="432",nopad
+
+##############################
+## small 2 part labels (1D) ##
+##############################
+
+[plain_tube] plain tube labels, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 10,0
+  TOP 10
+  text1		.*			  30,0   29   s=""
+  text2         .*                        30,50   23    s=""
+  text3		.*	                  30,78   23	s=""
+  text4		.*		          30,105  23	s=""
+  text_tube    	.*       		  310,60  30	s=""
+
+[plain_tube_l] plain tube labels, circular label on left
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 10,0
+  TOP 45
+  text1		.*			  200,0   28   s=""
+  text2         .*                        200,58   23   s=""
+  text3		.*			  200,85   23	s=""
+  text4		.*			  200,112  23	s=""
+  text_tube     .*			  10,65	   20	s=""
+
+[ge_tube_barcode_1D] 1D layout, circular label on right
+  HEIGHT 0.60
+  WIDTH 1.70
+  ZERO 10,0
+  TOP 20
+  class         [a-zA-Z0-9]{3}		      70,30	23	caps,s="PLA"
+  id            [0-9]{1,10}		      120,30	23	s="432",nopad
+  barcode       [a-zA-Z0-9]{3}\d{1,9}          0,0	20	s="code128",zeropad=6	code128
+  plateid	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 70,30   28   caps,s="cn001_232"
+  p_code	\w{0,2}		20,50	  30	caps,s="Sq"
+  b_code	\w{0,5}		30,50     20    caps,s="T7"
+  date		\d{2,4}-\d{2}-\d{2}	      70,58   23	caps,s="today"
+  init		[a-zA-Z]{1,4}		      70,85   23	caps,s="jrs"
+  ors_name	.{1,10}		              70,112  23	caps,s="ors"
+  plateid_tube	[a-zA-Z0-9]{5,6}(_|\-)\d{1,4} 335,73  20   caps,s="cn001_232"
+  init_tube	[a-zA-Z]{2,4}		      355,95    20	caps,s="jrs"
+  class_tube    [a-zA-Z0-9]{3}		      320,50	20	caps,s="PLA"
+  id_tube       [0-9]{1,10}		      355,50	20	s="432",nopad
+
+#####################################
+## Extra large labels ( >= 1 inch) ##
+#####################################
+
+[chemistry_calc] Chemistry calculations
+  HEIGHT 1.0
+  WIDTH  2.25
+  ZERO  25,25 
+  TOP 15
+  name		.{1,40}			20,0	40	s="BD_Brew"
+  class		[a-zA-Z0-9]{3}		200,0 0	s="sol"
+  R1name	.{0,20}			40,40	30	s="Primer"
+  R1amt		.{0,18}			290,40	30	s="100_ul"
+  R1total       .{0,18}                 440,40  30      s="100_ul"
+  R2name	.{0,25}			40,75	30	s="Buffer"
+  R2amt		.{0,18}			290,75	30	s="10_ul"
+  R2total	.{0,18}                 440,75  30      s="100_ul"
+  R3name        .{0,20}                 40,110   30      s="Buffer"
+  R3amt         .{0,18}                 290,110  30      s="100_ul"
+  R3total       .{0,18}                 440,110  30      s="100_ul"
+  R4name        .{0,25}                 40,145   30      s="Buffer"
+  R4amt         .{0,18}                 290,145  30      s="10_ul"
+  R4total       .{0,18}                 440,145  30      s="100_ul"
+  R5name        .{0,50}                 40,180   30      s="Buffer"
+  R5amt         .{0,18}                 290,180  30      s="100_ul"
+  R5total       .{0,18}                 440,180  30      s="100_ul"
+  message	.{0,55}			350,0	30	s="Message" 
+  barcode       .*		        250,0	0	s="code128"	code128
+  id		[0-9]{0,8}		225,0	0	s="",noprint
+
+[large_chemistry_calc] Chemistry calculations
+  HEIGHT 3.0
+  WIDTH  3.0
+  ZERO   15,15
+  TOP 15
+  name		.{1,50}			20,0	  45	 s="BD_Brew"
+  solinfo       .{1,30} 		20,45     35     s="date"
+  R1name        .{0,100}                40,90     40     s="",optional
+  R2name        .{0,100}                40,190    40     s="",optional
+  R3name        .{0,100}                40,290    40     s="",optional
+  R4name        .{0,100}                40,390    40     s="",optional
+  R5name        .{0,100}                40,490    40     s="",optional
+  R6name        .{0,100}                40,590    40     s="",optional
+  R1amt        .{0,100}                 60,135    25     s="",optional
+  R2amt        .{0,100}                 60,235    25     s="",optional
+  R4name        .{0,100}                40,390    40     s="",optional
+  R5name        .{0,100}                40,490    40     s="",optional
+  R6name        .{0,100}                40,590    40     s="",optional
+  R1amt        .{0,100}                 60,135    25     s="",optional
+  R2amt        .{0,100}                 60,235    25     s="",optional
+  R3amt        .{0,100}                 60,335    25     s="",optional
+  R4amt        .{0,100}                 60,435    25     s="",optional
+  R5amt        .{0,100}                 60,535    25     s="",optional
+  R6amt        .{0,100}                 60,635    25     s="",optional
+  RTamt        .{0,100}                 340,720   40     s="",optional
+  R1total        .{0,100}               580,90    40     s="",optional
+  R2total        .{0,100}               580,190   40     s="",optional
+  R3total        .{0,100}               580,290   40     s="",optional
+  R4total        .{0,100}               580,390   40     s="",optional
+  R5total        .{0,100}               580,490   40     s="",optional
+  R6total        .{0,100}               580,590   40     s="",optional
+  RTtotal	.{0,100} 		580,720   40     s="",optional
+  R1well        .{0,100}                600,135   30     s="",optional
+  R2well        .{0,100}                600,235  30     s="",optional
+  R3well        .{0,100}                600,335   30     s="",optional
+  R4well        .{0,100}                600,435   30     s="",optional
+  R5well        .{0,100}                600,535   30     s="",optional
+  R6well        .{0,100}                600,635   30     s="",optional
+  R1box          .{0,100}               760,115   40     s="",optional,box
+  R2box          .{0,100}               760,215   40     s="",optional,box
+  R3box          .{0,100}               760,315   40     s="",optional,box
+  R4box          .{0,100}               760,415   40     s="",optional,box
+  R5box          .{0,100}               760,515   40     s="",optional,box
+  R6box          .{0,100}               760,615   40     s="",optional,box
+  R1rect        .{0,100}                35,80     100     s="",optional,rect
+  R2rect        .{0,100}                35,180    100     s="",optional,rect
+  R3rect        .{0,100}                35,280    100     s="",optional,rect
+  R4rect        .{0,100}                35,380    100     s="",optional,rect
+  R5rect        .{0,100}                35,480    100     s="",optional,rect
+  R6rect        .{0,100}                35,580    100     s="",optional,rect
+  RTrect       .{0,100}                 330,700   70     s="",optional,rect	
+  message	.{0,55}			40,760	  30	 s="Message" 
+  newids	.{0,100}		40,800	  30	 s="",optional 
+
+[large_qa_label] QA label
+  HEIGHT 3.0
+  WIDTH  3.0
+  ZERO   15,15
+  TOP 15
+  QAItem         .{1,50}         150,20      40    s=""
+  QAname         .{1,50}         270,100     80    s=""
+  QAexpiry       .{1,30}         240,200     60    s=""
+  QAdate         .{1,30}         220,480     50    s=""
+  QAemployee     .{1,50}         630,480     50    s=""
+  QABatchLot     .{1,50}         150,600     50    s=""
+ 
+ 

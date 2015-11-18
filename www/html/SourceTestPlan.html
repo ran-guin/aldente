@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>SourceTestPlan</title>
+</head>
+<body>
+<big><span style="font-weight: bold;"><a name="Top"></a>Source HowTo:<br>
+</span></big>
+<ol>
+  <li><a href="#Receive_and_repeat">Receive a source
+and repeat</a> <br>
+  </li>
+  <li><a href="#Transfer_and_repeat">Transfer a source
+and repeat</a></li>
+  <li><a href="#Aliquot_and_repeat">Aliquot a source
+and repeat</a></li>
+  <li><a href="#Associated_library">Associate
+library to a source</a> <br>
+  </li>
+  <li><a href="#Create_PlateTube">Create plate/tube for a source</a> <br>
+  </li>
+  <li><a href="#Associated_platestubes">Associate
+plates/tubes table</a></li>
+  <li><a href="#Misc_funtionality"><span
+ style="text-decoration: underline;">Error Checking</span></a><br>
+  </li>
+</ol>
+<br>
+<hr>
+<br>
+<table cellpadding="1" cellspacing="1" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; font-weight: bold; background-color: rgb(51, 102, 255); color: rgb(255, 255, 255);"
+ colspan="2"><big>ID:</big><big>Action:</big></td>
+      <td
+ style="vertical-align: top; font-weight: bold; background-color: rgb(51, 102, 255); color: rgb(255, 255, 255);"><big>Notes:</big></td>
+      <td
+ style="vertical-align: top; font-weight: bold; background-color: rgb(51, 102, 255); color: rgb(255, 255, 255);"><big>Expected
+behaviour:<br>
+      </big></td>
+      <td
+ style="vertical-align: top; font-weight: bold; background-color: rgb(51, 102, 255); color: rgb(255, 255, 255);"><big>Pass/Fail:</big></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 1 </td>
+      <td style="vertical-align: top;"> Scan in source 805 (src805) </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> Source home page loads up with
+details of source 805 </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 2 </td>
+      <td style="vertical-align: top;"> Verify summary information in
+upper left corner of the home page </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 4 important pieces of
+information should be displayed<br>
+-&gt; 1. Source<br>
+-&gt; 2. Original Source<br>
+-&gt; 3. Received<br>
+-&gt; 4. Associated Libraries/Collections<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 3 </td>
+      <td style="vertical-align: top;"> Verify record detail table on
+the right hand side/centre of the page </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 3 tables should be displayed
+one under the other<br>
+-&gt; 1. Original Source<br>
+-&gt; 2. Source<br>
+-&gt; 3. RNA_Tissue_Source or ReArray_Ligation or Ligation or
+Microtiter or Xformed_Cells <br>
+      <br>
+      </td>
+      <td style="vertical-align: top;"> <br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"><a name="Receive_and_repeat"></a>Receive a new
+source
+and repeat: <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 4 </td>
+      <td style="vertical-align: top;"> Select the 'Receive More' radio
+button<br>
+-&gt; enter 100 in the 'Amount' field<br>
+-&gt; select 'ul' from the units drop down menu<br>
+-&gt; select 5 in the 'Repeat' field<br>
+-&gt; click the 'Execute' button<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add Source Record' form is
+displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 5 </td>
+      <td style="vertical-align: top;"> Fill in all of the required
+information on the form (select Type -&gt; ReArray_Plate)<br>
+-&gt; click the 'Continue' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add ReArray_Plate Record' form
+is displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 6 </td>
+      <td style="vertical-align: top;"> Click the 'Finish' button on
+the 'Add ReArray_Plate Record' page. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> Source home page is displayed
+for the first of the 5 new sources created </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Related sources table
+functionality: </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 7 </td>
+      <td style="vertical-align: top;"> Verify that 5 new sources are
+present in the 'Sources from same Original Source' table </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 5 new sources are in the
+'Sources from same Original Source' table. The Number is incremented
+and is the same for all 5 sources </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 8 </td>
+      <td style="vertical-align: top;"> Clik on the ID of the last
+source in the 'Sources from same Original Source' table </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> A new window opens with the
+source home page of the newly created source in step 6. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"><a name="Associated_library"></a>Associate
+library to a source functionality: <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 9 </td>
+      <td style="vertical-align: top;"> Select a library from the drop
+down menu and click on the 'Associate' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> Page refreshes and the selected
+library name link appears after 'Associated Libraries/Collections' </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 10 </td>
+      <td style="vertical-align: top;"> Click on the library name link
+created in the previous step </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> A new window opens with the
+home page of the library whose name was clicked on. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 11 </td>
+      <td style="vertical-align: top;">Scroll down to the Associated
+Sources and Plates table and click on the 'Xenopus Transposon
+Pool67-Src#X link </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Source home page is displayed
+for Source # 1293 </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 12 </td>
+      <td style="vertical-align: top;">Close the current Source home
+page window </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">You should still see the home
+page for Source #1293 </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"><a name="Create_PlateTube"></a>Create
+plate/tube for a source functionality: <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 13 </td>
+      <td style="vertical-align: top;">Select a library from the drop
+down menu next to the 'Create Plate/Tube' button and click the button. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add Container Record' form is
+displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 14 </td>
+      <td style="vertical-align: top;">Fill our all of the required
+fields and click the 'Continue' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 15 </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"><a name="Associated_platestubes"></a>Associated
+plates/tubes table functionality: <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 16 </td>
+      <td style="vertical-align: top;">Verify that the tube/plate you
+created in step 13 is displayed in the 'Associated Plates/Tubes' table
+on the Source home page<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">The table should display
+Plate/Tube link, type, rack and status.<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 17 </td>
+      <td style="vertical-align: top;">Clicking on any of the links in
+the 'Associated Plates/Tubes' table <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Plate home page is displayed
+with plate details of the plate clicked on<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 18 </td>
+      <td style="vertical-align: top;">Close the Plate home page window<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">You should now see the Source
+home page<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 19 </td>
+      <td style="vertical-align: top;">Click on the 'Original Source:'
+link in the summary information section (see Step 2) </td>
+      <td style="vertical-align: top;"> <br>
+      </td>
+      <td style="vertical-align: top;">'Original_Source' home page
+window pops up<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">20 </td>
+      <td style="vertical-align: top;">On the 'Original_Source' home
+page verify that the '<font>Associated Sources and Plates/Tube' table
+is displayed</font> </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">The table should list all
+Sources created from that Original_Source as well as the plates/tubes
+(if any) associated with each Source.<br>
+Each Source ID should link to that Source's home page and each
+plate/tube link should like to the 'Plate' home page.<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">21 </td>
+      <td style="vertical-align: top;">Find your way back to the home
+page for Srource 805 and click on the '<span class="small">Associated
+Libraries/Collections:'<b> </b></span>link in the summary information
+section (see Step 2) </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">'Library' home page windows pops
+up<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 22 <br>
+      </td>
+      <td style="vertical-align: top;">On the 'Library' home page
+verify that the '<font>Associated Sources and Plates/Tube' table is
+displayed</font> </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">The table should list all
+Sources created from that Original_Source as
+well as the plates/tubes (if any) associated with each Source.<br>
+Each Source ID should link to that Source's home page and each
+plate/tube link should like to the 'Plate' home page. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"> <a name="Transfer_and_repeat"></a>Transfer a
+source
+and repeat funtionality:<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 23 <br>
+      </td>
+      <td style="vertical-align: top;">Scan one of the newly created
+sources from step 4<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Source home page loads up with
+details<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 24 <br>
+      </td>
+      <td style="vertical-align: top;">Select the 'Transfer' radio
+button<br>
+-&gt; enter 20 in the 'Amount' field<br>
+-&gt; select 'ul' from the units drop down menu<br>
+-&gt; select 2 in the 'Repeat' field<br>
+-&gt; click the 'Execute' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add Source Record' form is
+displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 25 </td>
+      <td style="vertical-align: top;"> Fill in all of the required
+information on the form (select Type -&gt; ReArray_Plate)<br>
+-&gt; click the 'Continue' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add ReArray_Plate Record' form
+is displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 26 </td>
+      <td style="vertical-align: top;"> Click the 'Finish' button on
+the 'Add ReArray_Plate Record' page. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> Source home page is displayed
+for the first of the 2 new sources created </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 27 </td>
+      <td style="vertical-align: top;"> Verify that 2 new sources are
+present in the 'Sources from same Original Source' table </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">2 new sources are in the
+'Sources from same Original Source' table. The Number is the same both
+new sources as the Number of Source scanned in step 18<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">28 </td>
+      <td style="vertical-align: top;">Verify the Status as well as
+both the Current and the Original amounts </td>
+      <td style="vertical-align: top;"> <br>
+      </td>
+      <td style="vertical-align: top;">-&gt; Current amount should be
+20 ul<br>
+-&gt; Original amount should be 20 ul <br>
+-&gt; Status should be 'Active' </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">29 </td>
+      <td style="vertical-align: top;">Since 'Transfer' renders a
+source inactive, verify the volumes and the status of the Source
+scanned in step 18<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">-&gt; Current amount should be
+60
+ul<br>
+-&gt; Original amount should be 100 ul <br>
+-&gt; Status should be 'Inactive'<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"> <a name="Aliquot_and_repeat"></a>Aliquot a
+source
+and repeat funtionality:<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">30 <br>
+      </td>
+      <td style="vertical-align: top;">Scan one of the newly created
+sources from step 24<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Source home page loads up with
+details<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 31<br>
+      </td>
+      <td style="vertical-align: top;">Select the 'Aliquot' radio
+button<br>
+-&gt; enter 2 in the 'Amount' field<br>
+-&gt; select 'ul' from the units drop down menu<br>
+-&gt; select 1 in the 'Repeat' field<br>
+-&gt; click the 'Execute' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add Source Record' form is
+displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 32 <br>
+      </td>
+      <td style="vertical-align: top;"> Fill in all of the required
+information on the form (select Type -&gt; ReArray_Plate)<br>
+-&gt; click the 'Continue' button </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> 'Add ReArray_Plate Record' form
+is displayed on the screen </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 33 <br>
+      </td>
+      <td style="vertical-align: top;"> Click the 'Finish' button on
+the 'Add ReArray_Plate Record' page. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"> Source home page is displayed
+for the first of the 1 new source created </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 34 <br>
+      </td>
+      <td style="vertical-align: top;"> Verify that 1 new source is
+present in the 'Sources from same Original Source' table </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">1 new source is in the
+'Sources from same Original Source' table. The newly created Source's
+Number is the same as the Number of Source scanned in step 30<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">35 <br>
+      </td>
+      <td style="vertical-align: top;">Verify the Status as well as
+both the Current and the Original amounts of the newly created Source<br>
+      </td>
+      <td style="vertical-align: top;"> <br>
+      </td>
+      <td style="vertical-align: top;">-&gt; Current amount should be
+2 ul<br>
+-&gt; Original amount should be 2 ul <br>
+-&gt; Status should be 'Active' </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">36 <br>
+      </td>
+      <td style="vertical-align: top;">Since 'Aliquot' leaves a
+source active, verify the amounts and the status of the Source
+scanned in step 30<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">-&gt; Current amount should be 2
+ul<br>
+-&gt; Original amount should be 58 ul <br>
+-&gt; Status should be 'Active'<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; background-color: rgb(153, 255, 153); font-weight: bold;"
+ rowspan="1" colspan="5"> <a name="Misc_funtionality"></a>Error
+checking
+funtionality:<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">37 <br>
+      </td>
+      <td style="vertical-align: top;">Verify that it is not possible
+to transfer or aliquot total amount greater than the current amount of
+Source<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Message to user: "The amount of
+current source ($current_amnt) is not sufficient for this action,
+please reduce the amount."<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> 38 </td>
+      <td style="vertical-align: top;">Verify that it is not possible
+to transfer or aliquot from a Source that is inactive. </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Message to user: "Action not
+permitted because source is inactive, please chose an active source"<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"> <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pre><a href="#Top">Top</a><br><br><br><br><br></pre>
+</body>
+</html>

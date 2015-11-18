@@ -1,0 +1,11 @@
+The following files should be located in the cgi-bin directory.
+
+As such they are available from the web page and generate html pages dynamically.
+
+barcode.pl 	- main interface to alDente
+scanner.pl	- symbolic link to barcode.pl (used for scanners)
+
+update_sequence.pl	- runs analysis on sequence information regularly
+update_Stats.pl		- runs cache generating script regularly
+
+

@@ -1,0 +1,14 @@
+my $host   = $configs->{UNIT_TEST_HOST};
+my $dbase  = $configs->{UNIT_TEST_DATABASE};
+my $user   = 'unit_tester';
+
+require SDB::DBIO;
+$dbc = new SDB::DBIO(
+                        -host     => $host,
+                        -dbase    => $dbase,
+                        -user     => $user,
+                        -connect  => 1,
+                        -configs  => $configs,
+                        );
+
+

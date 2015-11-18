@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/84910/alDente/trunk/custom/GSC/install/patches/3.14
+END
+Update_Work_Request.pat
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/84910/alDente/trunk/custom/GSC/install/patches/3.14/Update_Work_Request.pat
+END
+Sample_Alert_3_14.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/84335/alDente/trunk/custom/GSC/install/patches/3.14/Sample_Alert_3_14.pat
+END
+Removing_Quibit_Run_Invoiceable.pat
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/83295/alDente/trunk/custom/GSC/install/patches/3.14/Removing_Quibit_Run_Invoiceable.pat
+END
+add_Spike_In_primer_type.pat
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/84501/alDente/trunk/custom/GSC/install/patches/3.14/add_Spike_In_primer_type.pat
+END

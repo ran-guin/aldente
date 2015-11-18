@@ -1,0 +1,226 @@
+W5
+<h1>Why?</H1>
+
+<h2>WHY does anyone need an integrated database for storing laboratory data ?</H2>
+<h2>or WHAT does it do ?</h2> 
+
+Much of the value of the system can be summed up by FAME:
+<UL>
+<LI>F - Facilitating lab processes
+<LI>A - Automating analytical or pedantic tasks
+<LI>M - Monitoring of various aspects of laboratory function
+<LI>E - Error checking
+</UL>
+
+<P>And remember:<P>
+<It>"To many fame comes too late"</It> - Louis de Camoens (14th century Portugese poet)
+<P>But beware:<P>
+<It>"Fame is a constant effort"</It>   - Jules Renard (17th century French writer)
+
+<h2>Facilitating Lab Processes</h2>
+<UL>
+<LI>auto-generating sequencer 'sample sheets'
+<LI>directing lab users to follow laboratory protocols
+<LI>providing easy access to data for lab administrators
+<LI>providing a simple interface for Data Entry.
+</UL>
+
+<h2>Automating analytical or pedantic tasks</h2>
+<UL>
+<LI>calculating volumes of reagents to be used based on pre-determined formulas
+<LI>extracting information quickly about various laboratory items
+<LI>analyzing raw data and generating and presenting it in an easily viewed format
+<LI>generating detailed reports outlining data results
+<LI>generating information for cost reporting
+<LI>notifying users/administrators of possible problems
+</UL>
+
+<h2>Monitoring</h2>
+<UL>
+<LI>tracking plates through laboratory preparation stages
+<LI>tracking reagents as they are mixed into solutions and applied to samples
+<LI>monitoring stock levels
+<LI>monitoring equipment servicing
+<LI>monitoring quality levels of resultant data
+</UL>
+
+<h2>Error checking</h2>
+<UL>
+<LI>ensuring correct reagents are used for standard solutions
+<LI>ensuring expected primers are applied to library plates
+<LI>correlating poor quality data with various aspects of lab
+<LI>ensuring data is entered within predefined ways to avoid ambiguity and maintain structure
+<LI>generating error messages or warnings for lab administrators in cases where data does not appear as expected.	
+</UL>
+
+
+<h1>What?</H1>
+
+<h2>What is it comprised of ?</H2>
+
+The system itself requires essentially only three simple elements:
+<UL>
+<LI>mySQL database
+<LI>perl code
+<LI>web browser
+</UL>
+
+<h2>mySQL database</h2>
+mySQL itself has a number of inherent advantages and disadvantages.
+
+Its most relevent characteristics however are its:
+<UL>
+<LI>simplicity
+<LI>robustness
+<LI>performance.
+</UL>
+<P>The most serious criticism of mySQL involves its lack of true ACID compliance.  
+<P>
+While this can result in poor data integrity, it can be dealt with by establishing code that ensures that all data passes through validation filters.  While this requires overhead on the part of developers, it is something that may be reasonably accomplished by programmers.  It is important, however, to retain any level of confidence in data integrity, to require all access to the database to pass through these filters.
+<P>
+In cases where there is no room for integrity loopholes of any size, mySQL's lack of inherent atomicity may preclude it from being the database of choice, though newer versions of mySQL seem to address most of these issues.
+<P>
+The advantage of the mysql, however, by not including the complex overhead of actually maintaining relationships between tables, is that it tends to be much less prone to intangible corruption issues, and benefits greatly in terms of performance from the lack of overhead.<P>
+While it is beyond the scope or intent of this manual to provide a justification for mySQL as a whole, it has been found to function very well for the task at hand, and in the presence of programming developers, the standard pitfalls can fairly easily be addressed by developing code to meet any features inherently missing in the database itself.
+
+<h2>perl code</h2>
+There are about 50,000 lines of code currently that drive the system, most of which exists in number of perl modules.  Some of these modules are specific to a sequencing laboratory, while others are much more generic and may be used with any SQL database that follows the formating definitions supplied.
+
+<h2>web browser</h2>
+The advantage of using a standard web browser to drive the interface is that it is extremely portable, and easily facilitates new code generation and presents no overhead when using wireless barcode scanners to interface with the system.
+
+<h1>Where?</H1>
+
+<h2>Where does the data end up ?</H2>
+Data is stored in a few different places including both the mySQL database,
+and in various locations on the local file system.
+<P>The close to 100 tables within the database include:
+<UL>
+<LI>Account              
+<LI>Barcode_Label        
+<LI>Box                  
+<LI>Chemistry_Code       
+<LI>Clone                
+<LI>ClonePool            
+<LI>Clone_Gel            
+<LI>Clone_History        
+<LI>Clone_Sequence       
+<LI>Clone_SizingGel      
+<LI>Clone_Status         
+<LI>Collaboration        
+<LI>Communication        
+<LI>ConcentrationRun     
+<LI>Concentrations       
+<LI>Contact              
+<LI>Contaminant          
+<LI>Contamination        
+<LI>Cross_Match          
+<LI>DBField              
+<LI>DBTable              
+<LI>Dye_Chemistry        
+<LI>Employee             
+<LI>Equipment            
+<LI>Error_Check          
+<LI>Error_Check_History  
+<LI>Field                
+<LI>Field_Parameter      
+<LI>Funding              
+<LI>Gel                  
+<LI>General_Statistics   
+<LI>Lab_Protocol         
+<LI>Library              
+<LI>LibraryPrimer        
+<LI>LibraryProgress      
+<LI>Ligation             
+<LI>Machine_Default      
+<LI>Maintenance          
+<LI>Maintenance_Protocol 
+<LI>Message              
+<LI>Microtiter           
+<LI>Misc_Item            
+<LI>Mixture              
+<LI>MultiPlate_Run       
+<LI>Multiple_Barcode     
+<LI>Note                 
+<LI>Notice               
+<LI>Optical_Density      
+<LI>Order_Notice         
+<LI>Orders               
+<LI>Organization         
+<LI>Parameter            
+<LI>Plate                
+<LI>Plate_Format         
+<LI>Plate_Set            
+<LI>Plate_Tube           
+<LI>Pool                 
+<LI>Preparation          
+<LI>Primer               
+<LI>Primer_Info          
+<LI>Project              
+<LI>Protocol_Step        
+<LI>Protocol_Tracking    
+<LI>Rack                 
+<LI>ReArray              
+<LI>Restriction_Site     
+<LI>RunStats             
+<LI>SS_Config            
+<LI>SS_Config2           
+<LI>SS_Machine_Default   
+<LI>SS_Option            
+<LI>SS_Prompt            
+<LI>Sequence             
+<LI>Sequence_Batch       
+<LI>Sequencer_Type       
+<LI>Service              
+<LI>Service_Contract     
+<LI>SizingGel            
+<LI>Solution             
+<LI>Solution_Info        
+<LI>Standard_Solution    
+<LI>Stock                
+<LI>Submission           
+<LI>Suggestion           
+<LI>Transposon           
+<LI>Tube                 
+<LI>Tube_Application     
+<LI>Vector               
+<LI>VectorPrimer         
+<LI>Warranty             
+<LI>Well_Lookup          
+<LI>Xformed_Cells        
+</UL>                 
+
+<h1>When?</H1>
+
+<h2>When is it going to be finished?</H2>
+
+That depends on how you define 'finished'.
+<P>
+If this means when is it functioning effectively,
+then it may have been described as finished long ago.
+<P>
+Generally, however, there are many ways in which the system can be expanded, made more useful, faster, stronger...
+<P>
+Who knows - on this front the system is constantly evolving.
+
+<h1>Who?</H1>
+
+<h2>Who cares?</H2>
+A number of people stand to benefit including:
+<UL>
+<LI>Lab users<P>
+This system can make their lives hell ...or a lot easier.<P>
+(though usually a subtle combination of both).<P>
+To ensure that the edge is given to the 'make their lives easier' camp,
+it is crucial that constant feedback is supplied to database administrator's, 
+who in turn must appreciate the effect of the system's smooth functionality upon those constantly using the system.  With a continuous cycle of feedback and a concerted effort on the developers part to address concerns, lab users stand to gain much more than the cost of having to use barcode scanners or to enter data onto the computer.
+<LI>Lab administrators<P>
+Lab administrators, generally stand to gain much more, since they stand to benefit much more from the potential tools at their disposal such as data viewing pages, report pages, and validation settings which can prevent mistakes before they occur.  Similarly, however, to maximize their ability to make use of the system, they should be in close communication with the database administrator to ensure that they both understand how to make best use of it, and to enable them to provide valuable feedback to make the system more effective.
+<LI>Administrators
+<P>Administrators can benefit from the potential of the system to generate detailed cost reports or data summaries that may be used in broader reports.  It may allow them to more clearly understand and monitor how projects are proceeding and pass on results directly to collaborators.<P>Once again, this may be made most effective by communicating with database administrators to ensure needs are met, and to learn how best to retrieve information desired.
+<LI>Programmers
+<P>There are various aspects of the system which can also be utilized by programmers for use with other parallel database systems.  The 'SDB' module is designed to be used generically with any 'SQL' database.  While its use outside of 'alDente' has currently been limited, there are valuable tools that may simplify the design of interfaces to other databases.  Included are modules which simplify the generating of HTML tables, the generation of forms for adding records, and the navigation between related records via hyperlinks on foreign keys.  Also included are the filters used to maintain data integrity during the updating, appending, or deleting of records in the database.
+</UL><h1>How?</H1>
+
+<h2>How does it look?</H2>
+

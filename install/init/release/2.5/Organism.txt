@@ -1,0 +1,47 @@
+1	Populus trichocarpa			
+2	Unspecified			unidentified
+3	Escherichia coli			
+4	Spruce			Picea glauca
+5	Caenorhabditis elegans			
+6	Haemophilus influenzae			
+7	Oncorhynchus nerka			
+8	Ratus ratus			Rattus
+9	Ustilago hordei			
+10	Xenopus			
+11	Chicken			Tympanuchus
+12	Homo sapiens			
+13	Obliquum clavigerum			Schizodium obliquum subsp. clavigerum
+14	Puccinia triticina			
+15	Ustilago maydis			
+16	Euglena gracilis			
+17	Picea sitchensis			
+18	Pig			Sus scrofa
+19	Salmo salar			
+20	Chlamydia trachomatis			
+21	Bos taurus			
+22	Unknown			unidentified
+23	Cryptococcus neoformans			
+24	Poplar			Populus
+25	Rhodococcus			
+26	Mus musculus			
+27	Felis catus			
+28	Caenorhabditis briggsae			
+29	Picea mariana			
+30	Drosophila melanogaster			
+31	Pincea glauca			Picea glauca
+32	Gibbon	Nomascus leucogenys		Nomascus leucogenys
+33	Horseshoe Bat	Rhinolophus ferrumequinum		Rhinolophus ferrumequinum
+34	Winter wheat	Triticum aestivum	Norstar	Pseudomonas aeruginosa PAO1
+35	Rainbow Smelt	Osmerus Mordax		Osmerus Mordax
+36	Flying Fox	Pteropus vampyrus		Pteropus vampyrus
+37	Tree shrew	Tupaia belangeri		Tupaia belangeri
+38	Rock Hyrax	Procavia capensis		Procavia capensis
+39	Horse	Equus caballus		Equus caballus
+40	Spruce Budworm	Christoneura Fumiferana		Choristoneura fumiferana
+41	Planarian	Schmidtea mediterranea		Schmidtea mediterranea
+42	Schmidtea mediterranea			
+43	Mixed			mixed subtypes
+44	Caronavirus			coronavirus
+45	Arabidopsis	Arabidopsis thaliana		Arabidopsis thaliana
+46	Mosquito	Aedes aegypti		Aedes aegypti
+47	P. aeruginosa PA01	Pseudomonas aeruginosa PA01		Pseudomonas aeruginosa PAO1

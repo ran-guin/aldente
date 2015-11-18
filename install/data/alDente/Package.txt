@@ -1,0 +1,44 @@
+Package_ID	Package_Scope	Package_Active	Package_Name	Package_Install_Status	Package_Description	FKParent_Package__ID
+1	custom	n	GSC	Not installed	NULL	27
+2	custom	n	Cancer_Genetics	Not installed	NULL	24
+3	Plugins	n	Issue_Tracking	Not installed	NULL	24
+4	Plugins	n	Solexa	Not installed	NULL	27
+5	Plugins	n	Fingerprinting	Not installed	NULL	27
+6	Plugins	n	Sequencing	Not installed	NULL	27
+7	Plugins	n	Help	Not installed	NULL	24
+8	Plugins	n	Microarray	Not installed	NULL	27
+10	Plugins	n	Genomic	Not installed	NULL	33
+11	Options	n	Receiving	Not installed	NULL	24
+12	Options	n	Dynamic_Libraries	Not installed	NULL	24
+13	Options	n	Subscriptions	Not installed	NULL	24
+15	Options	n	Submissions	Not installed	NULL	24
+17	Options	n	Tubes_Only	Not installed	NULL	24
+18	Options	n	Sample_Tracking	Not installed	NULL	25
+19	Options	n	Storage_Tracking	Not installed	NULL	24
+20	Options	n	Funding_Tracking	Not installed	NULL	25
+21	Plugins	n	JIRA	Not installed	NULL	24
+22	Options	n	Rack_Label_Fullname	Not installed	NULL	24
+23	Plugins	n	SOLID	Not installed	NULL	27
+24	Core	y	Core	Installed	NULL	0
+25	Plugins	y	Lab	Installed	NULL	24
+26	Plugins	n	Software_Analysis	Not installed	NULL	27
+27	Plugins	n	Experiment	Not installed	NULL	25
+28	Plugins	n	Taxonomy	Not installed	NULL	33
+29	Plugins	n	Multiwell_Plate	Not installed	NULL	25
+30	Plugins	n	Bioanalyzer	Not installed	NULL	27
+31	Plugins	n	Spectrophotometer	Not installed	NULL	27
+32	Plugins	n	Orders	Not installed	NULL	24
+33	Plugins	n	Biology	Not installed		25
+34	custom	n	Healthbank	Not installed		24
+35	Plugins	n	CLIPR	Not installed	NULL	24
+36	Plugins	n	EDACC	Not installed	For data submission to EDACC	42
+37	Plugins	n	SRA	Not installed	For data submission to SRA	24
+38	Plugins	n	LS_454	Not installed	NULL	27
+39	Plugins	n	Alignment_Analysis	Not installed	NULL	37
+40	Plugins	n	Illumina	Not installed	NULL	24
+41	Plugins	n	Indexed_Run	Not installed	NULL	24
+42	Plugins	n	miRNA	Not installed	NULL	24
+43	Plugins	n	Patient	Not installed	NULL	24
+44	Plugins	n	NCBI	Not installed	NULL	24
+45	Plugins	n	Obsolete	Not installed	NULL	24
+46	Plugins	n	Ion_Torrent	Not installed	NULL	24

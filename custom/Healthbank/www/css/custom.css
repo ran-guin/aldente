@@ -1,0 +1,48 @@
+/* account for fixed top header */
+body {
+    padding-top: 170px;  /* 205px; add to account for navbar paddding */
+}
+
+.logo {
+    max-height: 50px;
+}
+
+@media (max-width: 767px) {
+            .flexbox-row { 
+                        flex-direction: column;
+                            }
+                                .collapsible-header {
+                                            position:relative
+                                                }
+                                                    .primaryHeader {
+                                                                position:relative
+                                                                    }
+}
+
+@media (max-width: 767px) {
+            body {
+                        /* turn off fixed header for narrow screens since any header wrapping affects the required padding */
+                                padding-top: 0px; 
+                                        position: relative; 
+                                            } 
+            .primaryHeader {
+                position: relative;
+            }
+    }
+
+/** Tab Layer Classes **/
+.tabclass {
+        background-color: #aaa !important;
+            color: #339;
+}
+.tabclass { color: #339 } .tabclass a:hover { color: #33f }
+li.active .tabclass {
+        font-weight: bold;
+            background-color: #ddd !important;  /* to match border of tab-content */
+}
+
+.tab-content {
+        border: 2px solid #ddd !important;
+            padding: 2%;
+}
+

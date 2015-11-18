@@ -1,0 +1,114 @@
+<h1>Database Interactions During Standard Laboratory Procedures</h1>
+ 
+<P>The following illustrates the steps required in generating an initial sequence read.<P>
+Note that making a Project and making a Library are only required when they are at first defined.
+<P>
+   
+<h2>Data Flow</h2>
+<Table><TH>Action</TH><TH>Fields Updated</TH><TR>
+<TD bgcolor=lightgrey>
+<B>make Project</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Project</B>
+(new)<UL><LI>Name<LI>Description<LI>Initiated <LI>Source<LI>Type
+<LI>Obtained Date<LI>Host
+Cells<LI>Vector<LI>Organism<LI>Sex<LI>Tissue<LI>Strain<LI>Notes<LI>5,3 Prime
+Cloning Sites<LI>Comments</ul>
+</TD>
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>make Library</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Library</B>
+(new)<UL><LI>Name (5 characters)<LI>Full
+Name<LI>Description<LI>Project<LI>Source<LI>Type <LI>Obtained Date<LI>Host
+Cells<LI>Vector<LI>Organism<LI>Sex<LI>Tissue<LI>Strain<LI>Notes<LI>5,3 Prime
+Cloning Sites<LI>Comments</ul>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>make Plate</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Plate</B>
+(new)<UL><LI>Size<LI>Format<LI>Creation
+Date<LI>Employee<LI>Number<LI>Quadrant<LI>Parent Plate (if applic)<LI>Status
+= 'Active'<LI>Comments</ul>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>record No/Slow Grows</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Plate</B>
+(update)<UL><LI>No_Grows<LI>Slow_Grows<LI>Unused_Wells</UL>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>Full Mech Prep /<BR>Sequencing
+Reaction<BR>...<BR>(for each step)</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Preparation</B>
+(new)<UL><LI>Employee<Li>Time<Li>Equipment(if applic)<LI>Solution_ID(if
+applic)<LI>Conditions<LI>Comments</Ul><HR><B>Solution</B>
+(update)<UL><LI>Quantity_Used</UL>
+</TD>
+</TR><TR>
+
+<TD bgcolor=lightyellow>
+<B>Sequence</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Sequence</B>
+(new)<UL><LI>Plate<LI>Employee<LI>Equipment<LI>Time = (time of
+request)<Li>Chemistry<li></UL>
+<B>Sequence_Batch</B><UL>
+<LI>Employee<LI>Equipment<LI>Time
+<LI>Matrix<Li>Buffer<Li>Primer<Li>Configuration
+Parameters eg:<UL><LI>Foil Piercing<Li>Run Voltage<LI>Injection
+Voltage<LI>...</UL><LI>Run State = 'In Process'<LI>Comments</UL>
+</TD>
+
+</TR><TR>
+<TD bgcolor=lightgrey>
+<B>Auto-analysis</B>
+</TD>
+<TD bgcolor=lightgrey>
+<B>Clone Sequence</B> (~96
+new)<UL><LI>Run ID<LI>Well<LI>Sequence<LI>Sequence Scores
+(packed)<Li>Sequence Length<LI>Quality Length<LI>Vector Portion<LI>Phred
+Histogram (packed)<LI>Quality Histogram (packed)<LI>Growth
+Status<Li>Notes</UL><B>Sequence</B> (update)<UL><LI>Run_State =
+'Analyzed'<LI>Time = (timestamp on datafiles)</UL>
+</TD>
+</TR><TR>
+<TD bgcolor=lightyellow>
+<B>Throw Away Plate</B>
+</TD>
+<TD bgcolor=lightyellow>
+<B>Plate</B>
+(update)<UL><LI>Plate_Status<LI>Plate_Location</UL>
+</TD>
+</TR></Table>
+
+<h2>Flowchart showing Data flow...</H2>
+<P>
+<Img Src = '$Help_Image_dir/data_flow.png'>
+<P>Notes:<UL>
+<LI>
+Entities in white indicate tables that are frequently updated by lab procedures.
+<LI>
+Entities in grey represent tables that are less frequently updated.
+<LI> 
+Numbers at the base or tip of an arrow show common N values for N:1 relationships.
+<LI>
+(o) tags on arrows indicate an optional reference to another table.
+<LI>
+The 'Parent' references from Plates & Tubes is a recursive ref. to the same table.
+</UL>

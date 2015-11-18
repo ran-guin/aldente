@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol
+END
+Test.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/Test.java
+END
+ReportExporter.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/ReportExporter.java
+END
+ReportExporterTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/ReportExporterTest.java
+END
+SampleSheet_Parser.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/SampleSheet_Parser.java
+END
+GCOSDriver.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/GCOSDriver.java
+END
+Template.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/Template.java
+END
+LoadGCOSXML.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/68925/alDente/trunk/lib/java/GCOScontrol/LoadGCOSXML.java
+END

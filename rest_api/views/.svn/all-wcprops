@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views
+END
+apiLogin.tt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views/apiLogin.tt
+END
+api_call.tt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views/api_call.tt
+END
+change.tt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views/change.tt
+END
+index.tt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views/index.tt
+END
+login.tt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103088/alDente/trunk/rest_api/views/login.tt
+END

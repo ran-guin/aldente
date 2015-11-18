@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel
+END
+Formula.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Formula.pm
+END
+Format.pm
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Format.pm
+END
+Worksheet.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Worksheet.pm
+END
+OLEwriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/OLEwriter.pm
+END
+Properties.pm
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Properties.pm
+END
+Workbook.pm
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Workbook.pm
+END
+WorkbookBig.pm
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/WorkbookBig.pm
+END
+Big.pm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Big.pm
+END
+Chart.pm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Chart.pm
+END
+BIFFwriter.pm
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/BIFFwriter.pm
+END
+Utility.pm
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Imported/Excel/Spreadsheet/WriteExcel/Utility.pm
+END

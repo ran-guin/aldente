@@ -1,0 +1,294 @@
+<span class="large">
+<h2>LIMS Developer's Manual - Development/Release Cycle<br>
+</h2>
+The LIMS system has a monthly development cycle and it consists of the
+following 4 phrases (assuming 30 days per month):<br>
+<ul>
+  <li>Requirement Review (15% of time; 1st to 5th of the month) </li>
+  <li>Design (15% of time; 4th to 9th of the month)</li>
+  <li>Development (40% of time; 5th to 22nd of the month)</li>
+  <li>Integration and Test (30% of time; 22nd to 30th of the month)</li>
+</ul>
+It is possible that there are overlaps between 2 phrases. <br>
+<br>
+(Note: For details on terminologies used for issues tracking, please
+refer to the <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=Issues">Issues
+Tracker help file</a>.)<br>
+<h3>Requirement Review </h3>
+<ul>
+  <li>Any new features should be entered and tracked in the Issues
+Tracker as an Enhancement with Priority and Severity assigned.</li>
+  <li>For features requested by users, there should always be a review
+with the users.</li>
+  <li>For features requested by developers:</li>
+  <ul>
+    <li>If priority is Critical/High and/or severity is Fatal/Major,
+there should be a review by another developer.</li>
+    <li>If severity is Minor/Cosmetic, the review is optional.</li>
+  </ul>
+  <li>For features that are requested after this stage:</li>
+  <ul>
+    <li>Features that require a lot of coding will be deferred to the
+next development cycle.</li>
+    <li>Features that do not require a lot of coding or features that
+are related to an existing feature request will be implemented in the
+current development cycle.<br>
+    </li>
+  </ul>
+</ul>
+<h3>Design </h3>
+<ul>
+  <li>For features that have priority of Critical/High and/or severity
+of Fatal/Major, the design should be reviewed by another developer.</li>
+  <li>For features that are very straight forward the design phase can
+be skipped.<br>
+  </li>
+</ul>
+<h3>Development</h3>
+<ul>
+  <li>Codes that are more complicated should be reviewed by another
+developer.</li>
+</ul>
+<h3>Integration and Test</h3>
+<ul>
+  <li>All new features should be throughoutly tested.</li>
+  <li>Features that have priority of Critical/High and/or severity of
+Fatal/Major should be briefly tested by another developer as well.</li>
+  <li>All defects found within this phrase should be submitted to the
+Issues Tracker right the way with Priority and Severity assigned.</li>
+  <ul>
+    <li>Defects that have priority of Critical/High must be fixed
+before the release.</li>
+    <li>Defects that have priority of Medium/Low will be deferred to
+the next release.</li>
+  </ul>
+  <li>Refer to the <a
+ href="$homelink&amp;User=Auto&amp;Search+for+Help=Help&amp;Help=Testing_Protocol">Testing
+Protocol</a> help page for details on what should be tested and how the
+testing should be done.</li>
+</ul>
+<h2>Release</h2>
+<ul>
+  <li>A release will be made monthly in the beginning of the month.<br>
+  </li>
+  <li>A release will only be made if there are no outstanding
+Critical/High defects found in the Beta Version for the last 0.5 days.</li>
+  <li>A release will only be made before noon so that developers will
+still be around to deal with issues that arised from the new release.</li>
+</ul>
+<h2>Procedures for Release Process and Ongoing Development </h2>
+<ul>
+  <li>The steps for the release process are as follows (assuming the
+new release is release 2.30 and will be tagged&nbsp;seqdb01-2_30 while
+the old release is release 2.20):</li>
+  <ul>
+    <li>Turn off all cron jobs in seqdb01, lims-dbm, plebe and plebe2
+that are run by 'sequence' and 'aldente' users (this is required for
+upgrades that takes a long time; otherwise can be skipped)<br>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Login as the 'aldente' user</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Under <span style="font-weight: bold;">/opt/alDente/versions/</span>:<br>
+    </li>
+    <ul>
+      <li>Create a copy of the svn trunk as a branch called seqdb01-2_30-branch</li>
+	<ul>
+	<li>svn copy http://svn/lims/alDente/trunk http://svn/lims/alDente/branches/seqdb01-2_30-branch</li>
+        </ul>
+      <li>Check out the new branch to the new seqdb01-2_30 folder <span
+ style="font-weight: bold;">seqdb01-2_30</span> folder: <br>
+      </li>
+      <ul>
+        <li>svn checkout http://svn/lims/alDente/branches/seqdb01-2_30-branch seqdb01-2_30</li>
+      </ul>
+      <li>Make sure that the checkout used the appropriate branch</li>
+	<ul>
+	<li>svn info seqdb01-2_30</li>
+	</ul>
+      <li>Generate the system configuation file:<br>
+      </li>
+      <ul>
+        <li>install/setup.pl</li>
+        <li>ensure the sql database hosts are set correctly (in this
+case SQL_HOST should be set to the master host seqdb01)<br>
+        </li>
+      </ul>
+      <li>Backup the production database by running (this is required
+if the database upgrade is invasive - just to be safe):</li>
+      <ul>
+        <li>bin/backup_DB.pl -h seqdb01 -D sequence -u viewer -p viewer
+-P /home/sequence/alDente/dumps/sequence.pre-2_30 &gt;
+/opt/alDente/www/dynamic/logs/sequence.pre-2_30.backup.log</li>
+        <li>Verify the dumps are actually created</li>
+      </ul>
+      <li><span class="large"><span class="large">R<span class="large"><span
+ class="large">elink the symbolic link <span style="font-weight: bold;">production
+        </span>to the </span><span class="large"><span class="large"><span
+ style="font-weight: bold;">seqdb01-2_30</span> folder:</span></span></span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large"><span class="large">rm
+-f production &amp;&amp; ln -s seqdb01-2_30 production<br>
+          </span></span></span></li>
+      </ul>
+      <li>Create the symbolic link cgi-bin/scanner.pl from cgi-bin/barcode.pl</li>
+      <ul>
+        <li><span class="large"><span class="large"><span class="large">
+	ln -s barcode.pl scanner.pl<br>
+          </span></span></span></li>
+      </ul>
+      <li>Upgrade the production database by running:</li>
+      <ul>
+        <li>bin/upgrade_DB.pl -A all -D seqdb01:sequence -u
+username -p password -S -b all -l -f &gt;
+/opt/alDente/www/dynamic/logs/sequence.2_30.upgrade.log</li>
+      </ul>
+      <li>After upgrade is done, test to make sure page is still
+working (Perhaps restore a seqtest database to do extensive testing)</li>
+      <li>Turn the cron jobs in seqdb01, lims-dbm, plebe and plebe2 run
+by 'sequence' and 'aldente' users back on again <span class="large">
+(this is required for upgrades that takes a long time; otherwise can be
+skipped)</span> </li>
+      <li><span class="large">Checkout another copy of the production branch
+to the <span style="font-weight: bold;">seqdb01-2_30-hotfix</span>
+folder.&nbsp; This folder will be used for making hotfixes in the
+future:</span></li>
+      <ul>
+        <li><span class="large">svn checkout http://svn/lims/alDente/branches/seqdb01-2_30-branch seqdb01-2_30-hotfix</span></li>
+      </ul>
+      <li><span class="large">Copy the system configuration file over:</span></li>
+      <ul>
+        <li><span class="large">cp seqdb01-2_30/conf/system.conf
+seqdb01-2_30-hotfix/conf/</span></li>
+      </ul>
+      <li><span class="large">Relink the symbolic link <span
+ style="font-weight: bold;">test </span>to the </span><span
+ class="large"><span class="large"><span style="font-weight: bold;">seqdb01-2_30-hotfix</span>
+folder:</span></span></li>
+      <ul>
+        <li><span class="large">rm -f test &amp;&amp; ln -s
+seqdb01-2_30-hotfix test</span></li>
+      </ul>
+    </ul>
+  </ul>
+  <ul>
+    <ul>
+      <li>R<span class="large"><span class="large">elink the symbolic
+link <span style="font-weight: bold;">last </span>to the </span><span
+ class="large"><span class="large"><span style="font-weight: bold;">seqdb01-2_20</span>
+folder:</span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large">rm -f last
+&amp;&amp; ln -s seqdb01-2_20 last</span></span></li>
+      </ul>
+      <li><span class="large"><span class="large"><span class="large"><span
+ class="large">Under <span style="font-weight: bold;">production/www</span>,
+create the symlink <span style="font-weight: bold;">share</span> to
+/home/sequence/alDente/share/:</span></span></span></span></li>
+      <ul>
+        <li><span class="large"><span class="large"><span class="large"><span
+ class="large">ln -s /home/sequence/alDente/share share<br>
+          </span></span></span></span></li>
+      </ul>
+    </ul>
+    <ul>
+      <li>Create a tag of the branch to allow access to the original seqdb01-2_30 code release</li>
+      <ul>
+        <li>svn copy http://svn/lims/alDente/branch/seqdb01-2_30-branch http://svn/lims/alDente/tags/seqdb01-2_30</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+</span><span class="large">
+<ul>
+  <ul>
+    <li>Under <span style="font-weight: bold;">/home/sequence/alDente/WebVersions/:</span></li>
+    <ul>
+      <li>check out the production version from the branch:</li>
+      <ul>
+        <li>svn checkout http://svn/lims/alDente/branches/seqdb01-2_30-branch seqdb01-2_30</li>
+      </ul>
+    </ul>
+    <ul>
+      <li><span class="large"><span class="large">Create the system
+configuration file by running setup.pl:</span></span></li>
+      <ul>
+        <li>install/setup.pl</li>
+        <li><span class="large">ensure the sql database hosts are set
+correctly</span><span class="large"> (in this case SQL_HOST should be
+set to the slave host lims-dbm)</span></li>
+      </ul>
+    </ul>
+    <ul>
+      <li>Relink the symbolic link <span style="font-weight: bold;">Production</span>
+to the <span style="font-weight: bold;">seqdb01-2_30 folder</span>:</li>
+      <ul>
+        <li>rm -f Production &amp;&amp; ln -s seqdb01-2_30 Production</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Send email notification to lab users about the new release.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Ongoing development (under <span style="font-weight: bold;">/opt/alDente/versions/)</span>:</li>
+  <ul>
+    <li>New code development (development stream):</li>
+    <ul>
+      <li>Now that release 2.30 is out, say you are starting to work on
+new features for release 2.30. &nbsp;Assuming your ongoing code
+development folder is <span style="font-weight: bold;">achan</span>,
+make sure you have the latest code - under <span
+ style="font-weight: bold;">/opt/alDente/versions/achan/</span>:</li>
+      <ul>
+        <li>svn update</li>
+      </ul>
+      <li>Develop code and commit changes to Subversion as usual.<br>
+      </li>
+    </ul>
+    <li>Hotfixes/maintenance on existing production version (production
+stream):</li>
+    <ul>
+      <li>Say there is now a bug in the production version requiring a
+hotfix. &nbsp;First make sure the <span style="font-weight: bold;">hotfix</span>
+folder contains the latest code from the current production branch -
+under <span style="font-weight: bold;">/opt/alDente/versions/test/</span>:</li>
+      <ul>
+        <li>svn update</li>
+      </ul>
+      <li>Make the require coding changes, test the changes and then
+svn commit the changes.</li>
+      <li>Now it's time to put your hotfix into the <span
+ style="font-weight: bold;">production</span> folder. To be absolutely
+safe about the changes to be applied, first do an svn diff to find out
+the changes to be applied (say the file that was changed is
+cgi-bin/barcode.pl) - under&nbsp;<span style="font-weight: bold;">/opt/alDente/versions/production/</span>:</li>
+      <ul>
+        <li>svn diff cgi-bin/barcode.pl</li>
+        <li>svn status cgi-bin/barcode.pl -u</li>
+        </li>
+      </ul>
+      <li>If the changes look OK, then update the code in the <span
+ style="font-weight: bold;">production</span> folder - under&nbsp;<span
+ style="font-weight: bold;">/opt/alDente/versions/production/</span>:</li>
+      <ul>
+        <li>svn update cgi-bin/barcode.pl</li>
+      </ul>
+      <li>After making sure the production version is ok, it is crucial
+that you also merge the same hotfix changes to the development stream.
+&nbsp;The sooner you do the merge, the lower the chance a conflict will
+occur.
+    </ul>
+  </ul>
+</ul>
+</span>

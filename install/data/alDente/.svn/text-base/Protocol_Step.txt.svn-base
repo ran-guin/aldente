@@ -1,0 +1,12 @@
+Protocol_Step_Number	Protocol_Step_Name	Protocol_Step_Instructions	Protocol_Step_ID	Protocol_Step_Defaults	Input	Scanner	Protocol_Step_Message	FK_Employee__ID	Protocol_Step_Changed	Input_Format	FK_Lab_Protocol__ID	FKQC_Attribute__ID	QC_Condition	Validate	Repeatable
+1	Do Not Discard This Protocol		1			0		1	2001-10-16		1	NULL	NULL	NULL	
+1	Throw Away		2			0		1	2001-10-16		1	NULL	NULL	NULL	
+1	Export		3			0		1	2004-08-13		1	NULL	NULL	NULL	
+1	Fail Plate	Standard Protocol Step for Failing Plates	4	NULL	NULL	0	NULL	1	2005-04-20		1	NULL	NULL	NULL	
+1	Thaw	Standard Protocol Step for Thawing Plates	5	NULL	NULL	0	NULL	1	2006-08-04		1	NULL	NULL	NULL	
+1	Get Sample		10			1		1	2007-07-10		2	NULL			
+2	Aliquot to 384-well Abgene - Culture		11			1		1	2007-07-10		2	NULL			
+3	Centrifuge		12		FK_Equipment__ID	1		1	2007-07-10		2	NULL			
+4	Apply solution		13	:l	FK_Solution__ID:Solution_Quantity	1		1	2007-07-10	:	2	NULL			
+1	Export Samples		14		Prep_Comments	1		1	0000-00-00		3	0			
+1	Receive Sample Shipment		15		Prep_Comments	1		1	0000-00-00		4	0			

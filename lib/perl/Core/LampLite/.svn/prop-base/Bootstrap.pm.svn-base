@@ -1,0 +1,6 @@
+K 13
+svn:mergeinfo
+V 169
+/LIMS/branches/lims_4_1-branch/lib/perl/Core/LampLite/Bootstrap.pm:104987-106196
+/LIMS/trunk/lib/perl/Core/LampLite/Bootstrap.pm:99992-100476,100971-102990,103006-104986
+END

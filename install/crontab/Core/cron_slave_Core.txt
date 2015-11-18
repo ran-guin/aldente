@@ -1,0 +1,108 @@
+<FILE_HEADER>
+#*************************************************************************************************************************
+#
+# ALL .LOG AND .ERR FILES SHOULD BE WRITTEN TO THE DIRECTORY: <Data_home_dir>/private/logs/
+#
+# finish each command with:
+#    1><Data_home_dir>/private/logs/<script>.log 2><Data_home_dir>/private/logs/<script>.err
+#*************************************************************************************************************************
+###########################################################
+## 		ENVIRONMENT VARIABLES 	
+###########################################################
+## PATH Below should normally point to production code - may point to beta shortly prior to release to test integrity of cron scripts ##
+PATH=/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:<Home_dir>/bin:<Home_dir>/versions/production/bin
+## NOTE: Path should be exclusively indicated in cron jobs working for Production system 
+
+## Turn off standard mailing functionality ##
+# MAILTO = ''
+</FILE_HEADER>
+
+<SECTION= Log cronjobs dynamically for <BACKUP_HOST> >
+0 0 * * * crontab -l > <Data_home_dir>/private/crontabs/<BACKUP_HOST>.aldente.cron
+
+</SECTION>
+
+<HEADER>
+###########################################################
+## FREQUENTLY RUNNING CRON JOBS (More than once per day) 
+###########################################################
+</HEADER>
+
+<SECTION= Hourly Backup>
+12 6-18 * * * <Home_dir>/versions/beta/bin/backup_RDB.pl -dump -host <PRODUCTION_HOST> -slave <BACKUP_HOST> -dbase <PRODUCTION_DATABASE> -user super_cron -password repus -confirm 1> <Data_home_dir>/private/logs/hourly_backup.log 2>> <Data_home_dir>/private/logs/hourly_backup.err
+</SECTION>
+
+<SECTION= SVN Update <BACKUP_HOST> Code>
+*/10 8-20 * * 1-5 <Home_dir>/versions/beta/bin/update_from_SVN.pl -version production 1><Data_home_dir>/private/logs/update_from_SVN_<BACKUP_HOST>.log 2>> <Data_home_dir>/private/logs/update_from_SVN_<BACKUP_HOST>.err
+*/10 8-20 * * 1-5 <Home_dir>/versions/beta/bin/update_from_SVN.pl -version beta 1><Data_home_dir>/private/logs/update_from_SVN_<BACKUP_HOST>.log 2>> <Data_home_dir>/private/logs/update_from_SVN_<BACKUP_HOST>.err
+
+</SECTION>
+
+<SECTION= Update library status regularly (auto-complete / close libraries)>
+*/18 * * * * set_Library_Status.pl -pwd repus -dbase <PRODUCTION_DATABASE> > /dev/null
+</SECTION>
+
+<SECTION= backup consistency check (for  <BACKUP_HOST>:<PRODUCTION_DATABASE>) >
+30 6-18 * * * <Home_dir>/versions/beta/bin/backup_consistency_check.pl -dbase <PRODUCTION_DATABASE> -host <BACKUP_HOST> -u super_cron -p repus 1>><Data_home_dir>/private/logs/backup_consistency_check.log 2>><Data_home_dir>/private/logs/backup_consistency_check.err
+</SECTION>
+
+<SECTION=  Auto-generate Library directory structure (and error check current libraries) >
+0 19-23 * * * update_library_list.pl -v 1> <Data_home_dir>/private/logs/update_library_list.log 2>><Data_home_dir>/private/logs/update_library_list.err
+0 0-7 * * * update_library_list.pl -v 1> <Data_home_dir>/private/logs/update_library_list.log 2>><Data_home_dir>/private/logs/update_library_list.err
+*/20 8-18 * * * update_library_list.pl -v 1> <Data_home_dir>/private/logs/update_library_list.log 2>><Data_home_dir>/private/logs/update_library_list.err
+</SECTION>
+
+<HEADER>
+###########################################################
+###		DAILY CRON JOBS 		
+###########################################################
+</HEADER>
+	
+<SECTION= Full daily Backup / Upgrade / Restore >
+## this cron job runs:  backup (if requested), restore_structure, restore_records, upgrade (as requested), compare_DB ... in order ## 
+12 23 * * * export LD_ASSUME_KERNEL=2.4.1 && <Home_dir>/versions/beta/bin/DB_backup_restore.pl -restore <DEV_HOST>:<DEV_DATABASE>,<PRODUCTION_HOST>:<TEST_DATABASE> -rebuild -backup -slave <BACKUP_HOST> -upgrade <DEV_HOST>:<DEV_DATABASE> -force 1> <Data_home_dir>/private/logs/DB_backup_restore.log 2> <Data_home_dir>/private/logs/DB_backup_restore.err
+
+## restore <BETA_DATABASE> INSTEAD OF <DEV_DATABASE> if desired (comment out one of them...) SUNDAY only (* * * * 0 : may comment out during test phase) ##
+# 12 23 * * * export LD_ASSUME_KERNEL=2.4.1 && <Home_dir>/versions/beta/bin/DB_backup_restore.pl -restore <PRODUCTION_HOST>:<BETA_DATABASE>,<PRODUCTION_HOST>:<TEST_DATABASE> -rebuild -backup -slave <BACKUP_HOST> -upgrade <PRODUCTION_HOST>:<BETA_DATABASE> -force 1> <Data_home_dir>/private/logs/DB_backup_restore.log 2> <Data_home_dir>/private/logs/DB_backup_restore.err
+</SECTION>
+
+<HEADER>
+###########################################################
+### 	DB Monitoring Scripts (Daily) 		
+###########################################################
+##	NOTE:
+## 		May wish to run this more frequently, but **avoid running during database restore**
+## 		run again in the morning at 8 so that <DEV_DATABASE>/<TEST_DATABASE> match for API unit test
+###########################################################
+
+</HEADER>
+<SECTION= Unit testing>
+10 8,20 * * * <Home_dir>/versions/beta/bin/run_unit_tests.pl -v beta_no_selenium -no_selenium 1 1><Data_home_dir>/private/logs/run_unit_tests.beta_no_selenium.log 2><Data_home_dir>/private/logs/run_unit_tests.beta_no_selenium.err
+
+9 20 * * * <Home_dir>/versions/beta/bin/run_unit_tests.pl -v beta_selenium_only -no_email 1 -test OS_S_Library 1><Data_home_dir>/private/logs/run_unit_tests.beta_selenium_only.log 2><Data_home_dir>/private/logs/run_unit_tests.beta_selenium_only.err
+</SECTION>
+
+<SECTION= API Unit testing>
+### API Unit Test, schedule the unit test early in the morning because upgrade needs to finish first
+35 1 * * * <Home_dir>/versions/beta/bin/API_unit_test.pl -g -o 1 -v case_generation 1><Data_home_dir>/private/logs/API_unit_test.case_generation.log 2><Data_home_dir>/private/logs/API_unit_test.case_generation.err
+
+05 6 * * * <Home_dir>/versions/beta/bin/API_unit_test.pl -t alDente::alDente_API -v alDente_API -max_days 90 1><Data_home_dir>/private/logs/API_unit_test.alDente_API.log 2><Data_home_dir>/private/logs/API_unit_test.alDente_API.err
+</SECTION>
+
+<HEADER>
+###########################################################
+### 	Cleanup Scripts 	
+###########################################################
+</HEADER>
+<SECTION= Cleanup Scripts>
+
+30 0 * * * <Home_dir>/versions/beta/bin/cleanup_mirror.pl -m all -S 14 1> <Data_home_dir>/private/logs/cleanup_mirror.log 2> <Data_home_dir>/private/logs/cleanup_mirror.err
+</SECTION>
+
+<HEADER>
+###########################################################
+### Custom Cron Jobs 		
+###########################################################
+</HEADER>
+
+

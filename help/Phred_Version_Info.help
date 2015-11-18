@@ -1,0 +1,70 @@
+
+<H2>What is Phred?</H2>
+
+<P><i>"Phred reads DNA sequencer trace data, calls bases, assigns quality values to the bases, and writes the base calls and quality values to output files. Phred can read trace data from chromatogram files in the SCF, ABI, and ESD formats. It automatically determines the file format, and whether the chromatogram file was compressed using gzip, bzip2, or UNIX compress.  After calling bases, phred writes the sequences to files in either FASTA format, the format suitable for XBAP, PHD format, or the SCF format.  Quality values for the bases are written to FASTA format files or PHD files, which can be used by the phrap sequence assembly program in order to increase the accuracy of the assembled sequence." </i>(taken from www.phrap.org)
+
+<P>Phred is a base-calling program that is used by the GSC to determine bases from sequencer data. A new phred version (0.020425.c)was released in 2002, and the GSC system is in the process of changing over to this new version. 
+
+<P>One interesting side effect of this change is that the new version almost consistently gives higher phred scores to bases than those given by older versions as long as the read's average quality is better than phred20. It has been noted that all the previous older versions (990310, 000110, and 001107) have nearly identical phred values. This may be due to the new version of phred using additional data from newer sequencers, but this is yet to be confirmed.<br><br>
+
+<i>Note: histograms are for all wells in a quality file, not for only one well</i><br><br><br>
+
+<table>
+
+<tr>
+<td><h3>Graph of a sequence that has significantly higher phred values</h3></td>
+<td><h4>Distribution</h4></td>
+<td><h4>Culmulative</h4></td>
+</tr>
+
+<tr valign="top">
+<td><img src="$Help_Image_dir/phred_high_difference.png" height=450 width=600></td>
+<td>
+<table>
+<tr><td><img src="$Help_Image_dir/phred_high_difference_dist_new.png"></td></tr>
+<tr><td><img src="$Help_Image_dir/phred_high_difference_dist_old.png"></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td><img src="$Help_Image_dir/phred_high_difference_culm_new.png"><td></tr>
+<tr><td><img src="$Help_Image_dir/phred_high_difference_culm_old.png"><td></tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<table>
+
+<tr>
+<td><h3>Graph of a sequence that a small improvement in phred values</h3></td>
+<td><h4>Distribution</h4></td>
+<td><h4>Culmulative</h4></td>
+</tr>
+
+<tr valign="top">
+<td><img src="$Help_Image_dir/phred_low_difference.png" height=450 width=600></td>
+<td>
+<table>
+<tr><td><img src="$Help_Image_dir/phred_low_difference_dist_new.png"></td></tr>
+<tr><td><img src="$Help_Image_dir/phred_low_difference_dist_old.png"></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td><img src="$Help_Image_dir/phred_low_difference_culm_new.png"><td></tr>
+<tr><td><img src="$Help_Image_dir/phred_low_difference_culm_old.png"><td></tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<P>Reads with quality averages lower than phred20 have inconsistent results across all versions, and the new version does not deliver better phred scores.
+
+<h3>Graphing utility:</h3>
+
+<p>This utility accepts phred quality files (phredscores.qual) and sequence IDs to the GSC's sequence database. You must also choose a well ID to analyze. The utility will superimpose graphs of the same well from different sources.<br><br>
+
+<a href="http://seqdb01/SDB_jsantos/cgi-bin/phred_graph.pl">Graphing Utility</a>

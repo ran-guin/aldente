@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis
+END
+update_genechiprun.pl
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/update_genechiprun.pl
+END
+validate_tcga_download.pl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/validate_tcga_download.pl
+END
+backup_solexa.pl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/backup_solexa.pl
+END
+Solexa_notify.pl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/Solexa_notify.pl
+END
+microarray_batch_submission.pl
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/microarray_batch_submission.pl
+END
+cghub_sync.pl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/cghub_sync.pl
+END
+batch_submission_microarray.pl
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/batch_submission_microarray.pl
+END
+sync_gcos.pl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/sync_gcos.pl
+END
+cleanup_slx_space.pl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/cleanup_slx_space.pl
+END
+batch_source_microarray.pl
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/batch_source_microarray.pl
+END
+check_slx_machine_status.pl
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/check_slx_machine_status.pl
+END
+microarray_batch_plate.pl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/microarray_batch_plate.pl
+END
+batch_plate_microarray.pl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/batch_plate_microarray.pl
+END
+cleanup_slx_files.pl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/cleanup_slx_files.pl
+END
+update_slx_run_status.pl
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/update_slx_run_status.pl
+END
+compare_tcga_fastq_bam.pl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/compare_tcga_fastq_bam.pl
+END
+backfill_SolexaAnalysis_sample_id.pl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/backfill_SolexaAnalysis_sample_id.pl
+END
+cghub_submitted_sync.pl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/108205/alDente/trunk/custom/GSC/bin/analysis/cghub_submitted_sync.pl
+END

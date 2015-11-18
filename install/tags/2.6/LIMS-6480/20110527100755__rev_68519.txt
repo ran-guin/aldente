@@ -1,0 +1,3 @@
+lib/perl/Core/RGTools/Barcode.pm
+bin/t/Core/RGTools/Barcode.t
+bin/t/Core/RGTools/Barcode.t

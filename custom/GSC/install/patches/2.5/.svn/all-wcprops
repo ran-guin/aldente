@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5
+END
+Vendor.pat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/Vendor.pat
+END
+Asset.pat
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/Asset.pat
+END
+GSC_installed_pkgs.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/GSC_installed_pkgs.pat
+END
+JIRA_active.pat
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/JIRA_active.pat
+END
+Equipment_Transfer.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/Equipment_Transfer.pat
+END
+GSC_active_pkgs.pat
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/68925/alDente/trunk/custom/GSC/install/patches/2.5/GSC_active_pkgs.pat
+END

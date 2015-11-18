@@ -1,0 +1,30 @@
+<H2>SDB Modules</H2>
+<P>
+This directory contains modules specific to SQL database handling.
+
+While developed for the alDente LIMS, these modules should not be dependant upon any structure specific to alDente.
+
+There are some formatting standards which should be followed for some of these routines to be utilized.
+These may be found in the alDente documentation or in the module descriptions themselves.
+
+<span class=small><UL>
+
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_IO.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_IO.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_IO</A> : This modules provides general SQL database functionality (non-specific to one database)
+<LI><A Href="http://seqdb01/SDB/html/perldoc/GSDB.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/GSDB.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >GSDB</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/ChromatogramHTML.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/ChromatogramHTML.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >ChromatogramHTML</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_Form.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_Form.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_Form</A> : This object is the superclass of alDente database objects.
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Session.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Session.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Session</A> : Stores user session
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_Record.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_Record.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_Record</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Submission.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Submission.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Submission</A> : This modules provides submission_related functionality
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Issues.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Issues.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Issues</A> : This module is the home page for the Issues Tracker.  It allows the developers to
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DBinput.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DBinput.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DBinput</A> : This modules provides general SQL database input functionality
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_Form_Viewer.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_Form_Viewer.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_Form_Viewer</A> : This facilitates automatic viewing in HTML of Database information.
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Data_Viewer.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Data_Viewer.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Data_Viewer</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_Query.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_Query.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_Query</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Histogram.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Histogram.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Histogram</A> : This package allows generation of histograms as png images.
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Errors.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Errors.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Errors</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/CustomSettings.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/CustomSettings.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >CustomSettings</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DB_Object.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DB_Object.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DB_Object</A> : 
+<LI><A Href="http://seqdb01/SDB/html/perldoc/Report.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/Report.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >Report</A> : This modules provides general reporting functions
+<LI><A Href="http://seqdb01/SDB/html/perldoc/DBIO.html" onClick="window.open('http://seqdb01/SDB/html/perldoc/DBIO.html','newwin','height=800,width=1000,scrollbars=yes,resizable=yes,toolbar=yes,location=no,directories=no'); return false;" >DBIO</A> : 
+</UL></span>

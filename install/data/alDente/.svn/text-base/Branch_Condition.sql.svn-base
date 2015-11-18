@@ -1,0 +1,44 @@
+-- MySQL dump 10.9
+--
+-- Host: limsdev04    Database: Core_Current
+-- ------------------------------------------------------
+-- Server version	5.5.10
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Branch_Condition`
+--
+
+DROP TABLE IF EXISTS `Branch_Condition`;
+CREATE TABLE `Branch_Condition` (
+  `Branch_Condition_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FK_Branch__Code` varchar(5) NOT NULL DEFAULT '',
+  `FK_Object_Class__ID` int(11) NOT NULL DEFAULT '0',
+  `Object_ID` int(11) NOT NULL DEFAULT '0',
+  `FK_Pipeline__ID` int(11) DEFAULT NULL,
+  `FKParent_Branch__Code` varchar(5) DEFAULT NULL,
+  `Branch_Condition_Status` enum('Active','Inactive') DEFAULT NULL,
+  PRIMARY KEY (`Branch_Condition_ID`),
+  UNIQUE KEY `obj` (`FK_Pipeline__ID`,`FK_Branch__Code`,`FKParent_Branch__Code`,`FK_Object_Class__ID`,`Object_ID`,`Branch_Condition_Status`),
+  UNIQUE KEY `condition` (`Object_ID`,`FK_Object_Class__ID`,`FK_Pipeline__ID`,`FKParent_Branch__Code`,`Branch_Condition_Status`),
+  KEY `FK_Object_Class__ID` (`FK_Object_Class__ID`),
+  KEY `FKParent_Branch__Code` (`FKParent_Branch__Code`),
+  KEY `FK_Branch__Code` (`FK_Branch__Code`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

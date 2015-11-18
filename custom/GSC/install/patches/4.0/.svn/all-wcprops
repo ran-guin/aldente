@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/97177/alDente/trunk/custom/GSC/install/patches/4.0
+END
+GSC_3_17.pat
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/93836/alDente/trunk/custom/GSC/install/patches/4.0/GSC_3_17.pat
+END
+add_GelRun_FailReason.pat
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/97177/alDente/trunk/custom/GSC/install/patches/4.0/add_GelRun_FailReason.pat
+END
+pipeline_attribute.pat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/94610/alDente/trunk/custom/GSC/install/patches/4.0/pipeline_attribute.pat
+END
+remove_Source_update_volume_trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/95173/alDente/trunk/custom/GSC/install/patches/4.0/remove_Source_update_volume_trigger.pat
+END
+change_new_work_request_trigger.pat
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/93836/alDente/trunk/custom/GSC/install/patches/4.0/change_new_work_request_trigger.pat
+END
+change_public_grp_name.pat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/93836/alDente/trunk/custom/GSC/install/patches/4.0/change_public_grp_name.pat
+END

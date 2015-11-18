@@ -1,0 +1,18 @@
+<h1>Who?</H1>
+
+<h2>Who cares?</H2>
+A number of people stand to benefit including:
+<UL>
+<LI>Lab users<P>
+This system can make their lives hell ...or a lot easier.<P>
+(though usually a subtle combination of both).<P>
+To ensure that the edge is given to the 'make their lives easier' camp,
+it is crucial that constant feedback is supplied to database administrator's, 
+who in turn must appreciate the effect of the system's smooth functionality upon those constantly using the system.  With a continuous cycle of feedback and a concerted effort on the developers part to address concerns, lab users stand to gain much more than the cost of having to use barcode scanners or to enter data onto the computer.
+<LI>Lab administrators<P>
+Lab administrators, generally stand to gain much more, since they stand to benefit much more from the potential tools at their disposal such as data viewing pages, report pages, and validation settings which can prevent mistakes before they occur.  Similarly, however, to maximize their ability to make use of the system, they should be in close communication with the database administrator to ensure that they both understand how to make best use of it, and to enable them to provide valuable feedback to make the system more effective.
+<LI>Administrators
+<P>Administrators can benefit from the potential of the system to generate detailed cost reports or data summaries that may be used in broader reports.  It may allow them to more clearly understand and monitor how projects are proceeding and pass on results directly to collaborators.<P>Once again, this may be made most effective by communicating with database administrators to ensure needs are met, and to learn how best to retrieve information desired.
+<LI>Programmers
+<P>There are various aspects of the system which can also be utilized by programmers for use with other parallel database systems.  The 'SDB' module is designed to be used generically with any 'SQL' database.  While its use outside of 'alDente' has currently been limited, there are valuable tools that may simplify the design of interfaces to other databases.  Included are modules which simplify the generating of HTML tables, the generation of forms for adding records, and the navigation between related records via hyperlinks on foreign keys.  Also included are the filters used to maintain data integrity during the updating, appending, or deleting of records in the database.
+</UL>

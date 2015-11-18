@@ -1,0 +1,119 @@
+<h1>Table Of Contents</H1><P>
+</UL>
+<h2>W5 Chapter</h2><UL>
+<LI><A Href=#Why>Why</A>
+<LI><A Href=#What>What</A>
+<LI><A Href=#Where>Where</A>
+<LI><A Href=#When>When</A>
+<LI><A Href=#Who>Who</A>
+<LI><A Href=#How>How</A>
+</UL>
+<h2>Context Chapter</h2><UL>
+<LI><A Href=#LIMScontext>LIMS system within the GSC</A>
+<LI><A Href=#alDenteContext>the 'alDente' LIMS</A>
+<LI><A Href=#LaboratoryContext>Laboratory Tracking within 'alDente'</A>
+<LI><A Href=#SequencingContext>Sequencing aspect of 'alDente'</A>
+</UL>
+<h2>Interface Chapter</h2><UL>
+<LI><A Href=#SDB_info>SDB_info</A>
+<LI><A Href=#Lab_Tracking>Lab_Tracking</A>
+<LI><A Href=#SequencingFlowchart>SequencingFlowchart</A>
+<LI><A Href=#ScanningFlowchart>ScanningFlowchart</A>
+<LI><A Href=#Icons>Icons</A>
+</UL>
+<h2>Database Objects Chapter</h2><UL>
+<LI><A Href=#StaticView>Objects in Database</A>
+<LI><A Href=#Database>Database</A>
+<LI><A Href=#Data_Flow>Data_Flow</A>
+<LI><A Href=#Defining_Projects>Defining_Projects</A>
+<LI><A Href=#Defining_Libraries>Defining_Libraries</A>
+<LI><A Href=#Defining_Vectors>Defining_Vectors</A>
+<LI><A Href=#Defining_Primers>Defining_Primers</A>
+<LI><A Href=#Formats>Formats</A>
+</UL>
+<h2>Plate_Handling Chapter</h2><UL>
+<LI><A Href=#Defining_Plates>Creating New Plates</A>
+<LI><A Href=#New_Lib_Plates>New_Lib_Plates</A>
+<LI><A Href=#Plate_Transferring>Plate_Transferring</A>
+<LI><A Href=#Plate_Tracking>Plate_Tracking</A>
+<LI><A Href=#Annotating_Plates>Annotating_Plates</A>
+<LI><A Href=#ReArraying>ReArraying</A>
+<LI><A Href=#Wrong_Plate>Wrong_Plate</A>
+</UL>
+<h2>Laboratory_Tracking Chapter</h2><UL>
+<LI><A Href=#Lab_Protocols>Lab_Protocols</A>
+<LI><A Href=#Prep_Summary>Prep_Summary</A>
+</UL>
+<h2>Equipment_Handling Chapter</h2><UL>
+<LI><A Href=#Equipment>Equipment</A>
+<LI><A Href=#Equipment_Monitoring>Equipment_Monitoring</A>
+</UL>
+<h2>Solution/Reagent Handling Chapter</h2><UL>
+<LI><A Href=#Reagents>Reagents</A>
+<LI><A Href=#New_Reagents>New_Reagents</A>
+<LI><A Href=#Mixing_Solutions>Mixing_Solutions</A>
+<LI><A Href=#Solution_Tracking>Solution_Tracking</A>
+<LI><A Href=#Monitoring_Stock>Monitoring_Stock</A>
+<LI><A Href=#Chemistry_Calculator>Chemistry_Calculator</A>
+</UL>
+<h2>Tube_Handling Chapter</h2><UL>
+<LI><A Href=#Tubes>Tubes</A>
+</UL>
+<h2>Editing_Records Chapter</h2><UL>
+<LI><A Href=#Editing_Records>Editing_Records</A>
+<LI><A Href=#Fixing_Mistakes>Fixing_Mistakes</A>
+</UL>
+<h2>Sequencing Chapter</h2><UL>
+<LI><A Href=#Run_Monitoring>Run_Monitoring</A>
+<LI><A Href=#Sequence_Data>Sequence_Data</A>
+<LI><A Href=#Phred_Analysis>Phred_Analysis</A>
+</UL>
+<h2>Scanners Chapter</h2><UL>
+<LI><A Href=#Barcode_Scanners>Barcode_Scanners</A>
+<LI><A Href=#SDK3700>SDK3700</A>
+<LI><A Href=#IPAQ>IPAQ</A>
+</UL>
+<h2>Administration Chapter</h2><UL>
+<LI><A Href=#Summary>Summary</A>
+<LI><A Href=#Reporting>Reporting</A>
+<LI><A Href=#Sample_Views>Sample_Views</A>
+<LI><A Href=#Issues>Issues</A>
+<LI><A Href=#Stock_Notification>Stock_Notification</A>
+</UL>
+<h2>Development Chapter</h2><UL>
+<LI><A Href=#IssuesDecisions>Design Decisions</A>
+<LI><A Href=#Development>Development</A>
+<LI><A Href=#Testing_Protocol>Testing Protocol</A>
+<LI><A Href=#Ongoing_Development>Ongoing_Development</A>
+<LI><A Href=#Debugging>Debugging</A>
+<LI><A Href=#Setup>Setup</A>
+<LI><A Href=#System>System</A>
+</UL>
+<h2>Analysis Chapter</h2><UL>
+<LI><A Href=#Phred_Version_Info>Phred Version Change Information</A>
+</UL>
+<h2>Classes Chapter</h2><UL>
+<LI><A Href=#RGTools_classes>Generic classes</A>
+<LI><A Href=#SDB_classes>SQL specific classes</A>
+<LI><A Href=#alDente_classes>alDente specific classes</A>
+<LI><A Href=#Sequencing_classes>Classes specific to the Sequencing plug-in </A>
+</UL>
+<h2>Modules Chapter</h2><UL>
+<LI><A Href=#RGTools_modules>Generic Modules</A>
+<LI><A Href=#SDB_modules>SQL specific modules</A>
+<LI><A Href=#alDente_modules>alDente specific modules</A>
+<LI><A Href=#Sequencing_modules>Sequencing specific modules</A>
+<LI><A Href=#GSDB>GSDB</A>
+<LI><A Href=#DB_Form_Viewer>DB_Form_Viewer</A>
+<LI><A Href=#HTML_Table>HTML_Table</A>
+</UL>
+<h2>System Requirements Chapter</h2><UL>
+<LI><A Href=#Hardware_Requirements>Hardware_Requirements</A>
+<LI><A Href=#Software_Requirements>Software_Requirements</A>
+<LI><A Href=#Staff_Requirements>Staff_Requirements</A>
+</UL>
+<h2>LIMS API modules Chapter</h2><UL>
+<LI><A Href=#ReArray_API>ReArray_API</A>
+<LI><A Href=#Run_API>Run_API</A>
+<LI><A Href=#Read_API>Read_API</A>
+</UL>

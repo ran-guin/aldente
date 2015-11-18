@@ -1,0 +1,33 @@
+/* Override non-bootstrap standard elements that have not been classified */
+/*
+select {
+    height:40px;
+}
+textarea {
+    height:40px;
+}
+input[type="text"] {
+    height:40px;
+}
+*/
+
+/* account for fixed top header */
+body {
+     padding-top: 130px; /* add to account for navbar paddding */
+     font-size:18px;
+}
+
+/* use smaller padding on top when input bar is not present */
+@media (max-width: 767px) {
+    body { padding-top: 80px; }
+}
+
+/* Override Bootstrap Responsive CSS fixed navbar */
+@media (max-width: 979px) {
+      .navbar-fixed-top,
+        .navbar-fixed-bottom {
+                  position: relative;
+                        margin-left: 0px;
+                              margin-right: 0px;
+                                }
+}

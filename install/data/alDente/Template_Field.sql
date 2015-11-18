@@ -1,0 +1,42 @@
+-- MySQL dump 10.9
+--
+-- Host: limsdev04    Database: Core_Current
+-- ------------------------------------------------------
+-- Server version	5.5.10
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Template_Field`
+--
+
+DROP TABLE IF EXISTS `Template_Field`;
+CREATE TABLE `Template_Field` (
+  `Template_Field_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Template_Field_Name` varchar(80) NOT NULL DEFAULT '',
+  `FK_DBField__ID` int(11) NOT NULL DEFAULT '0',
+  `FK_Attribute__ID` int(11) NOT NULL DEFAULT '0',
+  `Template_Field_Option` set('Mandatory','Unique') DEFAULT NULL,
+  `Template_Field_Format` varchar(80) DEFAULT NULL,
+  `FK_Template__ID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Template_Field_ID`),
+  KEY `FK_DBField__ID` (`FK_DBField__ID`),
+  KEY `FK_Attribute__ID` (`FK_Attribute__ID`),
+  KEY `FK_Template__ID` (`FK_Template__ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

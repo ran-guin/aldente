@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing
+END
+ReArray.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/ReArray.pm
+END
+Sequence.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Sequence.pm
+END
+Sample_Sheet.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Sample_Sheet.pm
+END
+Custom.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Custom.pm
+END
+SDB_Status.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/103087/alDente/trunk/lib/perl/Sequencing/SDB_Status.pm
+END
+Read.pm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/Read.pm
+END
+Stat_App.pm
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Stat_App.pm
+END
+Sequencing_Summary.pm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Sequencing_Summary.pm
+END
+SolexaRun.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/SolexaRun.pm
+END
+Seq_Data.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/Seq_Data.pm
+END
+Run_Histogram.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/Run_Histogram.pm
+END
+QPIX.pm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/96328/alDente/trunk/lib/perl/Sequencing/QPIX.pm
+END
+Multiprobe.pm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Multiprobe.pm
+END
+Post.pm
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/78159/alDente/trunk/lib/perl/Sequencing/Post.pm
+END
+Sequencing_Library.pm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/97700/alDente/trunk/lib/perl/Sequencing/Sequencing_Library.pm
+END
+Lab_View.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/96328/alDente/trunk/lib/perl/Sequencing/Lab_View.pm
+END
+Primer_Order.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Primer_Order.pm
+END
+Sequencing_API.pm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/95350/alDente/trunk/lib/perl/Sequencing/Sequencing_API.pm
+END
+Sequencing_Data.pm
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Sequencing_Data.pm
+END
+alDente_Tools.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/alDente_Tools.pm
+END
+Views.pm
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Views.pm
+END
+Primer.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/106295/alDente/trunk/lib/perl/Sequencing/Primer.pm
+END
+Fasta.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/Fasta.pm
+END
+Tools.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/74151/alDente/trunk/lib/perl/Sequencing/Tools.pm
+END
+Phred.pm
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/68925/alDente/trunk/lib/perl/Sequencing/Phred.pm
+END

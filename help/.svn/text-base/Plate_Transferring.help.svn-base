@@ -1,0 +1,37 @@
+<H2>Transferring Plates</H2>
+Plates may be transferred in a variety of ways:
+
+<UL>
+<LI>Direct plate to plate transfer - <BR>
+<UL>
+<LI>scan any number of plates in the 'scan' field
+<LI>choose the target format from the pulldown menu
+<LI>press the 'Transfer Plates To' button.<BR>
+(by selecting 'Test Only', the plates will be flagged as 'Test' Plates.
+</ul>
+
+<LI>Transferring within protocols - <BR>
+Often, within a protocol, while working with numerous plates, it is desired
+to 'Transfer' (in which it is assumed that the original plate is no longer
+active), or 'Aliquot' (in which the original plate is still available for
+further 'Aliquot' steps) DNA to new plates.  In this case, the transfer is
+completed automatically within the protocol handling.  New barcodes for the
+target plates are automatically generated, and a new plate set defined
+(consisting of a list of the new plates generated).  If transferring from 96 to
+384 well format, the plates are automatically transferred such that each
+group of 4 scanned plates is sent to the a,b,c, and d quadrants
+of a new  384-well plate. <BR>
+Note: in this case, the 384 well plate is actually recorded as 4 96-well
+plates co-existing on a single 384 well plate.  This allows the possibility
+of having 4 plates from different libraries existing on one 384 well plate.
+The new plate will then be identified by a 'Multiple Barcode' consisting of a concatenation of 4 plate ids.
+
+<LI>384-well -> 96-well distribution - <BR>
+If the original plate is a 384 well plate, the user may specify the number
+of 96-well quadrants that are available (defaults to 4).  In this case, the
+user may transfer any specified quadrants (a,b,c or d) as desired to a new
+96-well format as chosen from a pulldown menu.  4 target plates will
+automatically be created from each 384 well source plate (assuming all
+quadrants are transferred), and barcodes printed.
+
+</UL>

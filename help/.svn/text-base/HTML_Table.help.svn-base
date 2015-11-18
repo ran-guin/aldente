@@ -1,0 +1,4 @@
+<H2>HTML_Table.pm</H2>
+<P>The HTML_Table module allows simple generation of long tables using html format.
+<P>The Histogram module allows quick generation of histograms.
+<P><A Href='/cgi-bin/rguin/Views_man.pl'>More info on using the HTML_Table and Histogram modules</A>
